@@ -1,0 +1,1456 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0AE67831B6B695C0CFD45E25 /* Pods_EuroBond_CustomerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B7B39FBFA2A5EEF0345E28 /* Pods_EuroBond_CustomerTests.framework */; };
+		800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */; };
+		800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */; };
+		800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D629C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift */; };
+		800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D829C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift */; };
+		800D81DC29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81DB29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift */; };
+		800D81DF29C9E11C00D77557 /* EBC_EurobondsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81DE29C9E11C00D77557 /* EBC_EurobondsVC.swift */; };
+		80175F8529C9C6E300C87FEF /* helpLineAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 80175F8429C9C6E300C87FEF /* helpLineAnimation.json */; };
+		80175F8829C9C77A00C87FEF /* EBC_HelpLineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80175F8729C9C77A00C87FEF /* EBC_HelpLineVC.swift */; };
+		801C85FD29C5B135008204CB /* UiViewx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C85FC29C5B135008204CB /* UiViewx.swift */; };
+		801C860029C5BA3A008204CB /* EBC_RefferalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C85FF29C5BA3A008204CB /* EBC_RefferalVC.swift */; };
+		801C860329C5BBE5008204CB /* EBC_RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C860229C5BBE5008204CB /* EBC_RegisterVC.swift */; };
+		801F931729D1C763006FF310 /* EBC_ProductCatalogueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F931629D1C763006FF310 /* EBC_ProductCatalogueVC.swift */; };
+		801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F931829D1C791006FF310 /* EBC_ProductCatalogueCVC.swift */; };
+		801F931B29D1C7D2006FF310 /* EBC_WhatsNewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F931A29D1C7D2006FF310 /* EBC_WhatsNewVC.swift */; };
+		801F931E29D1C874006FF310 /* EBC_SearchProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F931D29D1C874006FF310 /* EBC_SearchProjectVC.swift */; };
+		801F932029D1C898006FF310 /* EBC_SearchProjectCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801F931F29D1C898006FF310 /* EBC_SearchProjectCVC.swift */; };
+		802BCDF929CC6F8D00B3209C /* EBC_BankTransferVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BCDF829CC6F8D00B3209C /* EBC_BankTransferVC.swift */; };
+		802BCDFB29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BCDFA29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift */; };
+		802BCDFD29CC6FC800B3209C /* EBC_VoucherVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BCDFC29CC6FC800B3209C /* EBC_VoucherVC.swift */; };
+		802BCE0129CC70E800B3209C /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BCDFF29CC70E800B3209C /* ContainerViewController.swift */; };
+		802BCE0229CC70E800B3209C /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BCE0029CC70E800B3209C /* EmptySegue.swift */; };
+		8031C85D29D19EE100E7D698 /* EBC_VoucherDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031C85C29D19EE100E7D698 /* EBC_VoucherDetails.swift */; };
+		8031C85F29D19F0C00E7D698 /* EBC_ProductDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8031C85E29D19F0C00E7D698 /* EBC_ProductDetails.swift */; };
+		80437F4729C8871B0062D151 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80437F4629C8871B0062D151 /* Color.swift */; };
+		80437F4A29C8904F0062D151 /* EBC_SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80437F4929C8904F0062D151 /* EBC_SideMenuVC.swift */; };
+		805F712629D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F712529D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift */; };
+		805F712829D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F712729D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift */; };
+		80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80621F1929C5D5B700CDA9BC /* EBC_Signup2VC.swift */; };
+		806E696629CD8278002B30F5 /* EBC_VoucherCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806E696529CD8278002B30F5 /* EBC_VoucherCVC.swift */; };
+		8077752629C9737E004AFDC4 /* EBC_SideMenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8077752529C9737E004AFDC4 /* EBC_SideMenuTVC.swift */; };
+		8081070129CC820E001675CA /* EBC_CategoryListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081070029CC820E001675CA /* EBC_CategoryListCVC.swift */; };
+		8081070329CC822C001675CA /* EBC_ProductListCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8081070229CC822C001675CA /* EBC_ProductListCVC.swift */; };
+		80902B5329C81B2F00050701 /* EBC_TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80902B5229C81B2F00050701 /* EBC_TabBarVC.swift */; };
+		8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8093439A29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift */; };
+		8093439C29C5EE0C00440CB6 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD8129C46C13005108AC /* Roboto-Black.ttf */; };
+		8093439D29C5EE0F00440CB6 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD7C29C46C12005108AC /* Roboto-Bold.ttf */; };
+		8093439E29C5EE1300440CB6 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD8229C46C13005108AC /* Roboto-Italic.ttf */; };
+		8093439F29C5EE1B00440CB6 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD7E29C46C12005108AC /* Roboto-Light.ttf */; };
+		809343A029C5EE2400440CB6 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD7F29C46C12005108AC /* Roboto-Medium.ttf */; };
+		809343A129C5EE2700440CB6 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD8329C46C14005108AC /* Roboto-Regular.ttf */; };
+		809343A229C5EE2900440CB6 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD8029C46C13005108AC /* Roboto-Thin.ttf */; };
+		809343A329C5EE2C00440CB6 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD7D29C46C12005108AC /* Roboto-ThinItalic.ttf */; };
+		809343A729C5F4D700440CB6 /* EBC_DashboardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809343A629C5F4D700440CB6 /* EBC_DashboardVC.swift */; };
+		809343A929C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809343A829C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift */; };
+		80937E4329D2AF00005B584F /* EBC_WhatsNewTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80937E4229D2AF00005B584F /* EBC_WhatsNewTVC.swift */; };
+		809DDBFE29CC197A00F9E3F9 /* EBC_OffersDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 809DDBFD29CC197A00F9E3F9 /* EBC_OffersDetailsVC.swift */; };
+		80AEAD0729C4407C005108AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD0629C4407C005108AC /* AppDelegate.swift */; };
+		80AEAD0929C4407C005108AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD0829C4407C005108AC /* SceneDelegate.swift */; };
+		80AEAD0B29C4407C005108AC /* EBS_LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD0A29C4407C005108AC /* EBS_LoginVC.swift */; };
+		80AEAD0E29C4407C005108AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD0C29C4407C005108AC /* Main.storyboard */; };
+		80AEAD1129C4407C005108AC /* EuroBond_Customer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD0F29C4407C005108AC /* EuroBond_Customer.xcdatamodeld */; };
+		80AEAD1329C44081005108AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD1229C44081005108AC /* Assets.xcassets */; };
+		80AEAD1629C44081005108AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD1429C44081005108AC /* LaunchScreen.storyboard */; };
+		80AEAD2129C44083005108AC /* EuroBond_CustomerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD2029C44083005108AC /* EuroBond_CustomerTests.swift */; };
+		80AEAD2B29C44083005108AC /* EuroBond_CustomerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD2A29C44083005108AC /* EuroBond_CustomerUITests.swift */; };
+		80AEAD2D29C44083005108AC /* EuroBond_CustomerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD2C29C44083005108AC /* EuroBond_CustomerUITestsLaunchTests.swift */; };
+		80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4529C441EC005108AC /* BaseViewController.swift */; };
+		80AEAD4F29C44206005108AC /* URLExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4729C44203005108AC /* URLExtension.swift */; };
+		80AEAD5029C44206005108AC /* URLMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4829C44203005108AC /* URLMethods.swift */; };
+		80AEAD5129C44206005108AC /* RestAPI_Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4929C44204005108AC /* RestAPI_Requests.swift */; };
+		80AEAD5229C44206005108AC /* ApiUrls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4A29C44204005108AC /* ApiUrls.swift */; };
+		80AEAD5329C44206005108AC /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4B29C44205005108AC /* URLRequest.swift */; };
+		80AEAD5429C44206005108AC /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4C29C44205005108AC /* WebClient.swift */; };
+		80AEAD5529C44206005108AC /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4D29C44205005108AC /* RequestMethod.swift */; };
+		80AEAD5629C44206005108AC /* ServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD4E29C44206005108AC /* ServiceError.swift */; };
+		80AEAD5A29C44225005108AC /* MyCommonFunctionalUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD5929C44225005108AC /* MyCommonFunctionalUtilities.swift */; };
+		80AEAD5D29C4422F005108AC /* Reach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD5B29C4422E005108AC /* Reach.swift */; };
+		80AEAD5E29C4422F005108AC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD5C29C4422E005108AC /* Reachability.swift */; };
+		80AEAD6729C44249005108AC /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD5F29C44245005108AC /* ImageExtension.swift */; };
+		80AEAD6829C44249005108AC /* NotificationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6029C44245005108AC /* NotificationExtension.swift */; };
+		80AEAD6929C44249005108AC /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6129C44246005108AC /* ViewExtension.swift */; };
+		80AEAD6A29C44249005108AC /* TextfieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6229C44246005108AC /* TextfieldExtension.swift */; };
+		80AEAD6B29C44249005108AC /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6329C44246005108AC /* LabelExtension.swift */; };
+		80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6429C44247005108AC /* String+Extenssion.swift */; };
+		80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6529C44247005108AC /* UiViewControllerExtenssion.swift */; };
+		80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6629C44249005108AC /* GrandientExtension.swift */; };
+		80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD7129C44E3D005108AC /* EBC_LunchScreenVC.swift */; };
+		80AEAD7629C45DD3005108AC /* EUROBOND LOGO ANIMATION_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */; };
+		80AEAD7929C46969005108AC /* EBC_WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD7829C46969005108AC /* EBC_WelcomeVC.swift */; };
+		80C9DD6E29C8844400F8641A /* EBC_MyRedemptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD6D29C8844400F8641A /* EBC_MyRedemptionVC.swift */; };
+		80C9DD7029C8846600F8641A /* EBC_MyRedemptionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD6F29C8846500F8641A /* EBC_MyRedemptionTVC.swift */; };
+		80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD7129C8848400F8641A /* EBC_MyEarningTVC.swift */; };
+		80C9DD7429C8849A00F8641A /* EBC_MyEarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */; };
+		B203F59640FB70064F78E495 /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */; };
+		E5D7B3D826EFBC3FB4D9FD25 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		80AEAD1D29C44083005108AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AEACFB29C4407C005108AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80AEAD0229C4407C005108AC;
+			remoteInfo = EuroBond_Customer;
+		};
+		80AEAD2729C44083005108AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AEACFB29C4407C005108AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80AEAD0229C4407C005108AC;
+			remoteInfo = EuroBond_Customer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CC61A8CB55D6BD8E50F79B3 /* Pods-EuroBond_Customer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.release.xcconfig"; sourceTree = "<group>"; };
+		6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		789171B75B07E02A34445DAE /* Pods-EuroBond_Customer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.debug.xcconfig"; sourceTree = "<group>"; };
+		800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RedeemNowVC.swift; sourceTree = "<group>"; };
+		800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_GameZoneVC.swift; sourceTree = "<group>"; };
+		800D81D629C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SchemesAndOffersVC.swift; sourceTree = "<group>"; };
+		800D81D829C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SchemesAndOffersTVC.swift; sourceTree = "<group>"; };
+		800D81DB29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RefferAndEarnVC.swift; sourceTree = "<group>"; };
+		800D81DE29C9E11C00D77557 /* EBC_EurobondsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_EurobondsVC.swift; sourceTree = "<group>"; };
+		80175F8429C9C6E300C87FEF /* helpLineAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = helpLineAnimation.json; sourceTree = "<group>"; };
+		80175F8729C9C77A00C87FEF /* EBC_HelpLineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_HelpLineVC.swift; sourceTree = "<group>"; };
+		801C85FC29C5B135008204CB /* UiViewx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiViewx.swift; sourceTree = "<group>"; };
+		801C85FF29C5BA3A008204CB /* EBC_RefferalVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RefferalVC.swift; sourceTree = "<group>"; };
+		801C860229C5BBE5008204CB /* EBC_RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RegisterVC.swift; sourceTree = "<group>"; };
+		801F931629D1C763006FF310 /* EBC_ProductCatalogueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_ProductCatalogueVC.swift; sourceTree = "<group>"; };
+		801F931829D1C791006FF310 /* EBC_ProductCatalogueCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_ProductCatalogueCVC.swift; sourceTree = "<group>"; };
+		801F931A29D1C7D2006FF310 /* EBC_WhatsNewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WhatsNewVC.swift; sourceTree = "<group>"; };
+		801F931D29D1C874006FF310 /* EBC_SearchProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SearchProjectVC.swift; sourceTree = "<group>"; };
+		801F931F29D1C898006FF310 /* EBC_SearchProjectCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SearchProjectCVC.swift; sourceTree = "<group>"; };
+		802BCDF829CC6F8D00B3209C /* EBC_BankTransferVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_BankTransferVC.swift; sourceTree = "<group>"; };
+		802BCDFA29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_PhysicalProductVC.swift; sourceTree = "<group>"; };
+		802BCDFC29CC6FC800B3209C /* EBC_VoucherVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_VoucherVC.swift; sourceTree = "<group>"; };
+		802BCDFF29CC70E800B3209C /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		802BCE0029CC70E800B3209C /* EmptySegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
+		8031C85C29D19EE100E7D698 /* EBC_VoucherDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_VoucherDetails.swift; sourceTree = "<group>"; };
+		8031C85E29D19F0C00E7D698 /* EBC_ProductDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_ProductDetails.swift; sourceTree = "<group>"; };
+		80437F4629C8871B0062D151 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		80437F4929C8904F0062D151 /* EBC_SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SideMenuVC.swift; sourceTree = "<group>"; };
+		805F712529D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyRedeemptionDetailsTVC.swift; sourceTree = "<group>"; };
+		805F712729D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyRedeemptionDetailsVC.swift; sourceTree = "<group>"; };
+		80621F1929C5D5B700CDA9BC /* EBC_Signup2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_Signup2VC.swift; sourceTree = "<group>"; };
+		806E696529CD8278002B30F5 /* EBC_VoucherCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_VoucherCVC.swift; sourceTree = "<group>"; };
+		8077752529C9737E004AFDC4 /* EBC_SideMenuTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SideMenuTVC.swift; sourceTree = "<group>"; };
+		8081070029CC820E001675CA /* EBC_CategoryListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CategoryListCVC.swift; sourceTree = "<group>"; };
+		8081070229CC822C001675CA /* EBC_ProductListCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_ProductListCVC.swift; sourceTree = "<group>"; };
+		80902B5229C81B2F00050701 /* EBC_TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_TabBarVC.swift; sourceTree = "<group>"; };
+		8093439A29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SuccessMessageVC.swift; sourceTree = "<group>"; };
+		809343A629C5F4D700440CB6 /* EBC_DashboardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DashboardVC.swift; sourceTree = "<group>"; };
+		809343A829C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_Dashboard_2_VC.swift; sourceTree = "<group>"; };
+		80937E4229D2AF00005B584F /* EBC_WhatsNewTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WhatsNewTVC.swift; sourceTree = "<group>"; };
+		809DDBFD29CC197A00F9E3F9 /* EBC_OffersDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_OffersDetailsVC.swift; sourceTree = "<group>"; };
+		80AEAD0329C4407C005108AC /* EuroBond_Customer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EuroBond_Customer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		80AEAD0629C4407C005108AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		80AEAD0829C4407C005108AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		80AEAD0A29C4407C005108AC /* EBS_LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBS_LoginVC.swift; sourceTree = "<group>"; };
+		80AEAD0D29C4407C005108AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		80AEAD1029C4407C005108AC /* EuroBond_Customer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EuroBond_Customer.xcdatamodel; sourceTree = "<group>"; };
+		80AEAD1229C44081005108AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80AEAD1529C44081005108AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		80AEAD1729C44081005108AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80AEAD1C29C44083005108AC /* EuroBond_CustomerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EuroBond_CustomerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80AEAD2029C44083005108AC /* EuroBond_CustomerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroBond_CustomerTests.swift; sourceTree = "<group>"; };
+		80AEAD2629C44083005108AC /* EuroBond_CustomerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EuroBond_CustomerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		80AEAD2A29C44083005108AC /* EuroBond_CustomerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroBond_CustomerUITests.swift; sourceTree = "<group>"; };
+		80AEAD2C29C44083005108AC /* EuroBond_CustomerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EuroBond_CustomerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		80AEAD4529C441EC005108AC /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		80AEAD4729C44203005108AC /* URLExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtension.swift; sourceTree = "<group>"; };
+		80AEAD4829C44203005108AC /* URLMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLMethods.swift; sourceTree = "<group>"; };
+		80AEAD4929C44204005108AC /* RestAPI_Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI_Requests.swift; sourceTree = "<group>"; };
+		80AEAD4A29C44204005108AC /* ApiUrls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiUrls.swift; sourceTree = "<group>"; };
+		80AEAD4B29C44205005108AC /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		80AEAD4C29C44205005108AC /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
+		80AEAD4D29C44205005108AC /* RequestMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		80AEAD4E29C44206005108AC /* ServiceError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceError.swift; sourceTree = "<group>"; };
+		80AEAD5929C44225005108AC /* MyCommonFunctionalUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCommonFunctionalUtilities.swift; sourceTree = "<group>"; };
+		80AEAD5B29C4422E005108AC /* Reach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reach.swift; sourceTree = "<group>"; };
+		80AEAD5C29C4422E005108AC /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		80AEAD5F29C44245005108AC /* ImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		80AEAD6029C44245005108AC /* NotificationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationExtension.swift; sourceTree = "<group>"; };
+		80AEAD6129C44246005108AC /* ViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		80AEAD6229C44246005108AC /* TextfieldExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextfieldExtension.swift; sourceTree = "<group>"; };
+		80AEAD6329C44246005108AC /* LabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
+		80AEAD6429C44247005108AC /* String+Extenssion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extenssion.swift"; sourceTree = "<group>"; };
+		80AEAD6529C44247005108AC /* UiViewControllerExtenssion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiViewControllerExtenssion.swift; sourceTree = "<group>"; };
+		80AEAD6629C44249005108AC /* GrandientExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrandientExtension.swift; sourceTree = "<group>"; };
+		80AEAD7129C44E3D005108AC /* EBC_LunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_LunchScreenVC.swift; sourceTree = "<group>"; };
+		80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EUROBOND LOGO ANIMATION_1.mp4"; sourceTree = "<group>"; };
+		80AEAD7829C46969005108AC /* EBC_WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WelcomeVC.swift; sourceTree = "<group>"; };
+		80AEAD7C29C46C12005108AC /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		80AEAD7D29C46C12005108AC /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		80AEAD7E29C46C12005108AC /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		80AEAD7F29C46C12005108AC /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		80AEAD8029C46C13005108AC /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		80AEAD8129C46C13005108AC /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		80AEAD8229C46C13005108AC /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		80AEAD8329C46C14005108AC /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		80C9DD6D29C8844400F8641A /* EBC_MyRedemptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyRedemptionVC.swift; sourceTree = "<group>"; };
+		80C9DD6F29C8846500F8641A /* EBC_MyRedemptionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyRedemptionTVC.swift; sourceTree = "<group>"; };
+		80C9DD7129C8848400F8641A /* EBC_MyEarningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyEarningTVC.swift; sourceTree = "<group>"; };
+		80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyEarningsVC.swift; sourceTree = "<group>"; };
+		91523D3E76A5810A179A51DC /* Pods-EuroBond_CustomerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_CustomerTests.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_CustomerTests/Pods-EuroBond_CustomerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A3FB0C7E3C4F34D6BAE95C43 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A57F4776B4C5995063E7B0D1 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B8B7B39FBFA2A5EEF0345E28 /* Pods_EuroBond_CustomerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_CustomerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3644831C5F5193100468ECB /* Pods-EuroBond_CustomerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_CustomerTests.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_CustomerTests/Pods-EuroBond_CustomerTests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80AEAD0029C4407C005108AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B203F59640FB70064F78E495 /* Pods_EuroBond_Customer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80AEAD1929C44083005108AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AE67831B6B695C0CFD45E25 /* Pods_EuroBond_CustomerTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80AEAD2329C44083005108AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E5D7B3D826EFBC3FB4D9FD25 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0848EB2871A66AF423DA6449 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */,
+				1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */,
+				B8B7B39FBFA2A5EEF0345E28 /* Pods_EuroBond_CustomerTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		800D81CF29C9D4EF00D77557 /* RedeemNowVC */ = {
+			isa = PBXGroup;
+			children = (
+				802BCDF729CC6F5F00B3209C /* Bank Transefer */,
+				802BCDF629CC6F3400B3209C /* Physical Product */,
+				8031C85A29D19E8D00E7D698 /* ProductDetails */,
+				802BCDF529CC6F2A00B3209C /* e-Voucher */,
+				8031C85B29D19E9700E7D698 /* VoucherDetails */,
+				800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */,
+			);
+			path = RedeemNowVC;
+			sourceTree = "<group>";
+		};
+		800D81D229C9D53100D77557 /* GameZone */ = {
+			isa = PBXGroup;
+			children = (
+				800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */,
+			);
+			path = GameZone;
+			sourceTree = "<group>";
+		};
+		800D81D529C9D55500D77557 /* Shames&Offers */ = {
+			isa = PBXGroup;
+			children = (
+				809DDBFC29CC193800F9E3F9 /* OffersDetails */,
+				800D81D629C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift */,
+				800D81D829C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift */,
+			);
+			path = "Shames&Offers";
+			sourceTree = "<group>";
+		};
+		800D81DA29C9E0AA00D77557 /* reffer&Earn */ = {
+			isa = PBXGroup;
+			children = (
+				800D81DB29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift */,
+			);
+			path = "reffer&Earn";
+			sourceTree = "<group>";
+		};
+		800D81DD29C9E0FD00D77557 /* EurobondsVC */ = {
+			isa = PBXGroup;
+			children = (
+				801F931529D1C738006FF310 /* SearchProject */,
+				801F931429D1C726006FF310 /* WhatsNew */,
+				801F931329D1C702006FF310 /* ProductCatalogue */,
+				800D81DE29C9E11C00D77557 /* EBC_EurobondsVC.swift */,
+			);
+			path = EurobondsVC;
+			sourceTree = "<group>";
+		};
+		80175F8629C9C75300C87FEF /* HelpLineVC */ = {
+			isa = PBXGroup;
+			children = (
+				80175F8729C9C77A00C87FEF /* EBC_HelpLineVC.swift */,
+			);
+			path = HelpLineVC;
+			sourceTree = "<group>";
+		};
+		801C85FB29C5B108008204CB /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				801C85FC29C5B135008204CB /* UiViewx.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		801C85FE29C5BA07008204CB /* ReferralVC */ = {
+			isa = PBXGroup;
+			children = (
+				801C85FF29C5BA3A008204CB /* EBC_RefferalVC.swift */,
+			);
+			path = ReferralVC;
+			sourceTree = "<group>";
+		};
+		801C860129C5BBC4008204CB /* RegisterVC */ = {
+			isa = PBXGroup;
+			children = (
+				80FA1A2629C5D1D70054BEC6 /* Signup-1 */,
+				80FA1A2529C5D17B0054BEC6 /* Signup-2 */,
+			);
+			path = RegisterVC;
+			sourceTree = "<group>";
+		};
+		801F931329D1C702006FF310 /* ProductCatalogue */ = {
+			isa = PBXGroup;
+			children = (
+				801F931629D1C763006FF310 /* EBC_ProductCatalogueVC.swift */,
+				801F931829D1C791006FF310 /* EBC_ProductCatalogueCVC.swift */,
+			);
+			path = ProductCatalogue;
+			sourceTree = "<group>";
+		};
+		801F931429D1C726006FF310 /* WhatsNew */ = {
+			isa = PBXGroup;
+			children = (
+				801F931A29D1C7D2006FF310 /* EBC_WhatsNewVC.swift */,
+				80937E4229D2AF00005B584F /* EBC_WhatsNewTVC.swift */,
+			);
+			path = WhatsNew;
+			sourceTree = "<group>";
+		};
+		801F931529D1C738006FF310 /* SearchProject */ = {
+			isa = PBXGroup;
+			children = (
+				801F931D29D1C874006FF310 /* EBC_SearchProjectVC.swift */,
+				801F931F29D1C898006FF310 /* EBC_SearchProjectCVC.swift */,
+			);
+			path = SearchProject;
+			sourceTree = "<group>";
+		};
+		802BCDF529CC6F2A00B3209C /* e-Voucher */ = {
+			isa = PBXGroup;
+			children = (
+				802BCDFC29CC6FC800B3209C /* EBC_VoucherVC.swift */,
+				806E696529CD8278002B30F5 /* EBC_VoucherCVC.swift */,
+			);
+			path = "e-Voucher";
+			sourceTree = "<group>";
+		};
+		802BCDF629CC6F3400B3209C /* Physical Product */ = {
+			isa = PBXGroup;
+			children = (
+				802BCDFA29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift */,
+				8081070029CC820E001675CA /* EBC_CategoryListCVC.swift */,
+				8081070229CC822C001675CA /* EBC_ProductListCVC.swift */,
+			);
+			path = "Physical Product";
+			sourceTree = "<group>";
+		};
+		802BCDF729CC6F5F00B3209C /* Bank Transefer */ = {
+			isa = PBXGroup;
+			children = (
+				802BCDF829CC6F8D00B3209C /* EBC_BankTransferVC.swift */,
+			);
+			path = "Bank Transefer";
+			sourceTree = "<group>";
+		};
+		802BCDFE29CC70DB00B3209C /* ContainerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				802BCDFF29CC70E800B3209C /* ContainerViewController.swift */,
+				802BCE0029CC70E800B3209C /* EmptySegue.swift */,
+			);
+			path = ContainerViewController;
+			sourceTree = "<group>";
+		};
+		8031C85A29D19E8D00E7D698 /* ProductDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8031C85E29D19F0C00E7D698 /* EBC_ProductDetails.swift */,
+			);
+			path = ProductDetails;
+			sourceTree = "<group>";
+		};
+		8031C85B29D19E9700E7D698 /* VoucherDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8031C85C29D19EE100E7D698 /* EBC_VoucherDetails.swift */,
+			);
+			path = VoucherDetails;
+			sourceTree = "<group>";
+		};
+		80437F4829C8900E0062D151 /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				80437F4929C8904F0062D151 /* EBC_SideMenuVC.swift */,
+				8077752529C9737E004AFDC4 /* EBC_SideMenuTVC.swift */,
+			);
+			path = "Side Menu";
+			sourceTree = "<group>";
+		};
+		805F712429D2CFEF008938A7 /* MyRedeemptionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				805F712729D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift */,
+				805F712529D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift */,
+			);
+			path = MyRedeemptionDetails;
+			sourceTree = "<group>";
+		};
+		80902B5129C81AEF00050701 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				80902B5229C81B2F00050701 /* EBC_TabBarVC.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		8093439929C5E9AA00440CB6 /* SuccessMessage */ = {
+			isa = PBXGroup;
+			children = (
+				8093439A29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift */,
+			);
+			path = SuccessMessage;
+			sourceTree = "<group>";
+		};
+		809343A429C5F4A300440CB6 /* Dashboard-1 */ = {
+			isa = PBXGroup;
+			children = (
+				809343A629C5F4D700440CB6 /* EBC_DashboardVC.swift */,
+			);
+			path = "Dashboard-1";
+			sourceTree = "<group>";
+		};
+		809343A529C5F4AC00440CB6 /* Dashboard-2 */ = {
+			isa = PBXGroup;
+			children = (
+				809343A829C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift */,
+			);
+			path = "Dashboard-2";
+			sourceTree = "<group>";
+		};
+		809DDBFC29CC193800F9E3F9 /* OffersDetails */ = {
+			isa = PBXGroup;
+			children = (
+				809DDBFD29CC197A00F9E3F9 /* EBC_OffersDetailsVC.swift */,
+			);
+			path = OffersDetails;
+			sourceTree = "<group>";
+		};
+		80AEACFA29C4407C005108AC = {
+			isa = PBXGroup;
+			children = (
+				80AEAD0529C4407C005108AC /* EuroBond_Customer */,
+				80AEAD1F29C44083005108AC /* EuroBond_CustomerTests */,
+				80AEAD2929C44083005108AC /* EuroBond_CustomerUITests */,
+				80AEAD0429C4407C005108AC /* Products */,
+				9B1B278F640F96569C72A21D /* Pods */,
+				0848EB2871A66AF423DA6449 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		80AEAD0429C4407C005108AC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD0329C4407C005108AC /* EuroBond_Customer.app */,
+				80AEAD1C29C44083005108AC /* EuroBond_CustomerTests.xctest */,
+				80AEAD2629C44083005108AC /* EuroBond_CustomerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		80AEAD0529C4407C005108AC /* EuroBond_Customer */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */,
+				80AEAD3929C440B8005108AC /* Resources */,
+				80AEAD3C29C440D6005108AC /* Models */,
+				80AEAD3A29C440C1005108AC /* View */,
+				80AEAD3B29C440C9005108AC /* VeiwModels */,
+				80AEAD1229C44081005108AC /* Assets.xcassets */,
+				80AEAD1729C44081005108AC /* Info.plist */,
+			);
+			path = EuroBond_Customer;
+			sourceTree = "<group>";
+		};
+		80AEAD1F29C44083005108AC /* EuroBond_CustomerTests */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD2029C44083005108AC /* EuroBond_CustomerTests.swift */,
+			);
+			path = EuroBond_CustomerTests;
+			sourceTree = "<group>";
+		};
+		80AEAD2929C44083005108AC /* EuroBond_CustomerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD2A29C44083005108AC /* EuroBond_CustomerUITests.swift */,
+				80AEAD2C29C44083005108AC /* EuroBond_CustomerUITestsLaunchTests.swift */,
+			);
+			path = EuroBond_CustomerUITests;
+			sourceTree = "<group>";
+		};
+		80AEAD3929C440B8005108AC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				802BCDFE29CC70DB00B3209C /* ContainerViewController */,
+				801C85FB29C5B108008204CB /* Design */,
+				80AEAD7A29C46BA8005108AC /* Fonts */,
+				80AEAD4429C441D2005108AC /* BaseViewController */,
+				80AEAD4329C441A9005108AC /* Network */,
+				80AEAD4229C4419B005108AC /* Animation */,
+				80AEAD4129C44192005108AC /* Constant */,
+				80AEAD4029C44187005108AC /* Extenssion */,
+				80AEAD3F29C4416E005108AC /* DataBase */,
+				80AEAD3E29C440FD005108AC /* Storyboard */,
+				80AEAD3D29C440EE005108AC /* Delegate */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80AEAD3A29C440C1005108AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				800D81DD29C9E0FD00D77557 /* EurobondsVC */,
+				800D81DA29C9E0AA00D77557 /* reffer&Earn */,
+				800D81D529C9D55500D77557 /* Shames&Offers */,
+				800D81D229C9D53100D77557 /* GameZone */,
+				800D81CF29C9D4EF00D77557 /* RedeemNowVC */,
+				80175F8629C9C75300C87FEF /* HelpLineVC */,
+				80437F4829C8900E0062D151 /* Side Menu */,
+				80C9DD6C29C8840300F8641A /* My Earnings */,
+				80C9DD6B29C883F500F8641A /* My Redemption */,
+				80902B5129C81AEF00050701 /* TabBar */,
+				809343A529C5F4AC00440CB6 /* Dashboard-2 */,
+				809343A429C5F4A300440CB6 /* Dashboard-1 */,
+				8093439929C5E9AA00440CB6 /* SuccessMessage */,
+				801C860129C5BBC4008204CB /* RegisterVC */,
+				801C85FE29C5BA07008204CB /* ReferralVC */,
+				80AEAD7729C4692D005108AC /* Welcome */,
+				80AEAD7329C44E42005108AC /* LucnhScreen */,
+				80AEAD7429C44E51005108AC /* Login */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		80AEAD3B29C440C9005108AC /* VeiwModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VeiwModels;
+			sourceTree = "<group>";
+		};
+		80AEAD3C29C440D6005108AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		80AEAD3D29C440EE005108AC /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD0629C4407C005108AC /* AppDelegate.swift */,
+				80AEAD0829C4407C005108AC /* SceneDelegate.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
+		80AEAD3E29C440FD005108AC /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD1429C44081005108AC /* LaunchScreen.storyboard */,
+				80AEAD0C29C4407C005108AC /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		80AEAD3F29C4416E005108AC /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD0F29C4407C005108AC /* EuroBond_Customer.xcdatamodeld */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		80AEAD4029C44187005108AC /* Extenssion */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD6629C44249005108AC /* GrandientExtension.swift */,
+				80AEAD5F29C44245005108AC /* ImageExtension.swift */,
+				80AEAD6329C44246005108AC /* LabelExtension.swift */,
+				80AEAD6029C44245005108AC /* NotificationExtension.swift */,
+				80AEAD6429C44247005108AC /* String+Extenssion.swift */,
+				80AEAD6229C44246005108AC /* TextfieldExtension.swift */,
+				80AEAD6529C44247005108AC /* UiViewControllerExtenssion.swift */,
+				80AEAD6129C44246005108AC /* ViewExtension.swift */,
+			);
+			path = Extenssion;
+			sourceTree = "<group>";
+		};
+		80AEAD4129C44192005108AC /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				80437F4629C8871B0062D151 /* Color.swift */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		80AEAD4229C4419B005108AC /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				80175F8429C9C6E300C87FEF /* helpLineAnimation.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		80AEAD4329C441A9005108AC /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD4A29C44204005108AC /* ApiUrls.swift */,
+				80AEAD5829C4421B005108AC /* CommonUtilities */,
+				80AEAD5729C4420C005108AC /* Reachability */,
+				80AEAD4D29C44205005108AC /* RequestMethod.swift */,
+				80AEAD4929C44204005108AC /* RestAPI_Requests.swift */,
+				80AEAD4E29C44206005108AC /* ServiceError.swift */,
+				80AEAD4729C44203005108AC /* URLExtension.swift */,
+				80AEAD4829C44203005108AC /* URLMethods.swift */,
+				80AEAD4B29C44205005108AC /* URLRequest.swift */,
+				80AEAD4C29C44205005108AC /* WebClient.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		80AEAD4429C441D2005108AC /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD4529C441EC005108AC /* BaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		80AEAD5729C4420C005108AC /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD5B29C4422E005108AC /* Reach.swift */,
+				80AEAD5C29C4422E005108AC /* Reachability.swift */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		80AEAD5829C4421B005108AC /* CommonUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD5929C44225005108AC /* MyCommonFunctionalUtilities.swift */,
+			);
+			path = CommonUtilities;
+			sourceTree = "<group>";
+		};
+		80AEAD7329C44E42005108AC /* LucnhScreen */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD7129C44E3D005108AC /* EBC_LunchScreenVC.swift */,
+			);
+			path = LucnhScreen;
+			sourceTree = "<group>";
+		};
+		80AEAD7429C44E51005108AC /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD0A29C4407C005108AC /* EBS_LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		80AEAD7729C4692D005108AC /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD7829C46969005108AC /* EBC_WelcomeVC.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		80AEAD7A29C46BA8005108AC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD7B29C46C01005108AC /* Roboto */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		80AEAD7B29C46C01005108AC /* Roboto */ = {
+			isa = PBXGroup;
+			children = (
+				80AEAD8129C46C13005108AC /* Roboto-Black.ttf */,
+				80AEAD7C29C46C12005108AC /* Roboto-Bold.ttf */,
+				80AEAD8229C46C13005108AC /* Roboto-Italic.ttf */,
+				80AEAD7E29C46C12005108AC /* Roboto-Light.ttf */,
+				80AEAD7F29C46C12005108AC /* Roboto-Medium.ttf */,
+				80AEAD8329C46C14005108AC /* Roboto-Regular.ttf */,
+				80AEAD8029C46C13005108AC /* Roboto-Thin.ttf */,
+				80AEAD7D29C46C12005108AC /* Roboto-ThinItalic.ttf */,
+			);
+			path = Roboto;
+			sourceTree = "<group>";
+		};
+		80C9DD6B29C883F500F8641A /* My Redemption */ = {
+			isa = PBXGroup;
+			children = (
+				805F712429D2CFEF008938A7 /* MyRedeemptionDetails */,
+				80C9DD6D29C8844400F8641A /* EBC_MyRedemptionVC.swift */,
+				80C9DD6F29C8846500F8641A /* EBC_MyRedemptionTVC.swift */,
+			);
+			path = "My Redemption";
+			sourceTree = "<group>";
+		};
+		80C9DD6C29C8840300F8641A /* My Earnings */ = {
+			isa = PBXGroup;
+			children = (
+				80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */,
+				80C9DD7129C8848400F8641A /* EBC_MyEarningTVC.swift */,
+			);
+			path = "My Earnings";
+			sourceTree = "<group>";
+		};
+		80FA1A2529C5D17B0054BEC6 /* Signup-2 */ = {
+			isa = PBXGroup;
+			children = (
+				80621F1929C5D5B700CDA9BC /* EBC_Signup2VC.swift */,
+			);
+			path = "Signup-2";
+			sourceTree = "<group>";
+		};
+		80FA1A2629C5D1D70054BEC6 /* Signup-1 */ = {
+			isa = PBXGroup;
+			children = (
+				801C860229C5BBE5008204CB /* EBC_RegisterVC.swift */,
+			);
+			path = "Signup-1";
+			sourceTree = "<group>";
+		};
+		9B1B278F640F96569C72A21D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				789171B75B07E02A34445DAE /* Pods-EuroBond_Customer.debug.xcconfig */,
+				6CC61A8CB55D6BD8E50F79B3 /* Pods-EuroBond_Customer.release.xcconfig */,
+				A57F4776B4C5995063E7B0D1 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig */,
+				A3FB0C7E3C4F34D6BAE95C43 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig */,
+				91523D3E76A5810A179A51DC /* Pods-EuroBond_CustomerTests.debug.xcconfig */,
+				C3644831C5F5193100468ECB /* Pods-EuroBond_CustomerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		80AEAD0229C4407C005108AC /* EuroBond_Customer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80AEAD3029C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_Customer" */;
+			buildPhases = (
+				FBF8A29C6C9CE735389995C4 /* [CP] Check Pods Manifest.lock */,
+				80AEACFF29C4407C005108AC /* Sources */,
+				80AEAD0029C4407C005108AC /* Frameworks */,
+				80AEAD0129C4407C005108AC /* Resources */,
+				6CF7BBA77857983728C7F074 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EuroBond_Customer;
+			productName = EuroBond_Customer;
+			productReference = 80AEAD0329C4407C005108AC /* EuroBond_Customer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		80AEAD1B29C44083005108AC /* EuroBond_CustomerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80AEAD3329C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_CustomerTests" */;
+			buildPhases = (
+				6ED03D515D7717737AA2B276 /* [CP] Check Pods Manifest.lock */,
+				80AEAD1829C44083005108AC /* Sources */,
+				80AEAD1929C44083005108AC /* Frameworks */,
+				80AEAD1A29C44083005108AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80AEAD1E29C44083005108AC /* PBXTargetDependency */,
+			);
+			name = EuroBond_CustomerTests;
+			productName = EuroBond_CustomerTests;
+			productReference = 80AEAD1C29C44083005108AC /* EuroBond_CustomerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		80AEAD2529C44083005108AC /* EuroBond_CustomerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80AEAD3629C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_CustomerUITests" */;
+			buildPhases = (
+				9E59BAF7F0FCED63BACBBD35 /* [CP] Check Pods Manifest.lock */,
+				80AEAD2229C44083005108AC /* Sources */,
+				80AEAD2329C44083005108AC /* Frameworks */,
+				80AEAD2429C44083005108AC /* Resources */,
+				C0FA4E093C296DB76D98E813 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80AEAD2829C44083005108AC /* PBXTargetDependency */,
+			);
+			name = EuroBond_CustomerUITests;
+			productName = EuroBond_CustomerUITests;
+			productReference = 80AEAD2629C44083005108AC /* EuroBond_CustomerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80AEACFB29C4407C005108AC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					80AEAD0229C4407C005108AC = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					80AEAD1B29C44083005108AC = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 80AEAD0229C4407C005108AC;
+					};
+					80AEAD2529C44083005108AC = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 80AEAD0229C4407C005108AC;
+					};
+				};
+			};
+			buildConfigurationList = 80AEACFE29C4407C005108AC /* Build configuration list for PBXProject "EuroBond_Customer" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 80AEACFA29C4407C005108AC;
+			productRefGroup = 80AEAD0429C4407C005108AC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				80AEAD0229C4407C005108AC /* EuroBond_Customer */,
+				80AEAD1B29C44083005108AC /* EuroBond_CustomerTests */,
+				80AEAD2529C44083005108AC /* EuroBond_CustomerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		80AEAD0129C4407C005108AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				809343A329C5EE2C00440CB6 /* Roboto-ThinItalic.ttf in Resources */,
+				80AEAD7629C45DD3005108AC /* EUROBOND LOGO ANIMATION_1.mp4 in Resources */,
+				80AEAD1629C44081005108AC /* LaunchScreen.storyboard in Resources */,
+				809343A129C5EE2700440CB6 /* Roboto-Regular.ttf in Resources */,
+				8093439D29C5EE0F00440CB6 /* Roboto-Bold.ttf in Resources */,
+				80175F8529C9C6E300C87FEF /* helpLineAnimation.json in Resources */,
+				809343A229C5EE2900440CB6 /* Roboto-Thin.ttf in Resources */,
+				8093439C29C5EE0C00440CB6 /* Roboto-Black.ttf in Resources */,
+				8093439E29C5EE1300440CB6 /* Roboto-Italic.ttf in Resources */,
+				80AEAD1329C44081005108AC /* Assets.xcassets in Resources */,
+				8093439F29C5EE1B00440CB6 /* Roboto-Light.ttf in Resources */,
+				80AEAD0E29C4407C005108AC /* Main.storyboard in Resources */,
+				809343A029C5EE2400440CB6 /* Roboto-Medium.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80AEAD1A29C44083005108AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80AEAD2429C44083005108AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CF7BBA77857983728C7F074 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6ED03D515D7717737AA2B276 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EuroBond_CustomerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E59BAF7F0FCED63BACBBD35 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EuroBond_Customer-EuroBond_CustomerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C0FA4E093C296DB76D98E813 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBF8A29C6C9CE735389995C4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EuroBond_Customer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		80AEACFF29C4407C005108AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				801C860029C5BA3A008204CB /* EBC_RefferalVC.swift in Sources */,
+				801F931B29D1C7D2006FF310 /* EBC_WhatsNewVC.swift in Sources */,
+				801F931729D1C763006FF310 /* EBC_ProductCatalogueVC.swift in Sources */,
+				800D81DC29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift in Sources */,
+				80AEAD6B29C44249005108AC /* LabelExtension.swift in Sources */,
+				802BCE0229CC70E800B3209C /* EmptySegue.swift in Sources */,
+				809DDBFE29CC197A00F9E3F9 /* EBC_OffersDetailsVC.swift in Sources */,
+				80AEAD5A29C44225005108AC /* MyCommonFunctionalUtilities.swift in Sources */,
+				80902B5329C81B2F00050701 /* EBC_TabBarVC.swift in Sources */,
+				80AEAD5029C44206005108AC /* URLMethods.swift in Sources */,
+				8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */,
+				80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */,
+				8081070129CC820E001675CA /* EBC_CategoryListCVC.swift in Sources */,
+				80C9DD7029C8846600F8641A /* EBC_MyRedemptionTVC.swift in Sources */,
+				80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */,
+				802BCDFB29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift in Sources */,
+				801C85FD29C5B135008204CB /* UiViewx.swift in Sources */,
+				80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */,
+				80C9DD6E29C8844400F8641A /* EBC_MyRedemptionVC.swift in Sources */,
+				80C9DD7429C8849A00F8641A /* EBC_MyEarningsVC.swift in Sources */,
+				80AEAD0B29C4407C005108AC /* EBS_LoginVC.swift in Sources */,
+				8031C85D29D19EE100E7D698 /* EBC_VoucherDetails.swift in Sources */,
+				80AEAD1129C4407C005108AC /* EuroBond_Customer.xcdatamodeld in Sources */,
+				80AEAD5529C44206005108AC /* RequestMethod.swift in Sources */,
+				805F712629D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift in Sources */,
+				805F712829D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift in Sources */,
+				8077752629C9737E004AFDC4 /* EBC_SideMenuTVC.swift in Sources */,
+				801F932029D1C898006FF310 /* EBC_SearchProjectCVC.swift in Sources */,
+				800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */,
+				809343A729C5F4D700440CB6 /* EBC_DashboardVC.swift in Sources */,
+				80437F4729C8871B0062D151 /* Color.swift in Sources */,
+				80AEAD5229C44206005108AC /* ApiUrls.swift in Sources */,
+				80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */,
+				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
+				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
+				80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */,
+				8081070329CC822C001675CA /* EBC_ProductListCVC.swift in Sources */,
+				801F931E29D1C874006FF310 /* EBC_SearchProjectVC.swift in Sources */,
+				80AEAD5D29C4422F005108AC /* Reach.swift in Sources */,
+				80AEAD5129C44206005108AC /* RestAPI_Requests.swift in Sources */,
+				80AEAD6A29C44249005108AC /* TextfieldExtension.swift in Sources */,
+				8031C85F29D19F0C00E7D698 /* EBC_ProductDetails.swift in Sources */,
+				80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */,
+				800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */,
+				80AEAD6729C44249005108AC /* ImageExtension.swift in Sources */,
+				801C860329C5BBE5008204CB /* EBC_RegisterVC.swift in Sources */,
+				80175F8829C9C77A00C87FEF /* EBC_HelpLineVC.swift in Sources */,
+				80437F4A29C8904F0062D151 /* EBC_SideMenuVC.swift in Sources */,
+				80AEAD0729C4407C005108AC /* AppDelegate.swift in Sources */,
+				802BCDF929CC6F8D00B3209C /* EBC_BankTransferVC.swift in Sources */,
+				800D81DF29C9E11C00D77557 /* EBC_EurobondsVC.swift in Sources */,
+				80AEAD5629C44206005108AC /* ServiceError.swift in Sources */,
+				802BCDFD29CC6FC800B3209C /* EBC_VoucherVC.swift in Sources */,
+				80AEAD6829C44249005108AC /* NotificationExtension.swift in Sources */,
+				800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */,
+				80AEAD7929C46969005108AC /* EBC_WelcomeVC.swift in Sources */,
+				80AEAD5429C44206005108AC /* WebClient.swift in Sources */,
+				802BCE0129CC70E800B3209C /* ContainerViewController.swift in Sources */,
+				80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */,
+				80AEAD0929C4407C005108AC /* SceneDelegate.swift in Sources */,
+				806E696629CD8278002B30F5 /* EBC_VoucherCVC.swift in Sources */,
+				80AEAD6929C44249005108AC /* ViewExtension.swift in Sources */,
+				80937E4329D2AF00005B584F /* EBC_WhatsNewTVC.swift in Sources */,
+				80AEAD4F29C44206005108AC /* URLExtension.swift in Sources */,
+				80AEAD5E29C4422F005108AC /* Reachability.swift in Sources */,
+				80AEAD5329C44206005108AC /* URLRequest.swift in Sources */,
+				809343A929C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80AEAD1829C44083005108AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80AEAD2129C44083005108AC /* EuroBond_CustomerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80AEAD2229C44083005108AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80AEAD2D29C44083005108AC /* EuroBond_CustomerUITestsLaunchTests.swift in Sources */,
+				80AEAD2B29C44083005108AC /* EuroBond_CustomerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		80AEAD1E29C44083005108AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80AEAD0229C4407C005108AC /* EuroBond_Customer */;
+			targetProxy = 80AEAD1D29C44083005108AC /* PBXContainerItemProxy */;
+		};
+		80AEAD2829C44083005108AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80AEAD0229C4407C005108AC /* EuroBond_Customer */;
+			targetProxy = 80AEAD2729C44083005108AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		80AEAD0C29C4407C005108AC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80AEAD0D29C4407C005108AC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		80AEAD1429C44081005108AC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				80AEAD1529C44081005108AC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		80AEAD2E29C44083005108AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		80AEAD2F29C44083005108AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		80AEAD3129C44083005108AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 789171B75B07E02A34445DAE /* Pods-EuroBond_Customer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EuroBond_Customer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-Customer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		80AEAD3229C44083005108AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CC61A8CB55D6BD8E50F79B3 /* Pods-EuroBond_Customer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EuroBond_Customer/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-Customer";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		80AEAD3429C44083005108AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 91523D3E76A5810A179A51DC /* Pods-EuroBond_CustomerTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-CustomerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EuroBond_Customer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EuroBond_Customer";
+			};
+			name = Debug;
+		};
+		80AEAD3529C44083005108AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3644831C5F5193100468ECB /* Pods-EuroBond_CustomerTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-CustomerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EuroBond_Customer.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/EuroBond_Customer";
+			};
+			name = Release;
+		};
+		80AEAD3729C44083005108AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A57F4776B4C5995063E7B0D1 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-CustomerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EuroBond_Customer;
+			};
+			name = Debug;
+		};
+		80AEAD3829C44083005108AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3FB0C7E3C4F34D6BAE95C43 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-CustomerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = EuroBond_Customer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		80AEACFE29C4407C005108AC /* Build configuration list for PBXProject "EuroBond_Customer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80AEAD2E29C44083005108AC /* Debug */,
+				80AEAD2F29C44083005108AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80AEAD3029C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_Customer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80AEAD3129C44083005108AC /* Debug */,
+				80AEAD3229C44083005108AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80AEAD3329C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_CustomerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80AEAD3429C44083005108AC /* Debug */,
+				80AEAD3529C44083005108AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80AEAD3629C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_CustomerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80AEAD3729C44083005108AC /* Debug */,
+				80AEAD3829C44083005108AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		80AEAD0F29C4407C005108AC /* EuroBond_Customer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				80AEAD1029C4407C005108AC /* EuroBond_Customer.xcdatamodel */,
+			);
+			currentVersion = 80AEAD1029C4407C005108AC /* EuroBond_Customer.xcdatamodel */;
+			path = EuroBond_Customer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 80AEACFB29C4407C005108AC /* Project object */;
+}

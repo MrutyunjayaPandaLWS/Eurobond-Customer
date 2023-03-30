@@ -1,0 +1,53 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
+  - DPOTPView (1.5.12)
+  - ImageSlideshow/Alamofire (1.8.3):
+    - AlamofireImage (~> 3.0)
+    - ImageSlideshow/Core
+  - ImageSlideshow/Core (1.8.3)
+  - IQKeyboardManagerSwift (6.5.11)
+  - lottie-ios (4.1.3)
+  - SDWebImage (5.15.5):
+    - SDWebImage/Core (= 5.15.5)
+  - SDWebImage/Core (5.15.5)
+  - SlideMenuControllerSwift (4.0.0)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - DPOTPView
+  - ImageSlideshow/Alamofire
+  - IQKeyboardManagerSwift
+  - lottie-ios
+  - SDWebImage
+  - SlideMenuControllerSwift
+  - Toast-Swift (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - DPOTPView
+    - ImageSlideshow
+    - IQKeyboardManagerSwift
+    - lottie-ios
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  DPOTPView: 28d8a0a84a2ff4b1e4a7712065aba1cbb14e2704
+  ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
+  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: f61d56e790359a7292460b36faddeea10cf39718
+
+COCOAPODS: 1.11.3

@@ -1,0 +1,6 @@
+framework module Pods_EuroBond_Customer_EuroBond_CustomerUITests {
+  umbrella header "Pods-EuroBond_Customer-EuroBond_CustomerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
