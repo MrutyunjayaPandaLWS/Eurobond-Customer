@@ -91,6 +91,19 @@
 		80C9DD7029C8846600F8641A /* EBC_MyRedemptionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD6F29C8846500F8641A /* EBC_MyRedemptionTVC.swift */; };
 		80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD7129C8848400F8641A /* EBC_MyEarningTVC.swift */; };
 		80C9DD7429C8849A00F8641A /* EBC_MyEarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */; };
+		8407C2AC29D6A1BA00704C87 /* EBC_FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C2AB29D6A1BA00704C87 /* EBC_FilterVC.swift */; };
+		8407C2AE29D6A1D300704C87 /* EBC_DateFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */; };
+		843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */; };
+		843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */; };
+		843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */; };
+		8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */; };
+		84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */; };
+		84D965D429D5B49600379730 /* EBC_CodeStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D329D5B49600379730 /* EBC_CodeStatusTVC.swift */; };
+		84D965D829D5C4A300379730 /* EBC_CodeSummeryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D729D5C4A300379730 /* EBC_CodeSummeryTVC.swift */; };
+		84D965DA29D5C4CD00379730 /* EBC_CodeSummeryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D929D5C4CD00379730 /* EBC_CodeSummeryVC.swift */; };
+		84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291829D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift */; };
+		84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291A29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift */; };
+		84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291D29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift */; };
 		B203F59640FB70064F78E495 /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */; };
 		E5D7B3D826EFBC3FB4D9FD25 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */; };
 /* End PBXBuildFile section */
@@ -204,6 +217,19 @@
 		80C9DD6F29C8846500F8641A /* EBC_MyRedemptionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyRedemptionTVC.swift; sourceTree = "<group>"; };
 		80C9DD7129C8848400F8641A /* EBC_MyEarningTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyEarningTVC.swift; sourceTree = "<group>"; };
 		80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyEarningsVC.swift; sourceTree = "<group>"; };
+		8407C2AB29D6A1BA00704C87 /* EBC_FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_FilterVC.swift; sourceTree = "<group>"; };
+		8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DateFilterVC.swift; sourceTree = "<group>"; };
+		843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CreatenewQueryVC.swift; sourceTree = "<group>"; };
+		843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantVC.swift; sourceTree = "<group>"; };
+		843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantTVC.swift; sourceTree = "<group>"; };
+		8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_PopupMessageVC.swift; sourceTree = "<group>"; };
+		84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeStatusVC.swift; sourceTree = "<group>"; };
+		84D965D329D5B49600379730 /* EBC_CodeStatusTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeStatusTVC.swift; sourceTree = "<group>"; };
+		84D965D729D5C4A300379730 /* EBC_CodeSummeryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeSummeryTVC.swift; sourceTree = "<group>"; };
+		84D965D929D5C4CD00379730 /* EBC_CodeSummeryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeSummeryVC.swift; sourceTree = "<group>"; };
+		84EE291829D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SuccessMessageVC1.swift; sourceTree = "<group>"; };
+		84EE291A29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RegisterAssistantVC.swift; sourceTree = "<group>"; };
+		84EE291D29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_UpdatePasswordVC.swift; sourceTree = "<group>"; };
 		91523D3E76A5810A179A51DC /* Pods-EuroBond_CustomerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_CustomerTests.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_CustomerTests/Pods-EuroBond_CustomerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A3FB0C7E3C4F34D6BAE95C43 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A57F4776B4C5995063E7B0D1 /* Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -543,6 +569,12 @@
 		80AEAD3A29C440C1005108AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84EE291729D6E883004B1C6C /* Success message */,
+				843EAF8E29D6B7F900971B96 /* My Assistant */,
+				843EAF8A29D6AF9E00971B96 /* Support */,
+				8407C2A929D6A18500704C87 /* Filter */,
+				8407C2A629D696C400704C87 /* Scanner */,
+				84D965D029D5B44200379730 /* Code Status VC */,
 				800D81DD29C9E0FD00D77557 /* EurobondsVC */,
 				800D81DA29C9E0AA00D77557 /* reffer&Earn */,
 				800D81D529C9D55500D77557 /* Shames&Offers */,
@@ -758,6 +790,125 @@
 				801C860229C5BBE5008204CB /* EBC_RegisterVC.swift */,
 			);
 			path = "Signup-1";
+			sourceTree = "<group>";
+		};
+		8407C2A629D696C400704C87 /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				8407C2A829D696E200704C87 /* Scan Code */,
+				8407C2A729D696DA00704C87 /* Upload Code */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		8407C2A729D696DA00704C87 /* Upload Code */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Upload Code";
+			sourceTree = "<group>";
+		};
+		8407C2A829D696E200704C87 /* Scan Code */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Scan Code";
+			sourceTree = "<group>";
+		};
+		8407C2A929D6A18500704C87 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				8407C2AA29D6A18F00704C87 /* Date Filter */,
+				8407C2AB29D6A1BA00704C87 /* EBC_FilterVC.swift */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		8407C2AA29D6A18F00704C87 /* Date Filter */ = {
+			isa = PBXGroup;
+			children = (
+				8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */,
+			);
+			path = "Date Filter";
+			sourceTree = "<group>";
+		};
+		843EAF8A29D6AF9E00971B96 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				843EAF8B29D6AFA700971B96 /* CreateQuery */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		843EAF8B29D6AFA700971B96 /* CreateQuery */ = {
+			isa = PBXGroup;
+			children = (
+				843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */,
+			);
+			path = CreateQuery;
+			sourceTree = "<group>";
+		};
+		843EAF8E29D6B7F900971B96 /* My Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				84EE291C29D6F917004B1C6C /* UpDatePasswordVC */,
+				84EE291629D6E868004B1C6C /* Register Assistant */,
+				843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */,
+				843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */,
+			);
+			path = "My Assistant";
+			sourceTree = "<group>";
+		};
+		8484BBB129D712B9003FB8B0 /* Pop Message */ = {
+			isa = PBXGroup;
+			children = (
+				8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */,
+			);
+			path = "Pop Message";
+			sourceTree = "<group>";
+		};
+		84D965D029D5B44200379730 /* Code Status VC */ = {
+			isa = PBXGroup;
+			children = (
+				84D965D529D5C42F00379730 /* Code Summery */,
+				84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */,
+				84D965D329D5B49600379730 /* EBC_CodeStatusTVC.swift */,
+			);
+			path = "Code Status VC";
+			sourceTree = "<group>";
+		};
+		84D965D529D5C42F00379730 /* Code Summery */ = {
+			isa = PBXGroup;
+			children = (
+				84D965D929D5C4CD00379730 /* EBC_CodeSummeryVC.swift */,
+				84D965D729D5C4A300379730 /* EBC_CodeSummeryTVC.swift */,
+			);
+			path = "Code Summery";
+			sourceTree = "<group>";
+		};
+		84EE291629D6E868004B1C6C /* Register Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				84EE291A29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift */,
+			);
+			path = "Register Assistant";
+			sourceTree = "<group>";
+		};
+		84EE291729D6E883004B1C6C /* Success message */ = {
+			isa = PBXGroup;
+			children = (
+				8484BBB129D712B9003FB8B0 /* Pop Message */,
+				84EE291829D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift */,
+			);
+			path = "Success message";
+			sourceTree = "<group>";
+		};
+		84EE291C29D6F917004B1C6C /* UpDatePasswordVC */ = {
+			isa = PBXGroup;
+			children = (
+				84EE291D29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift */,
+			);
+			path = UpDatePasswordVC;
 			sourceTree = "<group>";
 		};
 		9B1B278F640F96569C72A21D /* Pods */ = {
@@ -1035,7 +1186,10 @@
 				8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */,
 				80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */,
 				8081070129CC820E001675CA /* EBC_CategoryListCVC.swift in Sources */,
+				843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */,
+				8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */,
 				80C9DD7029C8846600F8641A /* EBC_MyRedemptionTVC.swift in Sources */,
+				84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */,
 				80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */,
 				802BCDFB29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift in Sources */,
 				801C85FD29C5B135008204CB /* UiViewx.swift in Sources */,
@@ -1046,25 +1200,34 @@
 				8031C85D29D19EE100E7D698 /* EBC_VoucherDetails.swift in Sources */,
 				80AEAD1129C4407C005108AC /* EuroBond_Customer.xcdatamodeld in Sources */,
 				80AEAD5529C44206005108AC /* RequestMethod.swift in Sources */,
+				84D965DA29D5C4CD00379730 /* EBC_CodeSummeryVC.swift in Sources */,
 				805F712629D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift in Sources */,
 				805F712829D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift in Sources */,
 				8077752629C9737E004AFDC4 /* EBC_SideMenuTVC.swift in Sources */,
+				84D965D829D5C4A300379730 /* EBC_CodeSummeryTVC.swift in Sources */,
 				801F932029D1C898006FF310 /* EBC_SearchProjectCVC.swift in Sources */,
 				800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */,
+				843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */,
 				809343A729C5F4D700440CB6 /* EBC_DashboardVC.swift in Sources */,
 				80437F4729C8871B0062D151 /* Color.swift in Sources */,
 				80AEAD5229C44206005108AC /* ApiUrls.swift in Sources */,
 				80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */,
+				843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */,
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
 				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
 				80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */,
 				8081070329CC822C001675CA /* EBC_ProductListCVC.swift in Sources */,
 				801F931E29D1C874006FF310 /* EBC_SearchProjectVC.swift in Sources */,
+				84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */,
+				84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */,
 				80AEAD5D29C4422F005108AC /* Reach.swift in Sources */,
 				80AEAD5129C44206005108AC /* RestAPI_Requests.swift in Sources */,
 				80AEAD6A29C44249005108AC /* TextfieldExtension.swift in Sources */,
 				8031C85F29D19F0C00E7D698 /* EBC_ProductDetails.swift in Sources */,
+				8407C2AC29D6A1BA00704C87 /* EBC_FilterVC.swift in Sources */,
 				80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */,
+				84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */,
+				84D965D429D5B49600379730 /* EBC_CodeStatusTVC.swift in Sources */,
 				800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */,
 				80AEAD6729C44249005108AC /* ImageExtension.swift in Sources */,
 				801C860329C5BBE5008204CB /* EBC_RegisterVC.swift in Sources */,
@@ -1078,6 +1241,7 @@
 				80AEAD6829C44249005108AC /* NotificationExtension.swift in Sources */,
 				800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */,
 				80AEAD7929C46969005108AC /* EBC_WelcomeVC.swift in Sources */,
+				8407C2AE29D6A1D300704C87 /* EBC_DateFilterVC.swift in Sources */,
 				80AEAD5429C44206005108AC /* WebClient.swift in Sources */,
 				802BCE0129CC70E800B3209C /* ContainerViewController.swift in Sources */,
 				80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */,

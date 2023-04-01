@@ -59,26 +59,8 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func selectMyAccountBtn(_ sender: UIButton) {
     }
  
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sideMenuArrayList.count
-    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_SideMenuTVC", for: indexPath) as! EBC_SideMenuTVC
-        cell.selectionStyle = .none
-        cell.sideMenuName.text = sideMenuArrayList[indexPath.row].sideMenuName
-        cell.sideMenuImage.image = UIImage(named: sideMenuArrayList[indexPath.row].sideMenuImage)
-        if sideMenuArrayList[indexPath.row].sideMenuName == "Game Zone"{
-            cell.sideMenuBadges.isHidden = false
-            cell.sideMenuBadges.text = "3"
-        }else{
-            cell.sideMenuBadges.isHidden = true
-        }
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+    @IBAction func selectDeleteBtn(_ sender: UIButton) {
     }
     
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
@@ -103,6 +85,28 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                 }
             }
         }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sideMenuArrayList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_SideMenuTVC", for: indexPath) as! EBC_SideMenuTVC
+        cell.selectionStyle = .none
+        cell.sideMenuName.text = sideMenuArrayList[indexPath.row].sideMenuName
+        cell.sideMenuImage.image = UIImage(named: sideMenuArrayList[indexPath.row].sideMenuImage)
+        if sideMenuArrayList[indexPath.row].sideMenuName == "Game Zone"{
+            cell.sideMenuBadges.isHidden = false
+            cell.sideMenuBadges.text = "3"
+        }else{
+            cell.sideMenuBadges.isHidden = true
+        }
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 

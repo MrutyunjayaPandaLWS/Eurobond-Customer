@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func setHomeAsRootViewController(){
         let leftVC = storyboard.instantiateViewController(withIdentifier: "EBC_SideMenuVC") as! EBC_SideMenuVC
-        let homeVC = storyboard.instantiateViewController(withIdentifier: "EBC_TabBarVC") as! EBC_TabBarVC
+        let homeVC = storyboard.instantiateViewController(withIdentifier: "EBC_DashboardVC") as! EBC_DashboardVC
         slider = SlideMenuController(mainViewController: homeVC, leftMenuViewController: leftVC)
         nav = UINavigationController(rootViewController: slider)
         nav.isNavigationBarHidden = true

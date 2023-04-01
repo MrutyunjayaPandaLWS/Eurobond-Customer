@@ -19,7 +19,7 @@ class EBC_MyRedemptionVC: UIViewController, UITableViewDelegate, UITableViewData
 
         myRedemptionTV.delegate = self
         myRedemptionTV.dataSource = self
-        backBtn.isHidden = true
+//        backBtn.isHidden = true
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {

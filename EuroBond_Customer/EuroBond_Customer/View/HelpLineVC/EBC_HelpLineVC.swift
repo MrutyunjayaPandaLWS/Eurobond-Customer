@@ -31,6 +31,8 @@ class EBC_HelpLineVC: BaseViewController {
     }
     
     @IBAction func selectRaiseQueryBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CreatenewQueryVC") as? EBC_CreatenewQueryVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
 }

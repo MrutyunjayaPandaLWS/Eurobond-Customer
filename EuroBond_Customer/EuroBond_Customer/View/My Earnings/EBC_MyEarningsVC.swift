@@ -19,11 +19,12 @@ class EBC_MyEarningsVC: UIViewController, UITableViewDelegate, UITableViewDataSo
 
         myEarningTV.delegate = self
         myEarningTV.dataSource = self
-        backBtn.isHidden = true
+//        backBtn.isHidden = true
     }
     
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
     }
 
     @IBAction func selectSupportBtn(_ sender: UIButton) {

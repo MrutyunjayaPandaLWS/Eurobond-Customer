@@ -12,6 +12,10 @@ import SlideMenuControllerSwift
 class EBC_DashboardVC: UIViewController {
 
 
+    @IBOutlet weak var myEarningsLbl: UILabel!
+    @IBOutlet weak var myredemptionLbl: UILabel!
+    @IBOutlet weak var codeStatusLbl: UILabel!
+    @IBOutlet weak var bottomView1: UIView!
     @IBOutlet weak var helplineLbl: UILabel!
     @IBOutlet weak var eurobondsLbl: UILabel!
     @IBOutlet weak var referAndEarnLbl: UILabel!
@@ -38,6 +42,8 @@ class EBC_DashboardVC: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        bottomView1.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        bottomView1.layer.cornerRadius = 30
         slideMenuController()?.changeLeftViewWidth(self.view.frame.size.width * 0.89)
         SlideMenuOptions.contentViewScale = 1
     }
@@ -58,7 +64,7 @@ class EBC_DashboardVC: UIViewController {
     }
     
     @IBAction func selectGameZoneBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameZoneVC") as?  EBC_GameZoneVC
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyAssistantVC") as?  EBC_MyAssistantVC //EBC_GameZoneVC
         navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -90,6 +96,20 @@ class EBC_DashboardVC: UIViewController {
     @IBAction func selectUploadCodeBtn(_ sender: UIButton) {
     }
     
+    @IBAction func selectCodeStatusBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CodeStatusVC") as? EBC_CodeStatusVC
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func selectMyredeemptionBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyRedemptionVC") as? EBC_MyRedemptionVC
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
+    @IBAction func selectMyEarningsBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
+        navigationController?.pushViewController(vc!, animated: true)
+    }
     
     
 }
