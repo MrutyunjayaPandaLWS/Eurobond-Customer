@@ -31,7 +31,6 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
     animationLayers = []
     self.logger = logger
     super.init()
-    masksToBounds = true
     bounds = animation.bounds
     let layers = animation.layers.initializeCompositionLayers(
       assetLibrary: animation.assetLibrary,
@@ -171,7 +170,7 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
 
   var renderScale: CGFloat = 1 {
     didSet {
-      animationLayers.forEach { $0.renderScale = renderScale }
+      animationLayers.forEach({ $0.renderScale = renderScale })
     }
   }
 
@@ -195,12 +194,12 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
 
   /// Forces the view to update its drawing.
   func forceDisplayUpdate() {
-    animationLayers.forEach { $0.displayWithFrame(frame: currentFrame, forceUpdates: true) }
+    animationLayers.forEach({ $0.displayWithFrame(frame: currentFrame, forceUpdates: true) })
   }
 
   func logHierarchyKeypaths() {
     logger.info("Lottie: Logging Animation Keypaths")
-    animationLayers.forEach { $0.logKeypaths(for: nil, logger: self.logger) }
+    animationLayers.forEach({ $0.logKeypaths(for: nil, logger: self.logger) })
   }
 
   func setValueProvider(_ valueProvider: AnyValueProvider, keypath: AnimationKeypath) {

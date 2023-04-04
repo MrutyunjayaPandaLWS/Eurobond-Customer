@@ -209,21 +209,14 @@ extension KeyframeGroup {
 
 /// A type-erased wrapper for `KeyframeGroup`s
 protocol AnyKeyframeGroup {
-  /// An untyped copy of these keyframes
   var untyped: KeyframeGroup<Any> { get }
-
-  /// An untyped `KeyframeInterpolator` for these keyframes
-  var interpolator: AnyValueProvider { get }
 }
 
 // MARK: - KeyframeGroup + AnyKeyframeGroup
 
-extension KeyframeGroup: AnyKeyframeGroup where T: AnyInterpolatable {
+extension KeyframeGroup: AnyKeyframeGroup {
+  /// An untyped copy of these keyframes
   var untyped: KeyframeGroup<Any> {
     map { $0 as Any }
-  }
-
-  var interpolator: AnyValueProvider {
-    KeyframeInterpolator(keyframes: keyframes)
   }
 }

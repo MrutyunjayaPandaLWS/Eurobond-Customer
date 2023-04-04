@@ -7,7 +7,7 @@
 
 import UIKit
 import Lottie
-import Toast_Swift
+//import Toast_Swift
 
 class BaseViewController: UIViewController {
     

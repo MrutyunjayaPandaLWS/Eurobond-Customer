@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Toast_Swift
+//import Toast_Swift
 
 protocol UpdatePasswordVCDelegate{
     func showSusccesMessage(item: EBC_UpdatePasswordVC)
@@ -44,7 +44,7 @@ class EBC_UpdatePasswordVC: UIViewController {
     
     @IBAction func selectUpdatePasswordBtn(_ sender: UIButton) {
         if resestPasswordTF.text?.count == 0{
-            self.view.makeToast("Enter password",duration: 2.0,position: .center)
+//            self.view.makeToast("Enter password",duration: 2.0,position: .center)
         }else{
             dismiss(animated: true)
             delegate?.showSusccesMessage(item: self)

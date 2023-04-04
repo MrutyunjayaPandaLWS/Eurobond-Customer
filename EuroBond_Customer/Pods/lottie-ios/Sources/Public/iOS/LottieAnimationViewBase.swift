@@ -11,7 +11,7 @@ import UIKit
 /// The base view for `LottieAnimationView` on iOS, tvOS, watchOS, and macCatalyst.
 ///
 /// Enables the `LottieAnimationView` implementation to be shared across platforms.
-open class LottieAnimationViewBase: UIView {
+public class LottieAnimationViewBase: UIView {
 
   // MARK: Public
 

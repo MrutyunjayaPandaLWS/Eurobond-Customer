@@ -11,7 +11,7 @@ import Foundation
 /// can increase performance when loading an animation multiple times.
 ///
 /// Lottie comes with a prebuilt LRU Animation Cache.
-public protocol AnimationCacheProvider: AnyObject {
+public protocol AnimationCacheProvider {
 
   func animation(forKey: String) -> LottieAnimation?
 

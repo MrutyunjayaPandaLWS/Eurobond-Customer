@@ -7,7 +7,7 @@
 
 import UIKit
 import DPOTPView
-import Toast_Swift
+//import Toast_Swift
 
 protocol RegisterAssistantDelegate{
     func successMessage(itme: EBC_RegisterAssistantVC)
@@ -63,11 +63,11 @@ class EBC_RegisterAssistantVC: UIViewController {
         }else
         {
             if otpView.text?.count == 0{
-                self.view.makeToast("Enter OTP",duration: 2.0,position: .center)
+//                self.view.makeToast("Enter OTP",duration: 2.0,position: .center)
             }else if otpView.text?.count != 6{
-                self.view.makeToast("Enter valid OTP",duration: 2.0,position: .center)
+//                self.view.makeToast("Enter valid OTP",duration: 2.0,position: .center)
             }else if otpView.text != "123456"{
-                self.view.makeToast("Enter wrong OTP",duration: 2.0,position: .center)
+//                self.view.makeToast("Enter wrong OTP",duration: 2.0,position: .center)
             }else{
                 dismiss(animated: true)
                 delegate?.successMessage(itme: self)

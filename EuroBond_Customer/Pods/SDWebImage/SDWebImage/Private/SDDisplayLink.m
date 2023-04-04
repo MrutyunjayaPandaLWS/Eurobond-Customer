@@ -13,30 +13,14 @@
 #elif SD_IOS || SD_TV
 #import <QuartzCore/QuartzCore.h>
 #endif
-#include <mach/mach_time.h>
 
 #if SD_MAC
 static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *inNow, const CVTimeStamp *inOutputTime, CVOptionFlags flagsIn, CVOptionFlags *flagsOut, void *displayLinkContext);
 #endif
 
-#if SD_WATCH
-static CFTimeInterval CACurrentMediaTime(void)
-{
-    mach_timebase_info_data_t timebase;
-    mach_timebase_info(&timebase);
-
-    uint64_t time = mach_absolute_time();
-    double seconds = (double)time * (double)timebase.numer / (double)timebase.denom / 1e9;
-    return seconds;
-}
-#endif
-
 #define kSDDisplayLinkInterval 1.0 / 60
 
 @interface SDDisplayLink ()
-
-@property (nonatomic, assign) NSTimeInterval previousFireTime;
-@property (nonatomic, assign) NSTimeInterval nextFireTime;
 
 #if SD_MAC
 @property (nonatomic, assign) CVDisplayLinkRef displayLink;
@@ -48,6 +32,7 @@ static CFTimeInterval CACurrentMediaTime(void)
 @property (nonatomic, strong) NSTimer *displayLink;
 @property (nonatomic, strong) NSRunLoop *runloop;
 @property (nonatomic, copy) NSRunLoopMode runloopMode;
+@property (nonatomic, assign) NSTimeInterval currentFireDate;
 #endif
 
 @end
@@ -93,47 +78,33 @@ static CFTimeInterval CACurrentMediaTime(void)
     return displayLink;
 }
 
-- (NSTimeInterval)duration {
-    NSTimeInterval duration = 0;
+- (CFTimeInterval)duration {
 #if SD_MAC
     CVTimeStamp outputTime = self.outputTime;
+    NSTimeInterval duration = 0;
     double periodPerSecond = (double)outputTime.videoTimeScale * outputTime.rateScalar;
     if (periodPerSecond > 0) {
         duration = (double)outputTime.videoRefreshPeriod / periodPerSecond;
     }
-#else
-    // iOS 10+/watchOS use `nextTime`
-    if (@available(iOS 10.0, tvOS 10.0, watchOS 2.0, *)) {
-        duration = self.nextFireTime - CACurrentMediaTime();
+#elif SD_IOS || SD_TV
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+    NSTimeInterval duration = 0;
+    if (@available(iOS 10.0, tvOS 10.0, *)) {
+        duration = self.displayLink.targetTimestamp - CACurrentMediaTime();
     } else {
-        // iOS 9 use `previousTime`
-        duration = CACurrentMediaTime() - self.previousFireTime;
+        duration = self.displayLink.duration * self.displayLink.frameInterval;
+    }
+#pragma clang diagnostic pop
+#else
+    NSTimeInterval duration = 0;
+    if (self.displayLink.isValid && self.currentFireDate != 0) {
+        NSTimeInterval nextFireDate = CFRunLoopTimerGetNextFireDate((__bridge CFRunLoopTimerRef)self.displayLink);
+        duration = nextFireDate - self.currentFireDate;
     }
 #endif
-    // When system sleep, the targetTimestamp will mass up, fallback refresh rate
-    if (duration < 0) {
-#if SD_MAC
-        // Supports Pro display 120Hz
-        CGDirectDisplayID display = CVDisplayLinkGetCurrentCGDisplay(_displayLink);
-        CGDisplayModeRef mode = CGDisplayCopyDisplayMode(display);
-        if (mode) {
-            double refreshRate = CGDisplayModeGetRefreshRate(mode);
-            if (refreshRate > 0) {
-                duration = 1.0 / refreshRate;
-            } else {
-                duration = kSDDisplayLinkInterval;
-            }
-            CGDisplayModeRelease(mode);
-        } else {
-            duration = kSDDisplayLinkInterval;
-        }
-#elif SD_IOS || SD_TV
-        // Fallback
-        duration = self.displayLink.duration;
-#else
-        // Watch always 60Hz
+    if (duration <= 0) {
         duration = kSDDisplayLinkInterval;
-#endif
     }
     return duration;
 }
@@ -218,25 +189,24 @@ static CFTimeInterval CACurrentMediaTime(void)
 #else
     [self.displayLink invalidate];
 #endif
-    self.previousFireTime = 0;
-    self.nextFireTime = 0;
 }
 
 - (void)displayLinkDidRefresh:(id)displayLink {
-#if SD_IOS || SD_TV
-    if (@available(iOS 10.0, tvOS 10.0, *)) {
-        self.nextFireTime = self.displayLink.targetTimestamp;
-    } else {
-        self.previousFireTime = self.displayLink.timestamp;
+#if SD_MAC
+    // CVDisplayLink does not use runloop, but we can provide similar behavior for modes
+    // May use `default` runloop to avoid extra callback when in `eventTracking` (mouse drag, scroll) or `modalPanel` (modal panel)
+    NSString *runloopMode = self.runloopMode;
+    if (![runloopMode isEqualToString:NSRunLoopCommonModes] && ![runloopMode isEqualToString:NSRunLoop.mainRunLoop.currentMode]) {
+        return;
     }
-#endif
-#if SD_WATCH
-    self.nextFireTime = CFRunLoopTimerGetNextFireDate((__bridge CFRunLoopTimerRef)self.displayLink);
 #endif
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
     [_target performSelector:_selector withObject:self];
 #pragma clang diagnostic pop
+#if SD_WATCH
+    self.currentFireDate = CFRunLoopTimerGetNextFireDate((__bridge CFRunLoopTimerRef)self.displayLink);
+#endif
 }
 
 @end
@@ -245,16 +215,11 @@ static CFTimeInterval CACurrentMediaTime(void)
 static CVReturn DisplayLinkCallback(CVDisplayLinkRef displayLink, const CVTimeStamp *inNow, const CVTimeStamp *inOutputTime, CVOptionFlags flagsIn, CVOptionFlags *flagsOut, void *displayLinkContext) {
     // CVDisplayLink callback is not on main queue
     SDDisplayLink *object = (__bridge SDDisplayLink *)displayLinkContext;
-    // CVDisplayLink does not use runloop, but we can provide similar behavior for modes
-    // May use `default` runloop to avoid extra callback when in `eventTracking` (mouse drag, scroll) or `modalPanel` (modal panel)
-    NSString *runloopMode = object.runloopMode;
-    if (![runloopMode isEqualToString:NSRunLoopCommonModes] && ![runloopMode isEqualToString:NSRunLoop.mainRunLoop.currentMode]) {
-        return kCVReturnSuccess;
+    if (inOutputTime) {
+        object.outputTime = *inOutputTime;
     }
-    CVTimeStamp outputTime = inOutputTime ? *inOutputTime : *inNow;
     __weak SDDisplayLink *weakObject = object;
     dispatch_async(dispatch_get_main_queue(), ^{
-        weakObject.outputTime = outputTime;
         [weakObject displayLinkDidRefresh:(__bridge id)(displayLink)];
     });
     return kCVReturnSuccess;

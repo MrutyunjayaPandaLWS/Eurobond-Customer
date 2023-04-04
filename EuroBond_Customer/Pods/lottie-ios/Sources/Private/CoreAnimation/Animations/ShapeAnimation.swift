@@ -9,39 +9,23 @@ extension CAShapeLayer {
   func addAnimations(
     for shape: ShapeItem,
     context: LayerAnimationContext,
-    pathMultiplier: PathMultiplier,
-    roundedCorners: RoundedCorners?)
-    throws
+    pathMultiplier: PathMultiplier) throws
   {
     switch shape {
     case let customShape as Shape:
-      try addAnimations(
-        for: customShape.path,
-        context: context,
-        pathMultiplier: pathMultiplier,
-        roundedCorners: roundedCorners)
+      try addAnimations(for: customShape.path, context: context, pathMultiplier: pathMultiplier)
 
     case let combinedShape as CombinedShapeItem:
       try addAnimations(for: combinedShape, context: context, pathMultiplier: pathMultiplier)
-      try context.compatibilityAssert(roundedCorners == nil, """
-        Rounded corners support is not currently implemented for combined shape items
-        """)
 
     case let ellipse as Ellipse:
       try addAnimations(for: ellipse, context: context, pathMultiplier: pathMultiplier)
 
     case let rectangle as Rectangle:
-      try addAnimations(
-        for: rectangle,
-        context: context,
-        pathMultiplier: pathMultiplier,
-        roundedCorners: roundedCorners)
+      try addAnimations(for: rectangle, context: context, pathMultiplier: pathMultiplier)
 
     case let star as Star:
       try addAnimations(for: star, context: context, pathMultiplier: pathMultiplier)
-      try context.compatibilityAssert(roundedCorners == nil, """
-        Rounded corners support is currently not implemented for polygon items
-        """)
 
     default:
       // None of the other `ShapeItem` subclasses draw a `path`
@@ -67,7 +51,7 @@ extension CAShapeLayer {
   /// Adds animations for `strokeStart` and `strokeEnd` from the given `Trim` object
   @nonobjc
   func addAnimations(for trim: Trim, context: LayerAnimationContext) throws -> PathMultiplier {
-    let (strokeStartKeyframes, strokeEndKeyframes, pathMultiplier) = try trim.caShapeLayerKeyframes()
+    let (strokeStartKeyframes, strokeEndKeyframes, pathMultiplier) = try trim.caShapeLayerKeyframes(context: context)
 
     try addAnimation(
       for: .strokeStart,
@@ -103,8 +87,7 @@ extension Trim {
   /// The `strokeStart` and `strokeEnd` keyframes to apply to a `CAShapeLayer`,
   /// plus a `pathMultiplier` that should be applied to the layer's `path` so that
   /// trim values larger than 100% can be displayed properly.
-  fileprivate func caShapeLayerKeyframes()
-    throws
+  fileprivate func caShapeLayerKeyframes(context: LayerAnimationContext) throws
     -> (strokeStart: KeyframeGroup<LottieVector1D>, strokeEnd: KeyframeGroup<LottieVector1D>, pathMultiplier: PathMultiplier)
   {
     let strokeStart: KeyframeGroup<LottieVector1D>
@@ -140,12 +123,14 @@ extension Trim {
     var adjustedStrokeStart = KeyframeGroup(
       keyframes: try adjustKeyframesForTrimOffsets(
         strokeKeyframes: interpolatedStrokeStart,
-        offsetKeyframes: interpolatedStrokeOffset))
+        offsetKeyframes: interpolatedStrokeOffset,
+        context: context))
 
     var adjustedStrokeEnd = KeyframeGroup(
       keyframes: try adjustKeyframesForTrimOffsets(
         strokeKeyframes: interpolatedStrokeEnd,
-        offsetKeyframes: interpolatedStrokeOffset))
+        offsetKeyframes: interpolatedStrokeOffset,
+        context: context))
 
     // If maximum stroke value is larger than 100%, then we have to create copies of the path
     // so the total path length includes the maximum stroke
@@ -200,8 +185,8 @@ extension Trim {
   /// - Precondition: The keyframes must be interpolated using `KeyframeGroup.manuallyInterpolateKeyframes()`
   private func adjustKeyframesForTrimOffsets(
     strokeKeyframes: ContiguousArray<Keyframe<LottieVector1D>>,
-    offsetKeyframes: ContiguousArray<Keyframe<LottieVector1D>>)
-    throws -> ContiguousArray<Keyframe<LottieVector1D>>
+    offsetKeyframes: ContiguousArray<Keyframe<LottieVector1D>>,
+    context _: LayerAnimationContext) throws -> ContiguousArray<Keyframe<LottieVector1D>>
   {
     guard
       !strokeKeyframes.isEmpty,

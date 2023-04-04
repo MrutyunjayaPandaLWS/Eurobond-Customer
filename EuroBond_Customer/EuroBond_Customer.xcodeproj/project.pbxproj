@@ -96,7 +96,15 @@
 		843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */; };
 		843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */; };
 		843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */; };
+		84411E9129DADCBE0085B9A7 /* EBC_WishListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9029DADCBE0085B9A7 /* EBC_WishListTVC.swift */; };
+		84411E9329DADCD40085B9A7 /* EBC_WishListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9229DADCD40085B9A7 /* EBC_WishListVC.swift */; };
+		84411E9829DAE94B0085B9A7 /* EBC_DreamGiftVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9729DAE94B0085B9A7 /* EBC_DreamGiftVC.swift */; };
+		84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9929DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift */; };
+		84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */; };
+		84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */; };
 		8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */; };
+		84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A857E629DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift */; };
+		84A857E929DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A857E829DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift */; };
 		84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */; };
 		84D965D429D5B49600379730 /* EBC_CodeStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D329D5B49600379730 /* EBC_CodeStatusTVC.swift */; };
 		84D965D829D5C4A300379730 /* EBC_CodeSummeryTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D729D5C4A300379730 /* EBC_CodeSummeryTVC.swift */; };
@@ -104,7 +112,8 @@
 		84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291829D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift */; };
 		84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291A29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift */; };
 		84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291D29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift */; };
-		B203F59640FB70064F78E495 /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */; };
+		84FC47F029DABB7C00971C62 /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */; };
+		84FC47F129DABB7C00971C62 /* Pods_EuroBond_Customer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E5D7B3D826EFBC3FB4D9FD25 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +133,20 @@
 			remoteInfo = EuroBond_Customer;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		84FC47F229DABB7D00971C62 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				84FC47F129DABB7C00971C62 /* Pods_EuroBond_Customer.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,7 +245,15 @@
 		843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CreatenewQueryVC.swift; sourceTree = "<group>"; };
 		843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantVC.swift; sourceTree = "<group>"; };
 		843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantTVC.swift; sourceTree = "<group>"; };
+		84411E9029DADCBE0085B9A7 /* EBC_WishListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WishListTVC.swift; sourceTree = "<group>"; };
+		84411E9229DADCD40085B9A7 /* EBC_WishListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WishListVC.swift; sourceTree = "<group>"; };
+		84411E9729DAE94B0085B9A7 /* EBC_DreamGiftVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftVC.swift; sourceTree = "<group>"; };
+		84411E9929DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftDetailsVC.swift; sourceTree = "<group>"; };
+		84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftTVC.swift; sourceTree = "<group>"; };
+		84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WishListDetailsVC.swift; sourceTree = "<group>"; };
 		8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_PopupMessageVC.swift; sourceTree = "<group>"; };
+		84A857E629DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MillstonesBonussVC.swift; sourceTree = "<group>"; };
+		84A857E829DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MillstonesBonussTVC.swift; sourceTree = "<group>"; };
 		84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeStatusVC.swift; sourceTree = "<group>"; };
 		84D965D329D5B49600379730 /* EBC_CodeStatusTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeStatusTVC.swift; sourceTree = "<group>"; };
 		84D965D729D5C4A300379730 /* EBC_CodeSummeryTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeSummeryTVC.swift; sourceTree = "<group>"; };
@@ -242,7 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B203F59640FB70064F78E495 /* Pods_EuroBond_Customer.framework in Frameworks */,
+				84FC47F029DABB7C00971C62 /* Pods_EuroBond_Customer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,6 +600,9 @@
 		80AEAD3A29C440C1005108AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84411E9429DAE9040085B9A7 /* Dream Gift */,
+				84411E8F29DADC960085B9A7 /* Wishlist */,
+				84A857E529DAAE67003BABA1 /* MillstonesBonuss */,
 				84EE291729D6E883004B1C6C /* Success message */,
 				843EAF8E29D6B7F900971B96 /* My Assistant */,
 				843EAF8A29D6AF9E00971B96 /* Support */,
@@ -859,12 +893,57 @@
 			path = "My Assistant";
 			sourceTree = "<group>";
 		};
+		84411E8F29DADC960085B9A7 /* Wishlist */ = {
+			isa = PBXGroup;
+			children = (
+				84411E9529DAE9100085B9A7 /* WishList Details */,
+				84411E9229DADCD40085B9A7 /* EBC_WishListVC.swift */,
+				84411E9029DADCBE0085B9A7 /* EBC_WishListTVC.swift */,
+			);
+			path = Wishlist;
+			sourceTree = "<group>";
+		};
+		84411E9429DAE9040085B9A7 /* Dream Gift */ = {
+			isa = PBXGroup;
+			children = (
+				84411E9629DAE91D0085B9A7 /* DreamList Details */,
+				84411E9729DAE94B0085B9A7 /* EBC_DreamGiftVC.swift */,
+				84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */,
+			);
+			path = "Dream Gift";
+			sourceTree = "<group>";
+		};
+		84411E9529DAE9100085B9A7 /* WishList Details */ = {
+			isa = PBXGroup;
+			children = (
+				84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */,
+			);
+			path = "WishList Details";
+			sourceTree = "<group>";
+		};
+		84411E9629DAE91D0085B9A7 /* DreamList Details */ = {
+			isa = PBXGroup;
+			children = (
+				84411E9929DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift */,
+			);
+			path = "DreamList Details";
+			sourceTree = "<group>";
+		};
 		8484BBB129D712B9003FB8B0 /* Pop Message */ = {
 			isa = PBXGroup;
 			children = (
 				8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */,
 			);
 			path = "Pop Message";
+			sourceTree = "<group>";
+		};
+		84A857E529DAAE67003BABA1 /* MillstonesBonuss */ = {
+			isa = PBXGroup;
+			children = (
+				84A857E629DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift */,
+				84A857E829DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift */,
+			);
+			path = MillstonesBonuss;
 			sourceTree = "<group>";
 		};
 		84D965D029D5B44200379730 /* Code Status VC */ = {
@@ -935,7 +1014,8 @@
 				80AEACFF29C4407C005108AC /* Sources */,
 				80AEAD0029C4407C005108AC /* Frameworks */,
 				80AEAD0129C4407C005108AC /* Resources */,
-				6CF7BBA77857983728C7F074 /* [CP] Embed Pods Frameworks */,
+				DA656D9059F828FA68068AF3 /* [CP] Embed Pods Frameworks */,
+				84FC47F229DABB7D00971C62 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -973,7 +1053,7 @@
 				80AEAD2229C44083005108AC /* Sources */,
 				80AEAD2329C44083005108AC /* Frameworks */,
 				80AEAD2429C44083005108AC /* Resources */,
-				C0FA4E093C296DB76D98E813 /* [CP] Embed Pods Frameworks */,
+				A8372BC8160B95AAB60E1C2A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1066,23 +1146,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6CF7BBA77857983728C7F074 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6ED03D515D7717737AA2B276 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1127,7 +1190,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0FA4E093C296DB76D98E813 /* [CP] Embed Pods Frameworks */ = {
+		A8372BC8160B95AAB60E1C2A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1142,6 +1205,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer-EuroBond_CustomerUITests/Pods-EuroBond_Customer-EuroBond_CustomerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA656D9059F828FA68068AF3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FBF8A29C6C9CE735389995C4 /* [CP] Check Pods Manifest.lock */ = {
@@ -1173,6 +1253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */,
 				801C860029C5BA3A008204CB /* EBC_RefferalVC.swift in Sources */,
 				801F931B29D1C7D2006FF310 /* EBC_WhatsNewVC.swift in Sources */,
 				801F931729D1C763006FF310 /* EBC_ProductCatalogueVC.swift in Sources */,
@@ -1186,6 +1267,7 @@
 				8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */,
 				80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */,
 				8081070129CC820E001675CA /* EBC_CategoryListCVC.swift in Sources */,
+				84411E9129DADCBE0085B9A7 /* EBC_WishListTVC.swift in Sources */,
 				843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */,
 				8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */,
 				80C9DD7029C8846600F8641A /* EBC_MyRedemptionTVC.swift in Sources */,
@@ -1194,11 +1276,13 @@
 				802BCDFB29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift in Sources */,
 				801C85FD29C5B135008204CB /* UiViewx.swift in Sources */,
 				80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */,
+				84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */,
 				80C9DD6E29C8844400F8641A /* EBC_MyRedemptionVC.swift in Sources */,
 				80C9DD7429C8849A00F8641A /* EBC_MyEarningsVC.swift in Sources */,
 				80AEAD0B29C4407C005108AC /* EBS_LoginVC.swift in Sources */,
 				8031C85D29D19EE100E7D698 /* EBC_VoucherDetails.swift in Sources */,
 				80AEAD1129C4407C005108AC /* EuroBond_Customer.xcdatamodeld in Sources */,
+				84411E9329DADCD40085B9A7 /* EBC_WishListVC.swift in Sources */,
 				80AEAD5529C44206005108AC /* RequestMethod.swift in Sources */,
 				84D965DA29D5C4CD00379730 /* EBC_CodeSummeryVC.swift in Sources */,
 				805F712629D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift in Sources */,
@@ -1214,6 +1298,7 @@
 				80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */,
 				843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */,
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
+				84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */,
 				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
 				80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */,
 				8081070329CC822C001675CA /* EBC_ProductListCVC.swift in Sources */,
@@ -1221,10 +1306,12 @@
 				84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */,
 				84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */,
 				80AEAD5D29C4422F005108AC /* Reach.swift in Sources */,
+				84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */,
 				80AEAD5129C44206005108AC /* RestAPI_Requests.swift in Sources */,
 				80AEAD6A29C44249005108AC /* TextfieldExtension.swift in Sources */,
 				8031C85F29D19F0C00E7D698 /* EBC_ProductDetails.swift in Sources */,
 				8407C2AC29D6A1BA00704C87 /* EBC_FilterVC.swift in Sources */,
+				84411E9829DAE94B0085B9A7 /* EBC_DreamGiftVC.swift in Sources */,
 				80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */,
 				84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */,
 				84D965D429D5B49600379730 /* EBC_CodeStatusTVC.swift in Sources */,
@@ -1242,6 +1329,7 @@
 				800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */,
 				80AEAD7929C46969005108AC /* EBC_WelcomeVC.swift in Sources */,
 				8407C2AE29D6A1D300704C87 /* EBC_DateFilterVC.swift in Sources */,
+				84A857E929DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift in Sources */,
 				80AEAD5429C44206005108AC /* WebClient.swift in Sources */,
 				802BCE0129CC70E800B3209C /* ContainerViewController.swift in Sources */,
 				80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */,

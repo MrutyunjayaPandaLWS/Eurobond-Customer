@@ -40,7 +40,8 @@ final class ValueProviderStore {
     of customizableProperty: CustomizableProperty<Value>,
     for keypath: AnimationKeypath,
     context: LayerAnimationContext)
-    throws -> KeyframeGroup<Value>?
+    throws
+    -> KeyframeGroup<Value>?
   {
     if context.logHierarchyKeypaths {
       context.logger.info(keypath.fullPath)
