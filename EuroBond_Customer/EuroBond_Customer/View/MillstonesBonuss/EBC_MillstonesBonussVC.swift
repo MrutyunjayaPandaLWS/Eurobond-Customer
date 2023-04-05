@@ -17,6 +17,7 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var euroSlabTitleLbl: UILabel!
     @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var titleVC: UILabel!
+    var flags: String = "1"
     override func viewDidLoad() {
         super.viewDidLoad()
         millStonesListTV.delegate = self
@@ -26,6 +27,10 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     }
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

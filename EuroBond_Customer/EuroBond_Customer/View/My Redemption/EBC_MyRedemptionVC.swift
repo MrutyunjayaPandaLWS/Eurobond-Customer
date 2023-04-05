@@ -14,6 +14,7 @@ class EBC_MyRedemptionVC: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var myRedemptionTV: UITableView!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var backBtn: UIButton!
+    var flags: String = "1"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +24,10 @@ class EBC_MyRedemptionVC: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

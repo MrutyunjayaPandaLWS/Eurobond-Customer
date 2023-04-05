@@ -93,6 +93,8 @@
 		80C9DD7429C8849A00F8641A /* EBC_MyEarningsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */; };
 		8407C2AC29D6A1BA00704C87 /* EBC_FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C2AB29D6A1BA00704C87 /* EBC_FilterVC.swift */; };
 		8407C2AE29D6A1D300704C87 /* EBC_DateFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */; };
+		841B77B429DD5C8800CF0C88 /* CodesListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B77B229DD5C8800CF0C88 /* CodesListTVC.swift */; };
+		841B77B529DD5C8800CF0C88 /* ScanOrUpload_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B77B329DD5C8800CF0C88 /* ScanOrUpload_VC.swift */; };
 		843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */; };
 		843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */; };
 		843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */; };
@@ -103,6 +105,31 @@
 		84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */; };
 		84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */; };
 		8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */; };
+		849E45A029DC094500A4311B /* EBC_ScannerAndUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E459F29DC094500A4311B /* EBC_ScannerAndUploadVC.swift */; };
+		849E45A229DC09BD00A4311B /* EBC_MyQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45A129DC09BD00A4311B /* EBC_MyQRCodeVC.swift */; };
+		849E45A629DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45A529DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift */; };
+		849E45A929DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45A829DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift */; };
+		849E45AE29DC274400A4311B /* EBC_TermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45AD29DC274400A4311B /* EBC_TermsAndConditionsVC.swift */; };
+		849E45B029DC275800A4311B /* EBC_AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45AF29DC275800A4311B /* EBC_AboutVC.swift */; };
+		849E45B229DC276900A4311B /* EBC_FAQVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45B129DC276900A4311B /* EBC_FAQVC.swift */; };
+		849E45B529DC293100A4311B /* EBC_QueryListingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45B429DC293100A4311B /* EBC_QueryListingVC.swift */; };
+		849E45B729DC294900A4311B /* EBC_QueryListingTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45B629DC294900A4311B /* EBC_QueryListingTVC.swift */; };
+		849E45BA29DC307A00A4311B /* HR_Chatvc2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45B929DC307A00A4311B /* HR_Chatvc2ViewController.swift */; };
+		849E45C829DC308700A4311B /* senderInfoImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E45BC29DC308600A4311B /* senderInfoImageTableViewCell.xib */; };
+		849E45C929DC308700A4311B /* otherInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E45BD29DC308600A4311B /* otherInfoTableViewCell.xib */; };
+		849E45CA29DC308700A4311B /* senderInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45BE29DC308600A4311B /* senderInfoTableViewCell.swift */; };
+		849E45CB29DC308700A4311B /* senderInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E45BF29DC308600A4311B /* senderInfoTableViewCell.xib */; };
+		849E45CC29DC308700A4311B /* otherImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E45C029DC308600A4311B /* otherImageTableViewCell.xib */; };
+		849E45CD29DC308700A4311B /* senderInfoImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45C129DC308600A4311B /* senderInfoImageTableViewCell.swift */; };
+		849E45CE29DC308700A4311B /* otherInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45C229DC308600A4311B /* otherInfoTableViewCell.swift */; };
+		849E45CF29DC308700A4311B /* otherImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45C329DC308600A4311B /* otherImageTableViewCell.swift */; };
+		849E45D029DC308700A4311B /* senderImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45C429DC308600A4311B /* senderImageTableViewCell.swift */; };
+		849E45D129DC308700A4311B /* otherInfoImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45C529DC308600A4311B /* otherInfoImageTableViewCell.swift */; };
+		849E45D229DC308700A4311B /* otherInfoImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E45C629DC308600A4311B /* otherInfoImageTableViewCell.xib */; };
+		849E45D329DC308700A4311B /* senderImageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849E45C729DC308600A4311B /* senderImageTableViewCell.xib */; };
+		849E45D829DC4BF700A4311B /* MyProfileandBankDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45D529DC4BF700A4311B /* MyProfileandBankDetailsVC.swift */; };
+		849E45D929DC4BF700A4311B /* BankDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45D629DC4BF700A4311B /* BankDetailsVC.swift */; };
+		849E45DA29DC4BF700A4311B /* MyProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45D729DC4BF700A4311B /* MyProfileVC.swift */; };
 		84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A857E629DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift */; };
 		84A857E929DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A857E829DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift */; };
 		84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */; };
@@ -242,6 +269,8 @@
 		80C9DD7329C8849A00F8641A /* EBC_MyEarningsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyEarningsVC.swift; sourceTree = "<group>"; };
 		8407C2AB29D6A1BA00704C87 /* EBC_FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_FilterVC.swift; sourceTree = "<group>"; };
 		8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DateFilterVC.swift; sourceTree = "<group>"; };
+		841B77B229DD5C8800CF0C88 /* CodesListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodesListTVC.swift; sourceTree = "<group>"; };
+		841B77B329DD5C8800CF0C88 /* ScanOrUpload_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanOrUpload_VC.swift; sourceTree = "<group>"; };
 		843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CreatenewQueryVC.swift; sourceTree = "<group>"; };
 		843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantVC.swift; sourceTree = "<group>"; };
 		843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantTVC.swift; sourceTree = "<group>"; };
@@ -252,6 +281,31 @@
 		84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftTVC.swift; sourceTree = "<group>"; };
 		84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WishListDetailsVC.swift; sourceTree = "<group>"; };
 		8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_PopupMessageVC.swift; sourceTree = "<group>"; };
+		849E459F29DC094500A4311B /* EBC_ScannerAndUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_ScannerAndUploadVC.swift; sourceTree = "<group>"; };
+		849E45A129DC09BD00A4311B /* EBC_MyQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyQRCodeVC.swift; sourceTree = "<group>"; };
+		849E45A529DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyQrCodeTVC.swift; sourceTree = "<group>"; };
+		849E45A829DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_QRCodeSubmitSuccessMessageVC.swift; sourceTree = "<group>"; };
+		849E45AD29DC274400A4311B /* EBC_TermsAndConditionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_TermsAndConditionsVC.swift; sourceTree = "<group>"; };
+		849E45AF29DC275800A4311B /* EBC_AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_AboutVC.swift; sourceTree = "<group>"; };
+		849E45B129DC276900A4311B /* EBC_FAQVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_FAQVC.swift; sourceTree = "<group>"; };
+		849E45B429DC293100A4311B /* EBC_QueryListingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_QueryListingVC.swift; sourceTree = "<group>"; };
+		849E45B629DC294900A4311B /* EBC_QueryListingTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_QueryListingTVC.swift; sourceTree = "<group>"; };
+		849E45B929DC307A00A4311B /* HR_Chatvc2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_Chatvc2ViewController.swift; sourceTree = "<group>"; };
+		849E45BC29DC308600A4311B /* senderInfoImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = senderInfoImageTableViewCell.xib; sourceTree = "<group>"; };
+		849E45BD29DC308600A4311B /* otherInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = otherInfoTableViewCell.xib; sourceTree = "<group>"; };
+		849E45BE29DC308600A4311B /* senderInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = senderInfoTableViewCell.swift; sourceTree = "<group>"; };
+		849E45BF29DC308600A4311B /* senderInfoTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = senderInfoTableViewCell.xib; sourceTree = "<group>"; };
+		849E45C029DC308600A4311B /* otherImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = otherImageTableViewCell.xib; sourceTree = "<group>"; };
+		849E45C129DC308600A4311B /* senderInfoImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = senderInfoImageTableViewCell.swift; sourceTree = "<group>"; };
+		849E45C229DC308600A4311B /* otherInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherInfoTableViewCell.swift; sourceTree = "<group>"; };
+		849E45C329DC308600A4311B /* otherImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherImageTableViewCell.swift; sourceTree = "<group>"; };
+		849E45C429DC308600A4311B /* senderImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = senderImageTableViewCell.swift; sourceTree = "<group>"; };
+		849E45C529DC308600A4311B /* otherInfoImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = otherInfoImageTableViewCell.swift; sourceTree = "<group>"; };
+		849E45C629DC308600A4311B /* otherInfoImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = otherInfoImageTableViewCell.xib; sourceTree = "<group>"; };
+		849E45C729DC308600A4311B /* senderImageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = senderImageTableViewCell.xib; sourceTree = "<group>"; };
+		849E45D529DC4BF700A4311B /* MyProfileandBankDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileandBankDetailsVC.swift; sourceTree = "<group>"; };
+		849E45D629DC4BF700A4311B /* BankDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankDetailsVC.swift; sourceTree = "<group>"; };
+		849E45D729DC4BF700A4311B /* MyProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileVC.swift; sourceTree = "<group>"; };
 		84A857E629DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MillstonesBonussVC.swift; sourceTree = "<group>"; };
 		84A857E829DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MillstonesBonussTVC.swift; sourceTree = "<group>"; };
 		84D965D129D5B47700379730 /* EBC_CodeStatusVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CodeStatusVC.swift; sourceTree = "<group>"; };
@@ -600,6 +654,10 @@
 		80AEAD3A29C440C1005108AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				849E45D429DC4BDE00A4311B /* My Account */,
+				849E45AC29DC271D00A4311B /* Terms & conditions */,
+				849E45AB29DC271600A4311B /* About */,
+				849E45AA29DC271000A4311B /* FAQ */,
 				84411E9429DAE9040085B9A7 /* Dream Gift */,
 				84411E8F29DADC960085B9A7 /* Wishlist */,
 				84A857E529DAAE67003BABA1 /* MillstonesBonuss */,
@@ -829,24 +887,10 @@
 		8407C2A629D696C400704C87 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
-				8407C2A829D696E200704C87 /* Scan Code */,
-				8407C2A729D696DA00704C87 /* Upload Code */,
+				849E45A429DC09D400A4311B /* Scanner & Uplopad */,
+				849E45A329DC09C200A4311B /* MyQRCode */,
 			);
 			path = Scanner;
-			sourceTree = "<group>";
-		};
-		8407C2A729D696DA00704C87 /* Upload Code */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Upload Code";
-			sourceTree = "<group>";
-		};
-		8407C2A829D696E200704C87 /* Scan Code */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Scan Code";
 			sourceTree = "<group>";
 		};
 		8407C2A929D6A18500704C87 /* Filter */ = {
@@ -869,6 +913,8 @@
 		843EAF8A29D6AF9E00971B96 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				849E45B829DC306700A4311B /* Chat Details */,
+				849E45B329DC290900A4311B /* Query Listing */,
 				843EAF8B29D6AFA700971B96 /* CreateQuery */,
 			);
 			path = Support;
@@ -935,6 +981,105 @@
 				8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */,
 			);
 			path = "Pop Message";
+			sourceTree = "<group>";
+		};
+		849E45A329DC09C200A4311B /* MyQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				849E45A729DC0A3B00A4311B /* QR code Success pop up */,
+				849E45A129DC09BD00A4311B /* EBC_MyQRCodeVC.swift */,
+				849E45A529DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift */,
+			);
+			path = MyQRCode;
+			sourceTree = "<group>";
+		};
+		849E45A429DC09D400A4311B /* Scanner & Uplopad */ = {
+			isa = PBXGroup;
+			children = (
+				841B77B229DD5C8800CF0C88 /* CodesListTVC.swift */,
+				841B77B329DD5C8800CF0C88 /* ScanOrUpload_VC.swift */,
+				849E459F29DC094500A4311B /* EBC_ScannerAndUploadVC.swift */,
+			);
+			path = "Scanner & Uplopad";
+			sourceTree = "<group>";
+		};
+		849E45A729DC0A3B00A4311B /* QR code Success pop up */ = {
+			isa = PBXGroup;
+			children = (
+				849E45A829DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift */,
+			);
+			path = "QR code Success pop up";
+			sourceTree = "<group>";
+		};
+		849E45AA29DC271000A4311B /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				849E45B129DC276900A4311B /* EBC_FAQVC.swift */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		849E45AB29DC271600A4311B /* About */ = {
+			isa = PBXGroup;
+			children = (
+				849E45AF29DC275800A4311B /* EBC_AboutVC.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		849E45AC29DC271D00A4311B /* Terms & conditions */ = {
+			isa = PBXGroup;
+			children = (
+				849E45AD29DC274400A4311B /* EBC_TermsAndConditionsVC.swift */,
+			);
+			path = "Terms & conditions";
+			sourceTree = "<group>";
+		};
+		849E45B329DC290900A4311B /* Query Listing */ = {
+			isa = PBXGroup;
+			children = (
+				849E45B429DC293100A4311B /* EBC_QueryListingVC.swift */,
+				849E45B629DC294900A4311B /* EBC_QueryListingTVC.swift */,
+			);
+			path = "Query Listing";
+			sourceTree = "<group>";
+		};
+		849E45B829DC306700A4311B /* Chat Details */ = {
+			isa = PBXGroup;
+			children = (
+				849E45BB29DC308600A4311B /* ChatCells */,
+				849E45B929DC307A00A4311B /* HR_Chatvc2ViewController.swift */,
+			);
+			path = "Chat Details";
+			sourceTree = "<group>";
+		};
+		849E45BB29DC308600A4311B /* ChatCells */ = {
+			isa = PBXGroup;
+			children = (
+				849E45BC29DC308600A4311B /* senderInfoImageTableViewCell.xib */,
+				849E45BD29DC308600A4311B /* otherInfoTableViewCell.xib */,
+				849E45BE29DC308600A4311B /* senderInfoTableViewCell.swift */,
+				849E45BF29DC308600A4311B /* senderInfoTableViewCell.xib */,
+				849E45C029DC308600A4311B /* otherImageTableViewCell.xib */,
+				849E45C129DC308600A4311B /* senderInfoImageTableViewCell.swift */,
+				849E45C229DC308600A4311B /* otherInfoTableViewCell.swift */,
+				849E45C329DC308600A4311B /* otherImageTableViewCell.swift */,
+				849E45C429DC308600A4311B /* senderImageTableViewCell.swift */,
+				849E45C529DC308600A4311B /* otherInfoImageTableViewCell.swift */,
+				849E45C629DC308600A4311B /* otherInfoImageTableViewCell.xib */,
+				849E45C729DC308600A4311B /* senderImageTableViewCell.xib */,
+			);
+			path = ChatCells;
+			sourceTree = "<group>";
+		};
+		849E45D429DC4BDE00A4311B /* My Account */ = {
+			isa = PBXGroup;
+			children = (
+				849E45D629DC4BF700A4311B /* BankDetailsVC.swift */,
+				849E45D529DC4BF700A4311B /* MyProfileandBankDetailsVC.swift */,
+				849E45D729DC4BF700A4311B /* MyProfileVC.swift */,
+			);
+			path = "My Account";
 			sourceTree = "<group>";
 		};
 		84A857E529DAAE67003BABA1 /* MillstonesBonuss */ = {
@@ -1113,16 +1258,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849E45C829DC308700A4311B /* senderInfoImageTableViewCell.xib in Resources */,
 				809343A329C5EE2C00440CB6 /* Roboto-ThinItalic.ttf in Resources */,
 				80AEAD7629C45DD3005108AC /* EUROBOND LOGO ANIMATION_1.mp4 in Resources */,
 				80AEAD1629C44081005108AC /* LaunchScreen.storyboard in Resources */,
 				809343A129C5EE2700440CB6 /* Roboto-Regular.ttf in Resources */,
 				8093439D29C5EE0F00440CB6 /* Roboto-Bold.ttf in Resources */,
+				849E45D329DC308700A4311B /* senderImageTableViewCell.xib in Resources */,
 				80175F8529C9C6E300C87FEF /* helpLineAnimation.json in Resources */,
 				809343A229C5EE2900440CB6 /* Roboto-Thin.ttf in Resources */,
 				8093439C29C5EE0C00440CB6 /* Roboto-Black.ttf in Resources */,
 				8093439E29C5EE1300440CB6 /* Roboto-Italic.ttf in Resources */,
+				849E45D229DC308700A4311B /* otherInfoImageTableViewCell.xib in Resources */,
+				849E45C929DC308700A4311B /* otherInfoTableViewCell.xib in Resources */,
 				80AEAD1329C44081005108AC /* Assets.xcassets in Resources */,
+				849E45CC29DC308700A4311B /* otherImageTableViewCell.xib in Resources */,
+				849E45CB29DC308700A4311B /* senderInfoTableViewCell.xib in Resources */,
 				8093439F29C5EE1B00440CB6 /* Roboto-Light.ttf in Resources */,
 				80AEAD0E29C4407C005108AC /* Main.storyboard in Resources */,
 				809343A029C5EE2400440CB6 /* Roboto-Medium.ttf in Resources */,
@@ -1253,10 +1404,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849E45B229DC276900A4311B /* EBC_FAQVC.swift in Sources */,
 				84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */,
 				801C860029C5BA3A008204CB /* EBC_RefferalVC.swift in Sources */,
+				849E45D829DC4BF700A4311B /* MyProfileandBankDetailsVC.swift in Sources */,
 				801F931B29D1C7D2006FF310 /* EBC_WhatsNewVC.swift in Sources */,
 				801F931729D1C763006FF310 /* EBC_ProductCatalogueVC.swift in Sources */,
+				849E45B529DC293100A4311B /* EBC_QueryListingVC.swift in Sources */,
 				800D81DC29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift in Sources */,
 				80AEAD6B29C44249005108AC /* LabelExtension.swift in Sources */,
 				802BCE0229CC70E800B3209C /* EmptySegue.swift in Sources */,
@@ -1264,6 +1418,7 @@
 				80AEAD5A29C44225005108AC /* MyCommonFunctionalUtilities.swift in Sources */,
 				80902B5329C81B2F00050701 /* EBC_TabBarVC.swift in Sources */,
 				80AEAD5029C44206005108AC /* URLMethods.swift in Sources */,
+				849E45A229DC09BD00A4311B /* EBC_MyQRCodeVC.swift in Sources */,
 				8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */,
 				80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */,
 				8081070129CC820E001675CA /* EBC_CategoryListCVC.swift in Sources */,
@@ -1274,7 +1429,10 @@
 				84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */,
 				80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */,
 				802BCDFB29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift in Sources */,
+				849E45D129DC308700A4311B /* otherInfoImageTableViewCell.swift in Sources */,
+				849E45CF29DC308700A4311B /* otherImageTableViewCell.swift in Sources */,
 				801C85FD29C5B135008204CB /* UiViewx.swift in Sources */,
+				849E45AE29DC274400A4311B /* EBC_TermsAndConditionsVC.swift in Sources */,
 				80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */,
 				84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */,
 				80C9DD6E29C8844400F8641A /* EBC_MyRedemptionVC.swift in Sources */,
@@ -1282,13 +1440,16 @@
 				80AEAD0B29C4407C005108AC /* EBS_LoginVC.swift in Sources */,
 				8031C85D29D19EE100E7D698 /* EBC_VoucherDetails.swift in Sources */,
 				80AEAD1129C4407C005108AC /* EuroBond_Customer.xcdatamodeld in Sources */,
+				841B77B529DD5C8800CF0C88 /* ScanOrUpload_VC.swift in Sources */,
 				84411E9329DADCD40085B9A7 /* EBC_WishListVC.swift in Sources */,
 				80AEAD5529C44206005108AC /* RequestMethod.swift in Sources */,
 				84D965DA29D5C4CD00379730 /* EBC_CodeSummeryVC.swift in Sources */,
 				805F712629D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift in Sources */,
 				805F712829D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift in Sources */,
 				8077752629C9737E004AFDC4 /* EBC_SideMenuTVC.swift in Sources */,
+				849E45D029DC308700A4311B /* senderImageTableViewCell.swift in Sources */,
 				84D965D829D5C4A300379730 /* EBC_CodeSummeryTVC.swift in Sources */,
+				841B77B429DD5C8800CF0C88 /* CodesListTVC.swift in Sources */,
 				801F932029D1C898006FF310 /* EBC_SearchProjectCVC.swift in Sources */,
 				800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */,
 				843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */,
@@ -1296,13 +1457,18 @@
 				80437F4729C8871B0062D151 /* Color.swift in Sources */,
 				80AEAD5229C44206005108AC /* ApiUrls.swift in Sources */,
 				80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */,
+				849E45D929DC4BF700A4311B /* BankDetailsVC.swift in Sources */,
 				843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */,
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
 				84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */,
 				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
 				80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */,
+				849E45CD29DC308700A4311B /* senderInfoImageTableViewCell.swift in Sources */,
 				8081070329CC822C001675CA /* EBC_ProductListCVC.swift in Sources */,
 				801F931E29D1C874006FF310 /* EBC_SearchProjectVC.swift in Sources */,
+				849E45A929DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift in Sources */,
+				849E45A629DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift in Sources */,
+				849E45BA29DC307A00A4311B /* HR_Chatvc2ViewController.swift in Sources */,
 				84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */,
 				84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */,
 				80AEAD5D29C4422F005108AC /* Reach.swift in Sources */,
@@ -1316,12 +1482,15 @@
 				84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */,
 				84D965D429D5B49600379730 /* EBC_CodeStatusTVC.swift in Sources */,
 				800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */,
+				849E45B729DC294900A4311B /* EBC_QueryListingTVC.swift in Sources */,
 				80AEAD6729C44249005108AC /* ImageExtension.swift in Sources */,
 				801C860329C5BBE5008204CB /* EBC_RegisterVC.swift in Sources */,
 				80175F8829C9C77A00C87FEF /* EBC_HelpLineVC.swift in Sources */,
 				80437F4A29C8904F0062D151 /* EBC_SideMenuVC.swift in Sources */,
 				80AEAD0729C4407C005108AC /* AppDelegate.swift in Sources */,
+				849E45CE29DC308700A4311B /* otherInfoTableViewCell.swift in Sources */,
 				802BCDF929CC6F8D00B3209C /* EBC_BankTransferVC.swift in Sources */,
+				849E45B029DC275800A4311B /* EBC_AboutVC.swift in Sources */,
 				800D81DF29C9E11C00D77557 /* EBC_EurobondsVC.swift in Sources */,
 				80AEAD5629C44206005108AC /* ServiceError.swift in Sources */,
 				802BCDFD29CC6FC800B3209C /* EBC_VoucherVC.swift in Sources */,
@@ -1337,7 +1506,10 @@
 				806E696629CD8278002B30F5 /* EBC_VoucherCVC.swift in Sources */,
 				80AEAD6929C44249005108AC /* ViewExtension.swift in Sources */,
 				80937E4329D2AF00005B584F /* EBC_WhatsNewTVC.swift in Sources */,
+				849E45DA29DC4BF700A4311B /* MyProfileVC.swift in Sources */,
+				849E45A029DC094500A4311B /* EBC_ScannerAndUploadVC.swift in Sources */,
 				80AEAD4F29C44206005108AC /* URLExtension.swift in Sources */,
+				849E45CA29DC308700A4311B /* senderInfoTableViewCell.swift in Sources */,
 				80AEAD5E29C4422F005108AC /* Reachability.swift in Sources */,
 				80AEAD5329C44206005108AC /* URLRequest.swift in Sources */,
 				809343A929C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift in Sources */,

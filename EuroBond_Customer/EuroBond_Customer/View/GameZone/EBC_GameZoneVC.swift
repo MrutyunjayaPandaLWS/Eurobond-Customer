@@ -8,6 +8,9 @@
 import UIKit
 
 class EBC_GameZoneVC: UIViewController {
+    
+    
+    var flags = "1"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +19,10 @@ class EBC_GameZoneVC: UIViewController {
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

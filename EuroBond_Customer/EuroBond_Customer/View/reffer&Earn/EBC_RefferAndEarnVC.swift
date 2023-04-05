@@ -19,12 +19,17 @@ class EBC_RefferAndEarnVC: UIViewController {
     @IBOutlet weak var referInfo: UILabel!
     @IBOutlet weak var referMoneyLbl: UILabel!
     @IBOutlet weak var titleVC: UILabel!
+    var flags: String = "SideMenu"
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

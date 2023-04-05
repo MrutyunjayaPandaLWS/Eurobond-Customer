@@ -61,6 +61,8 @@ class EBC_MyAssistantVC: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var noDataFoundView: UIView!
     @IBOutlet weak var myAssistantTV: UITableView!
     @IBOutlet weak var titleVC: UILabel!
+    
+    var flags = "1"
     override func viewDidLoad() {
         super.viewDidLoad()
         myAssistantTV.delegate = self
@@ -70,6 +72,10 @@ class EBC_MyAssistantVC: UIViewController, UITableViewDelegate, UITableViewDataS
     
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

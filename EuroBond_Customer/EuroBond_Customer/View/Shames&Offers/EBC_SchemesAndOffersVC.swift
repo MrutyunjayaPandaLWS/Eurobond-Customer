@@ -18,6 +18,7 @@ class EBC_SchemesAndOffersVC: UIViewController, UITableViewDelegate, UITableView
  
     @IBOutlet weak var shemesAndOffersTV: UITableView!
     @IBOutlet weak var titleVc: UILabel!
+    var flags = "1"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,6 +27,10 @@ class EBC_SchemesAndOffersVC: UIViewController, UITableViewDelegate, UITableView
         
     }
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

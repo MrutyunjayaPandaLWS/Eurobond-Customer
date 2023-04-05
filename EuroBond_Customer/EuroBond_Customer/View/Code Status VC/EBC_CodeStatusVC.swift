@@ -23,6 +23,7 @@ class EBC_CodeStatusVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var filterBtn: UIButton!
     @IBOutlet weak var helpBtn: UIButton!
     @IBOutlet weak var titleVC: UILabel!
+    var flags: String = "1"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,10 @@ class EBC_CodeStatusVC: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     

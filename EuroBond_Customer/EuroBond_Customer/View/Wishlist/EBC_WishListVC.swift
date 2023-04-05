@@ -23,6 +23,7 @@ class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var eurostitle: UILabel!
     @IBOutlet weak var eurosBalLbl: UILabel!
     @IBOutlet weak var titleVC: UILabel!
+    var flags = "1"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +32,10 @@ class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -50,6 +55,11 @@ class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.productimage.image = UIImage(named: "Xperia-1_grey_groupBF40")
         cell.delegate = self
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc =  UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_WishListDetailsVC") as? EBC_WishListDetailsVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
 
 }

@@ -17,6 +17,7 @@ class EBC_DreamGiftVC: UIViewController, UITableViewDelegate, UITableViewDataSou
    
     @IBOutlet weak var dreamListTV: UITableView!
     @IBOutlet weak var titleVC: UILabel!
+    var flags = "1"
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +29,10 @@ class EBC_DreamGiftVC: UIViewController, UITableViewDelegate, UITableViewDataSou
 
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
+        if flags == "SideMenu"{
+            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+            self.navigationController?.popViewController(animated: true)
+        }
         navigationController?.popViewController(animated: true)
     }
     
@@ -50,5 +55,9 @@ class EBC_DreamGiftVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc =  UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DreamGiftDetailsVC") as? EBC_DreamGiftDetailsVC
+        navigationController?.pushViewController(vc!, animated: true)
+    }
+    
 }

@@ -64,7 +64,7 @@ class EBC_DashboardVC: UIViewController {
     }
     
     @IBAction func selectGameZoneBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DreamGiftDetailsVC") as?  EBC_DreamGiftDetailsVC //EBC_GameZoneVC
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_WishListVC") as?  EBC_WishListVC //EBC_GameZoneVC
         navigationController?.pushViewController(vc!, animated: true)
     }
     
