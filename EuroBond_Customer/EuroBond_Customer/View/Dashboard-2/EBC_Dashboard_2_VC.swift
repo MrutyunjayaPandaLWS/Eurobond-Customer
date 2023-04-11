@@ -37,6 +37,26 @@ class EBC_Dashboard_2_VC: UIViewController {
         bottomView.layer.shadowOpacity = 0.1
     }
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
+        UserDefaults.standard.set(0, forKey: "IsloggedIn?")
+        if #available(iOS 13.0, *) {
+            DispatchQueue.main.async {
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
+                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                sceneDelegate.setInitialViewAsRootViewController()
+            }
+        } else {
+            DispatchQueue.main.async {
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
+                if #available(iOS 13.0, *) {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.setInitialViewAsRootViewController()
+                }
+            }
+        }
     }
     
     @IBAction func selectNotificationBtn(_ sender: UIButton) {
@@ -44,12 +64,18 @@ class EBC_Dashboard_2_VC: UIViewController {
     
     
     @IBAction func selectCodeStatusBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_CodeStatusVC") as? EBC_CodeStatusVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func selectSyncStatusBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_CodeStatusVC") as? EBC_CodeStatusVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func selectCodeSummeryBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_CodeSummeryVC") as? EBC_CodeSummeryVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func selectUploadCodeBtn(_ sender: UIButton) {
@@ -59,9 +85,13 @@ class EBC_Dashboard_2_VC: UIViewController {
     }
     
     @IBAction func selectHelpLineBtn(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_HelpLineVC") as? EBC_HelpLineVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func selectTermCondBtn(_ sender: UIButton) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_TermsAndConditionsVC") as? EBC_TermsAndConditionsVC
+        navigationController?.pushViewController(vc!, animated: true)
     }
     
     

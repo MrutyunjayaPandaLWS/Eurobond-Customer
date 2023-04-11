@@ -8,26 +8,22 @@
 import Foundation
 
 //DEMO
-let tokenURL = "https://hoyatserv.loyltwo3ks.com/token"
-let baseURl = "https://hoyatserv.loyltwo3ks.com/Mobile/"
-var number = "6362630805"
 
-//let PROMO_IMG = "https://ddmotors.loyltwo3ks.com/UploadFiles/"
-//let PROMO_IMG1 = "https://hoyatserv.loyltwo3ks.com/"
-let PROMO_IMG1 = "https://hoyatdemo.loyltwo3ks.com/"
-//let product_IMG = "https://ddmotors.loyltwo3ks.com/UploadFiles/CategoryImg/"
-//let imageBaseURL = "https://ddmotors.loyltwo3ks.com/UploadFiles/ProductManager/ProductImages/"
-//
-//let profileImageURL = "https://ddmotors.loyltwo3ks.com/UploadFiles/CustomerImage/"
-//let productCatalogueImgURL = "https://ddmotors.loyltwo3ks.com/UploadFiles/CatalogueImages/"
-let checkUserExistencyURL = "https://hoyatserv.loyltwo3ks.com/Mobile/CheckCustomerExistancyAndVerification"
-let forgotPasswordUrl = "https://hoyatserv.loyltwo3ks.com/Mobile/forgotPasswordMobileApp"
+let tokenURL = "https://Eurobonddemoserv.loyltwo3ks.com/token"
+let baseURl = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/"
+let PROMO_IMG = "https://Eurobonddemoserv.loyltwo3ks.com/UploadFiles/"
+let PROMO_IMG1 = "https://Eurobonddemoserv.loyltwo3ks.com/"
+let product_IMG = "https://Eurobonddemoserv.loyltwo3ks.com/UploadFiles/CategoryImg/"
+let imageBaseURL = "https://Eurobonddemoserv.loyltwo3ks.com/UploadFiles/ProductManager/ProductImages/"
+let profileImageURL = "https://Eurobonddemoserv.loyltwo3ks.com/services/UploadFiles/CustomerImage/"
+let productCatalogueImgURL = "https://Eurobonddemoserv.loyltwo3ks.com/UploadFiles/CatalogueImages/"
+let checkUserExistencyURL = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/CheckCustomerExistancyAndVerification"
+let forgotPassURL = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/forgotPasswordMobileApp"
 
 
-let username = "LtyHoyaThDemo"
-let password = "H0)Y@7L$mK#9p87"
+let username = "EuroBond"
+let password = "mFjf$fgjhksdfl#m"
 let grant_type = "password"
-//let MerchantUserName = "DDMotorsDemoAdmin"
-
+//let MerchantUserName = "MSPDemoAdmin"
 
 

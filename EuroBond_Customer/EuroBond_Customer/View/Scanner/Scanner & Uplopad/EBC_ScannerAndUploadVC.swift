@@ -7,13 +7,13 @@
 
 import UIKit
 
-class EBC_ScannerAndUploadVC: UIViewController, MyQRCodeListDelegate {
-    func didTappedCodeStatusBtn(item: EBC_MyQRCodeVC) {
+class EBC_ScannerAndUploadVC: UIViewController {
+    func didTappedCodeStatusBtn(item: ScannedCodes_VC) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CodeStatusVC") as? EBC_CodeStatusVC
         navigationController?.pushViewController(vc!, animated: true)
     }
     
-    func didTappedSubmitBtn(item: EBC_MyQRCodeVC) {
+    func didTappedSubmitBtn(item: ScannedCodes_VC) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_QRCodeSubmitSuccessMessageVC") as? EBC_QRCodeSubmitSuccessMessageVC
         vc?.modalTransitionStyle = .coverVertical
         vc?.modalPresentationStyle = .overFullScreen
@@ -55,11 +55,11 @@ class EBC_ScannerAndUploadVC: UIViewController, MyQRCodeListDelegate {
     }
     
     @IBAction func selectMyqrCodeListingBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyQRCodeVC") as? EBC_MyQRCodeVC
-        vc?.modalTransitionStyle = .coverVertical
-        vc?.modalPresentationStyle = .overFullScreen
-        vc?.delegate = self
-        present(vc!, animated: true)
+//        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScannedCodes_VC") as? ScannedCodes_VC
+//        vc?.modalTransitionStyle = .coverVertical
+//        vc?.modalPresentationStyle = .overFullScreen
+//        vc?.delegate = self
+//        present(vc!, animated: true)
         
     }
     

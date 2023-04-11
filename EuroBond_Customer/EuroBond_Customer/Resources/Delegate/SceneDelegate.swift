@@ -23,10 +23,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
         IQKeyboardManager.shared.enable = true
-        let isUserLoggedIn: Bool = UserDefaults.standard.bool(forKey: "IsloggedIn?")
-        if isUserLoggedIn {
+        tokendata()
+        let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
+        if isUserLoggedIn == 1{
             self.setHomeAsRootViewController()
-        } else {
+        } else if isUserLoggedIn == 2{
+            self.setHomeAsRootViewController2()
+        }else{
             self.setInitialViewAsRootViewController()
         }
     }
@@ -40,9 +43,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
+    
+    func setHomeAsRootViewController2(){
+        let homeVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Dashboard_2_VC") as! EBC_Dashboard_2_VC
+        nav = UINavigationController(rootViewController: homeVC)
+        nav.isNavigationBarHidden = true
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+    }
     func setInitialViewAsRootViewController(){
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBS_LoginVC") as! EBS_LoginVC
+        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_Login1VC") as! EBC_Login1VC
         nav = UINavigationController(rootViewController: initialVC)
         nav.modalPresentationStyle = .overCurrentContext
         nav.modalTransitionStyle = .partialCurl
@@ -51,6 +62,43 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     
+    func tokendata(){
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            }else{
+                let parameters : Data = "username=\(username)&password=\(password)&grant_type=password".data(using: .utf8)!
+
+            let url = URL(string: tokenURL)!
+            let session = URLSession.shared
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+
+            do {
+                 request.httpBody = parameters
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+           
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+
+                guard error == nil else {
+                    return
+                }
+                guard let data = data else {
+                    return
+                }
+                do{
+                    let parseddata = try JSONDecoder().decode(TokenModels.self, from: data)
+                        print(parseddata.access_token ?? "")
+                        UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
+                     }catch let parsingError {
+                    print("Error", parsingError)
+                }
+            })
+            task.resume()
+        }
+        }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

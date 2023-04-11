@@ -9,6 +9,9 @@ import UIKit
 
 class EBC_RegisterVC: UIViewController {
 
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var alreadyHaveAccountLbl: UILabel!
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var prefferedLanguageTF: UITextField!
     @IBOutlet weak var preferredLanguageLbl: UILabel!
     @IBOutlet weak var genderTF: UITextField!
@@ -45,7 +48,15 @@ class EBC_RegisterVC: UIViewController {
     @IBAction func selectPrefferedLanguageBtn(_ sender: UIButton) {
     }
     
+    @IBAction func selectNextbtn(_ sender: UIButton) {
+        
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Signup2VC") as? EBC_Signup2VC
+        navigationController?.pushViewController(vc!, animated: true)
+    }
     
+    @IBAction func selectLoginBtn(_ sender: UIButton) {
+        navigationController?.popToRootViewController(animated: true)
+    }
     
     
     

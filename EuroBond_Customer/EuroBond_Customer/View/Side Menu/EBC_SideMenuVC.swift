@@ -70,7 +70,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
-            UserDefaults.standard.set(false, forKey: "IsloggedIn?")
+            UserDefaults.standard.set(0, forKey: "IsloggedIn?")
             if #available(iOS 13.0, *) {
                 DispatchQueue.main.async {
                     let domain = Bundle.main.bundleIdentifier!
@@ -119,14 +119,14 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         case "Home":
                 closeLeft()
         case "Scan QR Code":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ScannerAndUploadVC") as? EBC_ScannerAndUploadVC
-            vc?.flags = "SideMenu"
-            vc?.scanner = "Scan"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
+            vc?.fromSideMenu = "SideMenu"
+//            vc?.scanner = "Scan"
             navigationController?.pushViewController(vc!, animated: true)
         case "Enter QR Code":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ScannerAndUploadVC") as? EBC_ScannerAndUploadVC
-            vc?.flags = "SideMenu"
-            vc?.scanner = "Upload"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ScannerAndUploadVC") as? ScanOrUpload_VC
+            vc?.fromSideMenu = "SideMenu"
+//            vc?.scanner = "Upload"
             navigationController?.pushViewController(vc!, animated: true)
         case "Code Status":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CodeStatusVC") as? EBC_CodeStatusVC
@@ -145,7 +145,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Game Zone":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameZoneVC") as? EBC_GameZoneVC
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameCentre_VC") as? EBC_GameCentre_VC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Refer & Earn":

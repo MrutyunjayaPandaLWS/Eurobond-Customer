@@ -28,6 +28,9 @@ extension Notification.Name{
     static let dismissView = Notification.Name(rawValue: "dismissView")
     static let refreshView = Notification.Name(rawValue: "refreshView")
     
+    static let CodeSubmission = Notification.Name(rawValue: "CodeSubmission")
+    static let uploadAgain = Notification.Name(rawValue: "uploadAgain")
+    
     static let evoucherListApi = Notification.Name(rawValue: "evoucherListApi")
     static let evoucherDetailsApi = Notification.Name(rawValue: "evoucherDetailsApi")
     static let plannerList = Notification.Name(rawValue: "plannerList")
@@ -43,8 +46,11 @@ extension Notification.Name{
     static let navigateToDashboard = Notification.Name(rawValue: "navigateToDashboard")
     
     
+    static let goToParticularVc = Notification.Name(rawValue: "goToParticularVc")
     
-    
-    
-    
+    static let verificationStatus = Notification.Name(rawValue: "verificationStatus")
+    static let dismissScreen = Notification.Name(rawValue: "dismissScreen")
+    static let redemptionSubmission = Notification.Name(rawValue: "redemptionSubmission")
+    static let sendDashboard = Notification.Name(rawValue: "sendDashboard")
+    static let catalogueSubmission = Notification.Name(rawValue: "catalogueSubmission")
 }

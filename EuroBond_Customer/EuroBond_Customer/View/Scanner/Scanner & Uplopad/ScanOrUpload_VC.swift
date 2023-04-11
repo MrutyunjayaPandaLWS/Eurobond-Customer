@@ -14,11 +14,12 @@ import AudioToolbox
 import AVFoundation
 import CoreLocation
 import CoreData
-//import Firebase
+import Firebase
 
-class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate, UITextFieldDelegate {
+class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate, UITextFieldDelegate, popUpDelegate {
+    func popupAlertDidTap(_ vc: EBC_SuccessMessageVC) {}
 
-    
+
 
     @IBOutlet var codeCountView: UIView!
     @IBOutlet var countLabel: UILabel!
@@ -33,16 +34,16 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     @IBOutlet weak var headerView: GradientView!
     @IBOutlet weak var closeBTN: UIButton!
     @IBOutlet weak var scannerImage: UIImageView!
-    
+
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var infoLbl: UILabel!
-    
-    
+
+
     var reachability = Reach()
     var isComeFrom = ""
     var isComingFrom = 0
     var newproductArray: [[String:Any]] = []
-    let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyID") ?? ""
+    //let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyID") ?? ""
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var catalogueList = ""
     var addressString : String = ""
@@ -50,7 +51,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     var city = ""
     var address = ""
     var pincode = ""
-    
+
     var isScanned = false
     var isFirsttime = true
     var alertController = UIAlertController()
@@ -70,7 +71,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     var isscannedOnce = false
     var valueChecked = false
     var scannedCodes = ""
-    
+
     var scannedStatus = false
     var scaned = 1
     var CapturedCodess = ""
@@ -81,7 +82,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     var savedCodeListArray = [QRCodeSaveResponseList]()
     var fromSideMenu = ""
     var scannedCodeArray = [String]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.countLabel.cornerRadius = countLabel.frame.width/2
@@ -105,14 +106,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         NotificationCenter.default.addObserver(self, selector: #selector(codesSubmission), name: Notification.Name.CodeSubmission, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(codesUploadAgain), name: Notification.Name.uploadAgain, object: nil)
         languagelocalization()
-        
-        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
-        tracker.set(kGAIScreenName, value: "Scan/Upload QR code")
 
-        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
-        tracker.send(builder.build() as [NSObject : AnyObject])
+//        guard let tracker = GAI.sharedInstance().defaultTracker else { return }
+//        tracker.set(kGAIScreenName, value: "Scan/Upload QR code")
+//
+//        guard let builder = GAIDictionaryBuilder.createScreenView() else { return }
+//        tracker.send(builder.build() as [NSObject : AnyObject])
     }
- 
+
     func languagelocalization(){
         if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
             self.header.text = "Upload"
@@ -122,32 +123,6 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.enterQRCodeLabel.text = "Enter QR code in the above field and submit."
             self.scanQRCodeButton.setTitle("Scan QR Code", for: .normal)
             self.infoLbl.text = "Click here to see your QR Codes"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.header.text = "अपलोड"
-            self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
-            self.codeTF.placeholder = "अपना कोड दर्ज करे"
-            self.submitButton.setTitle("प्रस्तुत", for: .normal)
-            self.enterQRCodeLabel.text = "उपरोक्त फ़ील्ड में क्यूआर कोड दर्ज करें और सबमिट करें।"
-            self.scanQRCodeButton.setTitle("क्यू आर कोड स्कैन करें", for: .normal)
-            self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.header.text = "আপলোড"
-            self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
-            self.codeTF.placeholder = "আপনার কোড লিখুন"
-            self.submitButton.setTitle("জমা দিন", for: .normal)
-            self.enterQRCodeLabel.text = "উপরের ক্ষেত্রে QR কোড লিখুন এবং জমা দিন।"
-            self.scanQRCodeButton.setTitle("QR কোড স্ক্যান করুন", for: .normal)
-            self.infoLbl.text = "আপনার QR কোড দেখতে এখানে ক্লিক করুন"
-        }else{
-            self.header.text = "అప్లోడ్"
-            self.messageLbl.text = "స్కాన్ చేయడానికి వీక్షణ ఫైండర్ దీర్ఘచతురస్రం లోపల QR కోడ్‌ను ఉంచండి."
-            self.codeTF.placeholder = "మీ కోడ్‌ని నమోదు చేయండి"
-            self.submitButton.setTitle("సమర్పించు", for: .normal)
-            self.enterQRCodeLabel.text = "పై ఫీల్డ్‌లో QR కోడ్‌ని నమోదు చేసి సమర్పించండి."
-            self.scanQRCodeButton.setTitle("QR కోడ్‌ని స్కాన్ చేయండి", for: .normal)
-            self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
         }
     }
     @objc func codesUploadAgain(notification: Notification){
@@ -162,21 +137,6 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
                 self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
                 self.infoLbl.text = "Click here to see your QR Codes"
-                
-            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                
-                self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
-                self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
-                self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                
-            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
-                self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
-                self.infoLbl.text = "আপনার QR কোড দেখতে এখানে ক্লিক করুন"
-            }else{
-                self.messageLbl.text = "స్కాన్ చేయడానికి వీక్షణ ఫైండర్ దీర్ఘచతురస్రం లోపల QR కోడ్‌ను ఉంచండి."
-                self.scanQRCodeButton.setTitle("QR కోడ్‌ని అప్‌లోడ్ చేయండి", for: .normal)
-                self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
             }
             self.scanQRCodeButton.setImage(UIImage(named: "software-upload"), for: .normal)
                 self.isScanned = true
@@ -191,32 +151,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.clearTable()
                 self.codeLIST.removeAll()
                 self.fetchDetails()
-                
+
             }else{
                 self.headerView.isHidden = false
                 self.closeBTN.isHidden = true
-               
-                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+
+                //if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                     self.enterQRCodeLabel.text = "Enter QR code in the above field and submit."
                     self.scanQRCodeButton.setTitle("Scan QR Code", for: .normal)
                     self.infoLbl.text = "Click here to see your QR Codes"
-                    
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                    
-                    self.enterQRCodeLabel.text = "उपरोक्त फ़ील्ड में क्यूआर कोड दर्ज करें और सबमिट करें।"
-                    self.scanQRCodeButton.setTitle("क्यू आर कोड स्कैन करें", for: .normal)
-                    self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                    
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                    self.enterQRCodeLabel.text = "উপরের ক্ষেত্রে QR কোড লিখুন এবং জমা দিন।"
-                    self.scanQRCodeButton.setTitle("QR কোড স্ক্যান করুন", for: .normal)
-                    self.infoLbl.text = "আপনার QR কোড দেখতে এখানে ক্লিক করুন"
-                }else{
-                    self.enterQRCodeLabel.text = "పై ఫీల్డ్‌లో QR కోడ్‌ని నమోదు చేసి సమర్పించండి."
-                    self.scanQRCodeButton.setTitle("QR కోడ్‌ని స్కాన్ చేయండి", for: .normal)
-                    self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
-                }
-                
+
+               // }
+
                 self.scanQRCodeButton.setImage(UIImage(named: "qr"), for: .normal)
                 self.scannerView.isHidden = true
                 self.uploadView.isHidden = false
@@ -233,13 +179,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.codeLIST.removeAll()
                 self.fetchDetails()
             }
-         
+
     }
-    
+
     @objc func startVideo(notification: Notification){
         startLiveVideo()
     }
-    
+
     @objc func codeExists(notification: Notification){
         self.fetchDetails()
         self.restartScanning()
@@ -252,18 +198,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         self.scanQRCodeButton.setImage(UIImage(named: "software-upload"), for: .normal)
         self.scannerView.isHidden = false
         self.uploadView.isHidden = true
-        
+
         if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
             self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
             self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
             self.infoLbl.text = "Click here to see your QR Codes"
-            
+
         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            
+
             self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
             self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
             self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-            
+
         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
             self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
             self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
@@ -273,14 +219,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.scanQRCodeButton.setTitle("QR కోడ్‌ని అప్‌లోడ్ చేయండి", for: .normal)
             self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
         }
-        
+
         AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
             if granted == true {
             } else {
-                
+
             }
         })
-    
+
         self.isScanned = true
         scaned = 1
         self.scannedStatus = false
@@ -317,7 +263,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             print("error while fetching data")
         }
     }
-    
+
     @objc func codesSubmission(notification: Notification){
         for item in self.codeLIST {
             let singleImageDict:[String:Any] = [
@@ -329,7 +275,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.newproductArray.append(singleImageDict)
                 }
         self.parameterJSON = [
-            
+
             "Address": "\(self.addressString)",
             "City": "\(self.city)",
             "Country": "\(self.country)",
@@ -342,7 +288,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             "State": ""
         ]
         print(self.parameterJSON ?? "")
-        
+
         if self.scanQRCodeButton.currentTitle == "Upload QR Code" ||  self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" ||  self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" ||  self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
             self.isFrom = 1
             self.session.stopRunning()
@@ -359,8 +305,8 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
             return
         }
-        
-        
+
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -370,18 +316,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.headerView.isHidden = true
             self.closeBTN.isHidden = false
             self.messageLbl.isHidden = false
-            
+
             if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                 self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
                 self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
                 self.infoLbl.text = "Click here to see your QR Codes"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                
+
                 self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
                 self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
                 self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                 self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
                 self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
@@ -391,11 +337,11 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.scanQRCodeButton.setTitle("QR కోడ్‌ని అప్‌లోడ్ చేయండి", for: .normal)
                 self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
             }
-            
+
             self.scanQRCodeButton.setImage(UIImage(named: "software-upload"), for: .normal)
             self.scannerView.isHidden = false
             self.uploadView.isHidden = true
-       
+
 
             self.session.startRunning()
             AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
@@ -409,7 +355,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             scaned = 1
             self.scannedStatus = false
             self.barcodeDetector = vision.barcodeDetector()
-            
+
             self.session.stopRunning()
 
             if isFirsttime == true{
@@ -426,7 +372,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             fetchDetails()
             self.headerView.isHidden = false
             self.closeBTN.isHidden = true
-          
+
             self.scanQRCodeButton.setImage(UIImage(named: "qr"), for: .normal)
             self.messageLbl.isHidden = true
             self.scannerView.isHidden = true
@@ -437,13 +383,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.enterQRCodeLabel.text = "Enter QR code in the above field and submit."
                 self.scanQRCodeButton.setTitle("Scan QR Code", for: .normal)
                 self.infoLbl.text = "Click here to see your QR Codes"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                
+
                 self.enterQRCodeLabel.text = "उपरोक्त फ़ील्ड में क्यूआर कोड दर्ज करें और सबमिट करें।"
                 self.scanQRCodeButton.setTitle("क्यू आर कोड स्कैन करें", for: .normal)
                 self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                 self.enterQRCodeLabel.text = "উপরের ক্ষেত্রে QR কোড লিখুন এবং জমা দিন।"
                 self.scanQRCodeButton.setTitle("QR কোড স্ক্যান করুন", for: .normal)
@@ -455,14 +401,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             }
         }
     }
-   
+
     func fetchDetails1(){
-           
+
            let fetchRequest:NSFetchRequest<UploadedCodes> = UploadedCodes.fetchRequest()
            do{
                self.uploadedCodes = try persistanceservice.context.fetch(fetchRequest)
                print(self.uploadedCodes.count, "Uploaded Count")
-               
+
                for QRCodes in self.savedCodeListArray{
                    print(QRCodes.qRCode ?? 0, "Codes")
                    let filterArray = self.uploadedCodes.filter{$0.code == QRCodes.qRCode}
@@ -477,7 +423,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                        }
                    }
                }
-          
+
            }catch{
                print("error while fetching data")
            }
@@ -488,7 +434,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
            do{
                self.uploadedCodes = try persistanceservice.context.fetch(fetchRequest)
                print(self.uploadedCodes.count)
-               
+
            }catch{
                print("error while fetching data")
            }
@@ -499,14 +445,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         print(parameterJSON,"jdskdj")
         self.VM.submitCodesApi(parameters: self.parameterJSON!) { response in
             DispatchQueue.main.async {
-                
+
                 self.isScanned = false
                 self.session.stopRunning()
                 self.stopLoading()
                 self.savedCodeListArray = response?.qRCodeSaveResponseList ?? []
                 print(self.savedCodeListArray.count, "Saved Codes Count")
                 print(self.uploadedCodes.count)
-                
+
                 for codes in self.savedCodeListArray {
                     print("Codes Status", codes.codeStatus ?? 0)
                     let type2Array = self.uploadedCodes.filter { $0.code == codes.qRCode}
@@ -530,9 +476,9 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         let index =  self.uploadedCodes.firstIndex(of: type2Array[0])
                         let productObj = self.uploadedCodes[index!]
                         persistanceservice.context.delete(productObj)
-                       
+
                         persistanceservice.saveContext()
-                        
+
                         let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
                         qRCodeDBTable.code = codes.qRCode
                         qRCodeDBTable.latitude = codes.latitude
@@ -549,99 +495,99 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         persistanceservice.saveContext()
                     }
                 }
-               
-               
-                
+
+
+
                 if self.savedCodeListArray.count != 0{
                     self.dismiss(animated: true){
                         self.clearTable()
                         self.fetchDetails()
                         self.dismiss(animated: true){
-                            
-                            NotificationCenter.default.post(name: .optionView, object: nil)
-                        
+
+                            //NotificationCenter.default.post(name: .optionView, object: nil)
+
                         }
-                       
+
                     }
-                   
-                    
+
+
                 }else {
                     self.dismiss(animated: true){
                         if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                             let alertController = UIAlertController(title: "", message: "QR Code Submission Failed", preferredStyle: .alert)
-                            
+
                             // Create the actions
                             let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 self.clearTable()
                                 self.codeLIST.removeAll()
-                    
+
                             }
-                            
+
                             // Add the actions
                             alertController.addAction(okAction)
-                            
+
                             // Present the controller
                             self.present(alertController, animated: true, completion: nil)
-                            
+
                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                             let alertController = UIAlertController(title: "", message: "क्यूआर कोड सबमिशन विफल", preferredStyle: .alert)
-                            
+
                             // Create the actions
                             let okAction = UIAlertAction(title: "ठीक है", style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 self.clearTable()
                                 self.codeLIST.removeAll()
-                    
+
                             }
-                            
+
                             // Add the actions
                             alertController.addAction(okAction)
-                            
+
                             // Present the controller
                             self.present(alertController, animated: true, completion: nil)
                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                             let alertController = UIAlertController(title: "", message: "QR কোড জমা দেওয়া ব্যর্থ হয়েছে৷", preferredStyle: .alert)
-                            
+
                             // Create the actions
                             let okAction = UIAlertAction(title: "ওকে", style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 self.clearTable()
                                 self.codeLIST.removeAll()
-                    
+
                             }
-                            
+
                             // Add the actions
                             alertController.addAction(okAction)
-                            
+
                             // Present the controller
                             self.present(alertController, animated: true, completion: nil)
                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
                             let alertController = UIAlertController(title: "", message: "QR కోడ్ సమర్పణ విఫలమైంది", preferredStyle: .alert)
-                            
+
                             // Create the actions
                             let okAction = UIAlertAction(title: "అలాగే", style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 self.clearTable()
                                 self.codeLIST.removeAll()
-                    
+
                             }
-                            
+
                             // Add the actions
                             alertController.addAction(okAction)
-                            
+
                             // Present the controller
                             self.present(alertController, animated: true, completion: nil)
                         }
-                       
+
                     }
-                   
+
                 }
             }
         }
     }
-    
-    
+
+
     @IBAction func closeScreen(_ sender: Any) {
         clearTable()
         self.session.stopRunning()
@@ -654,9 +600,9 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 NotificationCenter.default.post(name: .goToParticularVc, object: nil)
             }
         }
-        
+
     }
-    
+
     @IBAction func submitButton(_ sender: Any) {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             self.fetchDetails()
@@ -687,19 +633,11 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         let enterData = self.codeTF.text
                         if self.enteredCodeArray.contains(enterData ?? ""){
                             DispatchQueue.main.async{
-                               let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                               let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SuccessMessageVC") as? EBC_SuccessMessageVC
                                vc!.delegate = self
-                               vc!.titleInfo = ""
+                               //vc!.titleInfo = ""
                                 vc!.itsComeFrom = "Upload"
-                                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                                 vc!.descriptionInfo = "Code scanned successfully"
-                                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                                    vc!.descriptionInfo = "कोड सफलतापूर्वक स्कैन किया गया"
-                                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                                    vc!.descriptionInfo = "কোড সফলভাবে স্ক্যান করা হয়েছে"
-                                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
-                                    vc!.descriptionInfo = "కోడ్ విజయవంతంగా స్కాన్ చేయబడింది"
-                                }
                                vc!.modalPresentationStyle = .overCurrentContext
                                vc!.modalTransitionStyle = .crossDissolve
                                self.present(vc!, animated: true, completion: nil)
@@ -719,7 +657,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                 self.fetchDetails()
                                 self.restartScanning()
                             }else{
-                                
+
                                 if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                                     let alert = UIAlertController(title: "", message: "Offline scanning limit exceeded. Sync pending codes in Wifi/Mobile data or Clear processed codes .", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
@@ -728,7 +666,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                         NotificationCenter.default.post(name: .CodeSubmission, object: nil)
                                         }))
                                         self.present(alert, animated: true, completion: nil)
-                                    
+
                                 }else  if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                                     let alert = UIAlertController(title: "", message: "ऑफलाइन स्कैनिंग की सीमा पार हो गई। वाई-फाई / मोबाइल डेटा या स्पष्ट संसाधित कोड में लंबित कोड सिंक करें।", preferredStyle: UIAlertController.Style.alert)
                                     alert.addAction(UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
@@ -754,12 +692,12 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                 }
-                                
+
                             }
                         }
-                        
+
                     }
-                    
+
                 }else{
                     if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                         let alert = UIAlertController(title: "", message: "QR Code length should be 12", preferredStyle: UIAlertController.Style.alert)
@@ -768,7 +706,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                 self.session.stopRunning()
                             }))
                             self.present(alert, animated: true, completion: nil)
-                        
+
                     }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                         let alert = UIAlertController(title: "", message: "क्यूआर कोड की लंबाई 12 . होनी चाहिए", preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
@@ -791,15 +729,15 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }))
                             self.present(alert, animated: true, completion: nil)
                     }
-                  
-                    
+
+
                 }
             }else{
                 if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                     let alert = UIAlertController(title: "", message: "Enter the QR Code", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                    
+
                 }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                     let alert = UIAlertController(title: "", message: "क्यूआर कोड दर्ज करें", preferredStyle: UIAlertController.Style.alert)
                     alert.addAction(UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default, handler: nil))
@@ -813,16 +751,16 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                     alert.addAction(UIAlertAction(title: "సరే", style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                 }
-                
-                
-                
+
+
+
             }
-            
+
         }else{
                 // Create the alert controller
             if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                 let alertController = UIAlertController(title: "Enable Location Services", message: "QR Code scanning requires Location Access", preferredStyle: .alert)
-                    
+
                     // Create the actions
                 let okAction = UIAlertAction(title: "Settings", style: UIAlertAction.Style.default) {
                         UIAlertAction in
@@ -834,18 +772,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         UIAlertAction in
                         NSLog("Cancel Pressed")
                     }
-                    
+
                     // Add the actions
                     alertController.addAction(okAction)
                     alertController.addAction(cancelAction)
-                    
+
                     // Present the controller
                     self.present(alertController, animated: true, completion: nil)
                     // Note : This function is overlap permission
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                 let alertController = UIAlertController(title: "लोकेशन सेवाओं को सक्षम करें", message: "क्यूआर कोड स्कैनिंग के लिए लोकेशन एक्सेस की आवश्यकता होती है", preferredStyle: .alert)
-                    
+
                     // Create the actions
                 let okAction = UIAlertAction(title: "समायोजन", style: UIAlertAction.Style.default) {
                         UIAlertAction in
@@ -857,17 +795,17 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         UIAlertAction in
                         NSLog("Cancel Pressed")
                     }
-                    
+
                     // Add the actions
                     alertController.addAction(okAction)
                     alertController.addAction(cancelAction)
-                    
+
                     // Present the controller
                     self.present(alertController, animated: true, completion: nil)
                     // Note : This function is overlap permission
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                 let alertController = UIAlertController(title: "অবস্থান পরিষেবা সক্রিয়", message: "QR কোড স্ক্যান করার জন্য অবস্থান অ্যাক্সেস প্রয়োজন", preferredStyle: .alert)
-                    
+
                     // Create the actions
                 let okAction = UIAlertAction(title: "সেটিংস", style: UIAlertAction.Style.default) {
                         UIAlertAction in
@@ -879,17 +817,17 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         UIAlertAction in
                         NSLog("Cancel Pressed")
                     }
-                    
+
                     // Add the actions
                     alertController.addAction(okAction)
                     alertController.addAction(cancelAction)
-                    
+
                     // Present the controller
                     self.present(alertController, animated: true, completion: nil)
                     // Note : This function is overlap permission
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
                 let alertController = UIAlertController(title: "స్థాన సేవలను ప్రారంభించండి", message: "QR కోడ్ స్కానింగ్‌కు స్థాన యాక్సెస్ అవసరం", preferredStyle: .alert)
-                    
+
                     // Create the actions
                 let okAction = UIAlertAction(title: "సెట్టింగ్‌లు", style: UIAlertAction.Style.default) {
                         UIAlertAction in
@@ -901,22 +839,22 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         UIAlertAction in
                         NSLog("Cancel Pressed")
                     }
-                    
+
                     // Add the actions
                     alertController.addAction(okAction)
                     alertController.addAction(cancelAction)
-                    
+
                     // Present the controller
                     self.present(alertController, animated: true, completion: nil)
                     // Note : This function is overlap permission
             }
-    
-                
+
+
             }
-        
-        
+
+
     }
-    
+
     @IBAction func backButton(_ sender: Any) {
         clearTable()
         self.session.stopRunning()
@@ -929,7 +867,8 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 NotificationCenter.default.post(name: .goToParticularVc, object: nil)
             }
         }
-        
+        navigationController?.popViewController(animated: true)
+
     }
     @IBAction func scannedCodesButton(_ sender: Any) {
         if self.scanQRCodeButton.currentTitle == "Upload QR Code" || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
@@ -939,22 +878,24 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             vc.modalTransitionStyle = .coverVertical
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true, completion: nil)
+            
         }else{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScannedCodes_VC") as! ScannedCodes_VC
             vc.itsFrom = "Upload"
             vc.modalTransitionStyle = .coverVertical
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true, completion: nil)
+            
         }
-        
-       
+
+
     }
-    
+
     @IBAction func scanQRCode(_ sender: Any) {
         if self.scanQRCodeButton.currentTitle == "Upload QR Code" || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
             self.headerView.isHidden = false
             self.closeBTN.isHidden = true
-            
+
             self.scanQRCodeButton.setImage(UIImage(named: "qr"), for: .normal)
             self.scannerView.isHidden = true
             self.uploadView.isHidden = false
@@ -968,13 +909,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.enterQRCodeLabel.text = "Enter QR code in the above field and submit."
                 self.scanQRCodeButton.setTitle("Scan QR Code", for: .normal)
                 self.infoLbl.text = "Click here to see your QR Codes"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                
+
                 self.enterQRCodeLabel.text = "उपरोक्त फ़ील्ड में क्यूआर कोड दर्ज करें और सबमिट करें।"
                 self.scanQRCodeButton.setTitle("क्यू आर कोड स्कैन करें", for: .normal)
                 self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                 self.enterQRCodeLabel.text = "উপরের ক্ষেত্রে QR কোড লিখুন এবং জমা দিন।"
                 self.scanQRCodeButton.setTitle("QR কোড স্ক্যান করুন", for: .normal)
@@ -984,7 +925,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.scanQRCodeButton.setTitle("QR కోడ్‌ని స్కాన్ చేయండి", for: .normal)
                 self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
             }
-            
+
             session.stopRunning()
         }else{
             self.messageLbl.isHidden = false
@@ -996,13 +937,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
                 self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
                 self.infoLbl.text = "Click here to see your QR Codes"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                
+
                 self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
                 self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
                 self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                 self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
                 self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
@@ -1016,7 +957,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 if isComingFrom == 1{
                     NotificationCenter.default.post(name: .scanAccess, object: nil)
                 }
-               
+
                 if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
                     if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
                         fetchDetails()
@@ -1024,8 +965,8 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         scaned = 1
                         self.scannedStatus = false
                         self.barcodeDetector = vision.barcodeDetector()
-                        
-                        
+
+
 
                         if isFirsttime == true{
                             startLiveVideo()
@@ -1046,13 +987,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                 self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
                                 self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
                                 self.infoLbl.text = "Click here to see your QR Codes"
-                                
+
                             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                                
+
                                 self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
                                 self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
                                 self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                                
+
                             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                                 self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
                                 self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
@@ -1075,12 +1016,12 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }
                             let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
-                                
+
                             }
                             alertVC.addAction(okAction)
                             alertVC.addAction(cancelAction)
                             self.present(alertVC, animated: true, completion: nil)
-                            
+
                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                             let alertVC = UIAlertController(title: "सेंचुरी प्लाई एप्लिकेशन को स्कैनिंग कोड के लिए कैमरा अनुमति की आवश्यकता है", message: "कैमरा एक्सेस की अनुमति दें", preferredStyle: .alert)
                             let okAction = UIAlertAction(title: "अनुमति देना", style: UIAlertAction.Style.default) {
@@ -1089,12 +1030,12 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }
                             let cancelAction = UIAlertAction(title: "अनुमति न दें", style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
-                                
+
                             }
                             alertVC.addAction(okAction)
                             alertVC.addAction(cancelAction)
                             self.present(alertVC, animated: true, completion: nil)
-                            
+
                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                             let alertVC = UIAlertController(title: "সেঞ্চুরি প্লাই অ্যাপ্লিকেশনটির স্ক্যানিং কোডের জন্য ক্যামেরার অনুমতি প্রয়োজন", message: "ক্যামেরা অ্যাক্সেসের অনুমতি দিন", preferredStyle: .alert)
                             let okAction = UIAlertAction(title: "অনুমতি দিন", style: UIAlertAction.Style.default) {
@@ -1103,7 +1044,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }
                             let cancelAction = UIAlertAction(title: "অনুমতি না দেওয়া", style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
-                                
+
                             }
                             alertVC.addAction(okAction)
                             alertVC.addAction(cancelAction)
@@ -1116,19 +1057,19 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }
                             let cancelAction = UIAlertAction(title: "అనుమతించవద్దు", style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
-                                
+
                             }
                             alertVC.addAction(okAction)
                             alertVC.addAction(cancelAction)
                             self.present(alertVC, animated: true, completion: nil)
                         }
-                       
+
                     }
                 }else{
                     // Create the alert controller
                 if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                     let alertController = UIAlertController(title: "Enable Location Services", message: "QR Code scanning requires Location Access", preferredStyle: .alert)
-                        
+
                         // Create the actions
                     let okAction = UIAlertAction(title: "Settings", style: UIAlertAction.Style.default) {
                             UIAlertAction in
@@ -1140,18 +1081,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             UIAlertAction in
                             NSLog("Cancel Pressed")
                         }
-                        
+
                         // Add the actions
                         alertController.addAction(okAction)
                         alertController.addAction(cancelAction)
-                        
+
                         // Present the controller
                         self.present(alertController, animated: true, completion: nil)
                         // Note : This function is overlap permission
-                    
+
                 }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                     let alertController = UIAlertController(title: "लोकेशन सेवाओं को सक्षम करें", message: "क्यूआर कोड स्कैनिंग के लिए लोकेशन एक्सेस की आवश्यकता होती है", preferredStyle: .alert)
-                        
+
                         // Create the actions
                     let okAction = UIAlertAction(title: "समायोजन", style: UIAlertAction.Style.default) {
                             UIAlertAction in
@@ -1163,17 +1104,17 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             UIAlertAction in
                             NSLog("Cancel Pressed")
                         }
-                        
+
                         // Add the actions
                         alertController.addAction(okAction)
                         alertController.addAction(cancelAction)
-                        
+
                         // Present the controller
                         self.present(alertController, animated: true, completion: nil)
                         // Note : This function is overlap permission
                 }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                     let alertController = UIAlertController(title: "অবস্থান পরিষেবা সক্রিয়", message: "QR কোড স্ক্যান করার জন্য অবস্থান অ্যাক্সেস প্রয়োজন", preferredStyle: .alert)
-                        
+
                         // Create the actions
                     let okAction = UIAlertAction(title: "সেটিংস", style: UIAlertAction.Style.default) {
                             UIAlertAction in
@@ -1185,17 +1126,17 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             UIAlertAction in
                             NSLog("Cancel Pressed")
                         }
-                        
+
                         // Add the actions
                         alertController.addAction(okAction)
                         alertController.addAction(cancelAction)
-                        
+
                         // Present the controller
                         self.present(alertController, animated: true, completion: nil)
                         // Note : This function is overlap permission
                 }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
                     let alertController = UIAlertController(title: "స్థాన సేవలను ప్రారంభించండి", message: "QR కోడ్ స్కానింగ్‌కు స్థాన యాక్సెస్ అవసరం", preferredStyle: .alert)
-                        
+
                         // Create the actions
                     let okAction = UIAlertAction(title: "సెట్టింగ్‌లు", style: UIAlertAction.Style.default) {
                             UIAlertAction in
@@ -1207,18 +1148,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             UIAlertAction in
                             NSLog("Cancel Pressed")
                         }
-                        
+
                         // Add the actions
                         alertController.addAction(okAction)
                         alertController.addAction(cancelAction)
-                        
+
                         // Present the controller
                         self.present(alertController, animated: true, completion: nil)
                         // Note : This function is overlap permission
                 }
-                    
+
                 }
-            
+
         }
     }
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -1236,9 +1177,9 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
 //        }
 //        return true
 //    }
-    
-    
-    
+
+
+
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
       let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
       let compSepByCharInSet = string.components(separatedBy: aSet)
@@ -1270,12 +1211,12 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         authorizelocationstates()
     }
     func clearTable(){
-        
+
         let context = persistanceservice.persistentContainer.viewContext
-        
+
         let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ScanCodeSTORE")
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
-        
+
         do {
             try context.execute(deleteRequest)
             try context.save()
@@ -1284,10 +1225,10 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         }
     }
 
-    
+
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         DispatchQueue.main.async {
-            
+
             if let barcodeDetector = self.barcodeDetector {
                 let visionImage = VisionImage(buffer: sampleBuffer)
                 barcodeDetector.detect(in: visionImage) { (barcodes, error) in
@@ -1299,14 +1240,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             self.session.stopRunning()
                             return
                         }else{
-                            
+
                             for barcode in barcodes!{
                                 if self.scaned == 1{
-                                    
+
                                     self.session.stopRunning()
                                     let scannedCodess = barcode.rawValue!.replacingOccurrences(of: " ", with: "")
                                     self.CapturedCodess = scannedCodess
-                                    
+
                                     if scannedCodess.count == 12{
                                         let compareCodes = self.codeLIST.filter({$0.code == self.CapturedCodess})
                                         self.session.stopRunning()
@@ -1347,7 +1288,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                                         NotificationCenter.default.post(name: .CodeSubmission, object: nil)
                                                     }))
                                                     self.present(alert, animated: true, completion: nil)
-                                                    
+
                                                 }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                                                     let alert = UIAlertController(title: "", message: "ऑफलाइन स्कैनिंग की सीमा पार हो गई। वाई-फाई / मोबाइल डेटा या स्पष्ट संसाधित कोड में लंबित कोड सिंक करें।", preferredStyle: UIAlertController.Style.alert)
                                                     alert.addAction(UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default, handler: {   UIAlertAction in
@@ -1373,56 +1314,56 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                                     }))
                                                     self.present(alert, animated: true, completion: nil)
                                                 }
-                                             
+
                                                 return
                                             }else{
-                                                
+
                                                 self.scaned = 0
                                                 self.Validation()
                                                 return
                                             }
-                                            
+
                                         }
-                                        
+
                                     }else{
                                         if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                                             let alert = UIAlertController(title: "", message: "QR Code length should be 12", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
-                                                
+
                                             }))
                                             self.present(alert, animated: true, completion: nil)
-                                            
+
                                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
                                             let alert = UIAlertController(title: "", message: "क्यूआर कोड की लंबाई 12 . होनी चाहिए", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
-                                                
+
                                             }))
                                             self.present(alert, animated: true, completion: nil)
-                                            
+
                                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                                             let alert = UIAlertController(title: "", message: "QR কোডের দৈর্ঘ্য 12 হওয়া উচিত", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ওকে", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
-                                                
+
                                             }))
                                             self.present(alert, animated: true, completion: nil)
-                                            
+
                                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
                                             let alert = UIAlertController(title: "", message: "QR కోడ్ పొడవు 12 ఉండాలి", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "సరే", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
-                                                
+
                                             }))
                                             self.present(alert, animated: true, completion: nil)
                                         }
-                                       
-                                        
+
+
                                     }
                                 }else{
                                     self.scaned = 1
@@ -1430,32 +1371,32 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                 }
                             }
                         }
-                        
+
                     }
-                    
+
                 }
             }
         }
 }
-    
-    
+
+
     func Validation(){
         DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
             self.session.stopRunning()
             DispatchQueue.main.async{
-               let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+               let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SuccessMessageVC") as? EBC_SuccessMessageVC
                vc!.delegate = self
                vc!.titleInfo = ""
                 vc!.itsComeFrom = "Scanner"
-                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                //if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                 vc!.descriptionInfo = "Code scanned successfully"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                    vc!.descriptionInfo = "कोड सफलतापूर्वक स्कैन किया गया"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                    vc!.descriptionInfo = "কোড সফলভাবে স্ক্যান করা হয়েছে"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
-                    vc!.descriptionInfo = "కోడ్ విజయవంతంగా స్కాన్ చేయబడింది"
-                }
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+//                    vc!.descriptionInfo = "कोड सफलतापूर्वक स्कैन किया गया"
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+//                    vc!.descriptionInfo = "কোড সফলভাবে স্ক্যান করা হয়েছে"
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
+//                    vc!.descriptionInfo = "కోడ్ విజయవంతంగా స్కాన్ చేయబడింది"
+//                }
                vc!.modalPresentationStyle = .overCurrentContext
                vc!.modalTransitionStyle = .crossDissolve
                self.present(vc!, animated: true, completion: nil)
@@ -1473,26 +1414,26 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.scanQRCodeButton.setImage(UIImage(named: "software-upload"), for: .normal)
                 self.scannerView.isHidden = false
                 self.uploadView.isHidden = true
-                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                //if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                     self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
                     self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
                     self.infoLbl.text = "Click here to see your QR Codes"
-                    
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                    
-                    self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
-                    self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
-                    self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                    
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                    self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
-                    self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
-                    self.infoLbl.text = "আপনার QR কোড দেখতে এখানে ক্লিক করুন"
-                }else{
-                    self.messageLbl.text = "స్కాన్ చేయడానికి వీక్షణ ఫైండర్ దీర్ఘచతురస్రం లోపల QR కోడ్‌ను ఉంచండి."
-                    self.scanQRCodeButton.setTitle("QR కోడ్‌ని అప్‌లోడ్ చేయండి", for: .normal)
-                    self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
-                }
+
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+//
+//                    self.messageLbl.text = "इसे स्कैन करने के लिए व्यू फाइंडर आयत के अंदर एक क्यूआर कोड रखें।"
+//                    self.scanQRCodeButton.setTitle("क्यूआर कोड अपलोड करें", for: .normal)
+//                    self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
+//
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+//                    self.messageLbl.text = "এটি স্ক্যান করতে ভিউ ফাইন্ডার আয়তক্ষেত্রের ভিতরে একটি QR কোড রাখুন।"
+//                    self.scanQRCodeButton.setTitle("QR কোড আপলোড করুন", for: .normal)
+//                    self.infoLbl.text = "আপনার QR কোড দেখতে এখানে ক্লিক করুন"
+//                }else{
+//                    self.messageLbl.text = "స్కాన్ చేయడానికి వీక్షణ ఫైండర్ దీర్ఘచతురస్రం లోపల QR కోడ్‌ను ఉంచండి."
+//                    self.scanQRCodeButton.setTitle("QR కోడ్‌ని అప్‌లోడ్ చేయండి", for: .normal)
+//                    self.infoLbl.text = "మీ QR కోడ్‌లను చూడటానికి ఇక్కడ క్లిక్ చేయండి"
+//                }
                 self.scannedStatus = true
                 self.session.startRunning()
             })
@@ -1505,13 +1446,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.enterQRCodeLabel.text = "Enter QR code in the above field and submit."
                 self.scanQRCodeButton.setTitle("Scan QR Code", for: .normal)
                 self.infoLbl.text = "Click here to see your QR Codes"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                
+
                 self.enterQRCodeLabel.text = "उपरोक्त फ़ील्ड में क्यूआर कोड दर्ज करें और सबमिट करें।"
                 self.scanQRCodeButton.setTitle("क्यू आर कोड स्कैन करें", for: .normal)
                 self.infoLbl.text = "अपने क्यूआर कोड देखने के लिए यहां क्लिक करें"
-                
+
             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
                 self.enterQRCodeLabel.text = "উপরের ক্ষেত্রে QR কোড লিখুন এবং জমা দিন।"
                 self.scanQRCodeButton.setTitle("QR কোড স্ক্যান করুন", for: .normal)
@@ -1525,7 +1466,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.scanQRCodeButton.setImage(UIImage(named: "qr"), for: .normal)
         }
        }
-    
+
     private func startLiveVideo() {
         DispatchQueue.main.async {
             self.session.sessionPreset = AVCaptureSession.Preset.photo
@@ -1544,7 +1485,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.isscannedOnce = true
         }
     }
-    
+
     func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
         var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
         let lat: Double = Double("\(pdblLatitude)")!
@@ -1554,10 +1495,10 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         let ceo: CLGeocoder = CLGeocoder()
         center.latitude = lat
         center.longitude = lon
-        
+
         let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
-        
-        
+
+
         ceo.reverseGeocodeLocation(loc, completionHandler:
                                     {(placemarks, error) in
                                         if (error != nil)
@@ -1593,22 +1534,22 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                                 self.addressString = self.addressString + pm.postalCode! + " "
                                                 self.pincode = pm.postalCode!
                                             }
-                                            
-                                            
+
+
                                             print(self.addressString)
-                                            
+
                                                 self.stopLoading()
 //                                                self.VM.saveScannedandUploadCodesApi(parameters: self.parameterJSON!)
                                             self.codesSubmissionsApi()
-                                            
+
                                         }
                                     })
-        
+
     }
-    
-    
-    
-    
+
+
+
+
 }
 //extension Array where Element: Hashable {
 //    func removingDuplicates() -> [Element] {

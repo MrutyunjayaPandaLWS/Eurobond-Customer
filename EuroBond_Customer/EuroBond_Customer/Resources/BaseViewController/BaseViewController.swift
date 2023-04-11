@@ -22,6 +22,8 @@ class BaseViewController: UIViewController {
     var firstName = UserDefaults.standard.string(forKey: "FirstName")
     var customerEmail = UserDefaults.standard.string(forKey: "CustomerEmail")
     var customerMobileNumber = UserDefaults.standard.string(forKey: "Mobile")
+    
+    //var loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyID") ?? ""
 
     override func viewDidLoad() {
         super.viewDidLoad()

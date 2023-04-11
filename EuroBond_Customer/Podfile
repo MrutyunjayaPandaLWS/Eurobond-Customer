@@ -25,4 +25,8 @@ pod "ImageSlideshow/Alamofire"
 pod 'Toast-Swift', '~> 5.0.1'
 pod 'SlideMenuControllerSwift'
 
+
+
+
+
 end

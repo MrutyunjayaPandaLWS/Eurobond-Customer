@@ -7,12 +7,23 @@
 
 import UIKit
 
+
+protocol popUpDelegate : AnyObject {
+    func popupAlertDidTap(_ vc: EBC_SuccessMessageVC)
+}
 class EBC_SuccessMessageVC: UIViewController {
 
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var statusLbl: UILabel!
     @IBOutlet weak var statusImage: UIImageView!
+    
+    var titleInfo = ""
+    var descriptionInfo = ""
+    weak var delegate:popUpDelegate?
+    var itsComeFrom = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

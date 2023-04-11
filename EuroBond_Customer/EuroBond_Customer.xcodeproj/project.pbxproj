@@ -8,6 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		0AE67831B6B695C0CFD45E25 /* Pods_EuroBond_CustomerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B7B39FBFA2A5EEF0345E28 /* Pods_EuroBond_CustomerTests.framework */; };
+		2577B47829DEBCD0004C4942 /* EBC_GameCenter_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B47729DEBCD0004C4942 /* EBC_GameCenter_VM.swift */; };
+		2577B47A29DEBDF4004C4942 /* EBC_MyAttempts_CVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2577B47929DEBDF4004C4942 /* EBC_MyAttempts_CVC.xib */; };
+		2577B47C29DEBEDD004C4942 /* EBC_MyAttempts_CVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B47B29DEBEDD004C4942 /* EBC_MyAttempts_CVC.swift */; };
+		2577B47F29DEBFBF004C4942 /* EBC_PlayNow_CVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B47D29DEBFBE004C4942 /* EBC_PlayNow_CVC.swift */; };
+		2577B48029DEBFBF004C4942 /* EBC_PlayNow_CVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2577B47E29DEBFBF004C4942 /* EBC_PlayNow_CVC.xib */; };
+		2577B48229DEC224004C4942 /* EBC_ScratchCard_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B48129DEC224004C4942 /* EBC_ScratchCard_VC.swift */; };
+		2577B48429DEC2EC004C4942 /* EBC_ScratchCard_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B48329DEC2EC004C4942 /* EBC_ScratchCard_VM.swift */; };
+		2577B48A29DED801004C4942 /* MyCart_TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B48829DED801004C4942 /* MyCart_TVC.swift */; };
+		2577B48B29DED801004C4942 /* MyCart_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B48929DED801004C4942 /* MyCart_VC.swift */; };
+		2577B48E29DEDE8D004C4942 /* MycartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B48D29DEDE8D004C4942 /* MycartViewModel.swift */; };
+		2577B49229DEE4B9004C4942 /* EBC_DefaultAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B49029DEE4B9004C4942 /* EBC_DefaultAddressVC.swift */; };
+		2577B49329DEE4B9004C4942 /* MyOrderTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B49129DEE4B9004C4942 /* MyOrderTVC.swift */; };
+		2577B49C29DEE5C0004C4942 /* DefaultAddressModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B49A29DEE5C0004C4942 /* DefaultAddressModels.swift */; };
+		2577B4A029DEE9D2004C4942 /* EBC_RedemptionSubmissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B49E29DEE9D2004C4942 /* EBC_RedemptionSubmissionVC.swift */; };
+		2577B4A129DEE9D2004C4942 /* MSP_RedemptionSuccessPopVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B49F29DEE9D2004C4942 /* MSP_RedemptionSuccessPopVC.swift */; };
+		2577B4A429DEEA20004C4942 /* RedemptionOTPVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4A329DEEA20004C4942 /* RedemptionOTPVM.swift */; };
+		2577B4A729DEEAFE004C4942 /* OTPModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4A629DEEAFE004C4942 /* OTPModels.swift */; };
+		2577B4AA29DEF144004C4942 /* RedemptionSubmission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4A929DEF144004C4942 /* RedemptionSubmission.swift */; };
+		2577B4AD29DEF24E004C4942 /* SendSuccessModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4AC29DEF24D004C4942 /* SendSuccessModels.swift */; };
+		2577B4B429DEF444004C4942 /* CatalogueSaveCartDetailListResponse1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4B229DEF444004C4942 /* CatalogueSaveCartDetailListResponse1.swift */; };
+		2577B4B529DEF444004C4942 /* MyCartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4B329DEF444004C4942 /* MyCartModels.swift */; };
+		2577B4B829DEF4F9004C4942 /* RedemptionOTPModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4B729DEF4F9004C4942 /* RedemptionOTPModels.swift */; };
+		2577B4BB29DEF546004C4942 /* SendSMSModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4BA29DEF545004C4942 /* SendSMSModel.swift */; };
+		2577B4BE29DEF593004C4942 /* UserStatusModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4BD29DEF593004C4942 /* UserStatusModels.swift */; };
+		2577B4C129DEF61C004C4942 /* RemoveGiftModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4C029DEF61C004C4942 /* RemoveGiftModels.swift */; };
+		2577B4C729DEF963004C4942 /* MyProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4C329DEF963004C4942 /* MyProfileModels.swift */; };
+		2577B4C829DEF963004C4942 /* LstCustomerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4C429DEF963004C4942 /* LstCustomerJson.swift */; };
+		2577B4C929DEF963004C4942 /* LstCustomerOfficalInfoJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4C529DEF963004C4942 /* LstCustomerOfficalInfoJson.swift */; };
+		2577B4CA29DEF963004C4942 /* LstCustomerIdentityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4C629DEF963004C4942 /* LstCustomerIdentityInfo.swift */; };
+		2577B4CD29DEFCAF004C4942 /* RemoveCartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4CC29DEFCAF004C4942 /* RemoveCartModel.swift */; };
+		2577B4D029DEFD9F004C4942 /* IncreaseProductModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2577B4CF29DEFD9F004C4942 /* IncreaseProductModels.swift */; };
+		25844B1029DE86D900CACC41 /* CodeListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B0D29DE86D900CACC41 /* CodeListingViewModel.swift */; };
+		25844B1129DE86D900CACC41 /* UploadAndScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B0F29DE86D900CACC41 /* UploadAndScanViewModel.swift */; };
+		25844B1629DE88E400CACC41 /* ScannedandUploadCodesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1429DE88E400CACC41 /* ScannedandUploadCodesModels.swift */; };
+		25844B1729DE88E400CACC41 /* QRCodeSaveResponseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1529DE88E400CACC41 /* QRCodeSaveResponseList.swift */; };
+		25844B1929DE8ACB00CACC41 /* persistanceservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1829DE8ACB00CACC41 /* persistanceservice.swift */; };
+		25844B1D29DE964400CACC41 /* ScannedCodes_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1B29DE964400CACC41 /* ScannedCodes_VC.swift */; };
+		25844B1E29DE964400CACC41 /* ScannedCode_TVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1C29DE964400CACC41 /* ScannedCode_TVC.swift */; };
+		25844B2029DEA91F00CACC41 /* EBC_MagicBoxVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1F29DEA91E00CACC41 /* EBC_MagicBoxVC.swift */; };
+		25844B2429DEA9F100CACC41 /* GamificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2229DEA9F100CACC41 /* GamificationModels.swift */; };
+		25844B2529DEA9F100CACC41 /* LstGamificationTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2329DEA9F100CACC41 /* LstGamificationTransaction.swift */; };
+		25844B2729DEAA0800CACC41 /* EBC_MagicBox_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2629DEAA0800CACC41 /* EBC_MagicBox_VM.swift */; };
+		25844B2B29DEAADD00CACC41 /* GamificationResultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2A29DEAADD00CACC41 /* GamificationResultModels.swift */; };
+		25844B2D29DEB03300CACC41 /* EBC_GameCentre_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2C29DEB03300CACC41 /* EBC_GameCentre_VC.swift */; };
 		800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */; };
 		800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */; };
 		800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D629C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift */; };
@@ -84,7 +128,7 @@
 		80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6429C44247005108AC /* String+Extenssion.swift */; };
 		80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6529C44247005108AC /* UiViewControllerExtenssion.swift */; };
 		80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD6629C44249005108AC /* GrandientExtension.swift */; };
-		80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD7129C44E3D005108AC /* EBC_LunchScreenVC.swift */; };
+		80AEAD7229C44E3D005108AC /* EBC_LaunchScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD7129C44E3D005108AC /* EBC_LaunchScreenVC.swift */; };
 		80AEAD7629C45DD3005108AC /* EUROBOND LOGO ANIMATION_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */; };
 		80AEAD7929C46969005108AC /* EBC_WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AEAD7829C46969005108AC /* EBC_WelcomeVC.swift */; };
 		80C9DD6E29C8844400F8641A /* EBC_MyRedemptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9DD6D29C8844400F8641A /* EBC_MyRedemptionVC.swift */; };
@@ -95,6 +139,8 @@
 		8407C2AE29D6A1D300704C87 /* EBC_DateFilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */; };
 		841B77B429DD5C8800CF0C88 /* CodesListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B77B229DD5C8800CF0C88 /* CodesListTVC.swift */; };
 		841B77B529DD5C8800CF0C88 /* ScanOrUpload_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841B77B329DD5C8800CF0C88 /* ScanOrUpload_VC.swift */; };
+		842B937629E43CFE00FD0770 /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B937429E43CFD00FD0770 /* CityList.swift */; };
+		842B937729E43CFE00FD0770 /* CityListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B937529E43CFE00FD0770 /* CityListModels.swift */; };
 		843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */; };
 		843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */; };
 		843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */; };
@@ -104,10 +150,25 @@
 		84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9929DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift */; };
 		84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */; };
 		84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */; };
+		845606FA29E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845606F929E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift */; };
+		84815F5B29E3E8EA001C65F9 /* EBC_Login1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F5A29E3E8EA001C65F9 /* EBC_Login1VC.swift */; };
+		84815F5E29E3EEA2001C65F9 /* TokenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F5D29E3EEA2001C65F9 /* TokenModels.swift */; };
+		84815F6629E41669001C65F9 /* NotificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6429E41668001C65F9 /* NotificationModels.swift */; };
+		84815F6729E41669001C65F9 /* LstPushHistoryJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6529E41669001C65F9 /* LstPushHistoryJson.swift */; };
+		84815F6A29E41699001C65F9 /* HistoryNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6929E41699001C65F9 /* HistoryNotificationsViewModel.swift */; };
+		84815F6E29E416CA001C65F9 /* HistoryNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6B29E416C7001C65F9 /* HistoryNotificationsTableViewCell.swift */; };
+		84815F6F29E416CA001C65F9 /* HistoryNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84815F6C29E416C8001C65F9 /* HistoryNotificationsTableViewCell.xib */; };
+		84815F7029E416CA001C65F9 /* HistoryNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6D29E416CA001C65F9 /* HistoryNotificationsViewController.swift */; };
+		84815F7329E4175A001C65F9 /* EBC_DropDownTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7129E41759001C65F9 /* EBC_DropDownTVCell.swift */; };
+		84815F7429E4175A001C65F9 /* EBC_DropDownVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7229E4175A001C65F9 /* EBC_DropDownVC.swift */; };
+		84815F7729E41787001C65F9 /* HYT_DropdownVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7629E41787001C65F9 /* HYT_DropdownVM.swift */; };
+		84815F7A29E417BD001C65F9 /* HYT_LanguageVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7929E417BD001C65F9 /* HYT_LanguageVM.swift */; };
+		84815F7E29E41810001C65F9 /* LstAttributesDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7C29E4180E001C65F9 /* LstAttributesDetails.swift */; };
+		84815F7F29E41810001C65F9 /* LanguageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7D29E4180F001C65F9 /* LanguageModels.swift */; };
+		84815F8329E42176001C65F9 /* StateListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F8129E42175001C65F9 /* StateListModels.swift */; };
+		84815F8429E42176001C65F9 /* StateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F8229E42176001C65F9 /* StateList.swift */; };
 		8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */; };
 		849E45A029DC094500A4311B /* EBC_ScannerAndUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E459F29DC094500A4311B /* EBC_ScannerAndUploadVC.swift */; };
-		849E45A229DC09BD00A4311B /* EBC_MyQRCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45A129DC09BD00A4311B /* EBC_MyQRCodeVC.swift */; };
-		849E45A629DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45A529DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift */; };
 		849E45A929DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45A829DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift */; };
 		849E45AE29DC274400A4311B /* EBC_TermsAndConditionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45AD29DC274400A4311B /* EBC_TermsAndConditionsVC.swift */; };
 		849E45B029DC275800A4311B /* EBC_AboutVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849E45AF29DC275800A4311B /* EBC_AboutVC.swift */; };
@@ -177,6 +238,50 @@
 
 /* Begin PBXFileReference section */
 		1E7B27CA5472481DBA0AFC63 /* Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer_EuroBond_CustomerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2577B47729DEBCD0004C4942 /* EBC_GameCenter_VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_GameCenter_VM.swift; sourceTree = "<group>"; };
+		2577B47929DEBDF4004C4942 /* EBC_MyAttempts_CVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBC_MyAttempts_CVC.xib; sourceTree = "<group>"; };
+		2577B47B29DEBEDD004C4942 /* EBC_MyAttempts_CVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_MyAttempts_CVC.swift; sourceTree = "<group>"; };
+		2577B47D29DEBFBE004C4942 /* EBC_PlayNow_CVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_PlayNow_CVC.swift; sourceTree = "<group>"; };
+		2577B47E29DEBFBF004C4942 /* EBC_PlayNow_CVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBC_PlayNow_CVC.xib; sourceTree = "<group>"; };
+		2577B48129DEC224004C4942 /* EBC_ScratchCard_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_ScratchCard_VC.swift; sourceTree = "<group>"; };
+		2577B48329DEC2EC004C4942 /* EBC_ScratchCard_VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_ScratchCard_VM.swift; sourceTree = "<group>"; };
+		2577B48829DED801004C4942 /* MyCart_TVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCart_TVC.swift; sourceTree = "<group>"; };
+		2577B48929DED801004C4942 /* MyCart_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCart_VC.swift; sourceTree = "<group>"; };
+		2577B48D29DEDE8D004C4942 /* MycartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MycartViewModel.swift; sourceTree = "<group>"; };
+		2577B49029DEE4B9004C4942 /* EBC_DefaultAddressVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_DefaultAddressVC.swift; sourceTree = "<group>"; };
+		2577B49129DEE4B9004C4942 /* MyOrderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOrderTVC.swift; sourceTree = "<group>"; };
+		2577B49A29DEE5C0004C4942 /* DefaultAddressModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAddressModels.swift; sourceTree = "<group>"; };
+		2577B49E29DEE9D2004C4942 /* EBC_RedemptionSubmissionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_RedemptionSubmissionVC.swift; sourceTree = "<group>"; };
+		2577B49F29DEE9D2004C4942 /* MSP_RedemptionSuccessPopVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSP_RedemptionSuccessPopVC.swift; sourceTree = "<group>"; };
+		2577B4A329DEEA20004C4942 /* RedemptionOTPVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedemptionOTPVM.swift; sourceTree = "<group>"; };
+		2577B4A629DEEAFE004C4942 /* OTPModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPModels.swift; sourceTree = "<group>"; };
+		2577B4A929DEF144004C4942 /* RedemptionSubmission.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedemptionSubmission.swift; sourceTree = "<group>"; };
+		2577B4AC29DEF24D004C4942 /* SendSuccessModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendSuccessModels.swift; sourceTree = "<group>"; };
+		2577B4B229DEF444004C4942 /* CatalogueSaveCartDetailListResponse1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogueSaveCartDetailListResponse1.swift; sourceTree = "<group>"; };
+		2577B4B329DEF444004C4942 /* MyCartModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartModels.swift; sourceTree = "<group>"; };
+		2577B4B729DEF4F9004C4942 /* RedemptionOTPModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedemptionOTPModels.swift; sourceTree = "<group>"; };
+		2577B4BA29DEF545004C4942 /* SendSMSModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendSMSModel.swift; sourceTree = "<group>"; };
+		2577B4BD29DEF593004C4942 /* UserStatusModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStatusModels.swift; sourceTree = "<group>"; };
+		2577B4C029DEF61C004C4942 /* RemoveGiftModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveGiftModels.swift; sourceTree = "<group>"; };
+		2577B4C329DEF963004C4942 /* MyProfileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileModels.swift; sourceTree = "<group>"; };
+		2577B4C429DEF963004C4942 /* LstCustomerJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerJson.swift; sourceTree = "<group>"; };
+		2577B4C529DEF963004C4942 /* LstCustomerOfficalInfoJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerOfficalInfoJson.swift; sourceTree = "<group>"; };
+		2577B4C629DEF963004C4942 /* LstCustomerIdentityInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerIdentityInfo.swift; sourceTree = "<group>"; };
+		2577B4CC29DEFCAF004C4942 /* RemoveCartModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveCartModel.swift; sourceTree = "<group>"; };
+		2577B4CF29DEFD9F004C4942 /* IncreaseProductModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncreaseProductModels.swift; sourceTree = "<group>"; };
+		25844B0D29DE86D900CACC41 /* CodeListingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeListingViewModel.swift; sourceTree = "<group>"; };
+		25844B0F29DE86D900CACC41 /* UploadAndScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadAndScanViewModel.swift; sourceTree = "<group>"; };
+		25844B1429DE88E400CACC41 /* ScannedandUploadCodesModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannedandUploadCodesModels.swift; sourceTree = "<group>"; };
+		25844B1529DE88E400CACC41 /* QRCodeSaveResponseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeSaveResponseList.swift; sourceTree = "<group>"; };
+		25844B1829DE8ACB00CACC41 /* persistanceservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = persistanceservice.swift; sourceTree = "<group>"; };
+		25844B1B29DE964400CACC41 /* ScannedCodes_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannedCodes_VC.swift; sourceTree = "<group>"; };
+		25844B1C29DE964400CACC41 /* ScannedCode_TVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannedCode_TVC.swift; sourceTree = "<group>"; };
+		25844B1F29DEA91E00CACC41 /* EBC_MagicBoxVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_MagicBoxVC.swift; sourceTree = "<group>"; };
+		25844B2229DEA9F100CACC41 /* GamificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamificationModels.swift; sourceTree = "<group>"; };
+		25844B2329DEA9F100CACC41 /* LstGamificationTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstGamificationTransaction.swift; sourceTree = "<group>"; };
+		25844B2629DEAA0800CACC41 /* EBC_MagicBox_VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_MagicBox_VM.swift; sourceTree = "<group>"; };
+		25844B2A29DEAADD00CACC41 /* GamificationResultModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamificationResultModels.swift; sourceTree = "<group>"; };
+		25844B2C29DEB03300CACC41 /* EBC_GameCentre_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_GameCentre_VC.swift; sourceTree = "<group>"; };
 		6CC61A8CB55D6BD8E50F79B3 /* Pods-EuroBond_Customer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.release.xcconfig"; sourceTree = "<group>"; };
 		6F980706B2150ACBB0F00500 /* Pods_EuroBond_Customer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		789171B75B07E02A34445DAE /* Pods-EuroBond_Customer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -252,7 +357,7 @@
 		80AEAD6429C44247005108AC /* String+Extenssion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extenssion.swift"; sourceTree = "<group>"; };
 		80AEAD6529C44247005108AC /* UiViewControllerExtenssion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UiViewControllerExtenssion.swift; sourceTree = "<group>"; };
 		80AEAD6629C44249005108AC /* GrandientExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrandientExtension.swift; sourceTree = "<group>"; };
-		80AEAD7129C44E3D005108AC /* EBC_LunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_LunchScreenVC.swift; sourceTree = "<group>"; };
+		80AEAD7129C44E3D005108AC /* EBC_LaunchScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_LaunchScreenVC.swift; sourceTree = "<group>"; };
 		80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "EUROBOND LOGO ANIMATION_1.mp4"; sourceTree = "<group>"; };
 		80AEAD7829C46969005108AC /* EBC_WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WelcomeVC.swift; sourceTree = "<group>"; };
 		80AEAD7C29C46C12005108AC /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -271,6 +376,8 @@
 		8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DateFilterVC.swift; sourceTree = "<group>"; };
 		841B77B229DD5C8800CF0C88 /* CodesListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodesListTVC.swift; sourceTree = "<group>"; };
 		841B77B329DD5C8800CF0C88 /* ScanOrUpload_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanOrUpload_VC.swift; sourceTree = "<group>"; };
+		842B937429E43CFD00FD0770 /* CityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
+		842B937529E43CFE00FD0770 /* CityListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListModels.swift; sourceTree = "<group>"; };
 		843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CreatenewQueryVC.swift; sourceTree = "<group>"; };
 		843EAF8F29D6B82500971B96 /* EBC_MyAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantVC.swift; sourceTree = "<group>"; };
 		843EAF9129D6B84500971B96 /* EBC_MyAssistantTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantTVC.swift; sourceTree = "<group>"; };
@@ -280,10 +387,25 @@
 		84411E9929DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftDetailsVC.swift; sourceTree = "<group>"; };
 		84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftTVC.swift; sourceTree = "<group>"; };
 		84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WishListDetailsVC.swift; sourceTree = "<group>"; };
+		845606F929E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_TermsAndCondition1VC.swift; sourceTree = "<group>"; };
+		84815F5A29E3E8EA001C65F9 /* EBC_Login1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_Login1VC.swift; sourceTree = "<group>"; };
+		84815F5D29E3EEA2001C65F9 /* TokenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModels.swift; sourceTree = "<group>"; };
+		84815F6429E41668001C65F9 /* NotificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModels.swift; sourceTree = "<group>"; };
+		84815F6529E41669001C65F9 /* LstPushHistoryJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPushHistoryJson.swift; sourceTree = "<group>"; };
+		84815F6929E41699001C65F9 /* HistoryNotificationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewModel.swift; sourceTree = "<group>"; };
+		84815F6B29E416C7001C65F9 /* HistoryNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsTableViewCell.swift; sourceTree = "<group>"; };
+		84815F6C29E416C8001C65F9 /* HistoryNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryNotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		84815F6D29E416CA001C65F9 /* HistoryNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewController.swift; sourceTree = "<group>"; };
+		84815F7129E41759001C65F9 /* EBC_DropDownTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_DropDownTVCell.swift; sourceTree = "<group>"; };
+		84815F7229E4175A001C65F9 /* EBC_DropDownVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_DropDownVC.swift; sourceTree = "<group>"; };
+		84815F7629E41787001C65F9 /* HYT_DropdownVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYT_DropdownVM.swift; sourceTree = "<group>"; };
+		84815F7929E417BD001C65F9 /* HYT_LanguageVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYT_LanguageVM.swift; sourceTree = "<group>"; };
+		84815F7C29E4180E001C65F9 /* LstAttributesDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstAttributesDetails.swift; sourceTree = "<group>"; };
+		84815F7D29E4180F001C65F9 /* LanguageModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModels.swift; sourceTree = "<group>"; };
+		84815F8129E42175001C65F9 /* StateListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateListModels.swift; sourceTree = "<group>"; };
+		84815F8229E42176001C65F9 /* StateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateList.swift; sourceTree = "<group>"; };
 		8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_PopupMessageVC.swift; sourceTree = "<group>"; };
 		849E459F29DC094500A4311B /* EBC_ScannerAndUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_ScannerAndUploadVC.swift; sourceTree = "<group>"; };
-		849E45A129DC09BD00A4311B /* EBC_MyQRCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyQRCodeVC.swift; sourceTree = "<group>"; };
-		849E45A529DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyQrCodeTVC.swift; sourceTree = "<group>"; };
 		849E45A829DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_QRCodeSubmitSuccessMessageVC.swift; sourceTree = "<group>"; };
 		849E45AD29DC274400A4311B /* EBC_TermsAndConditionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_TermsAndConditionsVC.swift; sourceTree = "<group>"; };
 		849E45AF29DC275800A4311B /* EBC_AboutVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_AboutVC.swift; sourceTree = "<group>"; };
@@ -360,6 +482,280 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2577B48529DEC356004C4942 /* ScratchVM */ = {
+			isa = PBXGroup;
+			children = (
+				2577B48329DEC2EC004C4942 /* EBC_ScratchCard_VM.swift */,
+			);
+			path = ScratchVM;
+			sourceTree = "<group>";
+		};
+		2577B48629DEC446004C4942 /* GameZoneCVC */ = {
+			isa = PBXGroup;
+			children = (
+				2577B47D29DEBFBE004C4942 /* EBC_PlayNow_CVC.swift */,
+				2577B47E29DEBFBF004C4942 /* EBC_PlayNow_CVC.xib */,
+				2577B47B29DEBEDD004C4942 /* EBC_MyAttempts_CVC.swift */,
+				2577B47929DEBDF4004C4942 /* EBC_MyAttempts_CVC.xib */,
+			);
+			path = GameZoneCVC;
+			sourceTree = "<group>";
+		};
+		2577B48729DED801004C4942 /* MyCart */ = {
+			isa = PBXGroup;
+			children = (
+				2577B48829DED801004C4942 /* MyCart_TVC.swift */,
+				2577B48929DED801004C4942 /* MyCart_VC.swift */,
+			);
+			path = MyCart;
+			sourceTree = "<group>";
+		};
+		2577B48C29DEDE8D004C4942 /* MyCartVM */ = {
+			isa = PBXGroup;
+			children = (
+				2577B48D29DEDE8D004C4942 /* MycartViewModel.swift */,
+			);
+			path = MyCartVM;
+			sourceTree = "<group>";
+		};
+		2577B48F29DEE4B9004C4942 /* DefaultAddress */ = {
+			isa = PBXGroup;
+			children = (
+				2577B49029DEE4B9004C4942 /* EBC_DefaultAddressVC.swift */,
+				2577B49129DEE4B9004C4942 /* MyOrderTVC.swift */,
+			);
+			path = DefaultAddress;
+			sourceTree = "<group>";
+		};
+		2577B49729DEE5C0004C4942 /* DefaultAddress */ = {
+			isa = PBXGroup;
+			children = (
+				2577B49A29DEE5C0004C4942 /* DefaultAddressModels.swift */,
+			);
+			path = DefaultAddress;
+			sourceTree = "<group>";
+		};
+		2577B49D29DEE9D2004C4942 /* RedemptionOTP */ = {
+			isa = PBXGroup;
+			children = (
+				2577B49E29DEE9D2004C4942 /* EBC_RedemptionSubmissionVC.swift */,
+				2577B49F29DEE9D2004C4942 /* MSP_RedemptionSuccessPopVC.swift */,
+			);
+			path = RedemptionOTP;
+			sourceTree = "<group>";
+		};
+		2577B4A229DEEA20004C4942 /* OTPSubmission */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4A329DEEA20004C4942 /* RedemptionOTPVM.swift */,
+			);
+			path = OTPSubmission;
+			sourceTree = "<group>";
+		};
+		2577B4A529DEEAFE004C4942 /* OTPModels */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4A629DEEAFE004C4942 /* OTPModels.swift */,
+			);
+			path = OTPModels;
+			sourceTree = "<group>";
+		};
+		2577B4A829DEF144004C4942 /* RedemptionSubmission */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4A929DEF144004C4942 /* RedemptionSubmission.swift */,
+			);
+			path = RedemptionSubmission;
+			sourceTree = "<group>";
+		};
+		2577B4AB29DEF24D004C4942 /* SendSuccessSMS */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4AC29DEF24D004C4942 /* SendSuccessModels.swift */,
+			);
+			path = SendSuccessSMS;
+			sourceTree = "<group>";
+		};
+		2577B4B129DEF444004C4942 /* MyCartListModels */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4B229DEF444004C4942 /* CatalogueSaveCartDetailListResponse1.swift */,
+				2577B4B329DEF444004C4942 /* MyCartModels.swift */,
+			);
+			path = MyCartListModels;
+			sourceTree = "<group>";
+		};
+		2577B4B629DEF4F9004C4942 /* RedemptionModels */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4B729DEF4F9004C4942 /* RedemptionOTPModels.swift */,
+			);
+			path = RedemptionModels;
+			sourceTree = "<group>";
+		};
+		2577B4B929DEF545004C4942 /* SendSMSModels */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4BA29DEF545004C4942 /* SendSMSModel.swift */,
+			);
+			path = SendSMSModels;
+			sourceTree = "<group>";
+		};
+		2577B4BC29DEF593004C4942 /* UserIsActive */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4BD29DEF593004C4942 /* UserStatusModels.swift */,
+			);
+			path = UserIsActive;
+			sourceTree = "<group>";
+		};
+		2577B4BF29DEF61C004C4942 /* RemoveGifts */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4C029DEF61C004C4942 /* RemoveGiftModels.swift */,
+			);
+			path = RemoveGifts;
+			sourceTree = "<group>";
+		};
+		2577B4C229DEF963004C4942 /* ProfileModel */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4C329DEF963004C4942 /* MyProfileModels.swift */,
+				2577B4C429DEF963004C4942 /* LstCustomerJson.swift */,
+				2577B4C529DEF963004C4942 /* LstCustomerOfficalInfoJson.swift */,
+				2577B4C629DEF963004C4942 /* LstCustomerIdentityInfo.swift */,
+			);
+			path = ProfileModel;
+			sourceTree = "<group>";
+		};
+		2577B4CB29DEFCAF004C4942 /* RemoveProduct */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4CC29DEFCAF004C4942 /* RemoveCartModel.swift */,
+			);
+			path = RemoveProduct;
+			sourceTree = "<group>";
+		};
+		2577B4CE29DEFD9F004C4942 /* IncreaseProductsModel */ = {
+			isa = PBXGroup;
+			children = (
+				2577B4CF29DEFD9F004C4942 /* IncreaseProductModels.swift */,
+			);
+			path = IncreaseProductsModel;
+			sourceTree = "<group>";
+		};
+		25844B0A29DE86C200CACC41 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				84815F7829E41792001C65F9 /* LanguageVM */,
+				84815F7529E41768001C65F9 /* DropDownVM */,
+				84815F6829E41683001C65F9 /* NotificationVM */,
+				2577B49729DEE5C0004C4942 /* DefaultAddress */,
+				2577B48C29DEDE8D004C4942 /* MyCartVM */,
+				25844B2829DEAA1000CACC41 /* GameZone */,
+				25844B0B29DE86D900CACC41 /* Upload&Scan */,
+			);
+			path = "View Models";
+			sourceTree = "<group>";
+		};
+		25844B0B29DE86D900CACC41 /* Upload&Scan */ = {
+			isa = PBXGroup;
+			children = (
+				25844B0C29DE86D900CACC41 /* CodeListing */,
+				25844B0E29DE86D900CACC41 /* UploadAndScan */,
+			);
+			path = "Upload&Scan";
+			sourceTree = "<group>";
+		};
+		25844B0C29DE86D900CACC41 /* CodeListing */ = {
+			isa = PBXGroup;
+			children = (
+				25844B0D29DE86D900CACC41 /* CodeListingViewModel.swift */,
+			);
+			path = CodeListing;
+			sourceTree = "<group>";
+		};
+		25844B0E29DE86D900CACC41 /* UploadAndScan */ = {
+			isa = PBXGroup;
+			children = (
+				25844B0F29DE86D900CACC41 /* UploadAndScanViewModel.swift */,
+			);
+			path = UploadAndScan;
+			sourceTree = "<group>";
+		};
+		25844B1229DE88D300CACC41 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				842B937329E43CEB00FD0770 /* CityListModels */,
+				84815F8029E42158001C65F9 /* StateListModels */,
+				84815F7B29E417EB001C65F9 /* LanguageModels */,
+				84815F6329E4163E001C65F9 /* NotificationModels */,
+				84815F5C29E3EE88001C65F9 /* TokenModels */,
+				2577B4CE29DEFD9F004C4942 /* IncreaseProductsModel */,
+				2577B4CB29DEFCAF004C4942 /* RemoveProduct */,
+				2577B4C229DEF963004C4942 /* ProfileModel */,
+				2577B4BF29DEF61C004C4942 /* RemoveGifts */,
+				2577B4BC29DEF593004C4942 /* UserIsActive */,
+				2577B4B929DEF545004C4942 /* SendSMSModels */,
+				2577B4B629DEF4F9004C4942 /* RedemptionModels */,
+				2577B4B129DEF444004C4942 /* MyCartListModels */,
+				2577B4AB29DEF24D004C4942 /* SendSuccessSMS */,
+				2577B4A829DEF144004C4942 /* RedemptionSubmission */,
+				2577B4A529DEEAFE004C4942 /* OTPModels */,
+				2577B4A229DEEA20004C4942 /* OTPSubmission */,
+				25844B2929DEAADD00CACC41 /* GamificationResultModels */,
+				25844B2129DEA9F100CACC41 /* GamificationModels */,
+				25844B1329DE88E400CACC41 /* CodesSubmission */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		25844B1329DE88E400CACC41 /* CodesSubmission */ = {
+			isa = PBXGroup;
+			children = (
+				25844B1429DE88E400CACC41 /* ScannedandUploadCodesModels.swift */,
+				25844B1529DE88E400CACC41 /* QRCodeSaveResponseList.swift */,
+			);
+			path = CodesSubmission;
+			sourceTree = "<group>";
+		};
+		25844B1A29DE964400CACC41 /* MyQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				849E45A729DC0A3B00A4311B /* QR code Success pop up */,
+				25844B1B29DE964400CACC41 /* ScannedCodes_VC.swift */,
+				25844B1C29DE964400CACC41 /* ScannedCode_TVC.swift */,
+			);
+			path = MyQRCode;
+			sourceTree = "<group>";
+		};
+		25844B2129DEA9F100CACC41 /* GamificationModels */ = {
+			isa = PBXGroup;
+			children = (
+				25844B2229DEA9F100CACC41 /* GamificationModels.swift */,
+				25844B2329DEA9F100CACC41 /* LstGamificationTransaction.swift */,
+			);
+			path = GamificationModels;
+			sourceTree = "<group>";
+		};
+		25844B2829DEAA1000CACC41 /* GameZone */ = {
+			isa = PBXGroup;
+			children = (
+				2577B48529DEC356004C4942 /* ScratchVM */,
+				2577B47729DEBCD0004C4942 /* EBC_GameCenter_VM.swift */,
+				25844B2629DEAA0800CACC41 /* EBC_MagicBox_VM.swift */,
+			);
+			path = GameZone;
+			sourceTree = "<group>";
+		};
+		25844B2929DEAADD00CACC41 /* GamificationResultModels */ = {
+			isa = PBXGroup;
+			children = (
+				25844B2A29DEAADD00CACC41 /* GamificationResultModels.swift */,
+			);
+			path = GamificationResultModels;
+			sourceTree = "<group>";
+		};
 		800D81CF29C9D4EF00D77557 /* RedeemNowVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +772,10 @@
 		800D81D229C9D53100D77557 /* GameZone */ = {
 			isa = PBXGroup;
 			children = (
+				2577B48629DEC446004C4942 /* GameZoneCVC */,
+				25844B2C29DEB03300CACC41 /* EBC_GameCentre_VC.swift */,
+				2577B48129DEC224004C4942 /* EBC_ScratchCard_VC.swift */,
+				25844B1F29DEA91E00CACC41 /* EBC_MagicBoxVC.swift */,
 				800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */,
 			);
 			path = GameZone;
@@ -607,9 +1007,9 @@
 			children = (
 				80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */,
 				80AEAD3929C440B8005108AC /* Resources */,
-				80AEAD3C29C440D6005108AC /* Models */,
+				25844B0A29DE86C200CACC41 /* View Models */,
+				25844B1229DE88D300CACC41 /* Models */,
 				80AEAD3A29C440C1005108AC /* View */,
-				80AEAD3B29C440C9005108AC /* VeiwModels */,
 				80AEAD1229C44081005108AC /* Assets.xcassets */,
 				80AEAD1729C44081005108AC /* Info.plist */,
 			);
@@ -654,6 +1054,10 @@
 		80AEAD3A29C440C1005108AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				84815F6229E4162B001C65F9 /* Notification */,
+				84815F5F29E4138A001C65F9 /* Dropdown */,
+				845606F829E3CCD40067D42B /* TermsAndCondition1 */,
+				2577B49D29DEE9D2004C4942 /* RedemptionOTP */,
 				849E45D429DC4BDE00A4311B /* My Account */,
 				849E45AC29DC271D00A4311B /* Terms & conditions */,
 				849E45AB29DC271600A4311B /* About */,
@@ -670,6 +1074,8 @@
 				800D81DD29C9E0FD00D77557 /* EurobondsVC */,
 				800D81DA29C9E0AA00D77557 /* reffer&Earn */,
 				800D81D529C9D55500D77557 /* Shames&Offers */,
+				2577B48F29DEE4B9004C4942 /* DefaultAddress */,
+				2577B48729DED801004C4942 /* MyCart */,
 				800D81D229C9D53100D77557 /* GameZone */,
 				800D81CF29C9D4EF00D77557 /* RedeemNowVC */,
 				80175F8629C9C75300C87FEF /* HelpLineVC */,
@@ -683,24 +1089,10 @@
 				801C860129C5BBC4008204CB /* RegisterVC */,
 				801C85FE29C5BA07008204CB /* ReferralVC */,
 				80AEAD7729C4692D005108AC /* Welcome */,
-				80AEAD7329C44E42005108AC /* LucnhScreen */,
+				80AEAD7329C44E42005108AC /* LaucnhScreen */,
 				80AEAD7429C44E51005108AC /* Login */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		80AEAD3B29C440C9005108AC /* VeiwModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = VeiwModels;
-			sourceTree = "<group>";
-		};
-		80AEAD3C29C440D6005108AC /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		80AEAD3D29C440EE005108AC /* Delegate */ = {
@@ -725,6 +1117,7 @@
 			isa = PBXGroup;
 			children = (
 				80AEAD0F29C4407C005108AC /* EuroBond_Customer.xcdatamodeld */,
+				25844B1829DE8ACB00CACC41 /* persistanceservice.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -802,17 +1195,18 @@
 			path = CommonUtilities;
 			sourceTree = "<group>";
 		};
-		80AEAD7329C44E42005108AC /* LucnhScreen */ = {
+		80AEAD7329C44E42005108AC /* LaucnhScreen */ = {
 			isa = PBXGroup;
 			children = (
-				80AEAD7129C44E3D005108AC /* EBC_LunchScreenVC.swift */,
+				80AEAD7129C44E3D005108AC /* EBC_LaunchScreenVC.swift */,
 			);
-			path = LucnhScreen;
+			path = LaucnhScreen;
 			sourceTree = "<group>";
 		};
 		80AEAD7429C44E51005108AC /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				84815F5A29E3E8EA001C65F9 /* EBC_Login1VC.swift */,
 				80AEAD0A29C4407C005108AC /* EBS_LoginVC.swift */,
 			);
 			path = Login;
@@ -887,8 +1281,8 @@
 		8407C2A629D696C400704C87 /* Scanner */ = {
 			isa = PBXGroup;
 			children = (
+				25844B1A29DE964400CACC41 /* MyQRCode */,
 				849E45A429DC09D400A4311B /* Scanner & Uplopad */,
-				849E45A329DC09C200A4311B /* MyQRCode */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
@@ -908,6 +1302,15 @@
 				8407C2AD29D6A1D300704C87 /* EBC_DateFilterVC.swift */,
 			);
 			path = "Date Filter";
+			sourceTree = "<group>";
+		};
+		842B937329E43CEB00FD0770 /* CityListModels */ = {
+			isa = PBXGroup;
+			children = (
+				842B937529E43CFE00FD0770 /* CityListModels.swift */,
+				842B937429E43CFD00FD0770 /* CityList.swift */,
+			);
+			path = CityListModels;
 			sourceTree = "<group>";
 		};
 		843EAF8A29D6AF9E00971B96 /* Support */ = {
@@ -975,22 +1378,98 @@
 			path = "DreamList Details";
 			sourceTree = "<group>";
 		};
+		845606F829E3CCD40067D42B /* TermsAndCondition1 */ = {
+			isa = PBXGroup;
+			children = (
+				845606F929E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift */,
+			);
+			path = TermsAndCondition1;
+			sourceTree = "<group>";
+		};
+		84815F5C29E3EE88001C65F9 /* TokenModels */ = {
+			isa = PBXGroup;
+			children = (
+				84815F5D29E3EEA2001C65F9 /* TokenModels.swift */,
+			);
+			path = TokenModels;
+			sourceTree = "<group>";
+		};
+		84815F5F29E4138A001C65F9 /* Dropdown */ = {
+			isa = PBXGroup;
+			children = (
+				84815F7229E4175A001C65F9 /* EBC_DropDownVC.swift */,
+				84815F7129E41759001C65F9 /* EBC_DropDownTVCell.swift */,
+			);
+			path = Dropdown;
+			sourceTree = "<group>";
+		};
+		84815F6229E4162B001C65F9 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				84815F6D29E416CA001C65F9 /* HistoryNotificationsViewController.swift */,
+				84815F6B29E416C7001C65F9 /* HistoryNotificationsTableViewCell.swift */,
+				84815F6C29E416C8001C65F9 /* HistoryNotificationsTableViewCell.xib */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		84815F6329E4163E001C65F9 /* NotificationModels */ = {
+			isa = PBXGroup;
+			children = (
+				84815F6529E41669001C65F9 /* LstPushHistoryJson.swift */,
+				84815F6429E41668001C65F9 /* NotificationModels.swift */,
+			);
+			path = NotificationModels;
+			sourceTree = "<group>";
+		};
+		84815F6829E41683001C65F9 /* NotificationVM */ = {
+			isa = PBXGroup;
+			children = (
+				84815F6929E41699001C65F9 /* HistoryNotificationsViewModel.swift */,
+			);
+			path = NotificationVM;
+			sourceTree = "<group>";
+		};
+		84815F7529E41768001C65F9 /* DropDownVM */ = {
+			isa = PBXGroup;
+			children = (
+				84815F7629E41787001C65F9 /* HYT_DropdownVM.swift */,
+			);
+			path = DropDownVM;
+			sourceTree = "<group>";
+		};
+		84815F7829E41792001C65F9 /* LanguageVM */ = {
+			isa = PBXGroup;
+			children = (
+				84815F7929E417BD001C65F9 /* HYT_LanguageVM.swift */,
+			);
+			path = LanguageVM;
+			sourceTree = "<group>";
+		};
+		84815F7B29E417EB001C65F9 /* LanguageModels */ = {
+			isa = PBXGroup;
+			children = (
+				84815F7D29E4180F001C65F9 /* LanguageModels.swift */,
+				84815F7C29E4180E001C65F9 /* LstAttributesDetails.swift */,
+			);
+			path = LanguageModels;
+			sourceTree = "<group>";
+		};
+		84815F8029E42158001C65F9 /* StateListModels */ = {
+			isa = PBXGroup;
+			children = (
+				84815F8129E42175001C65F9 /* StateListModels.swift */,
+				84815F8229E42176001C65F9 /* StateList.swift */,
+			);
+			path = StateListModels;
+			sourceTree = "<group>";
+		};
 		8484BBB129D712B9003FB8B0 /* Pop Message */ = {
 			isa = PBXGroup;
 			children = (
 				8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */,
 			);
 			path = "Pop Message";
-			sourceTree = "<group>";
-		};
-		849E45A329DC09C200A4311B /* MyQRCode */ = {
-			isa = PBXGroup;
-			children = (
-				849E45A729DC0A3B00A4311B /* QR code Success pop up */,
-				849E45A129DC09BD00A4311B /* EBC_MyQRCodeVC.swift */,
-				849E45A529DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift */,
-			);
-			path = MyQRCode;
 			sourceTree = "<group>";
 		};
 		849E45A429DC09D400A4311B /* Scanner & Uplopad */ = {
@@ -1270,9 +1749,12 @@
 				8093439C29C5EE0C00440CB6 /* Roboto-Black.ttf in Resources */,
 				8093439E29C5EE1300440CB6 /* Roboto-Italic.ttf in Resources */,
 				849E45D229DC308700A4311B /* otherInfoImageTableViewCell.xib in Resources */,
+				2577B47A29DEBDF4004C4942 /* EBC_MyAttempts_CVC.xib in Resources */,
 				849E45C929DC308700A4311B /* otherInfoTableViewCell.xib in Resources */,
 				80AEAD1329C44081005108AC /* Assets.xcassets in Resources */,
+				2577B48029DEBFBF004C4942 /* EBC_PlayNow_CVC.xib in Resources */,
 				849E45CC29DC308700A4311B /* otherImageTableViewCell.xib in Resources */,
+				84815F6F29E416CA001C65F9 /* HistoryNotificationsTableViewCell.xib in Resources */,
 				849E45CB29DC308700A4311B /* senderInfoTableViewCell.xib in Resources */,
 				8093439F29C5EE1B00440CB6 /* Roboto-Light.ttf in Resources */,
 				80AEAD0E29C4407C005108AC /* Main.storyboard in Resources */,
@@ -1405,6 +1887,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				849E45B229DC276900A4311B /* EBC_FAQVC.swift in Sources */,
+				2577B4CA29DEF963004C4942 /* LstCustomerIdentityInfo.swift in Sources */,
 				84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */,
 				801C860029C5BA3A008204CB /* EBC_RefferalVC.swift in Sources */,
 				849E45D829DC4BF700A4311B /* MyProfileandBankDetailsVC.swift in Sources */,
@@ -1413,25 +1896,37 @@
 				849E45B529DC293100A4311B /* EBC_QueryListingVC.swift in Sources */,
 				800D81DC29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift in Sources */,
 				80AEAD6B29C44249005108AC /* LabelExtension.swift in Sources */,
+				2577B4A429DEEA20004C4942 /* RedemptionOTPVM.swift in Sources */,
+				2577B4BE29DEF593004C4942 /* UserStatusModels.swift in Sources */,
+				2577B4B429DEF444004C4942 /* CatalogueSaveCartDetailListResponse1.swift in Sources */,
 				802BCE0229CC70E800B3209C /* EmptySegue.swift in Sources */,
+				84815F6729E41669001C65F9 /* LstPushHistoryJson.swift in Sources */,
 				809DDBFE29CC197A00F9E3F9 /* EBC_OffersDetailsVC.swift in Sources */,
+				25844B2B29DEAADD00CACC41 /* GamificationResultModels.swift in Sources */,
+				25844B1129DE86D900CACC41 /* UploadAndScanViewModel.swift in Sources */,
 				80AEAD5A29C44225005108AC /* MyCommonFunctionalUtilities.swift in Sources */,
+				2577B48429DEC2EC004C4942 /* EBC_ScratchCard_VM.swift in Sources */,
 				80902B5329C81B2F00050701 /* EBC_TabBarVC.swift in Sources */,
 				80AEAD5029C44206005108AC /* URLMethods.swift in Sources */,
-				849E45A229DC09BD00A4311B /* EBC_MyQRCodeVC.swift in Sources */,
+				2577B4D029DEFD9F004C4942 /* IncreaseProductModels.swift in Sources */,
 				8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */,
-				80AEAD7229C44E3D005108AC /* EBC_LunchScreenVC.swift in Sources */,
+				80AEAD7229C44E3D005108AC /* EBC_LaunchScreenVC.swift in Sources */,
 				8081070129CC820E001675CA /* EBC_CategoryListCVC.swift in Sources */,
 				84411E9129DADCBE0085B9A7 /* EBC_WishListTVC.swift in Sources */,
+				2577B4CD29DEFCAF004C4942 /* RemoveCartModel.swift in Sources */,
 				843EAF9229D6B84500971B96 /* EBC_MyAssistantTVC.swift in Sources */,
 				8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */,
+				84815F6E29E416CA001C65F9 /* HistoryNotificationsTableViewCell.swift in Sources */,
+				2577B47F29DEBFBF004C4942 /* EBC_PlayNow_CVC.swift in Sources */,
 				80C9DD7029C8846600F8641A /* EBC_MyRedemptionTVC.swift in Sources */,
 				84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */,
 				80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */,
 				802BCDFB29CC6FAC00B3209C /* EBC_PhysicalProductVC.swift in Sources */,
+				2577B48229DEC224004C4942 /* EBC_ScratchCard_VC.swift in Sources */,
 				849E45D129DC308700A4311B /* otherInfoImageTableViewCell.swift in Sources */,
 				849E45CF29DC308700A4311B /* otherImageTableViewCell.swift in Sources */,
 				801C85FD29C5B135008204CB /* UiViewx.swift in Sources */,
+				25844B1029DE86D900CACC41 /* CodeListingViewModel.swift in Sources */,
 				849E45AE29DC274400A4311B /* EBC_TermsAndConditionsVC.swift in Sources */,
 				80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */,
 				84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */,
@@ -1439,46 +1934,72 @@
 				80C9DD7429C8849A00F8641A /* EBC_MyEarningsVC.swift in Sources */,
 				80AEAD0B29C4407C005108AC /* EBS_LoginVC.swift in Sources */,
 				8031C85D29D19EE100E7D698 /* EBC_VoucherDetails.swift in Sources */,
+				2577B4B529DEF444004C4942 /* MyCartModels.swift in Sources */,
+				2577B4AD29DEF24E004C4942 /* SendSuccessModels.swift in Sources */,
 				80AEAD1129C4407C005108AC /* EuroBond_Customer.xcdatamodeld in Sources */,
 				841B77B529DD5C8800CF0C88 /* ScanOrUpload_VC.swift in Sources */,
 				84411E9329DADCD40085B9A7 /* EBC_WishListVC.swift in Sources */,
 				80AEAD5529C44206005108AC /* RequestMethod.swift in Sources */,
 				84D965DA29D5C4CD00379730 /* EBC_CodeSummeryVC.swift in Sources */,
+				2577B49C29DEE5C0004C4942 /* DefaultAddressModels.swift in Sources */,
 				805F712629D2D015008938A7 /* EBC_MyRedeemptionDetailsTVC.swift in Sources */,
 				805F712829D2D02E008938A7 /* EBC_MyRedeemptionDetailsVC.swift in Sources */,
 				8077752629C9737E004AFDC4 /* EBC_SideMenuTVC.swift in Sources */,
 				849E45D029DC308700A4311B /* senderImageTableViewCell.swift in Sources */,
+				2577B4B829DEF4F9004C4942 /* RedemptionOTPModels.swift in Sources */,
 				84D965D829D5C4A300379730 /* EBC_CodeSummeryTVC.swift in Sources */,
 				841B77B429DD5C8800CF0C88 /* CodesListTVC.swift in Sources */,
 				801F932029D1C898006FF310 /* EBC_SearchProjectCVC.swift in Sources */,
 				800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */,
 				843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */,
+				2577B4BB29DEF546004C4942 /* SendSMSModel.swift in Sources */,
 				809343A729C5F4D700440CB6 /* EBC_DashboardVC.swift in Sources */,
 				80437F4729C8871B0062D151 /* Color.swift in Sources */,
 				80AEAD5229C44206005108AC /* ApiUrls.swift in Sources */,
 				80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */,
+				25844B1929DE8ACB00CACC41 /* persistanceservice.swift in Sources */,
+				2577B4A129DEE9D2004C4942 /* MSP_RedemptionSuccessPopVC.swift in Sources */,
+				2577B49229DEE4B9004C4942 /* EBC_DefaultAddressVC.swift in Sources */,
 				849E45D929DC4BF700A4311B /* BankDetailsVC.swift in Sources */,
+				84815F7E29E41810001C65F9 /* LstAttributesDetails.swift in Sources */,
 				843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */,
+				84815F5B29E3E8EA001C65F9 /* EBC_Login1VC.swift in Sources */,
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
 				84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */,
+				84815F7029E416CA001C65F9 /* HistoryNotificationsViewController.swift in Sources */,
 				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
+				2577B4C929DEF963004C4942 /* LstCustomerOfficalInfoJson.swift in Sources */,
 				80C9DD7229C8848400F8641A /* EBC_MyEarningTVC.swift in Sources */,
+				84815F7729E41787001C65F9 /* HYT_DropdownVM.swift in Sources */,
 				849E45CD29DC308700A4311B /* senderInfoImageTableViewCell.swift in Sources */,
+				25844B2729DEAA0800CACC41 /* EBC_MagicBox_VM.swift in Sources */,
+				2577B48A29DED801004C4942 /* MyCart_TVC.swift in Sources */,
+				84815F7329E4175A001C65F9 /* EBC_DropDownTVCell.swift in Sources */,
 				8081070329CC822C001675CA /* EBC_ProductListCVC.swift in Sources */,
+				84815F7F29E41810001C65F9 /* LanguageModels.swift in Sources */,
 				801F931E29D1C874006FF310 /* EBC_SearchProjectVC.swift in Sources */,
 				849E45A929DC0A7900A4311B /* EBC_QRCodeSubmitSuccessMessageVC.swift in Sources */,
-				849E45A629DC0A1B00A4311B /* EBC_MyQrCodeTVC.swift in Sources */,
 				849E45BA29DC307A00A4311B /* HR_Chatvc2ViewController.swift in Sources */,
 				84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */,
 				84D965D229D5B47700379730 /* EBC_CodeStatusVC.swift in Sources */,
 				80AEAD5D29C4422F005108AC /* Reach.swift in Sources */,
 				84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */,
+				25844B1729DE88E400CACC41 /* QRCodeSaveResponseList.swift in Sources */,
+				84815F7A29E417BD001C65F9 /* HYT_LanguageVM.swift in Sources */,
 				80AEAD5129C44206005108AC /* RestAPI_Requests.swift in Sources */,
 				80AEAD6A29C44249005108AC /* TextfieldExtension.swift in Sources */,
+				842B937729E43CFE00FD0770 /* CityListModels.swift in Sources */,
 				8031C85F29D19F0C00E7D698 /* EBC_ProductDetails.swift in Sources */,
 				8407C2AC29D6A1BA00704C87 /* EBC_FilterVC.swift in Sources */,
+				845606FA29E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift in Sources */,
+				84815F5E29E3EEA2001C65F9 /* TokenModels.swift in Sources */,
+				2577B4C829DEF963004C4942 /* LstCustomerJson.swift in Sources */,
+				2577B4C129DEF61C004C4942 /* RemoveGiftModels.swift in Sources */,
 				84411E9829DAE94B0085B9A7 /* EBC_DreamGiftVC.swift in Sources */,
 				80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */,
+				84815F8429E42176001C65F9 /* StateList.swift in Sources */,
+				25844B2029DEA91F00CACC41 /* EBC_MagicBoxVC.swift in Sources */,
+				842B937629E43CFE00FD0770 /* CityList.swift in Sources */,
 				84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */,
 				84D965D429D5B49600379730 /* EBC_CodeStatusTVC.swift in Sources */,
 				800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */,
@@ -1486,7 +2007,10 @@
 				80AEAD6729C44249005108AC /* ImageExtension.swift in Sources */,
 				801C860329C5BBE5008204CB /* EBC_RegisterVC.swift in Sources */,
 				80175F8829C9C77A00C87FEF /* EBC_HelpLineVC.swift in Sources */,
+				2577B47829DEBCD0004C4942 /* EBC_GameCenter_VM.swift in Sources */,
+				2577B4AA29DEF144004C4942 /* RedemptionSubmission.swift in Sources */,
 				80437F4A29C8904F0062D151 /* EBC_SideMenuVC.swift in Sources */,
+				25844B2529DEA9F100CACC41 /* LstGamificationTransaction.swift in Sources */,
 				80AEAD0729C4407C005108AC /* AppDelegate.swift in Sources */,
 				849E45CE29DC308700A4311B /* otherInfoTableViewCell.swift in Sources */,
 				802BCDF929CC6F8D00B3209C /* EBC_BankTransferVC.swift in Sources */,
@@ -1495,22 +2019,38 @@
 				80AEAD5629C44206005108AC /* ServiceError.swift in Sources */,
 				802BCDFD29CC6FC800B3209C /* EBC_VoucherVC.swift in Sources */,
 				80AEAD6829C44249005108AC /* NotificationExtension.swift in Sources */,
+				2577B47C29DEBEDD004C4942 /* EBC_MyAttempts_CVC.swift in Sources */,
+				25844B1E29DE964400CACC41 /* ScannedCode_TVC.swift in Sources */,
+				2577B48B29DED801004C4942 /* MyCart_VC.swift in Sources */,
 				800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */,
 				80AEAD7929C46969005108AC /* EBC_WelcomeVC.swift in Sources */,
+				84815F6629E41669001C65F9 /* NotificationModels.swift in Sources */,
 				8407C2AE29D6A1D300704C87 /* EBC_DateFilterVC.swift in Sources */,
+				2577B48E29DEDE8D004C4942 /* MycartViewModel.swift in Sources */,
+				25844B2429DEA9F100CACC41 /* GamificationModels.swift in Sources */,
 				84A857E929DAAEAD003BABA1 /* EBC_MillstonesBonussTVC.swift in Sources */,
+				2577B4C729DEF963004C4942 /* MyProfileModels.swift in Sources */,
 				80AEAD5429C44206005108AC /* WebClient.swift in Sources */,
 				802BCE0129CC70E800B3209C /* ContainerViewController.swift in Sources */,
 				80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */,
 				80AEAD0929C4407C005108AC /* SceneDelegate.swift in Sources */,
+				25844B2D29DEB03300CACC41 /* EBC_GameCentre_VC.swift in Sources */,
 				806E696629CD8278002B30F5 /* EBC_VoucherCVC.swift in Sources */,
+				25844B1629DE88E400CACC41 /* ScannedandUploadCodesModels.swift in Sources */,
 				80AEAD6929C44249005108AC /* ViewExtension.swift in Sources */,
 				80937E4329D2AF00005B584F /* EBC_WhatsNewTVC.swift in Sources */,
+				84815F7429E4175A001C65F9 /* EBC_DropDownVC.swift in Sources */,
 				849E45DA29DC4BF700A4311B /* MyProfileVC.swift in Sources */,
 				849E45A029DC094500A4311B /* EBC_ScannerAndUploadVC.swift in Sources */,
 				80AEAD4F29C44206005108AC /* URLExtension.swift in Sources */,
+				2577B4A729DEEAFE004C4942 /* OTPModels.swift in Sources */,
+				2577B49329DEE4B9004C4942 /* MyOrderTVC.swift in Sources */,
 				849E45CA29DC308700A4311B /* senderInfoTableViewCell.swift in Sources */,
+				84815F6A29E41699001C65F9 /* HistoryNotificationsViewModel.swift in Sources */,
+				25844B1D29DE964400CACC41 /* ScannedCodes_VC.swift in Sources */,
+				2577B4A029DEE9D2004C4942 /* EBC_RedemptionSubmissionVC.swift in Sources */,
 				80AEAD5E29C4422F005108AC /* Reachability.swift in Sources */,
+				84815F8329E42176001C65F9 /* StateListModels.swift in Sources */,
 				80AEAD5329C44206005108AC /* URLRequest.swift in Sources */,
 				809343A929C5F4F000440CB6 /* EBC_Dashboard_2_VC.swift in Sources */,
 			);
@@ -1688,9 +2228,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EuroBond_Customer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1706,6 +2249,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-Customer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EuroBond_Customer_Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1718,9 +2263,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EuroBond_Customer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1736,6 +2284,8 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-Customer";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = EuroBond_Customer_Development;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
