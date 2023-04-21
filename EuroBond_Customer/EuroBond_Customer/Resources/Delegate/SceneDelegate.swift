@@ -25,10 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         IQKeyboardManager.shared.enable = true
         tokendata()
         let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
+        print(isUserLoggedIn)
         if isUserLoggedIn == 1{
             self.setHomeAsRootViewController()
         } else if isUserLoggedIn == 2{
             self.setHomeAsRootViewController2()
+        }else if isUserLoggedIn == -1 {
+            self.setInitialLoginVC()
         }else{
             self.setInitialViewAsRootViewController()
         }
@@ -43,6 +46,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
+         func setInitialLoginVC(){
+             let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
+             let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
+             nav = UINavigationController(rootViewController: initialVC)
+             nav.modalPresentationStyle = .overCurrentContext
+             nav.modalTransitionStyle = .partialCurl
+             nav.isNavigationBarHidden = true
+             window?.rootViewController = nav
+             window?.makeKeyAndVisible()
+         }
     
     func setHomeAsRootViewController2(){
         let homeVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Dashboard_2_VC") as! EBC_Dashboard_2_VC
@@ -53,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     func setInitialViewAsRootViewController(){
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_Login1VC") as! EBC_Login1VC
+        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_LaunchScreenVC") as! EBC_LaunchScreenVC
         nav = UINavigationController(rootViewController: initialVC)
         nav.modalPresentationStyle = .overCurrentContext
         nav.modalTransitionStyle = .partialCurl

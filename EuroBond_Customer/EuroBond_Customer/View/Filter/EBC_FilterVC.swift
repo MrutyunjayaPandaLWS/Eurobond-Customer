@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EBC_FilterVC: UIViewController {
+class EBC_FilterVC: BaseViewController {
 
     @IBOutlet weak var okBtn: UIButton!
     @IBOutlet weak var filterBtn2: UIButton!
@@ -41,12 +41,14 @@ class EBC_FilterVC: UIViewController {
     
     @IBAction func selectFromDateBtn(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as? EBC_DateFilterVC
+        vc?.isComeFrom = "1"
         vc?.modalTransitionStyle = .crossDissolve
         vc?.modalPresentationStyle = .overFullScreen
         present(vc!, animated: true)
     }
     @IBAction func selectToDate(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as? EBC_DateFilterVC
+        vc?.isComeFrom = "2"
         vc?.modalTransitionStyle = .crossDissolve
         vc?.modalPresentationStyle = .overFullScreen
         present(vc!, animated: true)

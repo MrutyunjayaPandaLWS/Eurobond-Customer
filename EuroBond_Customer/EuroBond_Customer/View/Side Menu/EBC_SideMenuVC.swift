@@ -7,7 +7,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-
+import Kingfisher
 class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var logoutView: UIView!
@@ -21,6 +21,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var profileNameLbl: UILabel!
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTV: UITableView!
+
     
     var sideMenuArrayList: [sideMenuModel] = [
         
@@ -28,7 +29,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         sideMenuModel(sideMenuName: "Scan QR Code", sideMenuImage: "qr"),
         sideMenuModel(sideMenuName: "Enter QR Code", sideMenuImage: "upload1"),
         sideMenuModel(sideMenuName: "Code Status", sideMenuImage: "Group 7691"),
-        sideMenuModel(sideMenuName: "My Eraning", sideMenuImage: "bxs-coin-stack 1"),
+        sideMenuModel(sideMenuName: "My Earning", sideMenuImage: "bxs-coin-stack 1"),
         sideMenuModel(sideMenuName: "My Redemptions", sideMenuImage: "reademailalt 1"),
         sideMenuModel(sideMenuName: "Redemption Catalogue", sideMenuImage: "card-giftcard 1"),
         sideMenuModel(sideMenuName: "Game Zone", sideMenuImage: "Group 6479"),
@@ -58,6 +59,22 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(closingSideMenu), name: Notification.Name.sideMenuClosing, object: nil)
+        self.profileNameLbl.text = "\(UserDefaults.standard.string(forKey: "FirstName") ?? "")"
+        self.memberShipIDLbl.text = "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
+        self.pointBalLbl.text = "\(UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? "")"
+        self.memberSinceLbl.text = "Member Since \(UserDefaults.standard.string(forKey: "MemberSince") ?? "")"
+        let imageurl = "\(UserDefaults.standard.string(forKey: "customerImage") ?? "")".dropFirst(1)
+        let imageData = imageurl.split(separator: "~")
+        if imageData.count >= 2 {
+            print(imageData[1],"jdsnjkdn")
+            let totalImgURL = PROMO_IMG1 + (imageData[1])
+            print(totalImgURL, "Total Image URL")
+            self.profileImage.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+        }else{
+            let totalImgURL = PROMO_IMG1 + imageurl
+            print(totalImgURL, "Total Image URL")
+            self.profileImage.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+                                }
     }
     
     @IBAction func selectMyAccountBtn(_ sender: UIButton) {
@@ -70,14 +87,14 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
-            UserDefaults.standard.set(0, forKey: "IsloggedIn?")
+            UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
             if #available(iOS 13.0, *) {
                 DispatchQueue.main.async {
                     let domain = Bundle.main.bundleIdentifier!
                     UserDefaults.standard.removePersistentDomain(forName: domain)
                     UserDefaults.standard.synchronize()
                     let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-                    sceneDelegate.setInitialViewAsRootViewController()
+                    sceneDelegate.setInitialLoginVC()
                 }
             } else {
                 DispatchQueue.main.async {
@@ -86,7 +103,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     UserDefaults.standard.synchronize()
                     if #available(iOS 13.0, *) {
                         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.setInitialViewAsRootViewController()
+                        appDelegate.setInitialLoginVC()
                     }
                 }
             }
@@ -124,13 +141,13 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            vc?.scanner = "Scan"
             navigationController?.pushViewController(vc!, animated: true)
         case "Enter QR Code":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ScannerAndUploadVC") as? ScanOrUpload_VC
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
             vc?.fromSideMenu = "SideMenu"
 //            vc?.scanner = "Upload"
             navigationController?.pushViewController(vc!, animated: true)
         case "Code Status":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CodeStatusVC") as? EBC_CodeStatusVC
-            vc?.flags = "SideMenu"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeStatusListVC") as? CodeStatusListVC
+//            vc?.fromSideMenu = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "My Eraning":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
@@ -145,8 +162,8 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Game Zone":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameCentre_VC") as? EBC_GameCentre_VC
-            vc?.flags = "SideMenu"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ComingSoonVC") as? EBC_ComingSoonVC
+//            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Refer & Earn":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferAndEarnVC") as? EBC_RefferAndEarnVC
@@ -157,12 +174,11 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Wishlist":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_WishListVC") as? EBC_WishListVC
-            vc?.flags = "SideMenu"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_RedemptionPlannerVC") as? HR_RedemptionPlannerVC
+//            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Dream Gift":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DreamGiftVC") as? EBC_DreamGiftVC
-            vc?.flags = "SideMenu"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DreamGiftListingViewController") as? DreamGiftListingViewController
             navigationController?.pushViewController(vc!, animated: true)
         case "Schemes & Offers":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SchemesAndOffersVC") as? EBC_SchemesAndOffersVC
@@ -173,8 +189,8 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Helpline":
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_QueryListingVC") as? EBC_QueryListingVC
-            vc?.flags = "SideMenu"
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_HelpLineVC") as? EBC_HelpLineVC
+//            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "About":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_AboutVC") as? EBC_AboutVC

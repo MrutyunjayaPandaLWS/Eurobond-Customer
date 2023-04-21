@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EBC_DreamGiftVC: UIViewController, UITableViewDelegate, UITableViewDataSource, DreamGiftDelegate {
+class EBC_DreamGiftVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, DreamGiftDelegate {
     func didTappedRedeemBtn(Item: EBC_DreamGiftTVC) {
     }
     
@@ -18,14 +18,19 @@ class EBC_DreamGiftVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var dreamListTV: UITableView!
     @IBOutlet weak var titleVC: UILabel!
     var flags = "1"
+//    var VM = DreamGiftListingVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.VM.VC = self
         dreamListTV.delegate = self
         dreamListTV.dataSource = self
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.dreamGiftListApi()
+    }
 
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
@@ -34,6 +39,18 @@ class EBC_DreamGiftVC: UIViewController, UITableViewDelegate, UITableViewDataSou
             self.navigationController?.popViewController(animated: true)
         }
         navigationController?.popViewController(animated: true)
+    }
+    
+    func dreamGiftListApi(){
+       // self.VM.myDreamGiftListArray.removeAll()
+        let parameters = [
+            "ActionType": "1",
+            "ActorId": "\(self.userId)",
+            "LoyaltyId": "\(loyaltyId)",
+            "Status": "2"
+        ] as [String: Any]
+        print(parameters)
+//        self.VM.dreamGiftListApi(parameter: parameters)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

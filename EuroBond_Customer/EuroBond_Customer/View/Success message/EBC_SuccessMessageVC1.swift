@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EBC_SuccessMessageVC1: UIViewController {
+class EBC_SuccessMessageVC1: BaseViewController {
 
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var messageTitleLbl: UILabel!
@@ -18,15 +18,15 @@ class EBC_SuccessMessageVC1: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if messageTitle.count == 0{
-            messageTitleLbl.isHidden = true
-        }else{
-            messageTitleLbl.text = messageTitle
-        }
-        messageLbl.text = message
-        if sucessImage.count != 0{
-            successImage.image = UIImage(named: sucessImage)
-        }
+//        if messageTitle.count == 0{
+//            messageTitleLbl.isHidden = true
+//        }else{
+//            messageTitleLbl.text = messageTitle
+//        }
+//        messageLbl.text = message
+//        if sucessImage.count != 0{
+//            successImage.image = UIImage(named: sucessImage)
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +43,10 @@ class EBC_SuccessMessageVC1: UIViewController {
     
     
     @objc func closePopMessage(){
-        dismiss(animated: true)
+        
+        self.dismiss(animated: true){
+            NotificationCenter.default.post(name: .moveToPrevious, object: nil)
+        }
     }
     
 }

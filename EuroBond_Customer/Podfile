@@ -5,17 +5,6 @@ target 'EuroBond_Customer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for EuroBond_Customer
-
-  target 'EuroBond_CustomerTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'EuroBond_CustomerUITests' do
-    # Pods for testing
-  end
-  
 pod 'SDWebImage'
 pod 'Alamofire', '~> 4.4'
 pod 'IQKeyboardManagerSwift'
@@ -24,9 +13,14 @@ pod 'lottie-ios'
 pod "ImageSlideshow/Alamofire"
 pod 'Toast-Swift', '~> 5.0.1'
 pod 'SlideMenuControllerSwift'
-
-
-
-
+pod 'SRScratchView'
+pod 'QCropper'
+pod 'Kingfisher', '~> 7.0'
+pod 'FirebaseAnalytics'
+pod 'Firebase/Core'
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
+pod 'Crashlytics', '~> 3.14.0'
+pod 'Firebase/Crashlytics'
 
 end

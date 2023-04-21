@@ -8,12 +8,14 @@
 import UIKit
 
 protocol MyAssistantTVCDelegate{
-    func didTappedResetPassword(item: EBC_MyAssistantTVC)
-    func didTappedDeactiveAccount(item: EBC_MyAssistantTVC)
+    func didTappedResetPassword(_ cell: EBC_MyAssistantTVC)
+    func didTappedDeactiveAccount(_ cell: EBC_MyAssistantTVC)
 }
 
 class EBC_MyAssistantTVC: UITableViewCell {
 
+    @IBOutlet weak var updatePwdBtn: UIButton!
+    @IBOutlet weak var deactivateBtn: UIButton!
     @IBOutlet weak var mobileNumberLbl: UILabel!
     @IBOutlet weak var mobileNumberTitleLbl: UILabel!
     @IBOutlet weak var enrollmentDateLbl: UILabel!
@@ -25,7 +27,7 @@ class EBC_MyAssistantTVC: UITableViewCell {
     var delegate : MyAssistantTVCDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,11 +35,11 @@ class EBC_MyAssistantTVC: UITableViewCell {
     }
 
     @IBAction func selectResetPasswordBtn(_ sender: UIButton) {
-        delegate?.didTappedResetPassword(item: self)
+        delegate?.didTappedResetPassword(self)
     }
     
     @IBAction func selectDeactiveBtn(_ sender: UIButton) {
-        delegate?.didTappedDeactiveAccount(item: self)
+        delegate?.didTappedDeactiveAccount(self)
     }
     
     

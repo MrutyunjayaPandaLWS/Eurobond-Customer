@@ -80,22 +80,7 @@ class HistoryNotificationsViewController: BaseViewController {
             "LoyaltyId": loyaltyId
         ] as [String: Any]
         print(parameters)
-        self.VM.notificationListApi(parameters: parameters) { response in
-            self.VM.notificationListArray = response?.lstPushHistoryJson ?? []
-            print(self.VM.notificationListArray.count)
-            if self.VM.notificationListArray.count != 0 {
-                DispatchQueue.main.async {
-                    self.NotificationstableView.isHidden = false
-                    self.noDataFound.isHidden = true
-                    self.NotificationstableView.reloadData()
-                }
-            }else{
-                self.noDataFound.isHidden = false
-                self.NotificationstableView.isHidden = true
-                
-            }
-        }
-        
+        self.VM.notificationListApi(parameters: parameters)
     }
     
     @IBAction func backBTN(_ sender: Any) {

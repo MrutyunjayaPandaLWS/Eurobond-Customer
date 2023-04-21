@@ -12,7 +12,7 @@ protocol UpdatePasswordVCDelegate{
     func showSusccesMessage(item: EBC_UpdatePasswordVC)
 }
 
-class EBC_UpdatePasswordVC: UIViewController {
+class EBC_UpdatePasswordVC: BaseViewController {
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var updatePassword: UIButton!
@@ -24,12 +24,18 @@ class EBC_UpdatePasswordVC: UIViewController {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var updatePasswordTitle: UILabel!
     var delegate: UpdatePasswordVCDelegate?
+    var mobile = ""
+    var userLoyaltyId = ""
+    var name = ""
+    var VM = UpdateFabricatedPasswordVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTF.text = "max"
+        self.VM.VC = self
+        self.nameTF.text = self.name
+        self.mobileNumberTF.text = self.mobile
         nameTF.isUserInteractionEnabled = false
         mobileNumberTF.isUserInteractionEnabled = false
-        mobileNumberTF.text = "7205638899"
+        
     }
     
     override func touchesBegan(_ touchscreen: Set<UITouch>, with event: UIEvent?)
@@ -44,10 +50,17 @@ class EBC_UpdatePasswordVC: UIViewController {
     
     @IBAction func selectUpdatePasswordBtn(_ sender: UIButton) {
         if resestPasswordTF.text?.count == 0{
-//            self.view.makeToast("Enter password",duration: 2.0,position: .center)
+            self.view.makeToast("Enter new password",duration: 2.0,position: .center)
         }else{
-            dismiss(animated: true)
-            delegate?.showSusccesMessage(item: self)
+//            dismiss(animated: true)
+//            delegate?.showSusccesMessage(item: self)
+            let parameter = [
+                "Password": self.resestPasswordTF.text ?? "",
+                 "UserActionType": "UpdateChangedPassword",
+                "UserName": self.userLoyaltyId
+            ] as [String: Any]
+            self.VM.updatePasswordApi(parameter: parameter)
+            
         }
     }
     

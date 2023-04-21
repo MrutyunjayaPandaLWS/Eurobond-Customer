@@ -19,6 +19,7 @@ class EBC_MyEarningTVC: UITableViewCell {
     @IBOutlet weak var programeTitleLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

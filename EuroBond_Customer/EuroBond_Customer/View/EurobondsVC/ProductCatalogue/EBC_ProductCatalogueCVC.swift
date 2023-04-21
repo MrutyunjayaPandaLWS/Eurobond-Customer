@@ -13,7 +13,6 @@ class EBC_ProductCatalogueCVC: UICollectionViewCell {
     @IBOutlet weak var fileName: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
     
-    @IBOutlet weak var selectViewDetailsBtn: UIButton!
     
     
     

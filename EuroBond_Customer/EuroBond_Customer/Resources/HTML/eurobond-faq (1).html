@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+    <title>FAQ</title>
+    <style>
+        li {
+            font-family: 'Roboto Condensed';
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .tcpart {
+            padding: 0 0px;
+            margin-top: 64px;
+        }
+
+        h1.topheader {
+            font-size: 20px;
+            background: #ffffff;
+            padding: 20px 10px;
+            margin: 0;
+            text-align: center;
+            font-family: 'Roboto Condensed';
+            /* use project primary color */
+            color:#006CB5 ;
+            position: fixed;
+            width: 100%;
+            height: 64px;
+        }
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        h2,
+        h3,
+        p {
+            font-family: 'Roboto Condensed';
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: #ccc;
+            position: fixed;
+            top: 64px;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: #006CB5;
+            /* use project primary color */
+            width: 0%;
+
+        }
+
+        button.accordion {
+                background-color: #fff;
+                color: #2b2b2b;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: 1px solid #00000012;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                transition: 0.4s;
+                font-family: 'Roboto Condensed';
+                font-weight: 400;
+                border-bottom: none;
+            }
+        
+                button.accordion.active, button.accordion:hover {
+                    background-color: #284B8C;
+                    color: #fff;
+                    content: "\25b2";
+                }
+        
+            .accordion:after {
+                content: '\25bc';
+                color: rgb(255 255 255);
+                font-weight: 400;
+                float: right;
+                margin-left: 5px;
+                font-family: 'Roboto Condensed';
+            }
+        
+            .accordion.active:after {
+                content: "\25b2";
+                color: rgb(255, 255, 255);
+            }
+        
+            .panel {
+                padding: 1px 18px 0px 18px;
+                background-color: #e5eeff;
+                max-height: 0;
+                color: black;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+            }
+        
+            .faq {
+                background-color: #ffffff;
+            }
+        
+            .boxpading {
+                padding: 0 150px 0 150px;
+            }
+        
+            .gaptoall {
+                padding: 10px 0 10px 0;
+            }
+        
+            .title {
+                font-size: 70px;
+                margin: 0;
+                padding: 160px 0px 8px 80px;
+                color: #fff;
+                font-family: 'Roboto Condensed';
+            }
+        
+            .headingtag {
+                font-size: 30px;
+                margin: 0;
+                padding: 5px 0 25px 80px;
+                color: #fff;
+                font-family: 'Roboto Condensed';
+            }
+            .faqmsp{
+                color: #040a2d;
+                padding: 15px 0;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 600;
+                font-family: 'Roboto Condensed';
+            }
+            .erflp{
+                font-size: 20px;
+                font-family: 'Roboto Condensed';
+                text-align: center;
+                padding: 18px 0;
+            }
+    </style>
+    <script>
+        // When the user scrolls the page, execute pageScroll function 
+        window.onscroll = function () {
+            pageScroll();
+        };
+
+        function pageScroll() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("proBar").style.width = scrolled + "%";
+        }
+    </script>
+  
+</head>
+
+<body>
+    <h1 class="topheader">EUROBOND REWARDS LOYALTY PROGRAM - FAQ</h1><br>
+    <div class="progress-container">
+        <div class="progress-bar" id="proBar"></div>
+    </div>
+    <div class="tcpart">
+        <!-- Paste your t and c here-->
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <!----------QA-01--------->
+                    <button class="accordion">WHAT IS EUROBOND REWARDS LOYALTY PROGRAM?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">Eurobond Rewards Loyalty Program is a Loyalty Program from Euro Panel Products Limited where Fabricators can earn points against purchases of Eurobond Sheets and redeem their points against attractive rewards.</p>
+                    </div>
+                    <!----------QA-02--------->
+                    <button class="accordion">WHO CAN JOIN THE PROGRAM?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">Registration can be done by downloading the Eurobond Rewards App on Google Store or IOS Store. Login via OTP and follow the steps to fill mandatory details (Mobile No, Name, age, Address, PAN Card, GST No, etc) in order to register.</p>
+                        <p class="gaptoall">It is recommended that registrations be done by contacting the Eurobond Sales Team in your area and share all registration details as required for faster verification & entry to program.</p>
+                        <p class="gaptoall">Call us on the HELPLINE for more details.</p>
+                    </div>
+                    <!----------QA-03--------->
+                    <button class="accordion">IS THERE ANY ENROLMENT FEES?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">No enrolment fees to be a part of the Eurobond Rewards Program.</p>
+                    </div>
+                    <!----------QA-04--------->
+                    <button class="accordion">WHAT DOCUMENTS ARE REQUIRED TO GET ENROLED?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">Apart from Personal Details, PAN Card is mandatory.</p>
+                    </div>
+                    <!----------QA-05--------->
+                    <button class="accordion">HOW TO LOG IN TO THE EUROBOND REWARDS APP?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">Fabricators can log in through using their registered mobile numbers. After that an OTP will be sent for verification. After entering the OTP, the Eurobond Rewards Membership account will be activated.</p>
+                    </div>
+                    <!----------QA-06--------->
+                    <button class="accordion">WHAT AM I AGREEING TO JOIN THE PROGRAM?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">By joining the Program, you agree that you have read, understood, and agree to be bound by the Eurobond Rewards Loyalty Program Terms and Conditions and by any changes or modifications we may make to the Program terms and conditions.</p>
+                    </div>
+                    <!----------QA-07--------->
+                    <button class="accordion">HOW WILL YOU USE THE INFORMATION I PROVIDE THROUGH THE PROGRAM?</button>
+                    <div class="panel">
+                        <li class="gaptoall">The personal information collected in connection with the Program is subject to our Privacy Policy as stated under the Terms & Conditions.</li>
+                    </div>
+                    <!----------QA-08--------->
+                    <button class="accordion">HOW DOES THE PROGRAM WORK?</button>
+                    <div class="panel">
+                        <p class="gaptoall">First Fabricator must enroll for the program as mentioned above.</p>
+                        <p class="gaptoall">Place orders for Eurobond/ Archer Sheets directly from the Authorized Distributors / Dealers, scan the QR sticker on every sheet using the SCAN option in the Eurobond Rewards App. Based on the orders and accumulate points. For more Premium purchase receive more points every scan.</p>
+                        <p class="gaptoall">Track performance on the Eurobond Rewards App and plan to receive Add on Bonus Points on crossing Milestone Point Slabs.</p>
+                        <p class="gaptoall">Redeem points against attractive gift items, vouchers or even Cash Transfer.</p>
+                        <p class="gaptoall">Set your Dream Gift and plan your orders accordingly in consultation with the Eurobond Rewards Sales Team.</p>
+                    </div>
+                    <!----------QA-09--------->
+                    <button class="accordion">I SCANNED A CROSS MARKED STICKER AND DID NOT RECEIVE POINTS?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Grade Mercury, Export, Partition, B-grade and Off-cut sheets are not a part of the Eurobond Rewards Program. If your sheet is a different grade from the above please contact the Helpline using the Helpline Option on the Eurobond Rewards App.</p>
+                    </div>
+                    <!----------QA-10--------->
+                    <button class="accordion">HOW DO I EARN EUROS?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You can earn Euros by purchasing Eurobond/ Archer Sheet from Authorized Distributors / Dealers.</p>
+                        <p class="gaptoall">Receive variable points depending on the Grade and Size.</p>
+                        <p class="gaptoall">For Premium Grade and Larger Size – Win higher points every Sheet.</p>
+                    </div>
+                    <!----------QA-11--------->
+                    <button class="accordion">HOW DO I REDEEM POINTS FOR REWARDS?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Open the Eurobond Rewards App and Click on Redemption Catalogue.</p>
+                        <p class="gaptoall">Click on Redemption Catalogue and choose from Gifts, Vouchers or Bank Transfer.</p>
+                        <p class="gaptoall">Gift will be delivered to your registered address only (as given at the time of registration) within 30 days.</p>
+                        <p class="gaptoall">For any issues you can contact the Helpline Number +91 9783444200.</p>
+                    </div>
+                    <!----------QA-12--------->
+                    <button class="accordion">IS THERE ANY DEDUCTION IN MY POINTS DURING REDEMPTION?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Yes as per the TDS 194R rule, if you have provided the PAN Card 10% shall be deducted or removed from the points earning on over and above 20,000 Rs payout in a fiscal year</p>
+                    </div>
+                    <!----------QA-13--------->
+                    <button class="accordion">WHY AM I NOT ABLE TO REDEEM 1000 EUROS? IS THERE A SLAB?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Members need a minimum of 5000 Euros for Gift Redemption, 4000 Euros for E-Vouchers and 20000 Euros for Bank Cash Redemption. Note that Bank Cash can be redeemed only 20000 Euros at one time.</p>
+                    </div>
+                    <!----------QA-14--------->
+                    <button class="accordion">WHAT IF I FIND THAT QR CODE IS ALREADY USED OR SCANNED?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You can contact the Helpline by submitting the query in “ Raise the Query “ option or give a missed on the number +91 9783444200 and receive a call back. Working hours Mon – Sat 9:30 am to 6 pm.</p>
+                    </div>
+                    <!----------QA-15--------->
+                    <button class="accordion">WHAT IF MY POINTS ARE NOT SHOWING IN MY ACCOUNT?</button>
+                    <div class="panel">
+                        <p class="gaptoall">If you have concerns that a purchase or other action was not properly applied to your Member account, you should contact us on the Helpline number.</p>
+                    </div>
+                    <!----------QA-16--------->
+                    <button class="accordion">DOES MEMBERSHIP EVER EXPIRE?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Program membership will remain open till the time the program runs or till the time the Fabricator resigns from the program, or the Company cancels the membership of the Fabricator.</p>
+                        <p class="gaptoall">Points earned in the program will never expire.</p>
+                    </div>
+                    <!----------QA-17--------->
+                    <button class="accordion">CAN I BUY THE PRODUCTS FROM ANYWHERE?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Yes, you can purchase the products from Authorized Distributors, Dealers or Retailers in India.</p>
+                    </div>
+                    <!----------QA-18--------->
+                    <button class="accordion">HOW TO CHANGE MY REGISTERED MOBILE NUMBER?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You contact the Helpline and submit your query.</p>
+                    </div>
+                    <!----------QA-19--------->
+                    <button class="accordion">I WOULD LIKE TO UNDERSTAND THE EURO EARNING CALCULATION?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You can check the Euro Earning Structure Menu on App or contact the Eurobond Sales Representative in your area to help you understand the earning calculation.</p>
+                    </div>
+                    <!----------QA-20--------->
+                    <button class="accordion">CAN MY MEMBERSHIP BE REVOKED?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Your membership may be revoked by the Company in its sole discretion, at any time.</p>
+                        <p class="gaptoall">Any abuse of the Program; failure to follow any of these Terms; misrepresentation; or conduct that may be detrimental to the interests of Euro Panel Products Limited - it may result in the revocation of your membership and make you ineligible for further participation in the Program.</p>
+                    </div>
+                    <!----------QA-21--------->
+                    <button class="accordion">WHAT HAPPENS TO MY POINTS IF MY MEMBERSHIP IS REVOKED?</button>
+                    <div class="panel">
+                        <p class="gaptoall">If your membership is revoked, any Points or Rewards in your account or available to you prior to such termination will automatically expire, and your access to the Program and its features will automatically terminate.</p>
+                    </div>
+                    <!----------QA-22--------->
+                    <button class="accordion">CAN THE PROGRAM BE MODIFIED OR TERMINATED?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Yes. The Company in its sole discretion may cancel, amend, modify, restrict, and/or terminate the Program, the Program Terms, or any aspect or features of the Program, at any time without prior notice, even if such changes may affect Points already earned and/or the value of Rewards already accumulated and/or the ability to redeem Rewards.</p>
+                    </div>
+                    <!----------QA-23--------->
+                    <button class="accordion">HOW DO I TERMINATE / CANCEL MY PROGRAM MEMBERSHIP?</button>
+                    <div class="panel">
+                        <p class="gaptoall">If you decide that you no longer want to be part of the Program, you may cancel your membership at any time by contacting the Helpline number.</p>
+                    </div>
+                    <!----------QA-24--------->
+                    <button class="accordion">WHAT HAPPENS TO MY POINTS IF I TERMINATE / CANCEL MY PROGRAM MEMBERSHIP?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You can redeem your points accumulated till that time subject to adherence to statutory norms.</p>
+                    </div>
+                    <!----------QA-25--------->
+                    <button class="accordion">CAN I GET CASH INSTEAD OF GIFTS?</button>
+                    <div class="panel">
+                        <p class="gaptoall">The program allows you to redeem via Bank Transfer only. No physical cash.</p>
+                    </div>
+                    <!----------QA-26--------->
+                    <button class="accordion">CAN I GET CASH INSTEAD OF GIFTS?</button>
+                    <div class="panel">
+                        <p class="gaptoall">The program allows you to redeem via Bank Transfer only. No physical cash.</p>
+                    </div>
+                     <!----------QA-27--------->
+                    <button class="accordion">CAN I TRANSFER MY POINTS TO ANOTHER CONTRACTOR?</button>
+                    <div class="panel">
+                        <p class="gaptoall">Earned points are non-transferrable.</p>
+                    </div>
+                    <!----------QA-28--------->
+                    <button class="accordion">HOW DO I CHANGE MY REGISTERED MOBILE NO?</button>
+                    <div class="panel">
+                        <p class="gaptoall">To change the registered Mobile number, contact the Helpline Number.</p>
+                    </div>
+                    <!----------QA-29--------->
+                    <button class="accordion">HOW CAN I KNOW MY CURRENT POINT STATUS?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You can check your points in the My Earnings Tab on your Eurobond Rewards App or can call the Helpline number.</p>
+                    </div>
+                    <!----------QA-30--------->
+                    <button class="accordion">WHAT HAPPENS IF I FIND GIFTS TO BE INCORRECTLY REDEEMED OR FAULTY OR I HAVE QUERIES?</button>
+                    <div class="panel">
+                        <p class="gaptoall">You can contact the Eurobond Rewards Helpline or Raise a Query.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    var firstAccordion = acc[0];
+    var firstPanel = firstAccordion.nextElementSibling;
+    firstAccordion.classList.add("active");
+    firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+
+            var isActive = this.classList.contains("active");
+
+            var allAccordions = document.getElementsByClassName("accordion");
+            for (j = 0; j < allAccordions.length; j++) {
+                allAccordions[j].classList.remove("active");
+
+                var panel = allAccordions[j].nextElementSibling;
+                var maxHeightValue = getStyle(panel, "maxHeight");
+
+                if (maxHeightValue !== "0px") {
+                    panel.style.maxHeight = null;
+                }
+            }
+
+            isActive ? this.classList.remove("active") : this.classList.add("active");
+
+            var panel = this.nextElementSibling;
+            var maxHeightValue = getStyle(panel, "maxHeight");
+
+            if (maxHeightValue !== "0px") {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        };
+    }
+
+    function getStyle(el, styleProp) {
+        var value, defaultView = (el.ownerDocument || document).defaultView;
+        if (defaultView && defaultView.getComputedStyle) {
+            styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+            return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        } else if (el.currentStyle) {
+            styleProp = styleProp.replace(/\-(\w)/g, function (str, letter) {
+                return letter.toUpperCase();
+            });
+            value = el.currentStyle[styleProp];
+            if (/^\d+(em|pt|%|ex)?$/i.test(value)) {
+                return (function (value) {
+                    var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+                    el.runtimeStyle.left = el.currentStyle.left;
+                    el.style.left = value || 0;
+                    value = el.style.pixelLeft + "px";
+                    el.style.left = oldLeft;
+                    el.runtimeStyle.left = oldRsLeft;
+                    return value;
+                })(value);
+            }
+            return value;
+        }
+    }
+</script> 
+</html>

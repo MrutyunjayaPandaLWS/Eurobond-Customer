@@ -7,11 +7,18 @@
 
 import UIKit
 
-class EBC_SchemesAndOffersVC: UIViewController, UITableViewDelegate, UITableViewDataSource, SchemesAndOffersDelegate {
+class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, SchemesAndOffersDelegate {
     
-    func didTappedViewBtn(item: EBC_SchemesAndOffersTVC) {
-        let  vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_OffersDetailsVC") as? EBC_OffersDetailsVC
-        navigationController?.pushViewController(vc!, animated: true)
+    func didTappedViewBtn(_ cell: EBC_SchemesAndOffersTVC) {
+        guard let tappedIndexPath = shemesAndOffersTV.indexPath(for: cell) else {return}
+        let  vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_OffersDetailsVC") as! EBC_OffersDetailsVC
+        vc.selectedTitle = self.VM.offersandPromotionsArray[tappedIndexPath.row].promotionName ?? ""
+
+        vc.selectedLongDesc = self.VM.offersandPromotionsArray[tappedIndexPath.row].proLongDesc ?? ""
+        vc.selectedShortDesc = self.VM.offersandPromotionsArray[tappedIndexPath.row].proShortDesc ?? ""
+        vc.selectedImage = self.VM.offersandPromotionsArray[tappedIndexPath.row].proImage ?? ""
+        
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     
@@ -19,31 +26,56 @@ class EBC_SchemesAndOffersVC: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var shemesAndOffersTV: UITableView!
     @IBOutlet weak var titleVc: UILabel!
     var flags = "1"
+    
+    var VM = EBC_OffersandSchemeVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.VM.VC = self
         shemesAndOffersTV.delegate = self
         shemesAndOffersTV.dataSource = self
-        
+        self.offersandPromotionsApi(UserId: self.userId)
     }
+    
+    
     @IBAction func selectBackBtn(_ sender: UIButton) {
-        if flags == "SideMenu"{
-            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
-            self.navigationController?.popViewController(animated: true)
-        }
-        navigationController?.popViewController(animated: true)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func offersandPromotionsApi(UserId: String){
+        let parameter = [
+            "ActionType": "99",
+            "ActorId": self.userId
+        ] as [String: Any]
+        print(parameter)
+        self.VM.offersandPromotionsApi(parameters: parameter)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.VM.offersandPromotionsArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_SchemesAndOffersTVC", for: indexPath) as! EBC_SchemesAndOffersTVC
         cell.selectionStyle = .none
         cell.delegate = self
-        cell.offersImage.image = UIImage(named: "demoImg-2")
+        cell.offersNameLbl.text = self.VM.offersandPromotionsArray[indexPath.row].promotionName ?? ""
+        let imageURL = VM.offersandPromotionsArray[indexPath.row].proImage ?? ""
+        print(imageURL)
+        if imageURL != ""{
+            let filteredURLArray = imageURL.dropFirst(3)
+            let urltoUse = String(PROMO_IMG1 + filteredURLArray).replacingOccurrences(of: " ", with: "%20")
+            let urlt = URL(string: "\(urltoUse)")
+            print(urlt)
+            cell.offersImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+        }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 230
+
     }
     
     

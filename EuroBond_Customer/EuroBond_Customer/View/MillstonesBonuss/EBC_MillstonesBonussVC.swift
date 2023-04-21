@@ -18,12 +18,14 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var infoLbl: UILabel!
     @IBOutlet weak var titleVC: UILabel!
     var flags: String = "1"
+    var euroBalanceArray = [">25000", ">50,000", ">100,000"]
+    var addOnEuros = ["25000", "6000", "15000"]
+    var millstonesArray = [EuroBalance]()
     override func viewDidLoad() {
         super.viewDidLoad()
         millStonesListTV.delegate = self
         millStonesListTV.dataSource = self
-        tableViewHeight.constant = 90
-        
+        tableViewHeight.constant = 140
     }
 
     @IBAction func selectBackBtn(_ sender: UIButton) {
@@ -35,12 +37,14 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.euroBalanceArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_MillstonesBonussTVC", for: indexPath) as! EBC_MillstonesBonussTVC
         cell.selectionStyle = .none
+        cell.euroSlabBalanceLbl.text = self.euroBalanceArray[indexPath.row]
+        cell.AddonEurosLbl.text = self.addOnEuros[indexPath.row]
         return cell
     }
     
@@ -50,4 +54,14 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     }
     
 
+}
+
+class EuroBalance: NSObject{
+    
+    var euroSlabBalance: String!
+    var addonEuros: String!
+    init(euroSlabBalance: String, addonEuros: String){
+        self.euroSlabBalance = euroSlabBalance
+        self.addonEuros = addonEuros
+    }
 }

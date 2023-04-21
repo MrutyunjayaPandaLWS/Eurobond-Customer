@@ -6,17 +6,33 @@
 //
 
 import UIKit
+import SDWebImage
+class EBC_OffersDetailsVC: BaseViewController {
 
-class EBC_OffersDetailsVC: UIViewController {
-
-    @IBOutlet weak var offersDetailsLbl: UILabel!
+    
     @IBOutlet weak var offersNameLbl: UILabel!
     @IBOutlet weak var offersImage: UIImageView!
     @IBOutlet weak var titleVC: UILabel!
+    @IBOutlet weak var descriptionWV: UIWebView!
+    var selectedTitle = ""
+    var selectedImage = ""
+    var selectedOfferId = 0
+    var selectedLongDesc = ""
+    var selectedShortDesc = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        offersImage.image = UIImage(named: "demoImg-2")
+        self.offersNameLbl.text = self.selectedTitle
+        offersImage.contentMode = .scaleAspectFit
+        self.descriptionWV.loadHTMLString(self.selectedLongDesc, baseURL: nil)
+        let imageURL = self.selectedImage
+        print(imageURL)
+        if imageURL != ""{
+            let filteredURLArray = imageURL.dropFirst(3)
+            let urltoUse = String(PROMO_IMG1 + filteredURLArray).replacingOccurrences(of: " ", with: "%20")
+            let urlt = URL(string: "\(urltoUse)")
+            print(urlt)
+            offersImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+        }
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {

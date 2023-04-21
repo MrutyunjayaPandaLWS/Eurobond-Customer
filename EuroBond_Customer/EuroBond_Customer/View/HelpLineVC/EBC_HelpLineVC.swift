@@ -24,14 +24,14 @@ class EBC_HelpLineVC: BaseViewController {
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func selectTapCall(_ sender: UIButton) {
     }
     
     @IBAction func selectRaiseQueryBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CreatenewQueryVC") as? EBC_CreatenewQueryVC
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_QueryListingVC") as? EBC_QueryListingVC
         navigationController?.pushViewController(vc!, animated: true)
     }
     

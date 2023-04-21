@@ -11,6 +11,8 @@ import AVKit
 
 class EBC_LaunchScreenVC: UIViewController {
     
+        let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
+  
         var player = AVPlayer()
          
         let playerController = AVPlayerViewController()
@@ -45,4 +47,8 @@ class EBC_LaunchScreenVC: UIViewController {
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_WelcomeVC") as? EBC_WelcomeVC
             self.navigationController?.pushViewController(vc!, animated: true)
         }
+    
+    
+    
+    
     }

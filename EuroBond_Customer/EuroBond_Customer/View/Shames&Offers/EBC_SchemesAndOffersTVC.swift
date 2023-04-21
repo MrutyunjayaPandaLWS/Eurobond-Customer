@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SchemesAndOffersDelegate{
-    func didTappedViewBtn(item: EBC_SchemesAndOffersTVC)
+    func didTappedViewBtn(_ cell: EBC_SchemesAndOffersTVC)
     
 }
 class EBC_SchemesAndOffersTVC: UITableViewCell {
@@ -26,6 +26,6 @@ class EBC_SchemesAndOffersTVC: UITableViewCell {
     }
 
     @IBAction func selectViewBtn(_ sender: UIButton) {
-        delegate?.didTappedViewBtn(item: self)
+        delegate?.didTappedViewBtn(self)
     }
 }

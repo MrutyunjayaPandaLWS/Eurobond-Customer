@@ -10,8 +10,8 @@ import Foundation
 class DefaultAddressModels{
     weak var VC: EBC_DefaultAddressVC?
     var requestAPIs = RestAPI_Requests()
-    var defaultAddressArray = [LstCustomerJson]()
-    var myCartListArray = [CatalogueSaveCartDetailListResponse1]()
+    var defaultAddressArray = [LstCustomerJson1]()
+    var myCartListArray = [CatalogueSaveCartDetailListResponse]()
     var totalCartValue = 0
     
     func defaultAddressAPi(parameters:JSON){
@@ -35,6 +35,19 @@ class DefaultAddressModels{
                         self.VC?.selectedCountryId = self.defaultAddressArray[0].countryId ?? 0
                         self.VC?.selectedCountry = self.defaultAddressArray[0].countryName ?? "-"
                         
+                        self.VC?.stateID = response?.lstCustomerJson?[0].stateId ?? -1
+                        self.VC?.mobile = response?.lstCustomerJson?[0].mobile ?? ""
+                        self.VC?.address1 = response?.lstCustomerJson?[0].address1 ?? "-"
+                        self.VC?.stateName = response?.lstCustomerJson?[0].stateName ?? "-"
+                        self.VC?.districtID = response?.lstCustomerJson?[0].districtId ?? -1
+                        self.VC?.cityID = response?.lstCustomerJson?[0].cityId ?? -1
+                        self.VC?.cityName = response?.lstCustomerJson?[0].cityName ?? "-"
+                        self.VC?.pincode = response?.lstCustomerJson?[0].zip ?? ""
+                        self.VC?.countryID = response?.lstCustomerJson?[0].countryId ?? -1
+                        self.VC?.countryName = response?.lstCustomerJson?[0].countryName ?? "-"
+                        self.VC?.customerNameLabel.text = response?.lstCustomerJson?[0].firstName ?? "-"
+                        self.VC?.emailID = response?.lstCustomerJson?[0].email ?? "-"
+                        
                     }
                 }else{
                     DispatchQueue.main.sync {
@@ -50,11 +63,10 @@ class DefaultAddressModels{
             
         }
     }
-    
-    
+
     func cartAddressAPI(parameters:JSON){
         self.VC?.startLoading()
-        self.requestAPIs.myCartList(parameters: parameters) { (response, error) in
+        self.requestAPIs.myCartListApi(parameters: parameters) { (response, error) in
             if error == nil {
                 if response != nil{
                     DispatchQueue.main.async {

@@ -6,16 +6,21 @@
 //
 
 import UIKit
-
-class EBC_ProductCatalogueVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
-    
+import SDWebImage
+import SafariServices
+import PDFKit
+import Toast_Swift
+class EBC_ProductCatalogueVC: BaseViewController,UIDocumentInteractionControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, SFSafariViewControllerDelegate {
 
     @IBOutlet weak var productListingCV: UICollectionView!
 
+    var VM = CatalogueBannerVM()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.VM.VC = self
+        self.productListApi()
         productListingCV.delegate = self
         productListingCV.dataSource = self
         
@@ -38,22 +43,79 @@ class EBC_ProductCatalogueVC: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     
-    @IBAction func selectProductDetailsBtn(_ sender: UIButton) {
+    func productListApi(){
+        let parameter = [
+            "ObjImageGallery": [
+                   "AlbumCategoryID": 5
+               ]
+        ] as [String: Any]
+        
+        self.VM.productCatalogueList(parameter: parameter)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.VM.productCatalgoueListArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EBC_ProductCatalogueCVC", for: indexPath) as! EBC_ProductCatalogueCVC
-        cell.productImage.image = UIImage(named: "demoImg-2")
+        
+        let productImage = String(self.VM.productCatalgoueListArray[indexPath.row].imageGalleryUrl ?? "").dropFirst(2)
+        let urltoUse = String(PROMO_IMG1 + productImage).replacingOccurrences(of: " ", with: "%20")
+        print(urltoUse)
+        let urlt = URL(string: "\(urltoUse)")
+        print(urlt)
+        cell.productImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+        
         return cell
     }
     
-    
-    
-    
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let urlString = self.VM.productCatalgoueListArray[indexPath.row].actionImageUrl ?? ""
+        print(urlString)
+        let urltoUse = String(urlString).replacingOccurrences(of: " ", with: "%20")
+        print(urltoUse)
+        let url = URL(string: urltoUse)
+        print(url)
+        let fileName = String((url!.lastPathComponent)) as NSString
+        // Create destination URL
+        let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
+        let destinationFileUrl = documentsUrl.appendingPathComponent("\(fileName)")
+        //Create URL to the source file you want to download
+        let fileURL = URL(string: urltoUse)
+        let sessionConfig = URLSessionConfiguration.default
+        let session = URLSession(configuration: sessionConfig)
+        let request = URLRequest(url:fileURL!)
+        
+        let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+            if let tempLocalUrl = tempLocalUrl, error == nil {
+                // Success
+                if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+                    print("Successfully downloaded. Status code: \(statusCode)")
+                }
+                do {
+                    try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
+//
+                } catch (let writeError) {
+                    
+                    DispatchQueue.main.async {
+                        print("Error creating a file \(destinationFileUrl) : \(writeError)")
+                        self.view.makeToast("Already, this PDF has been downloded.", duration: 2.0, position: .bottom)
+                        self.stopLoading()
+                    }
+                   
 
+                }
+            } else {
+                print("Error took place while downloading a file. Error description: \(error?.localizedDescription ?? "")")
+            }
+        }
+        task.resume()
+        self.view.makeToast("PDF has been downloded successfully !!", duration: 2.0, position: .bottom)
+        self.stopLoading()
+    }
+    
+    
 }

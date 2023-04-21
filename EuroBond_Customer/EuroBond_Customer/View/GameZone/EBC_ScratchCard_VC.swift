@@ -58,7 +58,7 @@ class EBC_ScratchCard_VC: UIViewController,SRScratchViewDelegate {
         }
     }
     func animationViewFuction(){
-        self.animationView.animation = Animation.named("66949-confetti")
+       // self.animationView.animation = Animation.named("66949-confetti")
         self.animationView!.contentMode = .scaleAspectFit
         self.animationView!.loopMode = .playOnce
         self.animationView!.animationSpeed = 0.9

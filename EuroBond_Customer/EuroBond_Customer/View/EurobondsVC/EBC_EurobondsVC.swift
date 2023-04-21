@@ -36,7 +36,15 @@ class EBC_EurobondsVC: UIViewController {
     
     @IBAction func selectYouTubeBtn(_ sender: UIButton) {
 
-        
+//        UIApplication.shared.openURL(NSURL(string:"https://www.youtube.com/@EurobondMumbai")! as URL)
+        if let youtubeURL = URL(string: "https://www.youtube.com/@EurobondMumbai"),
+             UIApplication.shared.canOpenURL(youtubeURL) {
+             // redirect to app
+             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
+         } else if let youtubeURL = URL(string: "https://www.youtube.com/@EurobondMumbai") {
+             // redirect through safari
+             UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
+         }
     }
     
     @IBAction func selectProjectSearchBtn(_ sender: UIButton) {

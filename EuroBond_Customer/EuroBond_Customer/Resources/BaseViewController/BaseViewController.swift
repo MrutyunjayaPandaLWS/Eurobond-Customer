@@ -14,14 +14,15 @@ class BaseViewController: UIViewController {
     var customerTypeID = UserDefaults.standard.integer(forKey: "customerTypeID")
     var selectedLanguage = UserDefaults.standard.string(forKey: "LanguageName") ?? "EN"
     var selectedLanguageId = UserDefaults.standard.string(forKey: "LanguageId") ?? "-1"
-    var userId = UserDefaults.standard.integer(forKey: "userId")
+    var userId = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
+    var loginCustomerTypeId = UserDefaults.standard.string(forKey: "CustomerType") ?? ""
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
 //    var animationView1: AnimationView?
-    var redeemablePointBal = UserDefaults.standard.integer(forKey: "TotalPoints")
+    var redeemablePointBal = UserDefaults.standard.integer(forKey: "RedeemablePointBalance")
     var firstName = UserDefaults.standard.string(forKey: "FirstName")
     var customerEmail = UserDefaults.standard.string(forKey: "CustomerEmail")
-    var customerMobileNumber = UserDefaults.standard.string(forKey: "Mobile")
+    var customerMobileNumber = UserDefaults.standard.string(forKey: "CustomerMobileNumber")
     
     //var loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyID") ?? ""
 
@@ -29,7 +30,14 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
 
     }
-    
+    func convertDateFormater1(_ date: String, fromDate: String, toDate: String) -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = fromDate
+            let date = dateFormatter.date(from: date)
+            dateFormatter.dateFormat = toDate
+        return  dateFormatter.string(from: date!)
+
+        }
     func convertDateFormater(_ date: String) -> String
         {
             let dateFormatter = DateFormatter()
@@ -93,5 +101,10 @@ class BaseViewController: UIViewController {
 
     }
 
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
 
 }

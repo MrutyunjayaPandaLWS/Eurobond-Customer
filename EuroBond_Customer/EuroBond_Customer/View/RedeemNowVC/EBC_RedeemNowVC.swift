@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EBC_RedeemNowVC: UIViewController {
+class EBC_RedeemNowVC: BaseViewController {
 
     @IBOutlet weak var cartValue: UILabel!
     @IBOutlet weak var eurosLbl: UILabel!
@@ -16,9 +16,12 @@ class EBC_RedeemNowVC: UIViewController {
     @IBOutlet weak var segmentController: UISegmentedControl!
     var container: ContainerViewController!
     var flags = "1"
+    var requestAPIs = RestAPI_Requests()
+    var myCartListArray = [CatalogueSaveCartDetailListResponse]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.balanceLbl.text = "\(self.redeemablePointBal)"
+        NotificationCenter.default.addObserver(self, selector: #selector(getCount), name: Notification.Name.cartCount, object: nil)
         segmentController.selectedSegmentIndex = 0
         let font = UIFont.systemFont(ofSize: 13)
         segmentController.setTitleTextAttributes([NSAttributedString.Key.font: font],
@@ -31,11 +34,19 @@ class EBC_RedeemNowVC: UIViewController {
         
         self.container.segueIdentifierReceivedFromParent("first")
     }
+    @objc func getCount(){
+        self.getMycartList()
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"{
             self.container = segue.destination as? ContainerViewController
         }
     }
+ 
+    @IBAction func cartBtn(_ sender: Any) {
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_MyCartVC") as! HR_MyCartVC
+        self.navigationController?.pushViewController(vc, animated: true)
+            }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
         if flags == "SideMenu"{
@@ -61,7 +72,37 @@ class EBC_RedeemNowVC: UIViewController {
         }
         
     }
-    
+    func getMycartList(){
+        self.startLoading()
+        let parameters = [
+            "ActionType":"2",
+            "LoyaltyID":"\(self.loyaltyId)"
+        ] as [String : Any]
+        print(parameters)
+        self.requestAPIs.myCartListApi(parameters: parameters) { (result, error) in
+            if error == nil{
+                if result != nil{
+                    DispatchQueue.main.async {
+                        self.myCartListArray = result?.catalogueSaveCartDetailListResponse ?? []
+                        self.cartValue.text = "\(self.myCartListArray.count)"
+                        print(self.myCartListArray.count, "MyCarTCoutn")
+
+                    }
+                    DispatchQueue.main.async {
+                        self.stopLoading()
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.stopLoading()
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.stopLoading()
+                }
+            }
+        }
+    }
 }
 
 

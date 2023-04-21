@@ -13,8 +13,8 @@ class EBC_AboutVC: UIViewController {
     @IBOutlet weak var aboutWebView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.aboutWebView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-about-eng", ofType: "html")!) as URL) as URLRequest)
+        
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {

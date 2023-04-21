@@ -53,4 +53,22 @@ extension Notification.Name{
     static let redemptionSubmission = Notification.Name(rawValue: "redemptionSubmission")
     static let sendDashboard = Notification.Name(rawValue: "sendDashboard")
     static let catalogueSubmission = Notification.Name(rawValue: "catalogueSubmission")
+    static let optionView = Notification.Name(rawValue: "optionView")
+    static let registrationSubmission = Notification.Name(rawValue: "registrationSubmission")
+    static let userIsActive = Notification.Name(rawValue: "userIsActive")
+    
+    static let navigateToQueryList = Notification.Name(rawValue: "navigateToQueryList")
+    static let removeDreamGiftDetails = Notification.Name(rawValue: "removeDreamGiftDetails")
+    static let getProfileDetails = Notification.Name(rawValue: "getProfileDetails")
+    static let navigateToDashBoard = Notification.Name(rawValue: "navigateToDashBoard")
+    static let dreamGiftRemoved = Notification.Name(rawValue: "dreamGiftRemoved")
+    static let giftAddedIntoCart = Notification.Name(rawValue: "giftAddedIntoCart")
+    
+    static let moveToPrevious = Notification.Name(rawValue: "moveToPrevious")
+    
+    static let passwordUpdated = Notification.Name(rawValue: "passwordUpdated")
+    
+    
+    static let navigateToMain = Notification.Name(rawValue: "navigateToMain")
+    
 }

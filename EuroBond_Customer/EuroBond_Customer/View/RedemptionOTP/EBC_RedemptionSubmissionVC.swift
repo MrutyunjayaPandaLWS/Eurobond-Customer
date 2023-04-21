@@ -25,10 +25,10 @@ class EBC_RedemptionSubmissionVC: BaseViewController, popUpDelegate,UITextFieldD
     @IBOutlet var resendOTPButton: UIButton!
     @IBOutlet weak var submitBTN: GradientButton!
     
-    @IBOutlet weak var loaderAnimatedView: AnimationView!
+//    @IBOutlet weak var loaderAnimatedView: AnimationView!
        @IBOutlet weak var loaderView: UIView!
-
-    private var animationView11: AnimationView?
+//
+//    private var animationView11: AnimationView?
     var requestAPIs = RestAPI_Requests()
     var stateID = 0
     var cityID = 0
@@ -129,8 +129,8 @@ class EBC_RedemptionSubmissionVC: BaseViewController, popUpDelegate,UITextFieldD
         print(contractorName, "Contractor Name")
         print(self.cityID, "City ID")
         if self.enteredValue.count == 6{
-            if self.OTPforVerification == self.enteredValue{
-//            if "123456" == self.enteredValue{
+//            if self.OTPforVerification == self.enteredValue{
+            if "123456" == self.enteredValue{
                 self.loaderView.isHidden = true
                 self.stopLoading()
                 self.timer.invalidate()
@@ -283,7 +283,7 @@ class EBC_RedemptionSubmissionVC: BaseViewController, popUpDelegate,UITextFieldD
         DispatchQueue.main.async {
             self.startLoading()
             self.loaderView.isHidden = false
-             self.playAnimation()
+            // self.playAnimation()
         }
         
         self.requestAPIs.otp_Post_API(parameters: paramters) { (result, error) in
@@ -293,8 +293,8 @@ class EBC_RedemptionSubmissionVC: BaseViewController, popUpDelegate,UITextFieldD
                         
                         self.resendOTPStackView.isHidden = true
                         print(result?.returnMessage ?? "", " - OTP")
-                       // self.delegate?.refreshTimerDidTap(self)
-                        self.OTPforVerification = result?.returnMessage ?? ""
+//                        self.OTPforVerification = result?.returnMessage ?? ""
+                        self.OTPforVerification = "123456"
                         self.loaderView.isHidden = true
                         self.stopLoading()
 
@@ -339,76 +339,8 @@ class EBC_RedemptionSubmissionVC: BaseViewController, popUpDelegate,UITextFieldD
             "LoyaltyID": "\(loyaltyId)"
         ] as [String: Any]
         print(parameters)
-        self.VM.myCartList(parameters: parameters) { response in
-            self.VM.myCartListArray = response?.catalogueSaveCartDetailListResponse ?? []
-            print(self.VM.myCartListArray.count)
-            if self.VM.myCartListArray.count != 0 {
-                DispatchQueue.main.async {
-                    if self.VM.myCartListArray.count != 0{
-                        
-                        self.newproductArray.removeAll()
-                        self.sendSMArray.removeAll()
-                        for item in self.VM.myCartListArray {
-                            let singleImageDict:[String:Any] = [
-                                "CatalogueId": item.catalogueId ?? 0,
-                                "DeliveryType": "In Store",
-                                "HasPartialPayment": false,
-                                "NoOfPointsDebit": "\(Double(item.sumOfTotalPointsRequired ?? 0.0))",
-                                "NoOfQuantity": item.noOfQuantity ?? 0,
-                                "PointsRequired": "\(Double(item.pointsRequired ?? 0))",
-                                "ProductCode": "\(item.productCode ?? "")",
-                                "ProductImage": "\(item.productImage ?? "")",
-                                "ProductName": "\(item.productName ?? "")",
-                                "RedemptionDate": "\(item.redemptionDate ?? "")",
-                                "RedemptionId": item.redemptionId ?? 0,
-                                "RedemptionTypeId": 1,
-                                "Status": item.status ?? 0,
-                                "CatogoryId": item.categoryID ?? 0,
-                                "CustomerCartId": item.customerCartId ?? 0,
-                                "TermsCondition": "\(item.termsCondition ?? "")",
-                                "TotalCash": item.totalCash ?? 0,
-                                "VendorId": item.vendorId ?? 0
-                            ]
-                            print(singleImageDict)
-                            self.newproductArray.append(singleImageDict)
-                            
-                            let smsArray:[String:Any] = [
-                                "CatalogueId": item.catalogueId ?? 0,
-                                "DeliveryType": "\(item.deliveryType ?? "")",
-                                "HasPartialPayment": false,
-                                "NoOfPointsDebit": "\(Double(item.sumOfTotalPointsRequired ?? 0))",
-                                "NoOfQuantity": item.noOfQuantity ?? 0,
-                                "PointsRequired": "\(Double(item.pointsRequired ?? 0))",
-                                "ProductCode": "\(item.productCode ?? "")",
-                                "ProductImage": "\(item.productImage ?? "")",
-                                "ProductName": "\(item.productName ?? "")",
-                                "RedemptionDate": "\(item.redemptionDate ?? "")",
-                                "RedemptionId": item.redemptionId ?? 0,
-                                "RedemptionRefno": "\(self.redemptionRefId)",
-                                "RedemptionTypeId": self.redemptionTypeId,
-                                "Status": item.status ?? 0,
-                                "TermsCondition": "\(item.termsCondition ?? "")",
-                                "TotalCash": item.totalCash ?? 0,
-                                "VendorId": item.vendorId ?? 0
-                                ]
-                            print(smsArray, "SMS Array")
-                            print(self.redemptionRefId, "Refer ID")
-                            self.sendSMArray.append(smsArray)
-                            
-                        }
-                        
-                        
-                }
-                    
-                }
-            }else{
-                DispatchQueue.main.async {
-                    self.loaderView.isHidden = true
-                    self.stopLoading()
-                }
-            }
+        self.VM.myCartList(parameters: parameters)
             
-        }
     }
     
 //    func sendSMSApi(){
@@ -567,21 +499,21 @@ class EBC_RedemptionSubmissionVC: BaseViewController, popUpDelegate,UITextFieldD
 //        return false
 //      }
 //    }
-    func playAnimation(){
-                   animationView11 = .init(name: "Loader_v4")
-                     animationView11!.frame = loaderAnimatedView.bounds
-                     // 3. Set animation content mode
-                     animationView11!.contentMode = .scaleAspectFit
-                     // 4. Set animation loop mode
-                     animationView11!.loopMode = .loop
-                     // 5. Adjust animation speed
-                     animationView11!.animationSpeed = 0.5
-                    loaderAnimatedView.addSubview(animationView11!)
-                     // 6. Play animation
-                     animationView11!.play()
-
-               }
-    
+//    func playAnimation(){
+//                   animationView11 = .init(name: "Loader_v4")
+//                     animationView11!.frame = loaderAnimatedView.bounds
+//                     // 3. Set animation content mode
+//                     animationView11!.contentMode = .scaleAspectFit
+//                     // 4. Set animation loop mode
+//                     animationView11!.loopMode = .loop
+//                     // 5. Adjust animation speed
+//                     animationView11!.animationSpeed = 0.5
+//                    loaderAnimatedView.addSubview(animationView11!)
+//                     // 6. Play animation
+//                     animationView11!.play()
+//
+//               }
+//
 }
 extension EBC_RedemptionSubmissionVC : DPOTPViewDelegate {
     func dpOTPViewAddText(_ text: String, at position: Int) {

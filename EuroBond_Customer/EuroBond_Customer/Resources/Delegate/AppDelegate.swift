@@ -9,8 +9,8 @@ import UIKit
 import CoreData
 import SlideMenuControllerSwift
 import IQKeyboardManagerSwift
-
-
+import FirebaseCore
+import Firebase
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -29,11 +29,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
         print(isUserLoggedIn)
         tokendata()
+        FirebaseApp.configure()
+        
         if isUserLoggedIn == 1 {
             self.setHomeAsRootViewController()
         } else if isUserLoggedIn == 2 {
             self.setHomeAsRootViewController2()
-        } else {
+        }else if isUserLoggedIn == -1 {
+            self.setInitialLoginVC()
+        }else {
             self.setInitialViewAsRootViewController()
         }
         return true
@@ -57,10 +61,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
+    func setInitialLoginVC(){
+        let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
+        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
+        nav = UINavigationController(rootViewController: initialVC)
+        nav.modalPresentationStyle = .overCurrentContext
+        nav.modalTransitionStyle = .partialCurl
+        nav.isNavigationBarHidden = true
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+    }
     
     func setInitialViewAsRootViewController(){
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_Login1VC") as! EBC_Login1VC
+        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_LaunchScreenVC") as! EBC_LaunchScreenVC
         nav = UINavigationController(rootViewController: initialVC)
         nav.modalPresentationStyle = .overCurrentContext
         nav.modalTransitionStyle = .partialCurl

@@ -13,13 +13,26 @@ class HistoryNotificationsViewModel{
     var requestAPIs = RestAPI_Requests()
     var notificationListArray = [LstPushHistoryJson]()
     
-    func notificationListApi(parameters: JSON, completion: @escaping (NotificationModels?) -> ()){
-        self.VC?.startLoading()
+    func notificationListApi(parameters: JSON){
+        DispatchQueue.main.async {
+            self.VC?.startLoading()
+        }
+        
         self.requestAPIs.notificationList(parameters: parameters) { (result, error) in
             if error == nil{
                 if result != nil {
                     DispatchQueue.main.async {
-                        completion(result)
+                        self.notificationListArray = result?.lstPushHistoryJson ?? []
+                        print(self.notificationListArray.count)
+                        if self.notificationListArray.count != 0 {
+                            self.VC?.NotificationstableView.isHidden = false
+                            self.VC?.noDataFound.isHidden = true
+                            self.VC?.NotificationstableView.reloadData()
+                        }else{
+                            self.VC?.noDataFound.isHidden = false
+                            self.VC?.NotificationstableView.isHidden = true
+                            
+                        }
                         self.VC?.stopLoading()
                     }
                 } else {
