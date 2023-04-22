@@ -225,6 +225,8 @@ PODS:
     - Fabric (~> 1.10.2)
   - DPOTPView (1.5.12)
   - Fabric (1.10.2)
+  - Firebase/Analytics (6.34.0):
+    - Firebase/Core
   - Firebase/Core (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.9.0)
@@ -233,6 +235,9 @@ PODS:
   - Firebase/Crashlytics (6.34.0):
     - Firebase/CoreOnly
     - FirebaseCrashlytics (~> 4.6.2)
+  - Firebase/Messaging (6.34.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.7.1)
   - FirebaseAnalytics (6.9.0):
     - FirebaseCore (~> 6.10)
     - FirebaseInstallations (~> 1.7)
@@ -279,6 +284,19 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
+  - FirebaseInstanceID (4.8.0):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+  - FirebaseMessaging (4.7.1):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstanceID (~> 4.7)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Reachability (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - Protobuf (>= 3.9.2, ~> 3.9)
   - GoogleAppMeasurement (6.9.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
     - GoogleUtilities/MethodSwizzler (~> 6.7)
@@ -345,6 +363,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
+  - Protobuf (3.22.3)
   - QCropper (0.1.7)
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
@@ -357,8 +376,10 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Crashlytics (~> 3.14.0)
   - DPOTPView
+  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Crashlytics
+  - Firebase/Messaging
   - FirebaseAnalytics
   - FirebaseAuth
   - FirebaseFirestore
@@ -389,6 +410,8 @@ SPEC REPOS:
     - FirebaseCrashlytics
     - FirebaseFirestore
     - FirebaseInstallations
+    - FirebaseInstanceID
+    - FirebaseMessaging
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -402,6 +425,7 @@ SPEC REPOS:
     - lottie-ios
     - nanopb
     - PromisesObjC
+    - Protobuf
     - QCropper
     - SDWebImage
     - SlideMenuControllerSwift
@@ -424,6 +448,8 @@ SPEC CHECKSUMS:
   FirebaseCrashlytics: 1a747c9cc084a24dc6d9511c991db1cd078154eb
   FirebaseFirestore: 9b2f1b9b9a6f2f0b6fb7484b9e32ab7e39243554
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
+  FirebaseInstanceID: bd3ffc24367f901a43c063b36c640b345a4a5dd1
+  FirebaseMessaging: 5eca4ef173de76253352511aafef774caa1cba2a
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -437,12 +463,13 @@ SPEC CHECKSUMS:
   lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Protobuf: d03938d5f7e974a97964fb0567771e36fbe9ecce
   QCropper: aef6bad1e683e62b501fb8258359ccd10c68b4f2
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 8f5b5d415d010cc2ae593bf12eded03e96c78db9
+PODFILE CHECKSUM: 0a72c17cde8b8f44ce72e0df1bba275e106aba8f
 
 COCOAPODS: 1.12.0

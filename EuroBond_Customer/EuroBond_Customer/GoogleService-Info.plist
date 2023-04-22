@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>170527246559-2j52g8or55og95abfupabh2blqsf5i18.apps.googleusercontent.com</string>
+	<string>170527246559-im4sfv2ptpokfcneb3rjh8d9ambatb5l.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.170527246559-2j52g8or55og95abfupabh2blqsf5i18</string>
+	<string>com.googleusercontent.apps.170527246559-im4sfv2ptpokfcneb3rjh8d9ambatb5l</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBTwYhKGghb64bomaXrX8JUsDsE6rAtTtg</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,22 +13,22 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>EuroBond</string>
+	<string>com.loyaltyWorks.EuroBond-Customer</string>
 	<key>PROJECT_ID</key>
 	<string>eurobond-63252</string>
 	<key>STORAGE_BUCKET</key>
 	<string>eurobond-63252.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:170527246559:ios:77aa263236297f4a25816a</string>
+	<string>1:170527246559:ios:b9d781c3c3414e9225816a</string>
 </dict>
 </plist>

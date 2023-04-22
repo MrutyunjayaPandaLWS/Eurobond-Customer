@@ -148,6 +148,9 @@
 		8428377A29E5689900189C33 /* HR_TermsandCondtionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428377929E5689900189C33 /* HR_TermsandCondtionVC.swift */; };
 		842B937629E43CFE00FD0770 /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B937429E43CFD00FD0770 /* CityList.swift */; };
 		842B937729E43CFE00FD0770 /* CityListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B937529E43CFE00FD0770 /* CityListModels.swift */; };
+		843A0E1329F3921800F2A66D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A0E1229F3921800F2A66D /* NotificationService.swift */; };
+		843A0E1729F3921800F2A66D /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 843A0E1029F3921800F2A66D /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		843A0E1D29F3932700F2A66D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 843A0E1C29F3932700F2A66D /* GoogleService-Info.plist */; };
 		843E6D1829EAA7D3004FBE2D /* ScannedandUploadCodesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E6D1629EAA7D1004FBE2D /* ScannedandUploadCodesModels.swift */; };
 		843E6D1929EAA7D3004FBE2D /* QrCodeSaveResponseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843E6D1729EAA7D3004FBE2D /* QrCodeSaveResponseList.swift */; };
 		843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */; };
@@ -323,7 +326,6 @@
 		84BD648A29EA8782008D3E34 /* FilterPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD648829EA877F008D3E34 /* FilterPopUpViewController.swift */; };
 		84BD648B29EA8782008D3E34 /* FilterByStatusPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD648929EA8782008D3E34 /* FilterByStatusPopUpVC.swift */; };
 		84BD648D29EA8797008D3E34 /* FilterByStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD648C29EA8797008D3E34 /* FilterByStatusTVC.swift */; };
-		84D1D18429F2B7C300844F18 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84D1D18329F2B7C300844F18 /* GoogleService-Info.plist */; };
 		84EB50AB29F1435900533266 /* DashBordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB50A429F1434200533266 /* DashBordModel.swift */; };
 		84EB50AC29F1435900533266 /* ObjActivityDetailsJsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB50A529F1434500533266 /* ObjActivityDetailsJsonList.swift */; };
 		84EB50AD29F1435900533266 /* LstPromotionListJsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB50A629F1434900533266 /* LstPromotionListJsonApi.swift */; };
@@ -370,9 +372,27 @@
 			remoteGlobalIDString = 80AEAD0229C4407C005108AC;
 			remoteInfo = EuroBond_Customer;
 		};
+		843A0E1529F3921800F2A66D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80AEACFB29C4407C005108AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843A0E0F29F3921800F2A66D;
+			remoteInfo = NotificationService;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		843A0E1B29F3921800F2A66D /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				843A0E1729F3921800F2A66D /* NotificationService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		84FC47F229DABB7D00971C62 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -531,6 +551,11 @@
 		8428377929E5689900189C33 /* HR_TermsandCondtionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_TermsandCondtionVC.swift; sourceTree = "<group>"; };
 		842B937429E43CFD00FD0770 /* CityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
 		842B937529E43CFE00FD0770 /* CityListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListModels.swift; sourceTree = "<group>"; };
+		843A0E1029F3921800F2A66D /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		843A0E1229F3921800F2A66D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		843A0E1429F3921800F2A66D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843A0E1C29F3932700F2A66D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		843A0E1E29F3933D00F2A66D /* EuroBond_Customer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EuroBond_Customer.entitlements; sourceTree = "<group>"; };
 		843E6D1629EAA7D1004FBE2D /* ScannedandUploadCodesModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannedandUploadCodesModels.swift; sourceTree = "<group>"; };
 		843E6D1729EAA7D3004FBE2D /* QrCodeSaveResponseList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QrCodeSaveResponseList.swift; sourceTree = "<group>"; };
 		843EAF8C29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_CreatenewQueryVC.swift; sourceTree = "<group>"; };
@@ -707,7 +732,6 @@
 		84BD648829EA877F008D3E34 /* FilterPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopUpViewController.swift; sourceTree = "<group>"; };
 		84BD648929EA8782008D3E34 /* FilterByStatusPopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterByStatusPopUpVC.swift; sourceTree = "<group>"; };
 		84BD648C29EA8797008D3E34 /* FilterByStatusTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterByStatusTVC.swift; sourceTree = "<group>"; };
-		84D1D18329F2B7C300844F18 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84EB50A429F1434200533266 /* DashBordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBordModel.swift; sourceTree = "<group>"; };
 		84EB50A529F1434500533266 /* ObjActivityDetailsJsonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjActivityDetailsJsonList.swift; sourceTree = "<group>"; };
 		84EB50A629F1434900533266 /* LstPromotionListJsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPromotionListJsonApi.swift; sourceTree = "<group>"; };
@@ -758,6 +782,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80AEAD2329C44083005108AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843A0E0D29F3921800F2A66D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1344,6 +1375,7 @@
 				80AEAD0529C4407C005108AC /* EuroBond_Customer */,
 				80AEAD1F29C44083005108AC /* EuroBond_CustomerTests */,
 				80AEAD2929C44083005108AC /* EuroBond_CustomerUITests */,
+				843A0E1129F3921800F2A66D /* NotificationService */,
 				80AEAD0429C4407C005108AC /* Products */,
 				9B1B278F640F96569C72A21D /* Pods */,
 				7C418AC56CDEE19431ACF041 /* Frameworks */,
@@ -1356,6 +1388,7 @@
 				80AEAD0329C4407C005108AC /* EuroBond_Customer.app */,
 				80AEAD1C29C44083005108AC /* EuroBond_CustomerTests.xctest */,
 				80AEAD2629C44083005108AC /* EuroBond_CustomerUITests.xctest */,
+				843A0E1029F3921800F2A66D /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1363,6 +1396,7 @@
 		80AEAD0529C4407C005108AC /* EuroBond_Customer */ = {
 			isa = PBXGroup;
 			children = (
+				843A0E1E29F3933D00F2A66D /* EuroBond_Customer.entitlements */,
 				80AEAD7529C44E75005108AC /* EUROBOND LOGO ANIMATION_1.mp4 */,
 				25844B1229DE88D300CACC41 /* Models */,
 				80AEAD3A29C440C1005108AC /* View */,
@@ -1370,7 +1404,7 @@
 				80AEAD3929C440B8005108AC /* Resources */,
 				80AEAD1229C44081005108AC /* Assets.xcassets */,
 				80AEAD1729C44081005108AC /* Info.plist */,
-				84D1D18329F2B7C300844F18 /* GoogleService-Info.plist */,
+				843A0E1C29F3932700F2A66D /* GoogleService-Info.plist */,
 			);
 			path = EuroBond_Customer;
 			sourceTree = "<group>";
@@ -1830,6 +1864,15 @@
 				842B937429E43CFD00FD0770 /* CityList.swift */,
 			);
 			path = CityListModels;
+			sourceTree = "<group>";
+		};
+		843A0E1129F3921800F2A66D /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				843A0E1229F3921800F2A66D /* NotificationService.swift */,
+				843A0E1429F3921800F2A66D /* Info.plist */,
+			);
+			path = NotificationService;
 			sourceTree = "<group>";
 		};
 		843EAF8A29D6AF9E00971B96 /* Support */ = {
@@ -2732,10 +2775,12 @@
 				84FC47F229DABB7D00971C62 /* Embed Frameworks */,
 				849ECCA729E9811700628D69 /* ShellScript */,
 				13FDF234B3A0DC4089D96A9D /* [CP] Embed Pods Frameworks */,
+				843A0E1B29F3921800F2A66D /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				843A0E1629F3921800F2A66D /* PBXTargetDependency */,
 			);
 			name = EuroBond_Customer;
 			packageProductDependencies = (
@@ -2780,6 +2825,23 @@
 			productReference = 80AEAD2629C44083005108AC /* EuroBond_CustomerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		843A0E0F29F3921800F2A66D /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843A0E1829F3921800F2A66D /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				843A0E0C29F3921800F2A66D /* Sources */,
+				843A0E0D29F3921800F2A66D /* Frameworks */,
+				843A0E0E29F3921800F2A66D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 843A0E1029F3921800F2A66D /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -2787,7 +2849,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1420;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					80AEAD0229C4407C005108AC = {
@@ -2800,6 +2862,9 @@
 					80AEAD2529C44083005108AC = {
 						CreatedOnToolsVersion = 14.2;
 						TestTargetID = 80AEAD0229C4407C005108AC;
+					};
+					843A0E0F29F3921800F2A66D = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
@@ -2821,6 +2886,7 @@
 				80AEAD0229C4407C005108AC /* EuroBond_Customer */,
 				80AEAD1B29C44083005108AC /* EuroBond_CustomerTests */,
 				80AEAD2529C44083005108AC /* EuroBond_CustomerUITests */,
+				843A0E0F29F3921800F2A66D /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
@@ -2831,6 +2897,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B5E26429F000E100A3C56D /* HR_RedemptionPlannerTVC.xib in Resources */,
+				843A0E1D29F3932700F2A66D /* GoogleService-Info.plist in Resources */,
 				84EE0FC129EE9BD500586FFB /* coming soon ilustration.json in Resources */,
 				849E45C829DC308700A4311B /* senderInfoImageTableViewCell.xib in Resources */,
 				809343A329C5EE2C00440CB6 /* Roboto-ThinItalic.ttf in Resources */,
@@ -2862,7 +2929,6 @@
 				849B813029EA9C9B0095286B /* lf30_editor_qd1wdceq.json in Resources */,
 				84815F6F29E416CA001C65F9 /* HistoryNotificationsTableViewCell.xib in Resources */,
 				84BBA9FB29ECFF0C000036BC /* lf30_editor_zw5apwgp.json in Resources */,
-				84D1D18429F2B7C300844F18 /* GoogleService-Info.plist in Resources */,
 				849B812C29EA9C7E0095286B /* lf30_editor_jh47f7lt (1).json in Resources */,
 				849E45CB29DC308700A4311B /* senderInfoTableViewCell.xib in Resources */,
 				8093439F29C5EE1B00440CB6 /* Roboto-Light.ttf in Resources */,
@@ -2881,6 +2947,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80AEAD2429C44083005108AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		843A0E0E29F3921800F2A66D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2946,7 +3019,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3277,6 +3350,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		843A0E0C29F3921800F2A66D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843A0E1329F3921800F2A66D /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -3289,6 +3370,11 @@
 			isa = PBXTargetDependency;
 			target = 80AEAD0229C4407C005108AC /* EuroBond_Customer */;
 			targetProxy = 80AEAD2729C44083005108AC /* PBXContainerItemProxy */;
+		};
+		843A0E1629F3921800F2A66D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843A0E0F29F3921800F2A66D /* NotificationService */;
+			targetProxy = 843A0E1529F3921800F2A66D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3431,8 +3517,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 95C286DC2D5108CC3FB9FF7D /* Pods-EuroBond_Customer.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EuroBond_Customer/EuroBond_Customer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3468,8 +3556,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C533D5343E3E6BF8BD4D7ACF /* Pods-EuroBond_Customer.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = EuroBond_Customer/EuroBond_Customer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -3577,6 +3667,60 @@
 			};
 			name = Release;
 		};
+		843A0E1929F3921800F2A66D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-Customer.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		843A0E1A29F3921800F2A66D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.EuroBond-Customer.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3612,6 +3756,15 @@
 			buildConfigurations = (
 				80AEAD3729C44083005108AC /* Debug */,
 				80AEAD3829C44083005108AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		843A0E1829F3921800F2A66D /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843A0E1929F3921800F2A66D /* Debug */,
+				843A0E1A29F3921800F2A66D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

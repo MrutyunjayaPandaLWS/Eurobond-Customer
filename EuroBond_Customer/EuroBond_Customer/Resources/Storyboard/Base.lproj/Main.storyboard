@@ -4111,7 +4111,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach GST Document ( Optional )" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCC-Me-9IQ">
-                                                <rect key="frame" x="46.666666666666657" y="386" width="182.00000000000003" height="14.333333333333314"/>
+                                                <rect key="frame" x="46.666666666666657" y="386" width="182" height="14.333333333333314"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14.33" id="8Dx-u3-JU8"/>
                                                 </constraints>
@@ -7077,17 +7077,17 @@
                                                                                             <rect key="frame" x="176.66666666666663" y="0.0" width="176.33333333333337" height="50"/>
                                                                                             <subviews>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fVz-8e-3wn">
-                                                                                                    <rect key="frame" x="26" y="0.0" width="71" height="50"/>
+                                                                                                    <rect key="frame" x="26" y="0.0" width="79" height="50"/>
                                                                                                     <subviews>
                                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Asset 1" translatesAutoresizingMaskIntoConstraints="NO" id="RGD-oA-GqV">
-                                                                                                            <rect key="frame" x="0.0" y="15" width="12" height="20"/>
+                                                                                                            <rect key="frame" x="0.0" y="15" width="20" height="20"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="width" constant="20" id="8QE-5I-IlS"/>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="BTn-fQ-GBY"/>
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;25000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abt-8q-tTI">
-                                                                                                            <rect key="frame" x="20" y="16.333333333333329" width="51" height="17.666666666666671"/>
+                                                                                                            <rect key="frame" x="28" y="16.333333333333329" width="51" height="17.666666666666671"/>
                                                                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                                                                                             <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                             <nil key="highlightedColor"/>
@@ -9368,7 +9368,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGL-ho-Tmk">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="450"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcb-F9-AJn">
                                         <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
@@ -9413,10 +9413,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xeK-Cf-9BK">
-                                        <rect key="frame" x="0.0" y="60" width="393" height="329"/>
+                                        <rect key="frame" x="0.0" y="60" width="393" height="20"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6lv-UJ-3eL" customClass="LottieAnimationView" customModule="Lottie">
-                                                <rect key="frame" x="30" y="20" width="333" height="309"/>
+                                                <rect key="frame" x="30" y="20" width="333" height="0.0"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="helpLineAnimation"/>
@@ -9432,7 +9432,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wOw-oJ-UwT">
-                                        <rect key="frame" x="0.0" y="389" width="393" height="120"/>
+                                        <rect key="frame" x="0.0" y="80" width="393" height="120"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_2022_11_07T04_46_28_773Z" translatesAutoresizingMaskIntoConstraints="NO" id="CZl-k0-hvw">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="120"/>
@@ -9448,7 +9448,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For any Queries on Eurobond Rewards program Please give a Missed Call on the below mentioned number or Lodge a Query" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH8-nR-ZPC">
-                                        <rect key="frame" x="0.0" y="509" width="393" height="70"/>
+                                        <rect key="frame" x="0.0" y="200" width="393" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="DlT-N5-eW5"/>
                                         </constraints>
@@ -9457,7 +9457,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1ZS-AM-BdL">
-                                        <rect key="frame" x="14" y="599" width="365" height="140"/>
+                                        <rect key="frame" x="14" y="290" width="365" height="140"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qBL-LO-5ia">
                                                 <rect key="frame" x="0.0" y="0.0" width="365" height="60"/>
