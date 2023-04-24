@@ -61,7 +61,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
                             "ActionType": "5",
                             "userid": self.userId,//Currently Logged user id
                             "CustomerId": self.VM.myAssistantArrayList[tappedIndexPath.row].userID ?? -1,//Fabricator Helper user id
-                            "IsActive": "true"
+                            "IsActive": 1
                         ] as [String: Any]
                         print(parameter)
                         self.VM.deactivateExecutiveApi(parameter: parameter)

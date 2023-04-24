@@ -97,6 +97,7 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                  ]
                 ] as [String : Any]
                  print(parameter)
+            self.VM.flags = "BankDetails"
                  self.VM.updateProfileDetailsApi(parameter: parameter)
             }else{
                 if self.accountHolderTF.text!.count == 0 || self.accountNumberTF.text!.count == 0 || self.bankNameTF.text!.count == 0 || self.ifscCodeTF.text!.count == 0 || self.confirmAccountNumberTF.text!.count == 0 || self.strdata1 == ""{

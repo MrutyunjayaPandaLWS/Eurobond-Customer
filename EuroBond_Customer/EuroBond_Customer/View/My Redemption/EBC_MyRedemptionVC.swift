@@ -334,9 +334,9 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         if imageURL != ""{
             let urltoUse = String(productCatalogueImgURL + imageURL).replacingOccurrences(of: " ", with: "%20")
             let urlt = URL(string: "\(urltoUse)")
-            cell.redemptionImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+            cell.redemptionImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
         }else{
-            cell.redemptionImage.image = UIImage(named: "ic_default_img")
+            cell.redemptionImage.image = UIImage(named: "dashboardLogo")
         }
         return cell
     }

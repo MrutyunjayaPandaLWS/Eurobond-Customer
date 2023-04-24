@@ -224,6 +224,18 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     @IBAction func codeStatusListBTN(_ sender: Any) {
         self.codesCollectionsArray.removeAll()
         
+        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+            self.headerText.text = "Code Status"
+        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+            self.headerText.text = "कोड स्थिति"
+            
+        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+            self.headerText.text = "কোড স্ট্যাটাস"
+            
+        }else{
+            self.headerText.text = "Code Status"
+            
+        }
         self.codeStatusBTN.backgroundColor =  #colorLiteral(red: 0, green: 0.431829989, blue: 0.7325050235, alpha: 1)
         self.codeStatusBTN.setImage(UIImage(named: "qr 1"), for: .normal)
         self.codeStatusBTN.setTitleColor(.white, for: .normal)
@@ -237,6 +249,18 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     
     }
     @IBAction func syncStatusListBTN(_ sender: Any) {
+        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+            self.headerText.text = "Syc Status"
+        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+            self.headerText.text = "सिंक स्थिति"
+            
+        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+            self.headerText.text = "সিঙ্ক স্থিতি"
+            
+        }else{
+            self.headerText.text = "Syc Status"
+            
+        }
         self.codeStatusBTN.backgroundColor =  #colorLiteral(red: 0.9064666033, green: 0.9463894963, blue: 0.9929038882, alpha: 1)
         
         self.codeStatusBTN.setImage(UIImage(named: "qr"), for: .normal)

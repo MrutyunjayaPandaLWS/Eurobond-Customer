@@ -225,8 +225,6 @@ PODS:
     - Fabric (~> 1.10.2)
   - DPOTPView (1.5.12)
   - Fabric (1.10.2)
-  - Firebase/Analytics (6.34.0):
-    - Firebase/Core
   - Firebase/Core (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.9.0)
@@ -363,7 +361,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
-  - Protobuf (3.22.3)
+  - Protobuf (3.22.1)
   - QCropper (0.1.7)
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
@@ -376,7 +374,6 @@ DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Crashlytics (~> 3.14.0)
   - DPOTPView
-  - Firebase/Analytics
   - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Messaging
@@ -463,13 +460,13 @@ SPEC CHECKSUMS:
   lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  Protobuf: d03938d5f7e974a97964fb0567771e36fbe9ecce
+  Protobuf: d7f7c8329edf5eb8af65547a8ba3e9c1cee927d5
   QCropper: aef6bad1e683e62b501fb8258359ccd10c68b4f2
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 0a72c17cde8b8f44ce72e0df1bba275e106aba8f
+PODFILE CHECKSUM: f0ebd77b49b2e92aa70a3d2ef27111c34e08c55a
 
 COCOAPODS: 1.12.0

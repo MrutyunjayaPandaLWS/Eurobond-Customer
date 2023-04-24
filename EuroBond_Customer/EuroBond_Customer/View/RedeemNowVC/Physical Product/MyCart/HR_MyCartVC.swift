@@ -104,11 +104,14 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
     
     func removeProductsList(_ cell: HR_MyCartTVC){
         guard let tappedIndexPath = self.myCartTableView.indexPath(for: cell) else{return}
-        if cell.removeProductsBTN.tag == tappedIndexPath.row{
+//        if cell.removeProductsBTN.tag == tappedIndexPath.row{
+        if self.VM.myCartListArray.count > 0{
             self.customerCartId = self.VM.myCartListArray[tappedIndexPath.row].customerCartId ?? 0
             self.VM.removeProduct()
             self.myCartTableView.reloadData()
         }
+            
+//        }
       
     }
     
@@ -209,7 +212,11 @@ extension HR_MyCartVC: UITableViewDelegate, UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.VM.myCartListArray.count
+         if self.VM.myCartListArray.count > 0{
+            return  self.VM.myCartListArray.count
+         }else{
+             return 0
+         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HR_MyCartTVC", for: indexPath) as! HR_MyCartTVC

@@ -119,7 +119,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.sideMenuName.text = sideMenuArrayList[indexPath.row].sideMenuName
         cell.sideMenuImage.image = UIImage(named: sideMenuArrayList[indexPath.row].sideMenuImage)
         if sideMenuArrayList[indexPath.row].sideMenuName == "Game Zone"{
-            cell.sideMenuBadges.isHidden = false
+            cell.sideMenuBadges.isHidden = true
             cell.sideMenuBadges.text = "3"
         }else{
             cell.sideMenuBadges.isHidden = true
@@ -138,7 +138,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         case "Scan QR Code":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
             vc?.fromSideMenu = "SideMenu"
-//            vc?.scanner = "Scan"
+//            vc?.itsFrom = "ScanCode"
             navigationController?.pushViewController(vc!, animated: true)
         case "Enter QR Code":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
@@ -149,7 +149,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeStatusListVC") as? CodeStatusListVC
 //            vc?.fromSideMenu = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "My Eraning":
+        case "My Earning":
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)

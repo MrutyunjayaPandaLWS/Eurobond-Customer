@@ -42,7 +42,6 @@
 		25844B2729DEAA0800CACC41 /* EBC_MagicBox_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2629DEAA0800CACC41 /* EBC_MagicBox_VM.swift */; };
 		25844B2B29DEAADD00CACC41 /* GamificationResultModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2A29DEAADD00CACC41 /* GamificationResultModels.swift */; };
 		25844B2D29DEB03300CACC41 /* EBC_GameCentre_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B2C29DEB03300CACC41 /* EBC_GameCentre_VC.swift */; };
-		55D0489681715966B8CDFEDA /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 151909F0E389B84CF2BFFCFF /* Pods_EuroBond_Customer.framework */; };
 		800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */; };
 		800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */; };
 		800D81D729C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D629C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift */; };
@@ -168,6 +167,8 @@
 		8457ECDF29F0197000CC5EF6 /* ProductCatalogueDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECDD29F0196E00CC5EF6 /* ProductCatalogueDetailsModel.swift */; };
 		8457ECE029F0197000CC5EF6 /* ObjImageGalleryList1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECDE29F0197000CC5EF6 /* ObjImageGalleryList1.swift */; };
 		8457ECE329F01A0E00CC5EF6 /* CatalogueBannerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECE229F01A0E00CC5EF6 /* CatalogueBannerVM.swift */; };
+		847042C629F3A98A0089024A /* MyRedemptionDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847042C529F3A98A0089024A /* MyRedemptionDetailsModels.swift */; };
+		847042C829F3A9970089024A /* ObjCatalogueList01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847042C729F3A9970089024A /* ObjCatalogueList01.swift */; };
 		8478145729E829F4001BF45C /* LanguageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478145529E829F3001BF45C /* LanguageModel.swift */; };
 		8478145829E829F4001BF45C /* LstAttributesDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8478145629E829F3001BF45C /* LstAttributesDetails.swift */; };
 		847DAFC629EEAC030000FDE6 /* HR_RedemptionCatalogueListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFC529EEAC030000FDE6 /* HR_RedemptionCatalogueListVM.swift */; };
@@ -287,8 +288,6 @@
 		84B5E26929F0012B00A3C56D /* HR_RedemptionPlannerDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E26829F0012A00A3C56D /* HR_RedemptionPlannerDetailsVM.swift */; };
 		84B5E26B29F0022700A3C56D /* HR_RedemptionPlannerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E26A29F0022700A3C56D /* HR_RedemptionPlannerTVC.swift */; };
 		84B5E26E29F00D9600A3C56D /* HR_MyRedemptionListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E26D29F00D9600A3C56D /* HR_MyRedemptionListVM.swift */; };
-		84B5E27229F00DE800A3C56D /* MyRedemptionDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E27029F00DE800A3C56D /* MyRedemptionDetailsModels.swift */; };
-		84B5E27329F00DE800A3C56D /* ObjCatalogueList01.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E27129F00DE800A3C56D /* ObjCatalogueList01.swift */; };
 		84B5E27729F00E0100A3C56D /* MyRedemptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E27529F00E0000A3C56D /* MyRedemptionModels.swift */; };
 		84B5E27829F00E0100A3C56D /* ObjCatalogueRedemReqList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E27629F00E0000A3C56D /* ObjCatalogueRedemReqList.swift */; };
 		84B7F11C29EFA4BA00EB8592 /* HR_EvoucherListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7F11B29EFA4BA00EB8592 /* HR_EvoucherListVC.swift */; };
@@ -355,6 +354,7 @@
 		84EE291929D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291829D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift */; };
 		84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291A29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift */; };
 		84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EE291D29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift */; };
+		97621F73BA9346C9B7560D5C /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCF5280FC935A702C2163E3 /* Pods_EuroBond_Customer.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -406,7 +406,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		151909F0E389B84CF2BFFCFF /* Pods_EuroBond_Customer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2577B47729DEBCD0004C4942 /* EBC_GameCenter_VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_GameCenter_VM.swift; sourceTree = "<group>"; };
 		2577B47929DEBDF4004C4942 /* EBC_MyAttempts_CVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EBC_MyAttempts_CVC.xib; sourceTree = "<group>"; };
 		2577B47B29DEBEDD004C4942 /* EBC_MyAttempts_CVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_MyAttempts_CVC.swift; sourceTree = "<group>"; };
@@ -442,6 +441,8 @@
 		25844B2629DEAA0800CACC41 /* EBC_MagicBox_VM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_MagicBox_VM.swift; sourceTree = "<group>"; };
 		25844B2A29DEAADD00CACC41 /* GamificationResultModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamificationResultModels.swift; sourceTree = "<group>"; };
 		25844B2C29DEB03300CACC41 /* EBC_GameCentre_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_GameCentre_VC.swift; sourceTree = "<group>"; };
+		3AD1674045B1CB7C66AF67A3 /* Pods-EuroBond_Customer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.debug.xcconfig"; sourceTree = "<group>"; };
+		5DCF5280FC935A702C2163E3 /* Pods_EuroBond_Customer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RedeemNowVC.swift; sourceTree = "<group>"; };
 		800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_GameZoneVC.swift; sourceTree = "<group>"; };
 		800D81D629C9DF0000D77557 /* EBC_SchemesAndOffersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SchemesAndOffersVC.swift; sourceTree = "<group>"; };
@@ -574,6 +575,8 @@
 		8457ECDD29F0196E00CC5EF6 /* ProductCatalogueDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCatalogueDetailsModel.swift; sourceTree = "<group>"; };
 		8457ECDE29F0197000CC5EF6 /* ObjImageGalleryList1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjImageGalleryList1.swift; sourceTree = "<group>"; };
 		8457ECE229F01A0E00CC5EF6 /* CatalogueBannerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogueBannerVM.swift; sourceTree = "<group>"; };
+		847042C529F3A98A0089024A /* MyRedemptionDetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRedemptionDetailsModels.swift; sourceTree = "<group>"; };
+		847042C729F3A9970089024A /* ObjCatalogueList01.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjCatalogueList01.swift; sourceTree = "<group>"; };
 		8478145529E829F3001BF45C /* LanguageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageModel.swift; sourceTree = "<group>"; };
 		8478145629E829F3001BF45C /* LstAttributesDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstAttributesDetails.swift; sourceTree = "<group>"; };
 		847DAFC529EEAC030000FDE6 /* HR_RedemptionCatalogueListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionCatalogueListVM.swift; sourceTree = "<group>"; };
@@ -693,8 +696,6 @@
 		84B5E26829F0012A00A3C56D /* HR_RedemptionPlannerDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionPlannerDetailsVM.swift; sourceTree = "<group>"; };
 		84B5E26A29F0022700A3C56D /* HR_RedemptionPlannerTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionPlannerTVC.swift; sourceTree = "<group>"; };
 		84B5E26D29F00D9600A3C56D /* HR_MyRedemptionListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_MyRedemptionListVM.swift; sourceTree = "<group>"; };
-		84B5E27029F00DE800A3C56D /* MyRedemptionDetailsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRedemptionDetailsModels.swift; sourceTree = "<group>"; };
-		84B5E27129F00DE800A3C56D /* ObjCatalogueList01.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCatalogueList01.swift; sourceTree = "<group>"; };
 		84B5E27529F00E0000A3C56D /* MyRedemptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRedemptionModels.swift; sourceTree = "<group>"; };
 		84B5E27629F00E0000A3C56D /* ObjCatalogueRedemReqList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCatalogueRedemReqList.swift; sourceTree = "<group>"; };
 		84B7F11B29EFA4BA00EB8592 /* HR_EvoucherListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_EvoucherListVC.swift; sourceTree = "<group>"; };
@@ -761,8 +762,7 @@
 		84EE291829D6E8B4004B1C6C /* EBC_SuccessMessageVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SuccessMessageVC1.swift; sourceTree = "<group>"; };
 		84EE291A29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RegisterAssistantVC.swift; sourceTree = "<group>"; };
 		84EE291D29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_UpdatePasswordVC.swift; sourceTree = "<group>"; };
-		95C286DC2D5108CC3FB9FF7D /* Pods-EuroBond_Customer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.debug.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.debug.xcconfig"; sourceTree = "<group>"; };
-		C533D5343E3E6BF8BD4D7ACF /* Pods-EuroBond_Customer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.release.xcconfig"; sourceTree = "<group>"; };
+		D18363D02B9233E499480380 /* Pods-EuroBond_Customer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EuroBond_Customer.release.xcconfig"; path = "Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -770,7 +770,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55D0489681715966B8CDFEDA /* Pods_EuroBond_Customer.framework in Frameworks */,
+				97621F73BA9346C9B7560D5C /* Pods_EuroBond_Customer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,6 +798,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15460C634BB64050E2D2A6B7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5DCF5280FC935A702C2163E3 /* Pods_EuroBond_Customer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2577B48529DEC356004C4942 /* ScratchVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,6 +1028,7 @@
 		25844B1229DE88D300CACC41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				847042C429F3A94A0089024A /* MyRedemptionDetailsModels */,
 				84093D5A29F256F300635CB9 /* UpdatePasswordModel */,
 				84093D5729F2464E00635CB9 /* RegisterAccountDeactivateModel */,
 				84EB50BD29F1690900533266 /* AssistantRegisterSubmissionModel */,
@@ -1028,7 +1037,6 @@
 				842049DA29F1380500F97488 /* MyDreamGiftDetails */,
 				8457ECDC29F0194F00CC5EF6 /* ProductCatalogueDetailsModel */,
 				84B5E27429F00E0000A3C56D /* MyRedemptionModels */,
-				84B5E26F29F00DE800A3C56D /* MyRedemptionDetailsModels */,
 				84B5E24B29EFC6FB00A3C56D /* ProductSubmissionModels */,
 				84B5E24829EFC6CE00A3C56D /* SMSsentModels */,
 				84B5E23329EFB6EB00A3C56D /* TermsandConditioinModels */,
@@ -1129,14 +1137,6 @@
 				25844B2A29DEAADD00CACC41 /* GamificationResultModels.swift */,
 			);
 			path = GamificationResultModels;
-			sourceTree = "<group>";
-		};
-		7C418AC56CDEE19431ACF041 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				151909F0E389B84CF2BFFCFF /* Pods_EuroBond_Customer.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		800D81CF29C9D4EF00D77557 /* RedeemNowVC */ = {
@@ -1378,7 +1378,7 @@
 				843A0E1129F3921800F2A66D /* NotificationService */,
 				80AEAD0429C4407C005108AC /* Products */,
 				9B1B278F640F96569C72A21D /* Pods */,
-				7C418AC56CDEE19431ACF041 /* Frameworks */,
+				15460C634BB64050E2D2A6B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1966,6 +1966,15 @@
 			path = ProductCatalogueBannerVM;
 			sourceTree = "<group>";
 		};
+		847042C429F3A94A0089024A /* MyRedemptionDetailsModels */ = {
+			isa = PBXGroup;
+			children = (
+				847042C529F3A98A0089024A /* MyRedemptionDetailsModels.swift */,
+				847042C729F3A9970089024A /* ObjCatalogueList01.swift */,
+			);
+			path = MyRedemptionDetailsModels;
+			sourceTree = "<group>";
+		};
 		8478145429E829D2001BF45C /* LanguageModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -2459,16 +2468,6 @@
 			path = MyRedemptionListVM;
 			sourceTree = "<group>";
 		};
-		84B5E26F29F00DE800A3C56D /* MyRedemptionDetailsModels */ = {
-			isa = PBXGroup;
-			children = (
-				84B5E27029F00DE800A3C56D /* MyRedemptionDetailsModels.swift */,
-				84B5E27129F00DE800A3C56D /* ObjCatalogueList01.swift */,
-			);
-			name = MyRedemptionDetailsModels;
-			path = "../../../../HRJohnsonDealer-Samriddhi/H&RJohnson Dealer/Models/MyRedemptionDetailsModels";
-			sourceTree = "<group>";
-		};
 		84B5E27429F00E0000A3C56D /* MyRedemptionModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -2755,8 +2754,8 @@
 		9B1B278F640F96569C72A21D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				95C286DC2D5108CC3FB9FF7D /* Pods-EuroBond_Customer.debug.xcconfig */,
-				C533D5343E3E6BF8BD4D7ACF /* Pods-EuroBond_Customer.release.xcconfig */,
+				3AD1674045B1CB7C66AF67A3 /* Pods-EuroBond_Customer.debug.xcconfig */,
+				D18363D02B9233E499480380 /* Pods-EuroBond_Customer.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2768,14 +2767,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80AEAD3029C44083005108AC /* Build configuration list for PBXNativeTarget "EuroBond_Customer" */;
 			buildPhases = (
-				0EF4955C7F67E7E0105263A4 /* [CP] Check Pods Manifest.lock */,
+				2E35DEB5E0D054ADEED77D4B /* [CP] Check Pods Manifest.lock */,
 				80AEACFF29C4407C005108AC /* Sources */,
 				80AEAD0029C4407C005108AC /* Frameworks */,
 				80AEAD0129C4407C005108AC /* Resources */,
 				84FC47F229DABB7D00971C62 /* Embed Frameworks */,
 				849ECCA729E9811700628D69 /* ShellScript */,
-				13FDF234B3A0DC4089D96A9D /* [CP] Embed Pods Frameworks */,
 				843A0E1B29F3921800F2A66D /* Embed Foundation Extensions */,
+				A16D2EC43749C567B93E9433 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2783,8 +2782,6 @@
 				843A0E1629F3921800F2A66D /* PBXTargetDependency */,
 			);
 			name = EuroBond_Customer;
-			packageProductDependencies = (
-			);
 			productName = EuroBond_Customer;
 			productReference = 80AEAD0329C4407C005108AC /* EuroBond_Customer.app */;
 			productType = "com.apple.product-type.application";
@@ -2877,8 +2874,6 @@
 				Base,
 			);
 			mainGroup = 80AEACFA29C4407C005108AC;
-			packageReferences = (
-			);
 			productRefGroup = 80AEAD0429C4407C005108AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2963,7 +2958,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0EF4955C7F67E7E0105263A4 /* [CP] Check Pods Manifest.lock */ = {
+		2E35DEB5E0D054ADEED77D4B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -2985,23 +2980,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		13FDF234B3A0DC4089D96A9D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		849ECCA729E9811700628D69 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
@@ -3020,6 +2998,23 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+		A16D2EC43749C567B93E9433 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EuroBond_Customer/Pods-EuroBond_Customer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -3148,7 +3143,6 @@
 				843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */,
 				2577B4BB29DEF546004C4942 /* SendSMSModel.swift in Sources */,
 				842049D529F1378600F97488 /* DreamGiftListingViewModel.swift in Sources */,
-				84B5E27229F00DE800A3C56D /* MyRedemptionDetailsModels.swift in Sources */,
 				842049CD29F1375C00F97488 /* DreamGiftListingViewController.swift in Sources */,
 				809343A729C5F4D700440CB6 /* EBC_DashboardVC.swift in Sources */,
 				80437F4729C8871B0062D151 /* Color.swift in Sources */,
@@ -3172,6 +3166,7 @@
 				843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */,
 				849548CC29E7C05D00F372E7 /* EBC_LoginVM.swift in Sources */,
 				84815F5B29E3E8EA001C65F9 /* EBC_Login1VC.swift in Sources */,
+				847042C829F3A9970089024A /* ObjCatalogueList01.swift in Sources */,
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
 				84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */,
 				84815F7029E416CA001C65F9 /* HistoryNotificationsViewController.swift in Sources */,
@@ -3190,7 +3185,6 @@
 				842049E529F1389700F97488 /* TaxRelatedPopupViewController.swift in Sources */,
 				801F931E29D1C874006FF310 /* EBC_SearchProjectVC.swift in Sources */,
 				849E45BA29DC307A00A4311B /* HR_Chatvc2ViewController.swift in Sources */,
-				84B5E27329F00DE800A3C56D /* ObjCatalogueList01.swift in Sources */,
 				842049BA29F120A100F97488 /* ObjCatalogueFixedPoints.swift in Sources */,
 				8457ECE329F01A0E00CC5EF6 /* CatalogueBannerVM.swift in Sources */,
 				84EE291B29D6E8DB004B1C6C /* EBC_RegisterAssistantVC.swift in Sources */,
@@ -3266,6 +3260,7 @@
 				84093D5D29F2570800635CB9 /* UpdatePasswordModel.swift in Sources */,
 				80AEAD5629C44206005108AC /* ServiceError.swift in Sources */,
 				8426285929EA7F6B003C8FE7 /* ScanOrUpload_VC.swift in Sources */,
+				847042C629F3A98A0089024A /* MyRedemptionDetailsModels.swift in Sources */,
 				84B5E27729F00E0100A3C56D /* MyRedemptionModels.swift in Sources */,
 				80AEAD6829C44249005108AC /* NotificationExtension.swift in Sources */,
 				84BD648329EA869C008D3E34 /* SyncStatus_VC.swift in Sources */,
@@ -3515,7 +3510,7 @@
 		};
 		80AEAD3129C44083005108AC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95C286DC2D5108CC3FB9FF7D /* Pods-EuroBond_Customer.debug.xcconfig */;
+			baseConfigurationReference = 3AD1674045B1CB7C66AF67A3 /* Pods-EuroBond_Customer.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -3554,7 +3549,7 @@
 		};
 		80AEAD3229C44083005108AC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C533D5343E3E6BF8BD4D7ACF /* Pods-EuroBond_Customer.release.xcconfig */;
+			baseConfigurationReference = D18363D02B9233E499480380 /* Pods-EuroBond_Customer.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

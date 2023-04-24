@@ -143,7 +143,7 @@ extension EBC_MyEarningsVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_MyEarningTVC", for: indexPath) as! EBC_MyEarningTVC
         cell.selectionStyle = .none
-        cell.pointsLbl.text = "\(self.VM.myEarningListArray[indexPath.row].rewardPoints ?? 0)"
+        cell.pointsLbl.text = "\(Int(self.VM.myEarningListArray[indexPath.row].rewardPoints ?? 0))"
         cell.statusLbl.text = "\(self.VM.myEarningListArray[indexPath.row].status ?? "-")"
         if self.VM.myEarningListArray[indexPath.row].transactionType ?? "" == "BONUS"{
             cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].bonusName ?? ""

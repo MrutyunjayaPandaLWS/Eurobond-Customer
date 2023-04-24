@@ -53,9 +53,9 @@ class HR_CatalogueDetailsCVC: UICollectionViewCell {
         if imageURL != ""{
             let urltoUse = String(productCatalogueImgURL + imageURL).replacingOccurrences(of: " ", with: "%20")
             let urlt = URL(string: "\(urltoUse)")
-            productImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+            productImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
         }else{
-            self.productImage.image = UIImage(named: "ic_default_img")
+            self.productImage.image = UIImage(named: "dashboardLogo")
         }
 //        print(redemptionDetailObj.pointsRequired ?? 0, "Cell")
 //        print(redeemedPointBalance)

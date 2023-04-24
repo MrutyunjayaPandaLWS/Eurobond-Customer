@@ -113,7 +113,7 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
                 self.totalPointsLbl.text = "\(redeemablePointsBalance)"
                 let urltoUse = String(productCatalogueImgURL + productImages).replacingOccurrences(of: " ", with: "%20")
                 let urlt = URL(string: "\(urltoUse)")
-                productImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+                productImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
                 self.addedPopUpView.isHidden = true
                 self.termsandCondtionsDetails.text = self.termsandCondtions
                 self.descriptionDetails.text = self.productDesc
@@ -165,8 +165,8 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
                 self.addedPopUpView.isHidden = true
                 let urltoUse = String(productCatalogueImgURL + productImages).replacingOccurrences(of: " ", with: "%20")
                 let urlt = URL(string: "\(urltoUse)")
-                productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
-                self.productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+                productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
+                self.productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
                 self.popUpPoints.text = "\(productPointss)"
             }else{
                 DispatchQueue.main.async{

@@ -54,13 +54,13 @@ class HRD_MyRedemptionDetailsVC: BaseViewController {
         self.VM.VC = self
         localization()
         
-        if UserDefaults.standard.string(forKey: "CustomerType") ?? "" == "1"{
-            self.headerView.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-            
-        }else{
-
-            self.headerView.backgroundColor  = #colorLiteral(red: 0.1643253267, green: 0.3061718345, blue: 0.7360334992, alpha: 1)
-        }
+//        if UserDefaults.standard.string(forKey: "CustomerType") ?? "" == "1"{
+//            self.headerView.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
+//            
+//        }else{
+//
+//            self.headerView.backgroundColor  = #colorLiteral(red: 0.1643253267, green: 0.3061718345, blue: 0.7360334992, alpha: 1)
+//        }
         
         self.productNameLbl.text! = self.productName
         self.qtyCount.text! = self.quantity
@@ -72,7 +72,7 @@ class HRD_MyRedemptionDetailsVC: BaseViewController {
         myRedemptionDetailsTableView.dataSource = self
         let urltoUse = String(productCatalogueImgURL + productImage).replacingOccurrences(of: " ", with: "%20")
         let urlt = URL(string: "\(urltoUse)")
-        productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+        productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
         self.dateLbl.text = self.redemptionsDate
         self.noDataFound.isHidden = true
         if self.customerId == ""{

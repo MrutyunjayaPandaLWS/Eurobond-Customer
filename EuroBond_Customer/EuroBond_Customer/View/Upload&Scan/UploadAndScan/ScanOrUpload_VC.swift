@@ -35,7 +35,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var infoLbl: UILabel!
-    
+    var selectedUploadColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
     
     var reachability = Reach()
     var isComeFrom = ""
@@ -85,6 +85,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         super.viewDidLoad()
         self.countLabel.cornerRadius = countLabel.frame.width/2
         self.codeCountView.cornerRadius = codeCountView.frame.width/2
+        self.scanQRCodeButton.setTitleColor(selectedUploadColor, for: .normal)
         self.codeTF.keyboardType = .numberPad
         BottomView.clipsToBounds = true
         BottomView.layer.cornerRadius = 24
@@ -152,6 +153,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     @objc func codesUploadAgain(notification: Notification){
         if self.itsFrom == "UploadCode"{
                 self.fetchDetails()
+            scanQRCodeButton.setTitleColor(selectedUploadColor, for: .normal)
                 self.messageLbl.isHidden = false
                 self.scannerView.isHidden = false
                 self.uploadView.isHidden = true
@@ -366,6 +368,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         fetchDetails()
         if self.itsFrom == "ScanCode"{
             fetchDetails()
+            scanQRCodeButton.setTitleColor(.white, for: .normal)
             self.headerView.isHidden = true
             self.closeBTN.isHidden = false
             self.messageLbl.isHidden = false
@@ -826,9 +829,10 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         clearTable()
         self.session.stopRunning()
         if self.fromSideMenu == "SideMenu"{
-            self.dismiss(animated: true){
+//            self.dismiss(animated: true){
                 NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
-            }
+            navigationController?.popViewController(animated: true)
+//            }
         }else{
             self.dismiss(animated: true){
                 NotificationCenter.default.post(name: .goToParticularVc, object: nil)
@@ -859,7 +863,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         if self.scanQRCodeButton.currentTitle == "Upload QR Code" || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
             self.headerView.isHidden = false
             self.closeBTN.isHidden = true
-            
+            self.scanQRCodeButton.setTitleColor(selectedUploadColor, for: .normal)
             self.scanQRCodeButton.setImage(UIImage(named: "qr"), for: .normal)
             self.scannerView.isHidden = true
             self.uploadView.isHidden = false
@@ -897,6 +901,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             self.uploadView.isHidden = true
             self.closeBTN.isHidden = false
             self.headerView.isHidden = true
+            self.scanQRCodeButton.setTitleColor(.white, for: .normal)
             if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                 self.messageLbl.text = "Place a QR Code inside the view finder rectangle to scan it"
                 self.scanQRCodeButton.setTitle("Upload QR Code", for: .normal)
@@ -1248,7 +1253,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                     let scannedCodess = barcode.rawValue!.replacingOccurrences(of: " ", with: "")
                                     self.CapturedCodess = scannedCodess
                                     
-                                    if scannedCodess.count == 12{
+                                    if scannedCodess.count == 12 || scannedCodess.count == 10 {
                                         let compareCodes = self.codeLIST.filter({$0.code == self.CapturedCodess})
                                         self.session.stopRunning()
                                         AudioServicesPlaySystemSound(1103)
@@ -1335,7 +1340,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                         
                                     }else{
                                         if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                                            let alert = UIAlertController(title: "", message: "QR Code length should be 12", preferredStyle: UIAlertController.Style.alert)
+                                            let alert = UIAlertController(title: "", message: "QR Code length should be 12 or 10", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
@@ -1344,7 +1349,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                             self.present(alert, animated: true, completion: nil)
                                             
                                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                                            let alert = UIAlertController(title: "", message: "क्यूआर कोड की लंबाई 12 . होनी चाहिए", preferredStyle: UIAlertController.Style.alert)
+                                            let alert = UIAlertController(title: "", message: "क्यूआर कोड की लंबाई 12 or 10 . होनी चाहिए", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
@@ -1353,7 +1358,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                             self.present(alert, animated: true, completion: nil)
                                             
                                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                                            let alert = UIAlertController(title: "", message: "QR কোডের দৈর্ঘ্য 12 হওয়া উচিত", preferredStyle: UIAlertController.Style.alert)
+                                            let alert = UIAlertController(title: "", message: "QR কোডের দৈর্ঘ্য 12 or 10 হওয়া উচিত", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ওকে", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
@@ -1362,7 +1367,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                             self.present(alert, animated: true, completion: nil)
                                             
                                         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
-                                            let alert = UIAlertController(title: "", message: "QR కోడ్ పొడవు 12 ఉండాలి", preferredStyle: UIAlertController.Style.alert)
+                                            let alert = UIAlertController(title: "", message: "QR కోడ్ పొడవు 12 or 10 ఉండాలి", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "సరే", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()
@@ -1370,7 +1375,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                             }))
                                             self.present(alert, animated: true, completion: nil)
                                         }else{
-                                            let alert = UIAlertController(title: "", message: "QR Code length should be 12", preferredStyle: UIAlertController.Style.alert)
+                                            let alert = UIAlertController(title: "", message: "QR Code length should be 12 or 10", preferredStyle: UIAlertController.Style.alert)
                                             alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { UIAlertAction in
                                                 self.isScanned = true
                                                 self.session.startRunning()

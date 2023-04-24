@@ -26,6 +26,7 @@ class EBC_RefferAndEarnVC: BaseViewController {
         super.viewDidLoad()
         self.VM.VC = self
         NotificationCenter.default.addObserver(self, selector: #selector(fromSubmission), name: Notification.Name.navigateToDashboard, object: nil)
+        referalCodeLbl.text = referralCode
     }
     @objc func fromSubmission(){
         navigationController?.popToRootViewController(animated: true)

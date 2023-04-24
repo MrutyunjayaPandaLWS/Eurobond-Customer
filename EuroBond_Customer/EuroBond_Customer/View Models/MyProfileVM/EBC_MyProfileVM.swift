@@ -12,6 +12,7 @@ class EBC_MyProfileVM{
     
     weak var VC: MyProfileVC?
     weak var VC2: BankDetailsVC?
+    var flags: String = ""
     var requestAPIs = RestAPI_Requests()
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     
@@ -118,39 +119,69 @@ class EBC_MyProfileVM{
     
     func updateProfileDetailsApi(parameter: JSON){
         DispatchQueue.main.async {
-            self.VC2?.startLoading()
+            if self.flags == "MyProfile"{
+                self.VC?.stopLoading()
+            }else{
+                self.VC2?.stopLoading()
+            }
         }
         self.requestAPIs.updateProfileApi(parameters: parameter) { (result, error) in
             if error == nil{
                 if result != nil{
                     
                     DispatchQueue.main.async {
-                        self.VC2?.stopLoading()
+                        if self.flags == "MyProfile"{
+                            self.VC?.stopLoading()
+                        }else{
+                            self.VC2?.stopLoading()
+                        }
+                        
                         if result?.returnMessage ?? "" == "1"{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                             vc.descriptionInfo = "Profile Updated Successfully !!"
                             vc.itsComeFrom = "ProfileUpdate"
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
-                            self.VC2?.present(vc, animated: true)
+                            if self.flags == "MyProfile"{
+                                self.VC?.submitBtn.isHidden = true
+                                self.VC?.emailTF.isEnabled = false
+                                self.VC?.present(vc, animated: true)
+                            }else{
+                                self.VC2?.submitBtn.isHidden = true
+                                self.VC2?.present(vc, animated: true)
+                            }
+                            
                         }else{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                             vc.itsComeFrom = "ProfileUpdate"
                             vc.descriptionInfo = "Profile Update is failed !!"
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
-                            self.VC2?.present(vc, animated: true)
+                            if self.flags == "MyProfile"{
+                                self.VC?.present(vc, animated: true)
+                            }else{
+                                self.VC2?.present(vc, animated: true)
+                            }
                         }
                     }
                 }else{
                     DispatchQueue.main.async {
-                        self.VC2?.stopLoading()
+                        if self.flags == "MyProfile"{
+                            self.VC?.stopLoading()
+                        }else{
+                            self.VC2?.stopLoading()
+                        }
+                        
                         print(result, "Result")
                     }
                 }
             }else{
                 DispatchQueue.main.async {
-                    self.VC2?.stopLoading()
+                    if self.flags == "MyProfile"{
+                        self.VC?.stopLoading()
+                    }else{
+                        self.VC2?.stopLoading()
+                    }
                     print(error, "Error")
                 }
             }

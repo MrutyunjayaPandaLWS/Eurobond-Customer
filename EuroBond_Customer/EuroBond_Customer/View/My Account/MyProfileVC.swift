@@ -12,6 +12,7 @@ import SDWebImage
 class MyProfileVC: BaseViewController {
     
     
+    @IBOutlet weak var submitBtn: UIButton!
     @IBOutlet weak var dobTF: UITextField!
     @IBOutlet weak var DOBLbl: UILabel!
     @IBOutlet weak var pinCodeTF: UITextField!
@@ -63,15 +64,35 @@ class MyProfileVC: BaseViewController {
     
     
     @IBAction func selectEditEmailBtn(_ sender: Any) {
+        emailTF.isEnabled = true
+        
+    }
+    
+    @IBAction func selectEmailTF(_ sender: UITextField) {
+        
         if self.emailTF.text!.count > 1 {
             if !isValidEmail(self.emailTF.text ?? "") {
                 self.emailTF.text = ""
                 self.view.makeToast("Enter valid email", duration: 2.0, position: .bottom)
+                submitBtn.isHidden = true
+            }else{
+                submitBtn.isHidden = false
             }
+        }else{
+            self.view.makeToast("Enter email", duration: 2.0, position: .bottom)
+            submitBtn.isHidden = true
         }
     }
-    
     @IBAction func selectDOBBtn(_ sender: Any) {
+    }
+    
+    @IBAction func selectSubmitBtn(_ sender: UIButton) {
+        if emailTF.text?.count == 0{
+            self.view.makeToast("Enter email",duration: 2.0,position: .center)
+        }else{
+            profileUpdate()
+        }
+        
     }
     
     func myProfileApi(UserID: String){
@@ -82,6 +103,36 @@ class MyProfileVC: BaseViewController {
         print(parameter)
         self.VM.myProfileListApi(parameter: parameter)
         
+    }
+    
+    func profileUpdate(){
+        let parameter : [String : Any]  = [
+            "ActionType": "4",
+            "ActorId": self.userId,
+            "ObjCustomerJson": [
+                "CustomerId": self.customerId,
+                "MerchantId": "1",
+                "FirstName": firstNameTF.text ?? "",
+                "LastName": lastNameTF.text ?? "",
+                "Mobile": self.mobileNumberTF.text ?? "",
+                "Address1": self.addressTF.text ?? "",
+                "StateId": self.stateId,
+                "CityId": self.cityId,
+                "Zip": self.pinCodeTF.text ?? "",
+                "JDOB": self.dobTF.text ?? "",
+                "AddressId": self.addressId,
+                "AcountHolderName": "",
+                "AccountNumber": "",
+                "BankName": "",
+                "IFSCCode": "",
+                "BankPassbookImage": "",
+                "IsMobileRequest":1,
+                "Email": emailTF.text ?? ""
+            ]
+        ]
+            print(parameter)
+        self.VM.flags = "MyProfile"
+            self.VM.updateProfileDetailsApi(parameter: parameter)
     }
     
 }

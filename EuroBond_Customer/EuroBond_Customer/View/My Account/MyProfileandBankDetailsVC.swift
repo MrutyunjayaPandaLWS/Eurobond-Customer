@@ -297,7 +297,7 @@ extension MyProfileandBankDetailsVC: CropperViewControllerDelegate {
         let parameters = [
             "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
             "ObjCustomerJson": [
-                "DisplayImage": "",
+                "DisplayImage": strdata1,
                 "LoyaltyId": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
             ]
         ]as [String : Any]

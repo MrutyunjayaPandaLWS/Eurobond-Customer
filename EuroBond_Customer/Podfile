@@ -23,5 +23,5 @@ pod 'FirebaseFirestore'
 pod 'Crashlytics', '~> 3.14.0'
 pod 'Firebase/Crashlytics'
 pod 'Firebase/Messaging'
-pod 'Firebase/Analytics'
+
 end

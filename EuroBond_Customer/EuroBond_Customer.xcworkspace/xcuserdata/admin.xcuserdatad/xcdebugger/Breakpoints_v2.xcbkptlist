@@ -3,4 +3,198 @@
    uuid = "E9F8CE00-AD30-408E-B2FA-E44C795BF814"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7F222DA5-455A-431E-ADC3-E2957159DAE2"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/Login/EBC_Login1VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "selectSubmitBtn(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7F222DA5-455A-431E-ADC3-E2957159DAE2 - d2595ea498684e5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.EBC_Login1VC.selectSubmitBtn(Any) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Login/EBC_Login1VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "162">
+               </Location>
+               <Location
+                  uuid = "7F222DA5-455A-431E-ADC3-E2957159DAE2 - d2595ea498684e5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.EBC_Login1VC.selectSubmitBtn(Any) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Login/EBC_Login1VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AFA7DF8F-9EED-4B86-86B7-A89591EF296B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/Resources/Network/RestAPI_Requests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "452"
+            endingLineNumber = "452"
+            landmarkName = "imageSavingAPI(parameters:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AFA7DF8F-9EED-4B86-86B7-A89591EF296B - edc7b81e6af78f3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;EuroBond_Customer.ServiceError&gt;) -&gt; () in EuroBond_Customer.RestAPI_Requests.imageSavingAPI(parameters: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;EuroBond_Customer.SideMenuModelClass&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSURLSessionDataTask&gt;"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/Resources/Network/RestAPI_Requests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "452"
+                  endingLineNumber = "452"
+                  offsetFromSymbolStart = "634">
+               </Location>
+               <Location
+                  uuid = "AFA7DF8F-9EED-4B86-86B7-A89591EF296B - edc7b81e6af78f3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;EuroBond_Customer.ServiceError&gt;) -&gt; () in EuroBond_Customer.RestAPI_Requests.imageSavingAPI(parameters: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;EuroBond_Customer.SideMenuModelClass&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSURLSessionDataTask&gt;"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/Resources/Network/RestAPI_Requests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "452"
+                  endingLineNumber = "452"
+                  offsetFromSymbolStart = "532">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "457F0533-0044-40C1-859D-1E2C72F4BF05"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/Resources/Network/RestAPI_Requests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
+            landmarkName = "imageSavingAPI(parameters:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "457F0533-0044-40C1-859D-1E2C72F4BF05 - edc7b81e6af78f87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;EuroBond_Customer.ServiceError&gt;) -&gt; () in EuroBond_Customer.RestAPI_Requests.imageSavingAPI(parameters: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;EuroBond_Customer.SideMenuModelClass&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSURLSessionDataTask&gt;"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/Resources/Network/RestAPI_Requests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "455"
+                  endingLineNumber = "455"
+                  offsetFromSymbolStart = "835">
+               </Location>
+               <Location
+                  uuid = "457F0533-0044-40C1-859D-1E2C72F4BF05 - edc7b81e6af78f87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Any&gt;, Swift.Optional&lt;EuroBond_Customer.ServiceError&gt;) -&gt; () in EuroBond_Customer.RestAPI_Requests.imageSavingAPI(parameters: Swift.Dictionary&lt;Swift.String, Any&gt;, completion: (Swift.Optional&lt;EuroBond_Customer.SideMenuModelClass&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; ()) -&gt; Swift.Optional&lt;__C.NSURLSessionDataTask&gt;"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/Resources/Network/RestAPI_Requests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "455"
+                  endingLineNumber = "455"
+                  offsetFromSymbolStart = "652">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C75122C-38B5-481B-9391-8BC4A160186A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View Models/MyProfileVM/EBC_MyProfileVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "updateProfileDetailsApi(parameter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EA93D678-37AE-4F25-91BE-7508874C62B9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View Models/MyProfileVM/EBC_MyProfileVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "updateProfileDetailsApi(parameter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4AB68791-E78D-47E2-8BA5-C4C0AD360284"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/Upload&amp;Scan/UploadAndScan/ScanOrUpload_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "830"
+            endingLineNumber = "830"
+            landmarkName = "backButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
