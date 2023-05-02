@@ -63,6 +63,20 @@ class MyProfileVC: BaseViewController {
     }
     
     
+    func localizSetup(){
+        self.beneficiaryTypeLbl.text = "Beneficiary Type".localiz()
+        self.beneficiaryTypeTF.placeholder = "Beneficiary Type".localiz()
+        self.firstNameLbl.text = "First Name".localiz()
+        self.firstNameTF.placeholder = "Enter First Name".localiz()
+        self.lastNameLbl.text = "Last Name".localiz()
+        self.lastNameTF.placeholder = "Enter Last Name".localiz()
+        self.mobileNumberLbl.text = "Mobile Number".localiz()
+        self.mobileNumberTF.placeholder = "Mobile Number".localiz()
+        self.emailLbl.text = "Email".localiz()
+        self.emailTF.placeholder = "Enter Email".localiz()
+        
+    }
+    
     @IBAction func selectEditEmailBtn(_ sender: Any) {
         emailTF.isEnabled = true
         

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 class EBC_FabricatedLoginVM {
     
     weak var VC: EBS_LoginVC?
@@ -44,7 +45,7 @@ class EBC_FabricatedLoginVM {
                 if str ?? "" == "0"{
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
-                        self.VC?.view.makeToast("Mobile number doesn't exists", duration: 2.0, position: .bottom)
+                        self.VC?.view.makeToast("Mobile number doesn't exists".localiz(), duration: 2.0, position: .bottom)
                         self.VC?.userNameTF.text = ""
                         self.VC?.tc2Status = 0
                         self.VC?.chechBox2Btn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
@@ -83,15 +84,16 @@ class EBC_FabricatedLoginVM {
                         self.VC?.stopLoading()
                         if loginResponse.count != 0{
                             if loginResponse[0].result ?? -1 != 1{
-                                self.VC!.view.makeToast("Password is Invalid !!", duration: 2.0, position: .bottom)
+                                self.VC!.view.makeToast("Password is Invalid !!".localiz(), duration: 2.0, position: .bottom)
+                                self.VC?.passwordTF.text = ""
                             }else if loginResponse[0].isDelete ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 3 || loginResponse[0].verifiedStatus ?? -1 == 4{
-                                self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.", duration: 2.0, position: .bottom)
+                                self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 0 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 0{
-                                self.VC!.view.makeToast("Your account is not activated! Kindly activate your account.", duration: 2.0, position: .bottom)
+                                self.VC!.view.makeToast("Your account is not activated! Kindly activate your account.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 4{
-                                self.VC!.view.makeToast("Your account has been deactivated! Kindly contact your administrator.", duration: 2.0, position: .bottom)
+                                self.VC!.view.makeToast("Your account has been deactivated! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].verifiedStatus ?? -1 == 2 {
-                                self.VC!.view.makeToast("Your account verification is failed!, Kindly contact your administrator.", duration: 2.0, position: .bottom)
+                                self.VC!.view.makeToast("Your account verification is failed!, Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else{
                                 if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 1{
                                     UserDefaults.standard.setValue(loginResponse[0].userId ?? -1, forKey: "UserID")
@@ -111,7 +113,7 @@ class EBC_FabricatedLoginVM {
                             }
 
                         }else{
-                            self.VC!.view.makeToast("Something went wrong. Try again later!", duration: 2.0, position: .bottom)
+                            self.VC!.view.makeToast("Something went wrong. Try again later".localiz(), duration: 2.0, position: .bottom)
                         }
 
                     }

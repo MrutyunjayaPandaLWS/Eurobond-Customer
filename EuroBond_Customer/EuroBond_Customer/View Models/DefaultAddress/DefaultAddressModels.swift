@@ -82,7 +82,7 @@ class DefaultAddressModels{
                                     self.totalCartValue = Int(data.sumOfTotalPointsRequired ?? 0.0)
                                     print(self.totalCartValue, "TotalValue")
                                 }
-                                self.VC?.totalPoints.text = "\(Double(self.totalCartValue))"
+                                self.VC?.totalPoints.text = "\(Double(self.totalCartValue)) Euros"
                                 self.VC?.orderListTableView.reloadData()
                                 self.VC?.stopLoading()
                     }

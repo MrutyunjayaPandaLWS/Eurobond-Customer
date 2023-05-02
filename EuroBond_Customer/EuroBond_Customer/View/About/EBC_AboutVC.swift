@@ -7,14 +7,16 @@
 
 import UIKit
 import WebKit
+import LanguageManager_iOS
 
 class EBC_AboutVC: UIViewController {
 
     @IBOutlet weak var aboutWebView: WKWebView!
+    @IBOutlet weak var aboutTitleLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.aboutWebView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-about-eng", ofType: "html")!) as URL) as URLRequest)
-        
+        localizSetup()
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
@@ -24,6 +26,16 @@ class EBC_AboutVC: UIViewController {
         
     }
     
+    
+    func localizSetup(){
+        self.aboutTitleLbl.text = "About".localiz()
+        if aboutTitleLbl.text == "About"{
+            self.aboutWebView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-about-eng", ofType: "html")!) as URL) as URLRequest)
+        }else{
+            self.aboutWebView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-about-hin", ofType: "html")!) as URL) as URLRequest)
+        }
+        
+    }
     
     
 

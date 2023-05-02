@@ -34,6 +34,7 @@ class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableVi
         shemesAndOffersTV.delegate = self
         shemesAndOffersTV.dataSource = self
         self.offersandPromotionsApi(UserId: self.userId)
+        self.shemesAndOffersTV.separatorStyle = .none
     }
     
     

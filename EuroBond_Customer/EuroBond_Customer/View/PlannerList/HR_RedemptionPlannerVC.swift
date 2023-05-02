@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate, popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
 
@@ -23,7 +23,7 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                     vc!.delegate = self
                     vc!.titleInfo = ""
-                  vc!.descriptionInfo = "Gift product is already added in the Redeem list"
+                    vc!.descriptionInfo = "Gift product is already added in the Redeem list".localiz()
                     vc!.modalPresentationStyle = .overCurrentContext
                     vc!.modalTransitionStyle = .crossDissolve
                     self.present(vc!, animated: true, completion: nil)
@@ -43,7 +43,7 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
                             vc!.delegate = self
                             vc!.titleInfo = ""
                 
-                                vc!.descriptionInfo = "Insufficent Point Balance"
+                            vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                             vc!.modalPresentationStyle = .overCurrentContext
                             vc!.modalTransitionStyle = .crossDissolve
                             self.present(vc!, animated: true, completion: nil)
@@ -54,7 +54,7 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                         vc!.delegate = self
                         vc!.titleInfo = ""
-                        vc!.descriptionInfo = "Insufficent Point Balance"
+                        vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                        
                         vc!.modalPresentationStyle = .overCurrentContext
                         vc!.modalTransitionStyle = .crossDissolve
@@ -88,7 +88,8 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
     
     @IBOutlet weak var addToPlanner: GradientButton!
     
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "TotalPoints") ?? ""
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
+    //var redeemablePointsBalance = UserDefaults.standard.string(forKey: "TotalPoints") ?? ""
     var VM = HR_RedemptionPlannerVM()
     var removeProductId = 0
     var itsComeFrom = ""
@@ -98,13 +99,12 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
-        self.screenTitle.text = "Redemption Planner"
-        self.points.text = "POINTS"
+        self.screenTitle.text = "Wishlist".localiz()
+        self.points.text = "POINTS".localiz()
         self.totalPts.text! = "\(redeemablePointsBalance)"
         
         redemptionPlannerTableView.register(UINib(nibName: "HR_RedemptionPlannerTVC", bundle: nil), forCellReuseIdentifier: "HR_RedemptionPlannerTVC")
         NotificationCenter.default.addObserver(self, selector: #selector(callAPi), name: Notification.Name.plannerList, object: nil)
-        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -116,7 +116,7 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)

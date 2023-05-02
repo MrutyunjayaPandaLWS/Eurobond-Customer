@@ -10,11 +10,14 @@ import ImageSlideshow
 import SlideMenuControllerSwift
 import Lottie
 import Alamofire
+import AVFoundation
+import AVKit
+import LanguageManager_iOS
+import Lottie
 
 class EBC_DashboardVC: BaseViewController {
 
     @IBOutlet weak var defaultImage: UIImageView!
-    
     @IBOutlet weak var myEarningsLbl: UILabel!
     @IBOutlet weak var myredemptionLbl: UILabel!
     @IBOutlet weak var codeStatusLbl: UILabel!
@@ -37,26 +40,28 @@ class EBC_DashboardVC: BaseViewController {
     @IBOutlet weak var imageSlideShow: ImageSlideshow!
     @IBOutlet weak var notificationBadges: UILabel!
     @IBOutlet weak var menuBtn: UIButton!
-
     @IBOutlet weak var userDetailsView: UIView!
+    
+    @IBOutlet weak var maintenanceView: UIView!
+    @IBOutlet weak var underMaintenance: LottieAnimationView!
+    
+    
     var status = 1
     var sourceArray = [AlamofireSource]()
     var offerimgArray = [ObjImageGalleryList]()
     var VM = EBC_DashBoardVM()
     var dashBoardId = -1
+    private var animationView: LottieAnimationView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        self.maintenanceView.isHidden = true
         self.dashBoardId = -1
         self.defaultImage.isHidden = true
         self.notificationBadges.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(codeStatus), name: Notification.Name.optionView, object: nil)
         
-//        let button = UIButton(type: .roundedRect)
-//            button.frame = CGRect(x: 20, y: 50, width: 100, height: 30)
-//            button.setTitle("Test Crash", for: [])
-//            button.addTarget(self, action: #selector(self.selectMenuBtn(_:)), for: .touchUpInside)
-//            view.addSubview(button)
     }
 
     
@@ -64,6 +69,9 @@ class EBC_DashboardVC: BaseViewController {
         super.viewWillAppear(true)
         self.slideMenuController()?.closeLeft()
         self.tokendata()
+        self.localizSetup()
+        self.maintenanceAPI()
+        self.isUpdateAvailable()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -76,6 +84,28 @@ class EBC_DashboardVC: BaseViewController {
         slideMenuController()?.changeLeftViewWidth(self.view.frame.size.width * 0.89)
         SlideMenuOptions.contentViewScale = 1
     }
+    
+    
+    func localizSetup(){
+        membershipIdTitleLbl.text = "Membership ID".localiz()
+        welcomeLbl.text = "Welcome".localiz()
+        memberTypeTitleLbl.text = "Member Type".localiz()
+        totalEurosTitleLbl.text = "Total Euros".localiz()
+        redeemNowLbl.text = "Redeem Now".localiz()
+        gameZoneLbl.text = "Game Zone".localiz()
+        shemesAndOffersLbl.text = "Schemes".localiz()
+        referAndEarnLbl.text = "Refer & Earn".localiz()
+        eurobondsLbl.text = "Eurobond".localiz()
+        helplineLbl.text = "Helpline".localiz()
+        codeStatusLbl.text = "Code Status".localiz()
+        myredemptionLbl.text = "My Redemption".localiz()
+        myEarningsLbl.text = "My Earnings".localiz()
+    }
+    
+    
+    
+    
+    
     
     @IBAction func selectMenuBtn(_ sender: UIButton) {
         openLeft()
@@ -234,6 +264,89 @@ class EBC_DashboardVC: BaseViewController {
         task.resume()
     }
     }
+    
+    func maintenanceAPI(){
+        guard let url = URL(string: "http://appupdate.arokiait.com/updates/serviceget?pid=com.loyaltyWorks.EuroBond-Customer") else {return}
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                  error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                                                                        dataResponse, options: [])
+                print(jsonResponse)
+                let isMaintenanceValue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.is_maintenance") as? String)!
+                let forceupdatevalue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.version_number") as? String)!
+                print(forceupdatevalue)
+                if isMaintenanceValue == "1"{
+                    print(isMaintenanceValue)
+                    DispatchQueue.main.async {
+                        self.maintenanceView.isHidden = false
+                        self.playAnimation()
+
+                    }
+                }else if isMaintenanceValue == "0"{
+                    self.tokendata()
+                    self.animationView?.stop()
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
+        task.resume()
+    }
+    func playAnimation(){
+        animationView = .init(name: "27592-maintenance")
+        animationView!.frame = underMaintenance.bounds
+          // 3. Set animation content mode
+        animationView!.contentMode = .scaleAspectFit
+          // 4. Set animation loop mode
+        animationView!.loopMode = .loop
+          // 5. Adjust animation speed
+        animationView!.animationSpeed = 1
+        underMaintenance.addSubview(animationView!)
+          // 6. Play animation
+        animationView!.play()
+
+    }
+    
+    
+    func isUpdateAvailable() {
+        let bundleId = Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String
+        print(bundleId)
+        Alamofire.request("https://itunes.apple.com/in/lookup?bundleId=\(bundleId)").responseJSON { response in
+            if let json = response.result.value as? NSDictionary, let results = json["results"] as? NSArray, let entry = results.firstObject as? NSDictionary, let appStoreVersion = entry["version"] as? String,let appstoreid = entry["trackId"], let trackUrl = entry["trackViewUrl"], let installedVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                let installed = Int(installedVersion.replacingOccurrences(of: ".", with: "")) ?? 0
+                print(installed)
+                let appStore = Int(appStoreVersion.replacingOccurrences(of: ".", with: "")) ?? 0
+                print(appStore)
+                print(appstoreid)
+                if appStore>installed {
+                        let alertController = UIAlertController(title: "New update Available!", message: "Update is available to download. Downloading the latest update you will get the latest features, improvements and bug fixes of Eurobond App", preferredStyle: .alert)
+
+                        // Create the actions
+                        let okAction = UIAlertAction(title: "Update Now", style: UIAlertAction.Style.default) {
+                            UIAlertAction in
+                            UIApplication.shared.openURL(NSURL(string: "\(trackUrl)")! as URL)
+
+                        }
+                        //                     Add the actions
+                        alertController.addAction(okAction)
+                        // Present the controller
+                        self.present(alertController, animated: true, completion: nil)
+
+                }else{
+                    print("no updates")
+
+                }
+            }
+        }
+    }
+    
+    
+    
     func dashBoardApi(){
         let parameter = [
             "ActorId":"\(self.userId)"

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import LanguageManager_iOS
+import LanguageManager_iOS
 import SDWebImage
 class HRD_MyRedemptionDetailsVC: BaseViewController {
 
@@ -64,7 +64,7 @@ class HRD_MyRedemptionDetailsVC: BaseViewController {
         
         self.productNameLbl.text! = self.productName
         self.qtyCount.text! = self.quantity
-        self.productPts.text = self.totalPoint
+        self.productPts.text = "\(self.totalPoint) Euros"
         self.redemptionID.text! = self.redemptionRefNo
         self.descriptionDetails.text! = self.descDetails
         self.termsandConditionDes.text! = self.termsandContions
@@ -85,10 +85,10 @@ class HRD_MyRedemptionDetailsVC: BaseViewController {
         
     }
     func localization(){
-        self.screenTitle.text = "My Redemption"
-        self.qtyLbl.text = "QTY"
-        self.descriptionTitle.text = "Descriptions"
-        self.termsandConditionLbl.text = "Terms and Conditions"
+        self.screenTitle.text = "My Redemption".localiz()
+        self.qtyLbl.text = "QTY".localiz()
+        self.descriptionTitle.text = "Descriptions".localiz()
+        self.termsandConditionLbl.text = "TermsAndConditions".localiz()
        
     }
     

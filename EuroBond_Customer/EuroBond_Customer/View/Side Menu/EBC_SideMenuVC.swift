@@ -8,7 +8,8 @@
 import UIKit
 import SlideMenuControllerSwift
 import Kingfisher
-class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+import LanguageManager_iOS
+class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var logoutView: UIView!
     @IBOutlet weak var logoutLbl: UILabel!
@@ -22,27 +23,33 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var sideMenuTV: UITableView!
 
+    @IBOutlet var deleteOutLbl: UILabel!
+    @IBOutlet var myAccountOutLbl: UILabel!
+    
+    var requestAPIs = RestAPI_Requests()
+    var parameters: JSON?
+    var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     
     var sideMenuArrayList: [sideMenuModel] = [
         
-        sideMenuModel(sideMenuName: "Home", sideMenuImage: "home"),
-        sideMenuModel(sideMenuName: "Scan QR Code", sideMenuImage: "qr"),
-        sideMenuModel(sideMenuName: "Enter QR Code", sideMenuImage: "upload1"),
-        sideMenuModel(sideMenuName: "Code Status", sideMenuImage: "Group 7691"),
-        sideMenuModel(sideMenuName: "My Earning", sideMenuImage: "bxs-coin-stack 1"),
-        sideMenuModel(sideMenuName: "My Redemptions", sideMenuImage: "reademailalt 1"),
-        sideMenuModel(sideMenuName: "Redemption Catalogue", sideMenuImage: "card-giftcard 1"),
-        sideMenuModel(sideMenuName: "Game Zone", sideMenuImage: "Group 6479"),
-        sideMenuModel(sideMenuName: "Refer & Earn", sideMenuImage: "Layer 3"),
-        sideMenuModel(sideMenuName: "Add My Assistant", sideMenuImage: "Construction_Worker"),
-        sideMenuModel(sideMenuName: "Wishlist", sideMenuImage: "wishlist"),
-        sideMenuModel(sideMenuName: "Dream Gift", sideMenuImage: "gift (4)"),
-        sideMenuModel(sideMenuName: "Schemes & Offers", sideMenuImage: "bxs-offer 1"),
-        sideMenuModel(sideMenuName: "Milestone Bonus", sideMenuImage: "performance"),
-        sideMenuModel(sideMenuName: "Helpline", sideMenuImage: "headset 1"),
-        sideMenuModel(sideMenuName: "About", sideMenuImage: "document (1)"),
-        sideMenuModel(sideMenuName: "FAQ", sideMenuImage: "document (1)"),
-        sideMenuModel(sideMenuName: "Term and Conditions", sideMenuImage: "document (1)")
+        sideMenuModel(sideMenuName: "Home".localiz(), sideMenuImage: "home"),
+        sideMenuModel(sideMenuName: "Scan QR Code".localiz(), sideMenuImage: "qr"),
+        sideMenuModel(sideMenuName: "Enter QR Code".localiz(), sideMenuImage: "upload1"),
+        sideMenuModel(sideMenuName: "Code Status".localiz(), sideMenuImage: "Group 7691"),
+        sideMenuModel(sideMenuName: "My Earning".localiz(), sideMenuImage: "bxs-coin-stack 1"),
+        sideMenuModel(sideMenuName: "My Redemptions".localiz(), sideMenuImage: "reademailalt 1"),
+        sideMenuModel(sideMenuName: "Redemption Catalogue".localiz(), sideMenuImage: "card-giftcard 1"),
+        sideMenuModel(sideMenuName: "Game Zone".localiz(), sideMenuImage: "Group 6479"),
+        sideMenuModel(sideMenuName: "Refer & Earn".localiz(), sideMenuImage: "Layer 3"),
+        sideMenuModel(sideMenuName: "Add My Assistant".localiz(), sideMenuImage: "Construction_Worker"),
+        sideMenuModel(sideMenuName: "Wishlist".localiz(), sideMenuImage: "wishlist"),
+        sideMenuModel(sideMenuName: "Dream Gift".localiz(), sideMenuImage: "gift (4)"),
+        sideMenuModel(sideMenuName: "Schemes & Offers".localiz(), sideMenuImage: "bxs-offer 1"),
+        sideMenuModel(sideMenuName: "Milestone Bonus".localiz(), sideMenuImage: "performance"),
+        sideMenuModel(sideMenuName: "Helpline".localiz(), sideMenuImage: "headset 1"),
+        sideMenuModel(sideMenuName: "About".localiz(), sideMenuImage: "document (1)"),
+        sideMenuModel(sideMenuName: "FAQ".localiz(), sideMenuImage: "document (1)"),
+        sideMenuModel(sideMenuName: "Term and Conditions".localiz(), sideMenuImage: "document (1)")
         
         
     
@@ -54,7 +61,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         sideMenuTV.dataSource = self
         heightOfTableView.constant = CGFloat(50*sideMenuArrayList.count)
         logoutView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
-        
+        loaclizSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,6 +84,16 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 }
     }
     
+    
+    func loaclizSetup(){
+        self.membershipIdTitleLbl.text = "Membership ID".localiz()
+        self.logoutLbl.text = "Logout".localiz()
+        self.deleteOutLbl.text = "Delete".localiz()
+        self.earnedEurosLbl.text = "Earned Euros".localiz()
+        self.myAccountOutLbl.text = "My Account".localiz()
+    }
+    
+    
     @IBAction func selectMyAccountBtn(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyProfileandBankDetailsVC") as? MyProfileandBankDetailsVC
         navigationController?.pushViewController(vc!, animated: true)
@@ -84,6 +101,24 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
  
     
     @IBAction func selectDeleteBtn(_ sender: UIButton) {
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let alert = UIAlertController(title: "", message: "SureWantToDelete".localiz(), preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Yes".localiz(), style: .default, handler: { UIAlertAction in
+            self.parameters = [
+                "ActionType": 1,
+                "userid":"\(self.userID)"
+            ] as [String : Any]
+            print(self.parameters!)
+            self.deleteAccountAPI(paramters: self.parameters!)
+        }))
+            alert.addAction(UIAlertAction(title: "no".localiz(), style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+
+        }
     }
     
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
@@ -109,6 +144,37 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     
+    
+    func deleteAccountAPI(paramters: JSON){
+        self.requestAPIs.deleteAccount(parameters: paramters) { (result, error) in
+            if error == nil{
+                if result != nil{
+                DispatchQueue.main.async {
+                    if result?.returnMessage ?? "-1" == "1"{
+                        DispatchQueue.main.async{
+                            self.view.makeToast("AccDeleted".localiz(), duration: 2.0,position: .bottom)
+                            }
+                    }else{
+                        DispatchQueue.main.async{
+                            self.view.makeToast("SomethingWrong".localiz(), duration: 2.0,position: .bottom)
+                            }
+                    }
+                  self.stopLoading()
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                    self.stopLoading()
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                self.stopLoading()
+                }
+            }
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sideMenuArrayList.count
     }
@@ -118,7 +184,7 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.selectionStyle = .none
         cell.sideMenuName.text = sideMenuArrayList[indexPath.row].sideMenuName
         cell.sideMenuImage.image = UIImage(named: sideMenuArrayList[indexPath.row].sideMenuImage)
-        if sideMenuArrayList[indexPath.row].sideMenuName == "Game Zone"{
+        if sideMenuArrayList[indexPath.row].sideMenuName == "Game Zone".localiz(){
             cell.sideMenuBadges.isHidden = true
             cell.sideMenuBadges.text = "3"
         }else{
@@ -218,5 +284,4 @@ class EBC_SideMenuVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 struct sideMenuModel{
     let sideMenuName: String
     let sideMenuImage: String
-    
 }

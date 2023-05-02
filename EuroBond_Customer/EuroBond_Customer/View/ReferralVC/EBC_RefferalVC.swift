@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast_Swift
+import LanguageManager_iOS
 
 class EBC_RefferalVC: BaseViewController {
 
@@ -16,13 +17,35 @@ class EBC_RefferalVC: BaseViewController {
     @IBOutlet weak var enterCodeLbl: UILabel!
     @IBOutlet weak var referralinfoLbl: UILabel!
     @IBOutlet weak var referralTitleLbl: UILabel!
+    
+    @IBOutlet var referalRegisterHeadingLbl: UILabel!
+    
+    
+    
+    
+    
     let token = UserDefaults.standard.string(forKey: "TOKEN") ?? ""
     var enteredMobile = ""
     var customerTypeName = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        localizSetup()
+    }
+    
+    func localizSetup(){
+        referalRegisterHeadingLbl.text = "RegisterbyReferral".localiz()
+        referralinfoLbl.text = "Apply Referral Code to Reward your Friend".localiz()
+        referralTitleLbl.text = "Enter Referral Code".localiz()
+        enterCodeLbl.text = "Referral Code".localiz()
+        enterCodeTF.placeholder = "Enter refferal code".localiz()
+        SkipBtn.setTitle("Skip".localiz(), for: .normal)
+        verifyBtn.setTitle("Verify".localiz(), for: .normal)
+    }
+    
+    
+    @IBAction func backBTN(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func selectSkipBtn(_ sender: UIButton) {

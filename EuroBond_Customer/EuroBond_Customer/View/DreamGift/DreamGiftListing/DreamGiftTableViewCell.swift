@@ -29,6 +29,8 @@ class DreamGiftTableViewCell: UITableViewCell {
     @IBOutlet weak var createdDate: UILabel!
     @IBOutlet weak var expiredDate: UILabel!
     @IBOutlet weak var ptsRequired: UILabel!
+    @IBOutlet var progressPercentageLogoView: NSLayoutConstraint!
+    
     
     var delegate: AddOrRemoveGiftDelegate!
 

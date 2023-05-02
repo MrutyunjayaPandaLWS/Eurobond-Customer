@@ -27,6 +27,7 @@ class HR_SelectionVC: BaseViewController, popUpAlertDelegate {
     var codeStatusArray = [String]()
     var myearningArray = ["Program Name","Bonus Name","Customer Name","Pending","FeedBack"]
     var redemptionTypeNameArray = ["Catalogue", "E Voucher", "Bank Transfer" ]
+    var myAssistant = ["Active","InActive"]
     var myDisplaystatusArray: [String] = ["Rejected","Pending","Approved"]
     var redemptionTypeIdArray = [1]
     var isComeFrom = 0
@@ -80,6 +81,9 @@ class HR_SelectionVC: BaseViewController, popUpAlertDelegate {
                 self.myDisplayListingAPI()
             }else if isComeFrom == 8{
                 self.myDisplayAPI()
+            }else if isComeFrom == 9{
+                self.selectionTableHeightConstraint.constant = 150
+                self.selectionTableView.reloadData()
             }
         }
     }
@@ -160,6 +164,9 @@ extension HR_SelectionVC: UITableViewDelegate, UITableViewDataSource{
         }else if isComeFrom == 8{
             return 1
            // return self.VM.myDispalyThemDropDown.count
+        }else if isComeFrom == 9{
+            return self.myAssistant.count
+           // return self.VM.myDispalyThemDropDown.count
         }else{
             return 1
         }
@@ -185,7 +192,9 @@ extension HR_SelectionVC: UITableViewDelegate, UITableViewDataSource{
 //            cell.itemLbl.text = self.myDisplaystatusArray[indexPath.row]
         }else if isComeFrom == 8{
 //            cell.itemLbl.text = self.VM.myDispalyThemDropDown[indexPath.row].attributeValue ?? ""
-        }
+        }else if isComeFrom == 9{
+            cell.itemLbl.text = self.myAssistant[indexPath.row]
+                    }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -211,7 +220,9 @@ extension HR_SelectionVC: UITableViewDelegate, UITableViewDataSource{
 //            self.selectThemeName = self.VM.myDispalyThemDropDown[indexPath.row].attributeValue ?? ""
 //            self.selectThemeID = self.VM.myDispalyThemDropDown[indexPath.row].attributeId ?? 0
             //self.selectedId = "\(self.VM.myDisplayArray[indexPath.row].transactionType ?? "")"
-        }
+        }else if isComeFrom == 9{
+            self.selectedTitle = self.myAssistant[indexPath.row]
+                    }
         self.delegate.didSelectedItem(self)
         self.dismiss(animated: true, completion: nil)
        

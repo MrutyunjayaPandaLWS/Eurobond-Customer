@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 class EBC_ReferandEarnVM{
     
     weak var VC: EBC_RefferAndEarnVC?
@@ -27,7 +28,7 @@ class EBC_ReferandEarnVM{
                         if String(result?.returnMessage ?? "").prefix(1) == "1"{
                             DispatchQueue.main.async{
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
-                                vc.descriptionInfo = "Thank you for referring to Eurobond Program ! Keep referring to earn euros"
+                                vc.descriptionInfo = "ThanksMessage".localiz()
                                 vc.itsComeFrom = "ReferandEarn"
                                 vc.modalPresentationStyle = .overFullScreen
                                 vc.modalTransitionStyle = .coverVertical
@@ -36,7 +37,7 @@ class EBC_ReferandEarnVM{
                         }else{
                             DispatchQueue.main.async{
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
-                                vc.descriptionInfo = "Something went wrong! Try again Later."
+                                vc.descriptionInfo = "SomethingWentWrong".localiz()
                                 vc.itsComeFrom = "ReferandEarn"
                                 vc.modalPresentationStyle = .overFullScreen
                                 vc.modalTransitionStyle = .coverVertical

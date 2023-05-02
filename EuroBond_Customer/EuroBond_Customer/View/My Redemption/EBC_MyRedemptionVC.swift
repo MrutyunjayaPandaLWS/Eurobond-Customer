@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast_Swift
+import LanguageManager_iOS
 class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, DateSelectedDelegate, SelectedItemDelegate, popUpAlertDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -34,7 +35,7 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
             self.selectedToDate = vc.selectedDate
             print(vc.selectedDate)
             if self.selectedFromDate > self.selectedToDate{
-                self.view.makeToast("To Date should be greater than From Date", duration: 2.0, position: .center)
+                self.view.makeToast("To Date should be greater than From Date".localiz(), duration: 2.0, position: .center)
             }else{
                 self.toDate.setTitle("\(vc.selectedDate)", for: .normal)
                 self.toDate.setTitleColor(.darkGray, for: .normal)
@@ -72,10 +73,10 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         myRedemptionTV.dataSource = self
         self.noDataFoundLbl.isHidden = true
         self.filterView.isHidden = true
-        self.fromDate.setTitle("From Date", for: .normal)
-        self.toDate.setTitle("To Date", for: .normal)
-        self.filterByCategory.setTitle("Filter", for: .normal)
-        self.selectStatus.setTitle("Select Status", for: .normal)
+        self.fromDate.setTitle("From Date".localiz(), for: .normal)
+        self.toDate.setTitle("To Date".localiz(), for: .normal)
+        self.filterByCategory.setTitle("Filter".localiz(), for: .normal)
+        self.selectStatus.setTitle("Select Status".localiz(), for: .normal)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -84,7 +85,7 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -124,51 +125,51 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     @IBAction func filterByCateogryBTN(_ sender: Any) {
         
-        if self.fromDate.currentTitle == "From Date" && self.toDate.currentTitle == "To Date" && self.selectStatus.currentTitle == "Select Status"{
+        if self.fromDate.currentTitle == "From Date".localiz() && self.toDate.currentTitle == "To Date".localiz() && self.selectStatus.currentTitle == "Select Status".localiz(){
             DispatchQueue.main.async{
                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                vc!.delegate = self
                vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select Date Range"
+                vc!.descriptionInfo = "Select Date Range".localiz()
                vc!.modalPresentationStyle = .overCurrentContext
                vc!.modalTransitionStyle = .crossDissolve
                self.present(vc!, animated: true, completion: nil)
             }
-        }else if self.fromDate.currentTitle == "From Date" && self.toDate.currentTitle == "To Date" && self.selectStatus.currentTitle != "Select Status"{
+        }else if self.fromDate.currentTitle == "From Date".localiz() && self.toDate.currentTitle == "To Date".localiz() && self.selectStatus.currentTitle != "Select Status".localiz(){
             
             self.VM.getRedemptionListApi(customerId: self.userId)
-        }else if self.fromDate.currentTitle != "From Date" && self.toDate.currentTitle == "To Date"{
+        }else if self.fromDate.currentTitle != "From Date".localiz() && self.toDate.currentTitle == "To Date".localiz() {
             DispatchQueue.main.async{
                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                vc!.delegate = self
                vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select To Date"
+                vc!.descriptionInfo = "Select To Date".localiz()
                vc!.modalPresentationStyle = .overCurrentContext
                vc!.modalTransitionStyle = .crossDissolve
                self.present(vc!, animated: true, completion: nil)
             }
-        }else if self.fromDate.currentTitle == "From Date" && self.toDate.currentTitle != "To Date"{
+        }else if self.fromDate.currentTitle == "From Date".localiz() && self.toDate.currentTitle != "To Date".localiz(){
             DispatchQueue.main.async{
                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                vc!.delegate = self
                vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select From Date"
+                vc!.descriptionInfo = "Select From Date".localiz()
                vc!.modalPresentationStyle = .overCurrentContext
                vc!.modalTransitionStyle = .crossDissolve
                self.present(vc!, animated: true, completion: nil)
             }
-        }else if self.fromDate.currentTitle != "From Date" && self.toDate.currentTitle != "To Date" && self.selectStatus.currentTitle == "Select Status" || self.selectStatus.currentTitle != "Select Status"{
+        }else if self.fromDate.currentTitle != "From Date".localiz() && self.toDate.currentTitle != "To Date".localiz() && self.selectStatus.currentTitle == "Select Status".localiz() || self.selectStatus.currentTitle != "Select Status".localiz(){
             if selectedToDate < selectedFromDate{
                 DispatchQueue.main.async{
                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                    vc!.delegate = self
                    vc!.titleInfo = ""
-                    vc!.descriptionInfo = "To Date should be greater than From Date"
+                    vc!.descriptionInfo = "To Date should be greater than From Date".localiz()
                    vc!.modalPresentationStyle = .overCurrentContext
                    vc!.modalTransitionStyle = .crossDissolve
                    self.present(vc!, animated: true, completion: nil)
                 }
-            }else if self.fromDate.currentTitle == "From Date" && self.toDate.currentTitle == "To Date" && self.selectStatus.currentTitle != "Select Status"{
+            }else if self.fromDate.currentTitle == "From Date".localiz() && self.toDate.currentTitle == "To Date".localiz() && self.selectStatus.currentTitle != "Select Status".localiz(){
                
                 self.VM.getRedemptionListApi(customerId: self.userId)
                
@@ -206,9 +207,9 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_MyRedemptionTVC", for: indexPath) as! EBC_MyRedemptionTVC
         cell.selectionStyle = .none
         cell.productNameLbl.text = self.VM.myredemptionArray[indexPath.row].productName ?? ""
-        cell.refNoLbl.text = "Ref.No.\(self.VM.myredemptionArray[indexPath.row].redemptionRefno ?? "")"
-        cell.productCategoryLbl.text = "Category:- \(self.VM.myredemptionArray[indexPath.row].categoryName ?? "-")"
-        cell.eurosUsedLbl.text = "\(self.VM.myredemptionArray[indexPath.row].pointsPerUnit ?? 0)"
+        cell.refNoLbl.text = "\("RefNo".localiz())" + "\(" ")" + "\(self.VM.myredemptionArray[indexPath.row].redemptionRefno ?? "")"
+        cell.productCategoryLbl.text = "Category".localiz() + "\(self.VM.myredemptionArray[indexPath.row].categoryName ?? "-")"
+        cell.eurosUsedLbl.text = "\(Int(self.VM.myredemptionArray[indexPath.row].redemptionPoints ?? 0)) Euros"
         let redemptionDate = String(self.VM.myredemptionArray[indexPath.row].jRedemptionDate ?? "-").split(separator: " ")
         print(redemptionDate[0])
         cell.dateLbl.text = "\(redemptionDate[0])"
@@ -340,11 +341,12 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 190
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        return 190
+//    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HRD_MyRedemptionDetailsVC") as! HRD_MyRedemptionDetailsVC
+        self.filterView.isHidden = true
         vc.categoryName = self.VM.myredemptionArray[indexPath.item].categoryName ?? ""
         vc.totalPoint = "\(self.VM.myredemptionArray[indexPath.item].pointsPerUnit ?? 0)"
         vc.productName = self.VM.myredemptionArray[indexPath.item].productName ?? ""

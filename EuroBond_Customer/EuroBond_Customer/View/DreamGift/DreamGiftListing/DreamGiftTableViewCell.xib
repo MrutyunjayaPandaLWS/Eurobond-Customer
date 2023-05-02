@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,15 +11,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="219" id="KGk-i7-Jjw" customClass="DreamGiftTableViewCell" customModule="EuroBond_Customer" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="346" height="219"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="225" id="KGk-i7-Jjw" customClass="DreamGiftTableViewCell" customModule="EuroBond_Customer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="346" height="225"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="346" height="219"/>
+                <rect key="frame" x="0.0" y="0.0" width="346" height="225"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GAb-CI-SvL">
-                        <rect key="frame" x="8" y="8" width="330" height="203"/>
+                        <rect key="frame" x="8" y="8" width="330" height="209"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dream Gift" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMb-17-Psp">
                                 <rect key="frame" x="0.0" y="0.0" width="108" height="27"/>
@@ -132,7 +132,7 @@
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCj-iI-84P">
                                 <rect key="frame" x="203" y="126" width="119" height="30"/>
-                                <color key="backgroundColor" red="0.83137254901960778" green="0.29019607843137252" blue="0.13725490196078433" alpha="0.43899110547539327" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.047058823530000002" green="0.4823529412" blue="0.74509803919999995" alpha="0.5686187744140625" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="119" id="SNj-6j-Xxe"/>
                                     <constraint firstAttribute="height" constant="30" id="tX7-Bj-0lU"/>
@@ -161,21 +161,18 @@
                                 <color key="textColor" red="0.19127404689999999" green="0.29087531570000003" blue="0.52943575379999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hdd-tH-RHC">
-                                <rect key="frame" x="8" y="159.5" width="65.5" height="30"/>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hdd-tH-RHC">
+                                <rect key="frame" x="8" y="159.5" width="65.5" height="0.0"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TDS points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NhG-hZ-Lic">
-                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="11"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="11" id="Q92-uo-ofh"/>
-                                        </constraints>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="13"/>
                                         <color key="textColor" systemColor="systemGrayColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="200000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M63-XO-hSl">
-                                        <rect key="frame" x="0.0" y="11" width="65.5" height="19"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65.5" height="0.0"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="15"/>
                                         <color key="textColor" red="0.0" green="0.3921568627" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -183,9 +180,26 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="uvP-OV-IZq"/>
+                                    <constraint firstAttribute="height" id="uvP-OV-IZq"/>
                                 </constraints>
                             </stackView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vj7-lX-iC1">
+                                <rect key="frame" x="108" y="103.5" width="20" height="20"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Group 8849" translatesAutoresizingMaskIntoConstraints="NO" id="g9w-z2-eYr">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7CG-2N-57W"/>
+                                    <constraint firstItem="g9w-z2-eYr" firstAttribute="leading" secondItem="Vj7-lX-iC1" secondAttribute="leading" id="87S-xo-IYU"/>
+                                    <constraint firstItem="g9w-z2-eYr" firstAttribute="top" secondItem="Vj7-lX-iC1" secondAttribute="top" id="GNH-6h-2ly"/>
+                                    <constraint firstAttribute="bottom" secondItem="g9w-z2-eYr" secondAttribute="bottom" id="JFw-cc-Geq"/>
+                                    <constraint firstAttribute="trailing" secondItem="g9w-z2-eYr" secondAttribute="trailing" id="Y92-Qd-eVR"/>
+                                    <constraint firstAttribute="width" constant="20" id="mDb-qa-c0f"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -195,8 +209,10 @@
                             <constraint firstItem="Cne-gM-bRZ" firstAttribute="top" secondItem="tKX-9N-yFf" secondAttribute="bottom" constant="8" id="8ov-Um-QrE"/>
                             <constraint firstItem="Wnt-4h-raQ" firstAttribute="leading" secondItem="GAb-CI-SvL" secondAttribute="leading" constant="8" id="9gF-eN-TCK"/>
                             <constraint firstItem="JMb-17-Psp" firstAttribute="top" secondItem="GAb-CI-SvL" secondAttribute="top" id="Cl2-rh-y1W"/>
+                            <constraint firstItem="Vj7-lX-iC1" firstAttribute="leading" secondItem="Wnt-4h-raQ" secondAttribute="leading" constant="100" id="Dq5-lH-FiB"/>
                             <constraint firstItem="Cne-gM-bRZ" firstAttribute="leading" secondItem="GAb-CI-SvL" secondAttribute="leading" constant="8" id="HL1-dG-6y2"/>
                             <constraint firstItem="Ort-P5-ROR" firstAttribute="top" secondItem="hhW-QF-1eg" secondAttribute="bottom" constant="4.5" id="HTV-Ev-iJB"/>
+                            <constraint firstItem="Vj7-lX-iC1" firstAttribute="centerY" secondItem="Wnt-4h-raQ" secondAttribute="centerY" id="J5u-qg-Wyo"/>
                             <constraint firstItem="pCj-iI-84P" firstAttribute="top" secondItem="Ort-P5-ROR" secondAttribute="bottom" constant="7" id="M7O-Pb-Ulm"/>
                             <constraint firstItem="gRQ-Ai-H6x" firstAttribute="top" secondItem="Wnt-4h-raQ" secondAttribute="bottom" constant="8" id="RD7-if-aqp"/>
                             <constraint firstAttribute="trailing" secondItem="hhW-QF-1eg" secondAttribute="trailing" constant="8" id="SM3-3b-Azy"/>
@@ -246,6 +262,7 @@
                 <outlet property="giftName" destination="Cne-gM-bRZ" id="r7G-kk-L2s"/>
                 <outlet property="percentageValue" destination="Ort-P5-ROR" id="Tjr-A1-0cx"/>
                 <outlet property="pointsRequired" destination="RdX-tD-jtz" id="fAo-oq-A6P"/>
+                <outlet property="progressPercentageLogoView" destination="Dq5-lH-FiB" id="47z-o2-Hod"/>
                 <outlet property="progressView" destination="Wnt-4h-raQ" id="Mwf-08-w6a"/>
                 <outlet property="progressViewLeadingConstraint" destination="9gF-eN-TCK" id="aLr-gD-QN4"/>
                 <outlet property="ptsRequired" destination="pKY-mz-35G" id="31z-co-glO"/>
@@ -253,10 +270,11 @@
                 <outlet property="removeGiftBTN" destination="tKX-9N-yFf" id="nKX-1Y-FRK"/>
                 <outlet property="tdsvalue" destination="M63-XO-hSl" id="26u-TA-AT7"/>
             </connections>
-            <point key="canvasLocation" x="188.40579710144928" y="107.47767857142857"/>
+            <point key="canvasLocation" x="188.40579710144928" y="109.48660714285714"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="Group 8849" width="15" height="15"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

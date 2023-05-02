@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class KC_ForgetPwdSuccessVC: BaseViewController {
 
@@ -17,16 +18,16 @@ class KC_ForgetPwdSuccessVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.itsComeFrom == "CLAIMPURCHASE"{
-            self.newPwdInfo.text = "Submitted your purchase request"
+            self.newPwdInfo.text = "Submitted your purchase request".localiz()
         }else if self.itsComeFrom == "SAVEWORKSITEINFO"{
-            self.newPwdInfo.text = "Submitted your work details request"
+            self.newPwdInfo.text = "Submitted your work details request".localiz()
         }else if self.itsComeFrom == "SUPPORTEXECUTIVE"{
-            self.newPwdInfo.text = "Support executive created"
+            self.newPwdInfo.text = "Support executive created".localiz()
         }else if self.itsComeFrom == "EXECUTIVE"{
-            self.newPwdInfo.text = "Status updated"
+            self.newPwdInfo.text = "Status updated".localiz()
         }else if self.itsComeFrom == "ACCOUNTDEACTIVATE"{
-            self.newPwdInfo.text = "Your account is deactivated please check with the administrator"
-            self.infoLbl.text = "Account Deactivated!!"
+            self.newPwdInfo.text = "Your account is deactivated please check with the administrator".localiz()
+            self.infoLbl.text = "Account Deactivated".localiz()
         }
 //        else if self.itsComeFrom == "REDEMPTIONSUBMISSION"{
 //            self.newPwdInfo.text = "You have successfully redeemed a products"

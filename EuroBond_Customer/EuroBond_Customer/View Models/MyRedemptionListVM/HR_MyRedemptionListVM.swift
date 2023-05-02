@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 class HR_MyRedemptionListVM:  popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -53,7 +54,7 @@ class HR_MyRedemptionListVM:  popUpAlertDelegate {
         print(self.VC?.behaviourId ?? 0, "Behaviour")
         
         print(self.VC?.fromDate.currentTitle ?? "")
-        if self.VC?.behaviourId == 0 && self.VC?.fromDate.currentTitle == "From Date" && self.VC?.toDate.currentTitle == "To Date"{
+        if self.VC?.behaviourId == 0 && self.VC?.fromDate.currentTitle == "From Date".localiz() && self.VC?.toDate.currentTitle == "To Date".localiz(){
             self.parameters = [
                 "ActionType": "52",
                 "ActorId": customerId,
@@ -62,7 +63,7 @@ class HR_MyRedemptionListVM:  popUpAlertDelegate {
                 ]
             ] as [String : Any]
             print(self.parameters!)
-        }else if self.VC?.behaviourId != 0 && self.VC?.fromDate.currentTitle == "From Date" && self.VC?.toDate.currentTitle == "To Date"{
+        }else if self.VC?.behaviourId != 0 && self.VC?.fromDate.currentTitle == "From Date".localiz() && self.VC?.toDate.currentTitle == "To Date".localiz(){
             self.parameters = [
                 "ActionType": "52",
                 "ActorId": customerId,

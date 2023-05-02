@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 
 protocol SelectedItemsDelegate: class{
     
@@ -25,9 +25,6 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
     @IBOutlet weak var cartCount: UILabel!
     @IBOutlet weak var categoryTitleLbl: UILabel!
     @IBOutlet weak var productNameLbl: UILabel!
-   
-   
-    
     @IBOutlet weak var addedToCart: GradientButton!
     
     @IBOutlet weak var addToCart: UIButton!
@@ -74,21 +71,11 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
         super.viewDidLoad()
         self.VM.VC = self
         localization()
-//        if UserDefaults.standard.string(forKey: "CustomerType") ?? "" == "1"{
-//            self.headerView.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-//            addToCart.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-//            addToPlanner.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-//            addToCart.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-//            self.pointsView.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-//            self.viewCartBTN.backgroundColor = #colorLiteral(red: 0.7437494397, green: 0.08922102302, blue: 0.1178346947, alpha: 1)
-//
-//        }else{
             self.headerView.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
             addToPlanner.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
             addToCart.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
             self.pointsView.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
             self.viewCartBTN.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
-       // }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -97,7 +84,7 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -131,19 +118,19 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
         }
     }
     func localization(){
-        self.screenTitleLbl.text = "Redemption Catalogue"
-        self.pointTitleLbl.text = "POINTS"
-        self.categoryTitleLbl.text = "Category Electronics"
-        self.pointsLbl.text = "POINTS"
+        self.screenTitleLbl.text = "Redemption Catalogue".localiz()
+        self.pointTitleLbl.text = "POINTS".localiz()
+        self.categoryTitleLbl.text = "Category Electronics".localiz()
+        self.pointsLbl.text = "POINTS".localiz()
 //        self.addToCart.setTitle("AddToCart", for: .normal)
 //        self.addToPlanner.setTitle("AddToPlanner", for: .normal)
 //        self.addedToCart.setTitle("AddedToCart", for: .normal)
 //        self.addedToPlanner.setTitle("AddedToPlanner", for: .normal)
-        self.descriptionHeader.text = "Descriptions"
-        self.termandConditionsLbl.text = "Terms and Conditions"
-        self.popUpPointsLbl.text = "POINTS"
-        self.qtyHeader.text = "QTY"
-        self.viewCartBTN.setTitle("View Cart", for: .normal)
+        self.descriptionHeader.text = "Descriptions".localiz()
+        self.termandConditionsLbl.text = "Terms and Conditions".localiz()
+        self.popUpPointsLbl.text = "POINTS".localiz()
+        self.qtyHeader.text = "QTY".localiz()
+        self.viewCartBTN.setTitle("View Cart".localiz(), for: .normal)
     }
     
     @IBAction func backBTN(_ sender: Any) {

@@ -12,7 +12,10 @@ class EBC_TermsAndConditionsVC: BaseViewController, popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
 
+    @IBOutlet var termsAndCondTitle: UILabel!
+    
     @IBOutlet weak var webView: WKWebView!
+    
     var requestAPIs = RestAPI_Requests()
     var tcListingArray = [LstTermsAndCondition]()
     override func viewDidLoad() {

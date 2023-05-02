@@ -21,7 +21,7 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
     var selectedGiftStatusID = 0
     var dreamGiftRedemptionId = 0
     var fromSideMenu = ""
-    let verifiedStatus = UserDefaults.standard.integer(forKey: "VerifiedStatus")
+    let verifiedStatus = UserDefaults.standard.integer(forKey: "verificationStatus")
     var checkAccountStatus = UserDefaults.standard.string(forKey: "SemiActiveAccount") ?? ""
     var VM = DreamGiftListingViewModel()
     
@@ -35,10 +35,10 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
         self.dreamGifttableView.separatorStyle = .none
         NotificationCenter.default.addObserver(self, selector: #selector(afterRemovedProducts), name: Notification.Name.dreamGiftRemoved, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(giftAddedIntoCart), name: Notification.Name.giftAddedIntoCart, object: nil)
-        var vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxRelatedPopupViewController") as! TaxRelatedPopupViewController
-        vc.modalPresentationStyle = .overCurrentContext
-        vc.modalTransitionStyle = .crossDissolve
-        self.present(vc, animated: true, completion: nil)
+//        var vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxRelatedPopupViewController") as! TaxRelatedPopupViewController
+//        vc.modalPresentationStyle = .overCurrentContext
+//        vc.modalTransitionStyle = .crossDissolve
+//        self.present(vc, animated: true, completion: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -80,21 +80,7 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
         }
     }
     
-//    func playAnimation(){
-//        animationView = .init(name: "lf30_editor_jh47f7lt")
-//          animationView!.frame = animationLottieView.bounds
-//          // 3. Set animation content mode
-//          animationView!.contentMode = .scaleAspectFit
-//          // 4. Set animation loop mode
-//          animationView!.loopMode = .loop
-//          // 5. Adjust animation speed
-//          animationView!.animationSpeed = 0.5
-//        animationLottieView.addSubview(animationView!)
-//          // 6. Play animation
-//          animationView!.play()
-//
-//    }
-    
+
     //Delegate:-
     
     func popupAlertDidTap(_ vc: PopupAlertOne_VC) {}
@@ -112,11 +98,11 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
                 
             }else if self.verifiedStatus == 1{
                 print(UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable"))
-                if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -3{
-                    self.view.makeToast("Your PAN Details are pending,Please contact your administrator!", duration: 2.0, position: .bottom)
-                }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -4{
-                    self.view.makeToast("Your PAN Details are rejected,Please contact your administrator!", duration: 2.0, position: .bottom)
-                }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == 1{
+//                if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -3{
+//                    self.view.makeToast("Your PAN Details are pending,Please contact your administrator!", duration: 2.0, position: .bottom)
+//                }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -4{
+//                    self.view.makeToast("Your PAN Details are rejected,Please contact your administrator!", duration: 2.0, position: .bottom)
+//                }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == 1{
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DefaultAddressVC") as! EBC_DefaultAddressVC
                     vc.redemptionTypeId = 3
                     vc.totalPoint = self.VM.myDreamGiftListArray[tappedIndexPath.row].pointsRequired ?? 0
@@ -127,10 +113,12 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
                     vc.giftStatusId = self.VM.myDreamGiftListArray[tappedIndexPath.row].giftStatusId ?? 0
                     
                     self.navigationController?.pushViewController(vc, animated: true)
-                }else{
-                    self.view.makeToast("Insufficient point balance to redeem!", duration: 2.0, position: .bottom)
-                }
+//                }else{
+//                    self.view.makeToast("Insufficient point balance to redeem!", duration: 2.0, position: .bottom)
+//                }
               
+            }else{
+                self.view.makeToast("Insufficient point balance to redeem!", duration: 2.0, position: .bottom)
             }
            
         }
@@ -210,37 +198,39 @@ extension DreamGiftListingViewController : UITableViewDelegate, UITableViewDataS
         let tdsvalue = self.VM.myDreamGiftListArray[indexPath.row].tdsPoints ?? 0
         print(Int(pointRequired + Double(tdsvalue)),"data")
         print(balance,"Balance")
-//        if ((Int(pointRequired)) + Int(tdsvalue)) <= Int(balance){
-//            cell?.redeemButton.isEnabled = true
-//            cell?.redeemButton.backgroundColor = UIColor(red: 189/255, green: 0/255, blue: 0/255, alpha: 1.0)
-//        }else{
+        if Int(pointRequired) <= Int(balance){
+            cell?.redeemButton.isEnabled = true
+            cell?.redeemButton.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.4823529412, blue: 0.7450980392, alpha: 1)
+        }else{
+            cell?.redeemButton.isEnabled = false
+            cell?.redeemButton.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.4823529412, blue: 0.7450980392, alpha: 0.5686187744)
+
+        }
+        
+//        if self.VM.myDreamGiftListArray[indexPath.row].is_Redeemable ?? -2 != 1{
 //            cell?.redeemButton.isEnabled = false
 //            cell?.redeemButton.backgroundColor = UIColor(red: 209/255, green: 209/255, blue: 214/255, alpha: 1.0)
+//        }else{
+//            cell?.redeemButton.isEnabled = true
+//            cell?.redeemButton.backgroundColor = UIColor(red: 189/255, green: 0/255, blue: 0/255, alpha: 1.0)
+//            }
 //
-//        }
-        
-        if self.VM.myDreamGiftListArray[indexPath.row].is_Redeemable ?? -2 != 1{
-            cell?.redeemButton.isEnabled = false
-            cell?.redeemButton.backgroundColor = UIColor(red: 209/255, green: 209/255, blue: 214/255, alpha: 1.0)
-        }else{
-            cell?.redeemButton.isEnabled = true
-            cell?.redeemButton.backgroundColor = UIColor(red: 189/255, green: 0/255, blue: 0/255, alpha: 1.0)
-            }
-        
         
         cell?.redeemButton.tag = indexPath.row
         cell?.removeGiftBTN.tag = indexPath.row
         print(pointRequired,"pointsReq")
         if pointRequired < balance{
-            let percentage = CGFloat(balance/pointRequired)
-            cell?.percentageValue.text = "100%"
+            let percentage = CGFloat(pointRequired/balance) * 100.0
+            cell?.percentageValue.text = "100"
             cell?.progressView.progress = Float(percentage)
+            cell?.progressPercentageLogoView.constant = CGFloat(((cell?.progressView.frame.width ?? 0) - 20) * percentage/100)
         }else{
           
             let percentage = CGFloat(balance/pointRequired)
             let final = CGFloat(percentage) * 100
             cell?.percentageValue.text = "\(Int(final))%"
-            cell?.progressView.progress = Float(percentage)
+            cell?.progressView.progress = Float(percentage / 100)
+            cell?.progressPercentageLogoView.constant = CGFloat(((cell?.progressView.frame.width ?? 0) - 20) * percentage / 100)
         }
        
         
@@ -256,8 +246,6 @@ extension DreamGiftListingViewController : UITableViewDelegate, UITableViewDataS
         vc.giftName = self.VM.myDreamGiftListArray[indexPath.row].dreamGiftName ?? ""
         vc.tdsvalue = Double(self.VM.myDreamGiftListArray[indexPath.row].tdsPoints ?? 0)
         vc.giftType = self.VM.myDreamGiftListArray[indexPath.row].giftType ?? ""
-//        let createdDate = (self.VM.myDreamGiftListArray[indexPath.row].jCreatedDate ?? "").split(separator: " ")
-//        let convertedFormat = convertDateFormater1(String(createdDate[0]), fromDate: "MM/dd/yyyy", toDate: "dd/MM/yyyy")
         
         let doB1 = String(self.VM.myDreamGiftListArray[indexPath.row].jCreatedDate ?? "")
         let index = doB1.firstIndex(of: " ") ?? doB1.endIndex

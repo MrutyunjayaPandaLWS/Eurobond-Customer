@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_RedeemNowVC: BaseViewController {
 
@@ -33,10 +34,20 @@ class EBC_RedeemNowVC: BaseViewController {
         segmentController.setTitleTextAttributes(titleTextAttributes, for: .normal)
         
         self.container.segueIdentifierReceivedFromParent("first")
+        self.localizSetup()
     }
     @objc func getCount(){
         self.getMycartList()
     }
+    
+    func localizSetup(){
+        self.titleVC.text = "Redemption Catalogue".localiz()
+    }
+    
+    
+    
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "container"{
             self.container = segue.destination as? ContainerViewController

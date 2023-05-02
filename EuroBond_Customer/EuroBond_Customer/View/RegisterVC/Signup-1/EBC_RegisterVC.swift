@@ -7,8 +7,15 @@
 
 import UIKit
 import Toast_Swift
+import LanguageManager_iOS
 
 class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate, UITextFieldDelegate{
+    func didSelectGenderList(_ vc: EBC_DropDownVC) {
+        self.selectGenderType = vc.genderSelectDetails
+        self.mrMissMrsTF.text = self.selectGenderType
+        self.mrMissMrsTF.textColor = .darkGray
+    }
+    
     
     func didTappedQueryListBtn(_ vc: EBC_DropDownVC) {}
     
@@ -45,7 +52,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.stateTF.textColor = .darkGray
         self.selectedStateID = vc.stateId
         self.selectedCityId = -1
-        self.cityTF.placeholder = "Select City"
+        self.cityTF.placeholder = "Select City".localiz()
         print(vc.stateName)
     }
     
@@ -74,7 +81,19 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var nameLbl: UILabel!
     
+    @IBOutlet var mrMissMrsTF: UITextField!
     @IBOutlet weak var lastNameTF: UITextField!
+    
+    @IBOutlet var signUpLbl: UILabel!
+    @IBOutlet var secondSubLbl: UILabel!
+    @IBOutlet var selectGenderTypeLbl: UILabel!
+    @IBOutlet var lastNameLbl: UILabel!
+    
+    
+    
+    
+    
+    
     
     var referralCode = ""
     
@@ -86,6 +105,9 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
     
     var selectedGender = ""
     var selectedGenderId = -1
+    
+    var selectGenderType = ""
+    
     
     var languageName = ""
     var languageId = -1
@@ -101,7 +123,43 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.pincodeTF.keyboardType = .asciiCapableNumberPad
         self.mobileTF.text = self.enteredMobile
         self.nameTF.text = self.customerTypeName
+        localizSetup()
     }
+    
+    func localizSetup(){
+        signUpLbl.text = "Signup".localiz()
+        secondSubLbl.text = "Please enter the details to register".localiz()
+        selectGenderTypeLbl.text = "Mr/Mrs/Ms".localiz()
+        nameLbl.text = "First Name".localiz()
+        lastNameLbl.text = "Last Name".localiz()
+        mobileLbl.text = "Mobile Number".localiz()
+        emailLbl.text = "Email".localiz()
+        addressLbl.text = "Address".localiz()
+        stateLbl.text = "State".localiz()
+        cityLbl.text = "City".localiz()
+        pincodeLbl.text = "PinCode".localiz()
+        dobLbl.text = "DateOfBirth".localiz()
+        genderLbl.text = "Gender".localiz()
+        preferredLanguageLbl.text = "Preferred Language".localiz()
+        nextBtn.setTitle("Next".localiz(), for: .normal)
+        alreadyHaveAccountLbl.text = "AlreadyHaveAnAccount".localiz()
+        loginBtn.setTitle("login".localiz(), for: .normal)
+        
+        self.mrMissMrsTF.placeholder = "Select Title".localiz()
+        self.nameTF.placeholder = "Enter Name".localiz()
+        self.lastNameTF.placeholder = "Enter Last Name".localiz()
+        self.mobileTF.placeholder = "Enter Mobile Number".localiz()
+        self.emailTF.placeholder = "Enter email".localiz()
+        self.addressTF.placeholder = "Enter your address".localiz()
+        self.stateTF.placeholder = "Select State".localiz()
+        self.cityTF.placeholder = "Select City".localiz()
+        self.pincodeTF.placeholder = "Enter pincode".localiz()
+        self.dobTF.placeholder = "Select DOB".localiz()
+        self.genderTF.placeholder = "Select gender".localiz()
+        self.prefferedLanguageTF.placeholder = "Select Language".localiz()
+    }
+    
+    
     @IBAction func selectStateBtn(_ sender: UIButton) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DropDownVC") as! EBC_DropDownVC
         vc.flags = "state"
@@ -112,8 +170,8 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
     }
     @IBAction func selectCityBtn(_ sender: UIButton) {
         if self.selectedStateID == -1{
-            self.cityTF.placeholder = "Select City"
-            self.view.makeToast("Select State", duration: 2.0, position: .center)
+            self.cityTF.placeholder = "Select City".localiz()
+            self.view.makeToast("Select State".localiz(), duration: 2.0, position: .center)
         }else{
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DropDownVC") as! EBC_DropDownVC
             vc.flags = "city"
@@ -154,32 +212,54 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         if self.emailTF.text!.count > 1 {
             if !isValidEmail(self.emailTF.text ?? "") {
                 self.emailTF.text = ""
-                self.view.makeToast("Enter valid email", duration: 2.0, position: .bottom)
+                self.view.makeToast("EnterValidEmail".localiz(), duration: 2.0, position: .bottom)
             }
         }
     }
+    
+    
+    
+    @IBAction func mrMissMrsActBTN(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DropDownVC") as! EBC_DropDownVC
+        vc.delegate = self
+        vc.flags = "GenderSelection"
+        vc.modalTransitionStyle = .coverVertical
+        vc.modalPresentationStyle = .overFullScreen
+        self.present(vc, animated: true)
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     @IBAction func selectNextbtn(_ sender: UIButton) {
         
-        if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
-            self.view.makeToast("Enter first name", duration: 2.0, position: .bottom)
+        if self.selectGenderType == ""{
+            self.view.makeToast("Please select title".localiz(), duration: 2.0, position: .bottom)
+        }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
+            self.view.makeToast("Enter first name".localiz(), duration: 2.0, position: .bottom)
         }else if self.mobileTF.text?.count == 0{
-            self.view.makeToast("Enter mobile number", duration: 2.0, position: .bottom)
+            self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
         }else if self.addressTF.text?.count == 0{
-            self.view.makeToast("Enter address", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter address".localiz(), duration: 2.0, position: .bottom)
         }else if self.selectedStateID == -1{
-            self.view.makeToast("Select State", duration: 2.0, position: .bottom)
+            self.view.makeToast("Select State".localiz(), duration: 2.0, position: .bottom)
         }else if self.selectedCityId == -1{
-            self.view.makeToast("Select City", duration: 2.0, position: .bottom)
+            self.view.makeToast("Select City".localiz(), duration: 2.0, position: .bottom)
         }else if self.pincodeTF.text?.count == 0{
-            self.view.makeToast("Enter pincode", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter pincode".localiz(), duration: 2.0, position: .bottom)
         }else if self.pincodeTF.text?.count != 6{
-            self.view.makeToast("Enter valid pincode", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter valid pincode".localiz(), duration: 2.0, position: .bottom)
         }else if self.selectedDOB == ""{
-            self.view.makeToast("Select Date of birth", duration: 2.0, position: .bottom)
+            self.view.makeToast("DOB".localiz(), duration: 2.0, position: .bottom)
         }else if self.selectedGender == ""{
-            self.view.makeToast("Select Gender", duration: 2.0, position: .bottom)
+            self.view.makeToast("Select Gender".localiz(), duration: 2.0, position: .bottom)
         }else if self.languageName == ""{
-            self.view.makeToast("Select language", duration: 2.0, position: .bottom)
+            self.view.makeToast("Select language".localiz(), duration: 2.0, position: .bottom)
         }else{
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Signup2VC") as! EBC_Signup2VC
             vc.selectedStateID = self.selectedStateID

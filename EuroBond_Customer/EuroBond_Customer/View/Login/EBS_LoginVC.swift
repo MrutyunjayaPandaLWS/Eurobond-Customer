@@ -8,6 +8,7 @@
 import UIKit
 import DPOTPView
 import Toast_Swift
+import LanguageManager_iOS
 
 class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
 
@@ -36,6 +37,9 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
     @IBOutlet weak var login2InfoLbl: UILabel!
     @IBOutlet weak var login2TitleLbl: UILabel!
 
+    @IBOutlet weak var termsAndConditionBtn: UIButton!
+    
+    
     var passwordSecurestatus = 0
     var viewStatus = 0
     var tc1Status = 0
@@ -48,10 +52,26 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
         super.viewDidLoad()
         self.VM.VC = self
         passwordTF.isSecureTextEntry = true
+        localizsetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fabricatorAssistanceview2.isHidden = false
+    }
+    
+    
+    func localizsetup(){
+        login2TitleLbl.text = "login".localiz()
+        login2InfoLbl.text = "Please enter the Username and Password shared by Fabricator".localiz()
+        userNameLbl.text = "Username / Mobile number".localiz()
+        userNameTF.placeholder = "Username / Mobile number".localiz()
+        passwordLbl.text = "Password".localiz()
+        passwordTF.placeholder = "Enter Password".localiz()
+        termsAndConditionBtn.setTitle("IaccepttheTermsandConditions".localiz(), for: .normal)
+        loginBtn2.setTitle("login".localiz(), for: .normal)
+        accountAssistance2Lbl.text = "Are you a Fabricator ?".localiz()
+        clickhere2Btn.setTitle("cliockHereBtn".localiz(), for: .normal)
+        
     }
 
 
@@ -70,7 +90,7 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
     
     @IBAction func userNameTFEditingDidEnd(_ sender: Any) {
         if self.userNameTF.text?.count == 0 {
-            self.view.makeToast("Enter membership Id", duration: 2.0, position: .center)
+            self.view.makeToast("EntermembershipId".localiz(), duration: 2.0, position: .center)
         }else{
             let parameter = [
                 "Location": [
@@ -107,11 +127,11 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
     @IBAction func selectLogin2Btn(_ sender: UIButton) {
         
         if userNameTF.text?.count == 0{
-            self.view.makeToast("Enter user name",duration: 2.0,position: .center)
+            self.view.makeToast("Enter user name Mobile Number".localiz(),duration: 2.0,position: .center)
         }else if passwordTF.text?.count == 0{
-            self.view.makeToast("Enter Password",duration: 2.0,position: .center)
+            self.view.makeToast("Enter Password".localiz(),duration: 2.0,position: .center)
         } else if tc2Status == 0{
-            self.view.makeToast("Select terms and conditions",duration: 2.0,position: .center)
+            self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
         }else{
             
             let parameter = [
@@ -136,6 +156,22 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
         }else{
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 20
+        
+        let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+        let compSepByCharInSet = string.components(separatedBy: aSet)
+        let numberFiltered = compSepByCharInSet.joined(separator: "")
+        
+            if textField == userNameTF{
+                let currentString: NSString = (userNameTF.text ?? "") as NSString
+                let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+                return newString.length <= maxLength
+            }
+        return true
     }
 }
 

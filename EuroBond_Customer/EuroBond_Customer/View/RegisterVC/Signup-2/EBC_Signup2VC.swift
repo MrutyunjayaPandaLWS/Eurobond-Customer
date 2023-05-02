@@ -59,6 +59,8 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
         super.viewDidLoad()
         self.VM.VC = self
         self.picker.delegate = self
+        self.gstTF.delegate = self
+        self.panNumberTF.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(registrationSubmission), name: Notification.Name.registrationSubmission, object: nil)
     }
     
@@ -114,51 +116,54 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
             self.view.makeToast("Enter valid PAN number", duration: 2.0, position: .bottom)
         }else if strBase64PAN == ""{
             self.view.makeToast("Attach PAN Image", duration: 2.0, position: .bottom)
-        }else if self.gstTF.text?.count == 0 {
-            self.view.makeToast("Enter GST number", duration: 2.0, position: .bottom)
-         }else if self.gstTF.text?.count != 15{
-                self.view.makeToast("Enter valid GST number", duration: 2.0, position: .bottom)
-        }else{
-         
+        }
+        //        else if self.gstTF.text?.count == 0 {
+        //            self.view.makeToast("Enter GST number", duration: 2.0, position: .bottom)
+        //         }else if self.gstTF.text?.count != 15{
+        //                self.view.makeToast("Enter valid GST number", duration: 2.0, position: .bottom)
+        //    }
+        else{
+            
             let parameterJSON = [
-                    "actiontype": "0",
-                    "lstidentityinfo": [
-                        [
-                            "identityid": "5", //hardcoded
-                            "identityno": self.panNumberTF.text ?? "",
-                            "identitytype": "6", //hardcoded
-                            "IdentityDocument": self.strBase64PAN
-                        ]
-                    ],
-                    "objcustomer": [
-                        "FirstName": self.firstNames,
-                        "LastName": self.lastName,
-                        "Address1": self.address,
-                        "customeremail": self.email,
-                        "CustomerMobile": self.mobile,
-                        "CustomerCityId": self.selectedCityId,
-                        "CustomerStateId": self.selectedStateID,
-                        "CustomerZip": self.pincode,
-                        "IsActive": "1", //hardcoded
-                        "MerchantId": "1", //hardcoded
-                        "ReferrerCode": self.referralCode,
-                        "RegistrationSource": "2", // for IOS=>2, Android=3
-                        "CustomerTypeId": "69",//hardcoded
-                        "DOB": self.selectedDOB,
-                        "LanguageId": self.languageId,
-                        "Gender": self.selectedGender
-                    ],
-                    "ObjCustomerOfficalInfo": [
-                        "OfficialGSTNumber": self.strBase64GST,
-                        "GSTDocument": self.strBase64GST
+                "actiontype": "0",
+                "lstidentityinfo": [
+                    [
+                        "identityid": "5", //hardcoded
+                        "identityno": self.panNumberTF.text ?? "",
+                        "identitytype": "6", //hardcoded
+                        "IdentityDocument": self.strBase64PAN
                     ]
+                ],
+                "objcustomer": [
+                    "FirstName": self.firstNames,
+                    "LastName": self.lastName,
+                    "Address1": self.address,
+                    "customeremail": self.email,
+                    "CustomerMobile": self.mobile,
+                    "CustomerCityId": self.selectedCityId,
+                    "CustomerStateId": self.selectedStateID,
+                    "CustomerZip": self.pincode,
+                    "IsActive": "1", //hardcoded
+                    "MerchantId": "1", //hardcoded
+                    "ReferrerCode": self.referralCode,
+                    "RegistrationSource": "2", // for IOS=>2, Android=3
+                    "CustomerTypeId": "69",//hardcoded
+                    "DOB": self.selectedDOB,
+                    "LanguageId": self.languageId,
+                    "Gender": self.selectedGender
+                ],
+                "ObjCustomerOfficalInfo": [
+                    "OfficialGSTNumber": "\(self.gstTF.text ?? "")",
+                    "GSTDocument": self.strBase64GST
+                ]
             ] as [String: Any]
+            print(parameterJSON)
             self.VM.registrationSubmission(parameter: parameterJSON)
             
             //API
             
         }
-
+        
     }
     
     @IBAction func selectClickHereBtn(_ sender: UIButton) {
@@ -173,6 +178,44 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+////      let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+////      let compSepByCharInSet = string.components(separatedBy: aSet)
+////      let numberFiltered = compSepByCharInSet.joined(separator: "")
+//
+//        self.panNumberTF.text = self.panNumberTF.text?.uppercased()
+//
+//      if string == numberFiltered {
+//          let currentText = self.panNumberTF.text ?? ""
+//        guard let stringRange = Range(range, in: currentText) else { return false }
+//        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+//        return updatedText.count <= 10
+//      } else {
+//        return false
+//      }
+//    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        self.panNumberTF.text = self.panNumberTF.text?.uppercased()
+        self.gstTF.text = self.gstTF.text?.uppercased()
+        if textField == panNumberTF{
+            let currentCharacterCount = panNumberTF.text?.count ?? 0
+                   if (range.length + range.location > currentCharacterCount){
+                       return false
+                   }
+                   let newLength = currentCharacterCount + string.count - range.length
+                   return newLength <= 10
+        }else  if textField == gstTF{
+            let currentCharacterCount = gstTF.text?.count ?? 0
+                   if (range.length + range.location > currentCharacterCount){
+                       return false
+                   }
+                   let newLength = currentCharacterCount + string.count - range.length
+                   return newLength <= 15
+        }
+        return true
     }
     
     

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
+    <title>FAQ</title>
+    <style>
+        li {
+            font-family: 'Roboto Condensed';
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        .tcpart {
+            padding: 0 0px;
+            
+        }
+
+        p,li{
+            font-size: 13px;
+        }
+
+        h1.topheader {
+            font-size: 18px;
+            background: #ffffff;
+            padding: 20px 10px;
+            margin: 0;
+            text-align: center;
+            font-family: 'Roboto Condensed';
+            /* use project primary color */
+            color:#006CB5 ;
+            position: fixed;
+            width: 100%;
+            height: 64px;
+        }
+
+        h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        h2,
+        h3,
+        p {
+            font-family: 'Roboto Condensed';
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: #ccc;
+            position: fixed;
+            
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: #006CB5;
+            /* use project primary color */
+            width: 0%;
+
+        }
+
+        button.accordion {
+                background-color: #fff;
+                color: #2b2b2b;
+                cursor: pointer;
+                padding: 18px;
+                width: 100%;
+                border: 1px solid #00000012;
+                text-align: left;
+                outline: none;
+                font-size: 15px;
+                transition: 0.4s;
+                font-family: 'Roboto Condensed';
+                font-weight: 400;
+                border-bottom: none;
+            }
+        
+                button.accordion.active, button.accordion:hover {
+                    background-color: #284B8C;
+                    color: #fff;
+                    content: "\25b2";
+                }
+        
+            .accordion:after {
+                content: '\25bc';
+                color: rgb(255 255 255);
+                font-weight: 400;
+                float: right;
+                margin-left: 5px;
+                font-family: 'Roboto Condensed';
+            }
+        
+            .accordion.active:after {
+                content: "\25b2";
+                color: rgb(255, 255, 255);
+            }
+        
+            .panel {
+                padding: 1px 18px 0px 18px;
+                background-color: #e5eeff;
+                max-height: 0;
+                color: black;
+                overflow: hidden;
+                transition: max-height 0.2s ease-out;
+            }
+        
+            .faq {
+                background-color: #ffffff;
+            }
+        
+            .boxpading {
+                padding: 0 150px 0 150px;
+            }
+        
+            .gaptoall {
+                padding: 10px 0 10px 0;
+            }
+        
+            .title {
+                font-size: 70px;
+                margin: 0;
+                padding: 160px 0px 8px 80px;
+                color: #fff;
+                font-family: 'Roboto Condensed';
+            }
+        
+            .headingtag {
+                font-size: 30px;
+                margin: 0;
+                padding: 5px 0 25px 80px;
+                color: #fff;
+                font-family: 'Roboto Condensed';
+            }
+            .faqmsp{
+                color: #040a2d;
+                padding: 15px 0;
+                text-align: center;
+                font-size: 20px;
+                font-weight: 600;
+                font-family: 'Roboto Condensed';
+            }
+            .erflp{
+                font-size: 20px;
+                font-family: 'Roboto Condensed';
+                text-align: center;
+                padding: 18px 0;
+            }
+    </style>
+    <script>
+        // When the user scrolls the page, execute pageScroll function 
+        window.onscroll = function () {
+            pageScroll();
+        };
+
+        function pageScroll() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("proBar").style.width = scrolled + "%";
+        }
+    </script>
+  
+</head>
+
+<body>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="proBar"></div>
+    </div>
+    <div class="tcpart">
+        <!-- Paste your t and c here-->
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <!----------QA-01--------->
+                    <button class="accordion">EUROBOND रिवार्ड्स लॉयल्टी प्रोग्राम क्या है?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">यूरोबॉन्ड रिवार्ड्स लॉयल्टी प्रोग्राम यूरो पैनल प्रोडक्ट्स लिमिटेड का एक लॉयल्टी प्रोग्राम है जहां फैब्रिकेटर यूरोबॉन्ड शीट्स की खरीद के खिलाफ अंक अर्जित कर सकते हैं और आकर्षक पुरस्कारों के खिलाफ अपने अंक भुना सकते हैं।</p>
+                    </div>
+                    <!----------QA-02--------->
+                    <button class="accordion">कार्यक्रम में कौन शामिल हो सकता है?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">Google Store या IOS Store पर Eurobond Rewards App डाउनलोड करके पंजीकरण किया जा सकता है। ओटीपी के माध्यम से लॉग इन करें और पंजीकरण करने के लिए अनिवार्य विवरण (मोबाइल नंबर, नाम, आयु, पता, पैन कार्ड, जीएसटी नंबर, आदि) भरने के लिए चरणों का पालन करें।</p>
+                        <p class="gaptoall">यह अनुशंसा की जाती है कि पंजीकरण आपके क्षेत्र में यूरोबॉन्ड बिक्री टीम से संपर्क करके किया जाए और तेजी से सत्यापन और कार्यक्रम में प्रवेश के लिए आवश्यक सभी पंजीकरण विवरण साझा करें।</p>
+                        <p class="gaptoall">अधिक जानकारी के लिए हमें हेल्पलाइन पर कॉल करें।</p>
+                    </div>
+                    <!----------QA-03--------->
+                    <button class="accordion">क्या कोई नामांकन शुल्क है?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">यूरोबॉन्ड रिवार्ड्स प्रोग्राम का हिस्सा बनने के लिए कोई नामांकन शुल्क नहीं।</p>
+                    </div>
+                    <!----------QA-04--------->
+                    <button class="accordion">नामांकित होने के लिए किन दस्तावेजों की आवश्यकता है?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">व्यक्तिगत विवरण के अलावा, पैन कार्ड अनिवार्य है।</p>
+                    </div>
+                    <!----------QA-05--------->
+                    <button class="accordion">EUROBOND रिवार्ड्स ऐप में कैसे लॉग इन करें?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">फैब्रिकेटर अपने पंजीकृत मोबाइल नंबरों का उपयोग करके लॉग इन कर सकते हैं। इसके बाद सत्यापन के लिए एक ओटीपी भेजा जाएगा। ओटीपी दर्ज करने के बाद, यूरोबॉन्ड रिवार्ड्स सदस्यता खाता सक्रिय हो जाएगा।</p>
+                    </div>
+                    <!----------QA-06--------->
+                    <button class="accordion">मैं कार्यक्रम में शामिल होने के लिए क्या सहमत हूँ?</button>
+                    <div class="panel" style="">
+                        <p class="gaptoall">कार्यक्रम में शामिल होकर, आप सहमत हैं कि आपने यूरोबॉन्ड रिवार्ड्स लॉयल्टी प्रोग्राम के नियमों और शर्तों को पढ़ लिया है, समझ लिया है और इससे बाध्य होने के लिए सहमत हैं और किसी भी परिवर्तन या संशोधनों से हम कार्यक्रम के नियमों और शर्तों में कर सकते हैं।</p>
+                    </div>
+                    <!----------QA-07--------->
+                    <button class="accordion">आप मेरे द्वारा कार्यक्रम के माध्यम से प्रदान की जाने वाली जानकारी का उपयोग कैसे करेंगे?</button>
+                    <div class="panel">
+                        <li class="gaptoall">कार्यक्रम के संबंध में एकत्र की गई व्यक्तिगत जानकारी हमारी गोपनीयता नीति के अधीन है, जैसा कि नियम और शर्तों के तहत बताया गया है।</li>
+                    </div>
+                    <!----------QA-08--------->
+                    <button class="accordion">यह प्रोग्राम किस तरह से काम करता है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">ऊपर उल्लेखित कार्यक्रम के लिए पहले फैब्रिकेटर को नामांकन करना होगा।</p>
+                        <p class="gaptoall">अधिकृत वितरकों / डीलरों से सीधे यूरोबॉन्ड / आर्चर शीट्स के लिए ऑर्डर दें, यूरोबॉन्ड रिवार्ड्स ऐप में स्कैन विकल्प का उपयोग करके प्रत्येक शीट पर क्यूआर स्टिकर को स्कैन करें। आदेश और जमा अंक के आधार पर। अधिक प्रीमियम खरीद के लिए प्रत्येक स्कैन में अधिक अंक प्राप्त करें।</p>
+                        <p class="gaptoall">यूरोबॉन्ड रिवार्ड्स ऐप पर प्रदर्शन को ट्रैक करें और माइलस्टोन प्वाइंट स्लैब को पार करने पर बोनस अंक प्राप्त करने की योजना बनाएं।</p>
+                        <p class="gaptoall">आकर्षक गिफ्ट आइटम, वाउचर या यहां तक ​​कि कैश ट्रांसफर के खिलाफ पॉइंट रिडीम करें।</p>
+                        <p class="gaptoall">अपना ड्रीम गिफ्ट सेट करें और यूरोबॉन्ड रिवार्ड्स सेल्स टीम के परामर्श से तदनुसार अपने ऑर्डर की योजना बनाएं।</p>
+                    </div>
+                    <!----------QA-09--------->
+                    <button class="accordion">मैंने एक क्रॉस मार्क किए हुए स्टिकर को स्कैन किया और मुझे अंक प्राप्त नहीं हुए?</button>
+                    <div class="panel">
+                        <p class="gaptoall">ग्रेड मरकरी, एक्सपोर्ट, पार्टीशन, बी-ग्रेड और ऑफ-कट शीट यूरोबॉन्ड रिवार्ड्स प्रोग्राम का हिस्सा नहीं हैं। यदि आपकी शीट उपरोक्त से भिन्न ग्रेड की है, तो कृपया Eurobond Rewards App पर हेल्पलाइन विकल्प का उपयोग करके हेल्पलाइन से संपर्क करें।</p>
+                    </div>
+                    <!----------QA-10--------->
+                    <button class="accordion">मैं यूरो कैसे कमाऊं?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप अधिकृत वितरकों/डीलरों से यूरोबॉन्ड/आर्चर शीट खरीदकर यूरो कमा सकते हैं।</p>
+                        <p class="gaptoall">ग्रेड और आकार के आधार पर चर अंक प्राप्त करें।</p>
+                        <p class="gaptoall">प्रीमियम ग्रेड और बड़े आकार के लिए - प्रत्येक शीट पर उच्च अंक जीतें।</p>
+                    </div>
+                    <!----------QA-11--------->
+                    <button class="accordion">मैं पुरस्कार के लिए अंक कैसे भुना सकता हूँ?</button>
+                    <div class="panel">
+                        <p class="gaptoall">यूरोबॉन्ड रिवार्ड्स ऐप खोलें और रिडेम्पशन कैटलॉग पर क्लिक करें।</p>
+                        <p class="gaptoall">रिडेम्पशन कैटलॉग पर क्लिक करें और उपहार, वाउचर या बैंक ट्रांसफर में से चुनें।</p>
+                        <p class="gaptoall">उपहार 30 दिनों के भीतर केवल आपके पंजीकृत पते पर (जैसा कि पंजीकरण के समय दिया गया है) वितरित किया जाएगा।</p>
+                        <p class="gaptoall">किसी भी समस्या के लिए आप हेल्पलाइन नंबर +91 9783444200 पर संपर्क कर सकते हैं।</p>
+                    </div>
+                    <!----------QA-12--------->
+                    <button class="accordion">क्या मोचन के दौरान मेरे अंकों में कोई कटौती है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">हां, टीडीएस 194आर नियम के अनुसार, यदि आपने पैन कार्ड प्रदान किया है तो एक वित्तीय वर्ष में 20,000 रुपये से अधिक के भुगतान पर अर्जित अंकों से 10% काट लिया जाएगा या हटा दिया जाएगा।</p>
+                    </div>
+                    <!----------QA-13--------->
+                    <button class="accordion">मैं 1000 यूरो रिडीम करने में सक्षम क्यों नहीं हूं? क्या कोई स्लैब है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">सदस्यों को गिफ्ट रिडेम्पशन के लिए न्यूनतम 5000 यूरो, ई-वाउचर के लिए 4000 यूरो और बैंक कैश रिडेम्पशन के लिए 20000 यूरो की आवश्यकता होती है। ध्यान दें कि बैंक कैश को एक बार में केवल 20000 यूरो ही भुनाया जा सकता है।</p>
+                    </div>
+                    <!----------QA-14--------->
+                    <button class="accordion">क्या होगा अगर मुझे पता चलता है कि क्यूआर कोड पहले से ही इस्तेमाल किया गया है या स्कैन किया गया है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप "क्वेरी उठाएँ" विकल्प में प्रश्न सबमिट करके हेल्पलाइन से संपर्क कर सकते हैं या +91 9783444200 नंबर पर मिस्ड दे सकते हैं और कॉल बैक प्राप्त कर सकते हैं। काम के घंटे सोम-शनि सुबह 9:30 से शाम 6 बजे तक।</p>
+                    </div>
+                    <!----------QA-15--------->
+                    <button class="accordion">यदि मेरे अंक मेरे खाते में नहीं दिख रहे हैं तो क्या होगा?</button>
+                    <div class="panel">
+                        <p class="gaptoall">यदि आपको चिंता है कि आपके सदस्य खाते पर खरीदारी या अन्य कार्रवाई ठीक से लागू नहीं हुई है, तो आपको हेल्पलाइन नंबर पर हमसे संपर्क करना चाहिए।</p>
+                    </div>
+                    <!----------QA-16--------->
+                    <button class="accordion">क्या सदस्यता कभी समाप्त होती है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">प्रोग्राम की सदस्यता तब तक खुली रहेगी जब तक प्रोग्राम चलता है या जब तक फैब्रिकेटर प्रोग्राम से इस्तीफा नहीं दे देता, या कंपनी फैब्रिकेटर की सदस्यता रद्द नहीं कर देती।</p>
+                        <p class="gaptoall">कार्यक्रम में अर्जित अंक कभी समाप्त नहीं होंगे।</p>
+                    </div>
+                    <!----------QA-17--------->
+                    <button class="accordion">क्या मैं उत्पादों को कहीं से भी खरीद सकता हूँ?</button>
+                    <div class="panel">
+                        <p class="gaptoall">हां, आप भारत में अधिकृत वितरकों, डीलरों या खुदरा विक्रेताओं से उत्पाद खरीद सकते हैं।</p>
+                    </div>
+                    <!----------QA-18--------->
+                    <button class="accordion">मेरा पंजीकृत मोबाइल नंबर कैसे बदलें?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप हेल्पलाइन से संपर्क करें और अपनी क्वेरी सबमिट करें।</p>
+                    </div>
+                    <!----------QA-19--------->
+                    <button class="accordion">मैं यूरो कमाई की गणना को समझना चाहूंगा?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप ऐप पर यूरो कमाई संरचना मेनू देख सकते हैं या कमाई की गणना को समझने में मदद के लिए अपने क्षेत्र में यूरोबॉन्ड बिक्री प्रतिनिधि से संपर्क कर सकते हैं।</p>
+                    </div>
+                    <!----------QA-20--------->
+                    <button class="accordion">क्या मेरी सदस्यता रद्द की जा सकती है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आपकी सदस्यता किसी भी समय कंपनी द्वारा अपने विवेकाधिकार से रद्द की जा सकती है।</p>
+                        <p class="gaptoall">कार्यक्रम का कोई भी दुरुपयोग; इनमें से किसी भी नियम का पालन करने में विफलता; गलतबयानी; या आचरण जो यूरो पैनल प्रोडक्ट्स लिमिटेड के हितों के लिए हानिकारक हो सकता है - इसके परिणामस्वरूप आपकी सदस्यता रद्द हो सकती है और आपको कार्यक्रम में आगे की भागीदारी के लिए अपात्र बना सकता है।</p>
+                    </div>
+                    <!----------QA-21--------->
+                    <button class="accordion">यदि मेरी सदस्यता रद्द कर दी जाती है तो मेरे अंकों का क्या होगा?</button>
+                    <div class="panel">
+                        <p class="gaptoall">यदि आपकी सदस्यता रद्द कर दी जाती है, तो आपके खाते में या ऐसी समाप्ति से पहले आपके लिए उपलब्ध कोई भी अंक या पुरस्कार स्वचालित रूप से समाप्त हो जाएंगे, और कार्यक्रम और इसकी सुविधाओं तक आपकी पहुंच स्वतः समाप्त हो जाएगी।</p>
+                    </div>
+                    <!----------QA-22--------->
+                    <button class="accordion">क्या कार्यक्रम को संशोधित या समाप्त किया जा सकता है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">हाँ। कंपनी अपने विवेकाधिकार से बिना किसी पूर्व सूचना के किसी भी समय कार्यक्रम, कार्यक्रम की शर्तों, या कार्यक्रम के किसी भी पहलू या विशेषताओं को रद्द, संशोधित, संशोधित, प्रतिबंधित और/या समाप्त कर सकती है, भले ही ऐसे परिवर्तन पहले से ही अंकों को प्रभावित कर सकते हों। अर्जित और/या पहले से संचित पुरस्कारों का मूल्य और/या पुरस्कारों को भुनाने की क्षमता।</p>
+                    </div>
+                    <!----------QA-23--------->
+                    <button class="accordion">मैं अपनी कार्यक्रम सदस्यता को कैसे समाप्त / रद्द कर सकता हूँ?</button>
+                    <div class="panel">
+                        <p class="gaptoall">यदि आप तय करते हैं कि अब आप कार्यक्रम का हिस्सा नहीं बनना चाहते हैं, तो आप किसी भी समय हेल्पलाइन नंबर पर संपर्क करके अपनी सदस्यता रद्द कर सकते हैं।</p>
+                    </div>
+                    <!----------QA-24--------->
+                    <button class="accordion">यदि मैं अपनी कार्यक्रम सदस्यता समाप्त/रद्द कर दूं तो मेरे अंकों का क्या होगा?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप वैधानिक मानदंडों के पालन के अधीन उस समय तक जमा किए गए अपने अंकों को रिडीम कर सकते हैं।</p>
+                    </div>
+                    <!----------QA-25--------->
+                    <button class="accordion">क्या मुझे उपहारों के बदले नकद मिल सकता है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">कार्यक्रम आपको केवल बैंक हस्तांतरण के माध्यम से रिडीम करने की अनुमति देता है। कोई भौतिक नकदी नहीं।</p>
+                    </div>
+                    <!----------QA-26--------->
+                    <button class="accordion">क्या मुझे उपहारों के बदले नकद मिल सकता है?</button>
+                    <div class="panel">
+                        <p class="gaptoall">कार्यक्रम आपको केवल बैंक हस्तांतरण के माध्यम से रिडीम करने की अनुमति देता है। कोई भौतिक नकदी नहीं।</p>
+                    </div>
+                     <!----------QA-27--------->
+                    <button class="accordion">क्या मैं अपने अंक किसी अन्य ठेकेदार को स्थानांतरित कर सकता हूं?</button>
+                    <div class="panel">
+                        <p class="gaptoall">अर्जित अंक अहस्तांतरणीय हैं।</p>
+                    </div>
+                    <!----------QA-28--------->
+                    <button class="accordion">मैं अपना पंजीकृत मोबाइल नंबर कैसे बदल सकता हूँ?</button>
+                    <div class="panel">
+                        <p class="gaptoall">पंजीकृत मोबाइल नंबर बदलने के लिए हेल्पलाइन नंबर पर संपर्क करें।</p>
+                    </div>
+                    <!----------QA-29--------->
+                    <button class="accordion">मैं अपनी वर्तमान बिंदु स्थिति कैसे जान सकता हूँ?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप अपने यूरोबॉन्ड रिवार्ड्स ऐप पर माई अर्निंग्स टैब में अपने अंक देख सकते हैं या हेल्पलाइन नंबर पर कॉल कर सकते हैं।</p>
+                    </div>
+                    <!----------QA-30--------->
+                    <button class="accordion">यदि मैं उपहारों को गलत तरीके से भुनाया गया या दोषपूर्ण पाता हूं या मेरे कुछ प्रश्न हैं, तो क्या होगा?</button>
+                    <div class="panel">
+                        <p class="gaptoall">आप यूरोबॉन्ड रिवार्ड्स हेल्पलाइन से संपर्क कर सकते हैं या कोई प्रश्न पूछ सकते हैं।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    var firstAccordion = acc[0];
+    var firstPanel = firstAccordion.nextElementSibling;
+    firstAccordion.classList.add("active");
+    firstPanel.style.maxHeight = firstPanel.scrollHeight + "px";
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function () {
+
+            var isActive = this.classList.contains("active");
+
+            var allAccordions = document.getElementsByClassName("accordion");
+            for (j = 0; j < allAccordions.length; j++) {
+                allAccordions[j].classList.remove("active");
+
+                var panel = allAccordions[j].nextElementSibling;
+                var maxHeightValue = getStyle(panel, "maxHeight");
+
+                if (maxHeightValue !== "0px") {
+                    panel.style.maxHeight = null;
+                }
+            }
+
+            isActive ? this.classList.remove("active") : this.classList.add("active");
+
+            var panel = this.nextElementSibling;
+            var maxHeightValue = getStyle(panel, "maxHeight");
+
+            if (maxHeightValue !== "0px") {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        };
+    }
+
+    function getStyle(el, styleProp) {
+        var value, defaultView = (el.ownerDocument || document).defaultView;
+        if (defaultView && defaultView.getComputedStyle) {
+            styleProp = styleProp.replace(/([A-Z])/g, "-$1").toLowerCase();
+            return defaultView.getComputedStyle(el, null).getPropertyValue(styleProp);
+        } else if (el.currentStyle) {
+            styleProp = styleProp.replace(/\-(\w)/g, function (str, letter) {
+                return letter.toUpperCase();
+            });
+            value = el.currentStyle[styleProp];
+            if (/^\d+(em|pt|%|ex)?$/i.test(value)) {
+                return (function (value) {
+                    var oldLeft = el.style.left, oldRsLeft = el.runtimeStyle.left;
+                    el.runtimeStyle.left = el.currentStyle.left;
+                    el.style.left = value || 0;
+                    value = el.style.pixelLeft + "px";
+                    el.style.left = oldLeft;
+                    el.runtimeStyle.left = oldRsLeft;
+                    return value;
+                })(value);
+            }
+            return value;
+        }
+    }
+</script> 
+</html>

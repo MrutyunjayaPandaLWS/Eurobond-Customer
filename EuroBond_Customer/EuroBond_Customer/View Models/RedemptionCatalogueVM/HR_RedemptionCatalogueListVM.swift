@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import LanguageManager_iOS
+import LanguageManager_iOS
 class HR_RedemptionCatalogueListVM:  popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -324,8 +324,8 @@ class HR_RedemptionCatalogueListVM:  popUpAlertDelegate {
                             NotificationCenter.default.post(name: .cartCount, object: nil)
                             self.catalgoueListArray.removeAll()
                             self.getMycartList()
-                            let alert = UIAlertController(title: "", message: "Added To Cart", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                            let alert = UIAlertController(title: "", message: "Added To Cart".localiz(), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK".localiz(), style: .default, handler: nil))
                             self.VC?.present(alert, animated: true, completion: nil)
                             self.VC?.productsDetailCollectionView.reloadData()
                             return
@@ -336,7 +336,7 @@ class HR_RedemptionCatalogueListVM:  popUpAlertDelegate {
                                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                                vc!.delegate = self
                                vc!.titleInfo = ""
-                                vc!.descriptionInfo = "Insufficient Point Balance"
+                                vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                                vc!.modalPresentationStyle = .overCurrentContext
                                vc!.modalTransitionStyle = .crossDissolve
                                self.VC?.present(vc!, animated: true, completion: nil)
@@ -382,7 +382,7 @@ class HR_RedemptionCatalogueListVM:  popUpAlertDelegate {
                                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                                vc!.delegate = self
                                vc!.titleInfo = ""
-                            vc!.descriptionInfo = "Product is added into the Planner"
+                               vc!.descriptionInfo = "Product is added into the Planner".localiz()
                                vc!.modalPresentationStyle = .overCurrentContext
                                vc!.modalTransitionStyle = .crossDissolve
                                self.VC?.present(vc!, animated: true, completion: nil)
@@ -395,7 +395,7 @@ class HR_RedemptionCatalogueListVM:  popUpAlertDelegate {
                                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                                vc!.delegate = self
                                vc!.titleInfo = ""
-                                vc!.descriptionInfo = "You can't add this products into your planner List"
+                                vc!.descriptionInfo = "You can't add this products into your planner List".localiz()
                                vc!.modalPresentationStyle = .overCurrentContext
                                vc!.modalTransitionStyle = .crossDissolve
                                self.VC?.present(vc!, animated: true, completion: nil)

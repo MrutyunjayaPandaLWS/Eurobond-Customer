@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
     func acceptDate(_ vc: EBC_DateFilterVC) {
@@ -17,7 +18,7 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
             self.selectedToDate = vc.selectedDate
             print(vc.selectedDate)
             if self.selectedFromDate > self.selectedToDate{
-                self.view.makeToast("To Date should be greater than From Date", duration: 2.0, position: .center)
+                self.view.makeToast("To Date should be greater than From Date".localiz(), duration: 2.0, position: .center)
             }else{
                 self.toDate.setTitle("\(vc.selectedDate)", for: .normal)
                 self.toDate.setTitleColor(.darkGray, for: .normal)
@@ -58,7 +59,7 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
         behaviourId = 0
         myEarningTV.delegate = self
         myEarningTV.dataSource = self
-        
+        localizSetup()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -68,6 +69,16 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
         self.VM.myEarningListApi(startIndex: 1, fromDate: "", toDate: "")
         self.filterButton.setTitle("Filter", for: .normal)
     }
+    
+    func localizSetup(){
+        self.titleVCLBL.text = "My Earnings".localiz()
+        self.myEarningInfoLbl.text = "National euros cannot be redeemed".localiz()
+        self.supportBtn.setTitle("Click here for support".localiz(), for: .normal)
+        self.filterButton.setTitle("rest".localiz(), for: .normal)
+    }
+    
+    
+    
     @IBAction func fromDateBtn(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as! EBC_DateFilterVC
         vc.isComeFrom = "1"
@@ -99,23 +110,23 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
         if self.filterButton.currentTitle == "Filter"{
            
             if self.selectedFromDate == "" && self.selectedToDate == ""{
-                self.view.makeToast("Select date range", duration: 2.0, position: .center)
+                self.view.makeToast("Select date range".localiz(), duration: 2.0, position: .center)
             }else if self.selectedFromDate == ""{
-                self.view.makeToast("Select From Date", duration: 2.0, position: .center)
+                self.view.makeToast("Select From Date".localiz(), duration: 2.0, position: .center)
             }else if self.selectedToDate == ""{
-                self.view.makeToast("Select To Date", duration: 2.0, position: .center)
+                self.view.makeToast("Select To Date".localiz(), duration: 2.0, position: .center)
             }else if self.selectedFromDate > self.selectedToDate{
-                self.view.makeToast("To Date should be greater than From Date", duration: 2.0, position: .center)
+                self.view.makeToast("To Date should be greater than From Date".localiz(), duration: 2.0, position: .center)
             }else{
-                self.filterButton.setTitle("Reset", for: .normal)
+                self.filterButton.setTitle("Reset".localiz(), for: .normal)
                 self.VM.myEarningListArray.removeAll()
                 self.startIndex = 1
                 self.VM.myEarningListApi(startIndex: self.startIndex, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
             }
         }else{
-                self.filterButton.setTitle("Filter", for: .normal)
-                self.fromDate.setTitle("From Date", for: .normal)
-                self.toDate.setTitle("To Date", for: .normal)
+            self.filterButton.setTitle("Filter".localiz(), for: .normal)
+            self.fromDate.setTitle("From Date".localiz(), for: .normal)
+            self.toDate.setTitle("To Date".localiz(), for: .normal)
                 self.VM.myEarningListArray.removeAll()
                 self.startIndex = 1
                 self.selectedFromDate = ""
@@ -149,10 +160,10 @@ extension EBC_MyEarningsVC: UITableViewDelegate, UITableViewDataSource{
             cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].bonusName ?? ""
         }else{
             if self.VM.myEarningListArray[indexPath.row].transactionType ?? "" == "Referral"{
-                cell.idNumberLbl.text = "Referral Complimentary"
+                cell.idNumberLbl.text = "Referral Complimentary".localiz()
             }else{
                 if self.VM.myEarningListArray[indexPath.row].invoiceNo ?? "" == "--"{
-                    cell.idNumberLbl.text = "Reward Adjusted"
+                    cell.idNumberLbl.text = "Reward Adjusted".localiz()
                 }else{
                     cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].invoiceNo ?? ""
                 }

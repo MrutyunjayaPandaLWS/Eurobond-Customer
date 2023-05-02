@@ -14,6 +14,8 @@ protocol DropdownDelegate{
     func didtappedCityListBtn(_ vc: EBC_DropDownVC)
     func didtappedLanguageListBtn(_ vc: EBC_DropDownVC)
     func didTappedQueryListBtn(_ vc: EBC_DropDownVC)
+    func didSelectGenderList(_ vc: EBC_DropDownVC)
+    
 }
 
 
@@ -27,9 +29,12 @@ class EBC_DropDownVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     var delegate: DropdownDelegate?
 //    var delegate1: FilterStatusDelegate?
     var rowNumber = 0
+    var genderSelectionData = 0
     var flags = ""
-    var genderList = ["Male","Female", "Don't want to show"]
+    var genderList = ["Male","Female"]
+    var genderSelection = ["Select Title","Mr","Mrs","Ms"]
     var statusName: String = ""
+    var genderSelectDetails: String = ""
     var statusId:Int = 0
     var stateName = ""
     var stateId = 0
@@ -62,6 +67,10 @@ class EBC_DropDownVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             dropdownTableView.reloadData()
         case "state":
             stateListApi()
+        case "GenderSelection":
+            genderSelectionData = genderSelection.count
+            heightOfTableView.constant = CGFloat(45 * genderSelectionData)
+            dropdownTableView.reloadData()
         case "city":
             cityListApi()
         case "language":
@@ -119,7 +128,20 @@ class EBC_DropDownVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowNumber
+        if flags == "gender"{
+            return rowNumber
+        }else if flags == "GenderSelection"{
+            return genderSelectionData
+        }else if flags == "state" {
+            return VM.stateListArray.count
+        }else if flags == "city"{
+            return VM.cityListArray.count
+        }else if flags == "language"{
+            return VM.languageList.count
+        }else if flags == "Query"{
+            return VM.queryTopicListArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -136,6 +158,8 @@ class EBC_DropDownVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             cell.nameLbl.text = self.VM.languageList[indexPath.row].attributeValue
         case "Query":
             cell.nameLbl.text = self.VM.queryTopicListArray[indexPath.row].helpTopicName ?? ""
+        case "GenderSelection":
+            cell.nameLbl.text = self.genderSelection[indexPath.row]
         default:
             print("invalid code")
         }
@@ -165,6 +189,9 @@ class EBC_DropDownVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             queryTopicName = self.VM.queryTopicListArray[indexPath.row].helpTopicName ?? ""
             queryTopicId = self.VM.queryTopicListArray[indexPath.row].helpTopicId ?? -1
             delegate?.didTappedQueryListBtn(self)
+        case "GenderSelection":
+            genderSelectDetails = genderSelection[indexPath.row]
+            delegate?.didSelectGenderList(self)
         default:
             print("invalid flags")
         }

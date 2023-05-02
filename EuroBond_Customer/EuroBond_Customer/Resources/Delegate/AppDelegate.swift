@@ -15,6 +15,7 @@ import Firebase
 import UserNotificationsUI
 import FirebaseInstanceID
 import FirebaseMessaging
+import LanguageManager_iOS
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
@@ -48,11 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         
         if isUserLoggedIn == 1 {
-            self.setHomeAsRootViewController()
+            self.setInitialViewAsRootViewController()
         } else if isUserLoggedIn == 2 {
-            self.setHomeAsRootViewController2()
+            self.setInitialViewAsRootViewController()
         }else if isUserLoggedIn == -1 {
-            self.setInitialLoginVC()
+            self.setInitialViewAsRootViewController()
         }else {
             self.setInitialViewAsRootViewController()
         }
@@ -82,6 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     func setHomeAsRootViewController(){
+        IQKeyboardManager.shared.enable = true
         let leftVC = storyboard.instantiateViewController(withIdentifier: "EBC_SideMenuVC") as! EBC_SideMenuVC
         let homeVC = storyboard.instantiateViewController(withIdentifier: "EBC_DashboardVC") as! EBC_DashboardVC
         slider = SlideMenuController(mainViewController: homeVC, leftMenuViewController: leftVC)
@@ -92,6 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func setHomeAsRootViewController2(){
+        IQKeyboardManager.shared.enable = true
         let homeVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Dashboard_2_VC") as! EBC_Dashboard_2_VC
         nav = UINavigationController(rootViewController: homeVC)
         nav.isNavigationBarHidden = true
@@ -99,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window?.makeKeyAndVisible()
     }
     func setInitialLoginVC(){
+        IQKeyboardManager.shared.enable = true
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
         let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
         nav = UINavigationController(rootViewController: initialVC)
@@ -110,6 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func setInitialViewAsRootViewController(){
+        IQKeyboardManager.shared.enable = true
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
         let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_LaunchScreenVC") as! EBC_LaunchScreenVC
         nav = UINavigationController(rootViewController: initialVC)

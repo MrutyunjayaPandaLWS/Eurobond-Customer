@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LanguageManager_iOS
 
 class UpdateFabricatedPasswordVM{
     
@@ -29,7 +30,7 @@ class UpdateFabricatedPasswordVM{
                                 NotificationCenter.default.post(name: .passwordUpdated, object: nil)
                             }
                         }else{
-                            self.VC?.view.makeToast("Something went wrong. Try again later..", duration: 2.0, position: .bottom)
+                            self.VC?.view.makeToast("Something went wrong. Try again later".localiz(), duration: 2.0, position: .bottom)
                             self.VC!.dismiss(animated: true)
                         }
                     }

@@ -8,6 +8,7 @@
 import UIKit
 import SlideMenuControllerSwift
 import IQKeyboardManagerSwift
+import LanguageManager_iOS
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,17 +28,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
         print(isUserLoggedIn)
         if isUserLoggedIn == 1{
-            self.setHomeAsRootViewController()
+            self.setInitialViewAsRootViewController()
         } else if isUserLoggedIn == 2{
-            self.setHomeAsRootViewController2()
+            self.setInitialViewAsRootViewController()
         }else if isUserLoggedIn == -1 {
-            self.setInitialLoginVC()
+            self.setInitialViewAsRootViewController()
         }else{
             self.setInitialViewAsRootViewController()
         }
     }
 
     func setHomeAsRootViewController(){
+        IQKeyboardManager.shared.enable = true
         let leftVC = storyboard.instantiateViewController(withIdentifier: "EBC_SideMenuVC") as! EBC_SideMenuVC
         let homeVC = storyboard.instantiateViewController(withIdentifier: "EBC_DashboardVC") as! EBC_DashboardVC
         slider = SlideMenuController(mainViewController: homeVC, leftMenuViewController: leftVC)
@@ -47,6 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
          func setInitialLoginVC(){
+             IQKeyboardManager.shared.enable = true
              let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
              let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
              nav = UINavigationController(rootViewController: initialVC)
@@ -58,6 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          }
     
     func setHomeAsRootViewController2(){
+        IQKeyboardManager.shared.enable = true
         let homeVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Dashboard_2_VC") as! EBC_Dashboard_2_VC
         nav = UINavigationController(rootViewController: homeVC)
         nav.isNavigationBarHidden = true
@@ -65,6 +69,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
     func setInitialViewAsRootViewController(){
+        IQKeyboardManager.shared.enable = true
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
         let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_LaunchScreenVC") as! EBC_LaunchScreenVC
         nav = UINavigationController(rootViewController: initialVC)

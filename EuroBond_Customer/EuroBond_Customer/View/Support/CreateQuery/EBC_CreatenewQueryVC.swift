@@ -9,6 +9,7 @@ import UIKit
 import Photos
 import Toast_Swift
 class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
+    func didSelectGenderList(_ vc: EBC_DropDownVC) {}
     func didTappedGenderBtn(_ vc: EBC_DropDownVC) {}
     func didtappedStateListBtn(_ vc: EBC_DropDownVC) {}
     func didtappedCityListBtn(_ vc: EBC_DropDownVC) {}
@@ -251,7 +252,7 @@ extension EBC_CreatenewQueryVC: UIImagePickerControllerDelegate, UINavigationCon
             //self.attachedImgHeightConstraint.constant = 150
 //            self.mainViewHeightConstraint.constant = 560
             picker.dismiss(animated: true, completion: nil)
-            self.dismiss(animated: true, completion: nil)
+//            self.dismiss(animated: true, completion: nil)
         }
     }
     

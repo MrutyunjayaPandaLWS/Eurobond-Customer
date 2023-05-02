@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 
 class EBC_MyAssistantRegisterVM{
     
@@ -47,7 +48,7 @@ class EBC_MyAssistantRegisterVM{
                 if str ?? "" == "1"{
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
-                        self.VC?.view.makeToast("Already Mobile number doesn't exists", duration: 2.0, position: .bottom)
+                        self.VC?.view.makeToast("Already Mobile number doesn't exists".localiz(), duration: 2.0, position: .bottom)
                         self.VC?.mobileNumberTF.text = ""
                         
                     }
@@ -55,7 +56,7 @@ class EBC_MyAssistantRegisterVM{
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
                         self.VC?.mobileNumberTF.isEnabled = false
-                        self.VC?.otpBtn.setTitle("Submit", for: .normal)
+                        self.VC?.otpBtn.setTitle("Submit".localiz(), for: .normal)
                         self.VC?.timmerView.isHidden = false
                         self.VC?.otpView.isHidden = false
                         self.VC?.nameView.isHidden = true
@@ -149,10 +150,11 @@ class EBC_MyAssistantRegisterVM{
                                 self.VC?.dismiss(animated: true)
                                 
                             })
+                            
 
                         }else{
                             
-                            self.VC?.view.makeToast("Something went wrong!, Try again later..", duration: 2.0, position: .bottom)
+                            self.VC?.view.makeToast("Something went wrong. Try again later".localiz(), duration: 2.0, position: .bottom)
                             DispatchQueue.main.asyncAfter(deadline: .now()+2, execute:{
                                 NotificationCenter.default.post(name: .moveToPrevious, object: nil)
                                 self.VC?.dismiss(animated: true)

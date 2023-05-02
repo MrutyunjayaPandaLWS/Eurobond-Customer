@@ -133,7 +133,7 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                                         vc!.delegate = self
                                         vc!.titleInfo = ""
                                         vc!.isComeFrom = "VoucherSuccess"
-                                        vc!.descriptionInfo = "Thank_you_for_redeeming. The_E-voucher_will_sent_email_id_shortly"
+                                        vc!.descriptionInfo = "Thank you for redeeming. The E-voucher will sent email id shortly"
                                         vc!.modalPresentationStyle = .overFullScreen
                                         vc!.modalTransitionStyle = .crossDissolve
                                         self.VC?.present(vc!, animated: true, completion: nil)

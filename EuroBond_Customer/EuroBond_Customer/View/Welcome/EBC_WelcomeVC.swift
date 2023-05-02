@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import LanguageManager_iOS
 class EBC_WelcomeVC: UIViewController {
 
     override func viewDidLoad() {
@@ -19,11 +19,13 @@ class EBC_WelcomeVC: UIViewController {
     }
 
     @IBAction func selectEnglishBtn(_ sender: UIButton) {
+        LanguageManager.shared.setLanguage(language: .en)
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Login1VC") as? EBC_Login1VC
         navigationController?.pushViewController(vc!, animated: true)
     }
     
     @IBAction func selectHindiBtn(_ sender: Any) {
+        LanguageManager.shared.setLanguage(language: .hi)
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Login1VC") as? EBC_Login1VC
         navigationController?.pushViewController(vc!, animated: true)
     }

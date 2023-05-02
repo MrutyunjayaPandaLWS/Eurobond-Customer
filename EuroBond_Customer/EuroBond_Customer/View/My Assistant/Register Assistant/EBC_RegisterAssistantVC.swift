@@ -8,6 +8,7 @@
 import UIKit
 import DPOTPView
 import Toast_Swift
+import LanguageManager_iOS
 
 protocol RegisterAssistantDelegate{
     func successMessage(itme: EBC_RegisterAssistantVC)
@@ -70,12 +71,13 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
         editBtn.isHidden = true
         mobileNumberTF.keyboardType = .asciiCapableNumberPad
         mobileNumberTF.delegate = self
-        self.otpBtn.setTitle("Generate OTP", for: .normal)
+        self.otpBtn.setTitle("GenerateOTP".localiz(), for: .normal)
         otpView.dpOTPViewDelegate = self
         otpView.fontTextField = UIFont.systemFont(ofSize: 25)
         otpView.textEdgeInsets = UIEdgeInsets(top: 0, left: -1, bottom: 0, right: 0)
         otpView.editingTextEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.otpTimmerLbl.text = "00:60"
+        localizSetup()
     }
     
     
@@ -87,14 +89,25 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
         }
     }
     
+    
+    func localizSetup(){
+        self.nameLbl.text = "Name".localiz()
+        self.nameTF.placeholder = "Enter Name".localiz()
+        self.mobileNumberLbl.text = "Mobile Number".localiz()
+        self.mobileNumberTF.placeholder = "EnterMobileNumber".localiz()
+        self.registerTitle.text = "Register".localiz()
+        self.otpBtn.setTitle("GenerateOTP".localiz(), for: .normal)
+    }
+    
+    
     @IBAction func selectResendBtn(_ sender: UIButton) {
         if self.nameTF.text?.count == 0 {
-            self.view.makeToast("Enter name ", duration: 2.0, position: .center)
+            self.view.makeToast("Enter Name".localiz(), duration: 2.0, position: .center)
         }else{
             if self.mobileNumberTF.text!.count == 0{
-                self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
+                self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .center)
             }else if self.mobileNumberTF.text!.count != 10{
-                self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+                self.view.makeToast("Entervalidmobilernumber".localiz(), duration: 2.0, position: .center)
             }else{
                 let parameter = [
                     "Location": [
@@ -110,14 +123,14 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
     
     @IBAction func selectOtpBtn(_ sender: UIButton) {
         
-        if self.otpBtn.currentTitle == "Generate OTP"{
+        if self.otpBtn.currentTitle == "GenerateOTP".localiz(){
             if self.nameTF.text?.count == 0 {
-                self.view.makeToast("Enter name", duration: 2.0, position: .center)
+                self.view.makeToast("Enter Name".localiz(), duration: 2.0, position: .center)
             }else{
                 if self.mobileNumberTF.text!.count == 0{
-                    self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
+                    self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .center)
                 }else if self.mobileNumberTF.text!.count != 10{
-                    self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+                    self.view.makeToast("Entervalidmobilernumber".localiz(), duration: 2.0, position: .center)
                 }else{
                     let parameter = [
                         "Location": [
@@ -141,11 +154,11 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
             }else
             {
                 if otpView.text?.count == 0{
-                    self.view.makeToast("Enter OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
                 }else if otpView.text?.count != 6{
-                    self.view.makeToast("Enter valid OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("Enter valid OTP".localiz(),duration: 2.0,position: .center)
                 }else if enteredValue != self.receivedOTP {
-                    self.view.makeToast("Enter correct OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
                 }else{
                     self.VM.timer.invalidate()
                     let parameter = [
@@ -163,6 +176,7 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
                             "UserUserID": ""
                         ]
                     ] as [String : Any]
+                    print(parameter)
                     self.VM.registerSubmission(parameter: parameter)
                     
                 }
@@ -175,7 +189,7 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
 
     
     @IBAction func selectMobileNumberEditBtn(_ sender: Any) {
-        otpBtn.setTitle("Generate OTP", for: .normal)
+        otpBtn.setTitle("GenerateOTP".localiz(), for: .normal)
         timmerView.isHidden = true
         otpView.isHidden = true
         nameView.isHidden = false

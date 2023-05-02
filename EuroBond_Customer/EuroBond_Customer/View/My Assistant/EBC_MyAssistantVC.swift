@@ -6,8 +6,25 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
-class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, MyAssistantTVCDelegate, UpdatePasswordVCDelegate, DateSelectedDelegate{
+class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, MyAssistantTVCDelegate, UpdatePasswordVCDelegate, DateSelectedDelegate,SelectedItemDelegate{
+    
+    
+    func didSelectedItem(_ vc: HR_SelectionVC) {
+        if vc.selectedTitle == "Active" {
+            self.behaviourId = "1"
+            self.selectStatus.text = vc.selectedTitle
+        }else if vc.selectedTitle == "InActive"{
+            self.behaviourId = "0"
+            self.selectStatus.text = vc.selectedTitle
+        }else{
+            self.behaviourId = "8"
+        }
+        
+    }
+    
+    
     func acceptDate(_ vc: EBC_DateFilterVC) {
         if vc.isComeFrom == "1"{
             self.selectedFromDate = vc.selectedDate
@@ -17,7 +34,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
             self.selectedToDate = vc.selectedDate
             print(vc.selectedDate)
             if self.selectedFromDate > self.selectedToDate{
-                self.view.makeToast("To Date should be greater than From Date", duration: 2.0, position: .center)
+                self.view.makeToast("To Date should be greater than From Date".localiz(), duration: 2.0, position: .center)
             }else{
                 self.toDateLbl.text = vc.selectedDate
                 self.toDateLbl.textColor = .darkGray
@@ -30,7 +47,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
     
     func showSusccesMessage(item: EBC_UpdatePasswordVC) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SuccessMessageVC1") as? EBC_SuccessMessageVC1
-        vc?.message = "Password Updated!"
+        vc?.message = "PasswordUpdated".localiz()
         vc?.modalTransitionStyle = .crossDissolve
         vc?.modalPresentationStyle = .overFullScreen
         present(vc!, animated: true)
@@ -55,27 +72,27 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
         if cell.deactivateBtn.tag == tappedIndexPath.row{
                 
                     if self.VM.myAssistantArrayList[tappedIndexPath.row].isActive ?? -1 == 1{
-                        let alert = UIAlertController(title: "Are you sure ?", message: "You want to deactivate your Fabricator Assistant account.", preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { UIAlertAction in
-                        let parameter = [
-                            "ActionType": "5",
-                            "userid": self.userId,//Currently Logged user id
-                            "CustomerId": self.VM.myAssistantArrayList[tappedIndexPath.row].userID ?? -1,//Fabricator Helper user id
-                            "IsActive": 1
-                        ] as [String: Any]
-                        print(parameter)
-                        self.VM.deactivateExecutiveApi(parameter: parameter)
-                        }))
-                            alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    }else{
-                        let alert = UIAlertController(title: "Are you sure ?", message: "You want to activate your Fabricator Assistant account.", preferredStyle: UIAlertController.Style.alert)
+                        let alert = UIAlertController(title: "AreYouSure".localiz(), message: "YouWantdeactivate".localiz(), preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { UIAlertAction in
                         let parameter = [
                             "ActionType": "5",
                             "userid": self.userId,//Currently Logged user id
                             "CustomerId": self.VM.myAssistantArrayList[tappedIndexPath.row].userID ?? -1,//Fabricator Helper user id
                             "IsActive": "false"
+                        ] as [String: Any]
+                        print(parameter)
+                        self.VM.deactivateExecutiveApi(parameter: parameter)
+                        }))
+                        alert.addAction(UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }else{
+                        let alert = UIAlertController(title: "AreYouSure".localiz(), message: "YouWantActivate".localiz(), preferredStyle: UIAlertController.Style.alert)
+                        alert.addAction(UIAlertAction(title: "Yes".localiz(), style: .default, handler: { UIAlertAction in
+                        let parameter = [
+                            "ActionType": "5",
+                            "userid": self.userId,//Currently Logged user id
+                            "CustomerId": self.VM.myAssistantArrayList[tappedIndexPath.row].userID ?? -1,//Fabricator Helper user id
+                            "IsActive": "true"
                         ] as [String: Any]
                         print(parameter)
                         self.VM.deactivateExecutiveApi(parameter: parameter)
@@ -110,6 +127,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
     var selectedFromDate = ""
     var selectedToDate = ""
     var noofelements = 0
+    var behaviourId = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
@@ -119,6 +137,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
         NotificationCenter.default.addObserver(self, selector: #selector(apiCall), name: Notification.Name.moveToPrevious, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(popUpCall), name: Notification.Name.passwordUpdated, object: nil)
+        localizSetup()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -128,7 +147,19 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
         self.filterView.isHidden = true
     }
     
+    
+    func localizSetup(){
+        self.toDateLbl.text = "To Date".localiz()
+        self.fromDateLbl.text = "From Date".localiz()
+        self.selectStatus.text = "Select Status".localiz()
+        self.titleVC.text = "My Assistant".localiz()
+        self.filterButton.setTitle("Filter".localiz(), for: .normal)
+        
+        
+    }
+    
     @objc func apiCall(){
+        self.VM.myAssistantArrayList.removeAll()
         self.myAssistantApi(StartIndex: 1, searchText: self.searchText, FromDate: self.selectedFromDate, ToDate: self.selectedToDate)
         self.filterViewHeightConstraint.constant = 0
         self.filterView.isHidden = true
@@ -136,7 +167,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
     
     @objc func popUpCall(){
         self.popView.isHidden = false
-        self.accountStatus.text = "Password is updated"
+        self.accountStatus.text = "Password is updated".localiz()
         DispatchQueue.main.asyncAfter(deadline: .now()+3.0, execute: {
             self.popView.isHidden = true
             self.VM.myAssistantArrayList.removeAll()
@@ -172,35 +203,37 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
         present(vc!, animated: true)
     }
     @IBAction func filterButtonAction(_ sender: Any) {
-        //        self.filterButton.setTitle("Filter", for: .normal)
-                if self.filterButton.currentTitle == "Filter"{
-                   
-                    if self.selectedFromDate == "" && self.selectedToDate == ""{
-                        self.view.makeToast("Select date range", duration: 2.0, position: .center)
-                    }else if self.selectedFromDate == ""{
-                        self.view.makeToast("Select From Date", duration: 2.0, position: .center)
-                    }else if self.selectedToDate == ""{
-                        self.view.makeToast("Select To Date", duration: 2.0, position: .center)
-                    }else if self.selectedFromDate > self.selectedToDate{
-                        self.view.makeToast("To Date should be greater than From Date", duration: 2.0, position: .center)
-                    }else{
-                        self.filterButton.setTitle("Reset", for: .normal)
-                        self.VM.myAssistantArrayList.removeAll()
-                        self.startIndex = 1
-                        self.myAssistantApi(StartIndex: startIndex, searchText: "", FromDate: selectedFromDate, ToDate: selectedToDate)
-                    }
+        
+//        print(fromDateLbl.text,"dkjidfu")
+//        print(toDateLbl.text,"kjdskd")
+//        print(selectStatus.text,"skjdhsdn")
+        if self.filterButton.currentTitle == "Filter".localiz(){
+            if self.fromDateLbl.text == "From Date".localiz() && self.toDateLbl.text == "To Date".localiz() && self.selectStatus.text == "Select Status".localiz(){
+                self.view.makeToast("Select date range".localiz(), duration: 2.0, position: .center)
+            }else if self.fromDateLbl.text == "From Date".localiz() && self.toDateLbl.text == "To Date".localiz() && self.selectStatus.text != "Select Status".localiz() {
+                self.myAssistantApi(StartIndex: startIndex, searchText: "\(behaviourId)", FromDate: selectedFromDate, ToDate: selectedToDate)
+            }else if self.fromDateLbl.text != "From Date".localiz() && self.toDateLbl.text == "To Date".localiz() {
+                self.view.makeToast("Select To Date".localiz(), duration: 2.0, position: .center)
+            }else if self.fromDateLbl.text == "From Date".localiz() && self.toDateLbl.text != "To Date".localiz(){
+                self.view.makeToast("Select From Date".localiz(), duration: 2.0, position: .center)
+                
+            }else if self.fromDateLbl.text == "From Date".localiz() && self.toDateLbl.text == "To Date".localiz() && self.selectStatus.text != "Select Status".localiz(){
+                self.myAssistantApi(StartIndex: startIndex, searchText: "\(behaviourId)", FromDate: selectedFromDate, ToDate: selectedToDate)
+            }else if self.fromDateLbl.text != "From Date".localiz() && self.toDateLbl.text != "To Date".localiz() && self.selectStatus.text == "Select Status".localiz() || self.selectStatus.text != "Select Status".localiz(){
+                if selectedToDate < selectedFromDate{
+                    self.view.makeToast("To Date should be greater than From Date".localiz(), duration: 2.0, position: .center)
                 }else{
-                        self.filterButton.setTitle("Filter", for: .normal)
-                    self.fromDateLbl.text = "From Date"
-                    self.toDateLbl.text = "To Date"
-                        self.VM.myAssistantArrayList.removeAll()
-                        self.startIndex = 1
-                        self.selectedFromDate = ""
-                        self.selectedToDate = ""
-                    self.myAssistantApi(StartIndex: startIndex, searchText: "", FromDate: selectedFromDate, ToDate: selectedToDate)
+                    
+                    self.myAssistantApi(StartIndex: startIndex, searchText: "\(behaviourId)", FromDate: selectedFromDate, ToDate: selectedToDate)
                 }
-               
+                
+            }else if self.fromDateLbl.text != "From Date".localiz() && self.toDateLbl.text != "To Date".localiz() && self.selectStatus.text != "Select Status".localiz() {
+                self.myAssistantApi(StartIndex: startIndex, searchText: "\(behaviourId)", FromDate: selectedFromDate, ToDate: selectedToDate)
+            }else{
+                self.myAssistantApi(StartIndex: startIndex, searchText: "\(behaviourId)", FromDate: selectedFromDate, ToDate: selectedToDate)
             }
+        }
+    }
     @IBAction func toDateButton(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as! EBC_DateFilterVC
         vc.isComeFrom = "2"
@@ -220,6 +253,13 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func selectStatusButton(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_SelectionVC") as? HR_SelectionVC
+        vc?.isComeFrom = 9
+        vc?.delegate = self
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .overFullScreen
+        self.present(vc!, animated: true)
+        
     }
     
     
@@ -229,11 +269,12 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
             "ActionType": 18,
             "ActorId": self.userId,
              "StartIndex": StartIndex,
-             "PageSize": 10,
+             "PageSize": 20,
             "SearchText": searchText,
              "JDateFrom": FromDate,
              "JDateTo": ToDate
         ] as [String: Any]
+        print(parameter)
         self.VM.myAssistantList(parameter: parameter)
     }
     

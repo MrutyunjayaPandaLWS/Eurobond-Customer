@@ -63,8 +63,8 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
     var productDesc = ""
     var termsandContions = ""
     var totalCartValue = 0
-    
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "TotalPoints") ?? ""
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
+   // var redeemablePointsBalance = UserDefaults.standard.string(forKey: "TotalPoints") ?? ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,7 +84,7 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
             let calcValues = Int(self.requiredPoints) - (Int(redeemablePointsBalance) ?? 0)
             self.yellowView.isHidden = false
             self.whiteView.isHidden = true
-            self.infoLbl.text = "You need \(calcValues) more redeemable points to redeem this product"
+            self.infoLbl.text = "You need \(calcValues) more redeemable euros to redeem this product"
         }else if self.requiredPoints <= Int(redeemablePointsBalance) ?? 0{
             self.redeemBTNView.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
             self.redeemBTN1.isEnabled = true
@@ -99,7 +99,7 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
         self.totalPts.text = self.totalPoints
         self.cartCount.text = self.cartTotalCount
         self.productNameLbl.text = self.productName
-        self.redeemedPoints.text = self.totalPoints
+        self.redeemedPoints.text = self.redeemablePointsBalance
         self.totalRedeemPts.text = "\(self.requiredPoints)"
         print(self.requiredPoints)
         self.totalCartValue = Int(self.requiredPoints) ?? 0
@@ -109,19 +109,19 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
         productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
     }
     func localization(){
-        self.screenTitle.text = "Redemption Planner Details"
-        self.pointsLbl.text = "POINTS"
+        self.screenTitle.text = "Wishlist"
+        self.pointsLbl.text = "EUROS"
         self.congratulationsLbl.text = "Congratulations"
         self.messageLbl.text = "eligible Msg"
         self.redeemNowLbl.text = "Redeem Now"
 //        self.recommendedLbl.text = "RecommendedProducts"
-        self.redeemedPoints.text = "POINTS"
+        //self.redeemedPoints.text = "POINTS"
         self.redeemLbl.text = "Redeem Now"
         self.redeemSummary.text = "Redemption Planner Summary"
-        self.redeemInfo.text = "Redeemable Points As OnToday"
-        self.redeemedPoints.text = "Points"
+        self.redeemInfo.text = "Redeemable Euros As OnToday"
+       // self.redeemedPoints.text = "Points"
         self.earningSummaryLbl.text = "Average Earning"
-        self.earningPtsTitle.text = "Points"
+        self.earningPtsTitle.text = "Euros"
         self.expectInfoLbl.text = "Your expected redemption of \(self.productName) is in \(actualRedemptionDate)"
         
     }

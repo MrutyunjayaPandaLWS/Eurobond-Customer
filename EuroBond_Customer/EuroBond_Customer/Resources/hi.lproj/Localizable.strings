@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  EuroBond_Customer
+
+  Created by Arokia-M3 on 26/04/23.
+  
+*/
+"login" = "लॉग इन करें";
+"EnterMembershipID/Moblienumber" = "सदस्यता आईडी / मोबाइल नंबर दर्ज करें";
+"GenerateOTP" = "ओटीपी जनरेट करें";
+"PleaseEnterDetailsLogin" = "लॉगिन करने के लिए कृपया विवरण दर्ज करें";
+"PleaseEnterDetailsRegister" = "पंजीकरण करने के लिए कृपया विवरण दर्ज करें";
+"SignUp" = "साइन अप करें";
+"MobileNumber" = "मोबाइल नंबर";
+"EnterMobileNumber" = "मोबाइल नंबर दर्ज करें";
+"SelectTermsCondition" = "नियम और शर्तें चुनें";
+"EnterOTP" = "ओटीपी दर्ज करें";
+"EnterCorrectOTP" = "सही ओटीपी दर्ज करें";
+"About" = "के बारे में";
+"WhatNew" = "नया क्या है";

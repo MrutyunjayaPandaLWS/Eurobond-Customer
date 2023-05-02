@@ -27,7 +27,14 @@ class EBC_SuccessMessageVC1: BaseViewController {
 //        if sucessImage.count != 0{
 //            successImage.image = UIImage(named: sucessImage)
 //        }
+        localizsetup()
     }
+    
+    
+    func localizsetup(){
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

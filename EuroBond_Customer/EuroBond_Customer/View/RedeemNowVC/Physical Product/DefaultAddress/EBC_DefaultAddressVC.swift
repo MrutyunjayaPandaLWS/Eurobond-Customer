@@ -113,7 +113,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         print(self.totalPoint)
        // self.loaderView.isHidden = true
         if self.dreamGiftID != 0 {
-            self.totalPoints.text = "\(Double(self.totalPoint))"
+            self.totalPoints.text = "\(self.totalPoint) Euros"
         }else{
             self.myCartListAPI()
         }
@@ -319,7 +319,7 @@ extension EBC_DefaultAddressVC: UITableViewDelegate, UITableViewDataSource{
         cell.selectionStyle = .none
         cell.productName.text = VM.myCartListArray[indexPath.row].productName ?? "-"
         cell.catagoryName.text = VM.myCartListArray[indexPath.row].categoryName ?? "-"
-        cell.pointsLabel.text = "\(Double(VM.myCartListArray[indexPath.row].pointsRequired ?? 0))"
+        cell.pointsLabel.text = "\(Int(VM.myCartListArray[indexPath.row].pointsRequired ?? 0)) Euros"
         //cell.productImageView.image = VM.myCartListArray[indexPath.row].
         let receivedImage = self.VM.myCartListArray[indexPath.row].productImage ?? ""
         let totalImgURL = productCatalogueImgURL + receivedImage

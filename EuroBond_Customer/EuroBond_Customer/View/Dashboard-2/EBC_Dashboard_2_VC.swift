@@ -10,6 +10,9 @@ import ImageSlideshow
 import SlideMenuControllerSwift
 import Lottie
 import Alamofire
+import AVFoundation
+import AVKit
+import LanguageManager_iOS
 
 class EBC_Dashboard_2_VC: BaseViewController {
 
@@ -31,21 +34,28 @@ class EBC_Dashboard_2_VC: BaseViewController {
 
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var subView: GradientView!
+    @IBOutlet var fabricatorAssistantLbl: UILabel!
+    
+    @IBOutlet weak var maintenanceView: UIView!
+    @IBOutlet weak var underMaintenance: LottieAnimationView!
+    
     var status = 1
     var sourceArray = [AlamofireSource]()
     var offerimgArray = [ObjImageGalleryList]()
     var VM = EBC_FabricatedDashBoardVM()
     var dashBoardId = -1
+    private var animationView: LottieAnimationView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
         self.defaultImage.isHidden = true
-
+        self.maintenanceView.isHidden = true
         subView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         subView.layer.cornerRadius = 20
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         bottomView.layer.cornerRadius = 20
+        localizSetup()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,7 +63,18 @@ class EBC_Dashboard_2_VC: BaseViewController {
 //        self.slideMenuController()?.closeLeft()
         self.tokendata()
     }
-    
+    func localizSetup(){
+        
+        self.fabricatorAssistantLbl.text = "Fabricator Assistant".localiz()
+        self.membershipIDLbl.text = "Membership ID".localiz()
+        self.memberSinceLbl.text = "MemberSince".localiz()
+        self.codeStatusLbl.text = "Code Status".localiz()
+        self.syncStatusLbl.text = "SyncStatus".localiz()
+        self.codeSummeryLbl.text = "CodeSummary".localiz()
+        self.needHelpLbl.text = "NeedHelp".localiz()
+        self.helpLineLbl.text = "Helpline".localiz()
+        self.termCondLbl.text = "TermsAndConditions".localiz()
+    }
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
         UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
         if #available(iOS 13.0, *) {
@@ -89,7 +110,7 @@ class EBC_Dashboard_2_VC: BaseViewController {
     }
     
     @IBAction func selectSyncStatusBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "SyncStatus_VC") as? SyncStatus_VC
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "CodeStatusListVC") as? CodeStatusListVC
         navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -196,6 +217,89 @@ class EBC_Dashboard_2_VC: BaseViewController {
         task.resume()
     }
     }
+    
+    
+    func maintenanceAPI(){
+        guard let url = URL(string: "http://appupdate.arokiait.com/updates/serviceget?pid=com.loyaltyWorks.EuroBond-Customer") else {return}
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                  error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                                                                        dataResponse, options: [])
+                print(jsonResponse)
+                let isMaintenanceValue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.is_maintenance") as? String)!
+                let forceupdatevalue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.version_number") as? String)!
+                print(forceupdatevalue)
+                if isMaintenanceValue == "1"{
+                    print(isMaintenanceValue)
+                    DispatchQueue.main.async {
+                        self.maintenanceView.isHidden = false
+                        self.playAnimation()
+
+                    }
+                }else if isMaintenanceValue == "0"{
+                    self.tokendata()
+                    self.animationView?.stop()
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
+        task.resume()
+    }
+    
+    func playAnimation(){
+        animationView = .init(name: "27592-maintenance")
+        animationView!.frame = underMaintenance.bounds
+          // 3. Set animation content mode
+        animationView!.contentMode = .scaleAspectFit
+          // 4. Set animation loop mode
+        animationView!.loopMode = .loop
+          // 5. Adjust animation speed
+        animationView!.animationSpeed = 1
+        underMaintenance.addSubview(animationView!)
+          // 6. Play animation
+        animationView!.play()
+    }
+    
+    
+    func isUpdateAvailable() {
+        let bundleId = Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String
+        print(bundleId)
+        Alamofire.request("https://itunes.apple.com/in/lookup?bundleId=\(bundleId)").responseJSON { response in
+            if let json = response.result.value as? NSDictionary, let results = json["results"] as? NSArray, let entry = results.firstObject as? NSDictionary, let appStoreVersion = entry["version"] as? String,let appstoreid = entry["trackId"], let trackUrl = entry["trackViewUrl"], let installedVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                let installed = Int(installedVersion.replacingOccurrences(of: ".", with: "")) ?? 0
+                print(installed)
+                let appStore = Int(appStoreVersion.replacingOccurrences(of: ".", with: "")) ?? 0
+                print(appStore)
+                print(appstoreid)
+                if appStore>installed {
+                        let alertController = UIAlertController(title: "New update Available!", message: "Update is available to download. Downloading the latest update you will get the latest features, improvements and bug fixes of Eurobond App", preferredStyle: .alert)
+
+                        // Create the actions
+                        let okAction = UIAlertAction(title: "Update Now", style: UIAlertAction.Style.default) {
+                            UIAlertAction in
+                            UIApplication.shared.openURL(NSURL(string: "\(trackUrl)")! as URL)
+
+                        }
+                        //                     Add the actions
+                        alertController.addAction(okAction)
+                        // Present the controller
+                        self.present(alertController, animated: true, completion: nil)
+
+                }else{
+                    print("no updates")
+
+                }
+            }
+        }
+    }
+    
+    
     func dashBoardApi(){
         let parameter = [
             "ActorId":"\(self.userId)"

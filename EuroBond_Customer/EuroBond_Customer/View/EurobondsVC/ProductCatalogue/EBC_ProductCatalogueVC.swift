@@ -94,6 +94,7 @@ class EBC_ProductCatalogueVC: BaseViewController,UIDocumentInteractionController
                 // Success
                 if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                     print("Successfully downloaded. Status code: \(statusCode)")
+                    self.view.makeToast("PDF has been downloded successfully !!", duration: 2.0, position: .bottom)
                 }
                 do {
                     try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
@@ -113,7 +114,7 @@ class EBC_ProductCatalogueVC: BaseViewController,UIDocumentInteractionController
             }
         }
         task.resume()
-        self.view.makeToast("PDF has been downloded successfully !!", duration: 2.0, position: .bottom)
+       
         self.stopLoading()
     }
     

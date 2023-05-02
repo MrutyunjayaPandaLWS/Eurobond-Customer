@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import Toast_Swift
+import LanguageManager_iOS
 
 protocol UpdatePasswordVCDelegate{
     func showSusccesMessage(item: EBC_UpdatePasswordVC)
@@ -46,11 +46,20 @@ class EBC_UpdatePasswordVC: BaseViewController {
               }
       }
     
-
+    func localizSetup(){
+        self.updatePassword.setTitle("Update Password".localiz(), for: .normal)
+        self.resestPasswordTF.placeholder = "EnterMobileNumber".localiz()
+        self.resetPasswordLbl.text = "Rest Password".localiz()
+        self.mobileNumberTF.placeholder = "EnterMobileNumber".localiz()
+        self.mobileNumberLbl.text = "Mobile Number".localiz()
+        self.nameTF.placeholder = "Enter Name".localiz()
+        self.nameLbl.text = "Name".localiz()
+        self.updatePasswordTitle.text = "Update Password".localiz()
+    }
     
     @IBAction func selectUpdatePasswordBtn(_ sender: UIButton) {
         if resestPasswordTF.text?.count == 0{
-            self.view.makeToast("Enter new password",duration: 2.0,position: .center)
+            self.view.makeToast("Enter new password".localiz(),duration: 2.0,position: .center)
         }else{
 //            dismiss(animated: true)
 //            delegate?.showSusccesMessage(item: self)

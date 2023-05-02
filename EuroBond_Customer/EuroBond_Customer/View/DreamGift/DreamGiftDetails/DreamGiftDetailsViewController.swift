@@ -60,7 +60,7 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
     var totalPts = 0
     var contractorName = ""
     var VM = DreamGiftDetailsViewModel()
-    let verifiedStatus = UserDefaults.standard.integer(forKey: "VerifiedStatus")
+    let verifiedStatus = UserDefaults.standard.integer(forKey: "verificationStatus")
     var checkAccountStatus = UserDefaults.standard.string(forKey: "SemiActiveAccount") ?? ""
     var isRedeemableStatus = UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable")
     override func viewDidLoad() {
@@ -162,13 +162,6 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
        
 
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-
-        
-    }
     @objc func removeGiftDetails(){
         self.navigationController?.popViewController(animated: true)
     }
@@ -247,18 +240,14 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
     
     @IBAction func redeemNowButton(_ sender: Any) {
         if self.verifiedStatus == 6 || self.verifiedStatus == 4{
-            if self.checkAccountStatus == "1"{
                 NotificationCenter.default.post(name: .verificationStatus, object: nil)
-            }else{
-                NotificationCenter.default.post(name: .verificationStatus, object: nil)
-            }
             
         }else if self.verifiedStatus == 1{
-            if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -3{
-                self.view.makeToast("Your PAN Details are pending,Please contact your administrator!", duration: 2.0, position: .bottom)
-            }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -4{
-                self.view.makeToast("Your PAN Details are rejected,Please contact your administrator!", duration: 2.0, position: .bottom)
-            }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == 1{
+//            if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -3{
+//                self.view.makeToast("Your PAN Details are pending,Please contact your administrator!", duration: 2.0, position: .bottom)
+//            }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == -4{
+//                self.view.makeToast("Your PAN Details are rejected,Please contact your administrator!", duration: 2.0, position: .bottom)
+//            }else if UserDefaults.standard.integer(forKey: "DreamGiftIsRedeemable") == 1{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DefaultAddressVC") as! EBC_DefaultAddressVC
                 vc.redemptionTypeId = 3
                 //vc.totalPoints = Int(pointsRequires) ?? 0
@@ -268,9 +257,9 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
                 vc.contractorName = contractorName
                 vc.giftStatusId = selectedGiftStatusID
                 self.navigationController?.pushViewController(vc, animated: true)
-            }else{
-                self.view.makeToast("Insufficient point balance to redeem!", duration: 2.0, position: .bottom)
-            }
+//            }else{
+//                self.view.makeToast("Insufficient point balance to redeem!", duration: 2.0, position: .bottom)
+//            }
   
         }
         

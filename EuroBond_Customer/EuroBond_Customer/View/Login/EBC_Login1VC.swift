@@ -8,8 +8,9 @@
 import UIKit
 import Toast_Swift
 import DPOTPView
+import LanguageManager_iOS
 
-class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegate {
+class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegate, UITextFieldDelegate {
     
     func accept(_ vc: HR_TermsandCondtionVC) {
         self.termCondBtn.setImage(UIImage(named: "fillcheckbox"), for: .normal)
@@ -44,6 +45,10 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     @IBOutlet weak var loginLbl: UILabel!
     @IBOutlet weak var loginInfoLbl: UILabel!
     @IBOutlet weak var logintitleLbl: UILabel!
+    
+    
+    @IBOutlet var termsAndConditionsText: UIButton!
+    
     var tcStatus = 0
     var loginBtnStatus = 0
     var submitBtnStatus = 0
@@ -63,6 +68,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         otpSubmitView.fontTextField = UIFont.systemFont(ofSize: 25)
         otpSubmitView.textEdgeInsets = UIEdgeInsets(top: 0, left: -1, bottom: 0, right: 0)
         otpSubmitView.editingTextEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        localization()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,8 +81,6 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
             self.backButton.isHidden = false
         }
         
-      
-        
         membershipIdTF.text = ""
         otpView.isHidden = true
         resendOtpBtn.isHidden = true
@@ -85,55 +89,95 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         loginLineLbl.backgroundColor = selectedColor1
         registerLineLbl.backgroundColor = .lightGray
         submitBtnStatus = 0
-        submitBtn.setTitle("Generate OTP", for: .normal)
+        
+        membershipIdTF.placeholder = "EnterMembershipID/Moblienumber".localiz()
+        membershipIdLbl.text = "EnterMembershipID/Moblienumber".localiz()
+        
+        submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
         self.submitButtonTopSpace.constant = 100
         self.loginSubViewHeight.constant = 300
         otpSubmitView.text = ""
         self.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
         self.tcStatus = 0
-        logintitleLbl.text = "Login"
-        loginInfoLbl.text = "Please enter the details to login"
+        logintitleLbl.text = "login".localiz()
+        loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
     }
 
+    
+    func localization(){
+        loginLbl.text = "login".localiz()
+        registerLbl.text = "Register".localiz()
+        fabricatorMessagelbl.text = "AreyouFabricatorAssistant".localiz()
+        termsAndConditionsText.setTitle("IaccepttheTermsandConditions".localiz(), for: .normal)
+        cliockHereBtn.setTitle("cliockHereBtn".localiz(), for: .normal)
+    }
+    
+    
+    
     @IBAction func selectloginBtn(_ sender: Any) {
+        print(loginBtnStatus)
         if loginBtnStatus != 0 {
             membershipIdTF.text = ""
+            membershipIdTF.placeholder = "EnterMembershipID/Moblienumber".localiz()
+            membershipIdLbl.text = "EnterMembershipID/Moblienumber".localiz()
+            membershipIdTF.keyboardType = .asciiCapable
             otpView.isHidden = true
+            membershipIdTF.delegate = self
             resendOtpBtn.isHidden = true
             termCondView.isHidden = false
             loginBtnStatus = 0
             loginLineLbl.backgroundColor = selectedColor1
             registerLineLbl.backgroundColor = .lightGray
             submitBtnStatus = 0
-            submitBtn.setTitle("Generate OTP", for: .normal)
+            submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
             self.submitButtonTopSpace.constant = 100
             self.loginSubViewHeight.constant = 300
             otpSubmitView.text = ""
             self.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
             self.tcStatus = 0
-            logintitleLbl.text = "Login"
-            loginInfoLbl.text = "Please enter the details to login"
+            logintitleLbl.text = "login".localiz()
+            loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
         }
         
     }
     
     @IBAction func selectRegisterBtn(_ sender: UIButton) {
+        print(loginBtnStatus)
         if loginBtnStatus != 1 {
             membershipIdTF.text = ""
+            membershipIdTF.placeholder = "MobileNumber".localiz()
+            membershipIdLbl.text = "MobileNumber".localiz()
+            membershipIdTF.keyboardType = .numberPad
+            membershipIdTF.delegate = self
             otpView.isHidden = true
             resendOtpBtn.isHidden = true
             termCondView.isHidden = true
             loginBtnStatus = 1
             loginLineLbl.backgroundColor = .lightGray
-            logintitleLbl.text = "SignUp"
-            loginInfoLbl.text = "Please enter the details to register"
+            logintitleLbl.text = "SignUp".localiz()
+            loginInfoLbl.text = "PleaseEnterDetailsRegister".localiz()
             registerLineLbl.backgroundColor = selectedColor1
             submitBtnStatus = 0
-            submitBtn.setTitle("Generate OTP", for: .normal)
+            submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
             otpSubmitView.text = ""
             self.submitButtonTopSpace.constant = 70
             self.loginSubViewHeight.constant = 300
         }
+    }
+    
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 10
+        let secondLength = 10
+//        if loginBtnStatus == 1 {
+            if textField == membershipIdTF{
+                let currentString: NSString = (membershipIdTF.text ?? "") as NSString
+                let newString: NSString =
+                currentString.replacingCharacters(in: range, with: string) as NSString
+                return newString.length <= maxLength
+            }
+        return true
     }
     
     @IBAction func selectTermCondBtn(_ sender: Any) {
@@ -147,7 +191,11 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     @IBAction func selectResendOtpBtn(_ sender: UIButton) {
 
         if self.membershipIdTF.text?.count == 0 {
-            self.view.makeToast("Enter mobile number", duration: 2.0, position: .bottom)
+            if loginBtnStatus != 1 {
+                self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
+            }else{
+                self.view.makeToast("EnterMembershipID/Moblienumber".localiz(), duration: 2.0, position: .bottom)
+            }
         }else{
             let parameter = [
                 "OTPType": "Enrollment",
@@ -165,15 +213,22 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         vc?.itsFrom = 1
         vc?.modalTransitionStyle = .crossDissolve
         vc?.modalPresentationStyle  = .overFullScreen
-        present(vc!, animated: true)    }
+        present(vc!, animated: true)
+        
+    }
     
     @IBAction func selectSubmitBtn(_ sender: Any) {
         if membershipIdTF.text?.count == 0{
-            self.view.makeToast("Enter membershipID",duration: 2.0,position: .center)
+            if loginBtnStatus != 1 {
+                self.view.makeToast("EnterMembershipID/Moblienumber".localiz(),duration: 2.0,position: .center)
+            }else{
+                self.view.makeToast("EnterMobileNumber".localiz(),duration: 2.0,position: .center)
+            }
+            
         }else{
             if loginBtnStatus == 0 {
                 if tcStatus != 1{
-                    self.view.makeToast("Select terms ad condition",duration: 2.0,position: .center)
+                    self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
                 }else{
                     let parameterJSON = [
                         "Location": [
@@ -186,9 +241,9 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                 }
             }else if self.loginBtnStatus == 2{
                 if tcStatus != 1{
-                    self.view.makeToast("Select terms ad condition",duration: 2.0,position: .center)
+                    self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
                 }else if submitBtnStatus == 0{
-                    submitBtn.setTitle("Submit", for: .normal)
+                    submitBtn.setTitle("Submit".localiz(), for: .normal)
                     otpView.isHidden = false
                     termCondView.isHidden = true
                     submitBtnStatus = 1
@@ -196,11 +251,11 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                     self.loginSubViewHeight.constant = 429
                     
                 }else if otpSubmitView.text?.count == 0{
-                    self.view.makeToast("Enter OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
                 }else if enteredValue != self.receivedOTP{
                     print(enteredValue)
                     print(receivedOTP)
-                    self.view.makeToast("Enter correct OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
                     otpSubmitView.text = ""
                 }else{
                     
@@ -230,12 +285,12 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                         print(parameterJSON)
                         self.VM.verifyMobileNumberAPI1(paramters: parameterJSON)
                     }else{
-                        self.view.makeToast("Enter valid mobiler number",duration: 2.0,position: .center)
+                        self.view.makeToast("Entervalidmobilernumber".localiz(),duration: 2.0,position: .center)
                     }
                 }else if otpSubmitView.text?.count == 0{
-                    self.view.makeToast("Enter OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
                 }else if enteredValue != self.receivedOTP{
-                    self.view.makeToast("Enter correct OTP",duration: 2.0,position: .center)
+                    self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
                     otpSubmitView.text = ""
                 } else{
                     let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferalVC") as? EBC_RefferalVC

@@ -28,7 +28,7 @@ class HR_CatalogueDetailsCVC: UICollectionViewCell {
     var delegate: AddToCartDelegate!
     
     override func awakeFromNib() {
-        self.pointstitle.text = "POINTS"
+        self.pointstitle.text = "POINTS".localiz()
         
             addToPlanner.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
             addCartButton.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)

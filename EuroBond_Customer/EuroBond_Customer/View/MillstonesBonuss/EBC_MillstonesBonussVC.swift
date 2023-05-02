@@ -19,7 +19,7 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var titleVC: UILabel!
     var flags: String = "1"
     var euroBalanceArray = [">25000", ">50,000", ">100,000"]
-    var addOnEuros = ["25000", "6000", "15000"]
+    var addOnEuros = ["2500", "6000", "15000"]
     var millstonesArray = [EuroBalance]()
     override func viewDidLoad() {
         super.viewDidLoad()

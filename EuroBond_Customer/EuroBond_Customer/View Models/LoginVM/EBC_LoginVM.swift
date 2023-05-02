@@ -48,7 +48,7 @@ class EBC_LoginVM {
                 if str ?? "" == "0"{
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
-                            self.VC?.view.makeToast("Mobile number doesn't exists", duration: 2.0, position: .bottom)
+                        self.VC?.view.makeToast("Mobile number doesn't exists".localiz(), duration: 2.0, position: .bottom)
                             self.VC?.membershipIdTF.text = ""
                             self.VC?.loginBtnStatus = 0
                             self.VC?.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
@@ -134,7 +134,7 @@ class EBC_LoginVM {
                 }else{
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
-                        self.VC?.view.makeToast("Mobile number already exists", duration: 2.0, position: .bottom)
+                        self.VC?.view.makeToast("Mobile number already exists".localiz(), duration: 2.0, position: .bottom)
                         self.VC?.membershipIdTF.text = ""
                         
                     }
@@ -169,6 +169,8 @@ class EBC_LoginVM {
 //                        self.VC?.receivedOTP = result?.returnMessage ?? ""
                         self.VC?.receivedOTP = "123456"
                         print(result?.returnMessage ?? "", "-OTP")
+                        self.VC?.termCondBtn.isEnabled = false
+                        self.VC?.termsAndConditionsText.isEnabled = false
                         
                       //  self.VC?.receivedOTP = "123456"
                        
@@ -217,7 +219,7 @@ class EBC_LoginVM {
                         if loginResponse.count != 0{
 
                              if loginResponse[0].isDelete ?? -1 == 1{
-                                self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.", duration: 2.0, position: .bottom)
+                                 self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else{
                                 if loginResponse[0].isUserActive ?? -1 == 1{
                                     UserDefaults.standard.setValue(loginResponse[0].userId ?? -1, forKey: "UserID")
@@ -237,7 +239,7 @@ class EBC_LoginVM {
                             }
 
                         }else{
-                            self.VC!.view.makeToast("Something went wrong. Try again later!", duration: 2.0, position: .bottom)
+                            self.VC!.view.makeToast("Something went wrong. Try again later".localiz(), duration: 2.0, position: .bottom)
                         }
 
                     }

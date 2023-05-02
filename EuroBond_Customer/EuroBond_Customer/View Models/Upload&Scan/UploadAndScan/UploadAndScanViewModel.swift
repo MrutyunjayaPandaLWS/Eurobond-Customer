@@ -32,44 +32,49 @@ class UploadAndScanViewModel{
                         
                         for codes in self.savedCodeListArray {
                             print("Codes Status", codes.codeStatus ?? 0)
-                            let type2Array = self.VC?.uploadedCodes.filter { $0.code == codes.qrCode}
-                            print(type2Array!.count)
-                            if type2Array!.count == 0{
-                            let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
-                            qRCodeDBTable.code = codes.qrCode
-                            qRCodeDBTable.latitude = codes.latitude
-                            qRCodeDBTable.langitude = codes.longitude
-                            qRCodeDBTable.codeStatus = String(codes.codeStatus ?? 0)
-                            let date = Date()
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
-                            let resultdate = formatter.string(from: date)
-                            qRCodeDBTable.date = resultdate
-                            persistanceservice.saveContext()
-                            let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
-                            qRCodeDBTable1.code = codes.qrCode
-                            persistanceservice.saveContext()
-                            }else{
-                                let index =  self.VC?.uploadedCodes.firstIndex(of: type2Array![0])
-                                let productObj = self.VC?.uploadedCodes[index!]
-                                persistanceservice.context.delete(productObj!)
-                               
-                                persistanceservice.saveContext()
+                            print(codes.qrCode ?? "","dhgfiu")
+                            if codes.qrCode != ""{
+                                let type2Array = self.VC?.uploadedCodes.filter { $0.code == codes.qrCode}
+                                print(type2Array!.count)
+                                if type2Array!.count == 0{
+                                    let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
+                                    qRCodeDBTable.code = codes.qrCode
+                                    qRCodeDBTable.latitude = codes.latitude
+                                    qRCodeDBTable.langitude = codes.longitude
+                                    qRCodeDBTable.codeStatus = String(codes.codeStatus ?? 0)
+                                    let date = Date()
+                                    let formatter = DateFormatter()
+                                    formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                                    let resultdate = formatter.string(from: date)
+                                    qRCodeDBTable.date = resultdate
+                                    persistanceservice.saveContext()
+                                    let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
+                                    qRCodeDBTable1.code = codes.qrCode
+                                    persistanceservice.saveContext()
+                                    
+                                }else{
+                                    let index =  self.VC?.uploadedCodes.firstIndex(of: type2Array![0])
+                                    let productObj = self.VC?.uploadedCodes[index!]
+                                    persistanceservice.context.delete(productObj!)
+                                    
+                                    persistanceservice.saveContext()
+                                    
+                                    let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
+                                    qRCodeDBTable.code = codes.qrCode
+                                    qRCodeDBTable.latitude = codes.latitude
+                                    qRCodeDBTable.langitude = codes.longitude
+                                    qRCodeDBTable.codeStatus = String(codes.codeStatus ?? 0)
+                                    let date = Date()
+                                    let formatter = DateFormatter()
+                                    formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                                    let resultdate = formatter.string(from: date)
+                                    qRCodeDBTable.date = resultdate
+                                    persistanceservice.saveContext()
+                                    let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
+                                    qRCodeDBTable1.code = codes.qrCode
+                                    persistanceservice.saveContext()
+                                }
                                 
-                                let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
-                                qRCodeDBTable.code = codes.qrCode
-                                qRCodeDBTable.latitude = codes.latitude
-                                qRCodeDBTable.langitude = codes.longitude
-                                qRCodeDBTable.codeStatus = String(codes.codeStatus ?? 0)
-                                let date = Date()
-                                let formatter = DateFormatter()
-                                formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
-                                let resultdate = formatter.string(from: date)
-                                qRCodeDBTable.date = resultdate
-                                persistanceservice.saveContext()
-                                let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
-                                qRCodeDBTable1.code = codes.qrCode
-                                persistanceservice.saveContext()
                             }
                         }
                        

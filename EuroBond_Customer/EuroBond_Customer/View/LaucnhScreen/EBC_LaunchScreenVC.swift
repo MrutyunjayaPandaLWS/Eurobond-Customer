@@ -19,7 +19,9 @@ class EBC_LaunchScreenVC: UIViewController {
         var timmer = Timer()
         override func viewDidLoad() {
             super.viewDidLoad()
-            _ = Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(self.update), userInfo: nil, repeats: false)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 6) { [unowned self] in
+                self.update()
+            }
         }
         override func viewDidAppear(_ animated: Bool) {
             playVideo()
@@ -34,7 +36,6 @@ class EBC_LaunchScreenVC: UIViewController {
             playerController.showsPlaybackControls = false
             present(playerController, animated: true) {
                 self.player.play()
-                self.timmer = Timer.scheduledTimer(timeInterval: 7.0, target: self, selector: #selector(self.goToWelcomeScreen), userInfo: nil, repeats: false)
             }
         }
 
@@ -43,12 +44,71 @@ class EBC_LaunchScreenVC: UIViewController {
             playerController.dismiss(animated: true)
         }
         
-        @objc func update(){
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_WelcomeVC") as? EBC_WelcomeVC
-            self.navigationController?.pushViewController(vc!, animated: true)
+    @objc func update(){
+        timmer.invalidate()
+        playerController.dismiss(animated: true)
+            let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
+            print(isUserLoggedIn)
+            if isUserLoggedIn == 1 {
+                if #available(iOS 13.0, *) {
+                    DispatchQueue.main.async {
+                        let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
+                        sceneDelegate?.setHomeAsRootViewController()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        if #available(iOS 13.0, *) {
+                            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                            appDelegate?.setHomeAsRootViewController()
+                        }
+                    }
+                }
+            } else if isUserLoggedIn == 2 {
+                
+                if #available(iOS 13.0, *) {
+                    DispatchQueue.main.async {
+                        let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
+                        sceneDelegate?.setHomeAsRootViewController2()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        if #available(iOS 13.0, *) {
+                            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                            appDelegate?.setHomeAsRootViewController2()
+                        }
+                    }
+                }
+                
+
+            }else if isUserLoggedIn == -1 {
+                if #available(iOS 13.0, *) {
+                    DispatchQueue.main.async {
+                        let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
+                        sceneDelegate?.setInitialLoginVC()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        if #available(iOS 13.0, *) {
+                            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                            appDelegate?.setInitialLoginVC()
+                        }
+                    }
+                }
+            }else {
+                if #available(iOS 13.0, *) {
+                    DispatchQueue.main.async {
+                        let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
+                        sceneDelegate?.setInitialLoginVC()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        if #available(iOS 13.0, *) {
+                            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                            appDelegate?.setInitialLoginVC()
+                        }
+                    }
+                }
+            }
         }
-    
-    
-    
-    
     }
+

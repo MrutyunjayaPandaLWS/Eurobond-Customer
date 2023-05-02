@@ -1,0 +1,226 @@
+/* 
+  Localizable.strings
+  EuroBond_Customer
+
+  Created by Arokia-M3 on 26/04/23.
+  
+*/
+"login" = "Login";
+"EnterMembershipID/Moblienumber" = "Enter Membership ID / Moblie number";
+"GenerateOTP" = "Generate OTP";
+"PleaseEnterDetailsLogin" = "Please enter the details to login";
+"PleaseEnterDetailsRegister" = "Please enter the details to register";
+"SignUp" = "SignUp";
+"MobileNumber" = "Mobile number";
+"EnterMobileNumber" = "Enter mobile number";
+"SelectTermsCondition" = "Select terms and condition";
+"EnterOTP" = "Enter OTP";
+"EnterCorrectOTP" = "Enter correct OTP";
+"Register" = "Register";
+"AreyouFabricatorAssistant" = "Are you a Fabricator Assistant?";
+"IaccepttheTermsandConditions" = "I accept the Terms and Conditions";
+"cliockHereBtn" = "Click here";
+"Submit" = "Submit";
+"Entervalidmobilernumber" = "Enter valid mobile number";
+"EntermembershipId" = "Enter membership Id";
+"Enter user name" = "Enter user name";
+"Enter user name Mobile Number" = "Enter user name / Mobile Number";
+"Enter Password" = "Enter Password";
+"Please enter the Username and Password shared by Fabricator" = "Please enter the Username and Password shared by Fabricator";
+"Username / Mobile number" = "Username / Mobile number";
+"Password" = "Password";
+"Are you a Fabricator ?" = "Are you a Fabricator ?";
+"Mobile number doesn't exists" = "Mobile number doesn't exists";
+"Password is Invalid !!" = "Password is Invalid !!";
+"Mobile number already exists" = "Mobile number already exists";
+
+"Your account is verification pending! Kindly contact your administrator." = "Your account is verification pending! Kindly contact your administrator.";
+
+"Your account is not activated! Kindly activate your account." = "Your account is not activated! Kindly activate your account.";
+
+"Your account has been deactivated! Kindly contact your administrator." = "Your account has been deactivated! Kindly contact your administrator.";
+
+"Your account verification is failed!, Kindly contact your administrator." = "Your account verification is failed!, Kindly contact your administrator.";
+
+"Something went wrong. Try again later" = "Something went wrong. Try again later!";
+"RegisterbyReferral" = "Register by Referral";
+"Apply Referral Code to Reward your Friend" = "Apply Referral Code to Reward your Friend";
+"Enter Referral Code" = "Enter Referral Code";
+"Referral Code" = "Referral Code";
+"Skip" = "Skip";
+"Verify" = "Verify";
+"Select City" = "Select City";
+"Select State" = "Select State";
+"EnterValidEmail" = "Enter valid email";
+"Please select title" = "Please select title";
+"Enter first name" = "Enter first name";
+"Enter address" = "Enter address";
+"Enter pincode" = "Enter pincode";
+"Enter valid pincode" = "Enter valid pincode";
+"DOB" = "Select Date of birth";
+"Select Gender" = "Select Gender";
+"Select language" = "Select language";
+
+"Please enter the details to register" = "Please enter the details to register";
+
+"Mr/Mrs/Ms" = "Mr/Mrs/Ms";
+"First Name" = "First Name";
+"Last Name" = "Last Name";
+"Mobile Number" = "Mobile Number";
+"Email" = "Email";
+"Address" = "Address";
+"State" = "State";
+"City" = "City";
+"PinCode" = "PinCode";
+"DateOfBirth" = "DOB";
+"Gender" = "Gender";
+"Preferred Language" ="Preferred Language";
+"Next" = "Next";
+"AlreadyHaveAnAccount" = "Already have an account";
+
+"Membership ID" = "Membership ID";
+"Welcome" = "Welcome,";
+"Member Type" = "Member Type";
+"Total Euros" = "Total Euros";
+"Redeem Now" = "Redeem Now";
+"Game Zone" = "Game Zone";
+"Schemes" = "Schemes";
+"Refer & Earn" = "Refer & Earn";
+"Eurobond" = "Eurobond";
+"Helpline" = "Helpline";
+"Code Status" = "Code Status";
+"My Redemption" = "My Redemption";
+"My Earnings" = "My Earnings";
+
+"Fabricator Assistant" = "Fabricator Assistant";
+"MemberSince" = "Member Since";
+"SyncStatus" = "Sync Status";
+"CodeSummary" = "Code Summary";
+"NeedHelp" = "Need Help ?";
+"TermsAndConditions" = "Terms and conditions";
+
+"Submitted your purchase request" = "Submitted your purchase request";
+"Submitted your work details request" = "Submitted your work details request";
+"Support executive created" = "Support executive created";
+"Status updated" = "Status updated";
+"Your account is deactivated please check with the administrator" = "Your account is deactivated please check with the administrator";
+"Account Deactivated" = "Account Deactivated!!";
+
+"Home" = "Home";
+"Scan QR Code" = "Scan QR Code";
+"Enter QR Code" = "Enter QR Code";
+"Code Status" = "Code Status";
+"My Earning" = "My Earning";
+"My Redemptions"= "My Redemptions";
+"Redemption Catalogue" = "Redemption Catalogue";
+"Add My Assistant" = "Add My Assistant";
+"Wishlist" = "Wishlist";
+"Dream Gift"= "Dream Gift";
+"Schemes & Offers" = "Schemes & Offers";
+"Milestone Bonus" = "Milestone Bonus";
+"About" = "About";
+"FAQ"= "FAQ";
+"Term and Conditions"= "Term and Conditions";
+
+"Logout" = "Logout";
+"Delete" = "Delete";
+"Earned Euros" = "Earned Euros";
+"My Account" = "My Account";
+
+"Upload" = "Upload";
+"Enter your code" = "Enter your code";
+"Enter QR code in the above field and submit" = "Enter QR code in the above field and submit.";
+"Click here to see your QR Codes" = "Click here to see your QR Codes";
+"Place a QR Code inside the view finder rectangle to scan it" = "Place a QR Code inside the view finder rectangle to scan it";
+"Upload QR Code" = "Upload QR Code";
+
+
+"Code scanned successfully" = "Code scanned successfully";
+"Offline scanning limit exceeded" = "Offline scanning limit exceeded. Sync pending codes in Wifi/Mobile data or Clear processed codes .";
+"ok" = "ok";
+"QR Code length should be 12" = "QR Code length should be 12";
+"Enter the QR Code" = "Enter the QR Code";
+"Enable Location Services" = "Enable Location Services";
+"QR Code scanning requires Location Access" = "QR Code scanning requires Location Access";
+"Settings" = "Settings";
+"Cancel" = "Cancel";
+
+"EuroBond Application need Camera permission for Scanning Codes" = "EuroBond Application need Camera permission for Scanning Codes";
+
+"Allow" = "Allow";
+"DisAllow" = "DisAllow";
+"QR Code length should be 12 or 10" = "QR Code length should be 12 or 10";
+"To Date should be greater than From Date" = "To Date should be greater than From Date";
+"Select date range" = "Select date range";
+"Select From Date" = "Select From Date";
+"Select To Date" = "Select To Date";
+"Reset" = "Reset";
+"Filter" = "Filter";
+"To Date" = "To Date";
+"From Date" = "From Date";
+"Referral Complimentary" = "Referral Complimentary";
+"Reward Adjusted" = "Reward Adjusted";
+
+"National euros cannot be redeemed" = "National euros cannot be redeemed";
+"Click here for support" = "Click here for support";
+"rest" = "Rest";
+"Select Status" = "Select Status";
+"No Internet Connection" = "No Internet Connection";
+"QTY" = "QTY";
+"Descriptions" = "Descriptions";
+"RefNo" = "Ref.No.";
+"Category" = "Category:-";
+"catery" = "Category";
+"Already added to planner" = "Already added to planner";
+"YourAccountUnverified" = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue";
+"NeedSufficientPointBalance" = "Need Sufficient Point Balance";
+"Search Products" = "Search Products";
+"Low To High" = "Low To High";
+"High To Low" = "High To Low";
+"Insufficient Point Balance" = "Insufficient Point Balance";
+
+"Search" = "Search";
+"Points Range" = "Points Range";
+"POINTS" = "POINTS";
+"Added To Cart" = "Added To Cart";
+"Product is added into the Planner" = "Product is added into the Planner";
+"You can't add this products into your planner List" = "You can't add this products into your planner List";
+
+"Earn300Euros" = "Earn 300 Euros !";
+"Refer another Fabricator" = "Refer another Fabricator to the Eurobond Rewards Program to get 300 Euros once they enroll and do 15 Successful Scans";
+"Name" = "Name";
+"Enter Name" = "Enter Name";
+"Share via WhatsApp, SMS" = "Share via WhatsApp, SMS";
+"ReferFabricator" = "Refer a Fabricator";
+"ThanksMessage" = "Thank you for referring to Eurobond Program ! Keep referring to earn euros";
+"SomethingWentWrong" = "Something went wrong! Try again Later!";
+"SelfReferralNotAllowed" = "Self-referral is not allowed";
+"Text Copied" = "Text Copied";
+"PasswordUpdated" = "Password Updated!";
+"AreYouSure" = "Are you sure ?";
+"YouWantdeactivate" = "You want to deactivate your Fabricator Assistant account.";
+"YouWantActivate" = "You want to activate your Fabricator Assistant account.";
+"No" = "No";
+"Yes" = "Yes";
+"Password is updated" = "Password is updated";
+"AccountIsDeactivated" = "Account is deactivated";
+"Account is activated" = "Account is activated";
+"Enter valid OTP" = "Enter valid OTP";
+"Already Mobile number doesn't exists" = "Already Mobile number doesn't exists";
+"WhatNew" = "What's New";
+"My Assistant" = "My Assistant";
+
+"Support Name" = "Support Name";
+"Status" = "Status";
+"Enrollment" = "Enrollment Date";
+"Rest Password" = "Rest Password";
+"Update Password" = "Update Password";
+"Enter new password" = "Enter new password";
+"Whislist" = "Whislist";
+"EUROS" = "EUROS";
+"Gift product is already added in the Redeem list" = "Gift product is already added in the Redeem list";
+
+//Delete
+"SureWantToDelete" = "Are you sure you really want to delete your account?";
+"AccDeleted" = "Account deleted successfully";
+"SomethingWrong" = "Something went wrong please try again later!";

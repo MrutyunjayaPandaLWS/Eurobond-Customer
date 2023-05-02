@@ -8,7 +8,6 @@
 import Foundation
 
 //DEMO
-//https://eurobondrewardsdemo.loyltwo3ks.com/
 
 let tokenURL = "https://Eurobonddemoserv.loyltwo3ks.com/token"
 let baseURl = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/"
@@ -28,3 +27,21 @@ let grant_type = "password"
 //let MerchantUserName = "MSPDemoAdmin"
 
 
+
+////#<<<----Live---->>>
+//let tokenURL = "https://euroliveserv.loyltwo3ks.com/token"
+//let baseURl = "https://euroliveserv.loyltwo3ks.com/Mobile/"
+//let PROMO_IMG = "https://loyalty.eurobondacp.com/UploadFiles/"
+//let PROMO_IMG1 = "https://loyalty.eurobondacp.com/"
+//let product_IMG = "https://loyalty.eurobondacp.com/UploadFiles/CategoryImg/"
+//let imageBaseURL = "https://loyalty.eurobondacp.com/UploadFiles/ProductManager/ProductImages/"
+//let profileImageURL = "https://loyalty.eurobondacp.com/services/UploadFiles/CustomerImage/"
+//let productCatalogueImgURL = "https://loyalty.eurobondacp.com/UploadFiles/CatalogueImages/"
+//let checkUserExistencyURL = "https://euroliveserv.loyltwo3ks.com/Mobile/CheckCustomerExistancyAndVerification"
+//let forgotPassURL = "https://euroliveserv.loyltwo3ks.com/Mobile/forgotPasswordMobileApp"
+//let referralVerifyURL = "https://euroliveserv.loyltwo3ks.com/Mobile/CheckEmailMobileExistsMobileApp"
+//
+//let username = "EuroBondLivE"
+//let password = "qFjf$fgikapyhl#q"
+//let grant_type = "password"
+//let MerchantUserName = "EuroBondLive"

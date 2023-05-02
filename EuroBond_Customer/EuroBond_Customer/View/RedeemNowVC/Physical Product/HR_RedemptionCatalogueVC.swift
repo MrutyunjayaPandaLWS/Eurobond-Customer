@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 
 class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCartDelegate,  SelectedItemsDelegate, UITextFieldDelegate{
     
@@ -39,7 +39,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                        vc!.delegate = self
                        vc!.titleInfo = ""
-                        vc!.descriptionInfo = "Already added to planner"
+                        vc!.descriptionInfo = "Already added to planner".localiz()
                        vc!.modalPresentationStyle = .overCurrentContext
                        vc!.modalTransitionStyle = .crossDissolve
                        self.present(vc!, animated: true, completion: nil)
@@ -54,7 +54,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
             vc!.delegate = self
             vc!.titleInfo = ""
-            vc!.descriptionInfo = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue"
+            vc!.descriptionInfo = "YourAccountUnverified".localiz()
             vc!.modalPresentationStyle = .overCurrentContext
             vc!.modalTransitionStyle = .crossDissolve
             self.present(vc!, animated: true, completion: nil)
@@ -64,56 +64,58 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     }
     func addToCartProducts(_ cell: HR_CatalogueDetailsCVC){
         if UserDefaults.standard.string(forKey: "verificationStatus") == "1"{
-        self.selectedCatalogueID = 0
-        if cell.addCartButton.isHidden == false{
-            guard let tappedIndexPath = productsDetailCollectionView.indexPath(for: cell) else{return}
-            print(cell.addCartButton.tag)
-            print(tappedIndexPath.row)
-            if cell.addCartButton.tag == tappedIndexPath.row{
-                print(self.redeemablePointsBalance , "Redeemable Point Balance")
-                print(self.VM.sumOfProductsCount, "Sum of products Count")
-                if self.VM.sumOfProductsCount <= Int(self.redeemablePointsBalance) ?? 0 && Int(self.VM.catalgoueListArray[tappedIndexPath.row].pointsRequired ?? 0) != 0 {
-                    let calcValue = self.VM.sumOfProductsCount + Int(self.VM.catalgoueListArray[tappedIndexPath.row].pointsRequired ?? 0)
-                    print(calcValue, "calcValues")
-                    if calcValue <= Int(self.redeemablePointsBalance) ?? 0{
-                        self.selectedCatalogueID = self.VM.catalgoueListArray[tappedIndexPath.row].catalogueId ?? 0
-                        self.VM.addToCartApi()
-                        NotificationCenter.default.post(name: .cartCount, object: nil)
-                    }else{
-                        DispatchQueue.main.async{
-                        
-                           let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                           vc!.delegate = self
-                           vc!.titleInfo = ""
-                            vc!.descriptionInfo = "Need Sufficient Point Balance"
-                           vc!.modalPresentationStyle = .overCurrentContext
-                           vc!.modalTransitionStyle = .crossDissolve
-                           self.present(vc!, animated: true, completion: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+                self.selectedCatalogueID = 0
+                if cell.addCartButton.isHidden == false{
+                    guard let tappedIndexPath = self.productsDetailCollectionView.indexPath(for: cell) else{return}
+                    print(cell.addCartButton.tag)
+                    print(tappedIndexPath.row)
+                    if cell.addCartButton.tag == tappedIndexPath.row{
+                        print(self.redeemablePointsBalance , "Redeemable Point Balance")
+                        print(self.VM.sumOfProductsCount, "Sum of products Count")
+                        if self.VM.sumOfProductsCount <= Int(self.redeemablePointsBalance) ?? 0 && Int(self.VM.catalgoueListArray[tappedIndexPath.row].pointsRequired ?? 0) != 0 {
+                            let calcValue = self.VM.sumOfProductsCount + Int(self.VM.catalgoueListArray[tappedIndexPath.row].pointsRequired ?? 0)
+                            print(calcValue, "calcValues")
+                            if calcValue <= Int(self.redeemablePointsBalance) ?? 0{
+                                self.selectedCatalogueID = self.VM.catalgoueListArray[tappedIndexPath.row].catalogueId ?? 0
+                                self.VM.addToCartApi()
+                                NotificationCenter.default.post(name: .cartCount, object: nil)
+                            }else{
+                                DispatchQueue.main.async{
+                                    
+                                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                                    vc!.delegate = self
+                                    vc!.titleInfo = ""
+                                    vc!.descriptionInfo = "NeedSufficientPointBalance".localiz()
+                                    vc!.modalPresentationStyle = .overCurrentContext
+                                    vc!.modalTransitionStyle = .crossDissolve
+                                    self.present(vc!, animated: true, completion: nil)
+                                }
+                            }
+                            
+                        }else{
+                            DispatchQueue.main.async{
+                                
+                                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                                vc!.delegate = self
+                                vc!.titleInfo = ""
+                                vc!.descriptionInfo = "NeedSufficientPointBalance".localiz()
+                                vc!.modalPresentationStyle = .overCurrentContext
+                                vc!.modalTransitionStyle = .crossDissolve
+                                self.present(vc!, animated: true, completion: nil)
+                            }
                         }
+                        self.productsDetailCollectionView.reloadData()
                     }
-                        
-                }else{
-                    DispatchQueue.main.async{
                     
-                       let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                       vc!.delegate = self
-                       vc!.titleInfo = ""
-                        vc!.descriptionInfo = "Need Sufficient Product Point"
-                       vc!.modalPresentationStyle = .overCurrentContext
-                       vc!.modalTransitionStyle = .crossDissolve
-                       self.present(vc!, animated: true, completion: nil)
-                    }
                 }
-                self.productsDetailCollectionView.reloadData()
-            }
-
-        }
+            })
     }else{
         DispatchQueue.main.async{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
             vc!.delegate = self
             vc!.titleInfo = ""
-            vc!.descriptionInfo = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue"
+            vc!.descriptionInfo = "YourAccountUnverified".localiz()
             vc!.modalPresentationStyle = .overCurrentContext
             vc!.modalTransitionStyle = .crossDissolve
             self.present(vc!, animated: true, completion: nil)
@@ -194,6 +196,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         collectionViewFLowLayout2.minimumLineSpacing = 2.5
         collectionViewFLowLayout2.minimumInteritemSpacing = 2.5
          self.productsDetailCollectionView.collectionViewLayout = collectionViewFLowLayout2
+        self.localizSetup()
     }
  
 //    override func viewWillLayoutSubviews() {
@@ -208,7 +211,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"//
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -217,7 +220,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
              self.noDataFound.isHidden = true
             self.noDataFoundCategoryList.isHidden = true
             self.noDataFound.text = "No data found !!"//
-            self.searchProductTF.placeholder = "Search Products"//
+            self.searchProductTF.placeholder = "Search Products".localiz()//
             self.searchProductTF.delegate = self
             self.productsDetailCollectionView.isHidden = true
             self.productCategoryCollectionView.delegate = self
@@ -236,7 +239,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
                 self.noDataFound.isHidden = true
                 self.highToLowBtn.isHidden = true
                 self.collectionViewTopSPace.constant = 55
-                self.highToLowBtn.setTitle("Low To High", for: .normal)
+                self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
                 self.separatorLbl.isHidden = true
 //                if self.loginCustomerTypeId == "1"{
 //                    self.searchButton.backgroundColor = #colorLiteral(red: 0.7215686275, green: 0.01568627451, blue: 0.0431372549, alpha: 1)
@@ -303,11 +306,11 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
                 self.searchTab = 0
                 if self.sortedBy == 1{
                     self.sortedBy = 1
-                    self.highToLowBtn.setTitle("Low To High", for: .normal)
+                    self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
                     
                 }else{
                     self.sortedBy = 0
-                    self.highToLowBtn.setTitle("High To Low", for: .normal)
+                    self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
                    
                 }
             }
@@ -319,6 +322,12 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         }
     }
 
+    func localizSetup(){
+        self.searchButton.setTitle("Search".localiz(), for: .normal)
+        self.categoryButton.setTitle("catery".localiz(), for: .normal)
+        self.pointsRangeButton.setTitle("Points Range".localiz(), for: .normal)
+        self.searchProductTF.placeholder = "Search Products".localiz()
+    }
    
     @IBAction func searchProductEditingChanged(_ sender: Any) {
         self.VM.catalgoueListArray.removeAll()
@@ -356,10 +365,10 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         
         if self.sortedBy == 1{
             self.sortedBy = 0
-            self.highToLowBtn.setTitle("High To Low", for: .normal)
+            self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
         }else{
             self.sortedBy = 1
-            self.highToLowBtn.setTitle("Low To High", for: .normal)
+            self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
         }
         self.VM.catalgoueListArray.removeAll()
         self.startIndex = 1
@@ -404,14 +413,14 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         self.highToLowBtn.isHidden = true
         self.collectionViewTopSPace.constant = 55
         self.itsFrom = "Search"
-        self.highToLowBtn.setTitle("Low To High", for: .normal)
+        self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
         self.separatorLbl.isHidden = true
 //        self.VM.getMycartList()
         self.VM.catalogueListApi(searchText: self.searchProductTF.text ?? "", startIndex: self.startIndex)
     }
     @IBAction func categoryBtn(_ sender: Any) {
         self.VM.catalgoueListArray.removeAll()
-        self.highToLowBtn.setTitle("High To Low", for: .normal)
+        self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
         self.itsFrom = "Category"
         self.selectedPtsRange1 = ""
         self.selectedPtsRange = ""
@@ -584,7 +593,7 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                         vc!.delegate = self
                         vc!.titleInfo = ""
-                        vc!.descriptionInfo = "No Internet Connection"
+                        vc!.descriptionInfo = "No Internet Connection".localiz()
                         vc!.modalPresentationStyle = .overCurrentContext
                         vc!.modalTransitionStyle = .crossDissolve
                         self.present(vc!, animated: true, completion: nil)
@@ -675,21 +684,6 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
 
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == productCategoryCollectionView{
-//                    collectionViewFLowLayout1.scrollDirection = .horizontal
-//                    collectionViewFLowLayout1.minimumLineSpacing = 0
-//                    collectionViewFLowLayout1.minimumInteritemSpacing = 0
-//                    collectionViewFLowLayout1.estimatedItemSize = CGSize(width: 100, height: 30)
-//                     self.productCategoryCollectionView.collectionViewLayout = collectionViewFLowLayout1
-//            //
-//        }else{
-//            //        collectionViewFLowLayout2.itemSize = CGSize(width: CGFloat(((self.view.bounds.width - 38) - (self.productsDetailCollectionView.contentInset.left + self.productsDetailCollectionView.contentInset.right)) / 2), height: 230)
-//            //        collectionViewFLowLayout2.minimumLineSpacing = 2.5
-//            //        collectionViewFLowLayout2.minimumInteritemSpacing = 2.5
-//            //         self.productsDetailCollectionView.collectionViewLayout = collectionViewFLowLayout2
-//        }
-//    }
     
 }
 

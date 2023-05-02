@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 protocol MyAssistantTVCDelegate{
     func didTappedResetPassword(_ cell: EBC_MyAssistantTVC)
@@ -28,6 +29,11 @@ class EBC_MyAssistantTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        self.supporterNameLbl.text = "Support Name".localiz()
+        self.statusTitleLbl.text = "Status".localiz()
+        self.enrollmentTitle.text = "Enrollment".localiz()
+        self.mobileNumberTitleLbl.text = "Mobile Number".localiz()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

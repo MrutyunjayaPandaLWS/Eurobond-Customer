@@ -18,6 +18,7 @@ class EBC_MyAssistantVM{
         
         DispatchQueue.main.async {
             self.VC?.startLoading()
+            self.myAssistantArrayList.removeAll()
         }
         self.requestAPIs.myassistantListApi(parameters: parameter) { (result, error) in
         
@@ -85,7 +86,7 @@ class EBC_MyAssistantVM{
                         if result?.isActive ?? false == false || result?.returnMessage ?? "" == "1"{
                             
                             self.VC?.popView.isHidden = false
-                            self.VC?.accountStatus.text = "Account is deactivated"
+                            self.VC?.accountStatus.text = "AccountIsDeactivated".localiz()
                             DispatchQueue.main.asyncAfter(deadline: .now()+3.0, execute: {
                                 self.VC?.popView.isHidden = true
                                 self.myAssistantArrayList.removeAll()
@@ -98,7 +99,7 @@ class EBC_MyAssistantVM{
                             
                         }else if result?.isActive ?? false == true || result?.returnMessage ?? "" == "1"{
                             self.VC?.popView.isHidden = false
-                            self.VC?.accountStatus.text = "Account is activated"
+                            self.VC?.accountStatus.text = "Account is activated".localiz()
                             DispatchQueue.main.asyncAfter(deadline: .now()+3.0, execute: {
                                 self.VC?.popView.isHidden = true
                                 self.myAssistantArrayList.removeAll()
@@ -110,7 +111,7 @@ class EBC_MyAssistantVM{
                            
                             
                         }else{
-                            self.VC!.view.makeToast("Something went wrong! Try again later!", duration: 2.0, position: .bottom)
+                            self.VC!.view.makeToast("SomethingWentWrong".localiz(), duration: 2.0, position: .bottom)
                         }
                     }
                 }else{

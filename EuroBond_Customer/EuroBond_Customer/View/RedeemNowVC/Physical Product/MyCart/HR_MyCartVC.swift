@@ -19,8 +19,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
        // if VM.myCartListArray.count != 0 {
             if cell.addBTN.tag == tappedIndexPath.row{
                 
-                //print(self.VM.myCartListArray[tappedIndexPath.row].noOfQuantity ?? 0, "Tapped Index - Increase")
-                //  DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+                  DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
                 if Int(self.VM.myCartListArray[tappedIndexPath.row].sumOfTotalPointsRequired ?? 0) <= Int(self.redeemablePointsBalance) ?? 0 {
                     let calcValue = Int(self.VM.myCartListArray[tappedIndexPath.row].sumOfTotalPointsRequired ?? 0) + Int(self.VM.myCartListArray[tappedIndexPath.row].pointsPerUnit ?? 0)
                     print(calcValue, "Calculated Values")
@@ -46,7 +45,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
                     }
                     
                 }
-                //})
+                })
            // }
         }
         self.myCartTableView.reloadData()
@@ -151,7 +150,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
         myCartTableView.register(UINib(nibName: "HR_MyCartTVC", bundle: nil), forCellReuseIdentifier: "HR_MyCartTVC")
         self.screenTitleLbl.text = "My Cart"
         self.noDataFound.text = "No data found !!"
-        self.requiredPts.text = "REQUIRED POINTS"
+        self.requiredPts.text = "REQUIRED EUROS"
         self.checkoutLbl.text = "Checkout"
        
    

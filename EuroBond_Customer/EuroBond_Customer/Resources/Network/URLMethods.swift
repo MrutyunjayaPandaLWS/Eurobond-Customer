@@ -65,3 +65,4 @@ let myAssistant = "GetCustParentChildMappingDetails"
 let customerAccountDelete = "CustomerAccountDelete"
 
 let historyNotification = "GetPushHistoryDetails"
+let deleteAccount_URLMethodName = "CustomerAccountDelete"

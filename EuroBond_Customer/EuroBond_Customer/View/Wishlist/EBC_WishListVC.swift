@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSource, WishListDelegate {
     func didTappedRemoveBt(item: EBC_WishListTVC) {
@@ -29,6 +30,11 @@ class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         whislistTV.delegate = self
         whislistTV.dataSource = self
+        localizSetup()
+    }
+    func localizSetup(){
+        titleVC.text = "Whislist".localiz()
+        eurostitle.text = "EUROS".localiz()
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
