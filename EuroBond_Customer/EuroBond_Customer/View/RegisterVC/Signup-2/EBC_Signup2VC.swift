@@ -48,6 +48,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     var mobile = ""
     var address = ""
     var email = ""
+    var selectTitle = ""
     
     let picker = UIImagePickerController()
     var strBase64PAN = ""
@@ -61,6 +62,8 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
         self.picker.delegate = self
         self.gstTF.delegate = self
         self.panNumberTF.delegate = self
+        self.panNumberTF.keyboardType = .asciiCapable
+        self.gstTF.keyboardType = .asciiCapable
         NotificationCenter.default.addObserver(self, selector: #selector(registrationSubmission), name: Notification.Name.registrationSubmission, object: nil)
     }
     
@@ -73,6 +76,19 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
         }
     }
 
+//    @IBAction func panValideTFAct(_ sender: Any) {
+//        if panNumberTF.text?.count == 10{
+//            let parameter = [
+//                "PanNumber":"\(self.panNumberTF.text ?? "")"
+//            ]
+//            print(parameter,"PanNumber")
+//            self.VM.pancardVerifyApi(parameters: parameter)
+//        }else{
+//            self.view.makeToast("Enter valid Pan Number", duration: 2.0, position: .bottom)
+//        }
+//    }
+    
+    
     @IBAction func selectpanFrontPageBtn(_ sender: UIButton) {
         self.itsFrom = "PAN"
         let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
@@ -135,6 +151,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
                     ]
                 ],
                 "objcustomer": [
+                    "Title": self.selectTitle,
                     "FirstName": self.firstNames,
                     "LastName": self.lastName,
                     "Address1": self.address,
@@ -160,7 +177,6 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
             print(parameterJSON)
             self.VM.registrationSubmission(parameter: parameterJSON)
             
-            //API
             
         }
         
@@ -197,17 +213,70 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
 //      }
 //    }
     
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//         if string.isEmpty {
+//             return true
+//         }
+//         let alphaNumericRegEx = "[a-zA-Z0-9]"
+//         let predicate = NSPredicate(format:"SELF MATCHES %@", alphaNumericRegEx)
+//         return predicate.evaluate(with: string)
+//    }
+    
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        self.panNumberTF.text = self.panNumberTF.text?.uppercased()
+//        if textField == panNumberTF{
+//            let currentCharacterCount = panNumberTF.text?.count ?? 0
+//                   if (range.length + range.location > currentCharacterCount){
+//                       return false
+//                   }
+//                   let newLength = currentCharacterCount + string.count - range.length
+//                   return newLength <= 10
+//        }
+//        return true
+//    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//          let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
+//          let compSepByCharInSet = string.components(separatedBy: aSet)
+//          let numberFiltered = compSepByCharInSet.joined(separator: "")
+//
+//          if string == numberFiltered {
+//              let currentText = self.mobileTF.text ?? ""
+//            guard let stringRange = Range(range, in: currentText) else { return false }
+//            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+//            return updatedText.count <= 10
+//          } else {
+//            return false
+//          }
+//        }
+    
+    
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         self.panNumberTF.text = self.panNumberTF.text?.uppercased()
         self.gstTF.text = self.gstTF.text?.uppercased()
+        
+        
+        
         if textField == panNumberTF{
+            //"[a-zA-Z0-9]"
+            let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
             let currentCharacterCount = panNumberTF.text?.count ?? 0
                    if (range.length + range.location > currentCharacterCount){
                        return false
                    }
                    let newLength = currentCharacterCount + string.count - range.length
                    return newLength <= 10
+            //return predicate.evaluate(with: string)
         }else  if textField == gstTF{
+            
+            let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
             let currentCharacterCount = gstTF.text?.count ?? 0
                    if (range.length + range.location > currentCharacterCount){
                        return false
@@ -215,6 +284,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
                    let newLength = currentCharacterCount + string.count - range.length
                    return newLength <= 15
         }
+        
         return true
     }
     
@@ -336,6 +406,8 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
             
             let imageData = image.resized(withPercentage: 0.1)
             let imageData1: NSData = imageData!.pngData()! as NSData
+            let cropper = CropperViewController(originalImage: image)
+            cropper.delegate = self
             if self.itsFrom == "PAN"{
                 self.panImage.image = image
                 self.strBase64PAN = imageData1.base64EncodedString(options: .lineLength64Characters)
@@ -346,7 +418,8 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
             
             
             picker.dismiss(animated: true)
-            self.dismiss(animated: true, completion: nil)
+            //self.dismiss(animated: true, completion: nil)
+            self.present(cropper, animated: true, completion: nil)
             
             
         }
@@ -361,7 +434,7 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
     
     func cropperDidConfirm(_ cropper: CropperViewController, state: CropperState?) {
         cropper.dismiss(animated: true, completion: nil)
-        
+
         if let state = state,
            let image = cropper.originalImage.cropped(withCropperState: state) {
             print(image,"imageDD")
@@ -379,3 +452,31 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
     }
     
 }
+//extension MyProfileandBankDetailsVC: CropperViewControllerDelegate {
+//
+//    func cropperDidConfirm(_ cropper: CropperViewController, state: CropperState?) {
+//    cropper.dismiss(animated: true, completion: nil)
+// 
+//    if let state = state,
+//        let image = cropper.originalImage.cropped(withCropperState: state) {
+//        print(image,"imageDD")
+//        let imageData = image.resized(withPercentage: 0.1)
+//        let imageData1: NSData = imageData!.pngData()! as NSData
+//        self.myProfileImg.image = image
+//        self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
+//        print(strdata1,"kdjgjhdsj")
+//        let parameters = [
+//            "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
+//            "ObjCustomerJson": [
+//                "DisplayImage": strdata1,
+//                "LoyaltyId": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
+//            ]
+//        ]as [String : Any]
+//        print(parameters)
+//        self.VM.profileImageUpdate(parameter: parameters)
+//    } else {
+//        print("Something went wrong")
+//    }
+//    self.dismiss(animated: true, completion: nil)
+//    }
+//}

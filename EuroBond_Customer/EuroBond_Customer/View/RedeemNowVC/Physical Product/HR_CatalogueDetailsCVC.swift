@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import LanguageManager_iOS
+import LanguageManager_iOS
 
 protocol AddToCartDelegate {
     func addToCartProducts(_ cell: HR_CatalogueDetailsCVC)

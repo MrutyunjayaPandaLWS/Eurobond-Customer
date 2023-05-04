@@ -123,6 +123,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.pincodeTF.keyboardType = .asciiCapableNumberPad
         self.mobileTF.text = self.enteredMobile
         self.nameTF.text = self.customerTypeName
+        self.mobileTF.isEnabled = false
         localizSetup()
     }
     
@@ -242,6 +243,10 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
             self.view.makeToast("Please select title".localiz(), duration: 2.0, position: .bottom)
         }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
             self.view.makeToast("Enter first name".localiz(), duration: 2.0, position: .bottom)
+        }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
+            self.view.makeToast("Enter last name".localiz(), duration: 2.0, position: .bottom)
+        }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
+            self.view.makeToast("Enter Email".localiz(), duration: 2.0, position: .bottom)
         }else if self.mobileTF.text?.count == 0{
             self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
         }else if self.addressTF.text?.count == 0{
@@ -272,6 +277,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
             vc.selectedDOB = self.selectedDOB
             vc.pincode = self.pincodeTF.text ?? ""
             vc.firstNames = self.nameTF.text ?? ""
+            vc.selectTitle = self.mrMissMrsTF.text ?? ""
             vc.lastName = self.lastNameTF.text ?? ""
             vc.mobile = self.mobileTF.text ?? ""
             vc.address = self.addressTF.text ?? ""

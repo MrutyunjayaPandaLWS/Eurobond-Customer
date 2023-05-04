@@ -36,7 +36,7 @@
 
 "Your account is verification pending! Kindly contact your administrator." = "Your account is verification pending! Kindly contact your administrator.";
 
-"Your account is not activated! Kindly activate your account." = "Your account is not activated! Kindly activate your account.";
+"Your account is not activated! Kindly activate your account" = "Your account is not activated! Kindly activate your administrator.";
 
 "Your account has been deactivated! Kindly contact your administrator." = "Your account has been deactivated! Kindly contact your administrator.";
 
@@ -63,7 +63,7 @@
 
 "Please enter the details to register" = "Please enter the details to register";
 
-"Mr/Mrs/Ms" = "Mr/Mrs/Ms";
+"Mr/Mrs/Ms" = "Select Title";
 "First Name" = "First Name";
 "Last Name" = "Last Name";
 "Mobile Number" = "Mobile Number";
@@ -87,6 +87,7 @@
 "Schemes" = "Schemes";
 "Refer & Earn" = "Refer & Earn";
 "Eurobond" = "Eurobond";
+"EurobondProfile" = "Eurobond Profile";
 "Helpline" = "Helpline";
 "Code Status" = "Code Status";
 "My Redemption" = "My Redemption";
@@ -180,8 +181,8 @@
 "Insufficient Point Balance" = "Insufficient Point Balance";
 
 "Search" = "Search";
-"Points Range" = "Points Range";
-"POINTS" = "POINTS";
+"Points Range" = "Euros Range";
+"POINTS" = "EUROS";
 "Added To Cart" = "Added To Cart";
 "Product is added into the Planner" = "Product is added into the Planner";
 "You can't add this products into your planner List" = "You can't add this products into your planner List";
@@ -190,9 +191,9 @@
 "Refer another Fabricator" = "Refer another Fabricator to the Eurobond Rewards Program to get 300 Euros once they enroll and do 15 Successful Scans";
 "Name" = "Name";
 "Enter Name" = "Enter Name";
-"Share via WhatsApp, SMS" = "Share via WhatsApp, SMS";
+"Share via WhatsApp, SMS" = "Share by other apps";
 "ReferFabricator" = "Refer a Fabricator";
-"ThanksMessage" = "Thank you for referring to Eurobond Program ! Keep referring to earn euros";
+"ThanksMessage" = "Thank you for referring your friend !";
 "SomethingWentWrong" = "Something went wrong! Try again Later!";
 "SelfReferralNotAllowed" = "Self-referral is not allowed";
 "Text Copied" = "Text Copied";
@@ -224,3 +225,13 @@
 "SureWantToDelete" = "Are you sure you really want to delete your account?";
 "AccDeleted" = "Account deleted successfully";
 "SomethingWrong" = "Something went wrong please try again later!";
+
+
+
+/////New Loines
+
+"Enter last name" = "Enter last name";
+"Enter Email" = "Enter email";
+"Pan is invalid" = "Pan is invalid";
+
+"Your scanning limit exceeded" = "QR code limit exceeded";

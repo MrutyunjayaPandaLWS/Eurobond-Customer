@@ -9,12 +9,14 @@ import UIKit
 import Lottie
 class EBC_ComingSoonVC: BaseViewController {
     
+    @IBOutlet var headerTitleLbl: UILabel!
     
     @IBOutlet weak var comingSoonAnimation: LottieAnimationView!
     
+    var iscomingFrom = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.lottieAnimation(animationView: comingSoonAnimation)
     }
 

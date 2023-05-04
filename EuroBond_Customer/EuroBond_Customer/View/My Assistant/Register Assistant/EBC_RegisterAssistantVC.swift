@@ -59,6 +59,7 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
     var requestAPIs = RestAPI_Requests()
     var enteredValue = ""
     var receivedOTP = ""
+    var customerTypeId = UserDefaults.standard.string(forKey: "customerTypeId") ?? ""
     override func viewDidLoad() {
         super.viewDidLoad()
         otpView.text = ""
@@ -78,6 +79,7 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
         otpView.editingTextEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         self.otpTimmerLbl.text = "00:60"
         localizSetup()
+        print(customerTypeId,"kdjfd")
     }
     
     
@@ -113,8 +115,9 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
                     "Location": [
                         "UserName": self.mobileNumberTF.text ?? ""
                     ],
-                    "ActionType": "69"
+                    "ActionType": "11"
                 ] as [String: Any]
+                print(parameter)
                 self.VM.verifyMobileNumberAPI(paramters: parameter)
             }
             
@@ -136,8 +139,9 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
                         "Location": [
                             "UserName": self.mobileNumberTF.text ?? ""
                         ],
-                        "ActionType": "69"
+                        "ActionType": "11"
                     ] as [String: Any]
+                    print(parameter)
                     self.VM.verifyMobileNumberAPI(paramters: parameter)
                 }
                 

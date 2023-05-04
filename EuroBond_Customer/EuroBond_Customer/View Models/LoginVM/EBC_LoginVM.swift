@@ -169,8 +169,8 @@ class EBC_LoginVM {
 //                        self.VC?.receivedOTP = result?.returnMessage ?? ""
                         self.VC?.receivedOTP = "123456"
                         print(result?.returnMessage ?? "", "-OTP")
-                        self.VC?.termCondBtn.isEnabled = false
-                        self.VC?.termsAndConditionsText.isEnabled = false
+                        self.VC?.termCondBtn.isEnabled = true
+                        self.VC?.termsAndConditionsText.isEnabled = true
                         
                       //  self.VC?.receivedOTP = "123456"
                        

@@ -10,7 +10,9 @@ import Toast_Swift
 import DPOTPView
 import LanguageManager_iOS
 
-class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegate, UITextFieldDelegate {
+class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegate, UITextFieldDelegate, popUpAlertDelegate {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
     
     func accept(_ vc: HR_TermsandCondtionVC) {
         self.termCondBtn.setImage(UIImage(named: "fillcheckbox"), for: .normal)
@@ -61,6 +63,9 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
 
     var VM = EBC_LoginVM()
     
+    
+    var existance = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
@@ -69,6 +74,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         otpSubmitView.textEdgeInsets = UIEdgeInsets(top: 0, left: -1, bottom: 0, right: 0)
         otpSubmitView.editingTextEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         localization()
+        tokendata()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -115,53 +121,77 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     
     
     @IBAction func selectloginBtn(_ sender: Any) {
-        print(loginBtnStatus)
-        if loginBtnStatus != 0 {
-            membershipIdTF.text = ""
-            membershipIdTF.placeholder = "EnterMembershipID/Moblienumber".localiz()
-            membershipIdLbl.text = "EnterMembershipID/Moblienumber".localiz()
-            membershipIdTF.keyboardType = .asciiCapable
-            otpView.isHidden = true
-            membershipIdTF.delegate = self
-            resendOtpBtn.isHidden = true
-            termCondView.isHidden = false
-            loginBtnStatus = 0
-            loginLineLbl.backgroundColor = selectedColor1
-            registerLineLbl.backgroundColor = .lightGray
-            submitBtnStatus = 0
-            submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
-            self.submitButtonTopSpace.constant = 100
-            self.loginSubViewHeight.constant = 300
-            otpSubmitView.text = ""
-            self.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
-            self.tcStatus = 0
-            logintitleLbl.text = "login".localiz()
-            loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            print(loginBtnStatus)
+            if loginBtnStatus != 0 {
+                membershipIdTF.text = ""
+                membershipIdTF.placeholder = "EnterMembershipID/Moblienumber".localiz()
+                membershipIdLbl.text = "EnterMembershipID/Moblienumber".localiz()
+                membershipIdTF.keyboardType = .asciiCapable
+                otpView.isHidden = true
+                membershipIdTF.delegate = self
+                resendOtpBtn.isHidden = true
+                termCondView.isHidden = false
+                loginBtnStatus = 0
+                loginLineLbl.backgroundColor = selectedColor1
+                registerLineLbl.backgroundColor = .lightGray
+                submitBtnStatus = 0
+                submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
+                self.submitButtonTopSpace.constant = 100
+                self.loginSubViewHeight.constant = 300
+                otpSubmitView.text = ""
+                self.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
+                self.tcStatus = 0
+                logintitleLbl.text = "login".localiz()
+                loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
+            }
         }
         
     }
     
     @IBAction func selectRegisterBtn(_ sender: UIButton) {
-        print(loginBtnStatus)
-        if loginBtnStatus != 1 {
-            membershipIdTF.text = ""
-            membershipIdTF.placeholder = "MobileNumber".localiz()
-            membershipIdLbl.text = "MobileNumber".localiz()
-            membershipIdTF.keyboardType = .numberPad
-            membershipIdTF.delegate = self
-            otpView.isHidden = true
-            resendOtpBtn.isHidden = true
-            termCondView.isHidden = true
-            loginBtnStatus = 1
-            loginLineLbl.backgroundColor = .lightGray
-            logintitleLbl.text = "SignUp".localiz()
-            loginInfoLbl.text = "PleaseEnterDetailsRegister".localiz()
-            registerLineLbl.backgroundColor = selectedColor1
-            submitBtnStatus = 0
-            submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
-            otpSubmitView.text = ""
-            self.submitButtonTopSpace.constant = 70
-            self.loginSubViewHeight.constant = 300
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            print(loginBtnStatus)
+            if loginBtnStatus != 1 {
+                membershipIdTF.text = ""
+                membershipIdTF.placeholder = "MobileNumber".localiz()
+                membershipIdLbl.text = "MobileNumber".localiz()
+                membershipIdTF.keyboardType = .numberPad
+                membershipIdTF.delegate = self
+                otpView.isHidden = true
+                resendOtpBtn.isHidden = true
+                termCondView.isHidden = true
+                loginBtnStatus = 1
+                loginLineLbl.backgroundColor = .lightGray
+                logintitleLbl.text = "SignUp".localiz()
+                loginInfoLbl.text = "PleaseEnterDetailsRegister".localiz()
+                registerLineLbl.backgroundColor = selectedColor1
+                submitBtnStatus = 0
+                submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
+                otpSubmitView.text = ""
+                self.submitButtonTopSpace.constant = 70
+                self.loginSubViewHeight.constant = 300
+            }
         }
     }
     
@@ -181,30 +211,54 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     }
     
     @IBAction func selectTermCondBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_TermsandCondtionVC") as? HR_TermsandCondtionVC
-        vc?.delegate = self
-        vc?.modalTransitionStyle = .coverVertical
-        vc?.modalPresentationStyle = .overFullScreen
-        present(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_TermsandCondtionVC") as? HR_TermsandCondtionVC
+            vc?.delegate = self
+            vc?.modalTransitionStyle = .coverVertical
+            vc?.modalPresentationStyle = .overFullScreen
+            present(vc!, animated: true)
+        }
     }
     
     @IBAction func selectResendOtpBtn(_ sender: UIButton) {
-
-        if self.membershipIdTF.text?.count == 0 {
-            if loginBtnStatus != 1 {
-                self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
-            }else{
-                self.view.makeToast("EnterMembershipID/Moblienumber".localiz(), duration: 2.0, position: .bottom)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
             }
         }else{
-            let parameter = [
-                "OTPType": "Enrollment",
-                "UserId": -1,
-                "MobileNo": self.membershipIdTF.text ?? "",
-                "UserName": "",
-                "MerchantUserName": "EuroBondMerchantDemo"
-            ] as [String: Any]
-            self.VM.getOTPApi(parameter: parameter)
+            
+            if self.membershipIdTF.text?.count == 0 {
+                if loginBtnStatus != 1 {
+                    self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
+                }else{
+                    self.view.makeToast("EnterMembershipID/Moblienumber".localiz(), duration: 2.0, position: .bottom)
+                }
+            }else{
+                let parameter = [
+                    "OTPType": "Enrollment",
+                    "UserId": -1,
+                    "MobileNo": self.membershipIdTF.text ?? "",
+                    "UserName": "",
+                    "MerchantUserName": "EuroBondMerchantDemo"
+                ] as [String: Any]
+                self.VM.getOTPApi(parameter: parameter)
+            }
         }
     }
     
@@ -218,64 +272,31 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     }
     
     @IBAction func selectSubmitBtn(_ sender: Any) {
-        if membershipIdTF.text?.count == 0{
-            if loginBtnStatus != 1 {
-                self.view.makeToast("EnterMembershipID/Moblienumber".localiz(),duration: 2.0,position: .center)
-            }else{
-                self.view.makeToast("EnterMobileNumber".localiz(),duration: 2.0,position: .center)
+        
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
             }
-            
         }else{
-            if loginBtnStatus == 0 {
-                if tcStatus != 1{
-                    self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
+            
+            if membershipIdTF.text?.count == 0{
+                if loginBtnStatus != 1 {
+                    self.view.makeToast("EnterMembershipID/Moblienumber".localiz(),duration: 2.0,position: .center)
                 }else{
-                    let parameterJSON = [
-                        "Location": [
-                            "UserName": self.membershipIdTF.text ?? ""
-                        ],
-                        "ActionType": "68"
-                    ] as [String:Any]
-                    print(parameterJSON)
-                    self.VM.verifyMobileNumberAPI(paramters: parameterJSON)
+                    self.view.makeToast("EnterMobileNumber".localiz(),duration: 2.0,position: .center)
                 }
-            }else if self.loginBtnStatus == 2{
-                if tcStatus != 1{
-                    self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
-                }else if submitBtnStatus == 0{
-                    submitBtn.setTitle("Submit".localiz(), for: .normal)
-                    otpView.isHidden = false
-                    termCondView.isHidden = true
-                    submitBtnStatus = 1
-                    self.submitButtonTopSpace.constant = 190
-                    self.loginSubViewHeight.constant = 429
-                    
-                }else if otpSubmitView.text?.count == 0{
-                    self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
-                }else if enteredValue != self.receivedOTP{
-                    print(enteredValue)
-                    print(receivedOTP)
-                    self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
-                    otpSubmitView.text = ""
-                }else{
-                    
-                    // Login Submission Api
-                    let parameter = [
-                        "LoggedDeviceName": "IOS",
-                           "UserActionType": "GetPasswordDetails",
-                           "Password": "123456",
-                           "Browser": "IOS",
-                           "PushID": "",
-                           "UserType": "Customer",
-                        "UserName": self.membershipIdTF.text ?? ""
-                    ] as [String: Any]
-                    print(parameter)
-                    self.VM.loginSubmissionApi(parameter: parameter)
-
-                }
+                
             }else{
-                if submitBtnStatus == 0{
-                    if self.membershipIdTF.text!.count == 10{
+                if loginBtnStatus == 0 {
+                    if tcStatus != 1{
+                        self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
+                    }else{
                         let parameterJSON = [
                             "Location": [
                                 "UserName": self.membershipIdTF.text ?? ""
@@ -283,25 +304,113 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                             "ActionType": "68"
                         ] as [String:Any]
                         print(parameterJSON)
-                        self.VM.verifyMobileNumberAPI1(paramters: parameterJSON)
-                    }else{
-                        self.view.makeToast("Entervalidmobilernumber".localiz(),duration: 2.0,position: .center)
+                        self.VM.verifyMobileNumberAPI(paramters: parameterJSON)
                     }
-                }else if otpSubmitView.text?.count == 0{
-                    self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
-                }else if enteredValue != self.receivedOTP{
-                    self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
-                    otpSubmitView.text = ""
-                } else{
-                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferalVC") as? EBC_RefferalVC
-                    vc?.enteredMobile = self.membershipIdTF.text ?? ""
-                    navigationController?.pushViewController(vc!, animated: true)
+                }else if self.loginBtnStatus == 2{
+                    if tcStatus != 1{
+                        self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
+                    }else if submitBtnStatus == 0{
+                        submitBtn.setTitle("Submit".localiz(), for: .normal)
+                        otpView.isHidden = false
+                        termCondView.isHidden = true
+                        submitBtnStatus = 1
+                        self.submitButtonTopSpace.constant = 190
+                        self.loginSubViewHeight.constant = 429
+                        
+                    }else if otpSubmitView.text?.count == 0{
+                        self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
+                    }else if enteredValue != self.receivedOTP{
+                        print(enteredValue)
+                        print(receivedOTP)
+                        self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
+                        otpSubmitView.text = ""
+                    }else{
+                        
+                        // Login Submission Api
+                        let parameter = [
+                            "LoggedDeviceName": "IOS",
+                            "UserActionType": "GetPasswordDetails",
+                            "Password": "123456",
+                            "Browser": "IOS",
+                            "PushID": "",
+                            "UserType": "Customer",
+                            "UserName": self.membershipIdTF.text ?? ""
+                        ] as [String: Any]
+                        print(parameter)
+                        self.VM.loginSubmissionApi(parameter: parameter)
+                        
+                    }
+                }else{
+                    if submitBtnStatus == 0{
+                        if self.membershipIdTF.text!.count == 10{
+                            let parameterJSON = [
+                                "Location": [
+                                    "UserName": self.membershipIdTF.text ?? ""
+                                ],
+                                "ActionType": "68"
+                            ] as [String:Any]
+                            print(parameterJSON)
+                            self.VM.verifyMobileNumberAPI1(paramters: parameterJSON)
+                        }else{
+                            self.view.makeToast("Entervalidmobilernumber".localiz(),duration: 2.0,position: .center)
+                        }
+                    }else if otpSubmitView.text?.count == 0{
+                        self.view.makeToast("EnterOTP".localiz(),duration: 2.0,position: .center)
+                    }else if enteredValue != self.receivedOTP{
+                        self.view.makeToast("EnterCorrectOTP".localiz(),duration: 2.0,position: .center)
+                        otpSubmitView.text = ""
+                    } else{
+                        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferalVC") as? EBC_RefferalVC
+                        vc?.enteredMobile = self.membershipIdTF.text ?? ""
+                        navigationController?.pushViewController(vc!, animated: true)
+                    }
+                    
                 }
                 
             }
-            
         }
     }
+    
+    
+    func tokendata(){
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            }else{
+                let parameters : Data = "username=\(username)&password=\(password)&grant_type=password".data(using: .utf8)!
+
+            let url = URL(string: tokenURL)!
+            let session = URLSession.shared
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+
+            do {
+                 request.httpBody = parameters
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+           
+            let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+
+                guard error == nil else {
+                    return
+                }
+                guard let data = data else {
+                    return
+                }
+                do{
+                    let parseddata = try JSONDecoder().decode(TokenModels.self, from: data)
+                        print(parseddata.access_token ?? "")
+                        UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
+                     }catch let parsingError {
+                    print("Error", parsingError)
+                }
+            })
+            task.resume()
+        }
+        }
+    
+    
     
     
     

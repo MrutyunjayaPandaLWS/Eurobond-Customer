@@ -27,8 +27,8 @@ class EBC_SuccessMessageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.itsComeFrom == "Registration"{
-            self.statusLbl.text = "Thank you !!"
-            self.messageLbl.text = "for registering to the EuroBond Cement Program. Our Executive will contact you for verification."
+            self.statusLbl.text = "Thank you !"
+            self.messageLbl.text = "For registering to the Eurobond Program. Our Executive will contact you for verification."
         }
         
     }

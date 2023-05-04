@@ -10,7 +10,9 @@ import DPOTPView
 import Toast_Swift
 import LanguageManager_iOS
 
-class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
+class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate, popUpAlertDelegate  {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
 
        func accept(_ vc: HR_TermsandCondtionVC) {
             self.chechBox2Btn.setImage(UIImage(named: "fillcheckbox"), for: .normal)
@@ -92,14 +94,25 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate  {
         if self.userNameTF.text?.count == 0 {
             self.view.makeToast("EntermembershipId".localiz(), duration: 2.0, position: .center)
         }else{
-            let parameter = [
-                "Location": [
-                    "UserName": self.userNameTF.text ?? ""
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                DispatchQueue.main.async{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                    vc!.delegate = self
+                    vc!.titleInfo = ""
+                    vc!.descriptionInfo = "No Internet Connection".localiz()
+                    vc!.modalPresentationStyle = .overCurrentContext
+                    vc!.modalTransitionStyle = .crossDissolve
+                    self.present(vc!, animated: true, completion: nil)
+                }
+            }else{
+                let parameter = [
+                    "Location": [
+                        "UserName": self.userNameTF.text ?? ""
                     ],
                     "ActionType": "69"
-            ] as [String: Any]
-            self.VM.verifyMobileNumberAPI(paramters: parameter)
-            
+                ] as [String: Any]
+                self.VM.verifyMobileNumberAPI(paramters: parameter)
+            }
         }
     }
     

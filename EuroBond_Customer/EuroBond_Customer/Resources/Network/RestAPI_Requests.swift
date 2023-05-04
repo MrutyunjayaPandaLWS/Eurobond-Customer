@@ -855,6 +855,47 @@ class RestAPI_Requests {
         }
     }
     
+    func projectCatalogeAPI(parameters: JSON, completion: @escaping (ProjectCatalogeModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: getProductDetails_URLMethode, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(ProjectCatalogeModels.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
     
+    
+    func projectCatalogeDetailsAPI(parameters: JSON, completion: @escaping (ProjectCatalogeDetailsModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: getProductDetails_URLMethode, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(ProjectCatalogeDetailsModels.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
+    //Pan verify
+    
+    func panVerifyApi(parameters: JSON, completion: @escaping (PanModels?, Error?) -> ()) -> URLSessionDataTask? {
+       return client.load(path: panMethodName, method: .post, params: parameters) { data, error in
+           do{
+               if data != nil{
+                   let result1 =  try JSONDecoder().decode(PanModels?.self, from: data as! Data)
+                   completion(result1, nil)
+               }
+           }catch{
+               completion(nil, error)
+           }
+       }
+    }
 }
 

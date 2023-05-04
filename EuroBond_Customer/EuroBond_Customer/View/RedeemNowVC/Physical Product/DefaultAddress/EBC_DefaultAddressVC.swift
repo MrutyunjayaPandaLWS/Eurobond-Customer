@@ -113,7 +113,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         print(self.totalPoint)
        // self.loaderView.isHidden = true
         if self.dreamGiftID != 0 {
-            self.totalPoints.text = "\(self.totalPoint) Euros"
+            self.totalPoints.text = "\(Int(self.totalPoint)) Euros"
         }else{
             self.myCartListAPI()
         }

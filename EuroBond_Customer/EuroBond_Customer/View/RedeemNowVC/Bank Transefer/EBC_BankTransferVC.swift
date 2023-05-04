@@ -9,7 +9,7 @@ import UIKit
 import Lottie
 class EBC_BankTransferVC: BaseViewController {
 
-    @IBOutlet weak var comingSoon: LottieAnimationView!
+    @IBOutlet weak var comingSoon: UIView!
     @IBOutlet weak var bankTransferBtn: UIButton!
     @IBOutlet weak var amountTF: UITextField!
     @IBOutlet weak var amountLbl: UILabel!
@@ -21,9 +21,17 @@ class EBC_BankTransferVC: BaseViewController {
     @IBOutlet weak var accountNumberTF: UITextField!
     @IBOutlet weak var accountLbl: UILabel!
     @IBOutlet weak var bankTransferInfo: UILabel!
+    
+    
+    @IBOutlet var lowBalanceLbl: UILabel!
+    
+    @IBOutlet var lowBalanceImg: UIImageView!
+    
+    @IBOutlet var lowBalanceInfoLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        lottieAnimation(animationView: comingSoon)
+       // lottieAnimation(animationView: comingSoon)
         
     }
     

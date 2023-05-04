@@ -13,7 +13,16 @@ class EBC_SearchProjectCVC: UICollectionViewCell {
     
     @IBOutlet weak var projectName: UILabel!
     
-    @IBOutlet weak var logoImage: UIImageView!
+    
+    @IBOutlet var productColorLbl: UILabel!
+    
+    
+    @IBOutlet var productColorDataLbl: UILabel!
+    
+    @IBOutlet var productColorCodeTitleLbl: UILabel!
+    
+    @IBOutlet var productColorCodeDataLbl: UILabel!
+    
     
     
     

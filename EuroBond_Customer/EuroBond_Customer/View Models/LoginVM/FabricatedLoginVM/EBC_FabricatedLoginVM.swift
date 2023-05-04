@@ -89,13 +89,13 @@ class EBC_FabricatedLoginVM {
                             }else if loginResponse[0].isDelete ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 3 || loginResponse[0].verifiedStatus ?? -1 == 4{
                                 self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 0 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 0{
-                                self.VC!.view.makeToast("Your account is not activated! Kindly activate your account.".localiz(), duration: 2.0, position: .bottom)
+                                self.VC!.view.makeToast("Your account is not activated! Kindly activate your account".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 4{
                                 self.VC!.view.makeToast("Your account has been deactivated! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].verifiedStatus ?? -1 == 2 {
                                 self.VC!.view.makeToast("Your account verification is failed!, Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else{
-                                if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 1{
+                                if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 4{
                                     UserDefaults.standard.setValue(loginResponse[0].userId ?? -1, forKey: "UserID")
                                     UserDefaults.standard.setValue(2, forKey: "IsloggedIn?")
                                     
@@ -108,6 +108,8 @@ class EBC_FabricatedLoginVM {
                                             appDelegate.setHomeAsRootViewController2()
                                         }
                                     }
+                                }else{
+                                    self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                                 }
 
                             }

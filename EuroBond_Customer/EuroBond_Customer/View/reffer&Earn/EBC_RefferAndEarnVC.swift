@@ -27,6 +27,9 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.VM.VC = self
         self.mobileNumberTF.delegate = self
+        self.nameTF.delegate = self
+        self.mobileNumberTF.keyboardType = .numberPad
+        self.nameTF.keyboardType = .asciiCapable
         NotificationCenter.default.addObserver(self, selector: #selector(fromSubmission), name: Notification.Name.navigateToDashboard, object: nil)
         referalCodeLbl.text = referralCode
         localizSetup()
@@ -77,6 +80,35 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
         }
     }
     
+
+    
+    
+    
+    @IBAction func mobileNumberDidEndAct(_ sender: Any) {
+        
+        if self.mobileNumberTF.text?.count == 10{
+                let parameterJSON = [
+                    "Location": [
+                        "UserName": self.mobileNumberTF.text ?? ""
+                    ],
+                    "ActionType": "68"
+                ] as [String:Any]
+                print(parameterJSON)
+                self.VM.verifyMobileNumberAPI(paramters: parameterJSON)
+            
+        }else{
+            self.view.makeToast("Entervalidmobilernumber".localiz(), duration: 2.0, position: .bottom)
+            self.mobileNumberTF.text = ""
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     @IBAction func selectCopyBtn(_ sender: UIButton) {
         self.view.makeToast("Text Copied".localiz(), duration: 2.0,position: .bottom)
         UIPasteboard.general.string = "\(referralCode)"
@@ -91,15 +123,26 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let maxLength = 10
-        if textField == mobileNumberTF{
-            let currentString: NSString = (mobileNumberTF.text ?? "") as NSString
-            let newString: NSString =
-            currentString.replacingCharacters(in: range, with: string) as NSString
-            return newString.length <= maxLength
+        if textField == mobileNumberTF {
+            let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
+            if string == numberFiltered {
+                let currentText = mobileNumberTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 10
+            } else {
+                return false
+            }
+        }else if textField == nameTF{
+            let currentText = nameTF.text ?? ""
+            guard let stringRange = Range(range, in: currentText) else { return false }
+            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+            return updatedText.count <= 30
+        }else{
+            return false
         }
-        return true
     }
-    
-    
 }

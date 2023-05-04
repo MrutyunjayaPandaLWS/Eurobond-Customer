@@ -66,3 +66,5 @@ let customerAccountDelete = "CustomerAccountDelete"
 
 let historyNotification = "GetPushHistoryDetails"
 let deleteAccount_URLMethodName = "CustomerAccountDelete"
+let getProductDetails_URLMethode = "GetProductDetails"
+let panMethodName = "ValidatePanDetails"

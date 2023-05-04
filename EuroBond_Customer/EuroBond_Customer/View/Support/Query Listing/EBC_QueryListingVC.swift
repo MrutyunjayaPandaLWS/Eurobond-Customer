@@ -72,7 +72,7 @@ class EBC_QueryListingVC: BaseViewController, UITableViewDelegate, UITableViewDa
         }else if VM.queryListingArray[indexPath.row].ticketStatus ?? "" == "Resolved"{
             cell.statusLbl.text = "Resolved"
             cell.statusLbl.textColor = UIColor.black
-            cell.statusLbl.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.4823529412, blue: 0.7450980392, alpha: 1)
+            cell.statusLbl.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
             cell.statusLbl.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }else if VM.queryListingArray[indexPath.row].ticketStatus ?? "" == "Resolved-Follow Up"{
             cell.statusLbl.text = " Resolved-Follow Up"
@@ -89,8 +89,7 @@ class EBC_QueryListingVC: BaseViewController, UITableViewDelegate, UITableViewDa
             cell.statusLbl.textColor = UIColor.black
             cell.statusLbl.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
             cell.statusLbl.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        }
-        else{
+        }else{
             cell.statusLbl.text = VM.queryListingArray[indexPath.row].ticketStatus ?? ""
             cell.statusLbl.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             cell.statusLbl.textColor = UIColor.black

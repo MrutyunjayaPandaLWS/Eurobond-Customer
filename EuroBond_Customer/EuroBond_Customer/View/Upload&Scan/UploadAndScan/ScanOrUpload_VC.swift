@@ -15,8 +15,11 @@ import AVFoundation
 import CoreLocation
 import CoreData
 import Firebase
+import LanguageManager_iOS
 
-class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate, UITextFieldDelegate, popUpDelegate1 {
+class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate, UITextFieldDelegate, popUpDelegate1, popUpAlertDelegate {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
 
     @IBOutlet var codeCountView: UIView!	
@@ -86,7 +89,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         self.countLabel.cornerRadius = countLabel.frame.width/2
         self.codeCountView.cornerRadius = codeCountView.frame.width/2
         self.scanQRCodeButton.setTitleColor(selectedUploadColor, for: .normal)
-        self.codeTF.keyboardType = .numberPad
+        self.codeTF.keyboardType = .asciiCapable
         BottomView.clipsToBounds = true
         BottomView.layer.cornerRadius = 24
         BottomView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -231,10 +234,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             print(self.codeLIST.count, "Count")
 
             if self.codeLIST.count != 0{
+                self.BottomView.isHidden = false
+                self.codeCountView.isHidden = false
                 self.countLabel.isHidden = false
                 self.countLabel.text = "\(self.codeLIST.count)"
             }else{
+                self.BottomView.isHidden = true
                 self.countLabel.isHidden = true
+                self.codeCountView.isHidden = true
             }
 
         }catch{
@@ -243,47 +250,60 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     }
     
     @objc func codesSubmission(notification: Notification){
-        for item in self.codeLIST {
-            let singleImageDict:[String:Any] = [
-                "QRCode": item.code ?? "",
-                "ScanType": 1,
-                "Latitude": item.latitude ?? "",
-                "Longitude": item.longitude ?? ""
-            ]
-            self.newproductArray.append(singleImageDict)
-                }
-        self.parameterJSON = [
-            
-            "Address": "\(self.addressString)",
-            "City": "\(self.city)",
-            "Country": "\(self.country)",
-            "Latitude": "\(self.currentlocation.coordinate.latitude)",
-            "Longitude": "\(self.currentlocation.coordinate.longitude)",
-            "LoyaltyID": "\(loyaltyId)",
-            "PinCode": "\(self.pincode)",
-            "QRCodeSaveRequestList": self.newproductArray as [[String:Any]],
-                "SourceType": "1",
-            "State": ""
-        ]
-        print(self.parameterJSON ?? "")
-        
-        if self.scanQRCodeButton.currentTitle == "Upload QR Code" ||  self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" ||  self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" ||  self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
-            self.isFrom = 1
-            self.session.stopRunning()
-            self.codeTF.text = ""
-            self.scannerView.isHidden = false
-            self.session.stopRunning()
-            self.fetchDetails()
-            self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
-            return
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
         }else{
-            self.isFrom = 0
-            self.fetchDetails()
-            self.codeTF.text = ""
-            self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
-            return
+            
+            for item in self.codeLIST {
+                let singleImageDict:[String:Any] = [
+                    "QRCode": item.code ?? "",
+                    "ScanType": 1,
+                    "Latitude": item.latitude ?? "",
+                    "Longitude": item.longitude ?? ""
+                ]
+                self.newproductArray.append(singleImageDict)
+            }
+            self.parameterJSON = [
+                
+                "Address": "\(self.addressString)",
+                "City": "\(self.city)",
+                "Country": "\(self.country)",
+                "Latitude": "\(self.currentlocation.coordinate.latitude)",
+                "Longitude": "\(self.currentlocation.coordinate.longitude)",
+                "LoyaltyID": "\(loyaltyId)",
+                "PinCode": "\(self.pincode)",
+                "QRCodeSaveRequestList": self.newproductArray as [[String:Any]],
+                "SourceType": "1",
+                "State": ""
+            ]
+            print(self.parameterJSON ?? "")
+            
+            if self.scanQRCodeButton.currentTitle == "Upload QR Code" ||  self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" ||  self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" ||  self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
+                self.isFrom = 1
+                self.session.stopRunning()
+                self.codeTF.text = ""
+                self.scannerView.isHidden = false
+                self.session.stopRunning()
+                self.fetchDetails()
+                self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
+                return
+            }else{
+                self.isFrom = 0
+                self.fetchDetails()
+                self.codeTF.text = ""
+                self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
+                return
+            }
+            
         }
-        
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -397,15 +417,30 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     
     @IBAction func closeScreen(_ sender: Any) {
-        clearTable()
-        self.session.stopRunning()
-        if self.fromSideMenu == "SideMenu"{
-            self.dismiss(animated: true){
-                NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
             }
         }else{
-            self.dismiss(animated: true){
-                NotificationCenter.default.post(name: .goToParticularVc, object: nil)
+            //clearTable()
+            if self.codeLIST.count != 0{
+                NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+            }
+            self.session.stopRunning()
+            if self.fromSideMenu == "SideMenu"{
+                self.dismiss(animated: true){
+                    NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+                }
+            }else{
+                self.dismiss(animated: true){
+                    NotificationCenter.default.post(name: .goToParticularVc, object: nil)
+                }
             }
         }
         
@@ -419,7 +454,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             self.fetchDetails()
             if self.codeTF.text != ""{
-                if self.codeTF.text?.count == 12{
+                if self.codeTF.text?.count == 12 || self.codeTF.text?.count == 10{
                     if self.codeLIST.count == 0{
                         print("UploadCode")
                         let date = Date()
@@ -457,7 +492,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                self.present(vc!, animated: true, completion: nil)
                             }
                         }else{
-                            if self.codeLIST.count <= 14{
+                            if self.codeLIST.count <= 19{
                                 let date = Date()
                                 let formatter = DateFormatter()
                                 formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
@@ -473,11 +508,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }else{
                                 
                                
-                                let alert = UIAlertController(title: "", message: "Offline scanning limit exceeded".localiz(), preferredStyle: UIAlertController.Style.alert)
+                                let alert = UIAlertController(title: "", message: "Your scanning limit exceeded".localiz(), preferredStyle: UIAlertController.Style.alert)
                                 alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
                                             self.codeTF.text = ""
                                             self.session.stopRunning()
+                                    if self.codeLIST.count <= 19{
                                         NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+                                    }
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                     
@@ -489,13 +526,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                     }
                     
                 }else{
-                        let alert = UIAlertController(title: "", message: "QR Code length should be 12".localiz(), preferredStyle: UIAlertController.Style.alert)
+                
+                        let alert = UIAlertController(title: "", message: "QR Code length should be 10 or 12".localiz(), preferredStyle: UIAlertController.Style.alert)
                         alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
-                                self.codeTF.text = ""
-                                self.session.stopRunning()
-                            }))
-                            self.present(alert, animated: true, completion: nil)
-                        
+                            self.codeTF.text = ""
+                            self.session.stopRunning()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    
                     
                     
                 }
@@ -504,10 +542,6 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 let alert = UIAlertController(title: "", message: "Enter the QR Code".localiz(), preferredStyle: UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
-                    
-               
-                
-                
             }
             
         }else{
@@ -537,7 +571,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     }
     
     @IBAction func backButton(_ sender: Any) {
-        clearTable()
+        //clearTable()
         self.session.stopRunning()
         if self.fromSideMenu == "SideMenu"{
 //            self.dismiss(animated: true){
@@ -691,18 +725,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-      let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
-      let compSepByCharInSet = string.components(separatedBy: aSet)
-      let numberFiltered = compSepByCharInSet.joined(separator: "")
+//      let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+//      let compSepByCharInSet = string.components(separatedBy: aSet)
+//      let numberFiltered = compSepByCharInSet.joined(separator: "")
 
-      if string == numberFiltered {
+//      if string == numberFiltered {
         let currentText = codeTF.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
         return updatedText.count <= 12
-      } else {
-        return false
-      }
+//      } else {
+//        return false
+//      }
     }
     func authorizelocationstates(){
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
@@ -762,7 +796,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                         let compareCodes = self.codeLIST.filter({$0.code == self.CapturedCodess})
                                         self.session.stopRunning()
                                         AudioServicesPlaySystemSound(1103)
-                                        if self.codeLIST.count <= 14{
+                                        if self.codeLIST.count <= 19{
                                             if compareCodes.count == 0{
                                                 print("Success")
                                                 let date = Date()

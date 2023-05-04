@@ -9,7 +9,9 @@ import UIKit
 import CoreData
 import Lottie
 
-class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate{
+class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate, popUpAlertDelegate{
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
     func removeScannedCode(_ cell: ScannedCode_TVC) {
         guard let tappedIndexPath = scannedCodesTableView.indexPath(for: cell) else {return}
         let photosToRemove = self.codeLIST[tappedIndexPath.row]
@@ -60,6 +62,17 @@ class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate{
         self.scannedCodesTableView.delegate = self
         self.scannedCodesTableView.dataSource = self
         languagelocalization()
+
+//        if self.codeLIST.count != 0{
+//            DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+//                NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+//
+//            })
+//        }else{
+//            print("No Array")
+//
+//            }
+        
     }
     
     override func touchesBegan(_ touchscreen: Set<UITouch>, with event: UIEvent?)
@@ -118,95 +131,107 @@ class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate{
     
     
     @IBAction func submitBTN(_ sender: Any) {
-        if self.codeLIST.count == 0 {
-            if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                let alertController = UIAlertController(title: "Submit without scan Upload QR", message: "Please scan/upload QR code", preferredStyle: .alert)
-
-                // Create the actions
-                let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                    NSLog("OK Pressed")
-                    self.dismiss(animated: true){
-                        NotificationCenter.default.post(name: .restartScan, object: nil)
-                    }
-
-                }
-                alertController.addAction(okAction)
-
-                // Present the controller
-                self.present(alertController, animated: true, completion: nil)
-             }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                 let alertController = UIAlertController(title: "स्कैन के बिना सबमिट करें QR अपलोड करें", message: "कृपया QR कोड स्कैन/अपलोड करें", preferredStyle: .alert)
-
-                 // Create the actions
-                 let okAction = UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default) {
-                     UIAlertAction in
-                     NSLog("OK Pressed")
-                     self.dismiss(animated: true){
-                         NotificationCenter.default.post(name: .restartScan, object: nil)
-                     }
-                 }
-                 alertController.addAction(okAction)
-
-                 // Present the controller
-                 self.present(alertController, animated: true, completion: nil)
-            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                let alertController = UIAlertController(title: "স্ক্যান ছাড়াই জমা দিন QR আপলোড করুন", message: "অনুগ্রহ করে QR কোড স্ক্যান/আপলোড করুন", preferredStyle: .alert)
-
-                // Create the actions
-                let okAction = UIAlertAction(title: "ওকে", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                    NSLog("OK Pressed")
-                    self.dismiss(animated: true){
-                        NotificationCenter.default.post(name: .restartScan, object: nil)
-                    }
-
-                }
-                alertController.addAction(okAction)
-
-                // Present the controller
-                self.present(alertController, animated: true, completion: nil)
-            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
-                let alertController = UIAlertController(title: "స్కాన్ లేకుండా సమర్పించండి అప్‌లోడ్ QR", message: "దయచేసి QR కోడ్‌ని స్కాన్/అప్‌లోడ్ చేయండి", preferredStyle: .alert)
-
-                // Create the actions
-                let okAction = UIAlertAction(title: "సరే", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                    NSLog("OK Pressed")
-                    self.dismiss(animated: true){
-                        NotificationCenter.default.post(name: .restartScan, object: nil)
-                    }
-
-                }
-                alertController.addAction(okAction)
-
-                // Present the controller
-                self.present(alertController, animated: true, completion: nil)
-            }else{
-                let alertController = UIAlertController(title: "Submit without scan Upload QR", message: "Please scan/upload QR code", preferredStyle: .alert)
-
-                // Create the actions
-                let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default) {
-                    UIAlertAction in
-                    NSLog("OK Pressed")
-                    self.dismiss(animated: true){
-                        NotificationCenter.default.post(name: .restartScan, object: nil)
-                    }
-
-                }
-                alertController.addAction(okAction)
-
-                // Present the controller
-                self.present(alertController, animated: true, completion: nil)
-             }
-           
-        }else{
-            self.startLoading()
-            DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
-                NotificationCenter.default.post(name: .CodeSubmission, object: nil)
-                     
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
             }
-        )}
+        }else{
+            if self.codeLIST.count == 0 {
+                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                    let alertController = UIAlertController(title: "Submit without scan Upload QR", message: "Please scan/upload QR code", preferredStyle: .alert)
+                    
+                    // Create the actions
+                    let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("OK Pressed")
+                        self.dismiss(animated: true){
+                            NotificationCenter.default.post(name: .restartScan, object: nil)
+                        }
+                        
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.present(alertController, animated: true, completion: nil)
+                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                    let alertController = UIAlertController(title: "स्कैन के बिना सबमिट करें QR अपलोड करें", message: "कृपया QR कोड स्कैन/अपलोड करें", preferredStyle: .alert)
+                    
+                    // Create the actions
+                    let okAction = UIAlertAction(title: "ठीक", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("OK Pressed")
+                        self.dismiss(animated: true){
+                            NotificationCenter.default.post(name: .restartScan, object: nil)
+                        }
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.present(alertController, animated: true, completion: nil)
+                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                    let alertController = UIAlertController(title: "স্ক্যান ছাড়াই জমা দিন QR আপলোড করুন", message: "অনুগ্রহ করে QR কোড স্ক্যান/আপলোড করুন", preferredStyle: .alert)
+                    
+                    // Create the actions
+                    let okAction = UIAlertAction(title: "ওকে", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("OK Pressed")
+                        self.dismiss(animated: true){
+                            NotificationCenter.default.post(name: .restartScan, object: nil)
+                        }
+                        
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.present(alertController, animated: true, completion: nil)
+                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
+                    let alertController = UIAlertController(title: "స్కాన్ లేకుండా సమర్పించండి అప్‌లోడ్ QR", message: "దయచేసి QR కోడ్‌ని స్కాన్/అప్‌లోడ్ చేయండి", preferredStyle: .alert)
+                    
+                    // Create the actions
+                    let okAction = UIAlertAction(title: "సరే", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("OK Pressed")
+                        self.dismiss(animated: true){
+                            NotificationCenter.default.post(name: .restartScan, object: nil)
+                        }
+                        
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.present(alertController, animated: true, completion: nil)
+                }else{
+                    let alertController = UIAlertController(title: "Submit without scan Upload QR", message: "Please scan/upload QR code", preferredStyle: .alert)
+                    
+                    // Create the actions
+                    let okAction = UIAlertAction(title: "ok", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        NSLog("OK Pressed")
+                        self.dismiss(animated: true){
+                            NotificationCenter.default.post(name: .restartScan, object: nil)
+                        }
+                        
+                    }
+                    alertController.addAction(okAction)
+                    
+                    // Present the controller
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            }else{
+                self.startLoading()
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+                    NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+                    
+                }
+                )}
+        }
        
     }
     @IBAction func closeBTN(_ sender: Any) {
@@ -224,7 +249,7 @@ class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate{
     
     
     func fetchDetails(){
-        self.codeLIST.removeAll()
+        //self.codeLIST.removeAll()
         let fetchRequest:NSFetchRequest<ScanCodeSTORE> = ScanCodeSTORE.fetchRequest()
         do{
             self.codeLIST = try persistanceservice.context.fetch(fetchRequest)

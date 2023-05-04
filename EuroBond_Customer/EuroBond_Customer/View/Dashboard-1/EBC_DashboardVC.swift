@@ -95,7 +95,7 @@ class EBC_DashboardVC: BaseViewController {
         gameZoneLbl.text = "Game Zone".localiz()
         shemesAndOffersLbl.text = "Schemes".localiz()
         referAndEarnLbl.text = "Refer & Earn".localiz()
-        eurobondsLbl.text = "Eurobond".localiz()
+        eurobondsLbl.text = "EurobondProfile".localiz()
         helplineLbl.text = "Helpline".localiz()
         codeStatusLbl.text = "Code Status".localiz()
         myredemptionLbl.text = "My Redemption".localiz()
@@ -196,7 +196,7 @@ class EBC_DashboardVC: BaseViewController {
             }
             imageSlideShow.setImageInputs(self.sourceArray)
             imageSlideShow.slideshowInterval = 3.0
-            imageSlideShow.zoomEnabled = true
+            imageSlideShow.zoomEnabled = false
             imageSlideShow.contentScaleMode = .scaleToFill
 //            bannerImage.pageControl.currentPageIndicatorTintColor = UIColor(red: 230/255, green: 27/255, blue: 34/255, alpha: 1)
 //            bannerImage.pageControl.pageIndicatorTintColor = UIColor.lightGray
@@ -208,9 +208,9 @@ class EBC_DashboardVC: BaseViewController {
         }
     }
     @objc func didTap() {
-        if self.offerimgArray.count > 0 {
-            imageSlideShow.presentFullScreenController(from: self)
-        }
+        //if self.offerimgArray.count > 0 {
+            //imageSlideShow.presentFullScreenController(from: self)
+       // }
     }
     
     @objc func codeStatus(notification: Notification){

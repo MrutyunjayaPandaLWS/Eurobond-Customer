@@ -50,6 +50,7 @@ class EBC_MyAssistantRegisterVM{
                         self.VC?.stopLoading()
                         self.VC?.view.makeToast("Already Mobile number doesn't exists".localiz(), duration: 2.0, position: .bottom)
                         self.VC?.mobileNumberTF.text = ""
+                        self.VC?.nameTF.text = ""
                         
                     }
                 }else{

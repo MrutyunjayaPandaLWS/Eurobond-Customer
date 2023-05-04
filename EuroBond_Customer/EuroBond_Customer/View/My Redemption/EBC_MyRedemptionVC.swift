@@ -234,6 +234,11 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
             cell.statusLbl.textColor = UIColor.white
             cell.statusView.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
             cell.statusView.borderColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        }else if self.VM.myredemptionArray[indexPath.row].status ?? 0 == 5 {
+            cell.statusLbl.text = "  Rejected  "
+            cell.statusLbl.textColor = UIColor.white
+            cell.statusView.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+            cell.statusView.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }else if self.VM.myredemptionArray[indexPath.row].status ?? 0 == 7 {
             cell.statusLbl.text = "  Returned  "
             cell.statusLbl.textColor = UIColor.white

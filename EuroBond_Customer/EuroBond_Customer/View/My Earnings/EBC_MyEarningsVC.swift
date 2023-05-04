@@ -155,7 +155,15 @@ extension EBC_MyEarningsVC: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_MyEarningTVC", for: indexPath) as! EBC_MyEarningTVC
         cell.selectionStyle = .none
         cell.pointsLbl.text = "\(Int(self.VM.myEarningListArray[indexPath.row].rewardPoints ?? 0))"
-        cell.statusLbl.text = "\(self.VM.myEarningListArray[indexPath.row].status ?? "-")"
+        //cell.statusLbl.text = "\(self.VM.myEarningListArray[indexPath.row].status ?? "-")"
+        
+        let ststusData = self.VM.myEarningListArray[indexPath.row].isNotionalId ?? 0
+        if ststusData == 1 {
+            cell.statusLbl.text = "Notional"
+        }else{
+            cell.statusLbl.text = "Redeemable"
+        }
+        
         if self.VM.myEarningListArray[indexPath.row].transactionType ?? "" == "BONUS"{
             cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].bonusName ?? ""
         }else{

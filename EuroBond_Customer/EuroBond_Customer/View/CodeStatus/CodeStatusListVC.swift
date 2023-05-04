@@ -135,8 +135,8 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
                 data.isSelected = 0
                 self.enableToNavigate = 0
                 self.selectedAllProduct = 1
-                self.headerQuestionMark.isHidden = true
-                self.headerNotes.isHidden = true
+                self.headerQuestionMark.isHidden = false
+                self.headerNotes.isHidden = false
                 self.codesCollectionsArray.append(SelectedCodeModels(uplodedCode: data.uploadedCode, codeStatus: data.codeStatus, codeUploadedDate: data.codeUploadedDate, isSelected: data.isSelected))
             }
             self.headerCheckBox.setImage(UIImage(named: "rectangle-2"), for: .normal)
@@ -250,7 +250,7 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     }
     @IBAction func syncStatusListBTN(_ sender: Any) {
         if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.headerText.text = "Syc Status"
+            self.headerText.text = "Sync Status"
         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
             self.headerText.text = "सिंक स्थिति"
             
@@ -258,7 +258,7 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
             self.headerText.text = "সিঙ্ক স্থিতি"
             
         }else{
-            self.headerText.text = "Syc Status"
+            self.headerText.text = "Sync Status"
             
         }
         self.codeStatusBTN.backgroundColor =  #colorLiteral(red: 0.9064666033, green: 0.9463894963, blue: 0.9929038882, alpha: 1)
@@ -282,8 +282,8 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
             self.headerCheckBox.setImage(UIImage(named: "rectangle-2"), for: .normal)
 //        }
         self.syncStatusView.isHidden = false
-        self.headerQuestionMark.isHidden = true
-        self.headerNotes.isHidden = true
+        self.headerQuestionMark.isHidden = false
+        self.headerNotes.isHidden = false
         fetchDetails()
         
     }
@@ -317,8 +317,8 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
                     self.headerQuestionMark.isHidden = false
                     self.headerNotes.isHidden = false
                 }else{
-                    self.headerQuestionMark.isHidden = true
-                    self.headerNotes.isHidden = true
+                    self.headerQuestionMark.isHidden = false
+                    self.headerNotes.isHidden = false
                 }
                 self.headerCheckBox.setImage(UIImage(named: "rectangle-2"), for: .normal)
                 print("After Remove Selected Query", self.querySummary.count)

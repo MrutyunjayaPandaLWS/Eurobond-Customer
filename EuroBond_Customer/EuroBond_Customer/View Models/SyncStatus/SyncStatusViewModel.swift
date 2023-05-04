@@ -13,6 +13,7 @@ class SyncStatusViewModel{
     var syncCodeArray = [QrUsegereport]()
     
     func syncStatusListingAPI(parameters: JSON){
+        self.VC?.codesCollectionsArray.removeAll()
         self.VC?.startLoading()
         self.requestAPIs.syncCodeListApi(parameters: parameters) { (result, error) in
             if error == nil{

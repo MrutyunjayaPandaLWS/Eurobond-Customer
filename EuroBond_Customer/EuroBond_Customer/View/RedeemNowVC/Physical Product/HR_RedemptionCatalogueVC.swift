@@ -172,7 +172,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     
     var selectedPtsRange = ""
     var selectedPtsRange1 = ""
-    var filterByRangeArray = ["All Points", "Under 1000 pts", "1000 - 4999 pts", "5000 - 24999 pts", "25000 & Above pts"]
+    var filterByRangeArray = ["All Euros", "Under 1000", "1000 - 4999", "5000 - 24999", "25000 & Above"]
     var sortedBy = 0
     var itsFrom = "Search"
     var parameters : JSON?
@@ -183,7 +183,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         self.VM.VC = self
 //        self.productCategoryCollectionView.reloadData()
 
-      
+        self.highToLowBtn.backgroundColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
         let collectionViewFLowLayout1 = UICollectionViewFlowLayout()
         collectionViewFLowLayout1.scrollDirection = .horizontal
         collectionViewFLowLayout1.minimumLineSpacing = 0
@@ -291,15 +291,15 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
           
                 
                 if self.selectedPtsRange == ""{
-                    self.selectedPtsRange1 = "All Points"
+                    self.selectedPtsRange1 = "All Euros"
                 }else if self.selectedPtsRange == "0-999"{
-                    self.selectedPtsRange1 = "Under 1000 pts"
+                    self.selectedPtsRange1 = "Under 1000"
                 }else if self.selectedPtsRange1 == "1000-4999"{
-                    self.selectedPtsRange1 = "1000 - 4999 pts"
+                    self.selectedPtsRange1 = "1000 - 4999"
                 }else if self.selectedPtsRange == "5000-24999"{
-                    self.selectedPtsRange1 = "5000 - 24999 pts"
+                    self.selectedPtsRange1 = "5000 - 24999"
                 }else if self.selectedPtsRange == "25000 - 999999999"{
-                    self.selectedPtsRange1 = "25000 & Above pts"
+                    self.selectedPtsRange1 = "25000 & Above"
                 }
                 self.startIndex = 1
                 self.categoriesId = 2
@@ -465,7 +465,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         self.searchViewHeight.constant = 0
         self.separatorLbl.isHidden = false
         self.itsFrom = "PtsRange"
-        self.selectedPtsRange1 = "All Points"
+        self.selectedPtsRange1 = "All Euros"
         self.selectedPtsRange = ""
         self.startIndex = 1
         self.categoriesId = 2
@@ -611,18 +611,18 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                     }else{
                         //self.categoryId = -1
                         self.categoriesId = 2
-                        self.selectedPtsRange1 = "All Points"
+                        self.selectedPtsRange1 = "All Euros"
                         self.selectedPtsRange1 = "\(self.filterByRangeArray[indexPath.row])"
                         print(self.selectedPtsRange1)
-                        if self.selectedPtsRange1 == "All Points"{
+                        if self.selectedPtsRange1 == "All Euros"{
                             self.selectedPtsRange = ""
-                        }else if self.selectedPtsRange1 == "Under 1000 pts"{
+                        }else if self.selectedPtsRange1 == "Under 1000"{
                             self.selectedPtsRange = "0-999"
-                        }else if self.selectedPtsRange1 == "1000 - 4999 pts"{
+                        }else if self.selectedPtsRange1 == "1000 - 4999"{
                             self.selectedPtsRange = "1000-4999"
-                        }else if self.selectedPtsRange1 == "5000 - 24999 pts"{
+                        }else if self.selectedPtsRange1 == "5000 - 24999"{
                             self.selectedPtsRange = "5000-24999"
-                        }else if self.selectedPtsRange1 == "25000 & Above pts"{
+                        }else if self.selectedPtsRange1 == "25000 & Above"{
                             self.selectedPtsRange = "25000 - 999999999"
                         }
                         self.VM.catalgoueListArray.removeAll()

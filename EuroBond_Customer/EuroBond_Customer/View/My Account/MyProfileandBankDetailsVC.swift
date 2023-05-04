@@ -294,11 +294,17 @@ extension MyProfileandBankDetailsVC: CropperViewControllerDelegate {
         self.myProfileImg.image = image
         self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
         print(strdata1,"kdjgjhdsj")
+        
+        //{"ActionType":"159","ObjCustomerJson":{"DisplayImage":"",}}
+        
+        
         let parameters = [
+            "ActorId":"102",
             "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
             "ObjCustomerJson": [
                 "DisplayImage": strdata1,
-                "LoyaltyId": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
+                //"LoyaltyId": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
+                "Domain":"EuroBond"
             ]
         ]as [String : Any]
         print(parameters)

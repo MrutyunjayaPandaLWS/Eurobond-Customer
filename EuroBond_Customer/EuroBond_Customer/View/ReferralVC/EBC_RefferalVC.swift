@@ -9,7 +9,7 @@ import UIKit
 import Toast_Swift
 import LanguageManager_iOS
 
-class EBC_RefferalVC: BaseViewController {
+class EBC_RefferalVC: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var verifyBtn: UIButton!
     @IBOutlet weak var SkipBtn: UIButton!
@@ -31,6 +31,7 @@ class EBC_RefferalVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localizSetup()
+        self.enterCodeTF.delegate = self
     }
     
     func localizSetup(){
@@ -119,4 +120,17 @@ class EBC_RefferalVC: BaseViewController {
         })
         task.resume()
     }
+    
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let currentText = enterCodeTF.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 6
+
+    }
+    
+    
+    
 }

@@ -170,9 +170,9 @@ class EBC_Dashboard_2_VC: BaseViewController {
         }
     }
     @objc func didTap() {
-        if self.offerimgArray.count > 0 {
-            imageSlideShow.presentFullScreenController(from: self)
-        }
+//        if self.offerimgArray.count > 0 {
+//            imageSlideShow.presentFullScreenController(from: self)
+//        }
     }
 //
     func tokendata(){
