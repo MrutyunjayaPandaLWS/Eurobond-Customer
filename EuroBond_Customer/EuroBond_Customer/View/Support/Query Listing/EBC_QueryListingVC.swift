@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_QueryListingVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -22,10 +23,17 @@ class EBC_QueryListingVC: BaseViewController, UITableViewDelegate, UITableViewDa
         queryListingTV.dataSource = self
         self.emptyMessage.isHidden = true
         self.queryListingTV.isHidden = true
+        langLocaliz()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.queryListApi(UserId: self.userId)
+    }
+    
+    
+    
+    func langLocaliz(){
+        titleVC.text = "Lodge Query".localiz()
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {

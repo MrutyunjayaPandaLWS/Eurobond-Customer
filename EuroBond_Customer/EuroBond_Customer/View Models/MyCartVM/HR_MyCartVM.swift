@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import LanguageManager_iOS
 class HR_MyCartVM:  popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -38,7 +38,7 @@ class HR_MyCartVM:  popUpAlertDelegate {
                         self.sumOfProductsCount = Int(result?.catalogueSaveCartDetailListResponse?[0].sumOfTotalPointsRequired ?? 0)
                         if self.myCartListArray.count != 0 {
                             self.dashBoardListAPI(userid: Int(self.userID)!)
-                            self.VC?.totalPoints.text = "\(self.sumOfProductsCount) Euros"
+                            self.VC?.totalPoints.text = "\(self.sumOfProductsCount)" + "POINTS".localiz()
                             self.VC?.finalPoints = self.sumOfProductsCount
                             self.VC?.checkoutView.isHidden = false
                             self.VC?.noDataFound.isHidden = true

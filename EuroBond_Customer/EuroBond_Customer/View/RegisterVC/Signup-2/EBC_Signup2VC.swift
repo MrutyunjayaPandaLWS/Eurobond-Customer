@@ -9,7 +9,7 @@ import UIKit
 import Photos
 import QCropper
 import Toast_Swift
-
+import LanguageManager_iOS
 class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     
 
@@ -29,6 +29,8 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     @IBOutlet weak var signupInfoLbl: UILabel!
     @IBOutlet weak var signUpTitleLbl: UILabel!
     
+    @IBOutlet var uploadGSTTextLbl: UILabel!
+    @IBOutlet var uploadFileTextLbl: UILabel!
     var selectedStateID = -1
     var selectedStateName = ""
     var referralCode = ""
@@ -65,6 +67,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
         self.panNumberTF.keyboardType = .asciiCapable
         self.gstTF.keyboardType = .asciiCapable
         NotificationCenter.default.addObserver(self, selector: #selector(registrationSubmission), name: Notification.Name.registrationSubmission, object: nil)
+        langLocaliz()
     }
     
     @objc func registrationSubmission(){
@@ -89,16 +92,36 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
 //    }
     
     
+    func langLocaliz(){
+        self.signUpTitleLbl.text = "SignUp".localiz()
+        self.signupInfoLbl.text = "PleaseEnterDetailsRegister".localiz()
+        self.panNumberTF.placeholder = "Enter PAN Number".localiz()
+        self.pannumberLbl.text = "Pan Number".localiz()
+        self.panCradLbl.text = "attach PAN Card".localiz()
+        self.gstTF.text = "Enter GST Number".localiz()
+        self.gstLbl.text = "GST".localiz()
+        self.gstDoccumentLbl.text = "AttachGSTDocument".localiz()
+        self.uploadGSTTextLbl.text = "Upload File".localiz()
+        self.uploadFileTextLbl.text = "Upload File".localiz()
+        self.backBtn.setTitle("Back".localiz(), for: .normal)
+        self.submitBtn.setTitle("Submit".localiz(), for: .normal)
+        self.alreadyAccountLbl.text = "AlreadyHaveAnAccount".localiz()
+        self.clickHerebtn.setTitle("cliockHereBtn".localiz(), for: .normal)
+        
+    }
+    
+    
+    
     @IBAction func selectpanFrontPageBtn(_ sender: UIButton) {
         self.itsFrom = "PAN"
-        let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+        let alert = UIAlertController(title: "Choose Any Option".localiz(), message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
             self.openCamera()
         }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
             self.openGallery()
         }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
         }))
         self.present(alert, animated: true, completion: {
             print("completion block")
@@ -107,14 +130,14 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     
     @IBAction func selectGstUploadBtn(_ sender: UIButton) {
         self.itsFrom = "GST"
-        let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+        let alert = UIAlertController(title: "Choose Any Option".localiz(), message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
             self.openCamera()
         }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
             self.openGallery()
         }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
         }))
         self.present(alert, animated: true, completion: {
             print("completion block")
@@ -125,13 +148,13 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     @IBAction func selectSubmitBtn(_ sender: Any) {
         
         if self.panNumberTF.text?.count == 0{
-            self.view.makeToast("Enter PAN number", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter PAN Number".localiz(), duration: 2.0, position: .bottom)
         }else if self.panNumberTF.text?.count != 10{
-            self.view.makeToast("Enter valid PAN number", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter valid PAN number".localiz(), duration: 2.0, position: .bottom)
         }else if self.panNumberTF.text?.count != 10{
-            self.view.makeToast("Enter valid PAN number", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter valid PAN number".localiz(), duration: 2.0, position: .bottom)
         }else if strBase64PAN == ""{
-            self.view.makeToast("Attach PAN Image", duration: 2.0, position: .bottom)
+            self.view.makeToast("Attach PAN Image".localiz(), duration: 2.0, position: .bottom)
         }
         //        else if self.gstTF.text?.count == 0 {
         //            self.view.makeToast("Enter GST number", duration: 2.0, position: .bottom)
@@ -255,34 +278,34 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         self.panNumberTF.text = self.panNumberTF.text?.uppercased()
         self.gstTF.text = self.gstTF.text?.uppercased()
-        
-        
-        
         if textField == panNumberTF{
             //"[a-zA-Z0-9]"
             let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
             let compSepByCharInSet = string.components(separatedBy: aSet)
             let numberFiltered = compSepByCharInSet.joined(separator: "")
             
-            let currentCharacterCount = panNumberTF.text?.count ?? 0
-                   if (range.length + range.location > currentCharacterCount){
-                       return false
-                   }
-                   let newLength = currentCharacterCount + string.count - range.length
-                   return newLength <= 10
-            //return predicate.evaluate(with: string)
+            if string == numberFiltered {
+                let currentText = self.panNumberTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 10
+            } else {
+                return false
+            }
         }else  if textField == gstTF{
             
             let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
             let compSepByCharInSet = string.components(separatedBy: aSet)
             let numberFiltered = compSepByCharInSet.joined(separator: "")
             
-            let currentCharacterCount = gstTF.text?.count ?? 0
-                   if (range.length + range.location > currentCharacterCount){
-                       return false
-                   }
-                   let newLength = currentCharacterCount + string.count - range.length
-                   return newLength <= 15
+            if string == numberFiltered {
+                let currentText = self.gstTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 15
+            } else {
+                return false
+            }
         }
         
         return true
@@ -304,14 +327,14 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
                 }
             }else{
                 DispatchQueue.main.async {
-                    let alertVC = UIAlertController(title: "Need Gallary access", message: "Allow Gallery access", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                    let alertVC = UIAlertController(title: "Need Gallary access".localiz(), message: "Allow Gallery access".localiz(), preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         DispatchQueue.main.async {
                             UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                         }
                     }
-                    let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                    let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                         
                     }
@@ -340,12 +363,12 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
                         }
                     } else {
                         DispatchQueue.main.async {
-                            let alertVC = UIAlertController(title: "Need Camera Access", message: "Allow", preferredStyle: .alert)
-                            let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                            let alertVC = UIAlertController(title: "Need Gallary access".localiz(), message: "Allow".localiz(), preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                             }
-                            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+                            let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
                             }
                             alertVC.addAction(okAction)
@@ -376,12 +399,12 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
                 }
             }else{
                 DispatchQueue.main.async {
-                    let alertVC = UIAlertController(title: "Kashev need to access camera Gallery", message: "", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                    let alertVC = UIAlertController(title: "Eurobond need to access camera Gallery".localiz(), message: "", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                     }
-                    let cancelAction = UIAlertAction(title: "Disallow", style: UIAlertAction.Style.cancel) {
+                    let cancelAction = UIAlertAction(title: "Disallow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                     }
                     alertVC.addAction(okAction)
@@ -392,7 +415,7 @@ extension EBC_Signup2VC: UIImagePickerControllerDelegate, UINavigationController
         }
     }
     func noCamera(){
-        let alertVC = UIAlertController(title: "No Camera", message: "Sorry no device", preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "No Camera".localiz(), message: "Sorry no device".localiz(), preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
         alertVC.addAction(okAction)
         present(alertVC, animated: true, completion: nil)

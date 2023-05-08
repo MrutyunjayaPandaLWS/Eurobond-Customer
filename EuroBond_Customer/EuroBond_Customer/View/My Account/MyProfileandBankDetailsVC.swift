@@ -11,6 +11,7 @@ import SDWebImage
 import AVFoundation
 import Photos
 import QCropper
+import LanguageManager_iOS
 class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
@@ -47,12 +48,19 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
             self.bankDetailsLbl.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
             container.segueIdentifierReceivedFromParent("myProfileDetails")
+        langloc()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
       
     }
     
+    func langloc(){
+        self.myprofile1.text = "My Profile".localiz()
+        self.personalDetailsLbl.text = "Personal Details".localiz()
+        self.facingIssueLbl.text = "Facing any issues".localiz()
+        self.giveMissedCallLbl.text = "Give a Missed Call".localiz()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "myProfile"{

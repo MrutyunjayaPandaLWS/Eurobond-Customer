@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import LanguageManager_iOS
 
 class DefaultAddressModels{
     weak var VC: EBC_DefaultAddressVC?
@@ -82,7 +83,7 @@ class DefaultAddressModels{
                                     self.totalCartValue = Int(data.sumOfTotalPointsRequired ?? 0.0)
                                     print(self.totalCartValue, "TotalValue")
                                 }
-                                self.VC?.totalPoints.text = "\(Double(self.totalCartValue)) Euros"
+                                self.VC?.totalPoints.text = "\(Int(self.totalCartValue)) " + " " + "Euros".localiz()
                                 self.VC?.orderListTableView.reloadData()
                                 self.VC?.stopLoading()
                     }

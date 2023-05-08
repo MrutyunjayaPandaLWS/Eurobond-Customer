@@ -8,8 +8,11 @@
 import UIKit
 import CoreData
 import Firebase
+import LanguageManager_iOS
 
-class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDelegate {
+class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDelegate, popUpAlertDelegate {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
    
      
     @IBOutlet weak var headerText: UILabel!
@@ -99,31 +102,11 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     }
    
     func languagelocalization(){
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.headerText.text = "Code Status"
-            self.codeStatusBTN.setTitle(" Code Status", for: .normal)
-            self.syncStatusBTN.setTitle(" Sync Status", for: .normal)
-            self.nodatafound.text = "No Data Found !!"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.headerText.text = "कोड स्थिति"
-            self.codeStatusBTN.setTitle(" कोड स्थिति", for: .normal)
-            self.syncStatusBTN.setTitle(" सिंक स्थिति", for: .normal)
-            self.nodatafound.text = "डेटा नहीं मिला !!"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.headerText.text = "কোড স্ট্যাটাস"
-            self.codeStatusBTN.setTitle(" কোড স্ট্যাটাস", for: .normal)
-            self.syncStatusBTN.setTitle(" সিঙ্ক স্থিতি", for: .normal)
-            self.nodatafound.text = "কোন তথ্য পাওয়া যায়নি!!"
-            
-        }else{
-            self.headerText.text = "Code Status"
-            self.codeStatusBTN.setTitle(" Code Status", for: .normal)
-            self.syncStatusBTN.setTitle(" Sync Status", for: .normal)
-            self.nodatafound.text = "No Data Found !!"
-            
-        }
+        self.headerText.text = "Code Status".localiz()
+        self.codeStatusBTN.setTitle("Code Status".localiz(), for: .normal)
+        self.syncStatusBTN.setTitle("SyncStatus".localiz(), for: .normal)
+        self.nodatafound.text = "No Data Found".localiz()
+
     }
     
     @IBAction func headerCheckBoxBTN(_ sender: Any) {
@@ -165,20 +148,43 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
         self.codeStatusListTableView.reloadData()
     }
     @IBAction func headerFilterBTN(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FilterPopUpViewController") as! FilterPopUpViewController
-        vc.delegate = self
-        vc.itsFrom = "FilterByStatus"
-        vc.selectedStatusName = self.receivedStatus
-        vc.selectedStatusId = self.receivedStatusId
-        vc.selectedFromDate = self.selectedFromDate
-        vc.selectedToDate = self.selectedToDate
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FilterPopUpViewController") as! FilterPopUpViewController
+            vc.delegate = self
+            vc.itsFrom = "FilterByStatus"
+            vc.selectedStatusName = self.receivedStatus
+            vc.selectedStatusId = self.receivedStatusId
+            vc.selectedFromDate = self.selectedFromDate
+            vc.selectedToDate = self.selectedToDate
+            vc.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
         
     }
     @IBAction func headerQuestionMarkBTN(_ sender: Any) {
-
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_CreatenewQueryVC") as! EBC_CreatenewQueryVC
             vc.selectedCodesArray.removeAll()
             vc.selectedCodesArray = self.querySummary
@@ -186,22 +192,35 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
             vc.modalPresentationStyle = .overFullScreen
             vc.modalTransitionStyle = .crossDissolve
             self.present(vc, animated: true, completion: nil)
+        }
 
         
     }
     @IBAction func headerNotesBTN(_ sender: Any) {
-        if itsFrom == 1{
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeSummary_VC") as! CodeSummary_VC
-                vc.itsFrom = 1
-            vc.modalPresentationStyle = .overFullScreen
-            vc.modalTransitionStyle = .crossDissolve
-            self.present(vc, animated: true, completion: nil)
-
-            
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
         }else{
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeSummary_VC") as! CodeSummary_VC
-            vc.itsFrom = 2
-            self.navigationController?.pushViewController(vc, animated: true)
+            if itsFrom == 1{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeSummary_VC") as! CodeSummary_VC
+                vc.itsFrom = 1
+                vc.modalPresentationStyle = .overFullScreen
+                vc.modalTransitionStyle = .crossDissolve
+                self.present(vc, animated: true, completion: nil)
+                
+                
+            }else{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeSummary_VC") as! CodeSummary_VC
+                vc.itsFrom = 2
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
        
     }
@@ -223,19 +242,8 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
 
     @IBAction func codeStatusListBTN(_ sender: Any) {
         self.codesCollectionsArray.removeAll()
+        self.headerText.text = "Code Status".localiz()
         
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.headerText.text = "Code Status"
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.headerText.text = "कोड स्थिति"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.headerText.text = "কোড স্ট্যাটাস"
-            
-        }else{
-            self.headerText.text = "Code Status"
-            
-        }
         self.codeStatusBTN.backgroundColor =  #colorLiteral(red: 0, green: 0.431829989, blue: 0.7325050235, alpha: 1)
         self.codeStatusBTN.setImage(UIImage(named: "qr 1"), for: .normal)
         self.codeStatusBTN.setTitleColor(.white, for: .normal)
@@ -249,42 +257,44 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     
     }
     @IBAction func syncStatusListBTN(_ sender: Any) {
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.headerText.text = "Sync Status"
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.headerText.text = "सिंक स्थिति"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.headerText.text = "সিঙ্ক স্থিতি"
-            
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
         }else{
-            self.headerText.text = "Sync Status"
+            self.headerText.text = "SyncStatus".localiz()
             
-        }
-        self.codeStatusBTN.backgroundColor =  #colorLiteral(red: 0.9064666033, green: 0.9463894963, blue: 0.9929038882, alpha: 1)
-        
-        self.codeStatusBTN.setImage(UIImage(named: "qr"), for: .normal)
-        self.codeStatusBTN.setTitleColor(#colorLiteral(red: 0.02352941176, green: 0.2274509804, blue: 0.5333333333, alpha: 1), for: .normal)
-        
-        self.syncStatusBTN.backgroundColor =  #colorLiteral(red: 0, green: 0.431829989, blue: 0.7325050235, alpha: 1)
-        self.syncStatusBTN.setImage(UIImage(named: "sync"), for: .normal)
-        self.syncStatusBTN.setTitleColor(.white, for: .normal)
-        
-        
-//        self.syncStatusBTN.backgroundColor =  UIColor(red: 192/255, green: 7/255, blue: 34/255, alpha: 1.0)
-//        self.codeStatusBTN.backgroundColor =  UIColor(red: 92/255, green: 92/255, blue: 109/255, alpha: 1.0)
-        syncCodeLists()
-        self.isSelected = 2
-//        let filterArray = self.selectedDataArray.filter{ $0.isSelected == 1}
-//        if filterArray.count > 1{
-//            self.headerCheckBox.setImage(UIImage(named: "tickBox"), for: .normal)
-//        }else{
+            self.codeStatusBTN.backgroundColor =  #colorLiteral(red: 0.9064666033, green: 0.9463894963, blue: 0.9929038882, alpha: 1)
+            
+            self.codeStatusBTN.setImage(UIImage(named: "qr"), for: .normal)
+            self.codeStatusBTN.setTitleColor(#colorLiteral(red: 0.02352941176, green: 0.2274509804, blue: 0.5333333333, alpha: 1), for: .normal)
+            
+            self.syncStatusBTN.backgroundColor =  #colorLiteral(red: 0, green: 0.431829989, blue: 0.7325050235, alpha: 1)
+            self.syncStatusBTN.setImage(UIImage(named: "sync"), for: .normal)
+            self.syncStatusBTN.setTitleColor(.white, for: .normal)
+            
+            
+            //        self.syncStatusBTN.backgroundColor =  UIColor(red: 192/255, green: 7/255, blue: 34/255, alpha: 1.0)
+            //        self.codeStatusBTN.backgroundColor =  UIColor(red: 92/255, green: 92/255, blue: 109/255, alpha: 1.0)
+            syncCodeLists()
+            self.isSelected = 2
+            //        let filterArray = self.selectedDataArray.filter{ $0.isSelected == 1}
+            //        if filterArray.count > 1{
+            //            self.headerCheckBox.setImage(UIImage(named: "tickBox"), for: .normal)
+            //        }else{
             self.headerCheckBox.setImage(UIImage(named: "rectangle-2"), for: .normal)
-//        }
-        self.syncStatusView.isHidden = false
-        self.headerQuestionMark.isHidden = false
-        self.headerNotes.isHidden = false
-        fetchDetails()
+            //        }
+            self.syncStatusView.isHidden = false
+            self.headerQuestionMark.isHidden = false
+            self.headerNotes.isHidden = false
+            fetchDetails()
+        }
         
     }
     
@@ -358,6 +368,7 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     }
     
     func fetchDetails(){
+        self.codeLIST.removeAll()
         let fetchRequest:NSFetchRequest<UploadedCodes> = UploadedCodes.fetchRequest()
         do{
             self.uploadedCodes = try persistanceservice.context.fetch(fetchRequest)

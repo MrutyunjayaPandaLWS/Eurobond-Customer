@@ -7,7 +7,7 @@
 
 import UIKit
 import Lottie
-
+import LanguageManager_iOS
 class EBC_HelpLineVC: BaseViewController {
 
     @IBOutlet weak var raiseQueryLbl: UILabel!
@@ -22,6 +22,17 @@ class EBC_HelpLineVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         lottieAnimation(animationView: helpAnimation)
+        languageLocaliz()
+    }
+    
+    func languageLocaliz(){
+        titleVC.text = "Helpline".localiz()
+        helpDescLbl.text = "For any Queries on Eurobond Rewards program Please give a Missed Call on the below mentioned number or Lodge a Query".localiz()
+        callNowLbl.text = "TAP TO CALL NOW".localiz()
+        anyQueryTitleLbl.text = "ANY QUERIES".localiz()
+        raiseQueryLbl.text = "Raise a Query".localiz()
+        
+        
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {

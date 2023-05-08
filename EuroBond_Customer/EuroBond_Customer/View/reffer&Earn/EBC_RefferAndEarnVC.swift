@@ -59,7 +59,7 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
     @IBAction func selectSubmitBtn(_ sender: UIButton) {
         
         if self.nameTF.text!.count == 0 {
-            self.view.makeToast("Enter name".localiz(), duration: 2.0,position: .bottom)
+            self.view.makeToast("Enter Name".localiz(), duration: 2.0,position: .bottom)
         }else if self.mobileNumberTF.text!.count == 0 {
             self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0,position: .bottom)
         }else if self.mobileNumberTF.text!.count != 10 {

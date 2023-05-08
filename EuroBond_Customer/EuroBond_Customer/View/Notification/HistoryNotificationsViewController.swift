@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import SDWebImage
 import Firebase
+import LanguageManager_iOS
 
 class HistoryNotificationsViewController: BaseViewController {
     
@@ -68,7 +69,7 @@ class HistoryNotificationsViewController: BaseViewController {
     
     func languagelocalization(){
 //        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.header.text = "Notification"
+        self.header.text = "Notification".localiz()
             
         
     }

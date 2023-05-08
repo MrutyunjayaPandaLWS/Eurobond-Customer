@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 import Toast_Swift
+import LanguageManager_iOS
 class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
     func didSelectGenderList(_ vc: EBC_DropDownVC) {}
     func didTappedGenderBtn(_ vc: EBC_DropDownVC) {}
@@ -32,7 +33,10 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
     @IBOutlet weak var titleVC: UILabel!
     @IBOutlet weak var querySummaryTV: UITextView!
     @IBOutlet weak var queryDetailsTV: UITextView!
-    var isFrom = 2
+    
+    @IBOutlet var submitQueryBtn: GradientButton!
+    
+    var isFrom = 0
     var helpTopicId = -1
     var helpTopicName = ""
     var querySummaryDetails = ""
@@ -49,6 +53,7 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
         querySummaryTV.delegate = self
         queryDetailsTV.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(navigateToPrevious), name: Notification.Name.navigateToQueryList, object: nil)
+        langLocaliz()
         if self.isFrom == 21{
             self.querySummaryTV.isEditable = false
             for code in self.selectedCodesArray{
@@ -60,18 +65,31 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
             print(str2)
             self.querySummaryTV.text = String(str2)
             self.querySummaryHeightConstraints.constant = self.querySummaryTV.contentSize.height
+           
         }
     }
     
     @objc func navigateToPrevious(){
         self.navigationController?.popViewController(animated: true)
+        }
+    
+    func langLocaliz(){
+        self.titleVC.text = "New Ticket".localiz()
+        self.selectTopicTitleLbl.text =  "Select Your Topic".localiz()
+        self.selectTopicLbl.text = "Select topic".localiz()
+        self.lodgeQueryTitleLbl.text = "Query Summary".localiz()
+        self.queryDetailsTitle.text = "Query Details".localiz()
+        self.submitQueryBtn.setTitle("Submit Query".localiz(), for: .normal)
+        self.browseImageBtn.setTitle("Browse Image".localiz(), for: .normal)
+        self.createQueryInfoLbl.text = "createQueryInfo".localiz()
     }
     
+    
     @IBAction func selectBackBtn(_ sender: UIButton) {
-        if self.isFrom != 21{
-        self.navigationController?.popViewController(animated: true)
-        }else{
+        if self.isFrom == 21 || self.isFrom == 2{
             self.dismiss(animated: true)
+        }else{
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -85,15 +103,15 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
     }
     
     @IBAction func selectBrowseBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "Choose Any Option", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+        let alert = UIAlertController(title: "Choose Any Option".localiz(), message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
             self.openCamera()
         }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
             self.openGallery()
         }))
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
         }))
         self.present(alert, animated: true, completion: {
             print("completion block")
@@ -104,11 +122,11 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
     @IBAction func selectQueryBtn(_ sender: Any) {
         
         if self.helpTopicId == -1{
-            self.view.makeToast("Select Query Topic", duration: 2.0, position: .center)
+            self.view.makeToast("Select Query Topic".localiz(), duration: 2.0, position: .center)
         }else if self.querySummaryTV.text!.count == 0{
-            self.view.makeToast("Enter query summary..", duration: 2.0, position: .center)
+            self.view.makeToast("Enter query summary".localiz(), duration: 2.0, position: .center)
         }else if self.queryDetailsTV.text!.count == 0{
-            self.view.makeToast("Enter query details..", duration: 2.0, position: .center)
+            self.view.makeToast("Enter query details".localiz(), duration: 2.0, position: .center)
         }else{
             let parameter = [
                 "ActionType": "0",
@@ -144,14 +162,14 @@ extension EBC_CreatenewQueryVC: UIImagePickerControllerDelegate, UINavigationCon
                 }
             }else{
                 DispatchQueue.main.async {
-                    let alertVC = UIAlertController(title: "Need Gallary access", message: "Allow Gallery access", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                    let alertVC = UIAlertController(title: "Need Gallary access".localiz(), message: "Allow Gallery access", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         DispatchQueue.main.async {
                             UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                         }
                     }
-                    let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                    let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                         
                     }
@@ -180,12 +198,12 @@ extension EBC_CreatenewQueryVC: UIImagePickerControllerDelegate, UINavigationCon
                         }
                     } else {
                         DispatchQueue.main.async {
-                            let alertVC = UIAlertController(title: "Need Camera Access", message: "Allow", preferredStyle: .alert)
-                            let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                            let alertVC = UIAlertController(title: "Need Camera Access".localiz(), message: "Allow", preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                             }
-                            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) {
+                            let cancelAction = UIAlertAction(title: "Cancel".localiz(), style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
                             }
                             alertVC.addAction(okAction)
@@ -216,12 +234,12 @@ extension EBC_CreatenewQueryVC: UIImagePickerControllerDelegate, UINavigationCon
                 }
             }else{
                 DispatchQueue.main.async {
-                    let alertVC = UIAlertController(title: "HR Johnson need to access camera Gallery", message: "", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                    let alertVC = UIAlertController(title: "EuroBond need to access camera Gallery".localiz(), message: "", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                     }
-                    let cancelAction = UIAlertAction(title: "Disallow", style: UIAlertAction.Style.cancel) {
+                    let cancelAction = UIAlertAction(title: "Disallow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                     }
                     alertVC.addAction(okAction)
@@ -232,8 +250,8 @@ extension EBC_CreatenewQueryVC: UIImagePickerControllerDelegate, UINavigationCon
         }
     }
     func noCamera(){
-        let alertVC = UIAlertController(title: "No Camera", message: "Sorry no device", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
+        let alertVC = UIAlertController(title: "No Camera".localiz(), message: "Sorry no device".localiz(), preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ok".localiz(), style:.default, handler: nil)
         alertVC.addAction(okAction)
         present(alertVC, animated: true, completion: nil)
     }

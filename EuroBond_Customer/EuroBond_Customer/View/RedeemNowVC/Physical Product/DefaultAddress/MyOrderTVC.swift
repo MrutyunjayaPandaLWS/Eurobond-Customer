@@ -17,7 +17,8 @@ class MyOrderTVC: UITableViewCell {
     @IBOutlet var pointsLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.pointsHeadingLabel.text = "Euros".localiz()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

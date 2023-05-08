@@ -7,12 +7,14 @@
 
 import UIKit
 import SDWebImage
-
+import LanguageManager_iOS
 
 class EBC_SearchProjectVC: BaseViewController {
     @IBOutlet weak var projectListingCV: UICollectionView!
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var VCTitle: UILabel!
+    
+    @IBOutlet var noDataFound: UILabel!
     
     
     var VM = projectCatalogeVM()
@@ -36,9 +38,16 @@ class EBC_SearchProjectVC: BaseViewController {
         collectionViewFLowLayout2.minimumLineSpacing = 2.5
         collectionViewFLowLayout2.minimumInteritemSpacing = 2.5
          self.projectListingCV.collectionViewLayout = collectionViewFLowLayout2
-
+        langLocaliz()
         
     }
+    
+    func langLocaliz(){
+        VCTitle.text = "Project Search".localiz()
+        searchTF.placeholder = "Search by Brnad,Color,Color Code".localiz()
+        noDataFound.text = "No Data Found".localiz()
+    }
+    
     func projectCatalogeAPI(){
         let parameter = [
             "ActorId":"\(userID)",
@@ -54,6 +63,8 @@ class EBC_SearchProjectVC: BaseViewController {
     }
     
     @IBAction func didChangeSearchTF(_ sender: UITextField) {
+        self.VM.projectCatalogeArray.removeAll()
+        self.projectCatalogeAPI()
     }
     
 }
@@ -69,11 +80,10 @@ extension EBC_SearchProjectVC: UICollectionViewDelegate, UICollectionViewDataSou
         let splitDataa = imageURL.dropFirst(1)
         let url = URL(string: "\(PROMO_IMG1)" + "\(splitDataa)")
         print(url)
-//        let urlt = URL(string: "\(self.VM.evoucherListingArray[indexPath.row].productImage ?? "")")
-//        print(urlt)
-        //cell.projectImage.image = UIImage(named: url)
+        cell.productColorCodeTitleLbl.text = "Color Code".localiz()
+        cell.productColorLbl.text = "Color".localiz()
         cell.projectImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
-        cell.projectName.text = "Brand \(self.VM.projectCatalogeArray[indexPath.row].brandName ?? "")"
+        cell.projectName.text = "Brand".localiz() + "" + "\(self.VM.projectCatalogeArray[indexPath.row].brandName ?? "")"
         cell.productColorDataLbl.text = self.VM.projectCatalogeArray[indexPath.row].productName ?? ""
         cell.productColorCodeDataLbl.text = "\(self.VM.projectCatalogeArray[indexPath.row].productCode ?? "")"
         return cell

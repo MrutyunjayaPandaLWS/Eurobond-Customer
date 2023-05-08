@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import LanguageManager_iOS
+import LanguageManager_iOS
 import WebKit
 protocol CheckBoxSelectDelegate{
     func accept(_ vc: HR_TermsandCondtionVC)
@@ -24,15 +24,28 @@ class HR_TermsandCondtionVC: BaseViewController{
     var delegate: CheckBoxSelectDelegate!
     var requestAPIs = RestAPI_Requests()
     var tcListingArray = [LstTermsAndCondition]()
-
+    var language = ""
     override func viewDidLoad() {
         super.viewDidLoad()
 //        termsandCondtions.text = "TermsandConditions"
 //        decline.setTitle("decline", for: .normal)
 //        accept.setTitle("accept", for: .normal)
-        dashboardTCApi()
+        //dashboardTCApi()
 //        self.webview1.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c", ofType: "html")!) as URL) as URLRequest)
+        langLocaliz()
     }
+    
+    
+    func langLocaliz(){
+        self.decline.setTitle("decline".localiz(), for: .normal)
+        self.accept.setTitle("accept".localiz(), for: .normal)
+        if language == "Enter Password" {
+            self.webview1.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c-eng", ofType: "html")!) as URL) as URLRequest)
+        }else{
+            self.webview1.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c-hin", ofType: "html")!) as URL) as URLRequest)
+        }
+    }
+    
     func dashboardTCApi(){
         DispatchQueue.main.async {
         self.startLoading()

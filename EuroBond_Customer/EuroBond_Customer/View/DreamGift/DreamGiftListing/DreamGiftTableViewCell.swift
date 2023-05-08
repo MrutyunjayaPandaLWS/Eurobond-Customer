@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 protocol AddOrRemoveGiftDelegate{
     func redeemGift(_ cell: DreamGiftTableViewCell)
@@ -39,28 +40,11 @@ class DreamGiftTableViewCell: UITableViewCell {
         self.selectionStyle = .none
         self.dreamGiftTitle.roundCorners(corners: [.bottomRight], radius: 20)
         progressView.layer.cornerRadius = 3.0
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.createdDate.text = "Created Date"
-            self.expiredDate.text = "Desired Date"
-            self.ptsRequired.text = "Points Required"
-            self.redeemButton.setTitle("Redeem", for: .normal)
-            
-         }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-             self.createdDate.text = "सृजित दिनांक"
-             self.expiredDate.text = "वांछित तारीख"
-             self.ptsRequired.text = "अंक आवश्यक"
-             self.redeemButton.setTitle("भुनाना", for: .normal)
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.createdDate.text = "তৈরির তারিখ"
-            self.expiredDate.text = "কাঙ্খিত তারিখ"
-            self.ptsRequired.text = "পয়েন্ট প্রয়োজন"
-            self.redeemButton.setTitle("রিডিম", for: .normal)
-        }else{
-            self.createdDate.text = "Created Date"
-            self.expiredDate.text = "Desired Date"
-            self.ptsRequired.text = "Points Required"
-            self.redeemButton.setTitle("Redeem", for: .normal)
-          }
+        
+        self.createdDate.text = "Created Date".localiz()
+        self.expiredDate.text = "Desired Date".localiz()
+        self.ptsRequired.text = "Points Required".localiz()
+        self.redeemButton.setTitle("Redeem".localiz(), for: .normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

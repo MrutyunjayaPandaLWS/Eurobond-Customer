@@ -29,7 +29,7 @@ class EBC_MyAssistantTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
-        self.supporterNameLbl.text = "Support Name".localiz()
+        self.supporterTitleLbl.text = "Support Name".localiz()
         self.statusTitleLbl.text = "Status".localiz()
         self.enrollmentTitle.text = "Enrollment".localiz()
         self.mobileNumberTitleLbl.text = "Mobile Number".localiz()

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 class EBC_LoginVM {
     
     weak var VC: EBC_Login1VC?
@@ -58,7 +59,7 @@ class EBC_LoginVM {
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
                         self.VC?.loginBtnStatus = 2
-                        self.VC?.submitBtn.setTitle("Submit", for: .normal)
+                        self.VC?.submitBtn.setTitle("Submit".localiz(), for: .normal)
                         self.VC?.otpView.isHidden = false
                         self.VC?.submitBtnStatus = 1
                         self.VC?.submitButtonTopSpace.constant = 190
@@ -116,7 +117,7 @@ class EBC_LoginVM {
                 if str ?? "" == "0"{
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
-                        self.VC?.submitBtn.setTitle("Submit", for: .normal)
+                        self.VC?.submitBtn.setTitle("Submit".localiz(), for: .normal)
                         self.VC?.otpView.isHidden = false
                         self.VC?.submitBtnStatus = 1
                         self.VC?.submitButtonTopSpace.constant = 190
@@ -171,6 +172,7 @@ class EBC_LoginVM {
                         print(result?.returnMessage ?? "", "-OTP")
                         self.VC?.termCondBtn.isEnabled = true
                         self.VC?.termsAndConditionsText.isEnabled = true
+                        self.VC?.membershipIdTF.isEnabled = true
                         
                       //  self.VC?.receivedOTP = "123456"
                        
@@ -188,7 +190,7 @@ class EBC_LoginVM {
     @objc func update() {
         if(count > 1) {
             count = count - 1
-            self.VC?.timmerLbl.text = "Seconds Remaining : 0:\(count - 1)"
+            self.VC?.timmerLbl.text = "SecondsRemaining".localiz() + "\(count - 1)"
             self.VC?.resendOtpBtn.isHidden = true
             self.VC?.membershipIdTF.isEnabled = false
         }else{
@@ -217,11 +219,21 @@ class EBC_LoginVM {
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                         if loginResponse.count != 0{
-
-                             if loginResponse[0].isDelete ?? -1 == 1{
-                                 self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
+                            
+                            
+                            if loginResponse[0].isDelete ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 3 {
+                                self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
+                            }else if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 0 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 0{
+                                self.VC!.view.makeToast("Your account is not activated! Kindly activate your account".localiz(), duration: 2.0, position: .bottom)
+                            }else if loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 4{
+                                self.VC!.view.makeToast("Your account has been deactivated! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
+                            }else if loginResponse[0].verifiedStatus ?? -1 == 2 {
+                                self.VC!.view.makeToast("Your account verification is failed!, Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else{
-                                if loginResponse[0].isUserActive ?? -1 == 1{
+//                            else if loginResponse[0].verifiedStatus ?? -1 == 0 && loginResponse[0].isUserActive ?? -1 == 1{
+//                                self.VC!.view.makeToast("".localiz(), duration: 2.0, position: .bottom)
+//                           }else{
+                                if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 4 {
                                     UserDefaults.standard.setValue(loginResponse[0].userId ?? -1, forKey: "UserID")
                                     UserDefaults.standard.setValue(1, forKey: "IsloggedIn?")
                                     

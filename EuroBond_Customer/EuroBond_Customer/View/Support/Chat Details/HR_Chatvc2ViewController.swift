@@ -4,7 +4,7 @@ import Photos
 import AVFoundation
 import SDWebImage
 import Toast_Swift
-//import LanguageManager_iOS
+import LanguageManager_iOS
 
 class HR_Chatvc2ViewController: UIViewController, UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDocumentPickerDelegate{
     
@@ -52,10 +52,12 @@ class HR_Chatvc2ViewController: UIViewController, UITextFieldDelegate,UITableVie
 
             chatListingAPI()
         querySummarylabel.text = "\("Query summary") : \(querysummary)"
-        self.supportHeadingLabel.text = "Support"
+        self.supportHeadingLabel.text = "Support".localiz()
         self.commenttextfield.placeholder = "\("Write Query Here")..."
 
     }
+    
+    
     
     
     func numberOfSections(in tableView: UITableView) -> Int {

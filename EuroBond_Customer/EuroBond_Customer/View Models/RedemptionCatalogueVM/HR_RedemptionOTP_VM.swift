@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import LanguageManager_iOS
 class HR_RedemptionOTP_VM: popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -67,7 +67,7 @@ class HR_RedemptionOTP_VM: popUpAlertDelegate {
     @objc func update() {
            if(self.VC!.count > 1){
                self.VC!.count = self.VC!.count - 1
-            self.VC!.secondsRemaining.text = "\("Seconds Remaining"): \(self.VC!.count - 1)"
+               self.VC!.secondsRemaining.text = "\("Seconds Remaining".localiz()): \(self.VC!.count - 1)"
             
                self.VC!.enterOTPTopspaceConstraint.constant = 10
               // self.VC!.secondsRemaining.isHidden = false
@@ -110,15 +110,15 @@ class HR_RedemptionOTP_VM: popUpAlertDelegate {
                                     "ProductCode": "\(item.productCode ?? "")",
                                     "ProductImage": "\(item.productImage ?? "")",
                                     "ProductName": "\(item.productName ?? "")",
-                                    "RedemptionDate": "\(desiredDateFormat)",
-                                    "RedemptionId": item.redemptionId ?? 0,
-                                    "RedemptionTypeId": 1,
-                                    "Status": 0,
-                                    "CatogoryId": item.catogoryId ?? 0,
-                                    "CustomerCartId": item.customerCartId ?? 0,
-                                    "TermsCondition": "\(item.termsCondition ?? "")",
-                                    "TotalCash": item.totalCash ?? 0,
-                                    "VendorId": item.vendorId ?? 0
+                                    "redemptiondate": "\(desiredDateFormat)",
+                                    "redemptionid": item.redemptionId ?? 0,
+                                    "redemptiontypeid": 1,
+                                    "status": 13,
+                                    "catogoryid": item.catogoryId ?? 0,
+                                    "customercartid": item.customerCartId ?? 0,
+                                    "termscondition": "\(item.termsCondition ?? "")",
+                                    "totalcash": item.totalCash ?? 0,
+                                    "vendorid": item.vendorId ?? 0
                                 ]
                                 self.productnames = self.productnames + "," + "\(item.productName ?? "")"
                                 self.newproductArray.append(singleImageDict)
@@ -132,18 +132,18 @@ class HR_RedemptionOTP_VM: popUpAlertDelegate {
                                     "ProductCode": "\(item.productCode ?? "")",
                                     "ProductImage": "\(item.productImage ?? "")",
                                     "ProductName": "\(item.productName ?? "")",
-                                    "RedemptionDate": "\(desiredDateFormat)",
-                                    "RedemptionId": item.redemptionId ?? 0,
+                                    "redemptiondate": "\(desiredDateFormat)",
+                                    "redemptionid": item.redemptionId ?? 0,
                                     "RedemptionRefno": "\(self.VC?.redemptionRefId)",
-                                    "RedemptionTypeId": self.VC?.redemptionTypeId,
-                                    "Status": item.status ?? 0,
-                                    "TermsCondition": "\(item.termsCondition ?? "")",
-                                    "TotalCash": item.totalCash ?? 0,
-                                    "VendorId": item.vendorId ?? 0
+                                    "redemptiontypeid": self.VC?.redemptionTypeId,
+                                    "status": 13,
+                                    "termscondition": "\(item.termsCondition ?? "")",
+                                    "totalcash": item.totalCash ?? 0,
+                                    "vendorid": item.vendorId ?? 0
                                     ]
                                 print(smsArray, "SMS Array")
                                 print(self.VC?.redemptionRefId, "Refer ID")
-                               // self.sendSMArray.append(smsArray)
+                               // self.sendSMArray.append(smsArray) item.status ?? 
                                     }
                     }
                         
@@ -192,7 +192,7 @@ class HR_RedemptionOTP_VM: popUpAlertDelegate {
                                     vc!.delegate = self
                                     vc!.titleInfo = ""
                                     vc!.isComeFrom = "Failed"
-                                    vc!.descriptionInfo = "Redemption Failed"
+                                    vc!.descriptionInfo = "Redemption Failed".localiz()
                                     vc!.modalPresentationStyle = .overFullScreen
                                     vc!.modalTransitionStyle = .crossDissolve
                                     self.VC?.present(vc!, animated: true, completion: nil)

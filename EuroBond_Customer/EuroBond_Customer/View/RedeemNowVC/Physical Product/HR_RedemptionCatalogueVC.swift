@@ -172,7 +172,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     
     var selectedPtsRange = ""
     var selectedPtsRange1 = ""
-    var filterByRangeArray = ["All Euros", "Under 1000", "1000 - 4999", "5000 - 24999", "25000 & Above"]
+    var filterByRangeArray = ["All Euros".localiz(), "Under 1000".localiz(), "1000 - 4999", "5000 - 24999", "25000 & Above".localiz()]
     var sortedBy = 0
     var itsFrom = "Search"
     var parameters : JSON?
@@ -291,15 +291,15 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
           
                 
                 if self.selectedPtsRange == ""{
-                    self.selectedPtsRange1 = "All Euros"
+                    self.selectedPtsRange1 = "All Euros".localiz()
                 }else if self.selectedPtsRange == "0-999"{
-                    self.selectedPtsRange1 = "Under 1000"
+                    self.selectedPtsRange1 = "Under 1000".localiz()
                 }else if self.selectedPtsRange1 == "1000-4999"{
                     self.selectedPtsRange1 = "1000 - 4999"
                 }else if self.selectedPtsRange == "5000-24999"{
                     self.selectedPtsRange1 = "5000 - 24999"
                 }else if self.selectedPtsRange == "25000 - 999999999"{
-                    self.selectedPtsRange1 = "25000 & Above"
+                    self.selectedPtsRange1 = "25000 & Above".localiz()
                 }
                 self.startIndex = 1
                 self.categoriesId = 2
@@ -465,7 +465,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         self.searchViewHeight.constant = 0
         self.separatorLbl.isHidden = false
         self.itsFrom = "PtsRange"
-        self.selectedPtsRange1 = "All Euros"
+        self.selectedPtsRange1 = "All Euros".localiz()
         self.selectedPtsRange = ""
         self.startIndex = 1
         self.categoriesId = 2
@@ -516,6 +516,7 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                 if self.filterByRangeArray.count != 0 {
                     cell.categoryName.textAlignment = .center
                     cell.categoryName.text = "  \(self.filterByRangeArray[indexPath.row])    "
+                    
             
                     if self.selectedPtsRange1 == "\(self.filterByRangeArray[indexPath.row])"{
                         cell.categoryName.textColor = UIColor.white
@@ -552,12 +553,24 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                 cell.addToPlanner.isHidden = true
                 cell.addCartButton.isHidden = false
                 cell.addedToPlanner.isHidden = true
+                
+                cell.addedToCartBTN.setTitle("Added to Cart".localiz(), for: .normal)
+                cell.addToPlanner.setTitle("Add to Planner".localiz(), for: .normal)
+                cell.addCartButton.setTitle("Add to Cart".localiz(), for: .normal)
+                cell.addedToPlanner.setTitle("Added to Planner".localiz(), for: .normal)
+                
                 if filterCategory.count > 0 {
                     cell.addedToCartBTN.isHidden = false
                     cell.addedToCartBTN.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                     cell.addToPlanner.isHidden = true
                     cell.addCartButton.isHidden = true
                     cell.addedToPlanner.isHidden = true
+                    
+                    cell.addedToCartBTN.setTitle("Added to Cart".localiz(), for: .normal)
+                    cell.addToPlanner.setTitle("Add to Planner".localiz(), for: .normal)
+                    cell.addCartButton.setTitle("Add to Cart".localiz(), for: .normal)
+                    cell.addedToPlanner.setTitle("Added to Planner".localiz(), for: .normal)
+                    
                 }
             }else{
                 if self.VM.catalgoueListArray[indexPath.row].isPlanner! == true{
@@ -565,17 +578,33 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                     cell.addToPlanner.isHidden = false
                     cell.addCartButton.isHidden = true
                     cell.addedToPlanner.isHidden = true
+                    
+                    cell.addedToCartBTN.setTitle("Added to Cart".localiz(), for: .normal)
+                    cell.addToPlanner.setTitle("Add to Planner".localiz(), for: .normal)
+                    cell.addCartButton.setTitle("Add to Cart".localiz(), for: .normal)
+                    cell.addedToPlanner.setTitle("Added to Planner".localiz(), for: .normal)
+                    
                 }else{
                     cell.addedToCartBTN.isHidden = true
                     cell.addToPlanner.isHidden = true
                     cell.addCartButton.isHidden = true
                     cell.addedToPlanner.isHidden = true
+                    
+                    cell.addedToCartBTN.setTitle("Added to Cart".localiz(), for: .normal)
+                    cell.addToPlanner.setTitle("Add to Planner".localiz(), for: .normal)
+                    cell.addCartButton.setTitle("Add to Cart".localiz(), for: .normal)
+                    cell.addedToPlanner.setTitle("Added to Planner".localiz(), for: .normal)
                 }
                 if filterCategory1.count > 0 {
                     cell.addedToCartBTN.isHidden = true
-                    cell.addToPlanner.isHidden = false
+                    cell.addToPlanner.isHidden = true
                     cell.addCartButton.isHidden = true
-                    cell.addedToPlanner.isHidden = true
+                    cell.addedToPlanner.isHidden = false
+                    
+                    cell.addedToCartBTN.setTitle("Added to Cart".localiz(), for: .normal)
+                    cell.addToPlanner.setTitle("Add to Planner".localiz(), for: .normal)
+                    cell.addCartButton.setTitle("Add to Cart".localiz(), for: .normal)
+                    cell.addedToPlanner.setTitle("Added to Planner".localiz(), for: .normal)
                 }
                 
             }
@@ -611,18 +640,18 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                     }else{
                         //self.categoryId = -1
                         self.categoriesId = 2
-                        self.selectedPtsRange1 = "All Euros"
+                        self.selectedPtsRange1 = "All Euros".localiz()
                         self.selectedPtsRange1 = "\(self.filterByRangeArray[indexPath.row])"
                         print(self.selectedPtsRange1)
-                        if self.selectedPtsRange1 == "All Euros"{
+                        if self.selectedPtsRange1 == "All Euros".localiz(){
                             self.selectedPtsRange = ""
-                        }else if self.selectedPtsRange1 == "Under 1000"{
+                        }else if self.selectedPtsRange1 == "Under 1000".localiz(){
                             self.selectedPtsRange = "0-999"
                         }else if self.selectedPtsRange1 == "1000 - 4999"{
                             self.selectedPtsRange = "1000-4999"
                         }else if self.selectedPtsRange1 == "5000 - 24999"{
                             self.selectedPtsRange = "5000-24999"
-                        }else if self.selectedPtsRange1 == "25000 & Above"{
+                        }else if self.selectedPtsRange1 == "25000 & Above".localiz(){
                             self.selectedPtsRange = "25000 - 999999999"
                         }
                         self.VM.catalgoueListArray.removeAll()

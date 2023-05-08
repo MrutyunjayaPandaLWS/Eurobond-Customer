@@ -325,7 +325,7 @@ class HR_RedemptionCatalogueListVM:  popUpAlertDelegate {
                             self.catalgoueListArray.removeAll()
                             self.getMycartList()
                             let alert = UIAlertController(title: "", message: "Added To Cart".localiz(), preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK".localiz(), style: .default, handler: nil))
+                            alert.addAction(UIAlertAction(title: "ok".localiz(), style: .default, handler: nil))
                             self.VC?.present(alert, animated: true, completion: nil)
                             self.VC?.productsDetailCollectionView.reloadData()
                             return

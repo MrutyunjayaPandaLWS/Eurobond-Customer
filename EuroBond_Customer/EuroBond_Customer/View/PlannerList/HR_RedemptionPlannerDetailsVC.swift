@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import LanguageManager_iOS
 class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
 
@@ -84,13 +85,13 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
             let calcValues = Int(self.requiredPoints) - (Int(redeemablePointsBalance) ?? 0)
             self.yellowView.isHidden = false
             self.whiteView.isHidden = true
-            self.infoLbl.text = "You need \(calcValues) more redeemable euros to redeem this product"
+            self.infoLbl.text = "You need".localiz() + "\(calcValues)" + "more redeemable euros to redeem this product".localiz()
         }else if self.requiredPoints <= Int(redeemablePointsBalance) ?? 0{
             self.redeemBTNView.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
             self.redeemBTN1.isEnabled = true
             self.redeemOfferBTNView.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
             self.redeemOfferBTN.isEnabled = true
-            self.infoLbl.text = "Congratulation! You are eligible to redeem this product"
+            self.infoLbl.text = "Congratulation! You are eligible to redeem this product".localiz()
             self.yellowView.isHidden = true
             self.whiteView.isHidden = false
 
@@ -109,20 +110,20 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
         productImg.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
     }
     func localization(){
-        self.screenTitle.text = "Wishlist"
-        self.pointsLbl.text = "EUROS"
-        self.congratulationsLbl.text = "Congratulations"
-        self.messageLbl.text = "eligible Msg"
-        self.redeemNowLbl.text = "Redeem Now"
+        self.screenTitle.text = "Wishlist".localiz()
+        self.pointsLbl.text = "EUROS".localiz()
+        self.congratulationsLbl.text = "Congratulations".localiz()
+        self.messageLbl.text = "eligible Msg".localiz()
+        self.redeemNowLbl.text = "Redeem Now".localiz()
 //        self.recommendedLbl.text = "RecommendedProducts"
         //self.redeemedPoints.text = "POINTS"
-        self.redeemLbl.text = "Redeem Now"
-        self.redeemSummary.text = "Redemption Planner Summary"
-        self.redeemInfo.text = "Redeemable Euros As OnToday"
+        self.redeemLbl.text = "Redeem Now".localiz()
+        self.redeemSummary.text = "Redemption Planner Summary".localiz()
+        self.redeemInfo.text = "Redeemable Euros As OnToday".localiz()
        // self.redeemedPoints.text = "Points"
-        self.earningSummaryLbl.text = "Average Earning"
-        self.earningPtsTitle.text = "Euros"
-        self.expectInfoLbl.text = "Your expected redemption of \(self.productName) is in \(actualRedemptionDate)"
+        self.earningSummaryLbl.text = "Average Earning".localiz()
+        self.earningPtsTitle.text = "Euros".localiz()
+        self.expectInfoLbl.text = "Your expected redemption of".localiz() + "\(self.productName)" + "is in".localiz() + "\(actualRedemptionDate)"
         
     }
     
@@ -144,7 +145,7 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Gift product is already added in the Redeem list"
+                vc!.descriptionInfo = "Gift product is already added in the Redeem list".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -160,7 +161,7 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                     vc!.delegate = self
                     vc!.titleInfo = ""
-                    vc!.descriptionInfo = "Insufficent Point Balance"
+                    vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                    
                     vc!.modalPresentationStyle = .overCurrentContext
                     vc!.modalTransitionStyle = .crossDissolve
@@ -180,7 +181,7 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Gift product is already added in the Redeem list"
+                vc!.descriptionInfo = "Gift product is already added in the Redeem list".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -195,7 +196,7 @@ class HR_RedemptionPlannerDetailsVC: BaseViewController, popUpAlertDelegate{
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                             vc!.delegate = self
                             vc!.titleInfo = ""
-                            vc!.descriptionInfo = "Insufficent Point Balance"
+                            vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                            
                             vc!.modalPresentationStyle = .overCurrentContext
                             vc!.modalTransitionStyle = .crossDissolve

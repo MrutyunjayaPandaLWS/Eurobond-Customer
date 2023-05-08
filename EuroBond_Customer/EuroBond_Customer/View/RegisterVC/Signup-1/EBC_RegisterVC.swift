@@ -146,11 +146,11 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         alreadyHaveAccountLbl.text = "AlreadyHaveAnAccount".localiz()
         loginBtn.setTitle("login".localiz(), for: .normal)
         
-        self.mrMissMrsTF.placeholder = "Select Title".localiz()
+        self.mrMissMrsTF.placeholder = "Mr/Mrs/Ms".localiz()
         self.nameTF.placeholder = "Enter Name".localiz()
-        self.lastNameTF.placeholder = "Enter Last Name".localiz()
+        self.lastNameTF.placeholder = "Enter last name".localiz()
         self.mobileTF.placeholder = "Enter Mobile Number".localiz()
-        self.emailTF.placeholder = "Enter email".localiz()
+        self.emailTF.placeholder = "Enter Email".localiz()
         self.addressTF.placeholder = "Enter your address".localiz()
         self.stateTF.placeholder = "Select State".localiz()
         self.cityTF.placeholder = "Select City".localiz()
@@ -158,6 +158,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.dobTF.placeholder = "Select DOB".localiz()
         self.genderTF.placeholder = "Select gender".localiz()
         self.prefferedLanguageTF.placeholder = "Select Language".localiz()
+        self.signUpLbl.text = "SignUp".localiz()
     }
     
     

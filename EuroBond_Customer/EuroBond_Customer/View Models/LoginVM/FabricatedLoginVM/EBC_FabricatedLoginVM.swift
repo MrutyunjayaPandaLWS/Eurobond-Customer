@@ -86,7 +86,7 @@ class EBC_FabricatedLoginVM {
                             if loginResponse[0].result ?? -1 != 1{
                                 self.VC!.view.makeToast("Password is Invalid !!".localiz(), duration: 2.0, position: .bottom)
                                 self.VC?.passwordTF.text = ""
-                            }else if loginResponse[0].isDelete ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 3 || loginResponse[0].verifiedStatus ?? -1 == 4{
+                            }else if loginResponse[0].isDelete ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 3 {
                                 self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 0 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 0{
                                 self.VC!.view.makeToast("Your account is not activated! Kindly activate your account".localiz(), duration: 2.0, position: .bottom)

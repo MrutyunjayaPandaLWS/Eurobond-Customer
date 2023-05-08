@@ -8,6 +8,7 @@ import UIKit
 import SDWebImage
 import Firebase
 import Toast_Swift
+import LanguageManager_iOS
 class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDelegate1 {
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
     
@@ -131,28 +132,22 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
             print(pointsRequired,"pointsRequired")
             print(pointsBalance,"PointBalance")
             print(tdsvalue,"TDs")
-            if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                self.dreamGiftMessage.text = "Congratulations! you are eligible to win this existing Dream Gift"
-            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                self.dreamGiftMessage.text = "बधाई! इस मौजूदा ड्रीम गिफ्ट को जीतने के लिए आप लगभग करीब हैं।"
-            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                self.dreamGiftMessage.text = "অভিনন্দন! আপনি এই বিদ্যমান ড্রিম গিফট জেতার প্রায় কাছাকাছি।"
-            }else{
-                self.dreamGiftMessage.text = "Congratulations! you are eligible to win this existing Dream Gift"
-            }
+           // if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+            self.dreamGiftMessage.text = "Congratulations! you are eligible to win this existing Dream Gift".localiz()
+            
                 self.redeemBTN.isEnabled = true
 //            self.redeemBTN.backgroundColor = UIColor(red: 199/255, green: 34/255, blue: 4/255, alpha: 0.5)
             self.redeemBTN.backgroundColor = UIColor(red: 189/255, green: 0/255, blue: 0/255, alpha: 1.0)
         }else{
-            if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                    self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift."
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                    self.dreamGiftMessage.text = "बधाई! इस मौजूदा ड्रीम गिफ्ट को जीतने के लिए आप लगभग करीब हैं।"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                    self.dreamGiftMessage.text = "অভিনন্দন! আপনি এই বিদ্যমান ড্রিম গিফট জেতার প্রায় কাছাকাছি।"
-                }else{
-                    self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift."
-                }
+            //if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+            self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift".localiz()
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+//                    self.dreamGiftMessage.text = "बधाई! इस मौजूदा ड्रीम गिफ्ट को जीतने के लिए आप लगभग करीब हैं।"
+//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+//                    self.dreamGiftMessage.text = "অভিনন্দন! আপনি এই বিদ্যমান ড্রিম গিফট জেতার প্রায় কাছাকাছি।"
+//                }else{
+//                    self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift."
+//                }
 
 
                 self.redeemBTN.isEnabled = false
@@ -166,57 +161,23 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
         self.navigationController?.popViewController(animated: true)
     }
     func languagelocalization(){
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+
+            self.redeemablePointsAsOnToday.text = "Redeemable points as on today".localiz() + "\(pointsBalance)"
+            self.header.text = "Dream Gift Details".localiz()
+            self.existingDate.text = "Created Date".localiz()
+            self.expireDate.text = "Desired Date".localiz()
+            self.ptsRequired.text = "Points Required".localiz()
+            self.avgPointsTitleLbl.text = "Average points to be earned per month".localiz()
+            self.expectedRedemption.text = "Expected Redemption".localiz()
+            self.redeemBTN.setTitle("Redeem Now".localiz(), for: .normal)
+            self.removeBTN.setTitle("Remove".localiz(), for: .normal)
+            self.tdsPts.text = "TDS points".localiz()
+            
         
-            self.redeemablePointsAsOnToday.text = "Redeemable points as on today \(pointsBalance)"
-            self.header.text = "Dream Gift Details"
-            self.existingDate.text = "Created Date"
-            self.expireDate.text = "Desired Date"
-            self.ptsRequired.text = "Points Required"
-            self.avgPointsTitleLbl.text = "Average points to be earned per month"
-            self.expectedRedemption.text = "Expected Redemption"
-            self.redeemBTN.setTitle("Redeem Now", for: .normal)
-            self.removeBTN.setTitle("Remove", for: .normal)
-            self.tdsPts.text = "TDS points"
-            
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.redeemablePointsAsOnToday.text = "आज के रूप में सम्मानजनक बिंदु \(pointsBalance)"
-            self.header.text = "ड्रीम उपहार विवरण"
-            self.existingDate.text = "रचना तिथि"
-            self.expireDate.text = "वांछित तारीख"
-            self.ptsRequired.text = "आवश्यक अंक"
-            self.avgPointsTitleLbl.text = "प्रति माह अर्जित किए जाने वाले औसत अंक"
-            self.expectedRedemption.text = "अपेक्षित मोचन"
-            self.redeemBTN.setTitle("अब एवज करें", for: .normal)
-            self.removeBTN.setTitle("हटाना", for: .normal)
-            self.tdsPts.text = "टीडीएस अंक"
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.redeemablePointsAsOnToday.text = "আজকের মতো পুনর্নির্ধারণযোগ্য পয়েন্ট \(pointsBalance)"
-            self.header.text = "স্বপ্নের উপহারের বিবরণ"
-            self.existingDate.text = "তৈরীর তারিখ"
-            self.expireDate.text = "কাঙ্খিত তারিখ"
-            self.ptsRequired.text = "পয়েন্ট প্রয়োজন"
-            self.avgPointsTitleLbl.text = "প্রতি মাসে গড় পয়েন্ট অর্জন করতে হবে"
-            self.expectedRedemption.text = "প্রত্যাশিত রিডেম্পশন"
-            self.redeemBTN.setTitle("এখন খালাস", for: .normal)
-            self.removeBTN.setTitle("অপসারণ", for: .normal)
-            self.tdsPts.text = "টিডিএস পয়েন্ট"
-            
-        }else{
-            self.redeemablePointsAsOnToday.text = "Redeemable points as on today \(pointsBalance)"
-            self.header.text = "Dream Gift Details"
-            self.existingDate.text = "Created Date"
-            self.expireDate.text = "Desired Date"
-            self.ptsRequired.text = "Points Required"
-            self.avgPointsTitleLbl.text = "Average points to be earned per month"
-            self.expectedRedemption.text = "Expected Redemption"
-            self.redeemBTN.setTitle("Redeem Now", for: .normal)
-            self.removeBTN.setTitle("Remove", for: .normal)
-            self.tdsPts.text = "TDS points"
-        }
     }
     
     func giftDetailsAPi(){
+        
         
         let parameters = [
             "ActionType": "243",
@@ -287,15 +248,7 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
                     vc!.delegate = self
                     vc!.titleInfo = ""
                     vc!.itsComeFrom = "DreamGiftDetails"
-                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                        vc!.descriptionInfo = "Dream Gift has been removed successfully"
-                     }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                         vc!.descriptionInfo = "ड्रीम गिफ्ट सफलतापूर्वक हटा दिया गया है"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                        vc!.descriptionInfo = "স্বপ্ন উপহার সফলভাবে সরানো হয়েছে"
-                    }else{
-                        vc!.descriptionInfo = "Dream Gift has been removed successfully"
-                      }
+                    vc!.descriptionInfo = "Dream Gift has been removed successfully".localiz()
                     vc!.modalPresentationStyle = .overCurrentContext
                     vc!.modalTransitionStyle = .crossDissolve
                     self.present(vc!, animated: true, completion: nil)
@@ -307,15 +260,15 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
                     vc!.delegate = self
                     vc!.titleInfo = ""
                     vc!.itsComeFrom = "DreamGiftDetails"
-                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                        vc!.descriptionInfo = "Dream Gift has been removed failed"
-                     }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                         vc!.descriptionInfo = "ड्रीम गिफ्ट को हटा दिया गया है विफल"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                        vc!.descriptionInfo = "ড্রিম গিফট ব্যর্থ হয়েছে"
-                    }else{
-                        vc!.descriptionInfo = "Dream Gift has been removed failed"
-                      }
+//                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                        vc!.descriptionInfo = "Dream Gift has been removed failed".localiz()
+//                     }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+//                         vc!.descriptionInfo = "ड्रीम गिफ्ट को हटा दिया गया है विफल"
+//                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+//                        vc!.descriptionInfo = "ড্রিম গিফট ব্যর্থ হয়েছে"
+//                    }else{
+//                        vc!.descriptionInfo = "Dream Gift has been removed failed"
+//                      }
                     vc!.modalPresentationStyle = .overCurrentContext
                     vc!.modalTransitionStyle = .crossDissolve
                     self.present(vc!, animated: true, completion: nil)

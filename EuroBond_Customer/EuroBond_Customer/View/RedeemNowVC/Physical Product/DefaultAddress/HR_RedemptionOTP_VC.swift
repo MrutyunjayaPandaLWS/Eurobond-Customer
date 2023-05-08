@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import LanguageManager_iOS
+import LanguageManager_iOS
 
 class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
@@ -22,6 +22,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
     @IBOutlet weak var enterOTPTopspaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var submitLbl: UILabel!
     
+    @IBOutlet var backbtnOut: GradientButton!
     var stateID = 0
     var cityID = 0
     var cityName = ""
@@ -60,11 +61,14 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
         super.viewDidLoad()
         self.VM.VC = self
         self.enterOTP_TF.delegate = self
-        self.messageTitle.text = "Otp has been sent to registered mobile number"
-        self.enterOTPtitle.text = "Enter OTP"
-        self.resendOTP.setTitle("Resend OTP", for: .normal)
-        self.submitLbl.text = "Submit"
-        self.enterOTP_TF.placeholder = "Enter OTP"
+        self.messageTitle.text = "Otp has been sent to registered mobile number".localiz()
+        self.enterOTPtitle.text = "EnterOTP".localiz()
+        self.resendOTP.setTitle("Resend OTP".localiz(), for: .normal)
+        self.submitLbl.text = "Submit".localiz()
+        self.enterOTP_TF.placeholder = "EnterOTP".localiz()
+        self.backbtnOut.setImage(UIImage(named: "back-3"), for: .normal)
+        //otpimage security1
+        self.otpImg.image = UIImage(named: "security1")
         NotificationCenter.default.addObserver(self, selector: #selector(redemptionProducts), name: .redemptionSuccess, object: nil)
         self.mobileNumberLbl.text = self.mobile
         
@@ -79,7 +83,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
     @objc func update() {
         if(count > 1) {
             count = count - 1
-            self.secondsRemaining.text = "\("Seconds Remaining"): \(count - 1)"
+            self.secondsRemaining.text = "\("Seconds Remaining".localiz()): \(count - 1)"
             self.enterOTPTopspaceConstraint.constant = 10
             self.resendOTP.isHidden = true
         }else{
@@ -90,8 +94,16 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
         }
     }
     @objc func redemptionProducts() {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_SuccessPoP_VC") as! HR_SuccessPoP_VC
-        self.navigationController?.pushViewController(vc, animated: true)
+        if messageTitle.text == "Otp has been sent to registered mobile number"{
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_SuccessPoP_VC") as! HR_SuccessPoP_VC
+            vc.imageChange = 1
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_SuccessPoP_VC") as! HR_SuccessPoP_VC
+            vc.imageChange = 2
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -100,7 +112,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -127,7 +139,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -147,7 +159,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -185,11 +197,11 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                                     ]
                                 ],
                                 "ObjCustShippingAddressDetails": [
-                                    "Address1": "\(self.address1)",
-                                    "CityId": self.cityID,
-                                    "CityName": "\(self.cityName)",
-                                    "CountryId": 103,
-                                    "Email": "\(self.emailId)",
+                                    "address1": "\(self.address1)",
+                                    "cityid": self.cityID,
+                                    "cityname": "\(self.cityName)",
+                                    "countryid": 103,
+                                    "email": "\(self.emailId)",
                                     "FullName": "\(contractorName)",
                                     "Mobile": "\(loyaltyId)",
                                     "StateId": self.stateID,
@@ -211,7 +223,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                         vc!.delegate = self
                         vc!.titleInfo = ""
-                        vc!.descriptionInfo = "InValid OTP"
+                        vc!.descriptionInfo = "InValid OTP".localiz()
                         vc!.modalPresentationStyle = .overCurrentContext
                         vc!.modalTransitionStyle = .crossDissolve
                         self.present(vc!, animated: true, completion: nil)
@@ -223,7 +235,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                         vc!.delegate = self
                         vc!.titleInfo = ""
-                        vc!.descriptionInfo = "Please Enter Correct OTP"
+                        vc!.descriptionInfo = "Please Enter Correct OTP".localiz()
                         vc!.modalPresentationStyle = .overCurrentContext
                         vc!.modalTransitionStyle = .crossDissolve
                         self.present(vc!, animated: true, completion: nil)
@@ -233,7 +245,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                         vc!.delegate = self
                         vc!.titleInfo = ""
-                        vc!.descriptionInfo = "Enter Valid OTP"
+                        vc!.descriptionInfo = "Enter Valid OTP".localiz()
                         vc!.modalPresentationStyle = .overCurrentContext
                         vc!.modalTransitionStyle = .crossDissolve
                         self.present(vc!, animated: true, completion: nil)

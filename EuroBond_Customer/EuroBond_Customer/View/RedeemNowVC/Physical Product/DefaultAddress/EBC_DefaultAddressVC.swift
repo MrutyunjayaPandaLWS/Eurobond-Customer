@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import Lottie
+import LanguageManager_iOS
 class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popUpDelegate1, popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -31,6 +32,8 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         self.customerAddressTV.text = "\(selectedname),\n\(self.selectedmobile),\n\(self.selectedaddress),\n\(self.selectedCity),\n\(self.selectedState),\n\(self.selectedCountry),\n\(self.selectedemail),\n\(self.selectedpincode)"
     }
     
+    @IBOutlet var defaultAddresstitleLbl: UILabel!
+    @IBOutlet var addressLbl: UILabel!
     @IBOutlet var customerNameLabel: UILabel!
     @IBOutlet var totalPoints: UILabel!
     @IBOutlet var proceedToCheckoutButton: GradientButton!
@@ -44,7 +47,8 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
     
     @IBOutlet var cartListingView: UIView!
     
-   
+    @IBOutlet var totalEurostilteLbl: UILabel!
+    
     var VM = DefaultAddressModels()
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var loyaltyID = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
@@ -106,6 +110,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
             self.orderListTableView.isHidden = false
             self.cartListingView.isHidden = false
         }
+        langLoc()
        
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -113,7 +118,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         print(self.totalPoint)
        // self.loaderView.isHidden = true
         if self.dreamGiftID != 0 {
-            self.totalPoints.text = "\(Int(self.totalPoint)) Euros"
+            self.totalPoints.text = "\(Int(self.totalPoint))" + " " + "Euros".localiz()
         }else{
             self.myCartListAPI()
         }
@@ -132,6 +137,15 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         }
         
     }
+    
+    func langLoc(){
+        addressLbl.text =  "Address".localiz()
+        defaultAddresstitleLbl.text = "Default Address".localiz()
+        totalEurostilteLbl.text = "Total Euros".localiz()
+        proceedToCheckoutButton.setTitle("Confirm Order".localiz(), for: .normal)
+        
+    }
+    
     
     @IBAction func editAddressBtn(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_EditAddressVC") as! HR_EditAddressVC
@@ -171,7 +185,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
                       let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                       vc!.delegate = self
                       vc!.titleInfo = ""
-                      vc!.descriptionInfo = "Shipping address requires: State,City,Address,Pin code and Mobile Number,details,Click on 'Edit' to edit and add details"
+                      vc!.descriptionInfo = "Shipping address requires: State,City,Address,Pin code and Mobile Number,details,Click on 'Edit' to edit and add details".localiz()
                       vc!.modalPresentationStyle = .overCurrentContext
                       vc!.modalTransitionStyle = .crossDissolve
                       self.present(vc!, animated: true, completion: nil)
@@ -206,7 +220,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
                   let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                   vc!.delegate = self
                   vc!.titleInfo = ""
-                  vc!.descriptionInfo = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue"
+                  vc!.descriptionInfo = "YourAccountUnverified".localiz()
                   vc!.modalPresentationStyle = .overCurrentContext
                   vc!.modalTransitionStyle = .crossDissolve
                   self.present(vc!, animated: true, completion: nil)

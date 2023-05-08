@@ -7,6 +7,7 @@
 
 import UIKit
 import Lottie
+import LanguageManager_iOS
 class EBC_ComingSoonVC: BaseViewController {
     
     @IBOutlet var headerTitleLbl: UILabel!
@@ -17,6 +18,7 @@ class EBC_ComingSoonVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.headerTitleLbl.text = "Game Zone".localiz()
         self.lottieAnimation(animationView: comingSoonAnimation)
     }
 

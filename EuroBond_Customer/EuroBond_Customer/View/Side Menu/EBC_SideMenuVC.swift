@@ -9,6 +9,9 @@ import UIKit
 import SlideMenuControllerSwift
 import Kingfisher
 import LanguageManager_iOS
+import CoreData
+
+
 class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var logoutView: UIView!
@@ -29,6 +32,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     var requestAPIs = RestAPI_Requests()
     var parameters: JSON?
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
+    var uploadedCodes:Array = [UploadedCodes]()
     
     var sideMenuArrayList: [sideMenuModel] = [
         
@@ -121,8 +125,57 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func clearTable(){
+        
+        let context = persistanceservice.persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ScanCodeSTORE")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+    }
+    func clearTable1(){
+            
+            let context = persistanceservice.persistentContainer.viewContext
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedCodes")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+        }
+    
+    
+    func clearTable2(){
+            
+            let context = persistanceservice.persistentContainer.viewContext
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SendUploadedCodes")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+        }
+    
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
-            UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
+        UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
+        clearTable()
+        clearTable1()
+        clearTable2()
+        DispatchQueue.main.async {
             if #available(iOS 13.0, *) {
                 DispatchQueue.main.async {
                     let domain = Bundle.main.bundleIdentifier!
@@ -143,6 +196,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
         }
+    }
     
     
     func deleteAccountAPI(paramters: JSON){
@@ -199,72 +253,72 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch sideMenuArrayList[indexPath.row].sideMenuName{
-        case "Home":
+        case "Home".localiz():
                 closeLeft()
-        case "Scan QR Code":
+        case "Scan QR Code".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
             vc?.fromSideMenu = "SideMenu"
-//            vc?.itsFrom = "ScanCode"
+            vc?.itsFrom = "ScanCode"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Enter QR Code":
+        case "Enter QR Code".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
             vc?.fromSideMenu = "SideMenu"
 //            vc?.scanner = "Upload"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Code Status":
+        case "Code Status".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeStatusListVC") as? CodeStatusListVC
 //            vc?.fromSideMenu = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "My Earning":
+        case "My Earning".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "My Redemptions":
+        case "My Redemptions".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyRedemptionVC") as? EBC_MyRedemptionVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Redemption Catalogue":
+        case "Redemption Catalogue".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RedeemNowVC") as? EBC_RedeemNowVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Game Zone":
+        case "Game Zone".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ComingSoonVC") as? EBC_ComingSoonVC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Refer & Earn":
+        case "Refer & Earn".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferAndEarnVC") as? EBC_RefferAndEarnVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Add My Assistant":
+        case "Add My Assistant".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyAssistantVC") as? EBC_MyAssistantVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Wishlist":
+        case "Wishlist".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_RedemptionPlannerVC") as? HR_RedemptionPlannerVC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Dream Gift":
+        case "Dream Gift".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DreamGiftListingViewController") as? DreamGiftListingViewController
             navigationController?.pushViewController(vc!, animated: true)
-        case "Schemes & Offers":
+        case "Schemes & Offers".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SchemesAndOffersVC") as? EBC_SchemesAndOffersVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Milestone Bonus":
+        case "Milestone Bonus".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MillstonesBonussVC") as? EBC_MillstonesBonussVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "Helpline":
+        case "Helpline".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_HelpLineVC") as? EBC_HelpLineVC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
-        case "About":
+        case "About".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_AboutVC") as? EBC_AboutVC
             navigationController?.pushViewController(vc!, animated: true)
-        case "FAQ":
+        case "FAQ".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_FAQVC") as? EBC_FAQVC
             navigationController?.pushViewController(vc!, animated: true)
-        case "Term and Conditions":
+        case "Term and Conditions".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_TermsAndConditionsVC") as? EBC_TermsAndConditionsVC
             navigationController?.pushViewController(vc!, animated: true)
         default:

@@ -164,6 +164,7 @@
             <connections>
                 <outlet property="dateTitle" destination="LNr-ny-qoE" id="Tmx-RD-jWF"/>
                 <outlet property="desiredDate" destination="YAR-Pz-uFa" id="uaj-A5-rZa"/>
+                <outlet property="eurosLbl" destination="Mb8-iw-92w" id="jXF-ZP-uCU"/>
                 <outlet property="productImage" destination="NbN-vV-Xzc" id="MD8-kV-gBM"/>
                 <outlet property="productName" destination="jKv-RX-JHF" id="lIo-Pb-1S1"/>
                 <outlet property="productPoints" destination="mKp-Zc-lpE" id="Q4l-2w-Iu4"/>

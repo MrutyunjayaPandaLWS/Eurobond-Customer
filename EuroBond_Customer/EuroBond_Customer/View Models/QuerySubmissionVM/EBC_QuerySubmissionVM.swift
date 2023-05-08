@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 class EBC_QuerySubmissionVM{
     weak var VC: EBC_CreatenewQueryVC?
     var requestAPIs = RestAPI_Requests()
@@ -23,7 +24,7 @@ class EBC_QuerySubmissionVM{
                         self.VC?.stopLoading()
                         if result?.returnMessage ?? "" != "" || result?.returnMessage ?? "" != nil{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
-                            vc.descriptionInfo = "Query Submitted Successfully !!"
+                            vc.descriptionInfo = "QuerySubmittedSuccessfully".localiz()
                             vc.itsComeFrom = "Query"
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
@@ -31,7 +32,7 @@ class EBC_QuerySubmissionVM{
                         }else{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                             vc.itsComeFrom = "Query"
-                            vc.descriptionInfo = "Query Submission Failed !!"
+                            vc.descriptionInfo = "QuerySubmissionFailed".localiz()
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
                             self.VC?.present(vc, animated: true)

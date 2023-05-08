@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import LanguageManager_iOS
 
 class EBC_TermsAndConditionsVC: BaseViewController, popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
@@ -22,7 +23,18 @@ class EBC_TermsAndConditionsVC: BaseViewController, popUpAlertDelegate {
         super.viewDidLoad()
 
 //        self.webView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c", ofType: "html")!) as URL) as URLRequest)
-        self.dashboardTCApi()
+        //self.dashboardTCApi()
+        langLocaliz()
+    }
+    
+    func langLocaliz(){
+        self.termsAndCondTitle.text = "TermsAndConditions".localiz()
+        if termsAndCondTitle.text == "Terms and conditions" {
+            self.webView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c-eng", ofType: "html")!) as URL) as URLRequest)
+        }else{
+            self.webView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c-hin", ofType: "html")!) as URL) as URLRequest)
+        }
+        
         
     }
     

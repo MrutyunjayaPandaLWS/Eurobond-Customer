@@ -74,7 +74,12 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
         self.titleVCLBL.text = "My Earnings".localiz()
         self.myEarningInfoLbl.text = "National euros cannot be redeemed".localiz()
         self.supportBtn.setTitle("Click here for support".localiz(), for: .normal)
-        self.filterButton.setTitle("rest".localiz(), for: .normal)
+        //self.filterButton.setTitle("rest".localiz(), for: .normal)
+        //self.filterButton.setTitle("rest".localiz(), for: .normal)
+        
+        self.fromDate.setTitle("From Date".localiz(), for: .normal)
+        self.toDate.setTitle("To Date".localiz(), for: .normal)
+        self.filterButton.setTitle("Filter".localiz(), for: .normal)
     }
     
     

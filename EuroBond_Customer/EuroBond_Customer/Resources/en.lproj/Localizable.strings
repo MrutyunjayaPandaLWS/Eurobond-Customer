@@ -207,7 +207,7 @@
 "AccountIsDeactivated" = "Account is deactivated";
 "Account is activated" = "Account is activated";
 "Enter valid OTP" = "Enter valid OTP";
-"Already Mobile number doesn't exists" = "Already Mobile number doesn't exists";
+"Already Mobile number doesn't exists" = "Mobile number Already exists";
 "WhatNew" = "What's New";
 "My Assistant" = "My Assistant";
 
@@ -226,12 +226,185 @@
 "AccDeleted" = "Account deleted successfully";
 "SomethingWrong" = "Something went wrong please try again later!";
 
+"Category1" = "Category/ ";
 
-
-/////New Loines
+/////New Lines
 
 "Enter last name" = "Enter last name";
 "Enter Email" = "Enter email";
 "Pan is invalid" = "Pan is invalid";
 
 "Your scanning limit exceeded" = "QR code limit exceeded";
+"Redemption Failed" = "Redemption Failed";
+"Added To Cart" = "Added To Cart";
+"Add to Cart Failed. Try after sometime" = "Add to Cart Failed. Try after sometime";
+"Congratulation! You are eligible to redeem this product" = "Congratulation! You are eligible to redeem this product";
+
+"Congratulations" = "Congratulations";
+"eligible Msg" = "eligible Msg";
+"RecommendedProducts" = "RecommendedProducts";
+"Redemption Planner Summary" = "Redemption Planner Summary";
+"Redeemable Euros As OnToday" = "Redeemable Euros As OnToday";
+"Points" = "Euros";
+"Average Earning" = "Average Earning";
+"Euros" = "Euros";
+"Your expected redemption of" = "Your expected redemption of ";
+"is in" = " is in ";
+"You need" = "You need ";
+"more redeemable euros to redeem this product" = " more redeemable euros to redeem this product";
+"Gift product is already added in the Redeem list" = "Gift product is already added in the Redeem list";
+"Dream Gift" = "Dream Gift";
+"Insufficient point balance to redeem" = "Insufficient point balance to redeem!";
+"Congratulations! you are eligible to win this existing Dream Gift" = "Congratulations! you are eligible to win this existing Dream Gift";
+"Congratulations! You are almost near to win this existing Dream Gift" = "Congratulations! You are almost near to win this existing Dream Gift.";
+"Redeemable points as on today" = "Redeemable points as on today";
+"Dream Gift Details" = "Dream Gift Details";
+"Created Date" = "Created Date";
+"Desired Date" = "Desired Date";
+"Points Required" = "Points Required";
+"Average points to be earned per month" = "Average points to be earned per month";
+"Expected Redemption" = "Expected Redemption";
+"TDS points" = "TDS points";
+"Remove" = "Remove";
+"Dream Gift has been removed successfully" = "Dream Gift has been removed successfully";
+"Dream Gift has been removed failed" = "Dream Gift has been removed failed";
+"No Data Found" = "No Data Found !";
+"Schemes and Offers" = "Schemes and Offers";
+"Millstone Bonus" = "Millstone Bonus";
+"Bonus Euros to be awardedto members on reching below slabs" = "Bonus Euros to be awarded to Members on reching below slabs:";
+"Euro Slab" = "Euro Slab";
+"Add on Euros" = "Add on Euros";
+"TAP TO CALL NOW" = "TAP TO CALL NOW";
+"ANY QUERIES" = "ANY QUERIES ?";
+"Raise a Query" = "Raise a Query";
+"For any Queries on Eurobond Rewards program Please give a Missed Call on the below mentioned number or Lodge a Query" = "For any Queries on Eurobond Rewards program Please give a Missed Call on the below mentioned number or Lodge a Query";
+
+
+"Product Catalogue" = "Product Catalogue";
+"Get the Product Details" = "Get the Product Details";
+"For Product videos" = "For Product videos";
+"Eurobond Youtube" = "Eurobond Youtube";
+"Search Project" = "Search Project";
+"Project Search" = "Project Search";
+"Check Latest Updates" = "Check Latest Updates";
+"Search by Brnad,Color,Color Code" = "Search by Brnad,Color,Color Code";
+"Brand" = "Brand ";
+"Color Code" = "Color Code";
+"Color" = "Color";
+
+
+"My Cart" = "My Cart";
+"REQUIRED EUROS" = "REQUIRED EUROS";
+"Checkout" = "Checkout";
+"No Internet" = "No Internet";
+"Your account is unverified! Kindly contact the administrator to access the redemption Catalogue" = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue";
+
+"Shipping address requires: State,City,Address,Pin code and Mobile Number,details,Click on 'Edit' to edit and add details" = "Shipping address requires: State,City,Address,Pin code and Mobile Number,details,Click on 'Edit' to edit and add details";
+"Select Country" = "Select Country";
+
+
+"New Address" = "New Address";
+"Save Changes" = "Save Changes";
+"Mobile" = "Mobile";
+"Country" = "Country";
+"Zip" = "Zip";
+"Enter Mobile Number" = "Enter Mobile Number";
+"Enter Zip" = "Enter Zip";
+"Enter Valid Zip" = "Enter Valid Zip";
+"Shipping Address Updated" = "Shipping Address Updated";
+"Select Query Topic" = "Select Query Topic";
+"Enter query summary" = "Enter query summary..";
+"Enter query details"  = "Enter query details..";
+"Choose Any Option" = "Choose Any Option";
+"Camera" = "Camera";
+"Gallery" = "Gallery";
+"Dismiss" = "Dismiss";
+"Need Gallary access" = "Need Gallary access";
+"Need Camera Access" = "Need Camera Access";
+"EuroBond need to access camera Gallery" = "EuroBond need to access camera Gallery";
+"No Camera" = "No Camera";
+"Sorry no device" = "Sorry no device";
+
+
+
+
+/// Enhance Libnes
+
+
+"Notification" = "Notification";
+"New Ticket" = "New Ticket";
+"Select Your Topic" =  "Select Your Topic";
+"Select topic" = "Select topic";
+"Query Summary" = "Query Summary";
+"Query Details" = "Query Details";
+"Submit Query" = "Submit Query";
+"Browse Image" = "Browse Image";
+"QuerySubmittedSuccessfully" = "Query Submitted Successfully !!";
+"QuerySubmissionFailed" = "Query Submission Failed !!";
+"createQueryInfo" = "Please submit your query using this form";
+
+"Resend OTP" = "Resend OTP";
+"Otp has been sent to registered mobile number" = "Otp has been sent to registered mobile number";
+"Seconds Remaining" = "Seconds Remaining";
+"InValid OTP" = "InValid OTP";
+"Please Enter Correct OTP" = "Please Enter Correct OTP";
+"Physical Products" = "Physical Products";
+"eVoucher" = "eVoucher";
+"Bank Transfer" = "Bank Transfer";
+
+"Added to Cart" ="Added to Cart";
+"Add to Planner" = "Add to Planner";
+"Add to Cart" = "Add to Cart";
+"Added to Planner" ="Added to Planner";
+
+
+"My Profile" = "My Profile";
+"Personal Details" = "Personal Details";
+"Facing any issues" = "Facing any issues";
+"Give a Missed Call" = "Give a Missed Call";
+
+"Beneficiary Type" = "Beneficiary Type";
+"DOB1" = "DOB";
+"Pincode" = "Pincode";
+
+"Redeem" = "Redeem";
+"View" = "View";
+
+"Default Address" = "Default Address";
+"Total Euros" = "Total Euros";
+"Confirm Order" = "Confirm Order";
+"SecondsRemaining" = "Seconds Remaining : 0:";
+
+"Enter your address" = "Enter your address";
+
+"Enter PAN Number" = "Enter PAN Number";
+"Pan Number" = "Pan Number";
+"attach PAN Card" = "Attach PAN Card";
+"Enter GST Number" = "Enter GST Number";
+"GST" = "GST";
+"AttachGSTDocument" = "Attach GST Document ( Optional )";
+"Upload File" = "Upload File";
+"Back" = "Back";
+"Enter valid PAN number" = "Enter valid PAN number";
+"Attach PAN Image" = "Attach PAN Image";
+
+"Allow Gallery access" = "Allow Gallery access";
+"Eurobond need to access camera Gallery" = "Eurobond need to access camera Gallery";
+"Registration Failed" = "Registration Failed";
+"decline" = "Decline";
+"accept" = "Accept";
+
+"Profile Updated Successfully" = "Profile Updated Successfully !!";
+"Profile Update is failed" = "Profile Update is failed !!";
+"QR Code length should be 10 or 12" = "QR Code length should be 10 or 12";
+
+"Progrom Name" = "Program Name";
+"OrderStatus" = "Order Status";
+"All Euros" = "All Euros";
+"Under 1000" = "Under 1000";
+"25000 & Above" = "25000 & Above";
+"Lodge Query" = "Lodge Query";
+"Support" = "Chat";
+
+
+

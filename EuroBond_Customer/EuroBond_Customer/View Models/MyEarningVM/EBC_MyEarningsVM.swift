@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 class EBC_MyEarningsVM{
     
     weak var VC:EBC_MyEarningsVC?
@@ -43,6 +44,7 @@ class EBC_MyEarningsVM{
                                 self.VC?.myEarningTV.reloadData()
                             }else{
                                 self.VC?.noDataFound.isHidden = false
+                                self.VC?.noDataFound.text = "No Data Found".localiz()
                                 self.VC?.myEarningTV.isHidden = true
                             }
                         }else{
@@ -52,6 +54,7 @@ class EBC_MyEarningsVM{
                             }else{
                                 self.VC?.myEarningTV.isHidden = true
                                 self.VC?.noDataFound.isHidden = false
+                                self.VC?.noDataFound.text = "No Data Found".localiz()
                             }
 
                         }

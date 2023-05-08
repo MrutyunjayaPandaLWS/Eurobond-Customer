@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, SchemesAndOffersDelegate {
     
@@ -35,6 +36,11 @@ class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableVi
         shemesAndOffersTV.dataSource = self
         self.offersandPromotionsApi(UserId: self.userId)
         self.shemesAndOffersTV.separatorStyle = .none
+        languageLocaliz()
+    }
+    
+    func languageLocaliz(){
+        titleVc.text = "Schemes and Offers".localiz()
     }
     
     

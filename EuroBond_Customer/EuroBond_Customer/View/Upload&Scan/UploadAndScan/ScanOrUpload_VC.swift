@@ -286,7 +286,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             ]
             print(self.parameterJSON ?? "")
             
-            if self.scanQRCodeButton.currentTitle == "Upload QR Code" ||  self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" ||  self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" ||  self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
+            if self.scanQRCodeButton.currentTitle == "Upload QR Code".localiz() ||  self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" ||  self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" ||  self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
                 self.isFrom = 1
                 self.session.stopRunning()
                 self.codeTF.text = ""
@@ -417,37 +417,40 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     
     @IBAction func closeScreen(_ sender: Any) {
-        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-            DispatchQueue.main.async{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                vc!.delegate = self
-                vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection".localiz()
-                vc!.modalPresentationStyle = .overCurrentContext
-                vc!.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
-            }
-        }else{
+        print(self.codeLIST.count,"dsjknd")
+        if self.codeLIST.count != 0{
+            NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+        }
             //clearTable()
-            if self.codeLIST.count != 0{
-                NotificationCenter.default.post(name: .CodeSubmission, object: nil)
-            }
             self.session.stopRunning()
             if self.fromSideMenu == "SideMenu"{
                 self.dismiss(animated: true){
                     NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
                 }
             }else{
+                
                 self.dismiss(animated: true){
                     NotificationCenter.default.post(name: .goToParticularVc, object: nil)
                 }
             }
-        }
+            
         
     }
     
     @IBAction func submitButton(_ sender: Any) {
-        submitBTNSetup()
+//        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+//            DispatchQueue.main.async{
+//                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+//                vc!.delegate = self
+//                vc!.titleInfo = ""
+//                vc!.descriptionInfo = "No Internet Connection".localiz()
+//                vc!.modalPresentationStyle = .overCurrentContext
+//                vc!.modalTransitionStyle = .crossDissolve
+//                self.present(vc!, animated: true, completion: nil)
+//            }
+//        }else{
+            submitBTNSetup()
+//        }
     }
     
     func submitBTNSetup(){
@@ -572,6 +575,9 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     @IBAction func backButton(_ sender: Any) {
         //clearTable()
+        if self.codeLIST.count != 0{
+            NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+        }
         self.session.stopRunning()
         if self.fromSideMenu == "SideMenu"{
 //            self.dismiss(animated: true){
@@ -586,7 +592,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         
     }
     @IBAction func scannedCodesButton(_ sender: Any) {
-        if self.scanQRCodeButton.currentTitle == "Upload QR Code" || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
+        if self.scanQRCodeButton.currentTitle == "Upload QR Code".localiz() || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
             self.session.stopRunning()
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScannedCodes_VC") as! ScannedCodes_VC
             vc.itsFrom = "Scanner"

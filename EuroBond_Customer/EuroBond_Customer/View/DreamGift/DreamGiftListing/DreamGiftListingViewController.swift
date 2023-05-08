@@ -4,6 +4,7 @@ import SDWebImage
 import Alamofire
 //import Firebase
 import Toast_Swift
+import LanguageManager_iOS
 class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegate, popUpDelegate, popUpDelegate1{
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) { }
     
@@ -50,15 +51,7 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
     }
     
     func languagelocalization(){
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.header.text = "Dream Gift"
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.header.text = "सपना उपहार"
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.header.text = "স্বপ্নের উপহার"
-        }else{
-            self.header.text = "Dream Gift"
-        }
+        self.header.text = "Dream Gift".localiz()
     }
     
     @objc func afterRemovedProducts(){
@@ -118,7 +111,7 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
 //                }
               
             }else{
-                self.view.makeToast("Insufficient point balance to redeem!", duration: 2.0, position: .bottom)
+                self.view.makeToast("Insufficient point balance to redeem".localiz(), duration: 2.0, position: .bottom)
             }
            
         }

@@ -99,6 +99,8 @@ class EBC_RegisterAssistantVC: BaseViewController, UITextFieldDelegate, DPOTPVie
         self.mobileNumberTF.placeholder = "EnterMobileNumber".localiz()
         self.registerTitle.text = "Register".localiz()
         self.otpBtn.setTitle("GenerateOTP".localiz(), for: .normal)
+        self.enterOtpTitleLbl.text = "EnterOTP".localiz()
+        self.resendBtn.setTitle("Resend OTP".localiz(), for: .normal)
     }
     
     

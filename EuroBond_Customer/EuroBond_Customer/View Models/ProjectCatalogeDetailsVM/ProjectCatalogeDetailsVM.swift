@@ -28,10 +28,12 @@ class ProjectCatalogeDetailsVM {
                         if self.projectCatalogeDetailsArray.count != 0 {
                             self.VC?.collectionViewProjectDetails.isHidden = false
                             self.VC?.collectionViewProjectDetails.reloadData()
-                            //let gestureRecognizer = UITapGestureRecognizer(target: self.VC.self, action: #selector(self.VC!.didTap))
                         }else{
                             self.VC?.collectionViewProjectDetails.isHidden = true
                         }
+//                            self.VC?.ImageSetups()
+//                            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.VC?.didTap))
+//                            self.VC?.imageZoomView.addGestureRecognizer(gestureRecognizer)
                         
                     }
                     

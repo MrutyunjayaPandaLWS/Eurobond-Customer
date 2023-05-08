@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class HR_RedemptionPlannerVM:  popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
@@ -155,7 +156,7 @@ class HR_RedemptionPlannerVM:  popUpAlertDelegate {
                                 vc!.delegate = self
                                 vc!.titleInfo = ""
                                 vc!.isComeFrom = "Failed"
-                                vc!.descriptionInfo = "Redemption Failed"
+                                vc!.descriptionInfo = "Redemption Failed".localiz()
                                 vc!.modalPresentationStyle = .overFullScreen
                                 vc!.modalTransitionStyle = .crossDissolve
                                 self.VC?.present(vc!, animated: true, completion: nil)
@@ -209,8 +210,8 @@ class HR_RedemptionPlannerVM:  popUpAlertDelegate {
                             self.removeRedemptionPlanner(redemptionPlannerId: redemptionPlannerId)
                             self.redemptionPlannerList()
                             NotificationCenter.default.post(name: .cartCount, object: nil)
-                            let alert = UIAlertController(title: "", message: "Added To Cart", preferredStyle: UIAlertController.Style.alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ (UIAlertAction) in
+                            let alert = UIAlertController(title: "", message: "Added To Cart".localiz(), preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK".localiz(), style: .default, handler:{ (UIAlertAction) in
                                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_MyCartVC") as! HR_MyCartVC
                                 self.VC?.navigationController?.pushViewController(vc, animated: true)
                                 
@@ -224,7 +225,7 @@ class HR_RedemptionPlannerVM:  popUpAlertDelegate {
                                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                                vc!.delegate = self
                                vc!.titleInfo = ""
-                                vc!.descriptionInfo = "Add to Cart Failed. Try after sometime"
+                                vc!.descriptionInfo = "Add to Cart Failed. Try after sometime".localiz()
                                vc!.modalPresentationStyle = .overCurrentContext
                                vc!.modalTransitionStyle = .crossDissolve
                                self.VC?.present(vc!, animated: true, completion: nil)

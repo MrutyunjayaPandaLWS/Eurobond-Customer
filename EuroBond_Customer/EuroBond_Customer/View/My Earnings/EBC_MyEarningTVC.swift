@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_MyEarningTVC: UITableViewCell {
 
@@ -20,6 +21,8 @@ class EBC_MyEarningTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        self.programeTitleLbl.text = "Progrom Name".localiz()
+        self.statusLbl.text = "Status".localiz()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

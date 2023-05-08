@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import LanguageManager_iOS
 class EBC_OffersandSchemeVM{
     
     weak var VC: EBC_SchemesAndOffersVC?
@@ -29,7 +29,7 @@ class EBC_OffersandSchemeVM{
                             self.VC?.shemesAndOffersTV.isHidden = false
                             self.VC?.shemesAndOffersTV.reloadData()
                         }else{
-                            self.VC?.view.makeToast("No Data Found !!", duration: 3.0, position: .center)
+                            self.VC?.view.makeToast("No Data Found".localiz(), duration: 3.0, position: .center)
                             self.VC?.shemesAndOffersTV.isHidden = true
                         }
                     }

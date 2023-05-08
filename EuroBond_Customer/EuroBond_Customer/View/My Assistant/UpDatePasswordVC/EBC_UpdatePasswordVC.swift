@@ -35,6 +35,7 @@ class EBC_UpdatePasswordVC: BaseViewController {
         self.mobileNumberTF.text = self.mobile
         nameTF.isUserInteractionEnabled = false
         mobileNumberTF.isUserInteractionEnabled = false
+        localizSetup()
         
     }
     

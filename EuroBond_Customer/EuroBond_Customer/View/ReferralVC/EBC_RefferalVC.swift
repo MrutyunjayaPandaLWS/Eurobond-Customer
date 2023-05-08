@@ -39,7 +39,7 @@ class EBC_RefferalVC: BaseViewController, UITextFieldDelegate {
         referralinfoLbl.text = "Apply Referral Code to Reward your Friend".localiz()
         referralTitleLbl.text = "Enter Referral Code".localiz()
         enterCodeLbl.text = "Referral Code".localiz()
-        enterCodeTF.placeholder = "Enter refferal code".localiz()
+        enterCodeTF.placeholder = "Enter Referral Code".localiz()
         SkipBtn.setTitle("Skip".localiz(), for: .normal)
         verifyBtn.setTitle("Verify".localiz(), for: .normal)
     }
@@ -127,7 +127,7 @@ class EBC_RefferalVC: BaseViewController, UITextFieldDelegate {
         let currentText = enterCodeTF.text ?? ""
         guard let stringRange = Range(range, in: currentText) else { return false }
         let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-        return updatedText.count <= 6
+        return updatedText.count <= 7
 
     }
     

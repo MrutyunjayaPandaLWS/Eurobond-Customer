@@ -73,7 +73,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
                 
                     if self.VM.myAssistantArrayList[tappedIndexPath.row].isActive ?? -1 == 1{
                         let alert = UIAlertController(title: "AreYouSure".localiz(), message: "YouWantdeactivate".localiz(), preferredStyle: UIAlertController.Style.alert)
-                        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { UIAlertAction in
+                        alert.addAction(UIAlertAction(title: "Yes".localiz(), style: .default, handler: { UIAlertAction in
                         let parameter = [
                             "ActionType": "5",
                             "userid": self.userId,//Currently Logged user id
@@ -97,7 +97,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
                         print(parameter)
                         self.VM.deactivateExecutiveApi(parameter: parameter)
                         }))
-                            alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
             

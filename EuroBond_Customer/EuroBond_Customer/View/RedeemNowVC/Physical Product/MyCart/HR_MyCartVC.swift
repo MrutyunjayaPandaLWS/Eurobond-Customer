@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -37,7 +37,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                             vc!.delegate = self
                             vc!.titleInfo = ""
-                            vc!.descriptionInfo = "Insufficient Point Balance"
+                            vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                             vc!.modalPresentationStyle = .overCurrentContext
                             vc!.modalTransitionStyle = .crossDissolve
                             self.present(vc!, animated: true, completion: nil)
@@ -85,7 +85,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
                                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                                     vc!.delegate = self
                                     vc!.titleInfo = ""
-                                    vc!.descriptionInfo = "Insufficient Point Balance"
+                                    vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                                     vc!.modalPresentationStyle = .overCurrentContext
                                     vc!.modalTransitionStyle = .crossDissolve
                                     self.present(vc!, animated: true, completion: nil)
@@ -148,10 +148,10 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
         self.myCartTableView.dataSource = self
         self.noDataFound.isHidden = true
         myCartTableView.register(UINib(nibName: "HR_MyCartTVC", bundle: nil), forCellReuseIdentifier: "HR_MyCartTVC")
-        self.screenTitleLbl.text = "My Cart"
-        self.noDataFound.text = "No data found !!"
-        self.requiredPts.text = "REQUIRED EUROS"
-        self.checkoutLbl.text = "Checkout"
+        self.screenTitleLbl.text = "My Cart".localiz()
+        self.noDataFound.text = "No Data Found".localiz()
+        self.requiredPts.text = "REQUIRED EUROS".localiz()
+        self.checkoutLbl.text = "Checkout".localiz()
        
    
     }
@@ -162,7 +162,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet"
+                vc!.descriptionInfo = "No Internet".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -180,14 +180,14 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
         print(self.redeemablePointsBalance, "Total Redeemable Point Balance")
         if self.VM.sumOfProductsCount <= Int(self.redeemablePointsBalance) ?? 0{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DefaultAddressVC") as! EBC_DefaultAddressVC
-            vc.totalPoint = self.VM.sumOfProductsCount
+            vc.totalPoint = Int(self.VM.sumOfProductsCount)
             self.navigationController?.pushViewController(vc, animated: true)
         }else{
             DispatchQueue.main.async{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Insufficient Point Balance"
+                vc!.descriptionInfo = "Insufficient Point Balance".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -199,7 +199,7 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue"
+                vc!.descriptionInfo = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -221,7 +221,7 @@ extension HR_MyCartVC: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "HR_MyCartTVC", for: indexPath) as! HR_MyCartTVC
         cell.delegate = self
         cell.selectionStyle = .none
-        cell.categoryName.text = "Category/ \(self.VM.myCartListArray[indexPath.row].categoryName ?? "")"
+        cell.categoryName.text = "Category1".localiz() +  "\(self.VM.myCartListArray[indexPath.row].categoryName ?? "")"
         cell.productName.text = self.VM.myCartListArray[indexPath.row].productName ?? ""
         cell.productPoints.text = "\(self.VM.myCartListArray[indexPath.row].pointsRequired ?? 0)"
         let imageURL = self.VM.myCartListArray[indexPath.row].productImage ?? ""

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ImageSlideshow
+import LanguageManager_iOS
 
 class SearchProjectDetailsVC: BaseViewController {
     
@@ -17,7 +19,16 @@ class SearchProjectDetailsVC: BaseViewController {
     @IBOutlet var colorCodeDataLbl: UILabel!
     @IBOutlet var collectionViewProjectDetails: UICollectionView!
     @IBOutlet var imageZoom: UIView!
-    @IBOutlet var collectionViewImage: UIImageView!
+//    @IBOutlet var collectionViewImage: UIImageView!
+    
+    @IBOutlet var scrollviewToZoom: UIScrollView!
+    
+
+    @IBOutlet var collectionImageView: UIImageView!
+    
+    
+    
+    
     var brand = ""
     var colorData = ""
     var colorCode = ""
@@ -25,6 +36,10 @@ class SearchProjectDetailsVC: BaseViewController {
     var brandId = ""
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var VM = ProjectCatalogeDetailsVM()
+    var sourceArray = [AlamofireSource]()
+    //let scrollview = UIScrollView.init(frame: self.view.bounds)
+    let pageIndicator = UIPageControl()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
@@ -35,8 +50,9 @@ class SearchProjectDetailsVC: BaseViewController {
         self.colorDataLbl.text = self.colorData
         self.colorCodeDataLbl.text = self.colorCode
         projecDetailsAPI()
-        
-        
+        //imageZoomView.pageIndicator = pageIndicator
+            
+        setUpScrollView()
         let collectionViewFLowLayout1 = UICollectionViewFlowLayout()
         collectionViewFLowLayout1.scrollDirection = .horizontal
         collectionViewFLowLayout1.minimumLineSpacing = 0
@@ -53,6 +69,17 @@ class SearchProjectDetailsVC: BaseViewController {
         
     }
     
+    
+    func setUpScrollView(){
+        scrollviewToZoom.delegate = self
+        scrollviewToZoom.minimumZoomScale = 1.0
+        scrollviewToZoom.maximumZoomScale = 10.0
+    }
+
+    func langLocaliz(){
+        self.brandNaemTitleLbl.text = "Project Cataloge".localiz()
+    }
+    
     @IBAction func backBTN(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -66,28 +93,66 @@ class SearchProjectDetailsVC: BaseViewController {
         ] as [String: Any]
         print(parameter)
         self.VM.projectCatalogeDetailsAPI(parameter: parameter)
+       
     }
 
-    
-        @objc func didTap() {
-//            if self.VM.projectCatalogeDetailsArray.count > 0 {
-//                imageSlideShow.presentFullScreenController(from: self)
-//            }
-        }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-         let touch = touches.first
-         if touch?.view != self.imageZoom {
-             //self.dismiss(animated: true, completion: nil)
-             self.imageZoom.isHidden = true
-        }
-    }
 
+//    func ImageSetups(){
+//        self.sourceArray.removeAll()
+//        if self.VM.projectCatalogeDetailsArray.count > 0 {
+////            for image in self.VM.projectCatalogeDetailsArray {
+////                print("\(PROMO_IMG1)\(image.imageGalleryUrl ?? ""), sdafasf")
+////                let imageURL = image.imageGalleryUrl ?? ""
+////                let filteredURLArray = imageURL.dropFirst(1)
+////                let replaceString = "\(PROMO_IMG1)\(filteredURLArray)".replacingOccurrences(of: " ", with: "%20")
+////                print(replaceString)
+////                self.sourceArray.append(AlamofireSource(urlString: "\(replaceString)", placeholder: UIImage(named: "ic_default_img"))!)
+////            }
+//            imageZoomView.setImageInputs(self.sourceArray)
+//            imageZoomView.slideshowInterval = 3.0
+//            imageZoomView.zoomEnabled = true
+//            imageZoomView.contentScaleMode = .scaleToFill
+////            bannerImage.pageControl.currentPageIndicatorTintColor = UIColor(red: 230/255, green: 27/255, blue: 34/255, alpha: 1)
+////            bannerImage.pageControl.pageIndicatorTintColor = UIColor.lightGray
+//        }else{
+////            imageSlideShow.setImageInputs([
+////                ImageSource(image: UIImage(named: "dashboardIMG222")!)
+////            ])
+//        }
+//    }
+//    @objc func didTap() {
+//        if self.VM.projectCatalogeDetailsArray.count > 0 {
+//            imageZoomView.presentFullScreenController(from: self)
+//        }
+//    }
+    
+//      var vWidth = self.view.frame.width
+//      var vHeight = self.view.frame.height
+//
+//       var scrollImg: UIScrollView = UIScrollView()
+//       scrollImg.delegate = self
+//       scrollImg.frame = CGRectMake(0, 0, vWidth!, vHeight!)
+//       scrollImg.backgroundColor = UIColor(red: 90, green: 90, blue: 90, alpha: 0.90)
+//       scrollImg.alwaysBounceVertical = false
+//       scrollImg.alwaysBounceHorizontal = false
+//       scrollImg.showsVerticalScrollIndicator = true
+//       scrollImg.flashScrollIndicators()
+//
+//       scrollImg.minimumZoomScale = 1.0
+//       scrollImg.maximumZoomScale = 10.0
+//
+//       defaultView!.addSubview(scrollImg)
+//
+//       imageView!.layer.cornerRadius = 11.0
+//       imageView!.clipsToBounds = false
+//       scrollImg.addSubview(imageView!)
+
+    
     
 }
 
 
-extension SearchProjectDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource {
+extension SearchProjectDetailsVC : UICollectionViewDelegate,UICollectionViewDataSource, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return VM.projectCatalogeDetailsArray.count
     }
@@ -109,6 +174,13 @@ extension SearchProjectDetailsVC : UICollectionViewDelegate,UICollectionViewData
         let imageURL = self.VM.projectCatalogeDetailsArray[indexPath.row].productImage ?? ""
         let splitDataa = imageURL.dropFirst(1)
         let url = URL(string: "\(PROMO_IMG1)" + "\(splitDataa)")
-        collectionViewImage.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"))
+        collectionImageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "Logo"))
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return self.collectionImageView
+    }
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return self.collectionImageView
     }
 }

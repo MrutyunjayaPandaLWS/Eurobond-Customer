@@ -6,13 +6,16 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 protocol FilterDelegate {
     func selectedDateRange(_ vc: FilterPopUpViewController)
   
 }
 
 
-class FilterPopUpViewController: BaseViewController, DateSelectedDelegate, StatusDelegate, popUpDelegate1{
+class FilterPopUpViewController: BaseViewController, DateSelectedDelegate, StatusDelegate, popUpDelegate1, popUpAlertDelegate{
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
     func popupAlertDidTap(_ vc: EBC_SuccessMessageVC) {}
     
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
@@ -142,32 +145,33 @@ class FilterPopUpViewController: BaseViewController, DateSelectedDelegate, Statu
         }
     }
     func languagelocalization(){
-//        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-//            filterButton.setTitle("ewFilterKEY".localizableString(loc: "en"), for: .normal)
-//            fromdateButton.setTitle("ewFromDatemKEY".localizableString(loc: "en"), for: .normal)
-//            toDateButton.setTitle("ewToDateKEY".localizableString(loc: "en"), for: .normal)
-//        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-//            filterButton.setTitle("ewFilterKEY".localizableString(loc: "hi"), for: .normal)
-//            fromdateButton.setTitle("ewFromDatemKEY".localizableString(loc: "hi"), for: .normal)
-//            toDateButton.setTitle("ewToDateKEY".localizableString(loc: "hi"), for: .normal)
-//        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-//            filterButton.setTitle("ewFilterKEY".localizableString(loc: "bn"), for: .normal)
-//            fromdateButton.setTitle("ewFromDatemKEY".localizableString(loc: "bn"), for: .normal)
-//            toDateButton.setTitle("ewToDateKEY".localizableString(loc: "bn"), for: .normal)
-//        }else{
-//            filterButton.setTitle("ewFilterKEY".localizableString(loc: "te"), for: .normal)
-//            fromdateButton.setTitle("ewFromDatemKEY".localizableString(loc: "te"), for: .normal)
-//            toDateButton.setTitle("ewToDateKEY".localizableString(loc: "te"), for: .normal)
-//        }
+       
+        filterButton.setTitle("Filter".localiz(), for: .normal)
+        fromdateButton.setTitle("From Date".localiz(), for: .normal)
+        toDateButton.setTitle("To Date".localiz(), for: .normal)
+        selectStatusButton.setTitle("Select Status".localiz(), for: .normal)
+       
       }
     
     
     @IBAction func selectStatus(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FilterByStatusPopUpVC") as? FilterByStatusPopUpVC
-        vc!.delegate = self
-        vc!.modalPresentationStyle = .overCurrentContext
-        vc!.modalTransitionStyle = .coverVertical
-        self.present(vc!, animated: true, completion: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FilterByStatusPopUpVC") as? FilterByStatusPopUpVC
+            vc!.delegate = self
+            vc!.modalPresentationStyle = .overCurrentContext
+            vc!.modalTransitionStyle = .coverVertical
+            self.present(vc!, animated: true, completion: nil)
+        }
     }
     @IBAction func fromDate(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as? EBC_DateFilterVC
@@ -178,19 +182,143 @@ class FilterPopUpViewController: BaseViewController, DateSelectedDelegate, Statu
         self.present(vc!, animated: true, completion: nil)
     }
     @IBAction func toDAte(_ sender: Any) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as? EBC_DateFilterVC
-        vc!.delegate = self
-        vc!.isComeFrom = "2"
-        vc!.modalPresentationStyle = .overCurrentContext
-        vc!.modalTransitionStyle = .coverVertical
-        self.present(vc!, animated: true, completion: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_DateFilterVC") as? EBC_DateFilterVC
+            vc!.delegate = self
+            vc!.isComeFrom = "2"
+            vc!.modalPresentationStyle = .overCurrentContext
+            vc!.modalTransitionStyle = .coverVertical
+            self.present(vc!, animated: true, completion: nil)
+        }
     }
     @IBAction func filterButton(_ sender: Any) {
-        if self.itsFrom == "FilterByStatus"{
-            if self.selectStatusButton.currentTitle != "" && self.selectedFromDate == "" && self.selectedToDate == ""{
-                self.delegate.selectedDateRange(self)
-                self.dismiss(animated: true, completion: nil)
-            }else if  self.selectStatusButton.currentTitle != "" && self.selectedFromDate != "" && self.selectedToDate != ""{
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            if self.itsFrom == "FilterByStatus"{
+                if self.selectStatusButton.currentTitle != "" && self.selectedFromDate == "" && self.selectedToDate == ""{
+                    self.delegate.selectedDateRange(self)
+                    self.dismiss(animated: true, completion: nil)
+                }else if  self.selectStatusButton.currentTitle != "" && self.selectedFromDate != "" && self.selectedToDate != ""{
+                    if selectedToDate < selectedFromDate{
+                        DispatchQueue.main.async{
+                            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                            vc!.delegate = self
+                            vc!.titleInfo = ""
+                            if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                                vc!.descriptionInfo = "To Date should greater than From Date"
+                            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                                vc!.descriptionInfo = "तिथि करने के लिए दिनांक से अधिक होना चाहिए"
+                            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                                vc!.descriptionInfo = "তারিখ থেকে তারিখ থেকে বড় হওয়া উচিত"
+                            }else{
+                                vc!.descriptionInfo = "To Date should greater than From Date"
+                            }
+                            vc!.modalPresentationStyle = .overCurrentContext
+                            vc!.modalTransitionStyle = .crossDissolve
+                            self.present(vc!, animated: true, completion: nil)
+                        }
+                    }else{
+                        self.delegate.selectedDateRange(self)
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }else if  self.selectStatusButton.currentTitle != "" && self.selectedFromDate != "" && self.selectedToDate == ""{
+                    DispatchQueue.main.async{
+                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                        vc!.delegate = self
+                        vc!.titleInfo = ""
+                        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                            vc!.descriptionInfo = "Select To Date"
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                            vc!.descriptionInfo = "तिथि करने के लिए चुनें"
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                            vc!.descriptionInfo = "টু ডেট নির্বাচন করুন"
+                        }else{
+                            vc!.descriptionInfo = "Select To Date"
+                        }
+                        
+                        vc!.modalPresentationStyle = .overCurrentContext
+                        vc!.modalTransitionStyle = .crossDissolve
+                        self.present(vc!, animated: true, completion: nil)
+                    }
+                }else if  self.selectStatusButton.currentTitle != "" && self.selectedFromDate == "" && self.selectedToDate != ""{
+                    DispatchQueue.main.async{
+                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                        vc!.delegate = self
+                        vc!.titleInfo = ""
+                        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                            vc!.descriptionInfo = "Select From Date"
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                            vc!.descriptionInfo = "दिनांक से चुनें"
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                            vc!.descriptionInfo = "তারিখ থেকে নির্বাচন করুন"
+                        }else{
+                            vc!.descriptionInfo = "Select From Date"
+                        }
+                        
+                        vc!.modalPresentationStyle = .overCurrentContext
+                        vc!.modalTransitionStyle = .crossDissolve
+                        self.present(vc!, animated: true, completion: nil)
+                    }
+                }
+                
+            }else if selectedFromDate == ""{
+                DispatchQueue.main.async{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                    vc!.delegate = self
+                    vc!.titleInfo = ""
+                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                        vc!.descriptionInfo = "Select From Date"
+                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                        vc!.descriptionInfo = "दिनांक से चुनें"
+                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                        vc!.descriptionInfo = "তারিখ থেকে নির্বাচন করুন"
+                    }else{
+                        vc!.descriptionInfo = "Select From Date"
+                    }
+                    
+                    vc!.modalPresentationStyle = .overCurrentContext
+                    vc!.modalTransitionStyle = .crossDissolve
+                    self.present(vc!, animated: true, completion: nil)
+                }
+            }else if selectedToDate == ""{
+                DispatchQueue.main.async{
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                    vc!.delegate = self
+                    vc!.titleInfo = ""
+                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                        vc!.descriptionInfo = "Select To Date"
+                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                        vc!.descriptionInfo = "तिथि करने के लिए चुनें"
+                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                        vc!.descriptionInfo = "টু ডেট নির্বাচন করুন"
+                    }else{
+                        vc!.descriptionInfo = "Select To Date"
+                    }
+                    
+                    vc!.modalPresentationStyle = .overCurrentContext
+                    vc!.modalTransitionStyle = .crossDissolve
+                    self.present(vc!, animated: true, completion: nil)
+                }
+            }else{
                 if selectedToDate < selectedFromDate{
                     DispatchQueue.main.async{
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
@@ -213,106 +341,6 @@ class FilterPopUpViewController: BaseViewController, DateSelectedDelegate, Statu
                     self.delegate.selectedDateRange(self)
                     self.dismiss(animated: true, completion: nil)
                 }
-            }else if  self.selectStatusButton.currentTitle != "" && self.selectedFromDate != "" && self.selectedToDate == ""{
-                DispatchQueue.main.async{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
-                    vc!.delegate = self
-                    vc!.titleInfo = ""
-                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                        vc!.descriptionInfo = "Select To Date"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                        vc!.descriptionInfo = "तिथि करने के लिए चुनें"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                        vc!.descriptionInfo = "টু ডেট নির্বাচন করুন"
-                    }else{
-                        vc!.descriptionInfo = "Select To Date"
-                    }
-                   
-                    vc!.modalPresentationStyle = .overCurrentContext
-                    vc!.modalTransitionStyle = .crossDissolve
-                    self.present(vc!, animated: true, completion: nil)
-                }
-            }else if  self.selectStatusButton.currentTitle != "" && self.selectedFromDate == "" && self.selectedToDate != ""{
-                DispatchQueue.main.async{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
-                    vc!.delegate = self
-                    vc!.titleInfo = ""
-                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                        vc!.descriptionInfo = "Select From Date"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                        vc!.descriptionInfo = "दिनांक से चुनें"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                        vc!.descriptionInfo = "তারিখ থেকে নির্বাচন করুন"
-                    }else{
-                        vc!.descriptionInfo = "Select From Date"
-                    }
-                    
-                    vc!.modalPresentationStyle = .overCurrentContext
-                    vc!.modalTransitionStyle = .crossDissolve
-                    self.present(vc!, animated: true, completion: nil)
-                }
-            }
-         
-        }else if selectedFromDate == ""{
-            DispatchQueue.main.async{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
-                vc!.delegate = self
-                vc!.titleInfo = ""
-                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                    vc!.descriptionInfo = "Select From Date"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                    vc!.descriptionInfo = "दिनांक से चुनें"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                    vc!.descriptionInfo = "তারিখ থেকে নির্বাচন করুন"
-                }else{
-                    vc!.descriptionInfo = "Select From Date"
-                }
-                
-                vc!.modalPresentationStyle = .overCurrentContext
-                vc!.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
-            }
-        }else if selectedToDate == ""{
-            DispatchQueue.main.async{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
-                vc!.delegate = self
-                vc!.titleInfo = ""
-                if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                    vc!.descriptionInfo = "Select To Date"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                    vc!.descriptionInfo = "तिथि करने के लिए चुनें"
-                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                    vc!.descriptionInfo = "টু ডেট নির্বাচন করুন"
-                }else{
-                    vc!.descriptionInfo = "Select To Date"
-                }
-               
-                vc!.modalPresentationStyle = .overCurrentContext
-                vc!.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
-            }
-        }else{
-            if selectedToDate < selectedFromDate{
-                DispatchQueue.main.async{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
-                    vc!.delegate = self
-                    vc!.titleInfo = ""
-                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                        vc!.descriptionInfo = "To Date should greater than From Date"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                        vc!.descriptionInfo = "तिथि करने के लिए दिनांक से अधिक होना चाहिए"
-                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                        vc!.descriptionInfo = "তারিখ থেকে তারিখ থেকে বড় হওয়া উচিত"
-                    }else{
-                        vc!.descriptionInfo = "To Date should greater than From Date"
-                    }
-                    vc!.modalPresentationStyle = .overCurrentContext
-                    vc!.modalTransitionStyle = .crossDissolve
-                    self.present(vc!, animated: true, completion: nil)
-                }
-            }else{
-                self.delegate.selectedDateRange(self)
-                self.dismiss(animated: true, completion: nil)
             }
         }
     }

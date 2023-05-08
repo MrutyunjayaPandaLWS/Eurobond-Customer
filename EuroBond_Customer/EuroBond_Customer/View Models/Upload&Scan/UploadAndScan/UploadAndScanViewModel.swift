@@ -29,7 +29,7 @@ class UploadAndScanViewModel{
                         self.savedCodeListArray = result?.qrCodeSaveResponseList ?? []
                         print(self.savedCodeListArray.count, "Saved Codes Count")
                         print(self.VC?.uploadedCodes.count)
-                        
+                        self.VC?.uploadedCodes.removeAll()
                         for codes in self.savedCodeListArray {
                             print("Codes Status", codes.codeStatus ?? 0)
                             print(codes.qrCode ?? "","dhgfiu")

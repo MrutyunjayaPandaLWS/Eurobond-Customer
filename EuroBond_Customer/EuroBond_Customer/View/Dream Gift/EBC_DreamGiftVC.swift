@@ -7,7 +7,9 @@
 
 import UIKit
 
-class EBC_DreamGiftVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, DreamGiftDelegate {
+class EBC_DreamGiftVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, DreamGiftDelegate, popUpAlertDelegate {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
     func didTappedRedeemBtn(Item: EBC_DreamGiftTVC) {
     }
     
@@ -29,7 +31,20 @@ class EBC_DreamGiftVC: BaseViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.dreamGiftListApi()
+        
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            self.dreamGiftListApi()
+        }
     }
 
 

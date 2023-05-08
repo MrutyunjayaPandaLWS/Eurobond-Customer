@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 import Lottie
-
+import LanguageManager_iOS
 class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate, popUpAlertDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     

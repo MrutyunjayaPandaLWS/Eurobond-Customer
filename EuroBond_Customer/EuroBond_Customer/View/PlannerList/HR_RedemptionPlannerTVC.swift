@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 protocol RedeemePlannedProductDelegate {
     func redeemProducts(_ cell: HR_RedemptionPlannerTVC)
     func removeProducts(_ cell: HR_RedemptionPlannerTVC)
@@ -13,6 +14,7 @@ protocol RedeemePlannedProductDelegate {
 
 class HR_RedemptionPlannerTVC: UITableViewCell {
 
+    @IBOutlet var eurosLbl: UILabel!
     @IBOutlet weak var productImage: UIImageView!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var productPoints: UILabel!
@@ -30,6 +32,8 @@ class HR_RedemptionPlannerTVC: UITableViewCell {
         productView?.layer.shadowOffset =  CGSize.zero
         productView?.layer.shadowOpacity = 0.5
         productView?.layer.shadowRadius = 4
+        redeemBTN.setTitle("Redeem Now".localiz(), for: .normal)
+        eurosLbl.text = "Euros".localiz()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

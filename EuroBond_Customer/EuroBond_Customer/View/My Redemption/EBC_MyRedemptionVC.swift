@@ -16,10 +16,83 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         print(self.behaviourId, "adsfasdfasd")
         self.selectStatus.setTitle(vc.selectedTitle, for: .normal)
         self.selectStatus.setTitleColor(.black, for: .selected)
-        if vc.selectedTitle == "Catalogue" {
-            self.behaviourId = 1
-        }else if vc.selectedTitle == "E-Vouchers"{
+        
+        
+//
+//        REDEMPTION_REQUEST_STATUS    0    Pending
+//        REDEMPTION_REQUEST_STATUS    2    Processed
+//        REDEMPTION_REQUEST_STATUS    4    Delivered
+//        REDEMPTION_REQUEST_STATUS    3    Cancelled
+//
+//
+//        REDEMPTION_REQUEST_STATUS    7    Returned
+//        REDEMPTION_REQUEST_STATUS    8    Redispatched
+//        REDEMPTION_REQUEST_STATUS    9    OnHold
+//        REDEMPTION_REQUEST_STATUS    10    Dispatched
+//        REDEMPTION_REQUEST_STATUS    11    Out for Delivery
+//        REDEMPTION_REQUEST_STATUS    12    Address Verified
+//        REDEMPTION_REQUEST_STATUS    13    Posted for approval
+//        REDEMPTION_REQUEST_STATUS    14    Vendor Alloted
+//        REDEMPTION_REQUEST_STATUS    15    Vendor Rejected
+//        REDEMPTION_REQUEST_STATUS    16    Posted for approval 2
+//        REDEMPTION_REQUEST_STATUS    17    Cancel Request
+//        REDEMPTION_REQUEST_STATUS    18    Redemption Verified
+//        REDEMPTION_REQUEST_STATUS    19    Delivery Confirmed
+//        REDEMPTION_REQUEST_STATUS    20    Return Requested
+//        REDEMPTION_REQUEST_STATUS    21    Return Pickup Schedule
+//        REDEMPTION_REQUEST_STATUS    22    Picked Up
+//        REDEMPTION_REQUEST_STATUS    23    Return Received
+//        REDEMPTION_REQUEST_STATUS    24    In Transit
+//        REDEMPTION_REQUEST_STATUS    1    Approved
+//        REDEMPTION_REQUEST_STATUS    5    Rejected
+//
+//        REDEMPTION_REQUEST_STATUS    25    Recieved
+        //["Pending","Processed","Delivered","Cancelled","Returned","Redispatched","OnHold","Dispatched","Out for Delivery","Address Verified","Posted for approval","Vendor Alloted","Vendor Rejected","Cancel Request","Redemption Verified","Delivery Confirmed","Return Requested","Return Pickup Schedule","Picked Up","Return Received","In Transit","Approved","Rejected"]
+        
+        if vc.selectedTitle == "Pending" {
+            self.behaviourId = 0
+        }else if vc.selectedTitle == "Processed"{
+            self.behaviourId = 2
+        }else if vc.selectedTitle == "Delivered"{
             self.behaviourId = 4
+        }else if vc.selectedTitle == "Cancelled"{
+            self.behaviourId = 3
+        }else if vc.selectedTitle == "Returned"{
+            self.behaviourId = 7
+        }else if vc.selectedTitle == "Redispatched"{
+            self.behaviourId = 8
+        }else if vc.selectedTitle == "Dispatched"{
+            self.behaviourId = 10
+        }else if vc.selectedTitle == "Out for Delivery"{
+            self.behaviourId = 11
+        }else if vc.selectedTitle == "Address Verified"{
+            self.behaviourId = 12
+        }else if vc.selectedTitle == "Posted for approval"{
+            self.behaviourId = 13
+        }else if vc.selectedTitle == "Vendor Alloted"{
+            self.behaviourId = 14
+        }else if vc.selectedTitle == "Vendor Rejected"{
+            self.behaviourId = 15
+        }else if vc.selectedTitle == "Cancel Request"{
+            self.behaviourId = 17
+        }else if vc.selectedTitle == "Redemption Verified"{
+            self.behaviourId = 18
+        }else if vc.selectedTitle == "Delivery Confirmed"{
+            self.behaviourId = 19
+        }else if vc.selectedTitle == "Return Requested"{
+            self.behaviourId = 20
+        }else if vc.selectedTitle == "Return Pickup Schedule"{
+            self.behaviourId = 21
+        }else if vc.selectedTitle == "In Transit"{
+            self.behaviourId = 24
+        }else if vc.selectedTitle == "Approved"{
+            self.behaviourId = 1
+        }else if vc.selectedTitle == "Rejected"{
+            self.behaviourId = 5
+        }else if vc.selectedTitle == "Picked Up"{
+            self.behaviourId = 22
+        }else if vc.selectedTitle == "Return Received"{
+            self.behaviourId = 23
         }else{
             self.behaviourId = 8
         }
@@ -77,6 +150,7 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         self.toDate.setTitle("To Date".localiz(), for: .normal)
         self.filterByCategory.setTitle("Filter".localiz(), for: .normal)
         self.selectStatus.setTitle("Select Status".localiz(), for: .normal)
+        localizlang()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -96,6 +170,11 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
             self.VM.getRedemptionListApi(customerId: self.userId)
             
         }
+        
+    }
+    
+    func localizlang(){
+        self.titleLbl.text = "My Redemptions".localiz()
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
@@ -284,12 +363,14 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
             cell.statusLbl.textColor = UIColor.white
             cell.statusView.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
             cell.statusView.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        }else if self.VM.myredemptionArray[indexPath.row].status ?? 0 == 16 {
-            cell.statusLbl.text = "  Posted for approval 2  "
-            cell.statusLbl.textColor = UIColor.white
-            cell.statusView.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
-            cell.statusView.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
-        }else if self.VM.myredemptionArray[indexPath.row].status ?? 0 == 17 {
+        }
+//        else if self.VM.myredemptionArray[indexPath.row].status ?? 0 == 16 {
+//            cell.statusLbl.text = "  Posted for approval 2  "
+//            cell.statusLbl.textColor = UIColor.white
+//            cell.statusView.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+//            cell.statusView.borderColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+//        }
+        else if self.VM.myredemptionArray[indexPath.row].status ?? 0 == 17 {
             cell.statusLbl.text = "  Cancel Request  "
             cell.statusView.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
             cell.statusLbl.textColor = UIColor.black

@@ -7,8 +7,10 @@
 
 import UIKit
 import Firebase
-
-class CodeSummary_VC: BaseViewController {
+import LanguageManager_iOS
+class CodeSummary_VC: BaseViewController, popUpAlertDelegate {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
 
     @IBOutlet var codeSummaryLabel: UILabel!
     @IBOutlet var codeSummaryTableView: UITableView!
@@ -33,16 +35,7 @@ class CodeSummary_VC: BaseViewController {
         
     }
     func languagelocalization(){
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.codeSummaryLabel.text = "Code Summary"
-
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.codeSummaryLabel.text = "कोड सारांश"
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.codeSummaryLabel.text = "কোড সারাংশ"
-        }else{
-            self.codeSummaryLabel.text = "Code Summary"
-        }
+        self.codeSummaryLabel.text = "CodeSummary".localiz()
     }
     
     @IBAction func backButton(_ sender: Any) {
@@ -55,8 +48,21 @@ class CodeSummary_VC: BaseViewController {
         
     
     func apiCalling() {
-        let parameters = ["ActionType":211,"MemberID":"\(loyaltyId)","QrCodeStatusID":-1] as [String : Any]
-        self.vm.codeSummaryListingAPI(parameters: parameters)
+        
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let parameters = ["ActionType":211,"MemberID":"\(loyaltyId)","QrCodeStatusID":-1] as [String : Any]
+            self.vm.codeSummaryListingAPI(parameters: parameters)
+        }
     }
     
 }

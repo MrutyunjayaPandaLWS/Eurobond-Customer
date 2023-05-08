@@ -83,35 +83,60 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate, popUpAlertDelegat
     }
     
     @IBAction func selectTermCond2Btn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_TermsandCondtionVC") as? HR_TermsandCondtionVC
-        vc?.delegate = self
-        vc?.modalTransitionStyle = .coverVertical
-        vc?.modalPresentationStyle = .overFullScreen
-        present(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_TermsandCondtionVC") as? HR_TermsandCondtionVC
+            vc?.language == "Enter Password"
+            vc?.delegate = self
+            vc?.modalTransitionStyle = .coverVertical
+            vc?.modalPresentationStyle = .overFullScreen
+            present(vc!, animated: true)
+        }
     }
     
     @IBAction func userNameTFEditingDidEnd(_ sender: Any) {
-        if self.userNameTF.text?.count == 0 {
-            self.view.makeToast("EntermembershipId".localiz(), duration: 2.0, position: .center)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
         }else{
-            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-                DispatchQueue.main.async{
-                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                    vc!.delegate = self
-                    vc!.titleInfo = ""
-                    vc!.descriptionInfo = "No Internet Connection".localiz()
-                    vc!.modalPresentationStyle = .overCurrentContext
-                    vc!.modalTransitionStyle = .crossDissolve
-                    self.present(vc!, animated: true, completion: nil)
-                }
+            if self.userNameTF.text?.count == 0 {
+                self.view.makeToast("EntermembershipId".localiz(), duration: 2.0, position: .center)
             }else{
-                let parameter = [
-                    "Location": [
-                        "UserName": self.userNameTF.text ?? ""
-                    ],
-                    "ActionType": "69"
-                ] as [String: Any]
-                self.VM.verifyMobileNumberAPI(paramters: parameter)
+                if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                    DispatchQueue.main.async{
+                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                        vc!.delegate = self
+                        vc!.titleInfo = ""
+                        vc!.descriptionInfo = "No Internet Connection".localiz()
+                        vc!.modalPresentationStyle = .overCurrentContext
+                        vc!.modalTransitionStyle = .crossDissolve
+                        self.present(vc!, animated: true, completion: nil)
+                    }
+                }else{
+                    let parameter = [
+                        "Location": [
+                            "UserName": self.userNameTF.text ?? ""
+                        ],
+                        "ActionType": "69"
+                    ] as [String: Any]
+                    self.VM.verifyMobileNumberAPI(paramters: parameter)
+                }
             }
         }
     }
@@ -138,27 +163,39 @@ class EBS_LoginVC: BaseViewController, CheckBoxSelectDelegate, popUpAlertDelegat
     }
     
     @IBAction func selectLogin2Btn(_ sender: UIButton) {
-        
-        if userNameTF.text?.count == 0{
-            self.view.makeToast("Enter user name Mobile Number".localiz(),duration: 2.0,position: .center)
-        }else if passwordTF.text?.count == 0{
-            self.view.makeToast("Enter Password".localiz(),duration: 2.0,position: .center)
-        } else if tc2Status == 0{
-            self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
         }else{
             
-            let parameter = [
-                "PushID": "sdfds",
-                "Password": self.passwordTF.text ?? "",
-                "UserName": self.userNameTF.text ?? "",
-                 "UserActionType": "GetPasswordDetails",
-                 "Browser": "IOS",
-                 "LoggedDeviceName": "IOS",
-                 "UserType": "Customer"
-            ] as [String: Any]
-            print(parameter)
-            self.VM.loginSubmissionApi(parameter: parameter)
-
+            if userNameTF.text?.count == 0{
+                self.view.makeToast("Enter user name Mobile Number".localiz(),duration: 2.0,position: .center)
+            }else if passwordTF.text?.count == 0{
+                self.view.makeToast("Enter Password".localiz(),duration: 2.0,position: .center)
+            } else if tc2Status == 0{
+                self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
+            }else{
+                
+                let parameter = [
+                    "PushID": "sdfds",
+                    "Password": self.passwordTF.text ?? "",
+                    "UserName": self.userNameTF.text ?? "",
+                    "UserActionType": "GetPasswordDetails",
+                    "Browser": "IOS",
+                    "LoggedDeviceName": "IOS",
+                    "UserType": "Customer"
+                ] as [String: Any]
+                print(parameter)
+                self.VM.loginSubmissionApi(parameter: parameter)
+                
+            }
         }
         
     }

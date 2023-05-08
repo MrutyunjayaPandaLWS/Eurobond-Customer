@@ -39,6 +39,7 @@ class EBC_Dashboard_2_VC: BaseViewController {
     @IBOutlet weak var maintenanceView: UIView!
     @IBOutlet weak var underMaintenance: LottieAnimationView!
     
+    @IBOutlet var scanningImageView: UIImageView!
     var status = 1
     var sourceArray = [AlamofireSource]()
     var offerimgArray = [ObjImageGalleryList]()
@@ -64,7 +65,6 @@ class EBC_Dashboard_2_VC: BaseViewController {
         self.tokendata()
     }
     func localizSetup(){
-        
         self.fabricatorAssistantLbl.text = "Fabricator Assistant".localiz()
         self.membershipIDLbl.text = "Membership ID".localiz()
         self.memberSinceLbl.text = "MemberSince".localiz()
@@ -74,6 +74,14 @@ class EBC_Dashboard_2_VC: BaseViewController {
         self.needHelpLbl.text = "NeedHelp".localiz()
         self.helpLineLbl.text = "Helpline".localiz()
         self.termCondLbl.text = "TermsAndConditions".localiz()
+        
+        
+        if self.codeStatusLbl.text == "Code Status" {
+            self.scanningImageView.image = UIImage(named: "Group 5909")
+        }else{
+            self.scanningImageView.image = UIImage(named: "Hindi-Dash")
+        }
+        
     }
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
         UserDefaults.standard.set(-1, forKey: "IsloggedIn?")

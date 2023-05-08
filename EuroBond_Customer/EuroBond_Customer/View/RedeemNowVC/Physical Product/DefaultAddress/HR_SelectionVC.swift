@@ -26,7 +26,7 @@ class HR_SelectionVC: BaseViewController, popUpAlertDelegate {
     var statusArray = [String]()
     var codeStatusArray = [String]()
     var myearningArray = ["Program Name","Bonus Name","Customer Name","Pending","FeedBack"]
-    var redemptionTypeNameArray = ["Catalogue", "E Voucher", "Bank Transfer" ]
+    var redemptionTypeNameArray = ["Pending","Processed","Delivered","Cancelled","Returned","Redispatched","OnHold","Dispatched","Out for Delivery","Address Verified","Posted for approval","Vendor Alloted","Vendor Rejected","Cancel Request","Redemption Verified","Delivery Confirmed","Return Requested","Return Pickup Schedule","Picked Up","Return Received","In Transit","Approved","Rejected","Picked Up", "Return Received"]
     var myAssistant = ["Active","InActive"]
     var myDisplaystatusArray: [String] = ["Rejected","Pending","Approved"]
     var redemptionTypeIdArray = [1]
@@ -82,7 +82,7 @@ class HR_SelectionVC: BaseViewController, popUpAlertDelegate {
             }else if isComeFrom == 8{
                 self.myDisplayAPI()
             }else if isComeFrom == 9{
-                self.selectionTableHeightConstraint.constant = 150
+                self.selectionTableHeightConstraint.constant = 100
                 self.selectionTableView.reloadData()
             }
         }

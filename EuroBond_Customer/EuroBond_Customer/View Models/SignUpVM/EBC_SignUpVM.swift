@@ -42,7 +42,7 @@ class EBC_SignUpVM{
                                 vc.modalPresentationStyle = .overFullScreen
                                 self.VC!.present(vc, animated: true)
                             }else{
-                                self.VC!.view.makeToast("Registration Failed", duration: 3.0, position: .bottom)
+                                self.VC!.view.makeToast("Registration Failed".localiz(), duration: 3.0, position: .bottom)
                                 for controller in self.VC!.navigationController!.viewControllers as Array {
                                     if controller.isKind(of: EBC_Login1VC.self) {
                                         self.VC!.navigationController!.popToViewController(controller, animated: true)

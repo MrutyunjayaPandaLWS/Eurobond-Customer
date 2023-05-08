@@ -55,7 +55,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     var loginBtnStatus = 0
     var submitBtnStatus = 0
     let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
-    
+    var token = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
     var enteredValue = ""
     var receivedOTP = ""
     var categoryId = -1
@@ -81,6 +81,9 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         otpView.isHidden = true
         resendOtpBtn.isHidden = true
         otpSubmitView.text = ""
+        tokendata()
+        self.membershipIdTF.delegate = self
+        
         if self.isUserLoggedIn == -1{
             self.backButton.isHidden = true
         }else{
@@ -108,7 +111,15 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         logintitleLbl.text = "login".localiz()
         loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
     }
+    
+    
+    
+    
 
+    override func viewDidAppear(_ animated: Bool) {
+        self.membershipIdTF.isEnabled = true
+        self.membershipIdTF.isUserInteractionEnabled = true
+    }
     
     func localization(){
         loginLbl.text = "login".localiz()
@@ -116,6 +127,9 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         fabricatorMessagelbl.text = "AreyouFabricatorAssistant".localiz()
         termsAndConditionsText.setTitle("IaccepttheTermsandConditions".localiz(), for: .normal)
         cliockHereBtn.setTitle("cliockHereBtn".localiz(), for: .normal)
+        submitBtn.setTitle("Submit".localiz(), for: .normal)
+        resendOtpBtn.setTitle("Resend OTP".localiz(), for: .normal)
+        enterOtpLbl.text = "EnterOTP".localiz()
     }
     
     
@@ -134,26 +148,29 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         }else{
             print(loginBtnStatus)
             if loginBtnStatus != 0 {
-                membershipIdTF.text = ""
-                membershipIdTF.placeholder = "EnterMembershipID/Moblienumber".localiz()
-                membershipIdLbl.text = "EnterMembershipID/Moblienumber".localiz()
-                membershipIdTF.keyboardType = .asciiCapable
-                otpView.isHidden = true
-                membershipIdTF.delegate = self
-                resendOtpBtn.isHidden = true
-                termCondView.isHidden = false
-                loginBtnStatus = 0
-                loginLineLbl.backgroundColor = selectedColor1
-                registerLineLbl.backgroundColor = .lightGray
-                submitBtnStatus = 0
-                submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
-                self.submitButtonTopSpace.constant = 100
-                self.loginSubViewHeight.constant = 300
-                otpSubmitView.text = ""
-                self.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
-                self.tcStatus = 0
-                logintitleLbl.text = "login".localiz()
-                loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
+                DispatchQueue.main.async {
+                    self.membershipIdTF.isEnabled = true
+                    self.membershipIdTF.text = ""
+                    self.membershipIdTF.placeholder = "EnterMembershipID/Moblienumber".localiz()
+                    self.membershipIdLbl.text = "EnterMembershipID/Moblienumber".localiz()
+                    self.membershipIdTF.keyboardType = .asciiCapable
+                    self.otpView.isHidden = true
+                    self.membershipIdTF.delegate = self
+                    self.resendOtpBtn.isHidden = true
+                    self.termCondView.isHidden = false
+                    self.loginBtnStatus = 0
+                    self.loginLineLbl.backgroundColor = selectedColor1
+                    self.registerLineLbl.backgroundColor = .lightGray
+                    self.submitBtnStatus = 0
+                    self.submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
+                    self.submitButtonTopSpace.constant = 100
+                    self.loginSubViewHeight.constant = 300
+                    self.otpSubmitView.text = ""
+                    self.termCondBtn.setImage(UIImage(named: "blankcheckbox"), for: .normal)
+                    self.tcStatus = 0
+                    self.logintitleLbl.text = "login".localiz()
+                    self.loginInfoLbl.text = "PleaseEnterDetailsLogin".localiz()
+                }
             }
         }
         
@@ -173,24 +190,27 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         }else{
             print(loginBtnStatus)
             if loginBtnStatus != 1 {
-                membershipIdTF.text = ""
-                membershipIdTF.placeholder = "MobileNumber".localiz()
-                membershipIdLbl.text = "MobileNumber".localiz()
-                membershipIdTF.keyboardType = .numberPad
-                membershipIdTF.delegate = self
-                otpView.isHidden = true
-                resendOtpBtn.isHidden = true
-                termCondView.isHidden = true
-                loginBtnStatus = 1
-                loginLineLbl.backgroundColor = .lightGray
-                logintitleLbl.text = "SignUp".localiz()
-                loginInfoLbl.text = "PleaseEnterDetailsRegister".localiz()
-                registerLineLbl.backgroundColor = selectedColor1
-                submitBtnStatus = 0
-                submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
-                otpSubmitView.text = ""
-                self.submitButtonTopSpace.constant = 70
-                self.loginSubViewHeight.constant = 300
+                DispatchQueue.main.async {
+                    self.membershipIdTF.isEnabled = true
+                    self.membershipIdTF.text = ""
+                    self.membershipIdTF.placeholder = "MobileNumber".localiz()
+                    self.membershipIdLbl.text = "MobileNumber".localiz()
+                    self.membershipIdTF.keyboardType = .numberPad
+                    self.membershipIdTF.delegate = self
+                    self.otpView.isHidden = true
+                    self.resendOtpBtn.isHidden = true
+                    self.termCondView.isHidden = true
+                    self.loginBtnStatus = 1
+                    self.loginLineLbl.backgroundColor = .lightGray
+                    self.logintitleLbl.text = "SignUp".localiz()
+                    self.loginInfoLbl.text = "PleaseEnterDetailsRegister".localiz()
+                    self.registerLineLbl.backgroundColor = selectedColor1
+                    self.submitBtnStatus = 0
+                    self.submitBtn.setTitle("GenerateOTP".localiz(), for: .normal)
+                    self.otpSubmitView.text = ""
+                    self.submitButtonTopSpace.constant = 70
+                    self.loginSubViewHeight.constant = 300
+                }
             }
         }
     }
@@ -202,6 +222,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
         let secondLength = 10
 //        if loginBtnStatus == 1 {
             if textField == membershipIdTF{
+                self.membershipIdTF.isEnabled = true
                 let currentString: NSString = (membershipIdTF.text ?? "") as NSString
                 let newString: NSString =
                 currentString.replacingCharacters(in: range, with: string) as NSString
@@ -263,11 +284,23 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     }
     
     @IBAction func selectClickHereBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBS_LoginVC") as? EBS_LoginVC
-        vc?.itsFrom = 1
-        vc?.modalTransitionStyle = .crossDissolve
-        vc?.modalPresentationStyle  = .overFullScreen
-        present(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBS_LoginVC") as? EBS_LoginVC
+            vc?.itsFrom = 1
+            vc?.modalTransitionStyle = .crossDissolve
+            vc?.modalPresentationStyle  = .overFullScreen
+            present(vc!, animated: true)
+        }
         
     }
     
@@ -332,7 +365,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                             "UserActionType": "GetPasswordDetails",
                             "Password": "123456",
                             "Browser": "IOS",
-                            "PushID": "",
+                            "PushID": "\(token)",
                             "UserType": "Customer",
                             "UserName": self.membershipIdTF.text ?? ""
                         ] as [String: Any]

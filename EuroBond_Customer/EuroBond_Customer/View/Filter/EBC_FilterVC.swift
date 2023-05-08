@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_FilterVC: BaseViewController {
 
@@ -21,8 +22,20 @@ class EBC_FilterVC: BaseViewController {
         super.viewDidLoad()
 
         filterBtn2.isHidden = true
-        
+        langlocalz()
     }
+    
+    
+    func langlocalz(){
+        self.selectStatusLbl.text = "".localiz()
+        self.fromDateLbl.text = "From Date".localiz()
+        self.toDateLbl.text = "To Date".localiz()
+        self.filterBtn2.setTitle("Filter".localiz(), for: .normal)
+//        self.filterButton.setTitle("Filter".localiz(), for: .normal)
+//        self.fromDate.setTitle("From Date".localiz(), for: .normal)
+//        self.toDate.setTitle("To Date".localiz(), for: .normal)
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first

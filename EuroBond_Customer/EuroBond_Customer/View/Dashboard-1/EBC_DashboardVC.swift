@@ -45,6 +45,7 @@ class EBC_DashboardVC: BaseViewController {
     @IBOutlet weak var maintenanceView: UIView!
     @IBOutlet weak var underMaintenance: LottieAnimationView!
     
+    @IBOutlet var scannerImageView: UIImageView!
     
     var status = 1
     var sourceArray = [AlamofireSource]()
@@ -95,11 +96,20 @@ class EBC_DashboardVC: BaseViewController {
         gameZoneLbl.text = "Game Zone".localiz()
         shemesAndOffersLbl.text = "Schemes".localiz()
         referAndEarnLbl.text = "Refer & Earn".localiz()
-        eurobondsLbl.text = "EurobondProfile".localiz()
+        eurobondsLbl.text = "Eurobond".localiz()
         helplineLbl.text = "Helpline".localiz()
         codeStatusLbl.text = "Code Status".localiz()
         myredemptionLbl.text = "My Redemption".localiz()
         myEarningsLbl.text = "My Earnings".localiz()
+        
+        if eurobondsLbl.text == "Eurobond" {
+            self.scannerImageView.image = UIImage(named: "Group 5909")
+        }else{
+            self.scannerImageView.image = UIImage(named: "Hindi-Dash")
+        }
+        
+        
+        
     }
     
     

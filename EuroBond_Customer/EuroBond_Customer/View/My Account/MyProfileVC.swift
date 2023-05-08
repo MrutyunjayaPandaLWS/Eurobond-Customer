@@ -8,8 +8,10 @@
 
 import UIKit
 import SDWebImage
-
-class MyProfileVC: BaseViewController {
+import LanguageManager_iOS
+class MyProfileVC: BaseViewController, popUpAlertDelegate {
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
     
     
     @IBOutlet weak var submitBtn: UIButton!
@@ -42,6 +44,7 @@ class MyProfileVC: BaseViewController {
         self.VM.VC = self
         self.myProfileApi(UserID: self.userId)
         NotificationCenter.default.addObserver(self, selector: #selector(handlepopupStateclose), name: Notification.Name.getProfileDetails, object: nil)
+        localizSetup()
     }
     
     @objc func handlepopupStateclose(notification: Notification){
@@ -64,16 +67,24 @@ class MyProfileVC: BaseViewController {
     
     
     func localizSetup(){
+        
+        
         self.beneficiaryTypeLbl.text = "Beneficiary Type".localiz()
         self.beneficiaryTypeTF.placeholder = "Beneficiary Type".localiz()
         self.firstNameLbl.text = "First Name".localiz()
-        self.firstNameTF.placeholder = "Enter First Name".localiz()
+        self.firstNameTF.placeholder = "Enter first name".localiz()
         self.lastNameLbl.text = "Last Name".localiz()
-        self.lastNameTF.placeholder = "Enter Last Name".localiz()
+        self.lastNameTF.placeholder = "Enter last name".localiz()
         self.mobileNumberLbl.text = "Mobile Number".localiz()
         self.mobileNumberTF.placeholder = "Mobile Number".localiz()
         self.emailLbl.text = "Email".localiz()
         self.emailTF.placeholder = "Enter Email".localiz()
+        self.DOBLbl.text = "DOB1".localiz()
+        self.pinCodeLbl.text = "Pincode".localiz()
+        self.cityLbl.text = "City".localiz()
+        self.stateLbl.text = "State".localiz()
+        self.addressLbl.text = "Address".localiz()
+        self.submitBtn.setTitle("Submit".localiz(), for: .normal)
         
     }
     
@@ -87,13 +98,13 @@ class MyProfileVC: BaseViewController {
         if self.emailTF.text!.count > 1 {
             if !isValidEmail(self.emailTF.text ?? "") {
                 self.emailTF.text = ""
-                self.view.makeToast("Enter valid email", duration: 2.0, position: .bottom)
+                self.view.makeToast("Enter valid email".localiz(), duration: 2.0, position: .bottom)
                 submitBtn.isHidden = true
             }else{
                 submitBtn.isHidden = false
             }
         }else{
-            self.view.makeToast("Enter email", duration: 2.0, position: .bottom)
+            self.view.makeToast("Enter email".localiz(), duration: 2.0, position: .bottom)
             submitBtn.isHidden = true
         }
     }
@@ -101,12 +112,23 @@ class MyProfileVC: BaseViewController {
     }
     
     @IBAction func selectSubmitBtn(_ sender: UIButton) {
-        if emailTF.text?.count == 0{
-            self.view.makeToast("Enter email",duration: 2.0,position: .center)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
         }else{
-            profileUpdate()
+            if emailTF.text?.count == 0{
+                self.view.makeToast("Enter email".localiz(),duration: 2.0,position: .center)
+            }else{
+                profileUpdate()
+            }
         }
-        
     }
     
     func myProfileApi(UserID: String){

@@ -221,10 +221,7 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.7):
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
-  - Crashlytics (3.14.0):
-    - Fabric (~> 1.10.2)
   - DPOTPView (1.5.12)
-  - Fabric (1.10.2)
   - Firebase/Core (6.34.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 6.9.0)
@@ -355,25 +352,24 @@ PODS:
   - Kingfisher (7.6.2)
   - LanguageManager-iOS (1.2.5)
   - leveldb-library (1.22.2)
-  - lottie-ios (4.1.3)
+  - lottie-ios (4.2.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
-  - Protobuf (3.22.3)
+  - Protobuf (3.22.4)
   - QCropper (0.1.7)
-  - SDWebImage (5.15.5):
-    - SDWebImage/Core (= 5.15.5)
-  - SDWebImage/Core (5.15.5)
+  - SDWebImage (5.15.6):
+    - SDWebImage/Core (= 5.15.6)
+  - SDWebImage/Core (5.15.6)
   - SlideMenuControllerSwift (4.0.0)
   - SRScratchView (1.0.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - Crashlytics (~> 3.14.0)
   - DPOTPView
   - Firebase/Core
   - Firebase/Crashlytics
@@ -398,9 +394,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireImage
     - BoringSSL-GRPC
-    - Crashlytics
     - DPOTPView
-    - Fabric
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -437,9 +431,7 @@ SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
-  Crashlytics: 9220f5bc89e7a618df411b4f639389dbfb0e03d2
   DPOTPView: 28d8a0a84a2ff4b1e4a7712065aba1cbb14e2704
-  Fabric: ea977e3cd9c20425516d3dafd3bf8c941c51223f
   Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
   FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
   FirebaseAuth: c92d49ada7948d1a23466e3db17bc4c2039dddc3
@@ -461,16 +453,16 @@ SPEC CHECKSUMS:
   Kingfisher: 6c5449c6450c5239166510ba04afe374a98afc4f
   LanguageManager-iOS: 049345fe4d1c5fbe22af93d438540917f4936359
   leveldb-library: f03246171cce0484482ec291f88b6d563699ee06
-  lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
+  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  Protobuf: d03938d5f7e974a97964fb0567771e36fbe9ecce
+  Protobuf: e61924c2c174ec1bee11cc3f151aa9e650ba09d7
   QCropper: aef6bad1e683e62b501fb8258359ccd10c68b4f2
-  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
+  SDWebImage: d47d81bea8a77187896b620dc79c3c528e8906b9
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 4782821c3681b0a17dc1e1f6bee24743a19e266e
+PODFILE CHECKSUM: d3ad7c2c958aa86bff7e888b79b996e6453908ce
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

@@ -7,7 +7,8 @@
 
 import UIKit
 import LanguageManager_iOS
-class EBC_WelcomeVC: UIViewController {
+import CoreData
+class EBC_WelcomeVC: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,18 +17,79 @@ class EBC_WelcomeVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tokendata()
+       
     }
+    override func viewDidDisappear(_ animated: Bool) {
+        self.stopLoading()
+    }
+    
+    func clearTable1(){
+            
+            let context = persistanceservice.persistentContainer.viewContext
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "UploadedCodes")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+        }
+    func clearTable(){
+        
+        let context = persistanceservice.persistentContainer.viewContext
+        
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ScanCodeSTORE")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+    }
+    
+    func clearTable2(){
+            
+            let context = persistanceservice.persistentContainer.viewContext
+            
+            let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "SendUploadedCodes")
+            let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+            
+            do {
+                try context.execute(deleteRequest)
+                try context.save()
+            } catch {
+                print ("There was an error")
+            }
+        }
 
     @IBAction func selectEnglishBtn(_ sender: UIButton) {
         LanguageManager.shared.setLanguage(language: .en)
+        clearTable()
+        clearTable1()
+        clearTable2()
+        DispatchQueue.main.async {
+            self.startLoading()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Login1VC") as? EBC_Login1VC
             self.navigationController?.pushViewController(vc!, animated: true)
+        }
+        
     }
     
     @IBAction func selectHindiBtn(_ sender: UIButton) {
         LanguageManager.shared.setLanguage(language: .hi)
+        clearTable()
+        clearTable1()
+        clearTable2()
+        DispatchQueue.main.async {
+            self.startLoading()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Login1VC") as? EBC_Login1VC
-        navigationController?.pushViewController(vc!, animated: true)
+            self.navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     func tokendata(){

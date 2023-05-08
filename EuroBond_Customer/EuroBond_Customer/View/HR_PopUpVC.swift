@@ -7,7 +7,7 @@
 
 import UIKit
 import SlideMenuControllerSwift
-//import LanguageManager_iOS
+import LanguageManager_iOS
 protocol popUpAlertDelegate : class {
     func popupAlertDidTap(_ vc: HR_PopUpVC)
 }
@@ -28,7 +28,7 @@ class HR_PopUpVC: UIViewController {
             self.okBTN.backgroundColor  = #colorLiteral(red: 0.1643253267, green: 0.3061718345, blue: 0.7360334992, alpha: 1)
         }
         self.information.text = descriptionInfo
-        self.okBTN.setTitle("OK", for: .normal)
+        self.okBTN.setTitle("ok".localiz(), for: .normal)
     }
 
     @IBAction func okayBTN(_ sender: Any) {

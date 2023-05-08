@@ -11,7 +11,9 @@ import AVFoundation
 import Photos
 import Kingfisher
 
-class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, popUpAlertDelegate{
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
 
     @IBOutlet weak var uploadImage: UIImageView!
     @IBOutlet weak var uploadDoccumentInfoLbl: UILabel!
@@ -69,36 +71,47 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     @IBAction func selectSubmitBtn(_ sender: UIButton) {
-        
-        if self.emailTF == ""{
-            self.view.makeToast("Enter Email", duration: 2.0, position: .bottom)
-        }else if self.accountHolderTF.text!.count == 0 && self.accountNumberTF.text!.count == 0 && self.bankNameTF.text!.count == 0 && self.ifscCodeTF.text!.count == 0 && self.confirmAccountNumberTF.text!.count == 0 && self.strdata1 == "" {
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            
+            if self.emailTF == ""{
+                self.view.makeToast("Enter Email", duration: 2.0, position: .bottom)
+            }else if self.accountHolderTF.text!.count == 0 && self.accountNumberTF.text!.count == 0 && self.bankNameTF.text!.count == 0 && self.ifscCodeTF.text!.count == 0 && self.confirmAccountNumberTF.text!.count == 0 && self.strdata1 == "" {
                 let parameter = [
-                 "ActionType": "4",
-                 "ActorId": self.userId,
-                 "ObjCustomerJson": [
-                    "CustomerId": self.customerId,
-                     "MerchantId": "1",
-                    "FirstName": self.firstNameTF,
-                    "LastName": self.lastNameTF,
-                    "Mobile": self.customerMobileNumber,
-                    "Address1": self.addressTF,
-                    "StateId": self.stateId,
-                    "CityId": self.cityId,
-                    "Zip": self.pinCodeTF,
-                    "JDOB": self.doB,
-                    "AddressId": self.addressId,
-                    "AcountHolderName": self.accountHolderTF.text ?? "",
-                    "AccountNumber": self.accountNumberTF.text ?? "",
-                    "BankName": self.bankNameTF.text ?? "",
-                    "IFSCCode": self.ifscCodeTF.text ?? "",
-                    "BankPassbookImage": self.strdata1,
-                     "IsMobileRequest":1
-                 ]
+                    "ActionType": "4",
+                    "ActorId": self.userId,
+                    "ObjCustomerJson": [
+                        "CustomerId": self.customerId,
+                        "MerchantId": "1",
+                        "FirstName": self.firstNameTF,
+                        "LastName": self.lastNameTF,
+                        "Mobile": self.customerMobileNumber,
+                        "Address1": self.addressTF,
+                        "StateId": self.stateId,
+                        "CityId": self.cityId,
+                        "Zip": self.pinCodeTF,
+                        "JDOB": self.doB,
+                        "AddressId": self.addressId,
+                        "AcountHolderName": self.accountHolderTF.text ?? "",
+                        "AccountNumber": self.accountNumberTF.text ?? "",
+                        "BankName": self.bankNameTF.text ?? "",
+                        "IFSCCode": self.ifscCodeTF.text ?? "",
+                        "BankPassbookImage": self.strdata1,
+                        "IsMobileRequest":1
+                    ]
                 ] as [String : Any]
-                 print(parameter)
-            self.VM.flags = "BankDetails"
-                 self.VM.updateProfileDetailsApi(parameter: parameter)
+                print(parameter)
+                self.VM.flags = "BankDetails"
+                self.VM.updateProfileDetailsApi(parameter: parameter)
             }else{
                 if self.accountHolderTF.text!.count == 0 || self.accountNumberTF.text!.count == 0 || self.bankNameTF.text!.count == 0 || self.ifscCodeTF.text!.count == 0 || self.confirmAccountNumberTF.text!.count == 0 || self.strdata1 == ""{
                     
@@ -142,14 +155,14 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                                 "IsMobileRequest":1
                             ]
                         ] as [String : Any]
-                         print(parameter)
-                         self.VM.updateProfileDetailsApi(parameter: parameter)
+                        print(parameter)
+                        self.VM.updateProfileDetailsApi(parameter: parameter)
                     }
                     
                 }
                 
             }
-        
+        }
       
     }
     func myProfileApi(UserID: String){

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import LanguageManager_iOS
 protocol popUpDelegate1 : AnyObject {
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC)
 }
@@ -24,17 +24,17 @@ class PopupAlertOne_VC: BaseViewController {
         super.viewDidLoad()
         self.descriptionn.text = descriptionInfo
         
-        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-            self.ok.setTitle("OK", for: .normal)
+//        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+            self.ok.setTitle("ok".localiz(), for: .normal)
             
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-            self.ok.setTitle("ठीक है", for: .normal)
-        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-            self.ok.setTitle("ওকে", for: .normal)
-        }else{
-            self.ok.setTitle("OK", for: .normal)
-            
-        }
+//        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+//            self.ok.setTitle("ठीक है", for: .normal)
+//        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+//            self.ok.setTitle("ওকে", for: .normal)
+//        }else{
+//            self.ok.setTitle("OK", for: .normal)
+//
+//        }
        
     }
     

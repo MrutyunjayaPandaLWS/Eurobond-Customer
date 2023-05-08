@@ -26,7 +26,13 @@ class EBC_FAQVC: UIViewController {
     }
     
     func localizSetup(){
-        self.webView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-faq-eng", ofType: "html")!) as URL) as URLRequest)
-    }
+        self.faqTitleLbl.text = "FAQ".localiz()
+        if faqTitleLbl.text == "FAQ"{
+            self.webView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-faq-eng", ofType: "html")!) as URL) as URLRequest)
+        }else{
+            self.webView.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-faq-hin", ofType: "html")!) as URL) as URLRequest)
+        }
+        
+        }
 
 }

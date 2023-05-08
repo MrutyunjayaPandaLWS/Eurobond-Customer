@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 protocol SendUpdatedAddressDelegate {
     func updatedAddressDetails(_ vc: HR_EditAddressVC)
 }
@@ -19,7 +20,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
         }else if vc.isComeFrom == 2{
             self.selectStateLbl.text = vc.selectedTitle
             self.selectedStateID = Int(vc.selectedId) ?? 0
-            self.selectCityLbl.text! = "Select City"
+            self.selectCityLbl.text! = "Select City".localiz()
         }else if vc.isComeFrom == 3{
             self.selectCityLbl.text = vc.selectedTitle
             self.selectedCityID = Int(vc.selectedId) ?? 0
@@ -133,40 +134,41 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
         if selectedState != "" {
             self.selectStateLbl.text = selectedState
         }else{
-            self.selectStateLbl.text = "Select State"
+            self.selectStateLbl.text = "Select State".localiz()
         }
         if selectedCity != "" {
             self.selectCityLbl.text = selectedCity
         }else{
-            self.selectCityLbl.text = "Select City"
+            self.selectCityLbl.text = "Select City".localiz()
         }
         if selectedCountry != ""{
             self.selectCountry.text = self.selectedCountry
         }else{
-            self.selectCountry.text = "Select Country"
+            self.selectCountry.text = "Select Country".localiz()
         }
         self.zipTF.text = selectedpincode
         
     }
     
     func localization(){
-        self.newAddressLbl.text = "New Address"
-        self.saveChangeLbl.text = "Save Changes"
-        self.nameLbl.text = "Name"
-        self.mobile.text = "Mobile"
-        self.email.text = "Email"
-        self.address.text = "Address"
-        self.countryLbl.text = "Country"
-        self.selectCountry.text = "Select Country"
-        self.stateLbl.text = "State"
-        self.selectStateLbl.text = "Select State"
-        self.selectCityLbl.text = "Select City"
-        self.ziplbl.text = "Zip"
-        self.enterNameTF.placeholder = "Enter Name"
-        self.mobileTF.placeholder = "Enter Mobile Number"
-        self.emailTF.placeholder = "Enter Email"
-        self.addressTF.placeholder = "Enter Address"
-        self.zipTF.placeholder = "Enter Zip"
+        self.newAddressLbl.text = "New Address".localiz()
+        self.saveChangeLbl.text = "Save Changes".localiz()
+        self.nameLbl.text = "Name".localiz()
+        self.mobile.text = "Mobile".localiz()
+        self.email.text = "Email".localiz()
+        self.address.text = "Address".localiz()
+        self.countryLbl.text = "Country".localiz()
+        self.selectCountry.text = "Select Country".localiz()
+        self.cityLbl.text = "City".localiz()
+        self.stateLbl.text = "State".localiz()
+        self.selectStateLbl.text = "Select State".localiz()
+        self.selectCityLbl.text = "Select City".localiz()
+        self.ziplbl.text = "Zip".localiz()
+        self.enterNameTF.placeholder = "Enter Name".localiz()
+        self.mobileTF.placeholder = "Enter Mobile Number".localiz()
+        self.emailTF.placeholder = "Enter Email".localiz()
+        self.addressTF.placeholder = "Enter Address".localiz()
+        self.zipTF.placeholder = "Enter Zip".localiz()
         
     }
 
@@ -200,7 +202,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select Country"
+                vc!.descriptionInfo = "Select Country".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -211,7 +213,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                     vc!.delegate = self
                     vc!.titleInfo = ""
-                    vc!.descriptionInfo = "No Internet Connection"
+                    vc!.descriptionInfo = "No Internet Connection".localiz()
                     vc!.modalPresentationStyle = .overCurrentContext
                     vc!.modalTransitionStyle = .crossDissolve
                     self.present(vc!, animated: true, completion: nil)
@@ -234,7 +236,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select State"
+                vc!.descriptionInfo = "Select State".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -245,7 +247,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                     vc!.delegate = self
                     vc!.titleInfo = ""
-                    vc!.descriptionInfo = "No Internet Connection"
+                    vc!.descriptionInfo = "No Internet Connection".localiz()
                     vc!.modalPresentationStyle = .overCurrentContext
                     vc!.modalTransitionStyle = .crossDissolve
                     self.present(vc!, animated: true, completion: nil)
@@ -270,7 +272,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Enter Name"
+                vc!.descriptionInfo = "Enter Name".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -281,7 +283,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Enter Mobile Number"
+                vc!.descriptionInfo = "Enter Mobile Number".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -292,7 +294,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Enter Valid Mobile Number"
+                vc!.descriptionInfo = "Entervalidmobilernumber".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -326,40 +328,40 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Enter Address"
+                vc!.descriptionInfo = "Enter Address".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
             }
             
-            }else if selectCountry.text == "Select Country"{
+        }else if selectCountry.text == "Select Country".localiz(){
             DispatchQueue.main.async{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select Country"
+                vc!.descriptionInfo = "Select Country".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
             }
             
-            }else if selectStateLbl.text == "Select State" || self.selectStateLbl.text == "-" || self.selectStateLbl.text!.count < 3{
+        }else if selectStateLbl.text == "Select State".localiz() || self.selectStateLbl.text == "-" || self.selectStateLbl.text!.count < 3{
             DispatchQueue.main.async{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select State"
+                vc!.descriptionInfo = "Select State".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
             }
             
-            }else if selectCityLbl.text == "Select City" || self.selectCityLbl.text == "-" || self.selectCityLbl.text!.count < 3{
+        }else if selectCityLbl.text == "Select City".localiz() || self.selectCityLbl.text == "-" || self.selectCityLbl.text!.count < 3{
             DispatchQueue.main.async{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Select City"
+                vc!.descriptionInfo = "Select City".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -370,7 +372,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Enter Zip"
+                vc!.descriptionInfo = "Enter Zip".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -381,7 +383,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Enter Valid Zip"
+                vc!.descriptionInfo = "Enter Valid Zip".localiz()
                 vc!.modalPresentationStyle = .overFullScreen
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -392,7 +394,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "Shipping Address Updated"
+                vc!.descriptionInfo = "Shipping Address Updated".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)

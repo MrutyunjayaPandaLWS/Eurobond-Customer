@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 protocol cartDetailsDelegate {
     func increaseProductQty(_ cell: HR_MyCartTVC)
     func decreaseProductQty(_ cell: HR_MyCartTVC)
@@ -21,12 +22,14 @@ class HR_MyCartTVC: UITableViewCell {
     @IBOutlet weak var productPoints: UILabel!
     @IBOutlet weak var productName: UILabel!
     
+    @IBOutlet var eUROS: UILabel!
     @IBOutlet weak var removeProductsBTN: UIButton!
     @IBOutlet weak var categoryName: UILabel!
     var delegate: cartDetailsDelegate!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
+        self.eUROS.text = "POINTS".localiz()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

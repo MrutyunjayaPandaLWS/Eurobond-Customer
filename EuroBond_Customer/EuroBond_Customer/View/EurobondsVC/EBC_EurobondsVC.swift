@@ -21,6 +21,21 @@ class EBC_EurobondsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        langLocaliz()
+    }
+    
+    func langLocaliz(){
+        VCtitle.text = "EurobondProfile".localiz()
+        productCatalogueLbl.text = "Product Catalogue".localiz()
+        productCatalogueInfo.text = "Get the Product Details".localiz()
+        youtubeInfo.text = "For Product videos".localiz()
+        youTubeLbl.text = "Eurobond Youtube".localiz()
+        searchProjectInfo.text = "Search Project".localiz()
+        projectSearchLbl.text = "Project Search".localiz()
+        whatsNewInfoLbl.text = "Check Latest Updates".localiz()
+        whatsNewLbl.text = "WhatNew".localiz()
+        
+        
         
     }
 

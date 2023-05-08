@@ -8,6 +8,7 @@
 import Foundation
 import Kingfisher
 import UIKit
+import LanguageManager_iOS
 class EBC_MyProfileVM{
     
     weak var VC: MyProfileVC?
@@ -138,7 +139,7 @@ class EBC_MyProfileVM{
                         
                         if result?.returnMessage ?? "" == "1"{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
-                            vc.descriptionInfo = "Profile Updated Successfully !!"
+                            vc.descriptionInfo = "Profile Updated Successfully".localiz()
                             vc.itsComeFrom = "ProfileUpdate"
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
@@ -154,7 +155,7 @@ class EBC_MyProfileVM{
                         }else{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                             vc.itsComeFrom = "ProfileUpdate"
-                            vc.descriptionInfo = "Profile Update is failed !!"
+                            vc.descriptionInfo = "Profile Update is failed".localiz()
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
                             if self.flags == "MyProfile"{

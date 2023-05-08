@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
  
@@ -26,8 +27,14 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
         millStonesListTV.delegate = self
         millStonesListTV.dataSource = self
         tableViewHeight.constant = 140
+        languageLocalize()
     }
-
+    func languageLocalize(){
+        titleVC.text = "Millstone Bonus".localiz()
+        infoLbl.text = "Bonus Euros to be awardedto members on reching below slabs".localiz()
+        euroSlabTitleLbl.text = "Euro Slab".localiz()
+        addonEurosLbl.text = "Add on Euros".localiz()
+    }
     @IBAction func selectBackBtn(_ sender: UIButton) {
         if flags == "SideMenu"{
             NotificationCenter.default.post(name: .sideMenuClosing, object: nil)

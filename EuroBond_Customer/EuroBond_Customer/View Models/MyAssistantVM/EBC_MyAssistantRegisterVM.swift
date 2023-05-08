@@ -121,7 +121,7 @@ class EBC_MyAssistantRegisterVM{
     @objc func update() {
         if(count > 1) {
             count = count - 1
-            self.VC?.otpTimmerLbl.text = "Seconds Remaining : 0:\(count - 1)"
+            self.VC?.otpTimmerLbl.text = "SecondsRemaining".localiz() + "\(count - 1)"
             self.VC?.resendBtnView.isHidden = true
             self.VC?.mobileNumberTF.isEnabled = false
         }else{

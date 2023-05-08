@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import LanguageManager_iOS
 class EBC_OffersDetailsVC: BaseViewController {
 
     
@@ -23,6 +24,9 @@ class EBC_OffersDetailsVC: BaseViewController {
         super.viewDidLoad()
         self.offersNameLbl.text = self.selectedTitle
         offersImage.contentMode = .scaleAspectFit
+        //let htmlString = selectedLongDesc.HTML ?? ""
+        //self.descriptionWV.loadHTMLString(htmlString , baseURL:nil)
+        let content = "<html><body><p><font size=5>" + selectedLongDesc + "</font></p></body></html>"
         self.descriptionWV.loadHTMLString(self.selectedLongDesc, baseURL: nil)
         let imageURL = self.selectedImage
         print(imageURL)
@@ -33,12 +37,16 @@ class EBC_OffersDetailsVC: BaseViewController {
             print(urlt)
             offersImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
         }
+        languageLocaliz()
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
     }
     
+    func languageLocaliz(){
+        self.titleVC.text = "Schemes and Offers".localiz()
+    }
     
     
 }

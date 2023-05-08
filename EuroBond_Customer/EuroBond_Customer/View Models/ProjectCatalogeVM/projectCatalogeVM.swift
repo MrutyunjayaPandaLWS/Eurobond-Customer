@@ -28,8 +28,10 @@ class projectCatalogeVM {
                         if self.projectCatalogeArray.count != 0 {
                             self.VC?.projectListingCV.isHidden = false
                             self.VC?.projectListingCV.reloadData()
+                            self.VC?.noDataFound.isHidden = true
                         }else{
                             self.VC?.projectListingCV.isHidden = true
+                            self.VC?.noDataFound.isHidden = false
                         }
                         
                     }

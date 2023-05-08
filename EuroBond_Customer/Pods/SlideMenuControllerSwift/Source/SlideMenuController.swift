@@ -141,7 +141,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         leftFrame.size.height = leftFrame.size.height - leftOffset
         leftContainerView = UIView(frame: leftFrame)
         leftContainerView.backgroundColor = UIColor.clear
-        leftContainerView.autoresizingMask = UIView.AutoresizingMask.flexibleHeight
+          leftContainerView.autoresizingMask = UIView.AutoresizingMask.flexibleHeight
         view.insertSubview(leftContainerView, at: 2)
         addLeftGestures()
       }
@@ -155,7 +155,7 @@ open class SlideMenuController: UIViewController, UIGestureRecognizerDelegate {
         rightFrame.size.height = rightFrame.size.height - rightOffset
         rightContainerView = UIView(frame: rightFrame)
         rightContainerView.backgroundColor = UIColor.clear
-        rightContainerView.autoresizingMask = UIView.AutoresizingMask.flexibleHeight
+          rightContainerView.autoresizingMask = UIView.AutoresizingMask.flexibleHeight
         view.insertSubview(rightContainerView, at: 3)
         addRightGestures()
       }

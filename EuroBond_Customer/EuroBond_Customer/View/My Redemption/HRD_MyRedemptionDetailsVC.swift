@@ -89,7 +89,7 @@ class HRD_MyRedemptionDetailsVC: BaseViewController {
         self.qtyLbl.text = "QTY".localiz()
         self.descriptionTitle.text = "Descriptions".localiz()
         self.termsandConditionLbl.text = "TermsAndConditions".localiz()
-       
+        self.orderStatusTitle.text = "OrderStatus".localiz()
     }
     
     func receviedStatus(){
