@@ -98,7 +98,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
         self.panNumberTF.placeholder = "Enter PAN Number".localiz()
         self.pannumberLbl.text = "Pan Number".localiz()
         self.panCradLbl.text = "attach PAN Card".localiz()
-        self.gstTF.text = "Enter GST Number".localiz()
+        self.gstTF.placeholder = "Enter GST Number".localiz()
         self.gstLbl.text = "GST".localiz()
         self.gstDoccumentLbl.text = "AttachGSTDocument".localiz()
         self.uploadGSTTextLbl.text = "Upload File".localiz()

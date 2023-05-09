@@ -149,6 +149,7 @@
 "rest" = "आराम";
 "Select Status" = "स्थिति का चयन करें";
 "No Internet Connection" = "कोई इंटरनेट कनेक्शन नहीं";
+"NoInternet" = "कोई इंटरनेट कनेक्शन नहीं";
 "QTY" = "मात्रा";
 "Descriptions" = "विवरण";
 "RefNo" = "प्रसंग संख्या.";

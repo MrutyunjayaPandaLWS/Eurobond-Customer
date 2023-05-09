@@ -89,7 +89,7 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
     }
     
     @IBAction func selectEditEmailBtn(_ sender: Any) {
-        emailTF.isEnabled = true
+        self.emailTF.isEnabled = true
         
     }
     

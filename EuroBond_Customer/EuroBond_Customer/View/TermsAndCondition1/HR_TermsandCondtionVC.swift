@@ -39,7 +39,7 @@ class HR_TermsandCondtionVC: BaseViewController{
     func langLocaliz(){
         self.decline.setTitle("decline".localiz(), for: .normal)
         self.accept.setTitle("accept".localiz(), for: .normal)
-        if language == "Enter Password" {
+        if decline.currentTitle == "Decline" {
             self.webview1.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c-eng", ofType: "html")!) as URL) as URLRequest)
         }else{
             self.webview1.load(NSURLRequest(url: NSURL(fileURLWithPath: Bundle.main.path(forResource: "eurobond-t&c-hin", ofType: "html")!) as URL) as URLRequest)

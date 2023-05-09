@@ -16,6 +16,7 @@ import CoreLocation
 import CoreData
 import Firebase
 import LanguageManager_iOS
+import Lottie
 
 class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate, UITextFieldDelegate, popUpDelegate1, popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
@@ -38,8 +39,27 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     @IBOutlet weak var header: UILabel!
     @IBOutlet weak var infoLbl: UILabel!
-    var selectedUploadColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
     
+    
+    @IBOutlet var syncStatusWithoutInternet: LottieAnimationView!
+    @IBOutlet var syncStatusMessageLbl: UILabel!
+    
+    
+    @IBOutlet var syncNowOutBTN: UIButton!
+    @IBOutlet var syncLaterOutBTN: UIButton!
+    
+    
+    @IBOutlet var withoutInternetView: UIView!
+    
+    @IBOutlet var withoutInternetHoleView: UIView!
+    
+
+    
+    @IBOutlet var HeaderProfileImage: UIImageView!
+    
+    
+    
+    var selectedUploadColor = #colorLiteral(red: 0, green: 0.4235294118, blue: 0.7098039216, alpha: 1)
     var reachability = Reach()
     var isComeFrom = ""
     var isComingFrom = 0
@@ -83,9 +103,10 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     var fromSideMenu = ""
     var scannedCodeArray = [String]()
-    
+    private var animationView: LottieAnimationView?
     override func viewDidLoad() {
         super.viewDidLoad()
+        withoutInternetHoleView.isHidden = true
         self.countLabel.cornerRadius = countLabel.frame.width/2
         self.codeCountView.cornerRadius = codeCountView.frame.width/2
         self.scanQRCodeButton.setTitleColor(selectedUploadColor, for: .normal)
@@ -112,6 +133,10 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     }
  
     func languagelocalization(){
+        playAnimation()
+        self.syncStatusMessageLbl.text = "Scan/upload limit exceeded.sync pending codes in WI-FI/Mobile data or clear processed codes !".localiz()
+        syncNowOutBTN.setTitle("SYNC NOW".localiz(), for: .normal)
+        syncLaterOutBTN.setTitle("SYNC LATER".localiz(), for: .normal)
         self.header.text = "Upload".localiz()
         self.messageLbl.text = "Place a QR Code inside the view finder rectangle  to scan it.".localiz()
         self.codeTF.placeholder = "Enter your code".localiz()
@@ -227,7 +252,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
            self.scannerImage.layer.zPosition = 2
        }
     func fetchDetails(){
-        self.codeLIST.removeAll()
+        //self.codeLIST.removeAll()
         let fetchRequest:NSFetchRequest<ScanCodeSTORE> = ScanCodeSTORE.fetchRequest()
         do{
             self.codeLIST = try persistanceservice.context.fetch(fetchRequest)
@@ -372,6 +397,20 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         }
     }
    
+    func playAnimation(){
+        animationView = .init(name: "cloud_sync")
+        animationView!.frame = syncStatusWithoutInternet.bounds
+          // 3. Set animation content mode
+        animationView!.contentMode = .scaleAspectFit
+          // 4. Set animation loop mode
+        animationView!.loopMode = .loop
+          // 5. Adjust animation speed
+        animationView!.animationSpeed = 1
+        syncStatusWithoutInternet.addSubview(animationView!)
+          // 6. Play animation
+        animationView!.play()
+    }
+    
     func fetchDetails1(){
            
            let fetchRequest:NSFetchRequest<UploadedCodes> = UploadedCodes.fetchRequest()
@@ -418,8 +457,12 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     @IBAction func closeScreen(_ sender: Any) {
         print(self.codeLIST.count,"dsjknd")
-        if self.codeLIST.count != 0{
-            NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() != false{
+            DispatchQueue.main.async{
+                if self.codeLIST.count != 0{
+                    NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+                }
+            }
         }
             //clearTable()
             self.session.stopRunning()
@@ -433,9 +476,28 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                     NotificationCenter.default.post(name: .goToParticularVc, object: nil)
                 }
             }
-            
-        
     }
+    
+    
+    
+    @IBAction func syncLaterActBTN(_ sender: Any) {
+        DispatchQueue.main.async{
+            self.withoutInternetHoleView.isHidden = true
+            self.dismiss(animated: true){
+                NotificationCenter.default.post(name: .goToParticularVc, object: nil)
+            }
+        }
+    }
+    
+    
+    
+    
+    @IBAction func syncNowActBTN(_ sender: Any) {
+        NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+    }
+    
+    
+    
     
     @IBAction func submitButton(_ sender: Any) {
 //        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
@@ -496,33 +558,59 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                             }
                         }else{
                             if self.codeLIST.count <= 19{
-                                let date = Date()
-                                let formatter = DateFormatter()
-                                formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
-                                let resultdate = formatter.string(from: date)
-                                let qRCodeDBTable = ScanCodeSTORE(context: persistanceservice.context)
-                                qRCodeDBTable.code = self.codeTF.text
-                                qRCodeDBTable.date = resultdate
-                                qRCodeDBTable.latitude = String(currentlocation.coordinate.latitude)
-                                qRCodeDBTable.longitude = String(currentlocation.coordinate.longitude)
-                                persistanceservice.saveContext()
-                                self.fetchDetails()
-                                self.restartScanning()
-                            }else{
                                 
-                               
-                                let alert = UIAlertController(title: "", message: "Your scanning limit exceeded".localiz(), preferredStyle: UIAlertController.Style.alert)
-                                alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
-                                            self.codeTF.text = ""
-                                            self.session.stopRunning()
-                                    if self.codeLIST.count <= 19{
-                                        NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+                                if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                                    DispatchQueue.main.async{
+                                        self.withoutInternetHoleView.isHidden = false
                                     }
-                                        }))
-                                        self.present(alert, animated: true, completion: nil)
-                                    
-                                
-                                
+                                }else{
+                                    let date = Date()
+                                    let formatter = DateFormatter()
+                                    formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                                    let resultdate = formatter.string(from: date)
+                                    let qRCodeDBTable = ScanCodeSTORE(context: persistanceservice.context)
+                                    qRCodeDBTable.code = self.codeTF.text
+                                    qRCodeDBTable.date = resultdate
+                                    qRCodeDBTable.latitude = String(currentlocation.coordinate.latitude)
+                                    qRCodeDBTable.longitude = String(currentlocation.coordinate.longitude)
+                                    persistanceservice.saveContext()
+                                    self.fetchDetails()
+                                    self.restartScanning()
+                                }
+                            }else{
+                                if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                                    DispatchQueue.main.async{
+                                        self.withoutInternetHoleView.isHidden = false
+                                    }
+                                    }else{
+//                                        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+//                                            DispatchQueue.main.async{
+//                                                self.withoutInternetHoleView.isHidden = false
+//                                            }
+//                                        }else{
+                                        self.withoutInternetHoleView.isHidden = false
+//                                            let alert = UIAlertController(title: "", message: "Your scanning limit exceeded".localiz(), preferredStyle: UIAlertController.Style.alert)
+//                                            alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
+                                                self.codeTF.text = ""
+                                                self.session.stopRunning()
+                                                if self.codeLIST.count <= 19{
+                                                    
+                                                    if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                                                        DispatchQueue.main.async{
+                                                            self.withoutInternetHoleView.isHidden = false
+                                                        }
+                                                    }else{
+                                                        self.withoutInternetHoleView.isHidden = true
+                                                        NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+                                                    }
+                                                    
+                                                }
+//                                            }))
+//                                            self.present(alert, animated: true, completion: nil)
+                                        }
+                                        
+                                        
+//                                    }
                             }
                         }
                         
@@ -575,8 +663,12 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     @IBAction func backButton(_ sender: Any) {
         //clearTable()
-        if self.codeLIST.count != 0{
-            NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() != false{
+            DispatchQueue.main.async{
+                if self.codeLIST.count != 0{
+                    NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+                }
+            }
         }
         self.session.stopRunning()
         if self.fromSideMenu == "SideMenu"{
@@ -803,42 +895,73 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                         self.session.stopRunning()
                                         AudioServicesPlaySystemSound(1103)
                                         if self.codeLIST.count <= 19{
-                                            if compareCodes.count == 0{
-                                                print("Success")
-                                                let date = Date()
-                                                let formatter = DateFormatter()
-                                                formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
-                                                let resultdate = formatter.string(from: date)
-                                                let qRCodeDBTable = ScanCodeSTORE(context: persistanceservice.context)
-                                                qRCodeDBTable.code = self.CapturedCodess
-                                                qRCodeDBTable.latitude = String(self.currentlocation.coordinate.latitude)
-                                                qRCodeDBTable.longitude = String(self.currentlocation.coordinate.longitude)
-                                                qRCodeDBTable.date = resultdate
-                                                persistanceservice.saveContext()
-                                                self.scaned = 0
-                                                self.isScanned = true
-                                                self.scannedStatus = false
-                                                self.session.stopRunning()
-                                                self.fetchDetails()
-                                                self.restartScanning()
-                                                self.session.stopRunning()
-                                                return
+                                            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                                                DispatchQueue.main.async{
+                                                    if self.codeLIST.count  == 20{
+                                                        self.withoutInternetHoleView.isHidden = false
+                                                    }else{
+                                                        if compareCodes.count == 0{
+                                                            print("Success")
+                                                            let date = Date()
+                                                            let formatter = DateFormatter()
+                                                            formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                                                            let resultdate = formatter.string(from: date)
+                                                            let qRCodeDBTable = ScanCodeSTORE(context: persistanceservice.context)
+                                                            qRCodeDBTable.code = self.CapturedCodess
+                                                            qRCodeDBTable.latitude = String(self.currentlocation.coordinate.latitude)
+                                                            qRCodeDBTable.longitude = String(self.currentlocation.coordinate.longitude)
+                                                            qRCodeDBTable.date = resultdate
+                                                            persistanceservice.saveContext()
+                                                            self.scaned = 0
+                                                            self.isScanned = true
+                                                            self.scannedStatus = false
+                                                            self.session.stopRunning()
+                                                            self.fetchDetails()
+                                                            self.restartScanning()
+                                                            self.session.stopRunning()
+                                                            return
+                                                        }
+                                                    }
+                                                }
                                             }else{
-                                                self.scaned = 0
-                                                self.Validation()
-                                                return
+                                                //self.withoutInternetHoleView.isHidden = false
+                                                if compareCodes.count == 0{
+                                                    print("Success")
+                                                    let date = Date()
+                                                    let formatter = DateFormatter()
+                                                    formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                                                    let resultdate = formatter.string(from: date)
+                                                    let qRCodeDBTable = ScanCodeSTORE(context: persistanceservice.context)
+                                                    qRCodeDBTable.code = self.CapturedCodess
+                                                    qRCodeDBTable.latitude = String(self.currentlocation.coordinate.latitude)
+                                                    qRCodeDBTable.longitude = String(self.currentlocation.coordinate.longitude)
+                                                    qRCodeDBTable.date = resultdate
+                                                    persistanceservice.saveContext()
+                                                    self.scaned = 0
+                                                    self.isScanned = true
+                                                    self.scannedStatus = false
+                                                    self.session.stopRunning()
+                                                    self.fetchDetails()
+                                                    self.restartScanning()
+                                                    self.session.stopRunning()
+                                                    return
+                                                }else{
+                                                    self.scaned = 0
+                                                    self.Validation()
+                                                    return
+                                                }
                                             }
                                         }else{
                                             if compareCodes.count == 0{
-                                                    let alert = UIAlertController(title: "", message: "Offline scanning limit exceeded".localiz(), preferredStyle: UIAlertController.Style.alert)
-                                                    alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: {   UIAlertAction in
-                                                        self.isScanned = true
-                                                        self.session.startRunning()
-                                                        NotificationCenter.default.post(name: .CodeSubmission, object: nil)
-                                                    }))
-                                                    self.present(alert, animated: true, completion: nil)
-                                                    
-                                                
+//                                                    let alert = UIAlertController(title: "", message: "Offline scanning limit exceeded".localiz(), preferredStyle: UIAlertController.Style.alert)
+//                                                    alert.addAction(UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default, handler: {   UIAlertAction in
+//                                                        self.isScanned = true
+//                                                        self.session.startRunning()
+//                                                        NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+//                                                    }))
+//                                                    self.present(alert, animated: true, completion: nil)
+//
+                                                self.withoutInternetHoleView.isHidden = false
                                              
                                                 return
                                             }else{

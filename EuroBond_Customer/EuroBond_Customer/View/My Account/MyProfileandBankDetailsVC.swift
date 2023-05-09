@@ -12,6 +12,7 @@ import AVFoundation
 import Photos
 import QCropper
 import LanguageManager_iOS
+import Kingfisher
 class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     
@@ -42,6 +43,21 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        
+        let imageurl = "\(UserDefaults.standard.string(forKey: "customerImage") ?? "")".dropFirst(1)
+        let imageData = imageurl.split(separator: "~")
+        if imageData.count >= 2 {
+            print(imageData[1],"jdsnjkdn")
+            let totalImgURL = PROMO_IMG1 + (imageData[1])
+            print(totalImgURL, "Total Image URL")
+            self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+        }else{
+            let totalImgURL = PROMO_IMG1 + imageurl
+        print(totalImgURL, "Total Image URL")
+        self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+            }
+        
+        //self.myProfileImg.sd_setImage(with: URL(string: PROMO_IMG + "\(customerImage)"), placeholderImage: UIImage(named: "icons8-test-account-96"))
             picker.delegate = self
             self.personalDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
             self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
@@ -69,28 +85,34 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
     }
     
     @IBAction func selectGiveMissedCallBtn(_ sender: Any) {
-        if let phoneCallURL = URL(string: "tel://\(+918875509444)") {
-            
-            let application:UIApplication = UIApplication.shared
-            if (application.canOpenURL(phoneCallURL)) {
-                application.open(phoneCallURL, options: [:], completionHandler: nil)
+            if let phoneCallURL = URL(string: "tel://\(+918875509444)") {
                 
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(phoneCallURL)) {
+                    application.open(phoneCallURL, options: [:], completionHandler: nil)
+                    
+                }
             }
-        }
     }
     @IBAction func selectProfileImageEditBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
-            self.openCamera()
-        }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
-            self.openGallery()
-        }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
-        }))
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+                self.openCamera()
+            }))
+            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
+                self.openGallery()
+            }))
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            }))
+            self.present(alert, animated: true, completion: {
+                print("completion block")
+            })
+        }
     }
 
    
@@ -304,19 +326,21 @@ extension MyProfileandBankDetailsVC: CropperViewControllerDelegate {
         print(strdata1,"kdjgjhdsj")
         
         //{"ActionType":"159","ObjCustomerJson":{"DisplayImage":"",}}
+        //{"ActorId":"240","ActionType":"159","ObjCustomerJson":{"DisplayImage":"","Domain":"EuroBond"}}
         
+        DispatchQueue.main.async {
+            let parameters = [
+                "ActionType":"159",
+                "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
+                "ObjCustomerJson": [
+                    "DisplayImage": self.strdata1,
+                    "Domain":"EuroBond"
+                ]
+            ]as [String : Any]
+            print(parameters)
+            self.VM.profileImageUpdate(parameter: parameters)
+        }
         
-        let parameters = [
-            "ActorId":"102",
-            "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
-            "ObjCustomerJson": [
-                "DisplayImage": strdata1,
-                //"LoyaltyId": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
-                "Domain":"EuroBond"
-            ]
-        ]as [String : Any]
-        print(parameters)
-        self.VM.profileImageUpdate(parameter: parameters)
     } else {
         print("Something went wrong")
     }

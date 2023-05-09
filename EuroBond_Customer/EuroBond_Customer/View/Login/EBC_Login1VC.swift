@@ -56,6 +56,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     var submitBtnStatus = 0
     let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
     var token = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+    
     var enteredValue = ""
     var receivedOTP = ""
     var categoryId = -1
@@ -80,6 +81,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     override func viewWillAppear(_ animated: Bool) {
         otpView.isHidden = true
         resendOtpBtn.isHidden = true
+        self.membershipIdTF.isEnabled = true
         otpSubmitView.text = ""
         tokendata()
         self.membershipIdTF.delegate = self
@@ -318,6 +320,9 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
             }
         }else{
             
+           
+            
+            
             if membershipIdTF.text?.count == 0{
                 if loginBtnStatus != 1 {
                     self.view.makeToast("EnterMembershipID/Moblienumber".localiz(),duration: 2.0,position: .center)
@@ -344,7 +349,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                         self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
                     }else if submitBtnStatus == 0{
                         submitBtn.setTitle("Submit".localiz(), for: .normal)
-                        otpView.isHidden = false
+                       // otpView.isHidden = false
                         termCondView.isHidden = true
                         submitBtnStatus = 1
                         self.submitButtonTopSpace.constant = 190

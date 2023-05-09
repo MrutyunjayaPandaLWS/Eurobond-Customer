@@ -26,7 +26,7 @@ class EBC_OffersDetailsVC: BaseViewController {
         offersImage.contentMode = .scaleAspectFit
         //let htmlString = selectedLongDesc.HTML ?? ""
         //self.descriptionWV.loadHTMLString(htmlString , baseURL:nil)
-        let content = "<html><body><p><font size=5>" + selectedLongDesc + "</font></p></body></html>"
+        let content = "<html><body><p><font size=10>" + selectedLongDesc + "</font></p></body></html>"
         self.descriptionWV.loadHTMLString(self.selectedLongDesc, baseURL: nil)
         let imageURL = self.selectedImage
         print(imageURL)

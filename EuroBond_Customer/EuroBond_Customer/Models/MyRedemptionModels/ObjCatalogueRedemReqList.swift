@@ -1,5 +1,5 @@
 /* 
-Copyright (c) 2022 Swift Models Generated from JSON powered by http://www.json4swift.com
+Copyright (c) 2023 Swift Models Generated from JSON powered by http://www.json4swift.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -36,6 +36,7 @@ struct ObjCatalogueRedemReqList : Codable {
 	let totRowCount : Int?
 	let asm : String?
 	let se : String?
+	let dealer : String?
 	let productImage : String?
 	let locationName : String?
 	let processedBy : String?
@@ -80,6 +81,14 @@ struct ObjCatalogueRedemReqList : Codable {
 	let sapCode : String?
 	let walletNumber : String?
 	let remarks : String?
+	let customerImage : String?
+	let dealerName : String?
+	let dealerType : String?
+	let scheme : String?
+	let tdsPercentage : Int?
+	let applicableTds : Double?
+	let membertype : String?
+	let districtName : String?
 	let token : String?
 	let actorId : Int?
 	let isActive : Bool?
@@ -111,6 +120,7 @@ struct ObjCatalogueRedemReqList : Codable {
 		case totRowCount = "totRowCount"
 		case asm = "asm"
 		case se = "se"
+		case dealer = "dealer"
 		case productImage = "productImage"
 		case locationName = "locationName"
 		case processedBy = "processedBy"
@@ -155,6 +165,14 @@ struct ObjCatalogueRedemReqList : Codable {
 		case sapCode = "sapCode"
 		case walletNumber = "walletNumber"
 		case remarks = "remarks"
+		case customerImage = "customerImage"
+		case dealerName = "dealerName"
+		case dealerType = "dealerType"
+		case scheme = "scheme"
+		case tdsPercentage = "tdsPercentage"
+		case applicableTds = "applicableTds"
+		case membertype = "membertype"
+		case districtName = "districtName"
 		case token = "token"
 		case actorId = "actorId"
 		case isActive = "isActive"
@@ -187,6 +205,7 @@ struct ObjCatalogueRedemReqList : Codable {
 		totRowCount = try values.decodeIfPresent(Int.self, forKey: .totRowCount)
 		asm = try values.decodeIfPresent(String.self, forKey: .asm)
 		se = try values.decodeIfPresent(String.self, forKey: .se)
+		dealer = try values.decodeIfPresent(String.self, forKey: .dealer)
 		productImage = try values.decodeIfPresent(String.self, forKey: .productImage)
 		locationName = try values.decodeIfPresent(String.self, forKey: .locationName)
 		processedBy = try values.decodeIfPresent(String.self, forKey: .processedBy)
@@ -231,6 +250,14 @@ struct ObjCatalogueRedemReqList : Codable {
 		sapCode = try values.decodeIfPresent(String.self, forKey: .sapCode)
 		walletNumber = try values.decodeIfPresent(String.self, forKey: .walletNumber)
 		remarks = try values.decodeIfPresent(String.self, forKey: .remarks)
+		customerImage = try values.decodeIfPresent(String.self, forKey: .customerImage)
+		dealerName = try values.decodeIfPresent(String.self, forKey: .dealerName)
+		dealerType = try values.decodeIfPresent(String.self, forKey: .dealerType)
+		scheme = try values.decodeIfPresent(String.self, forKey: .scheme)
+		tdsPercentage = try values.decodeIfPresent(Int.self, forKey: .tdsPercentage)
+		applicableTds = try values.decodeIfPresent(Double.self, forKey: .applicableTds)
+		membertype = try values.decodeIfPresent(String.self, forKey: .membertype)
+		districtName = try values.decodeIfPresent(String.self, forKey: .districtName)
 		token = try values.decodeIfPresent(String.self, forKey: .token)
 		actorId = try values.decodeIfPresent(Int.self, forKey: .actorId)
 		isActive = try values.decodeIfPresent(Bool.self, forKey: .isActive)

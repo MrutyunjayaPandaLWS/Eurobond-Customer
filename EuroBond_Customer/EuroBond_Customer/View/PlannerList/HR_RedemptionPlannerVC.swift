@@ -32,37 +32,38 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
                 print(self.totalCartValue, "Cart Value")
                 print(self.redeemablePointsBalance, "Total points")
                 print(self.selectedCatalogueID ?? 0)
-                if self.totalCartValue < (Int(self.redeemablePointsBalance) ?? 0) {
-                    let calcValue = self.totalCartValue + Int(self.VM.plannerListArray[tappedIndex.row].pointsRequired ?? 0)
-                    print(calcValue)
-                    if calcValue <= (Int(self.redeemablePointsBalance) ?? 0){
-                        self.VM.addToCartApi(redemptionPlannerId: self.VM.plannerListArray[tappedIndex.row].redemptionPlannerId ?? 0)
-                    }else{
-                        DispatchQueue.main.async{
-                            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                            vc!.delegate = self
-                            vc!.titleInfo = ""
-                
-                            vc!.descriptionInfo = "Insufficient Point Balance".localiz()
-                            vc!.modalPresentationStyle = .overCurrentContext
-                            vc!.modalTransitionStyle = .crossDissolve
-                            self.present(vc!, animated: true, completion: nil)
-                        }
-                    }
+                if self.totalCartValue <= (Int(self.redeemablePointsBalance) ?? 0) {
+                    //let calcValue = self.totalCartValue + Int(self.VM.plannerListArray[tappedIndex.row].pointsRequired ?? 0)
+                    //print(calcValue)
+                    //if calcValue <= (Int(self.redeemablePointsBalance) ?? 0){
+                    self.VM.addToCartApi(redemptionPlannerId: self.VM.plannerListArray[tappedIndex.row].redemptionPlannerId ?? 0)
                 }else{
                     DispatchQueue.main.async{
                         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                         vc!.delegate = self
                         vc!.titleInfo = ""
+                        
                         vc!.descriptionInfo = "Insufficient Point Balance".localiz()
-                       
                         vc!.modalPresentationStyle = .overCurrentContext
                         vc!.modalTransitionStyle = .crossDissolve
                         self.present(vc!, animated: true, completion: nil)
                     }
                 }
-             
             }
+//          else{
+//                    DispatchQueue.main.async{
+//                        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+//                        vc!.delegate = self
+//                        vc!.titleInfo = ""
+//                        vc!.descriptionInfo = "Insufficient Point Balance".localiz()
+//
+//                        vc!.modalPresentationStyle = .overCurrentContext
+//                        vc!.modalTransitionStyle = .crossDissolve
+//                        self.present(vc!, animated: true, completion: nil)
+//                    }
+//                }
+             
+//            }
             
             
             self.redemptionPlannerTableView.reloadData()

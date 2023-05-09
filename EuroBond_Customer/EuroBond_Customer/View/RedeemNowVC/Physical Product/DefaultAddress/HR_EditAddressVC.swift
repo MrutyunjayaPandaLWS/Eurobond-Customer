@@ -400,13 +400,21 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
                 self.present(vc!, animated: true, completion: nil)
             }
             self.selectedname = self.enterNameTF.text!
+            print(self.enterNameTF.text ?? "")
             self.selectedmobile = self.mobileTF.text!
+            print(self.mobileTF.text ?? "")
             self.selectedemail = self.emailTF.text!
+            print(self.emailTF.text ?? "")
             self.selectedaddress = self.addressTF.text!
+            print(self.addressTF.text ?? "")
             self.selectedCountry = self.selectCountry.text!
+            print(self.selectCountry.text ?? "")
             self.selectedState = self.selectStateLbl.text!
+            print(self.selectStateLbl.text ?? "")
             self.selectedCity = self.selectCityLbl.text!
+            print(self.selectCityLbl.text ?? "")
             self.selectedpincode = self.zipTF.text!
+            print(self.zipTF.text ?? "")
             self.delegate.updatedAddressDetails(self)
             self.navigationController?.popViewController(animated: true)
         }

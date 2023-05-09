@@ -121,7 +121,10 @@ class PopupAlertOne_VC: BaseViewController {
             self.dismiss(animated: true, completion: nil)
         }
  
-        
+//        self.dismiss(animated: true){
+//            self.delegate?.popupAlertDidTap(self)
+//            NotificationCenter.default.post(name: .deleteAccount, object: nil)
+//        }
         
     }
   

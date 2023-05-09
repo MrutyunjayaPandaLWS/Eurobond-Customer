@@ -14,7 +14,17 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
     
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
     
-
+//    var selectedname = ""
+//    var selectedemail = ""
+//    var selectedmobile = ""
+//    var selectedState = ""
+//    var selectedStateID = 0
+//    var selectedCity = ""
+//    var selectedCityID = 0
+//    var selectedaddress = ""
+//    var selectedpincode = ""
+//    var selectedCountryId = 0
+//    var selectedCountry = ""
     
     func updatedAddressDetails(_ vc: HR_EditAddressVC) {
         self.selectedname = vc.selectedname
@@ -28,8 +38,9 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         self.selectedpincode = vc.selectedpincode
         self.selectedCountryId = 15
         self.selectedCountry = "India"
-        self.contractorName = vc.selectedname
-        self.customerAddressTV.text = "\(selectedname),\n\(self.selectedmobile),\n\(self.selectedaddress),\n\(self.selectedCity),\n\(self.selectedState),\n\(self.selectedCountry),\n\(self.selectedemail),\n\(self.selectedpincode)"
+      //  self.contractorName = vc.selectedname
+        self.customerAddressTV.text = "\(selectedname),\n\(vc.selectedmobile),\n\(vc.selectedaddress),\n\(vc.selectedCity),\n\(vc.selectedState),\n\(self.selectedCountry),\n\(vc.selectedemail),\n\(vc.selectedpincode)"
+        print(customerAddressTV.text,"sdjhbsd")
     }
     
     @IBOutlet var defaultAddresstitleLbl: UILabel!
@@ -118,7 +129,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         print(self.totalPoint)
        // self.loaderView.isHidden = true
         if self.dreamGiftID != 0 {
-            self.totalPoints.text = "\(Int(self.totalPoint))" + " " + "Euros".localiz()
+            self.totalPoints.text = "\(Int(self.totalPoint))"
         }else{
             self.myCartListAPI()
         }
@@ -333,7 +344,7 @@ extension EBC_DefaultAddressVC: UITableViewDelegate, UITableViewDataSource{
         cell.selectionStyle = .none
         cell.productName.text = VM.myCartListArray[indexPath.row].productName ?? "-"
         cell.catagoryName.text = VM.myCartListArray[indexPath.row].categoryName ?? "-"
-        cell.pointsLabel.text = "\(Int(VM.myCartListArray[indexPath.row].pointsRequired ?? 0)) Euros"
+        cell.pointsLabel.text = "\(Int(VM.myCartListArray[indexPath.row].pointsRequired ?? 0))"
         //cell.productImageView.image = VM.myCartListArray[indexPath.row].
         let receivedImage = self.VM.myCartListArray[indexPath.row].productImage ?? ""
         let totalImgURL = productCatalogueImgURL + receivedImage

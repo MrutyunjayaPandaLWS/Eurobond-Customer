@@ -166,7 +166,8 @@
 "Click here for support" = "Click here for support";
 "rest" = "Rest";
 "Select Status" = "Select Status";
-"No Internet Connection" = "No Internet Connection";
+"No Internet Connection" = "Check Internet Connection";
+"NoInternet" = "Check Internet Connection";
 "QTY" = "QTY";
 "Descriptions" = "Descriptions";
 "RefNo" = "Ref.No.";
@@ -214,7 +215,7 @@
 "Support Name" = "Support Name";
 "Status" = "Status";
 "Enrollment" = "Enrollment Date";
-"Rest Password" = "Rest Password";
+"Rest Password" = "Reset Password";
 "Update Password" = "Update Password";
 "Enter new password" = "Enter new password";
 "Whislist" = "Whislist";
@@ -271,7 +272,7 @@
 "No Data Found" = "No Data Found !";
 "Schemes and Offers" = "Schemes and Offers";
 "Millstone Bonus" = "Millstone Bonus";
-"Bonus Euros to be awardedto members on reching below slabs" = "Bonus Euros to be awarded to Members on reching below slabs:";
+"BonusEurostobeawardedtomembersonrechingbelowslabs" = "Bonus Euros to be awarded to Members on reaching below slabs:";
 "Euro Slab" = "Euro Slab";
 "Add on Euros" = "Add on Euros";
 "TAP TO CALL NOW" = "TAP TO CALL NOW";

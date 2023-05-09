@@ -12,7 +12,7 @@ protocol UpdatePasswordVCDelegate{
     func showSusccesMessage(item: EBC_UpdatePasswordVC)
 }
 
-class EBC_UpdatePasswordVC: BaseViewController {
+class EBC_UpdatePasswordVC: BaseViewController,UITextFieldDelegate{
 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var updatePassword: UIButton!
@@ -32,6 +32,7 @@ class EBC_UpdatePasswordVC: BaseViewController {
         super.viewDidLoad()
         self.VM.VC = self
         self.nameTF.text = self.name
+        self.resestPasswordTF.delegate = self
         self.mobileNumberTF.text = self.mobile
         nameTF.isUserInteractionEnabled = false
         mobileNumberTF.isUserInteractionEnabled = false
@@ -49,7 +50,7 @@ class EBC_UpdatePasswordVC: BaseViewController {
     
     func localizSetup(){
         self.updatePassword.setTitle("Update Password".localiz(), for: .normal)
-        self.resestPasswordTF.placeholder = "EnterMobileNumber".localiz()
+        self.resestPasswordTF.placeholder = "Enter new password".localiz()
         self.resetPasswordLbl.text = "Rest Password".localiz()
         self.mobileNumberTF.placeholder = "EnterMobileNumber".localiz()
         self.mobileNumberLbl.text = "Mobile Number".localiz()
@@ -75,6 +76,12 @@ class EBC_UpdatePasswordVC: BaseViewController {
     }
     
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = resestPasswordTF.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 10
+    }
     
     
     

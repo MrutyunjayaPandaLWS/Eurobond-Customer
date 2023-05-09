@@ -29,17 +29,23 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
        // playAnimation()
-        self.VM.VC = self
-        self.dreamGifttableView.register(UINib(nibName: "DreamGiftTableViewCell", bundle: nil), forCellReuseIdentifier: "DreamGiftTableViewCell")
-        self.dreamGifttableView.delegate = self
-        self.dreamGifttableView.dataSource = self
-        self.dreamGifttableView.separatorStyle = .none
-        NotificationCenter.default.addObserver(self, selector: #selector(afterRemovedProducts), name: Notification.Name.dreamGiftRemoved, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(giftAddedIntoCart), name: Notification.Name.giftAddedIntoCart, object: nil)
-//        var vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxRelatedPopupViewController") as! TaxRelatedPopupViewController
-//        vc.modalPresentationStyle = .overCurrentContext
-//        vc.modalTransitionStyle = .crossDissolve
-//        self.present(vc, animated: true, completion: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            self.VM.VC = self
+            self.dreamGifttableView.register(UINib(nibName: "DreamGiftTableViewCell", bundle: nil), forCellReuseIdentifier: "DreamGiftTableViewCell")
+            self.dreamGifttableView.delegate = self
+            self.dreamGifttableView.dataSource = self
+            self.dreamGifttableView.separatorStyle = .none
+            NotificationCenter.default.addObserver(self, selector: #selector(afterRemovedProducts), name: Notification.Name.dreamGiftRemoved, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(giftAddedIntoCart), name: Notification.Name.giftAddedIntoCart, object: nil)
+            //        var vc = self.storyboard?.instantiateViewController(withIdentifier: "TaxRelatedPopupViewController") as! TaxRelatedPopupViewController
+            //        vc.modalPresentationStyle = .overCurrentContext
+            //        vc.modalTransitionStyle = .crossDissolve
+            //        self.present(vc, animated: true, completion: nil)
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {

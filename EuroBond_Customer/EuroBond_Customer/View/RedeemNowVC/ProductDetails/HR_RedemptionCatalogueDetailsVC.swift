@@ -132,20 +132,20 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
         self.qtyHeader.text = "QTY".localiz()
         self.viewCartBTN.setTitle("View Cart".localiz(), for: .normal)
         
-        let filterCategory = self.VM.plannerListArray.filter{$0.catalogueId == self.selectedCatalogueIds}
-        print(selectedCatalogueIds)
-        print(filterCategory.count)
-        if filterCategory.count > 0 {
-            self.addToPlanner.isHidden = true
-            self.addToCart.isHidden = true
-            self.addedToCart.isHidden = true
-            self.addedToPlanner.isHidden = false
-        }else{
-            self.addToPlanner.isHidden = false
-            self.addToCart.isHidden = true
-            self.addedToCart.isHidden = true
-            self.addedToPlanner.isHidden = true
-        }
+//        let filterCategory = self.VM.plannerListArray.filter{$0.catalogueId == self.selectedCatalogueIds}
+//        print(selectedCatalogueIds)
+//        print(filterCategory.count)
+//        if filterCategory.count > 0 {
+//            self.addToPlanner.isHidden = true
+//            self.addToCart.isHidden = true
+//            self.addedToCart.isHidden = true
+//            self.addedToPlanner.isHidden = false
+//        }else{
+//            self.addToPlanner.isHidden = false
+//            self.addToCart.isHidden = true
+//            self.addedToCart.isHidden = true
+//            self.addedToPlanner.isHidden = true
+//        }
         
         
         
@@ -213,29 +213,18 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
         if UserDefaults.standard.string(forKey: "verificationStatus") == "1"{
 
         let filterCategory = self.VM.plannerListArray.filter{$0.catalogueId == self.selectedCatalogueIds}
+                
         if filterCategory.count > 0 {
-//            DispatchQueue.main.async{
-//                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-//               vc!.delegate = self
-//               vc!.titleInfo = ""
-//                vc!.descriptionInfo = "Already added to planner.".localiz()
-//               vc!.modalPresentationStyle = .overCurrentContext
-//               vc!.modalTransitionStyle = .crossDissolve
-//               self.present(vc!, animated: true, completion: nil)
-//        }
-          
+
                 self.addToPlanner.isHidden = true
                 self.addToCart.isHidden = true
                 self.addedToCart.isHidden = true
                 self.addedToPlanner.isHidden = false
-//        }else{
-//            self.addToPlanner.isHidden = false
-//            self.addToCart.isHidden = true
-//            self.addedToCart.isHidden = true
-//            self.addedToPlanner.isHidden = true
-//        }
+
         } else {
             self.VM.addedToPlanner()
+            self.VM.cartCountApi()
+   
         }
         }else{
             DispatchQueue.main.async{

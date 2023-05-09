@@ -24,6 +24,7 @@ class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableVi
     }
     
  
+    @IBOutlet var noDataFoundLbl: UILabel!
     @IBOutlet weak var shemesAndOffersTV: UITableView!
     @IBOutlet weak var titleVc: UILabel!
     var flags = "1"
@@ -32,11 +33,17 @@ class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
-        shemesAndOffersTV.delegate = self
-        shemesAndOffersTV.dataSource = self
-        self.offersandPromotionsApi(UserId: self.userId)
-        self.shemesAndOffersTV.separatorStyle = .none
-        languageLocaliz()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            shemesAndOffersTV.delegate = self
+            shemesAndOffersTV.dataSource = self
+            self.offersandPromotionsApi(UserId: self.userId)
+            self.shemesAndOffersTV.separatorStyle = .none
+            languageLocaliz()
+        }
     }
     
     func languageLocaliz(){

@@ -31,6 +31,7 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                 if result != nil{
                     DispatchQueue.main.async{
                         self.VC?.cartCount.text = "\(result?.totalCartCatalogue ?? 0)"
+                        self.redemptionPlannerList()
                         }
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
@@ -136,6 +137,22 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                                vc!.modalTransitionStyle = .crossDissolve
                                self.VC?.present(vc!, animated: true, completion: nil)
                             }
+                            
+//                            let filterCategory = self.plannerListArray.filter{$0.catalogueId == self.VC?.selectedCatalogueIds}
+//
+//                                if filterCategory.count > 0{
+//                                    self.VC?.addToPlanner.isHidden = true
+//                                    self.VC?.addToCart.isHidden = true
+//                                    self.VC?.addedToCart.isHidden = true
+//                                    self.VC?.addedToPlanner.isHidden = false
+//                                   }else{
+//                                       self.VC?.addToPlanner.isHidden = false
+//                                       self.VC?.addToCart.isHidden = true
+//                                       self.VC?.addedToCart.isHidden = true
+//                                       self.VC?.addedToPlanner.isHidden = true
+//                                   }
+                            
+                            
                         }else{
                             DispatchQueue.main.async{
 
@@ -244,23 +261,38 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                                 self.VC?.addedToPlanner.isHidden = true
                                 self.VC?.addToCart.isHidden = true
                                 self.VC?.addedToCart.isHidden = true
-                           
-                            
+
                         }else{
-                            for data in self.plannerListArray{
-                                 if self.VC?.selectedCatalogueIds == data.catalogueId {
-                                        self.VC?.addToPlanner.isHidden = false
-                                        self.VC?.addedToPlanner.isHidden = true
-//                                     self.VC?.addedToPlanner.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-                                        self.VC?.addToCart.isHidden = true
-                                        self.VC?.addedToCart.isHidden = true
-                                    }else{
-                                        self.VC?.addToPlanner.isHidden = false
-                                        self.VC?.addedToPlanner.isHidden = true
-                                        self.VC?.addToCart.isHidden = true
-                                        self.VC?.addedToCart.isHidden = true
-                                    }
+                            
+                            let filterCategory = self.plannerListArray.filter{$0.catalogueId == self.VC?.selectedCatalogueIds}
+                            print(self.VC?.selectedCatalogueIds)
+                            print(filterCategory.count)
+                            if filterCategory.count > 0 {
+                                self.VC?.addToPlanner.isHidden = true
+                                self.VC?.addToCart.isHidden = true
+                                self.VC?.addedToCart.isHidden = true
+                                self.VC?.addedToPlanner.isHidden = false
+                            }else{
+                                self.VC?.addToPlanner.isHidden = false
+                                self.VC?.addToCart.isHidden = true
+                                self.VC?.addedToCart.isHidden = true
+                                self.VC?.addedToPlanner.isHidden = true
                             }
+                            
+                            
+//                            for data in self.plannerListArray{
+//                                 if self.VC?.selectedCatalogueIds == data.catalogueId {
+//                                        self.VC?.addToPlanner.isHidden = true
+//                                        self.VC?.addedToPlanner.isHidden = false
+//                                        self.VC?.addToCart.isHidden = true
+//                                        self.VC?.addedToCart.isHidden = true
+//                                    }else{
+//                                        self.VC?.addToPlanner.isHidden = false
+//                                        self.VC?.addedToPlanner.isHidden = true
+//                                        self.VC?.addToCart.isHidden = true
+//                                        self.VC?.addedToCart.isHidden = true
+//                                    }
+//                            }
                         }
                             
                         }

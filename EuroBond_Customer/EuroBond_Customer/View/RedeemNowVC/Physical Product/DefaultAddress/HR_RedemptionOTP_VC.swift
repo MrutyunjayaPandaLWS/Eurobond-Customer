@@ -34,6 +34,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
     var customerName = ""
     var mobile = ""
     var emailId = ""
+    
     var userID = UserDefaults.standard.integer(forKey: "UserID")
     var loyaltyID = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var mobilenumber = UserDefaults.standard.string(forKey: "Mobile") ?? ""
@@ -166,8 +167,9 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
             }
         }else{
             if enterOTP_TF.text?.count == 6{
-//                if self.OTPforVerification == self.enterOTP_TF.text ?? ""{
-                if "123456" == self.enterOTP_TF.text ?? ""{
+                if self.OTPforVerification == self.enterOTP_TF.text ?? ""{
+//                if "123456" == self.enterOTP_TF.text ?? ""{
+                    print(contractorName,"sdkjhd")
                     if self.contractorName == ""{
                         productsParameter = [
                             "ActionType":"51",

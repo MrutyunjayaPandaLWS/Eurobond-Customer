@@ -136,7 +136,7 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
     var flags: String = "1"
     var selectedFromDate: String = ""
     var selectedToDate: String = ""
-    var behaviourId = 0
+    var behaviourId = -1
     
     var VM = HR_MyRedemptionListVM()
     override func viewDidLoad() {
@@ -178,11 +178,12 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
-        
+        self.behaviourId = -1
         navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func filterBTN(_ sender: Any) {
+        //self.behaviourId = -1
         if self.filterView.isHidden == true{
             self.filterView.isHidden = false
             self.filterByCategoryHeight.constant = 120
@@ -288,7 +289,7 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         cell.productNameLbl.text = self.VM.myredemptionArray[indexPath.row].productName ?? ""
         cell.refNoLbl.text = "\("RefNo".localiz())" + "\(" ")" + "\(self.VM.myredemptionArray[indexPath.row].redemptionRefno ?? "")"
         cell.productCategoryLbl.text = "Category".localiz() + "\(self.VM.myredemptionArray[indexPath.row].categoryName ?? "-")"
-        cell.eurosUsedLbl.text = "\(Int(self.VM.myredemptionArray[indexPath.row].redemptionPoints ?? 0)) Euros"
+        cell.eurosUsedLbl.text = "\(Int(self.VM.myredemptionArray[indexPath.row].redemptionPoints ?? 0))"
         let redemptionDate = String(self.VM.myredemptionArray[indexPath.row].jRedemptionDate ?? "-").split(separator: " ")
         print(redemptionDate[0])
         cell.dateLbl.text = "\(redemptionDate[0])"

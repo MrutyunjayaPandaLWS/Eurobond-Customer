@@ -22,18 +22,22 @@ class EBC_OffersandSchemeVM{
             if error == nil{
                 if result != nil{
                     DispatchQueue.main.async {
+                        self.VC?.stopLoading()
                         self.offersandPromotionsArray = result?.lstPromotionJsonList ?? []
                         print(self.offersandPromotionsArray.count, "Offers Count")
                         if self.offersandPromotionsArray.count != 0{
                            
                             self.VC?.shemesAndOffersTV.isHidden = false
                             self.VC?.shemesAndOffersTV.reloadData()
+                            self.VC?.noDataFoundLbl.isHidden = true
                         }else{
-                            self.VC?.view.makeToast("No Data Found".localiz(), duration: 3.0, position: .center)
+                            //self.VC?.view.makeToast("No Data Found".localiz(), duration: 3.0, position: .center)
+                            self.VC?.noDataFoundLbl.isHidden = false
+                            self.VC?.noDataFoundLbl.text = "No Data Found".localiz()
                             self.VC?.shemesAndOffersTV.isHidden = true
                         }
                     }
-                        self.VC?.stopLoading()
+                        
                 }else{
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()

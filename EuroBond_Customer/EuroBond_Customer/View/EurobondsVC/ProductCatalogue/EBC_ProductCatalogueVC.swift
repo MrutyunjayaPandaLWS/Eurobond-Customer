@@ -11,7 +11,7 @@ import SafariServices
 import PDFKit
 import Toast_Swift
 import LanguageManager_iOS
-class EBC_ProductCatalogueVC: BaseViewController,UIDocumentInteractionControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, SFSafariViewControllerDelegate, URLSessionDownloadDelegate {
+class EBC_ProductCatalogueVC: BaseViewController,UIDocumentInteractionControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, SFSafariViewControllerDelegate {
 
     @IBOutlet weak var productListingCV: UICollectionView!
 
@@ -121,79 +121,120 @@ class EBC_ProductCatalogueVC: BaseViewController,UIDocumentInteractionController
         DispatchQueue.main.async {
             let urltoUse = String(urlString).replacingOccurrences(of: " ", with: "%20")
             print(urltoUse)
-            let url = URL(string: urltoUse)
-            print(url)
-
+            let urlString = urltoUse
+            let url = URL(string: urlString)
             let fileName = String((url!.lastPathComponent)) as NSString
-                // Create destination URL
-                let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
-                let destinationFileUrl = documentsUrl.appendingPathComponent("\(fileName)")
-
+            // Create destination URL
+            let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
+            let destinationFileUrl = documentsUrl.appendingPathComponent("\(fileName)")
             //Create URL to the source file you want to download
-            let fileURL = URL(string: urltoUse)
+            let fileURL = URL(string: urlString)
             let sessionConfig = URLSessionConfiguration.default
             let session = URLSession(configuration: sessionConfig)
             let request = URLRequest(url:fileURL!)
-
             let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
                 if let tempLocalUrl = tempLocalUrl, error == nil {
                     // Success
                     if let statusCode = (response as? HTTPURLResponse)?.statusCode {
                         print("Successfully downloaded. Status code: \(statusCode)")
-                        let statusData = statusCode
-                        if statusData != 404{
-                            print("Successfully downloaded. Status code: \(statusCode)")
-                            self.view.makeToast("PDF has been downloded successfully !!", duration: 2.0, position: .bottom)
-                        }else{
-                            DispatchQueue.main.async {
-                                self.view.makeToast("Failed To Download PDF", duration: 2.0, position: .bottom)
-                                self.stopLoading()
-                            }
-                        }
                     }
                     do {
-                        DispatchQueue.main.async {
-                        self.stopLoading()
-                    }
-                            try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
-                            do {
-                                //Show UIActivityViewController to save the downloaded file
-                                let contents  = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                                for indexx in 0..<contents.count {
-                                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
-                                        self.startLoading()
-                                        if contents[indexx].lastPathComponent == destinationFileUrl.lastPathComponent {
-                                            let activityViewController = UIActivityViewController(activityItems: [contents[indexx]], applicationActivities: nil)
-                                            activityViewController.modalTransitionStyle = .coverVertical
-                                            activityViewController.modalPresentationStyle = .overFullScreen
-                                            self.present(activityViewController, animated: true, completion: nil)
-
-                                        }
-                                    })
-                                    DispatchQueue.main.async {
-                                        self.stopLoading()
-                                    }
+                        try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
+                        do {
+                            //Show UIActivityViewController to save the downloaded file
+                            let contents  = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                            for indexx in 0..<contents.count {
+                                if contents[indexx].lastPathComponent == destinationFileUrl.lastPathComponent {
+                                    let activityViewController = UIActivityViewController(activityItems: [contents[indexx]], applicationActivities: nil)
+                                    self.present(activityViewController, animated: true, completion: nil)
+                                   
                                 }
                             }
-                            catch (let err) {
-                                print("error: \(err)")
-                            }
-
-                    } catch (let writeError) {
-
-                        DispatchQueue.main.async {
-                            print("Error creating a file \(destinationFileUrl) : \(writeError)")
-                            self.view.makeToast("Already, this PDF has been downloded.", duration: 2.0, position: .bottom)
-                            self.stopLoading()
                         }
-
-
+                        catch (let err) {
+                            print("error: \(err)")
+                        }
+                    } catch (let writeError) {
+                        print("Error creating a file \(destinationFileUrl) : \(writeError)")
                     }
                 } else {
                     print("Error took place while downloading a file. Error description: \(error?.localizedDescription ?? "")")
                 }
             }
             task.resume()
+//            let url = URL(string: urltoUse)
+//            print(url)
+//
+//            let fileName = String((url!.lastPathComponent)) as NSString
+//                // Create destination URL
+//                let documentsUrl:URL =  (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first as URL?)!
+//                let destinationFileUrl = documentsUrl.appendingPathComponent("\(fileName)")
+//
+//            //Create URL to the source file you want to download
+//            let fileURL = URL(string: urltoUse)
+//            let sessionConfig = URLSessionConfiguration.default
+//            let session = URLSession(configuration: sessionConfig)
+//            let request = URLRequest(url:fileURL!)
+//
+//            let task = session.downloadTask(with: request) { (tempLocalUrl, response, error) in
+//                if let tempLocalUrl = tempLocalUrl, error == nil {
+//                    // Success
+//                    if let statusCode = (response as? HTTPURLResponse)?.statusCode {
+//                        print("Successfully downloaded. Status code: \(statusCode)")
+//                        let statusData = statusCode
+//                        if statusData != 404{
+//                            print("Successfully downloaded. Status code: \(statusCode)")
+//                            self.view.makeToast("PDF has been downloded successfully !!", duration: 2.0, position: .bottom)
+//                        }else{
+//                            DispatchQueue.main.async {
+//                                self.view.makeToast("Failed To Download PDF", duration: 2.0, position: .bottom)
+//                                self.stopLoading()
+//                            }
+//                        }
+//                    }
+//                    do {
+//                        DispatchQueue.main.async {
+//                        self.stopLoading()
+//                                }
+//                            try FileManager.default.copyItem(at: tempLocalUrl, to: destinationFileUrl)
+//                            do {
+//                                //Show UIActivityViewController to save the downloaded file
+//                                let contents  = try FileManager.default.contentsOfDirectory(at: documentsUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+//                                for indexx in 0..<contents.count {
+//                                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+//                                        self.startLoading()
+//                                        if contents[indexx].lastPathComponent == destinationFileUrl.lastPathComponent {
+//                                            let activityViewController = UIActivityViewController(activityItems: [contents[indexx]], applicationActivities: nil)
+//                                            activityViewController.modalTransitionStyle = .coverVertical
+//                                            activityViewController.modalPresentationStyle = .overFullScreen
+//                                            self.present(activityViewController, animated: true, completion: nil)
+//
+//                                        }
+//                                    })
+//                                    DispatchQueue.main.async {
+//                                        self.stopLoading()
+//                                    }
+//                                }
+//                            }
+//                            catch (let err) {
+//                                print("error: \(err)")
+//                            }
+//
+//                    } catch (let writeError) {
+//
+//                        DispatchQueue.main.async {
+//                            print("Error creating a file \(destinationFileUrl) : \(writeError)")
+//                            self.view.makeToast("Already, this PDF has been downloded.", duration: 2.0, position: .bottom)
+//                            self.stopLoading()
+//                        }
+//
+//
+//                    }
+//                } else {
+//                    print("Error took place while downloading a file. Error description: \(error?.localizedDescription ?? "")")
+//                }
+//            }
+//            task.resume()
 
             self.stopLoading()
         }

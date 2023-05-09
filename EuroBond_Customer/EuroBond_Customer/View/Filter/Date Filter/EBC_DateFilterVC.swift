@@ -74,13 +74,13 @@ class EBC_DateFilterVC: UIViewController {
             }
         }else if isComeFrom == "1"{
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "dd-MM-yyyy"
             selectedDate = formatter.string(from: datePicker.date)
             self.delegate.acceptDate(self)
             self.dismiss(animated: true, completion: nil)
         }else if isComeFrom == "2"{
             let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.dateFormat = "dd-MM-yyyy"
             selectedDate = formatter.string(from: datePicker.date)
             self.delegate.acceptDate(self)
             self.dismiss(animated: true, completion: nil)

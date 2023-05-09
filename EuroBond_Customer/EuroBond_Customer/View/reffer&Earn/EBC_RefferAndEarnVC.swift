@@ -22,6 +22,7 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var titleVC: UILabel!
     var flags: String = "SideMenu"
     var referralCode = UserDefaults.standard.string(forKey: "ReferralCode") ?? ""
+    let firstname = UserDefaults.standard.string(forKey: "FirstName") ?? ""
     var VM = EBC_ReferandEarnVM()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,26 +58,32 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func selectSubmitBtn(_ sender: UIButton) {
-        
-        if self.nameTF.text!.count == 0 {
-            self.view.makeToast("Enter Name".localiz(), duration: 2.0,position: .bottom)
-        }else if self.mobileNumberTF.text!.count == 0 {
-            self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0,position: .bottom)
-        }else if self.mobileNumberTF.text!.count != 10 {
-            self.view.makeToast("Entervalidmobilernumber".localiz(), duration: 2.0,position: .bottom)
-        }else if self.mobileNumberTF.text ?? "" == self.customerMobileNumber {
-                self.view.makeToast("SelfReferralNotAllowed".localiz(), duration: 2.0, position: .bottom)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
         }else{
-            let parameter = [
+            
+            if self.nameTF.text!.count == 0 {
+                self.view.makeToast("Enter Name".localiz(), duration: 2.0,position: .bottom)
+            }else if self.mobileNumberTF.text!.count == 0 {
+                self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0,position: .bottom)
+            }else if self.mobileNumberTF.text!.count != 10 {
+                self.view.makeToast("Entervalidmobilernumber".localiz(), duration: 2.0,position: .bottom)
+            }else if self.mobileNumberTF.text ?? "" == self.customerMobileNumber {
+                self.view.makeToast("SelfReferralNotAllowed".localiz(), duration: 2.0, position: .bottom)
+            }else{
+                let parameter = [
                     "ActionType": "2",
                     "ActorId": self.userId,
                     "ObjContactCenterDetails": [
                         "RefereeMobileNo": self.mobileNumberTF.text ?? "",
                         "RefereeName": self.nameTF.text ?? ""
                     ]
-            ] as [String: Any]
-            print(parameter)
-            self.VM.referandEarnSubmissionApi(parameter: parameter)
+                ] as [String: Any]
+                print(parameter)
+                self.VM.referandEarnSubmissionApi(parameter: parameter)
+            }
         }
     }
     
@@ -115,11 +122,17 @@ class EBC_RefferAndEarnVC: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func selectShareBtn(_ sender: UIButton) {
-        let text = "\(referralCode)"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let text = "Dear Member, You have been referred by " + "\(firstname)" + " to Eurobond Rewards Program. Please register to the program by downloading the Eurobond Rewards app and use the referral code " + "\(referralCode)" + " to avail the benefits. TnC apply, Team  Eurobond"
             let textShare = [ text ]
             let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
             activityViewController.popoverPresentationController?.sourceView = self.view
             self.present(activityViewController, animated: true, completion: nil)
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

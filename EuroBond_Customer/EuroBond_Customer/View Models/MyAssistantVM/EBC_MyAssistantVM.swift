@@ -125,4 +125,50 @@ class EBC_MyAssistantVM{
         }
         
     }
+    
+    
+    func activateExecutiveApi(parameter: JSON){
+        
+        DispatchQueue.main.async {
+            self.VC?.startLoading()
+        }
+
+        self.requestAPIs.registerAccountDeactivateApi(parameters: parameter) { (result, error) in
+            if result == nil{
+                
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                }
+            }else{
+                if error == nil{
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                        print(result?.returnMessage,"jdhsjdhusd")
+                        if result?.returnMessage ?? "" > "0" {
+                            self.VC?.popView.isHidden = false
+                            self.VC?.accountStatus.text = "Account is activated".localiz()
+                            DispatchQueue.main.asyncAfter(deadline: .now()+3.0, execute: {
+                                self.VC?.popView.isHidden = true
+                                self.myAssistantArrayList.removeAll()
+                                self.VC?.startIndex = 1
+                                self.VC?.selectedFromDate = ""
+                                self.VC?.selectedToDate = ""
+                                self.VC?.myAssistantApi(StartIndex: self.VC!.startIndex, searchText: "", FromDate: self.VC!.selectedFromDate, ToDate: self.VC!.selectedToDate)
+                            })
+                           
+                            
+                        }else{
+                            self.VC!.view.makeToast("SomethingWentWrong".localiz(), duration: 2.0, position: .bottom)
+                        }
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        print(error)
+                        self.VC?.stopLoading()
+                    }
+                }
+            }
+        }
+        
+    }
 }

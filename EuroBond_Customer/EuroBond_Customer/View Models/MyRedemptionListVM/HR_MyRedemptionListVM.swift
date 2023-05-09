@@ -54,7 +54,7 @@ class HR_MyRedemptionListVM:  popUpAlertDelegate {
         print(self.VC?.behaviourId ?? 0, "Behaviour")
         
         print(self.VC?.fromDate.currentTitle ?? "")
-        if self.VC?.behaviourId == 0 && self.VC?.fromDate.currentTitle == "From Date".localiz() && self.VC?.toDate.currentTitle == "To Date".localiz(){
+        if self.VC?.behaviourId == -1 && self.VC?.fromDate.currentTitle == "From Date".localiz() && self.VC?.toDate.currentTitle == "To Date".localiz(){
             self.parameters = [
                 "ActionType": "52",
                 "ActorId": customerId,
@@ -63,13 +63,13 @@ class HR_MyRedemptionListVM:  popUpAlertDelegate {
                 ]
             ] as [String : Any]
             print(self.parameters!)
-        }else if self.VC?.behaviourId != 0 && self.VC?.fromDate.currentTitle == "From Date".localiz() && self.VC?.toDate.currentTitle == "To Date".localiz(){
+        }else if self.VC?.behaviourId != -1 && self.VC?.fromDate.currentTitle == "From Date".localiz() && self.VC?.toDate.currentTitle == "To Date".localiz(){
             self.parameters = [
                 "ActionType": "52",
                 "ActorId": customerId,
                 "ObjCatalogueDetails": [
-                    "SelectedStatus": -1,
-                    "RedemptionTypeId": self.VC?.behaviourId ?? 0
+                    "SelectedStatus": self.VC?.behaviourId ?? 0,
+                    //"RedemptionTypeId": self.VC?.behaviourId ?? 0
                 ]
             ] as [String : Any]
             print(self.parameters!)
@@ -84,8 +84,8 @@ class HR_MyRedemptionListVM:  popUpAlertDelegate {
                 "ObjCatalogueDetails": [
                     "JFromDate":"\(self.VC?.selectedFromDate ?? "")",
                     "JToDate":"\(self.VC?.selectedToDate ?? "")",
-                    "SelectedStatus": -1,
-                    "RedemptionTypeId": self.VC?.behaviourId ?? 0
+                    "SelectedStatus": self.VC?.behaviourId ?? 0,
+                    //"RedemptionTypeId": self.VC?.behaviourId ?? 0
                 ]
 
             ] as [String: Any]

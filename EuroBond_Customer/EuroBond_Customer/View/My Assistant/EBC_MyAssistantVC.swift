@@ -15,9 +15,11 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
         if vc.selectedTitle == "Active" {
             self.behaviourId = "1"
             self.selectStatus.text = vc.selectedTitle
+            self.selectStatus.textColor = .black
         }else if vc.selectedTitle == "InActive"{
             self.behaviourId = "0"
             self.selectStatus.text = vc.selectedTitle
+            self.selectStatus.textColor = .black
         }else{
             self.behaviourId = "8"
         }
@@ -95,7 +97,7 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
                             "IsActive": "true"
                         ] as [String: Any]
                         print(parameter)
-                        self.VM.deactivateExecutiveApi(parameter: parameter)
+                        self.VM.activateExecutiveApi(parameter: parameter)
                         }))
                         alert.addAction(UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
@@ -141,10 +143,16 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }
         noDataFoundView.isHidden = true
         self.myAssistantApi(StartIndex: 1, searchText: self.searchText, FromDate: self.selectedFromDate, ToDate: self.selectedToDate)
         self.filterViewHeightConstraint.constant = 0
         self.filterView.isHidden = true
+      
     }
     
     
@@ -186,14 +194,19 @@ class EBC_MyAssistantVC: BaseViewController, UITableViewDelegate, UITableViewDat
     }
     
     @IBAction func selectFilterBtnn(_ sender: Any) {
-        if filterView.isHidden == false{
-            self.filterViewHeightConstraint.constant = 0
-            self.filterView.isHidden = true
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
         }else{
-            self.filterViewHeightConstraint.constant = 110
-            self.filterView.isHidden = false
+            if filterView.isHidden == false{
+                self.filterViewHeightConstraint.constant = 0
+                self.filterView.isHidden = true
+            }else{
+                self.filterViewHeightConstraint.constant = 110
+                self.filterView.isHidden = false
+            }
         }
-        
     }
     
     @IBAction func selectAddBtn(_ sender: UIButton) {

@@ -22,23 +22,29 @@ class EBC_SearchProjectVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.projectListingCV.delegate = self
-        self.projectListingCV.dataSource = self
-        projectCatalogeAPI()
-        let collectionViewFLowLayout1 = UICollectionViewFlowLayout()
-        collectionViewFLowLayout1.scrollDirection = .horizontal
-        collectionViewFLowLayout1.minimumLineSpacing = 0
-        collectionViewFLowLayout1.minimumInteritemSpacing = 0
-        collectionViewFLowLayout1.estimatedItemSize = CGSize(width: 100, height: 30)
-         self.projectListingCV.collectionViewLayout = collectionViewFLowLayout1
-    
-        let collectionViewFLowLayout2 = UICollectionViewFlowLayout()
-        collectionViewFLowLayout2.itemSize = CGSize(width: CGFloat(((self.view.bounds.width - 20) - (self.projectListingCV.contentInset.left + self.projectListingCV.contentInset.right)) / 2), height: 230)
-        collectionViewFLowLayout2.minimumLineSpacing = 2.5
-        collectionViewFLowLayout2.minimumInteritemSpacing = 2.5
-         self.projectListingCV.collectionViewLayout = collectionViewFLowLayout2
-        langLocaliz()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            self.VM.VC = self
+            self.projectListingCV.delegate = self
+            self.projectListingCV.dataSource = self
+            projectCatalogeAPI()
+            let collectionViewFLowLayout1 = UICollectionViewFlowLayout()
+            collectionViewFLowLayout1.scrollDirection = .horizontal
+            collectionViewFLowLayout1.minimumLineSpacing = 0
+            collectionViewFLowLayout1.minimumInteritemSpacing = 0
+            collectionViewFLowLayout1.estimatedItemSize = CGSize(width: 100, height: 30)
+            self.projectListingCV.collectionViewLayout = collectionViewFLowLayout1
+            
+            let collectionViewFLowLayout2 = UICollectionViewFlowLayout()
+            collectionViewFLowLayout2.itemSize = CGSize(width: CGFloat(((self.view.bounds.width - 20) - (self.projectListingCV.contentInset.left + self.projectListingCV.contentInset.right)) / 2), height: 230)
+            collectionViewFLowLayout2.minimumLineSpacing = 2.5
+            collectionViewFLowLayout2.minimumInteritemSpacing = 2.5
+            self.projectListingCV.collectionViewLayout = collectionViewFLowLayout2
+            langLocaliz()
+        }
         
     }
     

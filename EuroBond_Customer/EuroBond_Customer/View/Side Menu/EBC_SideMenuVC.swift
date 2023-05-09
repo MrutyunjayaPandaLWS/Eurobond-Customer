@@ -12,7 +12,11 @@ import LanguageManager_iOS
 import CoreData
 
 
-class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, popUpAlertDelegate, popUpDelegate1 {
+    func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
+    
+    func popupAlertDidTap(_ vc: HR_PopUpVC) {}
+    
 
     @IBOutlet weak var logoutView: UIView!
     @IBOutlet weak var logoutLbl: UILabel!
@@ -65,6 +69,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         sideMenuTV.dataSource = self
         heightOfTableView.constant = CGFloat(50*sideMenuArrayList.count)
         logoutView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner]
+        NotificationCenter.default.addObserver(self, selector: #selector(deletedAccount), name: Notification.Name.deleteAccount, object: nil)
         loaclizSetup()
     }
     
@@ -89,6 +94,22 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
+    @objc func deletedAccount(){
+        UserDefaults.standard.setValue(false, forKey: "IsloggedIn?")
+        self.clearTable()
+        let domain = Bundle.main.bundleIdentifier!
+        UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.synchronize()
+        if #available(iOS 13.0, *) {
+            let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
+            sceneDelegate?.setInitialViewAsRootViewController()
+
+        } else {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.setInitialViewAsRootViewController()
+        }
+    }
+    
     func loaclizSetup(){
         self.membershipIdTitleLbl.text = "Membership ID".localiz()
         self.logoutLbl.text = "Logout".localiz()
@@ -99,30 +120,32 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func selectMyAccountBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyProfileandBankDetailsVC") as? MyProfileandBankDetailsVC
-        navigationController?.pushViewController(vc!, animated: true)
+       
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MyProfileandBankDetailsVC") as? MyProfileandBankDetailsVC
+            navigationController?.pushViewController(vc!, animated: true)
     }
  
     
     @IBAction func selectDeleteBtn(_ sender: UIButton) {
-        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-            DispatchQueue.main.async{
-                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+        
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                DispatchQueue.main.async{
+                    self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+                }
+            }else{
+                let alert = UIAlertController(title: "", message: "SureWantToDelete".localiz(), preferredStyle: UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "Yes".localiz(), style: .default, handler: { UIAlertAction in
+                    self.parameters = [
+                        "ActionType": 1,
+                        "userid":"\(self.userID)"
+                    ] as [String : Any]
+                    print(self.parameters!)
+                    self.deleteAccountAPI(paramters: self.parameters!)
+                }))
+                alert.addAction(UIAlertAction(title: "no".localiz(), style: UIAlertAction.Style.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
             }
-        }else{
-            let alert = UIAlertController(title: "", message: "SureWantToDelete".localiz(), preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Yes".localiz(), style: .default, handler: { UIAlertAction in
-            self.parameters = [
-                "ActionType": 1,
-                "userid":"\(self.userID)"
-            ] as [String : Any]
-            print(self.parameters!)
-            self.deleteAccountAPI(paramters: self.parameters!)
-        }))
-            alert.addAction(UIAlertAction(title: "no".localiz(), style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-
-        }
     }
     
     func clearTable(){
@@ -171,27 +194,39 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         }
     
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
-        UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
-        clearTable()
-        clearTable1()
-        clearTable2()
-        DispatchQueue.main.async {
-            if #available(iOS 13.0, *) {
-                DispatchQueue.main.async {
-                    let domain = Bundle.main.bundleIdentifier!
-                    UserDefaults.standard.removePersistentDomain(forName: domain)
-                    UserDefaults.standard.synchronize()
-                    let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-                    sceneDelegate.setInitialLoginVC()
-                }
-            } else {
-                DispatchQueue.main.async {
-                    let domain = Bundle.main.bundleIdentifier!
-                    UserDefaults.standard.removePersistentDomain(forName: domain)
-                    UserDefaults.standard.synchronize()
-                    if #available(iOS 13.0, *) {
-                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                        appDelegate.setInitialLoginVC()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+                vc!.delegate = self
+                vc!.titleInfo = ""
+                vc!.descriptionInfo = "No Internet Connection".localiz()
+                vc!.modalPresentationStyle = .overCurrentContext
+                vc!.modalTransitionStyle = .crossDissolve
+                self.present(vc!, animated: true, completion: nil)
+            }
+        }else{
+            UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
+            clearTable()
+            clearTable1()
+            clearTable2()
+            DispatchQueue.main.async {
+                if #available(iOS 13.0, *) {
+                    DispatchQueue.main.async {
+                        let domain = Bundle.main.bundleIdentifier!
+                        UserDefaults.standard.removePersistentDomain(forName: domain)
+                        UserDefaults.standard.synchronize()
+                        let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                        sceneDelegate.setInitialLoginVC()
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        let domain = Bundle.main.bundleIdentifier!
+                        UserDefaults.standard.removePersistentDomain(forName: domain)
+                        UserDefaults.standard.synchronize()
+                        if #available(iOS 13.0, *) {
+                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                            appDelegate.setInitialLoginVC()
+                        }
                     }
                 }
             }
@@ -206,7 +241,15 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
                 DispatchQueue.main.async {
                     if result?.returnMessage ?? "-1" == "1"{
                         DispatchQueue.main.async{
-                            self.view.makeToast("AccDeleted".localiz(), duration: 2.0,position: .bottom)
+                                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+                                vc!.delegate = self
+                                vc!.titleInfo = ""
+                                vc!.itsComeFrom = "AccounthasbeenDeleted"
+                                vc!.descriptionInfo = "AccDeleted".localiz()
+                                vc!.modalPresentationStyle = .overCurrentContext
+                                vc!.modalTransitionStyle = .crossDissolve
+                                self.present(vc!, animated: true, completion: nil)
+                            
                             }
                     }else{
                         DispatchQueue.main.async{

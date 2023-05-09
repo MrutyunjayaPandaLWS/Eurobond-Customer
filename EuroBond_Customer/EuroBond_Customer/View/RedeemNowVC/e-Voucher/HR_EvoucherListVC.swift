@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 import Lottie
 
 class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProductDelegate, pointsDelegate{
@@ -123,6 +123,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
     
     @IBOutlet weak var evoucherListCollectionView: UICollectionView!
     @IBOutlet weak var noDataFound: UILabel!
+    @IBOutlet weak var searchTF: UITextField!
     
     let VM = HR_EVoucherListVM()
     var selectedPoints = 0
@@ -139,6 +140,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        self.searchTF.placeholder = "Search by voucher".localiz()
         self.noDataFound.text = "No data found !!"
         self.noDataFound.isHidden = true
         evoucherListCollectionView.delegate = self
@@ -177,6 +179,14 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
     @objc func handlepopupdateclose() {
         self.navigationController?.popToRootViewController(animated: true)
     }
+    
+    @IBAction func searchProductTF(_ sender: Any) {
+        self.VM.evoucherListingArray.removeAll()
+        self.VM.evoucherList()
+    }
+
+    
+    
 }
 extension HR_EvoucherListVC: UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {

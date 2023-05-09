@@ -35,8 +35,8 @@ class UploadAndScanViewModel{
                             print(codes.qrCode ?? "","dhgfiu")
                             if codes.qrCode != ""{
                                 let type2Array = self.VC?.uploadedCodes.filter { $0.code == codes.qrCode}
-                                print(type2Array!.count)
-                                if type2Array!.count == 0{
+                                print(type2Array?.count,"SubmissionCodes")
+                                if type2Array?.count == 0 || type2Array?.count == nil {
                                     let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
                                     qRCodeDBTable.code = codes.qrCode
                                     qRCodeDBTable.latitude = codes.latitude
@@ -55,6 +55,7 @@ class UploadAndScanViewModel{
                                 }else{
                                     let index =  self.VC?.uploadedCodes.firstIndex(of: type2Array![0])
                                     let productObj = self.VC?.uploadedCodes[index!]
+                                    print(productObj)
                                     persistanceservice.context.delete(productObj!)
                                     
                                     persistanceservice.saveContext()

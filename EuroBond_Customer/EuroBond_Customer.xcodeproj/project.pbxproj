@@ -44,8 +44,11 @@
 		257CF94E2A0631C400840E67 /* LstRewardTransactionBasedonProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257CF94B2A0631BB00840E67 /* LstRewardTransactionBasedonProduct.swift */; };
 		257CF94F2A0631C400840E67 /* MyEarningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257CF94C2A0631C000840E67 /* MyEarningModel.swift */; };
 		257CF9502A0631C400840E67 /* LstRewardTransJsonDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257CF94D2A0631C400840E67 /* LstRewardTransJsonDetails.swift */; };
+		257F84932A08F47200DAFB35 /* cloud_sync.json in Resources */ = {isa = PBXBuildFile; fileRef = 257F84922A08F47100DAFB35 /* cloud_sync.json */; };
 		25828DE829FBA14500855EAE /* eurobond-what's-new-hin.html in Resources */ = {isa = PBXBuildFile; fileRef = 25828DE629FBA14400855EAE /* eurobond-what's-new-hin.html */; };
 		25828DE929FBA14500855EAE /* eurobond-what's-new-eng.html in Resources */ = {isa = PBXBuildFile; fileRef = 25828DE729FBA14500855EAE /* eurobond-what's-new-eng.html */; };
+		2582C7262A0A3527004CF473 /* CatalogueSaveCartDetailListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582C7242A0A3526004CF473 /* CatalogueSaveCartDetailListResponse.swift */; };
+		2582C7272A0A3527004CF473 /* MyCartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2582C7252A0A3526004CF473 /* MyCartListModel.swift */; };
 		25844B1029DE86D900CACC41 /* CodeListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B0D29DE86D900CACC41 /* CodeListingViewModel.swift */; };
 		25844B1129DE86D900CACC41 /* UploadAndScanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B0F29DE86D900CACC41 /* UploadAndScanViewModel.swift */; };
 		25844B1929DE8ACB00CACC41 /* persistanceservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25844B1829DE8ACB00CACC41 /* persistanceservice.swift */; };
@@ -68,6 +71,8 @@
 		25932ED02A03BCDA00C59D0D /* ObjPanDetailsRetrieverequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25932ECF2A03BCD900C59D0D /* ObjPanDetailsRetrieverequest.swift */; };
 		2597A05A29F905630051CF07 /* DetailsGiftModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597A05829F905600051CF07 /* DetailsGiftModels.swift */; };
 		2597A05B29F905630051CF07 /* LstDreamGift1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2597A05929F905630051CF07 /* LstDreamGift1.swift */; };
+		25DE58402A09683000944FF8 /* ObjCatalogueRedemReqList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE583E2A09682E00944FF8 /* ObjCatalogueRedemReqList.swift */; };
+		25DE58412A09683000944FF8 /* MyRedemptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25DE583F2A09683000944FF8 /* MyRedemptionModels.swift */; };
 		5CFA027419D50DDA70B9705F /* Pods_EuroBond_Customer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33E21F4E3C500228B381909F /* Pods_EuroBond_Customer.framework */; };
 		800D81D129C9D52500D77557 /* EBC_RedeemNowVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */; };
 		800D81D429C9D54D00D77557 /* EBC_GameZoneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */; };
@@ -200,8 +205,6 @@
 		847DAFCC29EEAD050000FDE6 /* HR_RedemptionCatalogueDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFCB29EEAD040000FDE6 /* HR_RedemptionCatalogueDetailsVC.swift */; };
 		847DAFCE29EEADBA0000FDE6 /* HR_CatalogueDetailsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFCD29EEADBA0000FDE6 /* HR_CatalogueDetailsCVC.swift */; };
 		847DAFD029EEADE90000FDE6 /* HR_ProductCategoryCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFCF29EEADE80000FDE6 /* HR_ProductCategoryCVC.swift */; };
-		847DAFD429EEAEEB0000FDE6 /* CatalogueSaveCartDetailListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFD229EEAEE90000FDE6 /* CatalogueSaveCartDetailListResponse.swift */; };
-		847DAFD529EEAEEB0000FDE6 /* MyCartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFD329EEAEEB0000FDE6 /* MyCartListModel.swift */; };
 		847DAFD929EEB00C0000FDE6 /* ObjCatalogueList2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFD729EEB00C0000FDE6 /* ObjCatalogueList2.swift */; };
 		847DAFDA29EEB00C0000FDE6 /* RedemptionPlannerDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFD829EEB00C0000FDE6 /* RedemptionPlannerDetailsModels.swift */; };
 		847DAFDD29EEB0150000FDE6 /* RemoveRedemptionPlannerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFDC29EEB0150000FDE6 /* RemoveRedemptionPlannerList.swift */; };
@@ -306,8 +309,6 @@
 		84B5E26929F0012B00A3C56D /* HR_RedemptionPlannerDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E26829F0012A00A3C56D /* HR_RedemptionPlannerDetailsVM.swift */; };
 		84B5E26B29F0022700A3C56D /* HR_RedemptionPlannerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E26A29F0022700A3C56D /* HR_RedemptionPlannerTVC.swift */; };
 		84B5E26E29F00D9600A3C56D /* HR_MyRedemptionListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E26D29F00D9600A3C56D /* HR_MyRedemptionListVM.swift */; };
-		84B5E27729F00E0100A3C56D /* MyRedemptionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E27529F00E0000A3C56D /* MyRedemptionModels.swift */; };
-		84B5E27829F00E0100A3C56D /* ObjCatalogueRedemReqList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B5E27629F00E0000A3C56D /* ObjCatalogueRedemReqList.swift */; };
 		84B7F11C29EFA4BA00EB8592 /* HR_EvoucherListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7F11B29EFA4BA00EB8592 /* HR_EvoucherListVC.swift */; };
 		84B7F11E29EFA4F900EB8592 /* HR_EvoucherProductDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7F11D29EFA4F900EB8592 /* HR_EvoucherProductDetailsVC.swift */; };
 		84B7F12029EFA8BC00EB8592 /* HR_RedeemQuantity_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B7F11F29EFA8BC00EB8592 /* HR_RedeemQuantity_VC.swift */; };
@@ -453,8 +454,11 @@
 		257CF94B2A0631BB00840E67 /* LstRewardTransactionBasedonProduct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstRewardTransactionBasedonProduct.swift; sourceTree = "<group>"; };
 		257CF94C2A0631C000840E67 /* MyEarningModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEarningModel.swift; sourceTree = "<group>"; };
 		257CF94D2A0631C400840E67 /* LstRewardTransJsonDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstRewardTransJsonDetails.swift; sourceTree = "<group>"; };
+		257F84922A08F47100DAFB35 /* cloud_sync.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cloud_sync.json; sourceTree = "<group>"; };
 		25828DE629FBA14400855EAE /* eurobond-what's-new-hin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "eurobond-what's-new-hin.html"; sourceTree = "<group>"; };
 		25828DE729FBA14500855EAE /* eurobond-what's-new-eng.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "eurobond-what's-new-eng.html"; sourceTree = "<group>"; };
+		2582C7242A0A3526004CF473 /* CatalogueSaveCartDetailListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogueSaveCartDetailListResponse.swift; sourceTree = "<group>"; };
+		2582C7252A0A3526004CF473 /* MyCartListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartListModel.swift; sourceTree = "<group>"; };
 		25844B0D29DE86D900CACC41 /* CodeListingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeListingViewModel.swift; sourceTree = "<group>"; };
 		25844B0F29DE86D900CACC41 /* UploadAndScanViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadAndScanViewModel.swift; sourceTree = "<group>"; };
 		25844B1829DE8ACB00CACC41 /* persistanceservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = persistanceservice.swift; sourceTree = "<group>"; };
@@ -477,6 +481,8 @@
 		25932ECF2A03BCD900C59D0D /* ObjPanDetailsRetrieverequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjPanDetailsRetrieverequest.swift; sourceTree = "<group>"; };
 		2597A05829F905600051CF07 /* DetailsGiftModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsGiftModels.swift; sourceTree = "<group>"; };
 		2597A05929F905630051CF07 /* LstDreamGift1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstDreamGift1.swift; sourceTree = "<group>"; };
+		25DE583E2A09682E00944FF8 /* ObjCatalogueRedemReqList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCatalogueRedemReqList.swift; sourceTree = "<group>"; };
+		25DE583F2A09683000944FF8 /* MyRedemptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRedemptionModels.swift; sourceTree = "<group>"; };
 		33E21F4E3C500228B381909F /* Pods_EuroBond_Customer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EuroBond_Customer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		800D81D029C9D52500D77557 /* EBC_RedeemNowVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_RedeemNowVC.swift; sourceTree = "<group>"; };
 		800D81D329C9D54D00D77557 /* EBC_GameZoneVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_GameZoneVC.swift; sourceTree = "<group>"; };
@@ -616,8 +622,6 @@
 		847DAFCB29EEAD040000FDE6 /* HR_RedemptionCatalogueDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionCatalogueDetailsVC.swift; sourceTree = "<group>"; };
 		847DAFCD29EEADBA0000FDE6 /* HR_CatalogueDetailsCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_CatalogueDetailsCVC.swift; sourceTree = "<group>"; };
 		847DAFCF29EEADE80000FDE6 /* HR_ProductCategoryCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_ProductCategoryCVC.swift; sourceTree = "<group>"; };
-		847DAFD229EEAEE90000FDE6 /* CatalogueSaveCartDetailListResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogueSaveCartDetailListResponse.swift; sourceTree = "<group>"; };
-		847DAFD329EEAEEB0000FDE6 /* MyCartListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartListModel.swift; sourceTree = "<group>"; };
 		847DAFD729EEB00C0000FDE6 /* ObjCatalogueList2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCatalogueList2.swift; sourceTree = "<group>"; };
 		847DAFD829EEB00C0000FDE6 /* RedemptionPlannerDetailsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RedemptionPlannerDetailsModels.swift; sourceTree = "<group>"; };
 		847DAFDC29EEB0150000FDE6 /* RemoveRedemptionPlannerList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoveRedemptionPlannerList.swift; sourceTree = "<group>"; };
@@ -722,8 +726,6 @@
 		84B5E26829F0012A00A3C56D /* HR_RedemptionPlannerDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionPlannerDetailsVM.swift; sourceTree = "<group>"; };
 		84B5E26A29F0022700A3C56D /* HR_RedemptionPlannerTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionPlannerTVC.swift; sourceTree = "<group>"; };
 		84B5E26D29F00D9600A3C56D /* HR_MyRedemptionListVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_MyRedemptionListVM.swift; sourceTree = "<group>"; };
-		84B5E27529F00E0000A3C56D /* MyRedemptionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRedemptionModels.swift; sourceTree = "<group>"; };
-		84B5E27629F00E0000A3C56D /* ObjCatalogueRedemReqList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCatalogueRedemReqList.swift; sourceTree = "<group>"; };
 		84B7F11B29EFA4BA00EB8592 /* HR_EvoucherListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_EvoucherListVC.swift; sourceTree = "<group>"; };
 		84B7F11D29EFA4F900EB8592 /* HR_EvoucherProductDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_EvoucherProductDetailsVC.swift; sourceTree = "<group>"; };
 		84B7F11F29EFA8BC00EB8592 /* HR_RedeemQuantity_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedeemQuantity_VC.swift; sourceTree = "<group>"; };
@@ -1644,6 +1646,7 @@
 				849B812E29EA9C9A0095286B /* lf30_editor_qd1wdceq.json */,
 				849B812B29EA9C7E0095286B /* lf30_editor_jh47f7lt (1).json */,
 				80175F8429C9C6E300C87FEF /* helpLineAnimation.json */,
+				257F84922A08F47100DAFB35 /* cloud_sync.json */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -2066,8 +2069,8 @@
 		847DAFD129EEAED70000FDE6 /* MyCartModel */ = {
 			isa = PBXGroup;
 			children = (
-				847DAFD229EEAEE90000FDE6 /* CatalogueSaveCartDetailListResponse.swift */,
-				847DAFD329EEAEEB0000FDE6 /* MyCartListModel.swift */,
+				2582C7242A0A3526004CF473 /* CatalogueSaveCartDetailListResponse.swift */,
+				2582C7252A0A3526004CF473 /* MyCartListModel.swift */,
 			);
 			path = MyCartModel;
 			sourceTree = "<group>";
@@ -2518,8 +2521,8 @@
 		84B5E27429F00E0000A3C56D /* MyRedemptionModels */ = {
 			isa = PBXGroup;
 			children = (
-				84B5E27529F00E0000A3C56D /* MyRedemptionModels.swift */,
-				84B5E27629F00E0000A3C56D /* ObjCatalogueRedemReqList.swift */,
+				25DE583F2A09683000944FF8 /* MyRedemptionModels.swift */,
+				25DE583E2A09682E00944FF8 /* ObjCatalogueRedemReqList.swift */,
 			);
 			path = MyRedemptionModels;
 			sourceTree = "<group>";
@@ -2941,6 +2944,7 @@
 				809343A229C5EE2900440CB6 /* Roboto-Thin.ttf in Resources */,
 				849B812F29EA9C9B0095286B /* lf30_editor_jh47f7lt.json in Resources */,
 				25390B692A055CE0006C9A7F /* eurobond-faq-hin.html in Resources */,
+				257F84932A08F47200DAFB35 /* cloud_sync.json in Resources */,
 				8093439C29C5EE0C00440CB6 /* Roboto-Black.ttf in Resources */,
 				8093439E29C5EE1300440CB6 /* Roboto-Italic.ttf in Resources */,
 				849E45D229DC308700A4311B /* otherInfoImageTableViewCell.xib in Resources */,
@@ -3077,6 +3081,7 @@
 				2577B4A429DEEA20004C4942 /* RedemptionOTPVM.swift in Sources */,
 				2577B4BE29DEF593004C4942 /* UserStatusModels.swift in Sources */,
 				2577B4B429DEF444004C4942 /* CatalogueSaveCartDetailListResponse1.swift in Sources */,
+				2582C7262A0A3527004CF473 /* CatalogueSaveCartDetailListResponse.swift in Sources */,
 				84B5E23029EFAC2B00A3C56D /* ObjCatalogueFixedPoints1.swift in Sources */,
 				84093D5929F2466C00635CB9 /* RegisterAccountDeactivateModel.swift in Sources */,
 				84B7F12429EFA90300EB8592 /* HR_EVoucherTVC.swift in Sources */,
@@ -3120,7 +3125,9 @@
 				84EE291E29D6F93B004B1C6C /* EBC_UpdatePasswordVC.swift in Sources */,
 				84BD648D29EA8797008D3E34 /* FilterByStatusTVC.swift in Sources */,
 				80AEAD6D29C44249005108AC /* UiViewControllerExtenssion.swift in Sources */,
+				2582C7272A0A3527004CF473 /* MyCartListModel.swift in Sources */,
 				84EB50AE29F1435900533266 /* LstCustomerFeedBackJsonApi.swift in Sources */,
+				25DE58412A09683000944FF8 /* MyRedemptionModels.swift in Sources */,
 				84BD648429EA869C008D3E34 /* CodeSummary_TVC.swift in Sources */,
 				84B5E25529EFD0CC00A3C56D /* MyOrderTVC.swift in Sources */,
 				842049CC29F1375C00F97488 /* DreamGiftTableViewCell.swift in Sources */,
@@ -3135,7 +3142,6 @@
 				849E45AE29DC274400A4311B /* EBC_TermsAndConditionsVC.swift in Sources */,
 				84B7F12A29EFA96500EB8592 /* QS_redeemQuantity_VM.swift in Sources */,
 				80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */,
-				84B5E27829F00E0100A3C56D /* ObjCatalogueRedemReqList.swift in Sources */,
 				84B5E23A29EFBA6300A3C56D /* LoginSubmissionModel.swift in Sources */,
 				258C459F2A02610800F270EB /* projectCatalogeVM.swift in Sources */,
 				84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */,
@@ -3212,6 +3218,7 @@
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
 				84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */,
 				84815F7029E416CA001C65F9 /* HistoryNotificationsViewController.swift in Sources */,
+				25DE58402A09683000944FF8 /* ObjCatalogueRedemReqList.swift in Sources */,
 				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
 				843E6D1829EAA7D3004FBE2D /* ScannedandUploadCodesModels.swift in Sources */,
 				84B5E23229EFAC6C00A3C56D /* QS_PointsVoucher_TVC.swift in Sources */,
@@ -3248,7 +3255,6 @@
 				84B7F12029EFA8BC00EB8592 /* HR_RedeemQuantity_VC.swift in Sources */,
 				84BBA9F729ECFCF9000036BC /* HelpTopicListModel.swift in Sources */,
 				842049CF29F1375C00F97488 /* DreamGiftDetailsViewController.swift in Sources */,
-				847DAFD529EEAEEB0000FDE6 /* MyCartListModel.swift in Sources */,
 				8407C2AC29D6A1BA00704C87 /* EBC_FilterVC.swift in Sources */,
 				845606FA29E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift in Sources */,
 				8457ECE029F0197000CC5EF6 /* ObjImageGalleryList1.swift in Sources */,
@@ -3277,7 +3283,6 @@
 				843E6D1929EAA7D3004FBE2D /* QrCodeSaveResponseList.swift in Sources */,
 				847DAFCE29EEADBA0000FDE6 /* HR_CatalogueDetailsCVC.swift in Sources */,
 				847DAFF829EEB2BF0000FDE6 /* HR_MyCartVM.swift in Sources */,
-				847DAFD429EEAEEB0000FDE6 /* CatalogueSaveCartDetailListResponse.swift in Sources */,
 				849E45B729DC294900A4311B /* EBC_QueryListingTVC.swift in Sources */,
 				80AEAD6729C44249005108AC /* ImageExtension.swift in Sources */,
 				801C860329C5BBE5008204CB /* EBC_RegisterVC.swift in Sources */,
@@ -3307,7 +3312,6 @@
 				80AEAD5629C44206005108AC /* ServiceError.swift in Sources */,
 				8426285929EA7F6B003C8FE7 /* ScanOrUpload_VC.swift in Sources */,
 				847042C629F3A98A0089024A /* MyRedemptionDetailsModels.swift in Sources */,
-				84B5E27729F00E0100A3C56D /* MyRedemptionModels.swift in Sources */,
 				80AEAD6829C44249005108AC /* NotificationExtension.swift in Sources */,
 				84BD648329EA869C008D3E34 /* SyncStatus_VC.swift in Sources */,
 				84EE0FBC29EE7D4900586FFB /* ReferandEarnModel.swift in Sources */,
@@ -3587,14 +3591,19 @@
 				INFOPLIST_FILE = EuroBond_Customer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eurobond Rewards";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "EuroBond Need to Access the camera to upload profile Image and Customer support";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "EuroBond Need to access the location upload profile Image  and Customer support";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "EuroBond Need to Access the Photo Library to upload profile Image  and Customer support";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Eurobond Need to Access the camera to upload profile Image and Customer support";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Turn on 'Location Services' to identify the scanned codes location and verify authenticity of Customers during points banking.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Turn on 'Location Services' to identify the scanned codes location and verify authenticity of Customers during points banking.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Turn on 'Location Services' to identify the scanned codes location and verify authenticity of Customers during points banking.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Eurobond Need to Access the Photo Library to upload profile Image  and Customer support";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3630,14 +3639,19 @@
 				INFOPLIST_FILE = EuroBond_Customer/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Eurobond Rewards";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "EuroBond Need to Access the camera to upload profile Image and Customer support";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "EuroBond Need to access the location upload profile Image  and Customer support";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "EuroBond Need to Access the Photo Library to upload profile Image  and Customer support";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Eurobond Need to Access the camera to upload profile Image and Customer support";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Turn on 'Location Services' to identify the scanned codes location and verify authenticity of Customers during points banking.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "Turn on 'Location Services' to identify the scanned codes location and verify authenticity of Customers during points banking.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Turn on 'Location Services' to identify the scanned codes location and verify authenticity of Customers during points banking.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Eurobond Need to Access the Photo Library to upload profile Image  and Customer support";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

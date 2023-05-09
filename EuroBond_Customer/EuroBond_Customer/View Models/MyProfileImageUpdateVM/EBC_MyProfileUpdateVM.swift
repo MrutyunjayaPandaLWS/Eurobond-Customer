@@ -13,9 +13,6 @@ class EBC_MyProfileUpdateVM{
     var requestAPIs = RestAPI_Requests()
     
     func profileImageUpdate(parameter: JSON){
-        DispatchQueue.main.async {
-            self.VC?.startLoading()
-        }
         
         self.requestAPIs.imageSavingAPI(parameters: parameter) { (result, error) in
             

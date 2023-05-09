@@ -31,7 +31,7 @@ class EBC_MillstonesBonussVC: UIViewController, UITableViewDelegate, UITableView
     }
     func languageLocalize(){
         titleVC.text = "Millstone Bonus".localiz()
-        infoLbl.text = "Bonus Euros to be awardedto members on reching below slabs".localiz()
+        infoLbl.text = "BonusEurostobeawardedtomembersonrechingbelowslabs".localiz()
         euroSlabTitleLbl.text = "Euro Slab".localiz()
         addonEurosLbl.text = "Add on Euros".localiz()
     }

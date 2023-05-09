@@ -75,7 +75,7 @@ class HR_SelectionVC: BaseViewController, popUpAlertDelegate {
             }else if isComeFrom == 5{
                 getMyEarningListApi()
             }else if isComeFrom == 6{
-                self.selectionTableHeightConstraint.constant = 150
+                self.selectionTableHeightConstraint.constant = 400
                 self.selectionTableView.reloadData()
             }else if isComeFrom == 7{
                 self.myDisplayListingAPI()

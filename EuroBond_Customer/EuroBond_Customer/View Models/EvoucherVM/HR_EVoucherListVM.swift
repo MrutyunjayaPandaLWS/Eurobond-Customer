@@ -26,6 +26,7 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                     "CatalogueType":"4",
                     "MerchantId":"1"
                 ]
+            "SearchText":"\(self.VC?.searchTF.text "")"
         ] as [String : Any]
         print(parameters)
         self.requestAPIs.evoucherListApi(parameters: parameters) { result, error in
