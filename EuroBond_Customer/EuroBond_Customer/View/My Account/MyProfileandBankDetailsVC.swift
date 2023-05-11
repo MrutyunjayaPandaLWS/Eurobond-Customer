@@ -327,6 +327,7 @@ extension MyProfileandBankDetailsVC: CropperViewControllerDelegate {
         
         //{"ActionType":"159","ObjCustomerJson":{"DisplayImage":"",}}
         //{"ActorId":"240","ActionType":"159","ObjCustomerJson":{"DisplayImage":"","Domain":"EuroBond"}}
+        //{"ActorId":"240","ActionType":"159","ObjCustomerJson":{"DisplayImage":"","Domain":"EuroBond"}}
         
         DispatchQueue.main.async {
             let parameters = [

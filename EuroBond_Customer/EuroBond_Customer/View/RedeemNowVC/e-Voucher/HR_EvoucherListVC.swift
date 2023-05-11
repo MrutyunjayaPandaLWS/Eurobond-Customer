@@ -32,14 +32,13 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
             print(finalPts)
             let totalPointss = Int(finalPts ?? 0.0)
             print(totalPointss)
-//            let amountAdded = (Int(totalPts) ?? 0) - 4000
-            let redeemPoints = 4000
+           // let amountAdded = (Int(totalPts) ?? 0) - 4000
+            let redeemPoints = 1000
 //            print(amountAdded)
             
-            if totalPts < "4000" {
+            if Int(totalPts) ?? 0 <= redeemPoints {
                 self.alertmsg(alertmsg: "Insufficient Point Balance".localiz(), buttonalert: "ok".localiz())
             }else{
-                //                if totalPointss >= Int(cell.amountTF.text ?? "0")!{
                 if totalPointss >= 1000{
                     if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
                         DispatchQueue.main.async{

@@ -24,7 +24,5 @@ target 'EuroBond_Customer' do
   pod 'Firebase/Crashlytics'
   pod 'lottie-ios'
 
-
-  
   
 end

@@ -32,7 +32,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "99"
                   endingLineNumber = "99"
-                  offsetFromSymbolStart = "3895">
+                  offsetFromSymbolStart = "2688">
                </Location>
                <Location
                   uuid = "3D176559-1E59-4A09-A063-1E7AA70E423A - c7dd2752fbe3639c"
@@ -47,7 +47,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "100"
                   endingLineNumber = "100"
-                  offsetFromSymbolStart = "224">
+                  offsetFromSymbolStart = "268">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "EuroBond_Customer/View/RedeemNowVC/e-Voucher/HR_EvoucherListVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "redeemButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -128,7 +128,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "243"
                   endingLineNumber = "243"
-                  offsetFromSymbolStart = "615">
+                  offsetFromSymbolStart = "568">
                </Location>
                <Location
                   uuid = "D40FE309-20BE-4F1E-8442-9484707AED0D - 69466145dce8fb29"
@@ -143,7 +143,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "244"
                   endingLineNumber = "244"
-                  offsetFromSymbolStart = "57">
+                  offsetFromSymbolStart = "100">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -161,6 +161,54 @@
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "redeemButton(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "634F6325-7908-4452-B22D-DDE479600935"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View Models/MyProfileImageUpdateVM/EBC_MyProfileUpdateVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "profileImageUpdate(parameter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "06CE05DB-2E8D-455C-82F9-F7285F00C903"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/My Account/MyProfileandBankDetailsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "342"
+            endingLineNumber = "342"
+            landmarkName = "cropperDidConfirm(_:state:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2CA9688D-515A-4231-8046-92E3DD3E866C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View Models/MyProfileImageUpdateVM/EBC_MyProfileUpdateVM.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "profileImageUpdate(parameter:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
