@@ -7,39 +7,71 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A8D4208D-A6BF-4857-BFB9-7490BD13315E"
+            uuid = "3D176559-1E59-4A09-A063-1E7AA70E423A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EuroBond_Customer/View/RedeemNowVC/Physical Product/DefaultAddress/HR_RedemptionOTP_VC.swift"
+            filePath = "EuroBond_Customer/View Models/EvoucherVM/HR_EVoucherListVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "submitBTN(_:)"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
+            landmarkName = "voucherSubmission(ReceiverMobile:ActorId:CountryID:MerchantId:CatalogueId:DeliveryType:pointsrequired:ProductCode:ProductImage:ProductName:NoOfQuantity:VendorId:VendorName:ReceiverEmail:ReceiverName:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3D176559-1E59-4A09-A063-1E7AA70E423A - 46c055ee883aff5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.HR_EVoucherListVM.voucherSubmission(ReceiverMobile: Swift.String, ActorId: Swift.String, CountryID: Swift.Int, MerchantId: Swift.Int, CatalogueId: Swift.Int, DeliveryType: Swift.String, pointsrequired: Swift.String, ProductCode: Swift.String, ProductImage: Swift.String, ProductName: Swift.String, NoOfQuantity: Swift.String, VendorId: Swift.Int, VendorName: Swift.String, ReceiverEmail: Swift.String, ReceiverName: Swift.String) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arokia-m3/Documents/LWS%20Projects/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View%20Models/EvoucherVM/HR_EVoucherListVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "3895">
+               </Location>
+               <Location
+                  uuid = "3D176559-1E59-4A09-A063-1E7AA70E423A - c7dd2752fbe3639c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;EuroBond_Customer.VoucherRedemptionModels&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in EuroBond_Customer.HR_EVoucherListVM.voucherSubmission(ReceiverMobile: Swift.String, ActorId: Swift.String, CountryID: Swift.Int, MerchantId: Swift.Int, CatalogueId: Swift.Int, DeliveryType: Swift.String, pointsrequired: Swift.String, ProductCode: Swift.String, ProductImage: Swift.String, ProductName: Swift.String, NoOfQuantity: Swift.String, VendorId: Swift.Int, VendorName: Swift.String, ReceiverEmail: Swift.String, ReceiverName: Swift.String) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arokia-m3/Documents/LWS%20Projects/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View%20Models/EvoucherVM/HR_EVoucherListVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E57821D2-943F-4DE8-934F-56865B124305"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/RedeemNowVC/e-Voucher/HR_EvoucherListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "redeemButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "01A4E431-C6B0-4FC3-83AF-CCD35E95D175"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EuroBond_Customer/View/RedeemNowVC/Physical Product/DefaultAddress/HR_RedemptionOTP_VC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "submitBTN(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "063C0F7A-32DD-4BC7-B799-2317684F58C1"
+            uuid = "36CD4312-7A44-4A3D-8506-40B00595C881"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -55,16 +87,80 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "92A0D00B-5F9F-4841-A80B-51F41330543B"
+            uuid = "696A0367-4CF7-4755-9204-9D35963D2398"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EuroBond_Customer/View/EurobondsVC/ProductCatalogue/EBC_ProductCatalogueVC.swift"
+            filePath = "EuroBond_Customer/View/Side Menu/EBC_SideMenuVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "collectionView(_:didSelectItemAt:)"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "selectDeleteBtn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D40FE309-20BE-4F1E-8442-9484707AED0D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/Side Menu/EBC_SideMenuVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "243"
+            endingLineNumber = "243"
+            landmarkName = "deleteAccountAPI(paramters:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D40FE309-20BE-4F1E-8442-9484707AED0D - a4b242d1a8066552"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Optional&lt;EuroBond_Customer.DeleteAccountModels&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in EuroBond_Customer.EBC_SideMenuVC.deleteAccountAPI(paramters: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arokia-m3/Documents/LWS%20Projects/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Side%20Menu/EBC_SideMenuVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "243"
+                  endingLineNumber = "243"
+                  offsetFromSymbolStart = "615">
+               </Location>
+               <Location
+                  uuid = "D40FE309-20BE-4F1E-8442-9484707AED0D - 69466145dce8fb29"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Optional&lt;EuroBond_Customer.DeleteAccountModels&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in EuroBond_Customer.EBC_SideMenuVC.deleteAccountAPI(paramters: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arokia-m3/Documents/LWS%20Projects/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Side%20Menu/EBC_SideMenuVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "244"
+                  endingLineNumber = "244"
+                  offsetFromSymbolStart = "57">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B0B83F2-5021-4D12-AA75-2B0BF38015EC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/RedeemNowVC/e-Voucher/HR_EvoucherListVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "redeemButton(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

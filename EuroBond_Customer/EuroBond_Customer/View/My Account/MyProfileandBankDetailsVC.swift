@@ -100,14 +100,14 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
                 self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
             }
         }else{
-            let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+            let alert = UIAlertController(title: "Choose any option".localiz(), message: "", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
                 self.openCamera()
             }))
-            alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
+            alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
                 self.openGallery()
             }))
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
             }))
             self.present(alert, animated: true, completion: {
                 print("completion block")
@@ -189,12 +189,12 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
                 }
             }else{
                 
-                    let alertVC = UIAlertController(title: "EuroBond Application need to Access the Gallery", message: "Allow Gallery Access", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                let alertVC = UIAlertController(title: "EuroBond Application need to Access the Gallery".localiz(), message: "Allow Gallery Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                     }
-                    let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                         
                     }
@@ -222,12 +222,12 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
                         
                     }else {
                         
-                        let alertVC = UIAlertController(title: "EuroBond Application need to Access the Camera", message: "Allow Camera Access", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                        let alertVC = UIAlertController(title: "EuroBond Application need to Access the Camera".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                             UIAlertAction in
                             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                         }
-                        let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                        let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                             UIAlertAction in
                         }
                         alertVC.addAction(okAction)
@@ -256,12 +256,12 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
                 }
             }else{
 
-                    let alertVC = UIAlertController(title: "No Camera access", message: "Allow Camera Access", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                let alertVC = UIAlertController(title: "No Camera access".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                     }
-                    let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                     }
                     alertVC.addAction(okAction)
@@ -273,8 +273,8 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
             }
     }
      func noCamera(){
-             let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .alert)
-             let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
+         let alertVC = UIAlertController(title: "No Camera".localiz(), message: "Sorry, this device has no camera".localiz(), preferredStyle: .alert)
+         let okAction = UIAlertAction(title: "ok".localiz(), style:.default, handler: nil)
              alertVC.addAction(okAction)
              present(alertVC, animated: true, completion: nil)
 

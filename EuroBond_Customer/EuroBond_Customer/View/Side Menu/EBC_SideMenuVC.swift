@@ -232,7 +232,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             }
         }
     }
-    
+    //["ActionType": 1, "userid": "1377"]
     
     func deleteAccountAPI(paramters: JSON){
         self.requestAPIs.deleteAccount(parameters: paramters) { (result, error) in

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import LanguageManager_iOS
 class EBC_MyProfileUpdateVM{
     
     weak var VC: MyProfileandBankDetailsVC?
@@ -24,7 +25,7 @@ class EBC_MyProfileUpdateVM{
                         if result?.returnMessage ?? "" == "1"{
                             DispatchQueue.main.async{
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
-                                vc.descriptionInfo = "Profile image updated successfully !!"
+                                vc.descriptionInfo = "Profile image updated successfully".localiz()
                                 vc.itsComeFrom = "ProfileImage"
                                 vc.modalPresentationStyle = .overFullScreen
                                 vc.modalTransitionStyle = .coverVertical
@@ -33,7 +34,7 @@ class EBC_MyProfileUpdateVM{
                         }else{
                             DispatchQueue.main.async{
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
-                                vc.descriptionInfo = "Profile image updation failed"
+                                vc.descriptionInfo = "Profile image updation failed".localiz()
                                 vc.itsComeFrom = "ProfileImage"
                                 vc.modalPresentationStyle = .overFullScreen
                                 vc.modalTransitionStyle = .coverVertical

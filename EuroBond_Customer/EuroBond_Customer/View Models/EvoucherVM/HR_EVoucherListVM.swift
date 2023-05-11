@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import LanguageManager_iOS
+import LanguageManager_iOS
 class HR_EVoucherListVM: popUpAlertDelegate {
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -17,16 +17,18 @@ class HR_EVoucherListVM: popUpAlertDelegate {
     var evoucherListingArray = [ObjCatalogueList13]()
     
     func evoucherList(){
+        //{"ActionType":"6","ActorId":"240","ObjCatalogueDetails":{"CatalogueType":"4","MerchantId":"1"},"SearchText":""}
         self.VC?.startLoading()
         let parameters = [
             "ActionType":"6",
             "ActorId":"\(userID)",
+            "SearchText": "\(self.VC?.searchTF.text ?? "")",
             "ObjCatalogueDetails":
                 [
                     "CatalogueType":"4",
                     "MerchantId":"1"
                 ]
-            "SearchText":"\(self.VC?.searchTF.text "")"
+            
         ] as [String : Any]
         print(parameters)
         self.requestAPIs.evoucherListApi(parameters: parameters) { result, error in
@@ -105,24 +107,24 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                                 let separatedmessage = message.split(separator: "-")
                             if separatedmessage.count == 3 {
                                 if separatedmessage[2] == "0"{
-                                    let alertController = UIAlertController(title: "Oops", message: "You don’t have sufficient point balance to redeem the voucher", preferredStyle: .alert)
-                                    let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                                    let alertController = UIAlertController(title: "Oops".localiz(), message: "You don’t have sufficient point balance to redeem the voucher".localiz(), preferredStyle: .alert)
+                                    let okAction = UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default) {
                                         UIAlertAction in
                                         self.VC!.navigationController?.popViewController(animated: true)
                                     }
                                     alertController.addAction(okAction)
                                     self.VC!.present(alertController, animated: true, completion: nil)
                                 }else if separatedmessage[2] == "00"{
-                                    let alertController = UIAlertController(title: "Oops", message: "member is deActivated", preferredStyle: .alert)
-                                    let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                                    let alertController = UIAlertController(title: "Oops".localiz(), message: "member is deActivated".localiz(), preferredStyle: .alert)
+                                    let okAction = UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default) {
                                         UIAlertAction in
                                         self.VC!.navigationController?.popViewController(animated: true)
                                     }
                                     alertController.addAction(okAction)
                                     self.VC!.present(alertController, animated: true, completion: nil)
                                 }else if separatedmessage[2] == "000"{
-                                    let alertController = UIAlertController(title: "Oops", message: "Unfortunately_your_redemption_has_not_been_completed", preferredStyle: .alert)
-                                    let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                                    let alertController = UIAlertController(title: "Oops".localiz(), message: "Unfortunately_your_redemption_has_not_been_completed".localiz(), preferredStyle: .alert)
+                                    let okAction = UIAlertAction(title: "ok".localiz(), style: UIAlertAction.Style.default) {
                                         UIAlertAction in
                                         self.VC!.navigationController?.popViewController(animated: true)
                                     }
@@ -134,7 +136,7 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                                         vc!.delegate = self
                                         vc!.titleInfo = ""
                                         vc!.isComeFrom = "VoucherSuccess"
-                                        vc!.descriptionInfo = "Thank you for redeeming. The E-voucher will sent email id shortly"
+                                        vc!.descriptionInfo = "Thank you for redeeming. The E-voucher will sent email id shortly".localiz()
                                         vc!.modalPresentationStyle = .overFullScreen
                                         vc!.modalTransitionStyle = .crossDissolve
                                         self.VC?.present(vc!, animated: true, completion: nil)
@@ -148,7 +150,7 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                                         vc!.delegate = self
                                         vc!.titleInfo = ""
                                         vc!.isComeFrom = "VoucherSuccess"
-                                        vc!.descriptionInfo = "Voucher Redemption is failed!"
+                                        vc!.descriptionInfo = "Voucher Redemption is failed".localiz()
                                         vc!.modalPresentationStyle = .overFullScreen
                                         vc!.modalTransitionStyle = .crossDissolve
                                         self.VC?.present(vc!, animated: true, completion: nil)
@@ -160,7 +162,7 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                                     vc!.delegate = self
                                     vc!.titleInfo = ""
                                     vc!.isComeFrom = "VoucherSuccess"
-                                    vc!.descriptionInfo = "Voucher Redemption is failed!"
+                                    vc!.descriptionInfo = "Voucher Redemption is failed".localiz()
                                     vc!.modalPresentationStyle = .overFullScreen
                                     vc!.modalTransitionStyle = .crossDissolve
                                     self.VC?.present(vc!, animated: true, completion: nil)
@@ -181,10 +183,6 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                 DispatchQueue.main.async {
                     self.VC?.stopLoading()
                 }
-
-
-
-
             }
         }
     }

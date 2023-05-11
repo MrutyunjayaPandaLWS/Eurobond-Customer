@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 import Kingfisher
-
+import LanguageManager_iOS
 class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, popUpAlertDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
     
@@ -56,14 +56,14 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     @IBAction func selectUploadDoccumentBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
+        let alert = UIAlertController(title: "Choose any option".localiz(), message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
             self.openCamera()
         }))
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
             self.openGallery()
         }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
         }))
         self.present(alert, animated: true, completion: {
             print("completion block")
@@ -116,21 +116,21 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                 if self.accountHolderTF.text!.count == 0 || self.accountNumberTF.text!.count == 0 || self.bankNameTF.text!.count == 0 || self.ifscCodeTF.text!.count == 0 || self.confirmAccountNumberTF.text!.count == 0 || self.strdata1 == ""{
                     
                     if self.accountHolderTF.text!.count == 0 {
-                        self.view.makeToast("Enter Email", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Enter Email".localiz(), duration: 2.0, position: .bottom)
                     }else if self.accountNumberTF.text!.count == 0 {
-                        self.view.makeToast("Enter account number", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Enter account number".localiz(), duration: 2.0, position: .bottom)
                     }else if self.accountNumberTF.text!.count < 9 || self.accountNumberTF.text!.count > 16{
-                        self.view.makeToast("Enter valid account number", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Enter valid account number".localiz(), duration: 2.0, position: .bottom)
                     }else if self.confirmAccountNumberTF.text!.count < 9 || self.confirmAccountNumberTF.text!.count > 16{
-                        self.view.makeToast("Enter confirm account number", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Enter confirm account number".localiz(), duration: 2.0, position: .bottom)
                     }else if self.accountNumberTF.text! != self.confirmAccountNumberTF.text!{
-                        self.view.makeToast("Both account number should be same", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Both account number should be same".localiz(), duration: 2.0, position: .bottom)
                     }else if self.ifscCodeTF.text!.count == 0{
-                        self.view.makeToast("Enter IFSC Code", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Enter IFSC Code".localiz(), duration: 2.0, position: .bottom)
                     }else if self.ifscCodeTF.text!.count != 11  {
-                        self.view.makeToast("Enter valid IFSC Code", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Enter valid IFSC Code".localiz(), duration: 2.0, position: .bottom)
                     }else if self.strdata1 == ""{
-                        self.view.makeToast("Attach Passbook Image", duration: 2.0, position: .bottom)
+                        self.view.makeToast("Attach Passbook Image".localiz(), duration: 2.0, position: .bottom)
                     }else{
                         let parameter = [
                             "ActionType": "4",
@@ -188,12 +188,12 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                 }
             }else{
                 
-                    let alertVC = UIAlertController(title: "EuroBond Application need to Access the Gallery", message: "Allow Gallery Access", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                let alertVC = UIAlertController(title: "EuroBond Application need to Access the Gallery".localiz(), message: "Allow Gallery Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
                     }
-                    let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                         
                     }
@@ -221,12 +221,12 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                         
                     }else {
                         
-                        let alertVC = UIAlertController(title: "EuroBond Application need to Access the Camera", message: "Allow Camera Access", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                        let alertVC = UIAlertController(title: "EuroBond Application need to Access the Camera".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                             UIAlertAction in
                             UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                         }
-                        let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                        let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                             UIAlertAction in
                         }
                         alertVC.addAction(okAction)
@@ -255,12 +255,12 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                 }
             }else{
 
-                    let alertVC = UIAlertController(title: "No Camera access", message: "Allow Camera Access", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "Allow", style: UIAlertAction.Style.default) {
+                let alertVC = UIAlertController(title: "No Camera access".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
                     }
-                    let cancelAction = UIAlertAction(title: "DisAllow", style: UIAlertAction.Style.cancel) {
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
                         UIAlertAction in
                     }
                     alertVC.addAction(okAction)
@@ -273,7 +273,7 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
     }
      func noCamera(){
              let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .alert)
-             let okAction = UIAlertAction(title: "OK", style:.default, handler: nil)
+         let okAction = UIAlertAction(title: "ok".localiz(), style:.default, handler: nil)
              alertVC.addAction(okAction)
              present(alertVC, animated: true, completion: nil)
 

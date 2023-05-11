@@ -373,3 +373,33 @@
 "25000 & Above" = "25000 और ऊपर";
 "Lodge Query" = "लॉज क्वेरी";
 "Support" = "बात करना";
+
+
+
+
+"Enter amount to redeem" = "रिडीम करने के लिए राशि दर्ज करें";
+"Are your sure" = "क्या आपके सेर हैं";
+"Do you Want to Redeem" = "क्या आप रिडीम करना चाहते हैं";
+"Eurobondscanning" = "यूरोबॉन्ड एप्लिकेशन को यूरोबॉन्ड पैनल्स प्राइवेट लिमिटेड द्वारा उत्पन्न स्कैन कोड के लिए कैमरे की अनुमति की आवश्यकता होती है। प्रत्येक कोड को इनाम बिंदुओं के साथ कॉन्फ़िगर किया गया है जो सफल स्कैनिंग पर सदस्य को प्रदान किया जाएगा।";
+"Select Amount to Redeem" = "रिडीम करने के लिए राशि का चयन करें";
+"Oops" = "उफ़";
+"You don’t have sufficient point balance to redeem the voucher" = "वाउचर को रिडीम करने के लिए आपके पास पर्याप्त प्वाइंट बैलेंस नहीं है";
+"member is deActivated" = "सदस्य निष्क्रिय है";
+"Thank you for redeeming. The E-voucher will sent email id shortly" = "रिडीम करने के लिए धन्यवाद। ई-वाउचर शीघ्र ही ईमेल आईडी भेजेगा";
+"Voucher Redemption is failed" = "वाउचर रिडीम नहीं हो सका!";
+"Unfortunately_your_redemption_has_not_been_completed" = "आपका रिडीमेशन पूरा नहीं हुआ है";
+"Enter account number" = "खाता संख्या दर्ज करें";
+"Enter valid account number" = "मान्य खाता संख्या दर्ज करें";
+"Enter confirm account number" = "पुष्टि खाता संख्या दर्ज करें";
+"Both account number should be same" = "दोनों खाता संख्या समान होनी चाहिए";
+
+
+"Enter IFSC Code" = "IFSC कोड दर्ज करें";
+"Enter valid IFSC Code" = "मान्य IFSC कोड दर्ज करें";
+"Attach Passbook Image" = "पासबुक छवि संलग्न करें";
+"EuroBond Application need to Access the Gallery" = "EuroBond एप्लिकेशन को गैलरी तक पहुंचने की आवश्यकता है";
+"No Camera access" = "कोई कैमरा एक्सेस नहीं";
+"Sorry, this device has no camera" = "क्षमा करें, इस डिवाइस में कोई कैमरा नहीं है";
+"Profile image updated successfully" = "प्रोफ़ाइल छवि सफलतापूर्वक अपडेट की गई!";
+"Profile image updation failed" = "प्रोफ़ाइल चित्र अद्यतन करना विफल रहा";
+"Allow Camera Access" = "कैमरा एक्सेस की अनुमति दें";

@@ -703,7 +703,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     }
     
     @IBAction func scanQRCode(_ sender: Any) {
-        if self.scanQRCodeButton.currentTitle == "Upload QR Code" || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
+        if self.scanQRCodeButton.currentTitle == "Upload QR Code".localiz() || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
             self.headerView.isHidden = false
             self.closeBTN.isHidden = true
             self.scanQRCodeButton.setTitleColor(selectedUploadColor, for: .normal)
@@ -775,8 +775,8 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                     }
                     
                 }else{
-                    
-                    let alertVC = UIAlertController(title: "EuroBond Application need Camera permission for Scanning Codes".localiz(), message: "Allow Camera Access", preferredStyle: .alert)
+                    let alertVC = UIAlertController(title: "Eurobondscanning".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                    //let alertVC = UIAlertController(title: "EuroBond Application need Camera permission for Scanning Codes".localiz(), message: "Allow Camera Access", preferredStyle: .alert)
                     let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
                         UIAlertAction in
                         UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)

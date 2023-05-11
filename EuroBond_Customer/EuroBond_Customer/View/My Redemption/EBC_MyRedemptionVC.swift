@@ -145,6 +145,7 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         myRedemptionTV.delegate = self
         myRedemptionTV.dataSource = self
         self.noDataFoundLbl.isHidden = true
+        self.noDataFoundLbl.text = "No Data Found".localiz()
         self.filterView.isHidden = true
         self.fromDate.setTitle("From Date".localiz(), for: .normal)
         self.toDate.setTitle("To Date".localiz(), for: .normal)
@@ -428,41 +429,40 @@ class EBC_MyRedemptionVC: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         return cell
     }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-////        return 190
+    
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HRD_MyRedemptionDetailsVC") as! HRD_MyRedemptionDetailsVC
+//        self.filterView.isHidden = true
+//        vc.categoryName = self.VM.myredemptionArray[indexPath.item].categoryName ?? ""
+//        vc.totalPoint = "\(self.VM.myredemptionArray[indexPath.item].pointsPerUnit ?? 0)"
+//        vc.productName = self.VM.myredemptionArray[indexPath.item].productName ?? ""
+//        vc.quantity = "\(self.VM.myredemptionArray[indexPath.item].quantity ?? 0)"
+//        vc.productImage = self.VM.myredemptionArray[indexPath.item].productImage ?? ""
+//        vc.redemptionRefNo = self.VM.myredemptionArray[indexPath.item].redemptionRefno ?? ""
+//        vc.descDetails = self.VM.myredemptionArray[indexPath.item].productDesc ?? ""
+//        vc.termsandContions = self.VM.myredemptionArray[indexPath.item].termsCondition ?? ""
+//        vc.redemptionPoints = "\(self.VM.myredemptionArray[indexPath.item].redemptionPoints ?? 0)"
+//        vc.status = "\(self.VM.myredemptionArray[indexPath.item].status ?? 0)"
+//        let strDate = self.VM.myredemptionArray[indexPath.row].jRedemptionDate ?? "01/01/0001  00:00:00"
+//        print(strDate)
+//        let array = strDate.components(separatedBy: " ")
+//        print(array[0])
+//        //        let inputFormatter = DateFormatter()
+//        //        inputFormatter.dateFormat = "MM/dd/yyyy"
+//        //        let outputFormatter = DateFormatter()
+//        //        outputFormatter.dateFormat = "dd/MM/yyyy"
+//        //        let showDate = inputFormatter.date(from: array[0])!
+//        //        let resultString = outputFormatter.string(from: showDate)
+//        //vc.redemptionsDate = "\(resultString)"
+//
+//        vc.redemptionsDate = "\(array[0])"
+//        vc.redemptionsstatus = String(self.VM.myredemptionArray[indexPath.row].status ?? 0) ?? ""
+//
+//       // vc.cartCounts = self.cartCount.text!
+//        vc.redemptionId = "\(self.VM.myredemptionArray[indexPath.item].redemptionId ?? 0)"
+//        self.navigationController?.pushViewController(vc, animated: true)
 //    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HRD_MyRedemptionDetailsVC") as! HRD_MyRedemptionDetailsVC
-        self.filterView.isHidden = true
-        vc.categoryName = self.VM.myredemptionArray[indexPath.item].categoryName ?? ""
-        vc.totalPoint = "\(self.VM.myredemptionArray[indexPath.item].pointsPerUnit ?? 0)"
-        vc.productName = self.VM.myredemptionArray[indexPath.item].productName ?? ""
-        vc.quantity = "\(self.VM.myredemptionArray[indexPath.item].quantity ?? 0)"
-        vc.productImage = self.VM.myredemptionArray[indexPath.item].productImage ?? ""
-        vc.redemptionRefNo = self.VM.myredemptionArray[indexPath.item].redemptionRefno ?? ""
-        vc.descDetails = self.VM.myredemptionArray[indexPath.item].productDesc ?? ""
-        vc.termsandContions = self.VM.myredemptionArray[indexPath.item].termsCondition ?? ""
-        vc.redemptionPoints = "\(self.VM.myredemptionArray[indexPath.item].redemptionPoints ?? 0)"
-        vc.status = "\(self.VM.myredemptionArray[indexPath.item].status ?? 0)"
-        let strDate = self.VM.myredemptionArray[indexPath.row].jRedemptionDate ?? "01/01/0001  00:00:00"
-        print(strDate)
-        let array = strDate.components(separatedBy: " ")
-        print(array[0])
-        //        let inputFormatter = DateFormatter()
-        //        inputFormatter.dateFormat = "MM/dd/yyyy"
-        //        let outputFormatter = DateFormatter()
-        //        outputFormatter.dateFormat = "dd/MM/yyyy"
-        //        let showDate = inputFormatter.date(from: array[0])!
-        //        let resultString = outputFormatter.string(from: showDate)
-        //vc.redemptionsDate = "\(resultString)"
-        
-        vc.redemptionsDate = "\(array[0])"
-        vc.redemptionsstatus = String(self.VM.myredemptionArray[indexPath.row].status ?? 0) ?? ""
-        
-       // vc.cartCounts = self.cartCount.text!
-        vc.redemptionId = "\(self.VM.myredemptionArray[indexPath.item].redemptionId ?? 0)"
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 
     
     

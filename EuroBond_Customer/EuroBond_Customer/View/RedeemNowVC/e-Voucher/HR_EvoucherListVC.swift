@@ -23,37 +23,45 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
     func redeemButton(_ cell: HR_EvoucherlistCVC) {
          print(cell.vouchersdata[0].min_points ?? "-1")
         if cell.vouchersdata[0].min_points ?? "-1" != "-1" || cell.vouchersdata[0].max_points ?? "-1" != "-1"{
-            if cell.amountTF.text?.count == 0{
-                self.alertmsg(alertmsg: "Enter amount to redeem", buttonalert: "OK")
+//            if cell.amountTF.text?.count == 0{
+//                self.alertmsg(alertmsg: "Enter amount to redeem".localiz(), buttonalert: "OK")
+//            }else{
+            let totalPts = UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""
+            print(totalPts)
+            let finalPts = Double(totalPts)
+            print(finalPts)
+            let totalPointss = Int(finalPts ?? 0.0)
+            print(totalPointss)
+//            let amountAdded = (Int(totalPts) ?? 0) - 4000
+            let redeemPoints = 4000
+//            print(amountAdded)
+            
+            if totalPts < "4000" {
+                self.alertmsg(alertmsg: "Insufficient Point Balance".localiz(), buttonalert: "ok".localiz())
             }else{
-                let totalPts = UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""
-                print(totalPts)
-                let finalPts = Double(totalPts)
-                print(finalPts)
-                let totalPointss = Int(finalPts ?? 0.0)
-                print(totalPointss)
-                if totalPointss >= Int(cell.amountTF.text ?? "0")!{
+                //                if totalPointss >= Int(cell.amountTF.text ?? "0")!{
+                if totalPointss >= 1000{
                     if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
                         DispatchQueue.main.async{
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                             vc!.delegate = self
                             vc!.titleInfo = ""
-                            vc!.descriptionInfo = "No Internet Connection"
+                            vc!.descriptionInfo = "No Internet Connection".localiz()
                             vc!.modalPresentationStyle = .overCurrentContext
                             vc!.modalTransitionStyle = .crossDissolve
                             self.present(vc!, animated: true, completion: nil)
                         }
                     }else{
-
+                        
                         DispatchQueue.main.async {
-                            let alertVC = UIAlertController(title: "Are your sure", message: "Do you Want to Redeem", preferredStyle: .alert)
-                            let okAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) {
+                            let alertVC = UIAlertController(title: "Are your sure".localiz(), message: "Do you Want to Redeem".localiz(), preferredStyle: .alert)
+                            let okAction = UIAlertAction(title: "Yes".localiz(), style: UIAlertAction.Style.default) {
                                 UIAlertAction in
                                 DispatchQueue.main.async {
-                                    self.VM.voucherSubmission(ReceiverMobile: self.mobilenumber, ActorId: self.userID, CountryID: cell.vouchersdata[0].countryID ?? -1, MerchantId: self.merchantID, CatalogueId: cell.vouchersdata[0].catalogueId ?? -1, DeliveryType: cell.vouchersdata[0].deliveryType ?? "", pointsrequired: cell.amountTF.text ?? "0", ProductCode: cell.vouchersdata[0].productCode ?? "", ProductImage: cell.vouchersdata[0].productImage ?? "", ProductName: cell.vouchersdata[0].productName ?? "", NoOfQuantity: "1", VendorId: cell.vouchersdata[0].vendorId ?? -1, VendorName: cell.vouchersdata[0].vendorName ?? "", ReceiverEmail: self.emailid, ReceiverName: self.firstname)
+                                    self.VM.voucherSubmission(ReceiverMobile: self.mobilenumber, ActorId: self.userID, CountryID: cell.vouchersdata[0].countryID ?? -1, MerchantId: self.merchantID, CatalogueId: cell.vouchersdata[0].catalogueId ?? -1, DeliveryType: cell.vouchersdata[0].deliveryType ?? "", pointsrequired: "\(redeemPoints)", ProductCode: cell.vouchersdata[0].productCode ?? "", ProductImage: cell.vouchersdata[0].productImage ?? "", ProductName: cell.vouchersdata[0].productName ?? "", NoOfQuantity: "1", VendorId: cell.vouchersdata[0].vendorId ?? -1, VendorName: cell.vouchersdata[0].vendorName ?? "", ReceiverEmail: self.emailid, ReceiverName: self.firstname)
                                 }
                             }
-                            let cancelAction = UIAlertAction(title: "NO", style: UIAlertAction.Style.cancel) {
+                            let cancelAction = UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.cancel) {
                                 UIAlertAction in
                                 
                             }
@@ -63,28 +71,29 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
                             
                         }
                         
-                         
+                        
                         
                     }
                 }else{
-                    self.alertmsg(alertmsg: "Insufficient Points Balance", buttonalert: "OK")
+                    self.alertmsg(alertmsg: "Insufficient Point Balance".localiz(), buttonalert: "ok".localiz())
                 }
             }
+//            }
         }else{
             if cell.amountBTN.currentTitle == "Amount"{
-                self.alertmsg(alertmsg: "Select Amount to Redeem", buttonalert: "OK")
+                self.alertmsg(alertmsg: "Select Amount to Redeem", buttonalert: "ok".localiz())
             }else{
                 if Int((UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""))! >= self.selectedPoints{
                     
                     DispatchQueue.main.async {
-                        let alertVC = UIAlertController(title: "Areyoursure", message: "DoyouWanttoRedeem", preferredStyle: .alert)
-                        let okAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) {
+                        let alertVC = UIAlertController(title: "Are your sure".localiz(), message: "Do you Want to Redeem".localiz(), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Yes".localiz(), style: UIAlertAction.Style.default) {
                             UIAlertAction in
                             DispatchQueue.main.async {
                                 self.VM.voucherSubmission(ReceiverMobile: self.mobilenumber, ActorId: self.userID, CountryID: cell.vouchersdata[0].countryID ?? -1, MerchantId: self.merchantID, CatalogueId: cell.vouchersdata[0].catalogueId ?? -1, DeliveryType: cell.vouchersdata[0].deliveryType ?? "", pointsrequired: cell.amountBTN.currentTitle!, ProductCode: cell.vouchersdata[0].productCode ?? "", ProductImage: cell.vouchersdata[0].productImage ?? "", ProductName: cell.vouchersdata[0].productName ?? "", NoOfQuantity: "1", VendorId: cell.vouchersdata[0].vendorId ?? -1, VendorName: cell.vouchersdata[0].vendorName ?? "", ReceiverEmail: self.emailid, ReceiverName: self.firstname)
                             }
                         }
-                        let cancelAction = UIAlertAction(title: "NO", style: UIAlertAction.Style.cancel) {
+                        let cancelAction = UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.cancel) {
                             UIAlertAction in
                             
                         }
@@ -96,7 +105,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
                     
                    
                 }else{
-                    self.alertmsg(alertmsg: "Insufficient points balance", buttonalert: "OK")
+                    self.alertmsg(alertmsg: "Insufficient Point Balance".localiz(), buttonalert: "ok".localiz())
                 }
                 }
         }
@@ -116,7 +125,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
     }
     
     func alertDidTap(_ cell: HR_EvoucherlistCVC) {
-        self.alertmsg(alertmsg: "\(cell.alertMsg)", buttonalert: "OK")
+        self.alertmsg(alertmsg: "\(cell.alertMsg)", buttonalert: "ok".localiz())
     }
     
   
@@ -141,7 +150,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
         super.viewDidLoad()
         self.VM.VC = self
         self.searchTF.placeholder = "Search by voucher".localiz()
-        self.noDataFound.text = "No data found !!"
+        self.noDataFound.text = "No Data Found".localiz()
         self.noDataFound.isHidden = true
         evoucherListCollectionView.delegate = self
         evoucherListCollectionView.dataSource = self
@@ -160,7 +169,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
                 vc!.delegate = self
                 vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection"
+                vc!.descriptionInfo = "No Internet Connection".localiz()
                 vc!.modalPresentationStyle = .overCurrentContext
                 vc!.modalTransitionStyle = .crossDissolve
                 self.present(vc!, animated: true, completion: nil)
@@ -206,16 +215,19 @@ extension HR_EvoucherListVC: UICollectionViewDelegate, UICollectionViewDataSourc
         let urlt = URL(string: "\(self.VM.evoucherListingArray[indexPath.row].productImage ?? "")")
         print(urlt)
         cell.productImage.sd_setImage(with: urlt, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
-        cell.productRange.text = "Range \(self.VM.evoucherListingArray[indexPath.row].min_points ?? "") - \(self.VM.evoucherListingArray[indexPath.row].max_points ?? "")"
-
+        //cell.productRange.text = "Range \(self.VM.evoucherListingArray[indexPath.row].min_points ?? "") - \(self.VM.evoucherListingArray[indexPath.row].max_points ?? "")"
+        cell.productRange.text = " ₹ 1000"
+        cell.productRange.textColor = .black
         cell.redeemBTN.tag = indexPath.row
         if self.VM.evoucherListingArray[indexPath.row].min_points ?? "" == "" || self.VM.evoucherListingArray[indexPath.row].max_points ?? "" == ""{
-            cell.productRange.text = "Select Amount Range"
+            //cell.productRange.text = "Select Amount Range"
             cell.amountBTN.tag = self.VM.evoucherListingArray[indexPath.row].catalogueId ?? 0
             cell.amountTF.isHidden = true
             cell.amountBTN.isHidden = false
         }else{
-            cell.productRange.text = "INR \(self.VM.evoucherListingArray[indexPath.row].min_points ?? "") - INR \(self.VM.evoucherListingArray[indexPath.row].max_points ?? "")"
+            cell.productRange.text = " ₹ 1000 "
+            cell.productRange.textColor = .black
+            //cell.productRange.text = "INR \(self.VM.evoucherListingArray[indexPath.row].min_points ?? "") - INR \(self.VM.evoucherListingArray[indexPath.row].max_points ?? "")"
             cell.amountTF.isHidden = false
             cell.amountBTN.isHidden = true
         }
