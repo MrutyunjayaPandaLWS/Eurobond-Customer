@@ -84,7 +84,7 @@ class HR_EVoucherListVM: popUpAlertDelegate {
                         "redemptionid": 0,
                         "redemptiontypeid": 4,
                         "noofquantity": 1,
-                        "status": 13,
+                        "status": 0,
                         "vendorid": VendorId,
                         "vendorname": VendorName
                     ]
