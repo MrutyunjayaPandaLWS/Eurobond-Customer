@@ -42,6 +42,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
+        
+        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+            LanguageManager.shared.setLanguage(language: .en)
+
+        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+            LanguageManager.shared.setLanguage(language: .hi)
+
+        }else{
+            LanguageManager.shared.setLanguage(language: .en)
+        }
+        
         IQKeyboardManager.shared.enable = true
         let isUserLoggedIn: Int = UserDefaults.standard.integer(forKey: "IsloggedIn?")
         print(isUserLoggedIn)
@@ -83,6 +94,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     func setHomeAsRootViewController(){
+        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+            LanguageManager.shared.setLanguage(language: .en)
+
+        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+            LanguageManager.shared.setLanguage(language: .hi)
+
+        }else{
+            LanguageManager.shared.setLanguage(language: .en)
+        }
         IQKeyboardManager.shared.enable = true
         let leftVC = storyboard.instantiateViewController(withIdentifier: "EBC_SideMenuVC") as! EBC_SideMenuVC
         let homeVC = storyboard.instantiateViewController(withIdentifier: "EBC_DashboardVC") as! EBC_DashboardVC
@@ -95,6 +115,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func setHomeAsRootViewController2(){
         IQKeyboardManager.shared.enable = true
+        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+            LanguageManager.shared.setLanguage(language: .en)
+
+        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+            LanguageManager.shared.setLanguage(language: .hi)
+
+        }else{
+            LanguageManager.shared.setLanguage(language: .en)
+        }
         let homeVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Dashboard_2_VC") as! EBC_Dashboard_2_VC
         nav = UINavigationController(rootViewController: homeVC)
         nav.isNavigationBarHidden = true
