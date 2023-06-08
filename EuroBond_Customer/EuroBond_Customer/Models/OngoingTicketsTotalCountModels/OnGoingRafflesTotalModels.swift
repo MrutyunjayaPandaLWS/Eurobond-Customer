@@ -12,35 +12,26 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct ObjCatalogueDetailsForCustomer : Codable {
-	let catalogueId : Int?
-	let pointsRequired : Int?
-	let pointsBalance : Int?
-	let pointsRequiredToRedeem : Int?
-	let redemptionType : Int?
-	let catalogueName : String?
-	let catalogueImage : String?
+struct OnGoingRafflesTotalModels : Codable {
+	let lstRaffleDetails : [LstRaffleDetails2]?
+	let returnValue : Int?
+	let returnMessage : String?
+	let totalRecords : Int?
 
 	enum CodingKeys: String, CodingKey {
 
-		case catalogueId = "catalogueId"
-		case pointsRequired = "pointsRequired"
-		case pointsBalance = "pointsBalance"
-		case pointsRequiredToRedeem = "pointsRequiredToRedeem"
-		case redemptionType = "redemptionType"
-		case catalogueName = "catalogueName"
-		case catalogueImage = "catalogueImage"
+		case lstRaffleDetails = "lstRaffleDetails"
+		case returnValue = "returnValue"
+		case returnMessage = "returnMessage"
+		case totalRecords = "totalRecords"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		catalogueId = try values.decodeIfPresent(Int.self, forKey: .catalogueId)
-		pointsRequired = try values.decodeIfPresent(Int.self, forKey: .pointsRequired)
-		pointsBalance = try values.decodeIfPresent(Int.self, forKey: .pointsBalance)
-		pointsRequiredToRedeem = try values.decodeIfPresent(Int.self, forKey: .pointsRequiredToRedeem)
-		redemptionType = try values.decodeIfPresent(Int.self, forKey: .redemptionType)
-		catalogueName = try values.decodeIfPresent(String.self, forKey: .catalogueName)
-		catalogueImage = try values.decodeIfPresent(String.self, forKey: .catalogueImage)
+		lstRaffleDetails = try values.decodeIfPresent([LstRaffleDetails2].self, forKey: .lstRaffleDetails)
+		returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
+		returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
+		totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
 	}
 
 }

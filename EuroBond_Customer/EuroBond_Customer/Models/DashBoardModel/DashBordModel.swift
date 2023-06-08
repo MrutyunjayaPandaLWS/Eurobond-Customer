@@ -17,13 +17,13 @@ struct DashBordModel : Codable {
 	let objCustomerDashboardList : [ObjCustomerDashboardList]?
 	let objActivityDetailsList : String?
 	let objActivityDetailsJsonList : [ObjActivityDetailsJsonList]?
-	let objGamificationTransaction : String?
+	let objGamificationTransaction : [ObjGamificationTransaction1]?
 	let lstUserDashboardDetails : String?
 	let lstPromotionListJsonApi : [LstPromotionListJsonApi]?
 	let lstCustomerFeedBackJsonApi : [LstCustomerFeedBackJsonApi]?
 	let lstLoyaltyProgramReport : [LstLoyaltyProgramReport]?
 	let objImageGalleryList : String?
-	let objCatalogueDetailsForCustomer : [ObjCatalogueDetailsForCustomer]?
+	let objCatalogueDetailsForCustomer : String?
 	let activeStatus : Bool?
 	let objProductList : String?
 	let sessionID : String?
@@ -66,13 +66,13 @@ struct DashBordModel : Codable {
 		objCustomerDashboardList = try values.decodeIfPresent([ObjCustomerDashboardList].self, forKey: .objCustomerDashboardList)
 		objActivityDetailsList = try values.decodeIfPresent(String.self, forKey: .objActivityDetailsList)
 		objActivityDetailsJsonList = try values.decodeIfPresent([ObjActivityDetailsJsonList].self, forKey: .objActivityDetailsJsonList)
-		objGamificationTransaction = try values.decodeIfPresent(String.self, forKey: .objGamificationTransaction)
+		objGamificationTransaction = try values.decodeIfPresent([ObjGamificationTransaction1].self, forKey: .objGamificationTransaction)
 		lstUserDashboardDetails = try values.decodeIfPresent(String.self, forKey: .lstUserDashboardDetails)
 		lstPromotionListJsonApi = try values.decodeIfPresent([LstPromotionListJsonApi].self, forKey: .lstPromotionListJsonApi)
 		lstCustomerFeedBackJsonApi = try values.decodeIfPresent([LstCustomerFeedBackJsonApi].self, forKey: .lstCustomerFeedBackJsonApi)
 		lstLoyaltyProgramReport = try values.decodeIfPresent([LstLoyaltyProgramReport].self, forKey: .lstLoyaltyProgramReport)
 		objImageGalleryList = try values.decodeIfPresent(String.self, forKey: .objImageGalleryList)
-		objCatalogueDetailsForCustomer = try values.decodeIfPresent([ObjCatalogueDetailsForCustomer].self, forKey: .objCatalogueDetailsForCustomer)
+		objCatalogueDetailsForCustomer = try values.decodeIfPresent(String.self, forKey: .objCatalogueDetailsForCustomer)
 		activeStatus = try values.decodeIfPresent(Bool.self, forKey: .activeStatus)
 		objProductList = try values.decodeIfPresent(String.self, forKey: .objProductList)
 		sessionID = try values.decodeIfPresent(String.self, forKey: .sessionID)

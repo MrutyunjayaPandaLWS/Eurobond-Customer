@@ -48,6 +48,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         sideMenuModel(sideMenuName: "My Redemptions".localiz(), sideMenuImage: "reademailalt 1"),
         sideMenuModel(sideMenuName: "Redemption Catalogue".localiz(), sideMenuImage: "card-giftcard 1"),
         sideMenuModel(sideMenuName: "Game Zone".localiz(), sideMenuImage: "Group 6479"),
+        sideMenuModel(sideMenuName: "Raffles".localiz(), sideMenuImage: "winner (2)"),
         sideMenuModel(sideMenuName: "Refer & Earn".localiz(), sideMenuImage: "Layer 3"),
         sideMenuModel(sideMenuName: "Add My Assistant".localiz(), sideMenuImage: "Construction_Worker"),
         sideMenuModel(sideMenuName: "Wishlist".localiz(), sideMenuImage: "wishlist"),
@@ -325,13 +326,17 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Game Zone".localiz():
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ComingSoonVC") as? EBC_ComingSoonVC
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameCentre_VC") as? EBC_GameCentre_VC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Refer & Earn".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferAndEarnVC") as? EBC_RefferAndEarnVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
+        case "Raffles".localiz():
+            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Raffles_VC") as? Raffles_VC
+            vc?.isComeFrom = "OnGoingRaffle"
+            self.navigationController?.pushViewController(vc!, animated: true)
         case "Add My Assistant".localiz():
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyAssistantVC") as? EBC_MyAssistantVC
             vc?.flags = "SideMenu"

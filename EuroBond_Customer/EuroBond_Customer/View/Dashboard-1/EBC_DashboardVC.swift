@@ -136,7 +136,7 @@ class EBC_DashboardVC: BaseViewController {
     }
     
     @IBAction func selectGameZoneBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_ComingSoonVC") as?  EBC_ComingSoonVC //EBC_GameZoneVC
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameCentre_VC") as?  EBC_GameCentre_VC //EBC_GameZoneVC//EBC_ComingSoonVC
         navigationController?.pushViewController(vc!, animated: true)
     }
     
@@ -284,11 +284,10 @@ class EBC_DashboardVC: BaseViewController {
                 return }
             do{
                 //here dataResponse received from a network request
-                let jsonResponse = try JSONSerialization.jsonObject(with:
-                                                                        dataResponse, options: [])
+                let jsonResponse = try JSONSerialization.jsonObject(with:dataResponse, options: [])
                 print(jsonResponse)
-                let isMaintenanceValue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.is_maintenance") as? String)!
-                let forceupdatevalue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.version_number") as? String)!
+                let isMaintenanceValue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.is_maintenance") as? String)
+                let forceupdatevalue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.version_number") as? String)
                 print(forceupdatevalue)
                 if isMaintenanceValue == "1"{
                     print(isMaintenanceValue)

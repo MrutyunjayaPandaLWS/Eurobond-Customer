@@ -162,7 +162,7 @@
 "Referral Complimentary" = "Referral Complimentary";
 "Reward Adjusted" = "Reward Adjusted";
 
-"National euros cannot be redeemed" = "National euros cannot be redeemed";
+"National euros cannot be redeemed" = "Notional Euros cannot be redeemed";
 "Click here for support" = "Click here for support";
 "rest" = "Rest";
 "Select Status" = "Select Status";
@@ -440,3 +440,54 @@
 "Sorry, this device has no camera" = "Sorry, this device has no camera";
 "Profile image updation failed" = "Profile image updation failed";
 "Allow Camera Access" = "Allow Camera Access";
+"Raffles" = "Raffles";
+"Enter company name" = "Enter company name";
+
+
+
+///Newly Added Lines:-
+"Transfer_points_to_Bank_Account" = "Transfer points to your Registered Bank Account";
+"Enter_Account_Number" = "Enter Account Number";
+"Account_Holder_Name" = "Account Holder Name";
+"Enter_Bank_Name" = "Enter Bank Name";
+"IFSC_Code" = "IFSC Code";
+"Enter_amount" = "Enter Amount";
+"Transfer" = "Transfer";
+"Note" = "Note";
+"Minimum_value_can_be_entered" = "Minimum value can be entered is 100";
+"Denomination_value" = "Denomination should be in multiple of 100";
+"Enter amount to Transfer" = "Enter amount to Transfer";
+"Entered amount should be in multiple of 100" = "Entered amount should be in multiple of 100";
+"Insufficient points balance" = "Insufficient points balance";
+"Your_Bank_Account_is_not_verified" = "Your verification of your bank account is pending. Please contact your administrator.";
+"Point_balance_&_current_point_balance_is" = "Point balance should be more than 100, and current point balance is";
+"Unfortunately your redemption is failed.Points reducted will be reassigned to you in few working days" = "Unfortunately your redemption is failed.Points reducted will be reassigned to you in few working days";
+"Points transfer failed. Please try after sometime" = "Points transfer failed. Please try after sometime";
+"Enter_Account_Holder_Name" = "Enter Account Holder Name";
+"AccountHolderName" = "Account Holder Name";
+"AccountNumber" = "Account Number";
+"ConformNumber" = "Confirm Account Number";
+"Bank Name" = "Bank Name";
+"IFSC_Code" = "IFSC Code";
+"verificationStatus" = "Verification Status";
+"Enter Account Holder Name" = "Enter Account Holder Name";
+"Enter Account Number" = "Enter Account Number";
+"Enter Bank Name" = "Enter Bank Name";
+"Enter IFSC Code" = "Enter IFSC Code";
+"Please enter the valid feilds" = "Please enter the valid feilds";
+"Raffle name" = "Raffle name";
+"Valid till" = "Valid till";
+"Your point balance" = "Your point balance";
+"Status" = "Status";
+"Description" = "Description";
+"Total Ticket Purchased" = "Total Ticket Purchased";
+"Total Points Redeemed" = "Total Points Redeemed";
+"Raffle Qty" = "Raffle Qty";
+"Buy Ticket" = "Buy Ticket";
+"Ticket points" = "Ticket points";
+"No of ticket purchase" = "No of ticket purchase";
+"Point per ticket" = "Point per ticket";
+"Raffle Description" = "Raffle Description";
+"View Your Tickets" = "View Your Tickets";
+"Sorry, you have no games to play at the moment !" = "Sorry, you have no games to play at the moment !";
+"Engage more. play more" = "Engage more. play more";

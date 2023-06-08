@@ -169,6 +169,15 @@ extension EBC_MyEarningsVC: UITableViewDelegate, UITableViewDataSource{
             cell.statusLbl.text = "Redeemable"
         }
         
+        
+//        if self.VM.myEarningListArray[indexPath.row].behaviorId ?? 0 == 39{
+//            cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].invoiceNo ?? ""
+//        }else{
+//            cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].remarks ?? ""
+//        }
+        
+        
+        
         if self.VM.myEarningListArray[indexPath.row].transactionType ?? "" == "BONUS"{
             cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].bonusName ?? ""
         }else{
@@ -176,37 +185,53 @@ extension EBC_MyEarningsVC: UITableViewDelegate, UITableViewDataSource{
                 cell.idNumberLbl.text = "Referral Complimentary".localiz()
             }else{
                 if self.VM.myEarningListArray[indexPath.row].invoiceNo ?? "" == "--"{
-                    cell.idNumberLbl.text = "Reward Adjusted".localiz()
+                    //cell.idNumberLbl.text = "Reward Adjusted".localiz()
+                    cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].remarks ?? ""
+                    cell.idNumberLbl.textColor = .black
                 }else{
                     cell.idNumberLbl.text = self.VM.myEarningListArray[indexPath.row].invoiceNo ?? ""
+                    cell.idNumberLbl.textColor = .black
                 }
 
             }
         }
-
+   
         let transactionDate = String(self.VM.myEarningListArray[indexPath.row].jTranDate ?? "").split(separator: " ")
         cell.dateLbl.text = "\(transactionDate[0])"
-        cell.programLbl.text = self.VM.myEarningListArray[indexPath.row].transactionType ?? ""
+        
+        if self.VM.myEarningListArray[indexPath.row].behaviourName != " " {
+            cell.programLbl.text = self.VM.myEarningListArray[indexPath.row].behaviourName ?? ""
+        }else{
+            cell.programLbl.text = "Bonus point"
+        }
+ 
         return cell
     }
+    
+    
+    
+    
+    
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 120
 //    }
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == self.VM.myEarningListArray.count - 1{
-            if self.noofelements == 10{
-                self.startIndex = self.startIndex + 1
-                self.VM.myEarningListApi(startIndex: self.startIndex, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-            }else if self.noofelements > 10{
-                self.startIndex = self.startIndex + 1
-                self.VM.myEarningListApi(startIndex: self.startIndex, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-            }else if self.noofelements < 10{
-                print("no need to hit API")
-                return
-            }else{
-                print("n0 more elements")
-                return
-            }
-        }
-    }
+    
+    
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if indexPath.row == self.VM.myEarningListArray.count - 1{
+//            if self.noofelements == 10{
+//                self.startIndex = self.startIndex + 1
+//                self.VM.myEarningListApi(startIndex: self.startIndex, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+//            }else if self.noofelements > 10{
+//                self.startIndex = self.startIndex + 1
+//                self.VM.myEarningListApi(startIndex: self.startIndex, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+//            }else if self.noofelements < 10{
+//                print("no need to hit API")
+//                return
+//            }else{
+//                print("n0 more elements")
+//                return
+//            }
+//        }
+//    }
 }

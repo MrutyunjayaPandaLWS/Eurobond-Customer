@@ -56,14 +56,20 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
         print(totalImgURL, "Total Image URL")
         self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
             }
-        
-        //self.myProfileImg.sd_setImage(with: URL(string: PROMO_IMG + "\(customerImage)"), placeholderImage: UIImage(named: "icons8-test-account-96"))
             picker.delegate = self
+        if self.isComeFrom == "BankTransferRC"{
+            self.personalDetailsLbl.textColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
+            self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
+            self.bankDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
+            self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
+            container.segueIdentifierReceivedFromParent("myProfileBankDetails")
+        }else{
             self.personalDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
             self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
             self.bankDetailsLbl.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
             self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
             container.segueIdentifierReceivedFromParent("myProfileDetails")
+        }
         langloc()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -72,7 +78,7 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
     }
     
     func langloc(){
-        self.myprofile1.text = "My Profile".localiz()
+        self.myprofile1.text = "My Account".localiz()
         self.personalDetailsLbl.text = "Personal Details".localiz()
         self.facingIssueLbl.text = "Facing any issues".localiz()
         self.giveMissedCallLbl.text = "Give a Missed Call".localiz()
@@ -85,7 +91,7 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
     }
     
     @IBAction func selectGiveMissedCallBtn(_ sender: Any) {
-            if let phoneCallURL = URL(string: "tel://\(+918875509444)") {
+            if let phoneCallURL = URL(string: "tel://\(+919783444200)") {
                 
                 let application:UIApplication = UIApplication.shared
                 if (application.canOpenURL(phoneCallURL)) {

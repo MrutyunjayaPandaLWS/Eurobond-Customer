@@ -1,5 +1,5 @@
 /* 
-Copyright (c) 2021 Swift Models Generated from JSON powered by http://www.json4swift.com
+Copyright (c) 2023 Swift Models Generated from JSON powered by http://www.json4swift.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -13,25 +13,25 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct GamificationModels : Codable {
-	let returnMessage : String?
-	let returnValue : Int?
-	let totalRecords : Int?
 	let lstGamificationTransaction : [LstGamificationTransaction]?
+	let returnValue : Int?
+	let returnMessage : String?
+	let totalRecords : Int?
 
 	enum CodingKeys: String, CodingKey {
 
-		case returnMessage = "ReturnMessage"
-		case returnValue = "ReturnValue"
-		case totalRecords = "TotalRecords"
 		case lstGamificationTransaction = "lstGamificationTransaction"
+		case returnValue = "returnValue"
+		case returnMessage = "returnMessage"
+		case totalRecords = "totalRecords"
 	}
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
-		returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
-		totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
 		lstGamificationTransaction = try values.decodeIfPresent([LstGamificationTransaction].self, forKey: .lstGamificationTransaction)
+		returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
+		returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
+		totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
 	}
 
 }

@@ -89,10 +89,8 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
     @IBOutlet var selectGenderTypeLbl: UILabel!
     @IBOutlet var lastNameLbl: UILabel!
     
-    
-    
-    
-    
+    @IBOutlet weak var enterCompanyNameTF: UITextField!
+    @IBOutlet var companyNameTitleLbl: UILabel!
     
     
     var referralCode = ""
@@ -159,6 +157,8 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.genderTF.placeholder = "Select gender".localiz()
         self.prefferedLanguageTF.placeholder = "Select Language".localiz()
         self.signUpLbl.text = "SignUp".localiz()
+        self.enterCompanyNameTF.placeholder = "Enter company name".localiz()
+        self.companyNameTitleLbl.text = "Company Name".localiz()
     }
     
     
@@ -248,6 +248,8 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
             self.view.makeToast("Enter last name".localiz(), duration: 2.0, position: .bottom)
         }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
             self.view.makeToast("Enter Email".localiz(), duration: 2.0, position: .bottom)
+        }else if self.enterCompanyNameTF.text!.count == 0{
+            self.view.makeToast("Enter company name".localiz(), duration: 2.0, position: .bottom)
         }else if self.mobileTF.text?.count == 0{
             self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
         }else if self.addressTF.text?.count == 0{
@@ -285,6 +287,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
             vc.email = self.emailTF.text ?? ""
             vc.selectedDOB = self.selectedDOB
             vc.referralCode = self.referralCode
+            vc.companyName = self.enterCompanyNameTF.text ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
         

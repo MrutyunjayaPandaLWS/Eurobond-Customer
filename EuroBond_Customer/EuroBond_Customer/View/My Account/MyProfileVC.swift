@@ -171,4 +171,21 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
             self.VM.updateProfileDetailsApi(parameter: parameter)
     }
     
+    
+    
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+////      let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+////      let compSepByCharInSet = string.components(separatedBy: aSet)
+////      let numberFiltered = compSepByCharInSet.joined(separator: "")
+//
+////      if string == numberFiltered {
+//        let currentText = codeTF.text ?? ""
+//        guard let stringRange = Range(range, in: currentText) else { return false }
+//        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+//        return updatedText.count <= 12
+//
+//    }
+    
+    
+    
 }

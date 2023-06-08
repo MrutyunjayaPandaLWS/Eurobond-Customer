@@ -41,10 +41,6 @@ class EBC_MagicBoxVC: BaseViewController {
                 "CustomerGamifyTransactionId" : self.customerGamifyTransactionId,
                 "PointResult" : self.pointResult
             ] as? [String:Any]
-//                "ActionType" : 32,
-//                "CustomerGamifyTransactionId" : 3,
-//                "PointResult" : 10
-//            ] as? [String:Any]
             print(parameterJSON, "MagicBoxApi")
             self.VM.magicBoxAPI(paramters: parameterJSON!)
         }
@@ -55,14 +51,14 @@ class EBC_MagicBoxVC: BaseViewController {
     }
     
     func animationViewFuction(){
-     //   self.animationView.animation = Animation.named("magic_box")
+        self.animationView.animation = LottieAnimation.named("magic_box")
         self.animationView!.contentMode = .scaleAspectFit
         self.animationView!.loopMode = .playOnce
         self.animationView!.animationSpeed = 0.9
     }
 
     func openanimationViewFuction(){
-       // self.openAnimationView.animation = Animation.named("magic_box_shield")
+        self.openAnimationView.animation = LottieAnimation.named("magic_box_shield")
         self.openAnimationView!.contentMode = .scaleAspectFit
         self.openAnimationView!.loopMode = .playOnce
         self.openAnimationView!.animationSpeed = 0.9

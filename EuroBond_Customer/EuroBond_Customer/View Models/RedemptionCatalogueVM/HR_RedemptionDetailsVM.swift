@@ -18,6 +18,7 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var myCartListArray = [CatalogueSaveCartDetailListResponse]()
     var sumOfProductsCount = 0
+    var totalCartValue = 0
     var plannerListArray = [ObjCatalogueList2]()
     func cartCountApi(){
         self.VC?.startLoading()
@@ -31,7 +32,7 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                 if result != nil{
                     DispatchQueue.main.async{
                         self.VC?.cartCount.text = "\(result?.totalCartCatalogue ?? 0)"
-                        self.redemptionPlannerList()
+//                        self.redemptionPlannerList()
                         }
                     DispatchQueue.main.async{
                         self.VC?.stopLoading()
@@ -197,31 +198,53 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                         self.sumOfProductsCount = Int(result?.catalogueSaveCartDetailListResponse?[0].sumOfTotalPointsRequired ?? 0)
                         print(self.myCartListArray.count, "RedemptionDetailsCartCount")
                         if self.myCartListArray.count == 0{
-                            self.VC?.addToCart.isHidden = false
-                            self.VC?.addedToCart.isHidden = true
-                            self.VC?.addedToPlanner.isHidden = true
-                            self.VC?.addToPlanner.isHidden = true
+                            
+                            
+                            if self.VC?.productPointss ?? 0 < Int(self.VC?.redeemablePointsBalance ?? "") ?? 0 {
+
+                                self.VC?.addToPlanner.isHidden = true
+                                self.VC?.addedToPlanner.isHidden = true
+                                self.VC?.addToCart.isHidden = false
+                                self.VC?.addedToCart.isHidden = true
+                            }else{
+                                self.VC?.addToPlanner.isHidden = false
+                                self.VC?.addedToPlanner.isHidden = true
+                                self.VC?.addToCart.isHidden = true
+                                self.VC?.addedToCart.isHidden = true
+                            }
                         }else{
                             
-                            for catalogueId in self.myCartListArray{
-                                if self.VC?.selectedCatalogueIds == catalogueId.catalogueId{
+//                            for data in self.myCartListArray{
+//                                self.totalCartValue = data.sumOfTotalPointsRequired ?? 0
+//                                print(self.totalCartValue, "TotalValue")
+                                let filterCategory = self.myCartListArray.filter { $0.catalogueId == self.VC?.selectedCatalogueIds}
+                                print(filterCategory.count)
+                                if filterCategory.count > 0 {
                                     
+                                    self.VC?.addedPopUpView.isHidden = true
                                     self.VC?.addToCart.isHidden = true
                                     self.VC?.addedToCart.isHidden = false
-                                    self.VC?.addedToCart.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-                                    self.VC?.addedPopUpView.isHidden = true
                                     self.VC?.addedToPlanner.isHidden = true
                                     self.VC?.addToPlanner.isHidden = true
-                                    break
+                                    
+                                    
                                 }else{
-                                    self.VC?.addedPopUpView.isHidden = true
-                                    self.VC?.addToCart.isHidden = false
-                                    self.VC?.addedToCart.isHidden = true
-                                    self.VC?.addedToPlanner.isHidden = true
-                                    self.VC?.addToPlanner.isHidden = true
+                                    if Int(self.VC!.productPointss) <= Int(self.VC!.redeemablePointsBalance) ?? 0 {
+                                        self.VC?.addedPopUpView.isHidden = true
+                                        self.VC?.addToCart.isHidden = false
+                                        self.VC?.addedToCart.isHidden = true
+                                        self.VC?.addedToPlanner.isHidden = true
+                                        self.VC?.addToPlanner.isHidden = true
+                                    }else{
+                                        self.VC?.addedPopUpView.isHidden = true
+                                        self.VC?.addToCart.isHidden = true
+                                        self.VC?.addedToCart.isHidden = true
+                                        self.VC?.addedToPlanner.isHidden = true
+                                        self.VC?.addToPlanner.isHidden = false
+                                        
+//                                        self.redemptionPlannerList()
+                                    }
                                 }
-                            }
-                            
                         }
                         
                         
@@ -256,11 +279,18 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                         self.plannerListArray = result?.objCatalogueList ?? []
                         print(self.plannerListArray.count, "Planner List Count")
                         if self.plannerListArray.count == 0{
-                          
+                            if self.VC?.productPointss ?? 0 < Int(self.VC?.redeemablePointsBalance ?? "") ?? 0 {
+
+                                self.VC?.addToPlanner.isHidden = true
+                                self.VC?.addedToPlanner.isHidden = true
+                                self.VC?.addToCart.isHidden = false
+                                self.VC?.addedToCart.isHidden = true
+                            }else{
                                 self.VC?.addToPlanner.isHidden = false
                                 self.VC?.addedToPlanner.isHidden = true
                                 self.VC?.addToCart.isHidden = true
                                 self.VC?.addedToCart.isHidden = true
+                            }
 
                         }else{
                             
@@ -273,29 +303,37 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                                 self.VC?.addedToCart.isHidden = true
                                 self.VC?.addedToPlanner.isHidden = false
                             }else{
-                                self.VC?.addToPlanner.isHidden = false
-                                self.VC?.addToCart.isHidden = true
-                                self.VC?.addedToCart.isHidden = true
-                                self.VC?.addedToPlanner.isHidden = true
+                                
+                            if Int(self.VC!.productPointss) <= Int(self.VC!.redeemablePointsBalance) ?? 0 {
+                                    
+                                    let filterCategory = self.myCartListArray.filter { $0.catalogueId == self.VC?.selectedCatalogueIds}
+                                    print(filterCategory.count)
+                                    if filterCategory.count > 0 {
+                                        
+                                        self.VC?.addedPopUpView.isHidden = true
+                                        self.VC?.addToCart.isHidden = true
+                                        self.VC?.addedToCart.isHidden = false
+                                        self.VC?.addedToPlanner.isHidden = true
+                                        self.VC?.addToPlanner.isHidden = true
+                                        
+                                        
+                                    }else{
+                                        self.VC?.addedPopUpView.isHidden = true
+                                        self.VC?.addToCart.isHidden = false
+                                        self.VC?.addedToCart.isHidden = true
+                                        self.VC?.addedToPlanner.isHidden = true
+                                        self.VC?.addToPlanner.isHidden = true
+                                    }
+                                }else{
+                                    self.VC?.addedPopUpView.isHidden = true
+                                    self.VC?.addToCart.isHidden = true
+                                    self.VC?.addedToCart.isHidden = true
+                                    self.VC?.addedToPlanner.isHidden = true
+                                    self.VC?.addToPlanner.isHidden = false
+                                }
                             }
-                            
-                            
-//                            for data in self.plannerListArray{
-//                                 if self.VC?.selectedCatalogueIds == data.catalogueId {
-//                                        self.VC?.addToPlanner.isHidden = true
-//                                        self.VC?.addedToPlanner.isHidden = false
-//                                        self.VC?.addToCart.isHidden = true
-//                                        self.VC?.addedToCart.isHidden = true
-//                                    }else{
-//                                        self.VC?.addToPlanner.isHidden = false
-//                                        self.VC?.addedToPlanner.isHidden = true
-//                                        self.VC?.addToCart.isHidden = true
-//                                        self.VC?.addedToCart.isHidden = true
-//                                    }
-//                            }
                         }
-                            
-                        }
+                    }
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                     }

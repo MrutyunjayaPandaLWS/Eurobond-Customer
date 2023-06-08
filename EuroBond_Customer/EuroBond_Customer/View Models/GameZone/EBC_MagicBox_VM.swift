@@ -13,18 +13,16 @@ class EBC_MagicBox_VM{
     var requestAPIs = RestAPI_Requests()
     
     func magicBoxAPI(paramters: JSON){
-        //LoadingIndicator.sharedInstance.showIndicator()
+        self.VC?.startLoading()
         self.requestAPIs.gamificationSubmit_Post_API(parameters: paramters) { (result, error) in
             if error == nil {
                 if result != nil{
                     DispatchQueue.main.async {
-                        //LoadingIndicator.sharedInstance.hideIndicator()
                         self.VC?.stopLoading()
                         print(result?.returnMessage ?? "")
                     }
                 }else{
                     print("NO RESPONSE")
-                    //LoadingIndicator.sharedInstance.hideIndicator()
                     self.VC?.stopLoading()
                 }
             }else{

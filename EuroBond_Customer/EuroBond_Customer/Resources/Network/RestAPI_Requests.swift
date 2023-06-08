@@ -356,6 +356,21 @@ class RestAPI_Requests {
         
     }
     
+    
+    //    MARK : -  PROFILE UPDATE API
+        func profileUpdate_API(parameters: JSON, completion: @escaping (ProfileUpdateModels?, Error?) -> ()) -> URLSessionDataTask? {
+            return client.load(path: profileDatasave_URLMethod, method: .post, params: parameters) { data, error in
+                do{
+                    if data != nil{
+                        let result1 =  try JSONDecoder().decode(ProfileUpdateModels.self, from: data as! Data)
+                        completion(result1, nil)
+                    }
+                }catch{
+                    completion(nil, error)
+                }
+            }
+        }
+    
     // Help Topic List
     
     func helpTopicListApi(parameters: JSON, completion: @escaping(HelpTopicListModel?, Error?) -> ()) -> URLSessionDataTask?{
@@ -897,5 +912,201 @@ class RestAPI_Requests {
            }
        }
     }
+    // MARK : - RAFFLE CURRENT
+    func myRaffles_Post_API(parameters: JSON, completion: @escaping (MyRafflesModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: raffleCurrent_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(MyRafflesModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    // MARK : - RAFFLE CURRENT
+    func currentRaffles_Post_API(parameters: JSON, completion: @escaping (RafflesCurrentModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: raffleCurrent_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(RafflesCurrentModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    // MARK : - MY LIST TICKETS RAFFLES
+    func myTicketsRaffles_Post_API(parameters: JSON, completion: @escaping (MyRaffleTicketsModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: raffleCurrent_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data, "Submit Raffles Data")
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(MyRaffleTicketsModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    // MARK : - RAFFLE DETAILS WINNERS
+    func myRafflesDetails_Post_API(parameters: JSON, completion: @escaping (MyRafflesDetailsModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: raffleCurrent_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(MyRafflesDetailsModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    // MARK : - SUBMIT RAFFLES
+    func submitraffles_Post_API(parameters: JSON, completion: @escaping (SubmitRafflesModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: submitRaffles_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data, "Submit Raffles Data")
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(SubmitRafflesModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    func getRafflesTicketsListApi(parameters: JSON, completion: @escaping (OnGoingRafflesModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: raffleCurrent_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data, "Submit Raffles Data")
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(OnGoingRafflesModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    func getRafflesTicketsListApi1(parameters: JSON, completion: @escaping (OnGoingRafflesTotalModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: getRafflePurchasedDetails, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(OnGoingRafflesTotalModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+        // MARK : - DASHBOARD 2
+    func customer_Post_API(parameters: JSON, completion: @escaping (CustomerDetailsModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: customer_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(CustomerDetailsModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    // MARK : - ORDER CART
+    func orderCart_Post_API(parameters: JSON, completion: @escaping (OrderCartListModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: orderCart_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(OrderCartListModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    // MARK : - UPDATE CART DETAILS
+    func updatecartDetails_Post_API(parameters: JSON, completion: @escaping (UpdateCartItemsModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: updateCartOrder_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data,"--------Dasfasfasdfasdf")
+               
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(UpdateCartItemsModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    // MARK : - REMOVE CART DETAILS
+    func removecartDetails_Post_API(parameters: JSON, completion: @escaping (RemoveCartItemModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: updateCartOrder_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(RemoveCartItemModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
+    
+    
+    // MARK : - BANK DETAILS
+    func bankDetails_Post_API(parameters: JSON, completion: @escaping (BankTransferDetailsModels?, Error?) -> ()) -> URLSessionDataTask? {
+//        var client1 = WebClient(baseUrl: jSONBaseURL)
+        
+        return client.load(path: bankTransferDetails_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+//                print(data)
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(BankTransferDetailsModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    // MARK : - BANK TRANSFER DETAILS
+    func banksubmit_Post_API(parameters: JSON, completion: @escaping (BankTransferModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: banksubmit_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(BankTransferModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
+    
 }
 

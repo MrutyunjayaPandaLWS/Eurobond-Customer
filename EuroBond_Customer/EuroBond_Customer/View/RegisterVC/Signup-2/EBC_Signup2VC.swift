@@ -31,6 +31,10 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     
     @IBOutlet var uploadGSTTextLbl: UILabel!
     @IBOutlet var uploadFileTextLbl: UILabel!
+    
+    @IBOutlet weak var companyNameTF: UITextField!
+    
+    
     var selectedStateID = -1
     var selectedStateName = ""
     var referralCode = ""
@@ -56,6 +60,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     var strBase64PAN = ""
     var strBase64GST = ""
     var itsFrom = ""
+    var companyName = ""
     var VM = EBC_SignUpVM()
     
     override func viewDidLoad() {
@@ -174,27 +179,28 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
                     ]
                 ],
                 "objcustomer": [
-                    "Title": self.selectTitle,
+                    "title": self.selectTitle,
                     "FirstName": self.firstNames,
                     "LastName": self.lastName,
-                    "Address1": self.address,
+                    "address1": self.address,
                     "customeremail": self.email,
-                    "CustomerMobile": self.mobile,
-                    "CustomerCityId": self.selectedCityId,
-                    "CustomerStateId": self.selectedStateID,
-                    "CustomerZip": self.pincode,
+                    "customermobile": self.mobile,
+                    "customercityid": self.selectedCityId,
+                    "customerstateid": self.selectedStateID,
+                    "customerzip": self.pincode,
                     "IsActive": "1", //hardcoded
                     "MerchantId": "1", //hardcoded
                     "ReferrerCode": self.referralCode,
                     "RegistrationSource": "2", // for IOS=>2, Android=3
-                    "CustomerTypeId": "69",//hardcoded
+                    "customertypeid": "69",//hardcoded
                     "DOB": self.selectedDOB,
                     "LanguageId": self.languageId,
                     "Gender": self.selectedGender
                 ],
-                "ObjCustomerOfficalInfo": [
-                    "OfficialGSTNumber": "\(self.gstTF.text ?? "")",
-                    "GSTDocument": self.strBase64GST
+                "objcustomerofficalinfo": [
+                    "officialgstnumber": "\(self.gstTF.text ?? "")",
+                    "gstdocument": self.strBase64GST,
+                    "CompanyName": "\(self.companyName)"
                 ]
             ] as [String: Any]
             print(parameterJSON)

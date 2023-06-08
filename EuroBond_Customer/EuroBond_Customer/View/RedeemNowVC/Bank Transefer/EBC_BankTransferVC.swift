@@ -36,6 +36,10 @@ class EBC_BankTransferVC: BaseViewController {
     }
     
     @IBAction func selectBankTransferBtn(_ sender: UIButton) {
+        
+        
+        
+        
     }
     
     @IBAction func accountNumberTFEndEdditing(_ sender: UITextField) {

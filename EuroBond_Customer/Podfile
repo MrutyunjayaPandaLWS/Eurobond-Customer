@@ -9,6 +9,8 @@ target 'EuroBond_Customer' do
   pod 'Alamofire', '~> 4.4' 
   pod 'IQKeyboardManagerSwift'
   pod 'DPOTPView'
+  pod 'LanguageManager-iOS'
+  pod 'lottie-ios'
   pod "ImageSlideshow/Alamofire"
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'SlideMenuControllerSwift'
@@ -20,9 +22,9 @@ target 'EuroBond_Customer' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'Firebase/Messaging'
-  pod 'LanguageManager-iOS'
+
   pod 'Firebase/Crashlytics'
-  pod 'lottie-ios'
+
 
   
 end

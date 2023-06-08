@@ -69,26 +69,6 @@ class EBC_LoginVM {
                         ] as [String: Any]
                         print(parameter)
                         self.loginSubmissionApi(parameter: parameter)
-                        
-                        
-                        
-                        
-//                        self.VC?.stopLoading()
-//                        self.VC?.loginBtnStatus = 2
-//                        self.VC?.submitBtn.setTitle("Submit".localiz(), for: .normal)
-//                        self.VC?.otpView.isHidden = false
-//                        self.VC?.submitBtnStatus = 1
-//                        self.VC?.submitButtonTopSpace.constant = 190
-//                        self.VC?.loginSubViewHeight.constant = 429
-//                        self.VC?.membershipIdTF.isEnabled = false
-//                        let parameter = [
-//                            "OTPType": "Enrollment",
-//                            "UserId": -1,
-//                            "MobileNo": self.VC?.membershipIdTF.text ?? "",
-//                            "UserName": "",
-//                            "MerchantUserName": "EuroBondMerchantDemo"
-//                        ] as [String: Any]
-//                        self.getOTPApi(parameter: parameter)
                     }
                 }
             }catch{

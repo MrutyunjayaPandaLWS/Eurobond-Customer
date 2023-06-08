@@ -70,5 +70,13 @@ extension Notification.Name{
     
     
     static let navigateToMain = Notification.Name(rawValue: "navigateToMain")
+    static let savedRaffels = Notification.Name(rawValue: "savedRaffelsDetails")
+    static let removeProductSummary = Notification.Name(rawValue: "removeProductSummary")
+    
+    static let orderSuccess = Notification.Name(rawValue: "orderSuccess")
+    static let navigateToPrevious = Notification.Name(rawValue: "navigateToPrevious")
+    
+    static let removeProduct = Notification.Name(rawValue: "removeProduct")
+    
     
 }
