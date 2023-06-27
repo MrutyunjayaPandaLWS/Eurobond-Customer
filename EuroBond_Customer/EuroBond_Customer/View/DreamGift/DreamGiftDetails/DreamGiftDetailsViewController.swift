@@ -45,6 +45,16 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
     @IBOutlet weak var expireDate: UILabel!
     @IBOutlet weak var ptsRequired: UILabel!
     @IBOutlet weak var removeBTN: UIButton!
+    
+    @IBOutlet weak var noOutBtn: GradientButton!
+    
+    @IBOutlet weak var yesOutBtn: GradientButton!
+    
+    @IBOutlet weak var yesNoView: UIView!
+    
+    @IBOutlet weak var removeDreamGiftLbl: UILabel!
+    
+    
     var giftType = ""
     var giftImage = ""
     var giftName = ""
@@ -81,87 +91,42 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
         self.tdspopints.text = "\(tdsvalue)"
         self.pointsRequired.text = pointsRequires
         print(selectedDreamGiftId, "Dream Gift ID")
-//        removeDreamGiftDetails
         NotificationCenter.default.addObserver(self, selector: #selector(removeGiftDetails), name: Notification.Name.removeDreamGiftDetails, object: nil)
         let receivedImage = giftImage
               print(receivedImage)
               let totalImgURL = productCatalogueImgURL + receivedImage
         dreamGiftImage.sd_setImage(with: URL(string: totalImgURL), placeholderImage: UIImage(named: "ic_default_img"))
-//        //if pointsBalance <= ((Int(pointsRequires) ?? 0) + Int(self.tdsvalue)){
-//        if ((Int(pointsRequires) ?? 0) + Int(tdsvalue)) <= Int(pointsBalance){
-//            print(pointsRequired,"pointsRequired")
-//            print(pointsBalance,"PointBalance")
-//            print(tdsvalue,"TDs")
-//            if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-//                self.dreamGiftMessage.text = "Congratulations! you are eligible to win this existing Dream Gift"
-//            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-//                self.dreamGiftMessage.text = "बधाई! इस मौजूदा ड्रीम गिफ्ट को जीतने के लिए आप लगभग करीब हैं।"
-//            }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-//                self.dreamGiftMessage.text = "অভিনন্দন! আপনি এই বিদ্যমান ড্রিম গিফট জেতার প্রায় কাছাকাছি।"
-//            }else{
-//                self.dreamGiftMessage.text = "అభినందనలు! ఇప్పటికే ఉన్న ఈ డ్రీమ్ గిఫ్ట్ గెలవడానికి మీరు దాదాపు దగ్గరలో ఉన్నారు."
-//            }
-//                self.redeemBTN.isEnabled = true
-////            self.redeemBTN.backgroundColor = UIColor(red: 199/255, green: 34/255, blue: 4/255, alpha: 0.5)
-//            self.redeemBTN.backgroundColor = UIColor(red: 189/255, green: 0/255, blue: 0/255, alpha: 1.0)
-//
-//
-////        }else{
-//            let points = ((Int(pointsRequires) ?? 0) + Int(self.tdsvalue))
-//            print(pointsRequired,"pointsRequired")
-//            print(pointsBalance,"PointBalance")
-//            print(tdsvalue,"TDs")
-//
-//            if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-//                    self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift."
-//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-//                    self.dreamGiftMessage.text = "बधाई! इस मौजूदा ड्रीम गिफ्ट को जीतने के लिए आप लगभग करीब हैं।"
-//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-//                    self.dreamGiftMessage.text = "অভিনন্দন! আপনি এই বিদ্যমান ড্রিম গিফট জেতার প্রায় কাছাকাছি।"
-//                }else{
-//                    self.dreamGiftMessage.text = "అభినందనలు! ఇప్పటికే ఉన్న ఈ డ్రీమ్ గిఫ్ట్ గెలవడానికి మీరు దాదాపు దగ్గరలో ఉన్నారు."
-//                }
-//
-//
-//                self.redeemBTN.isEnabled = false
-////            self.redeemBTN.backgroundColor = UIColor(red: 212/255, green: 74/255, blue: 35/255, alpha: 1.0)
-//            redeemBTN.backgroundColor = UIColor(red: 209/255, green: 209/255, blue: 214/255, alpha: 1.0)
-//        }
-        
-        if self.isRedeemable == 1{
-            print(pointsRequired,"pointsRequired")
+
+        if Int(pointsRequires) ?? 0 <= Int(self.redeemablePointBal){
+            print(pointsRequired ?? 0,"pointsRequired")
             print(pointsBalance,"PointBalance")
             print(tdsvalue,"TDs")
-           // if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
             self.dreamGiftMessage.text = "Congratulations! you are eligible to win this existing Dream Gift".localiz()
-            
-                self.redeemBTN.isEnabled = true
-//            self.redeemBTN.backgroundColor = UIColor(red: 199/255, green: 34/255, blue: 4/255, alpha: 0.5)
+            self.redeemBTN.isEnabled = true
             self.redeemBTN.backgroundColor = UIColor(red: 189/255, green: 0/255, blue: 0/255, alpha: 1.0)
         }else{
-            //if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
             self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift".localiz()
-//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-//                    self.dreamGiftMessage.text = "बधाई! इस मौजूदा ड्रीम गिफ्ट को जीतने के लिए आप लगभग करीब हैं।"
-//                }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-//                    self.dreamGiftMessage.text = "অভিনন্দন! আপনি এই বিদ্যমান ড্রিম গিফট জেতার প্রায় কাছাকাছি।"
-//                }else{
-//                    self.dreamGiftMessage.text = "Congratulations! You are almost near to win this existing Dream Gift."
-//                }
-
-
-                self.redeemBTN.isEnabled = false
-//            self.redeemBTN.backgroundColor = UIColor(red: 212/255, green: 74/255, blue: 35/255, alpha: 1.0)
+            self.redeemBTN.isEnabled = false
             redeemBTN.backgroundColor = UIColor(red: 209/255, green: 209/255, blue: 214/255, alpha: 1.0)
         }
-       
+        self.yesOutBtn.addTarget(self, action: #selector(yesBtnClicked), for: .touchUpInside)
+        self.noOutBtn.addTarget(self, action: #selector(noBtnClicked), for: .touchUpInside)
 
     }
     @objc func removeGiftDetails(){
         self.navigationController?.popViewController(animated: true)
     }
+    @objc func yesBtnClicked(){
+        DispatchQueue.main.async {
+            self.removeDreamGift()
+        }
+        self.yesNoView.isHidden = true
+    }
+    @objc func noBtnClicked(){
+        self.yesNoView.isHidden = true
+    }
     func languagelocalization(){
-
+        self.removeDreamGiftLbl.text = "Do_U_Want_To_Remove".localiz()
             self.redeemablePointsAsOnToday.text = "Redeemable points as on today".localiz() + "\(pointsBalance)"
             self.header.text = "Dream Gift Details".localiz()
             self.existingDate.text = "Created Date".localiz()
@@ -228,7 +193,23 @@ class DreamGiftDetailsViewController: BaseViewController, popUpDelegate, popUpDe
     }
     
     @IBAction func removeButton(_ sender: Any) {
-        removeDreamGift()
+        self.yesNoView.isHidden = false
+        
+//        let alertVC = UIAlertController(title: "Are your sure".localiz(), message: "Do_U_Want_To_Remove".localiz(), preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "Yes".localiz(), style: UIAlertAction.Style.default) {
+//            UIAlertAction in
+//            DispatchQueue.main.async {
+//                self.removeDreamGift()
+//            }
+//        }
+//        let cancelAction = UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.cancel) {
+//            UIAlertAction in
+//        }
+//        alertVC.addAction(okAction)
+//        alertVC.addAction(cancelAction)
+//        self.present(alertVC, animated: true, completion: nil)
+        
+        
     }
     
     func removeDreamGift(){

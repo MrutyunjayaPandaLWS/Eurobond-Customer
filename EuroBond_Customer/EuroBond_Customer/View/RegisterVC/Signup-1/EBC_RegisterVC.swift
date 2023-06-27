@@ -52,6 +52,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.stateTF.textColor = .darkGray
         self.selectedStateID = vc.stateId
         self.selectedCityId = -1
+        self.cityTF.text = ""
         self.cityTF.placeholder = "Select City".localiz()
         print(vc.stateName)
     }
@@ -157,8 +158,8 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
         self.genderTF.placeholder = "Select gender".localiz()
         self.prefferedLanguageTF.placeholder = "Select Language".localiz()
         self.signUpLbl.text = "SignUp".localiz()
-        self.enterCompanyNameTF.placeholder = "Enter company name".localiz()
-        self.companyNameTitleLbl.text = "Company Name".localiz()
+        //self.enterCompanyNameTF.placeholder = "Enter company name".localiz()
+        //self.companyNameTitleLbl.text = "Company Name".localiz()
     }
     
     
@@ -244,13 +245,15 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
             self.view.makeToast("Please select title".localiz(), duration: 2.0, position: .bottom)
         }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
             self.view.makeToast("Enter first name".localiz(), duration: 2.0, position: .bottom)
-        }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
+        }else if self.lastNameTF.text!.count == 0 || self.lastNameTF.text == "  "{
             self.view.makeToast("Enter last name".localiz(), duration: 2.0, position: .bottom)
-        }else if self.nameTF.text!.count == 0 || self.nameTF.text == "  "{
+        }else if self.emailTF.text!.count == 0 || self.emailTF.text == "  "{
             self.view.makeToast("Enter Email".localiz(), duration: 2.0, position: .bottom)
-        }else if self.enterCompanyNameTF.text!.count == 0{
-            self.view.makeToast("Enter company name".localiz(), duration: 2.0, position: .bottom)
-        }else if self.mobileTF.text?.count == 0{
+        }
+//        else if self.enterCompanyNameTF.text!.count == 0{
+//            self.view.makeToast("Enter company name".localiz(), duration: 2.0, position: .bottom)
+//        }
+        else if self.mobileTF.text?.count == 0{
             self.view.makeToast("EnterMobileNumber".localiz(), duration: 2.0, position: .bottom)
         }else if self.addressTF.text?.count == 0{
             self.view.makeToast("Enter address".localiz(), duration: 2.0, position: .bottom)
@@ -287,7 +290,7 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
             vc.email = self.emailTF.text ?? ""
             vc.selectedDOB = self.selectedDOB
             vc.referralCode = self.referralCode
-            vc.companyName = self.enterCompanyNameTF.text ?? ""
+//            vc.companyName = self.enterCompanyNameTF.text ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         }
         
@@ -326,9 +329,6 @@ class EBC_RegisterVC: BaseViewController, DropdownDelegate, DateSelectedDelegate
       }
         return false
     }
-        
-
-    
-    
+   
     
 }

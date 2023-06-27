@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-
+import LanguageManager_iOS
 class RafflesDetails_VC: UIViewController{
 
     @IBOutlet var descriptionlabel: UILabel!
@@ -44,6 +44,7 @@ class RafflesDetails_VC: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.VM.VC = self
+        
         self.descriptionlabel.text = self.raffleDetails[0].raffelCampaignDescription ?? ""
         self.ticketPointslabel.text = "\(self.raffleDetails[0].pointsPerTicket ?? 0)"
         let x = (self.raffleDetails[0].validityTo ?? "").split(separator: " ")
@@ -83,7 +84,7 @@ class RafflesDetails_VC: UIViewController{
     
     
     func localization(){
-        self.rafflesHeadingLbl.text = "Raffles".localiz()
+        self.rafflesHeadingLbl.text = "RaffleDetail".localiz()
         self.raffleNameLbl.text = "Raffle name".localiz()
         self.validTillHeadingLbl.text = "Valid till".localiz()
         self.ticketPointsHeadingLBl.text = "Ticket points".localiz()

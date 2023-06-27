@@ -160,5 +160,52 @@ class EBC_FabricatedDashBoardVM{
             }
         }
     }
-    
+    func profileImageUpdate(parameter: JSON){
+        
+        self.requestAPIs.imageSavingAPI(parameters: parameter) { (result, error) in
+            
+            if error == nil{
+                
+                if result != nil{
+                    DispatchQueue.main.async {
+                        print(result?.returnMessage ?? "", "ReturnMessage")
+                        if result?.returnMessage ?? "" == "1"{
+                            DispatchQueue.main.async{
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
+                                vc.descriptionInfo = "Profile image updated successfully".localiz()
+                                vc.itsComeFrom = "ProfileImage"
+                                vc.modalPresentationStyle = .overFullScreen
+                                vc.modalTransitionStyle = .coverVertical
+                                self.VC?.present(vc, animated: true)
+                            }
+                        }else{
+                            DispatchQueue.main.async{
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
+                                vc.descriptionInfo = "Profile image updation failed".localiz()
+                                vc.itsComeFrom = "ProfileImage"
+                                vc.modalPresentationStyle = .overFullScreen
+                                vc.modalTransitionStyle = .coverVertical
+                                self.VC?.present(vc, animated: true)
+                            }
+                        }
+                        self.VC?.stopLoading()
+                    }
+                    
+                    
+                }else{
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                    }
+                    
+                }
+                
+            }else{
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                }
+                
+            }
+        }
+    }
+
 }

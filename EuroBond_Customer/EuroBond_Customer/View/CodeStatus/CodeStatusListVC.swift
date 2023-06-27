@@ -110,7 +110,7 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
     }
     
     @IBAction func headerCheckBoxBTN(_ sender: Any) {
-        
+        self.codesCollectionsArray.removeAll()
         if self.headerCheckBox.currentImage == UIImage(named: "check-box") {
             self.codesCollectionsArray.removeAll()
             self.querySummary.removeAll()
@@ -121,6 +121,7 @@ class CodeStatusListVC: BaseViewController, CheckBoxSelectionDelegate, FilterDel
                 self.headerQuestionMark.isHidden = false
                 self.headerNotes.isHidden = false
                 self.codesCollectionsArray.append(SelectedCodeModels(uplodedCode: data.uploadedCode, codeStatus: data.codeStatus, codeUploadedDate: data.codeUploadedDate, isSelected: data.isSelected))
+                
             }
             self.headerCheckBox.setImage(UIImage(named: "rectangle-2"), for: .normal)
         } else {

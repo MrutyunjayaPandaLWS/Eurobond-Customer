@@ -15,6 +15,10 @@ class EBC_RedeemNowVC: BaseViewController {
     @IBOutlet weak var balanceLbl: UILabel!
     @IBOutlet weak var titleVC: UILabel!
     @IBOutlet weak var segmentController: UISegmentedControl!
+    
+    @IBOutlet weak var PercentageInfoLbl: UILabel!
+    
+    
     var container: ContainerViewController!
     var flags = "1"
     var requestAPIs = RestAPI_Requests()
@@ -41,6 +45,7 @@ class EBC_RedeemNowVC: BaseViewController {
     }
     
     func localizSetup(){
+        self.PercentageInfoLbl.text = "percentageValue".localiz()
         self.titleVC.text = "Redemption Catalogue".localiz()
         segmentController.setTitle("Physical Products".localiz(), forSegmentAt: 0)
         segmentController.setTitle("eVoucher".localiz(), forSegmentAt: 1)
@@ -73,14 +78,20 @@ class EBC_RedeemNowVC: BaseViewController {
     @IBAction func selectSegmentController(_ sender: UISegmentedControl) {
         if segmentController.selectedSegmentIndex == 0{
             container.segueIdentifierReceivedFromParent("first")
+            self.eurosLbl.text = "POINTS".localiz()
+            self.balanceLbl.text = "\(self.redeemablePointBal)"
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmentController.setTitleTextAttributes(titleTextAttributes, for: .selected)
         }else if segmentController.selectedSegmentIndex == 1{
             container.segueIdentifierReceivedFromParent("second")
+            self.eurosLbl.text = "Rupees".localiz()
+            self.balanceLbl.text = "\(self.redeemableEncashBalance)"
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmentController.setTitleTextAttributes(titleTextAttributes, for: .selected)
         }else{
             container.segueIdentifierReceivedFromParent("third")
+            self.eurosLbl.text = "Rupees".localiz()
+            self.balanceLbl.text = "\(self.redeemableEncashBalance)"
             let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
             segmentController.setTitleTextAttributes(titleTextAttributes, for: .selected)
         }

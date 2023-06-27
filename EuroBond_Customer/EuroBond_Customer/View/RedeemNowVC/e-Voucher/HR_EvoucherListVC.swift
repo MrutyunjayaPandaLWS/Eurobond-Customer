@@ -26,7 +26,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
 //            if cell.amountTF.text?.count == 0{
 //                self.alertmsg(alertmsg: "Enter amount to redeem".localiz(), buttonalert: "OK")
 //            }else{
-            let totalPts = UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""
+            let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
             print(totalPts)
             let finalPts = Double(totalPts)
             print(finalPts)
@@ -82,7 +82,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
             if cell.amountBTN.currentTitle == "Amount"{
                 self.alertmsg(alertmsg: "Select Amount to Redeem", buttonalert: "ok".localiz())
             }else{
-                if Int((UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""))! >= self.selectedPoints{
+                if Int((UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""))! >= self.selectedPoints{
                     
                     DispatchQueue.main.async {
                         let alertVC = UIAlertController(title: "Are your sure".localiz(), message: "Do you Want to Redeem".localiz(), preferredStyle: .alert)
@@ -136,7 +136,7 @@ class HR_EvoucherListVC: BaseViewController, popUpAlertDelegate, EvoucherProduct
     let VM = HR_EVoucherListVM()
     var selectedPoints = 0
     var productcodeselected = ""
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? ""
     var mobilenumber = UserDefaults.standard.string(forKey: "Mobile") ?? ""
     var emailid = UserDefaults.standard.string(forKey: "CustomerEmail") ?? ""
     var firstname = UserDefaults.standard.string(forKey: "FirstName") ?? ""
@@ -213,7 +213,7 @@ extension HR_EvoucherListVC: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.productName.text = self.VM.evoucherListingArray[indexPath.row].productName ?? ""
         let urlt = URL(string: "\(self.VM.evoucherListingArray[indexPath.row].productImage ?? "")")
         print(urlt)
-        cell.productImage.sd_setImage(with: urlt, placeholderImage: #imageLiteral(resourceName: "ic_default_img"))
+        cell.productImage.sd_setImage(with: urlt, placeholderImage: #imageLiteral(resourceName: "dashboardLogo"))
         //cell.productRange.text = "Range \(self.VM.evoucherListingArray[indexPath.row].min_points ?? "") - \(self.VM.evoucherListingArray[indexPath.row].max_points ?? "")"
         cell.productRange.text = " ₹ 1000"
         cell.productRange.textColor = .black

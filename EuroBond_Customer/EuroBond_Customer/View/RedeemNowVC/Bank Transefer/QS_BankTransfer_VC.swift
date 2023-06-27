@@ -24,12 +24,12 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
     @IBOutlet var amount: UITextField!
 //    @IBOutlet var pointsLabel: UILabel!
 //    @IBOutlet var redeemablebalance: UILabel!
-//    @IBOutlet var bankTransferHeadingLabel: UILabel!
+    @IBOutlet var bankTransferHeadingLabel: UILabel!
     @IBOutlet var transferPointsHeadingLabel: UILabel!
     //@IBOutlet var accountDetailsHeadingLabel: UILabel!
     @IBOutlet var accountNumberHeadingLabel: UILabel!
     @IBOutlet var accountNameHeadingLabel: UILabel!
-    //@IBOutlet var bankNameHeadingLabel: UILabel!
+    @IBOutlet var bankNameHeadingLabel: UILabel!
     @IBOutlet var ifscCodeHeadingLabel: UILabel!
     @IBOutlet var noteLabel: UILabel!
     @IBOutlet var transferButton: UIButton!
@@ -42,31 +42,36 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
     @IBOutlet var rejectedView: UIView!
     @IBOutlet var bankDetialsOUTBtn: UIButton!
     
+    @IBOutlet weak var popUpImage: UIImageView!
     
-
+    @IBOutlet weak var heightOfImage: NSLayoutConstraint!
+    @IBOutlet weak var widthOfImage: NSLayoutConstraint!
+    
     var vm = QS_BankTransfer_VM()
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var loyaltyID = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
-    var redbal = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? "0"
+    var redbal = UserDefaults.standard.string(forKey: "redeemableEncashBalance") ?? "0"
+    var verificationStatus = UserDefaults.standard.string(forKey: "verificationStatus") ?? "0"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.vm.VC = self
-        self.amount.delegate = self
-        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-            DispatchQueue.main.async{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
-                vc!.delegate = self
-                vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet. Please check your internet connection".localiz()
-                vc!.modalPresentationStyle = .overCurrentContext
-                vc!.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
-            }
-        }else{
+
+//        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+//            DispatchQueue.main.async{
+//                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
+//                vc!.delegate = self
+//                vc!.titleInfo = ""
+//                vc!.descriptionInfo = "No Internet. Please check your internet connection".localiz()
+//                vc!.modalPresentationStyle = .overCurrentContext
+//                vc!.modalTransitionStyle = .crossDissolve
+//                self.present(vc!, animated: true, completion: nil)
+//            }
+//        }else{
+            self.vm.VC = self
+            self.amount.delegate = self
             self.vm.bankDetailsAPI(actorID: self.userID)
             self.amount.keyboardType = .numberPad
-        }
+//        }
 //        self.pointsLabel.text = "\("Points".localiz()) \(redbal)"
         NotificationCenter.default.addObserver(self, selector: #selector(handlepopupdateclose), name: Notification.Name.showPopUp, object: nil)
         localization()
@@ -82,7 +87,7 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
        // self.accountDetailsHeadingLabel.text = "Your_Account_Details".localiz()
         self.accountNumberHeadingLabel.text = "Account_Number".localiz()
         self.accountNameHeadingLabel.text = "Account_Holder_Name".localiz()
-        //self.bankNameHeadingLabel.text = "Bank_Name".localiz()
+        self.bankNameHeadingLabel.text = "Bank_Name".localiz()
         self.ifscCodeHeadingLabel.text = "IFSC_Code".localiz()
         self.amount.placeholder = "Enter_amount".localiz()
         self.transferButton.setTitle("Transfer".localiz(), for: .normal)
@@ -112,7 +117,9 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
 //        self.navigationController?.popViewController(animated: true)
 //    }
     @IBAction func transferButton(_ sender: Any) {
-        
+    
+        if self.verificationStatus == "1" {
+            
         if self.amount.text == ""{
             self.alertmsg(alertmsg:"Enter amount to Transfer".localiz(), buttonalert: "OK".localiz())
         }else if Int(self.amount.text ?? "0")! <= 99{
@@ -142,6 +149,9 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
                 }
             }
         }
+        }else{
+            self.view.makeToast("Your account is an verification pending cantact the administator".localiz(), duration: 2.0,position: .bottom)
+        }
     }
     
     
@@ -158,6 +168,17 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
 //        self.present(vc!, animated: true, completion: nil)
         
         //MyProfileandBankDetailsVC
+        
+    }
+    
+    
+    func myProfileApi(UserID: String){
+        let parameter = [
+            "CustomerId": UserID,
+            "ActionType": "6"
+        ] as [String: Any]
+        print(parameter)
+        self.vm.myProfileListApi2(parameter: parameter)
         
     }
     

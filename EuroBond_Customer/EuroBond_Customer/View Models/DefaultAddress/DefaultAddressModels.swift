@@ -35,7 +35,7 @@ class DefaultAddressModels{
 //                        self.VC?.selectedpincode = self.defaultAddressArray[0].zip ?? "-"
 //                        self.VC?.selectedCountryId = self.defaultAddressArray[0].countryId ?? 0
 //                        self.VC?.selectedCountry = self.defaultAddressArray[0].countryName ?? "-"
-                        
+                        self.VC?.selectedname = response?.lstCustomerJson?[0].firstName ?? ""
                         self.VC?.stateID = response?.lstCustomerJson?[0].stateId ?? -1
                         self.VC?.mobile = response?.lstCustomerJson?[0].mobile ?? ""
                         self.VC?.address1 = response?.lstCustomerJson?[0].address1 ?? "-"

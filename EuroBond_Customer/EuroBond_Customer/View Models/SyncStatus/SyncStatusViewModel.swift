@@ -14,6 +14,7 @@ class SyncStatusViewModel{
     
     func syncStatusListingAPI(parameters: JSON){
         self.VC?.codesCollectionsArray.removeAll()
+        self.VC?.selectedDataArray.removeAll()
         self.VC?.startLoading()
         self.requestAPIs.syncCodeListApi(parameters: parameters) { (result, error) in
             if error == nil{

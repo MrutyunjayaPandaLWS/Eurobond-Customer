@@ -34,7 +34,7 @@ class Raffles_VC: BaseViewController, RaffleDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        if self.isComeFrom == "OnGoingRaffle"{
+        if self.isComeFrom == "OnGoingRaffle" || self.isComeFrom == "OnGoingRaffles"{
             self.segmentedControll.selectedSegmentIndex = 0
             let parameterJSON = [
                 "ActionType":2,
@@ -97,6 +97,7 @@ class Raffles_VC: BaseViewController, RaffleDelegate {
         DispatchQueue.main.async{
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LINC_CurrentraffleDetails_VC") as? LINC_CurrentraffleDetails_VC
             vc!.raffleDetails.append(self.VM.currentRafflesArray[tappedIndexPath.item])
+            vc!.quantityCount = Int(self.VM.currentRafflesArray[tappedIndexPath.item].quantity ?? "") ?? 0
             vc!.itsFrom = "OnGoingRaffles"
         self.navigationController?.pushViewController(vc!, animated: true)
         }
@@ -105,6 +106,8 @@ class Raffles_VC: BaseViewController, RaffleDelegate {
             DispatchQueue.main.async{
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RafflesDetails_VC") as? RafflesDetails_VC
                 vc?.raffleDetails.append(self.VM.myRafflesArray[tappedIndexPath.item])
+//                vc?.totalTicketBuyed = Int(self.VM.currentRafflesArray[tappedIndexPath.item].quantity ?? "") ?? 0
+//                vc?.totalAmountOftickets = Int(self.VM.currentRafflesArray[tappedIndexPath.item].pointsPerTicket ?? 0)
             self.navigationController?.pushViewController(vc!, animated: true)
             }
         }
@@ -173,7 +176,7 @@ extension Raffles_VC : UICollectionViewDelegate, UICollectionViewDataSource{
             }else{
                 let attrs1 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.gray]
 
-                    let attrs2 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)]
+                    let attrs2 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)]
 
                     let attributedString1 = NSMutableAttributedString(string:"Status: ", attributes:attrs1)
 
@@ -185,7 +188,7 @@ extension Raffles_VC : UICollectionViewDelegate, UICollectionViewDataSource{
             let transformer = SDImageResizingTransformer(size: CGSize(width: (self.raffleCollectionView.frame.width / 2) - 10, height: 250), scaleMode: .fill)
             var imageURl = self.VM.myRafflesArray[indexPath.item].bannerUrl ?? ""
             print(imageURl)
-            cell?.raffleButton.setTitle("View Details", for: .normal)
+            cell?.raffleButton.setTitle("View", for: .normal)
             if imageURl != ""{
                 let filteredURLArray = imageURl.split(separator: "~")
                 let urltoUse = String(rafflesURL + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")

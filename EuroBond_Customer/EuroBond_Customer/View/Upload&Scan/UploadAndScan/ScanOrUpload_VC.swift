@@ -42,6 +42,8 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     
     
     @IBOutlet var syncStatusWithoutInternet: LottieAnimationView!
+    
+    @IBOutlet weak var scannerLimitMessageLbl: UILabel!
     @IBOutlet var syncStatusMessageLbl: UILabel!
     
     
@@ -134,7 +136,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
  
     func languagelocalization(){
         playAnimation()
-        self.syncStatusMessageLbl.text = "Scan/upload limit exceeded.sync pending codes in WI-FI/Mobile data or clear processed codes !".localiz()
+        self.scannerLimitMessageLbl.text = "Scanuploadlimitexceeded".localiz()
         syncNowOutBTN.setTitle("SYNC NOW".localiz(), for: .normal)
         syncLaterOutBTN.setTitle("SYNC LATER".localiz(), for: .normal)
         self.header.text = "Upload".localiz()
@@ -311,6 +313,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             ]
             print(self.parameterJSON ?? "")
             
+            print(scanQRCodeButton.currentTitle,"sldkmsdlk")
             if self.scanQRCodeButton.currentTitle == "Upload QR Code".localiz() ||  self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" ||  self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" ||  self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
                 self.isFrom = 1
                 self.session.stopRunning()
@@ -425,6 +428,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                        for QrcodeData in self.uploadedCodes {
                            if QrcodeData.code == QRCodes.qrCode{
                                print(QRCodes.qrCode ?? "", "Deleted")
+                               print(QrcodeData.code?.count,"kdjhkjdb")
                                persistanceservice.context.delete(QrcodeData)
                                persistanceservice.saveContext()
                                self.fetchDetails2()
@@ -559,11 +563,11 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                         }else{
                             if self.codeLIST.count <= 19{
                                 
-                                if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-                                    DispatchQueue.main.async{
-                                        self.withoutInternetHoleView.isHidden = false
-                                    }
-                                }else{
+//                                if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+//                                    DispatchQueue.main.async{
+//                                        self.withoutInternetHoleView.isHidden = false
+//                                    }
+//                                }else{
                                     let date = Date()
                                     let formatter = DateFormatter()
                                     formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
@@ -576,7 +580,7 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                     persistanceservice.saveContext()
                                     self.fetchDetails()
                                     self.restartScanning()
-                                }
+//                                }
                             }else{
                                 if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
                                     DispatchQueue.main.async{

@@ -123,7 +123,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
         self.zipTF.delegate = self
         self.mobileTF.delegate = self
         self.enterNameTF.text = selectedname
-        self.enterNameTF.isEnabled = false
+        self.enterNameTF.isEnabled = true
         self.mobileTF.isEnabled = true
         self.mobileTF.text = selectedmobile
         self.emailTF.text = selectedemail

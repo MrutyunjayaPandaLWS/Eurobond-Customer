@@ -229,8 +229,7 @@ class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate, popUpAlertDelegat
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
                     NotificationCenter.default.post(name: .CodeSubmission, object: nil)
                     
-                }
-                )}
+                })}
         }
        
     }

@@ -39,6 +39,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func setHomeAsRootViewController(){
+        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+            LanguageManager.shared.setLanguage(language: .en)
+
+        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+            LanguageManager.shared.setLanguage(language: .hi)
+
+        }else{
+            LanguageManager.shared.setLanguage(language: .en)
+        }
         IQKeyboardManager.shared.enable = true
         let leftVC = storyboard.instantiateViewController(withIdentifier: "EBC_SideMenuVC") as! EBC_SideMenuVC
         let homeVC = storyboard.instantiateViewController(withIdentifier: "EBC_DashboardVC") as! EBC_DashboardVC
@@ -61,6 +70,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          }
     
     func setHomeAsRootViewController2(){
+        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+            LanguageManager.shared.setLanguage(language: .en)
+
+        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+            LanguageManager.shared.setLanguage(language: .hi)
+
+        }else{
+            LanguageManager.shared.setLanguage(language: .en)
+        }
         IQKeyboardManager.shared.enable = true
         let homeVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_Dashboard_2_VC") as! EBC_Dashboard_2_VC
         nav = UINavigationController(rootViewController: homeVC)

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LanguageManager_iOS
 
 class ViewwillTicketsViewController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource{
     

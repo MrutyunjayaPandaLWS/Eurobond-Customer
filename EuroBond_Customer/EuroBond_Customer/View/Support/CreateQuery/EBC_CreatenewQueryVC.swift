@@ -45,13 +45,14 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
     let picker = UIImagePickerController()
     var strBase64 = ""
     var fileType = ""
+    var buttonStatus = 0
     var VM = EBC_QuerySubmissionVM()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
         picker.delegate = self
-        querySummaryTV.delegate = self
-        queryDetailsTV.delegate = self
+        self.querySummaryTV.delegate = self
+        self.queryDetailsTV.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(navigateToPrevious), name: Notification.Name.navigateToQueryList, object: nil)
         langLocaliz()
         if self.isFrom == 21{
@@ -67,6 +68,7 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
             self.querySummaryHeightConstraints.constant = self.querySummaryTV.contentSize.height
            
         }
+//        self.submitQueryBtn.addTarget(self, action: #selector(submitQuerryDetails), for: .touchUpInside)
     }
     
     @objc func navigateToPrevious(){
@@ -82,8 +84,22 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
         self.submitQueryBtn.setTitle("Submit Query".localiz(), for: .normal)
         self.browseImageBtn.setTitle("Browse Image".localiz(), for: .normal)
         self.createQueryInfoLbl.text = "createQueryInfo".localiz()
+        self.querySummaryTV.text = "Enter query summary".localiz()
+        self.querySummaryTV.textColor = .lightGray
+        self.queryDetailsTV.text = "Enter query details".localiz()
+        self.queryDetailsTV.textColor = .lightGray
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if self.querySummaryTV.text == "Enter query summary".localiz(){
+            self.querySummaryTV.text = ""
+            self.querySummaryTV.textColor = .lightGray
+            self.querySummaryTV.textColor = .black
+        }else if self.queryDetailsTV.text == "Enter query details".localiz(){
+            self.queryDetailsTV.text = ""
+            self.queryDetailsTV.textColor = .black
+        }
+    }
     
     @IBAction func selectBackBtn(_ sender: UIButton) {
         if self.isFrom == 21 || self.isFrom == 2{
@@ -120,32 +136,71 @@ class EBC_CreatenewQueryVC: BaseViewController, DropdownDelegate {
     }
     
     @IBAction func selectQueryBtn(_ sender: Any) {
-        
+        if self.buttonStatus == 0 {
         if self.helpTopicId == -1{
             self.view.makeToast("Select Query Topic".localiz(), duration: 2.0, position: .center)
-        }else if self.querySummaryTV.text!.count == 0{
+        }else if self.querySummaryTV.text!.count == 0 || self.querySummaryTV.text == "Enter query summary".localiz(){
             self.view.makeToast("Enter query summary".localiz(), duration: 2.0, position: .center)
-        }else if self.queryDetailsTV.text!.count == 0{
+        }else if self.queryDetailsTV.text!.count == 0 || self.queryDetailsTV.text == "Enter query details".localiz(){
             self.view.makeToast("Enter query details".localiz(), duration: 2.0, position: .center)
         }else{
-            let parameter = [
-                "ActionType": "0",
-                "ActorId": self.userId,
-                "HelpTopicID": self.helpTopicId,
-                "IsQueryFromMobile": "true",
-                "ImageUrl": self.strBase64,
-                "LoyaltyID": self.loyaltyId,
-                "Mobile": self.customerMobileNumber!,
-                "QueryDetails": self.queryDetailsTV.text ?? "",
-                "QuerySummary": self.querySummaryTV.text ?? "",
-                "QuerySummaryMultipleQuery": "",
-                "SourceType": "3"
-            ] as [String: Any]
-            print(parameter)
-            self.VM.newQuerySubmissionApi(parameter: parameter)
+            self.buttonStatus = 1
+            self.submitQuerryAPI()
         }
-        
     }
+
+    }
+    
+    
+    
+    func submitQuerryAPI(){
+        let parameter = [
+            "ActionType": "0",
+            "ActorId": self.userId,
+            "HelpTopicID": self.helpTopicId,
+            "IsQueryFromMobile": "true",
+            "ImageUrl": self.strBase64,
+            "LoyaltyID": self.loyaltyId,
+            "Mobile": self.customerMobileNumber!,
+            "QueryDetails": self.queryDetailsTV.text ?? "",
+            "QuerySummary": self.querySummaryTV.text ?? "",
+            "QuerySummaryMultipleQuery": "",
+            "SourceType": "3"
+        ] as [String: Any]
+        print(parameter)
+        self.VM.newQuerySubmissionApi(parameter: parameter)
+    }
+    
+    
+//    @objc func submitQuerryDetai  ls(){
+//        self.submitQueryBtn.isEnabled = false
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//            if self.helpTopicId == -1{
+//                self.view.makeToast("Select Query Topic".localiz(), duration: 2.0, position: .center)
+//            }else if self.querySummaryTV.text!.count == 0 || self.querySummaryTV.text == "Enter query summary".localiz(){
+//                self.view.makeToast("Enter query summary".localiz(), duration: 2.0, position: .center)
+//            }else if self.queryDetailsTV.text!.count == 0 || self.queryDetailsTV.text == "Enter query details".localiz(){
+//                self.view.makeToast("Enter query details".localiz(), duration: 2.0, position: .center)
+//            }else{
+//                let parameter = [
+//                    "ActionType": "0",
+//                    "ActorId": self.userId,
+//                    "HelpTopicID": self.helpTopicId,
+//                    "IsQueryFromMobile": "true",
+//                    "ImageUrl": self.strBase64,
+//                    "LoyaltyID": self.loyaltyId,
+//                    "Mobile": self.customerMobileNumber!,
+//                    "QueryDetails": self.queryDetailsTV.text ?? "",
+//                    "QuerySummary": self.querySummaryTV.text ?? "",
+//                    "QuerySummaryMultipleQuery": "",
+//                    "SourceType": "3"
+//                ] as [String: Any]
+//                print(parameter)
+//                self.VM.newQuerySubmissionApi(parameter: parameter)
+//            }
+//        }
+//
+//    }
     
 }
 extension EBC_CreatenewQueryVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{

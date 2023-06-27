@@ -156,7 +156,7 @@
 "Category" = "वर्ग-";
 "catery" = "वर्ग";
 "Already added to planner" = "प्लानर में पहले ही जोड़ा जा चुका है";
-"YourAccountUnverified" = "आपका खाता असत्यापित है! रिडेम्पशन कैटलॉग तक पहुँचने के लिए कृपया व्यवस्थापक से संपर्क करें";
+"YourAccountUnverified" = "आपका खाता सत्यापन के लिए अपूर्ण है, व्यवस्थापक से संपर्क करें!";
 "NeedSufficientPointBalance" = "पर्याप्त प्वाइंट बैलेंस चाहिए";
 "Search Products" = "उत्पादों को खोजना";
 "Low To High" = "नीचे से उच्चा";
@@ -404,3 +404,76 @@
 "Profile image updation failed" = "प्रोफ़ाइल चित्र अद्यतन करना विफल रहा";
 "Allow Camera Access" = "कैमरा एक्सेस की अनुमति दें";
 "Enter company name" = "कंपनी का नाम दर्ज करें";
+
+
+"Rupees" = "रुपये";
+"Your account is an verification pending cantact the administator" = "आपका खाता सत्यापन के लिए अपूर्ण है, व्यवस्थापक से संपर्क करें!";
+"Scanuploadlimitexceeded" = "स्कैन/अपलोड सीमा पार हो गई है. वाई-फाई/मोबाइल डेटा में पेंडिग कोड सिंक करें या संसाधित कोड साफ़ करें !";
+"Bank transfer request has been submitted successfully" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
+"Entered amount has been transferred to your bank account" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
+"Bank Transfer limit Exceeded" = "बैंक हस्तांतरण सीमा पार हो गई";
+"playAndWin" = "खेलो और जीतो";
+"percentageValue" = "आपके उपलब्ध यूरो का केवल 90% ही प्रतिदेय हो सकता है।";
+
+
+
+"Raffles" = "रैफल्स";
+"Transfer_points_to_Bank_Account" = "Eurobond Euros को अपने पंजीकृत बैंक खाते में स्थानांतरित करें";
+"Enter_Account_Number" = "खाता संख्या दर्ज करें";
+"Account_Holder_Name" = "खाता धारक का नाम";
+"Enter_Bank_Name" = "बैंक का नाम दर्ज करें";
+"IFSC_Code" = "IFSC कोड";
+"Enter_amount" = "राशि डालें";
+"Transfer" = "स्थानांतरण";
+"Note" = "टिप्पणी";
+"Minimum_value_can_be_entered" = "न्यूनतम मूल्य 100 दर्ज किया जा सकता है";
+"Denomination_value" = "मूल्यवर्ग 100 के गुणक में होना चाहिए";
+"Enter amount to Transfer" = "स्थानांतरण के लिए राशि दर्ज करें";
+"Entered amount should be in multiple of 100" = "दर्ज राशि 5000 के गुणक में होनी चाहिए";
+"Insufficient points balance" = "अपर्याप्त अंक संतुलन";
+"Point_balance_&_current_point_balance_is" = "पॉइंट बैलेंस 100 से अधिक होना चाहिए, और करंट पॉइंट बैलेंस है";
+"Unfortunately your redemption is failed.Points reducted will be reassigned to you in few working days" = "दुर्भाग्य से आपका रिडेम्पशन विफल हो गया है। कम किए गए अंक कुछ कार्य दिवसों में आपको फिर से सौंप दिए जाएंगे";
+"Points transfer failed. Please try after sometime" = "अंक हस्तांतरण विफल रहा। कृपया कुछ देर बाद प्रयास करें";
+"Enter_Account_Holder_Name" = "खाता धारक का नाम दर्ज करें";
+"AccountHolderName" = "खाता धारक का नाम";
+"AccountNumber" = "खाता संख्या";
+"ConformNumber" = "खाता संख्या की पुष्टि करें";
+"Bank Name" = "बैंक का नाम";
+"IFSC_Code" = "IFSC कोड";
+"verificationStatus" = "सत्यापन की स्थिति";
+"Enter Account Holder Name" = "खाता धारक का नाम दर्ज करें";
+"Enter Account Number" = "खाता संख्या दर्ज करें";
+"Enter Bank Name" = "बैंक का नाम दर्ज करें";
+"Enter IFSC Code" = "IFSC कोड दर्ज करें";
+"Please enter the valid feilds" = "कृपया मान्य क्षेत्र दर्ज करें";
+"Raffle name" = "रैफल नाम";
+"Valid till" = "तक मान्य";
+"Your point balance" = "आपका बिंदु संतुलन";
+"Status" = "दर्जा";
+"Description" = "विवरण";
+"Total Ticket Purchased" = "कुल टिकट खरीदा गया";
+"Total Points Redeemed" = "कुल अंक भुनाए गए";
+"Raffle Qty" = "भाग्य क्रीड़ा मात्रा";
+"Buy Ticket" = "टिकट खरीदें";
+"Ticket points" = "टिकट अंक";
+"No of ticket purchase" = "टिकट खरीद की संख्या";
+"Point per ticket" = "प्रति टिकट प्वाइंट";
+"Raffle Description" = "रैफल विवरण";
+"View Your Tickets" = "अपने टिकट देखें";
+"Sorry, you have no games to play at the moment !" = "क्षमा करें, इस समय आपके पास खेलने के लिए कोई गेम नहीं है!";
+"Engage more. play more" = "अधिक व्यस्त रहें। अधिक खेलो";
+"Rupees" = "रुपये";
+"Your account is an verification pending cantact the administator" = "आपका खाता सत्यापन में लंबित है, व्यवस्थापक से संपर्क करें";
+"Scanuploadlimitexceeded" = "स्कैन/अपलोड सीमा पार हो गई है। WI-FI/मोबाइल डेटा में लंबित कोड सिंक करें या संसाधित कोड साफ़ करें!";
+"Bank transfer request has been submitted successfully" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
+"Your_Bank_Account_is_not_verified" = "आपके बैंक खाते का सत्यापन लंबित है। कृपया अपने व्यवस्थापक से संपर्क करें।";
+"Bank details not submitted. Please submit bank details" = "बैंक विवरण प्रस्तुत नहीं किया गया। कृपया बैंक विवरण जमा करें";
+"Your verification of your bank account is pending_Please contact your administator" = "आपके बैंक खाते का आपका सत्यापन अस्वीकार कर दिया गया है। कृपया अपना खाता विवरण पुनः सबमिट करें.";
+"Entered amount has been transferred to your bank account" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
+"Bank Transfer limit Exceeded" = "आपकी बैंक हस्तांतरण सीमा पार हो गई है";
+"Attach Account Proof: Please upload the passbook front page or check leaf." = "कृपया पासबुक का फ्रंट पेज या चेक लीफ अपलोड करें.";
+"AttachAccountProof" = "खाता प्रमाण संलग्न करें:";
+
+"Do_U_Want_To_Remove" = "क्या आप वाकई ड्रीम गिफ्ट को हटाना चाहते हैं?";
+"RaffleDetail" = "रैफल्स विवरण";
+"Bank_Name" = "किनारा";

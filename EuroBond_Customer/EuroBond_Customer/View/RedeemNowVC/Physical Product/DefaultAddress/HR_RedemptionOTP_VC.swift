@@ -42,7 +42,7 @@ class HR_RedemptionOTP_VC: BaseViewController, popUpAlertDelegate, UITextFieldDe
     let firstname = UserDefaults.standard.string(forKey: "FirstName") ?? ""
     let merchantUserName = UserDefaults.standard.string(forKey: "MerchantEmail") ?? ""
     var merchanMobile = UserDefaults.standard.string(forKey: "MerchantMobile") ?? ""
-    var pointBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
+    var pointBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? ""
     var OTPforVerification = ""
     var redeemedPoints = 0
     var redemptionRefId = ""

@@ -18,19 +18,17 @@ class EBC_MyEarningsVM{
     
     func myEarningListApi(startIndex: Int, fromDate: String, toDate: String){
         DispatchQueue.main.async {
+            self.myEarningListArray.removeAll()
             self.VC?.startLoading()
         }        
             let parameters = [
                 "ActorId": self.userID,
                 "IsActive": "true",
-                "MerchantId":"1"
-                
-                
-//                "ActorId": self.userID,
-//                "StartIndex": startIndex,
-//                "PageSize": 10,
-//                "JFromDate":fromDate,
-//                "JToDate":toDate
+                "MerchantId":"1",
+                "StartIndex": startIndex,
+                "PageSize": 10,
+                "JFromDate":fromDate,
+                "JToDate":toDate
             ] as [String: Any]
             print(parameters)
         self.requestAPIs.myEarningListApi(parameters: parameters) { (result, error) in

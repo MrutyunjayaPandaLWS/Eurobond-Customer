@@ -7,6 +7,7 @@
 
 
 import UIKit
+import LanguageManager_iOS
 
 class DreamGiftListingViewModel: popUpDelegate1{
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
@@ -71,15 +72,7 @@ class DreamGiftListingViewModel: popUpDelegate1{
                                     vc!.delegate = self
                                     vc!.titleInfo = ""
                                     vc!.itsComeFrom = "DreamGift"
-                                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                                        vc!.descriptionInfo = "Dream Gift has been removed successfully"
-                                     }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                                         vc!.descriptionInfo = "ड्रीम गिफ्ट सफलतापूर्वक हटा दिया गया है"
-                                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                                        vc!.descriptionInfo = "স্বপ্ন উপহার সফলভাবে সরানো হয়েছে"
-                                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
-                                        vc!.descriptionInfo = "Dream Gift has been removed successfully"
-                                      }
+                                    vc!.descriptionInfo = "Dream Gift has been removed successfully".localiz()
                                     vc!.modalPresentationStyle = .overCurrentContext
                                     vc!.modalTransitionStyle = .crossDissolve
                                     self.VC!.present(vc!, animated: true, completion: nil)
@@ -90,15 +83,7 @@ class DreamGiftListingViewModel: popUpDelegate1{
                                     let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as? PopupAlertOne_VC
                                     vc!.delegate = self
                                     vc!.titleInfo = ""
-                                    if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
-                                        vc!.descriptionInfo = "Dream Gift has been removed failed"
-                                     }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
-                                         vc!.descriptionInfo = "ड्रीम गिफ्ट को हटा दिया गया है विफल"
-                                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
-                                        vc!.descriptionInfo = "ড্রিম গিফট ব্যর্থ হয়েছে"
-                                    }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
-                                        vc!.descriptionInfo = "Dream Gift has been removed successfully"
-                                      }
+                                    vc!.descriptionInfo = "Dream Gift has been removed failed".localiz()
                                     vc!.modalPresentationStyle = .overCurrentContext
                                     vc!.modalTransitionStyle = .crossDissolve
                                     self.VC!.present(vc!, animated: true, completion: nil)

@@ -14,30 +14,37 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
     
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
     
-//    var selectedname = ""
-//    var selectedemail = ""
-//    var selectedmobile = ""
-//    var selectedState = ""
-//    var selectedStateID = 0
-//    var selectedCity = ""
-//    var selectedCityID = 0
-//    var selectedaddress = ""
-//    var selectedpincode = ""
-//    var selectedCountryId = 0
-//    var selectedCountry = ""
+//    vc!.stateID = self.stateID
+//    vc!.cityID = self.cityID
+//    vc!.stateName = self.stateName
+//    vc!.cityName = self.cityName
+//    vc!.pincode = self.pincode
+//    vc!.address1 = self.address1
+//    vc!.customerName = self.customerNameLabel.text ?? ""
+//    vc!.mobile = self.customerMobileNumber!
+//    vc!.emailId = self.emailID
+//    vc!.countryId = self.countryID
+//    vc!.countryName = self.countryName
+//    vc!.redeemedPoints = self.totalPoint
+//    vc!.dreamGiftId = self.dreamGiftID
+//    vc!.giftPts = self.totalPoint
+//    vc!.giftName = self.giftName
+//    vc!.contractorName = self.contractorName
+//    vc!.giftStatusId = self.giftStatusId
+//    vc!.redemptionTypeId = self.redemptionTypeId
     
     func updatedAddressDetails(_ vc: HR_EditAddressVC) {
         self.selectedname = vc.selectedname
-        self.selectedemail = vc.selectedemail
-        self.selectedmobile = vc.selectedmobile
-        self.selectedState = vc.selectedState
-        self.selectedStateID = vc.selectedStateID
-        self.selectedCity = vc.selectedCity
-        self.selectedCityID = vc.selectedCityID
-        self.selectedaddress = vc.selectedaddress
-        self.selectedpincode = vc.selectedpincode
-        self.selectedCountryId = 15
-        self.selectedCountry = "India"
+        self.emailID = vc.selectedemail
+        self.customerMobileNumber = vc.selectedmobile
+        self.cityName = vc.selectedState
+        self.stateID = vc.selectedStateID
+        self.cityName = vc.selectedCity
+        self.cityID = vc.selectedCityID
+        self.address1 = vc.selectedaddress
+        self.pincode = vc.selectedpincode
+        self.countryID = 15
+        self.countryName = "India"
       //  self.contractorName = vc.selectedname
         self.customerAddressTV.text = "\(selectedname),\n\(vc.selectedmobile),\n\(vc.selectedaddress),\n\(vc.selectedCity),\n\(vc.selectedState),\n\(self.selectedCountry),\n\(vc.selectedemail),\n\(vc.selectedpincode)"
         print(customerAddressTV.text,"sdjhbsd")
@@ -63,7 +70,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
     var VM = DefaultAddressModels()
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var loyaltyID = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
-    var pointBalance = UserDefaults.standard.double(forKey: "RedeemablePointBalance")
+    var pointBalance = UserDefaults.standard.double(forKey: "OverAllPointBalance")
     let verifiedStatus = UserDefaults.standard.integer(forKey: "VerifiedStatus")
     var checkAccountStatus = UserDefaults.standard.string(forKey: "SemiActiveAccount") ?? ""
     
@@ -161,7 +168,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
     @IBAction func editAddressBtn(_ sender: Any) {
         let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_EditAddressVC") as! HR_EditAddressVC
         vc.delegate = self
-        vc.selectedname = self.customerNameLabel.text ?? ""
+        vc.selectedname = self.selectedname
         vc.selectedemail = self.emailID
         vc.selectedmobile = self.customerMobileNumber!
         vc.selectedState = self.stateName
@@ -209,7 +216,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
                   vc!.cityName = self.cityName
                   vc!.pincode = self.pincode
                   vc!.address1 = self.address1
-                  vc!.customerName = self.customerNameLabel.text ?? ""
+                  vc!.customerName = self.selectedname
                   vc!.mobile = self.customerMobileNumber!
                   vc!.emailId = self.emailID
                   vc!.countryId = self.countryID

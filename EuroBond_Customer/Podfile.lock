@@ -366,6 +366,7 @@ PODS:
   - SDWebImage/Core (5.15.6)
   - SlideMenuControllerSwift (4.0.0)
   - SRScratchView (1.0.0)
+  - SwiftFortuneWheel (1.4.3)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
@@ -386,6 +387,7 @@ DEPENDENCIES:
   - SDWebImage
   - SlideMenuControllerSwift
   - SRScratchView
+  - SwiftFortuneWheel
   - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
@@ -424,6 +426,7 @@ SPEC REPOS:
     - SDWebImage
     - SlideMenuControllerSwift
     - SRScratchView
+    - SwiftFortuneWheel
     - Toast-Swift
 
 SPEC CHECKSUMS:
@@ -461,8 +464,9 @@ SPEC CHECKSUMS:
   SDWebImage: d47d81bea8a77187896b620dc79c3c528e8906b9
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
   SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
+  SwiftFortuneWheel: c6ab36d61fc123cb40930a8bde140cbdcede65b2
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: c6afd2f5ddf07e2a17f51b3e3c3d7b152c92a3eb
+PODFILE CHECKSUM: de836eb4cd04162d447e60623984cc1cd32c429e
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.12.0

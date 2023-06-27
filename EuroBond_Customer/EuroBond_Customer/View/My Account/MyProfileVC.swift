@@ -39,12 +39,25 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
    var VM = EBC_MyProfileVM()
     
     var stateId: String = "0", cityId: String = "0", customerId: String = "0", addressId: String = "0"
+    
+    var acountHolderNameTxt = ""
+    var accountNumberTxt = ""
+    var bankNameTxt = ""
+    var ifscCodetxt = ""
+    var bankPassbookImagetxt = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.myProfileApi(UserID: self.userId)
-        NotificationCenter.default.addObserver(self, selector: #selector(handlepopupStateclose), name: Notification.Name.getProfileDetails, object: nil)
-        localizSetup()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            self.VM.VC = self
+            self.myProfileApi(UserID: self.userId)
+            NotificationCenter.default.addObserver(self, selector: #selector(handlepopupStateclose), name: Notification.Name.getProfileDetails, object: nil)
+            localizSetup()
+        }
     }
     
     @objc func handlepopupStateclose(notification: Notification){
@@ -94,18 +107,24 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
     }
     
     @IBAction func selectEmailTF(_ sender: UITextField) {
-        
-        if self.emailTF.text!.count > 1 {
-            if !isValidEmail(self.emailTF.text ?? "") {
-                self.emailTF.text = ""
-                self.view.makeToast("Enter valid email".localiz(), duration: 2.0, position: .bottom)
-                submitBtn.isHidden = true
-            }else{
-                submitBtn.isHidden = false
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
             }
         }else{
-            self.view.makeToast("Enter email".localiz(), duration: 2.0, position: .bottom)
-            submitBtn.isHidden = true
+            
+            if self.emailTF.text!.count > 1 {
+                if !isValidEmail(self.emailTF.text ?? "") {
+                    self.emailTF.text = ""
+                    self.view.makeToast("Enter valid email".localiz(), duration: 2.0, position: .bottom)
+                    submitBtn.isHidden = true
+                }else{
+                    submitBtn.isHidden = false
+                }
+            }else{
+                self.view.makeToast("Enter email".localiz(), duration: 2.0, position: .bottom)
+                submitBtn.isHidden = true
+            }
         }
     }
     @IBAction func selectDOBBtn(_ sender: Any) {
@@ -140,6 +159,7 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
         self.VM.myProfileListApi(parameter: parameter)
         
     }
+
     
     func profileUpdate(){
         let parameter : [String : Any]  = [
@@ -148,6 +168,7 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
             "ObjCustomerJson": [
                 "CustomerId": self.customerId,
                 "MerchantId": "1",
+                "CountryId": "15",
                 "FirstName": firstNameTF.text ?? "",
                 "LastName": lastNameTF.text ?? "",
                 "Mobile": self.mobileNumberTF.text ?? "",
@@ -157,12 +178,12 @@ class MyProfileVC: BaseViewController, popUpAlertDelegate {
                 "Zip": self.pinCodeTF.text ?? "",
                 "JDOB": self.dobTF.text ?? "",
                 "AddressId": self.addressId,
-                "AcountHolderName": "",
-                "AccountNumber": "",
-                "BankName": "",
-                "IFSCCode": "",
-                "BankPassbookImage": "",
-                "IsMobileRequest":1,
+                "AcountHolderName": "\(self.acountHolderNameTxt)",
+                "AccountNumber": "\(self.accountNumberTxt)",
+                "BankName": "\(self.bankNameTxt)",
+                "IFSCCode": "\(self.ifscCodetxt)",
+                "BankPassbookImage": "\(self.bankPassbookImagetxt)",
+                "IsMobileRequest": 1,
                 "Email": emailTF.text ?? ""
             ]
         ]

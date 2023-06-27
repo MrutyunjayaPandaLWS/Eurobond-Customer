@@ -18,8 +18,9 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
         print(cell.addBTN.tag,"index1")
        // if VM.myCartListArray.count != 0 {
             if cell.addBTN.tag == tappedIndexPath.row{
-                
+                print(redeemablePointsBalance,"dksjndkj")
                   DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+                      self.startLoading()
                 if Int(self.VM.myCartListArray[tappedIndexPath.row].sumOfTotalPointsRequired ?? 0) <= Int(self.redeemablePointsBalance) ?? 0 {
                     let calcValue = Int(self.VM.myCartListArray[tappedIndexPath.row].sumOfTotalPointsRequired ?? 0) + Int(self.VM.myCartListArray[tappedIndexPath.row].pointsPerUnit ?? 0)
                     print(calcValue, "Calculated Values")
@@ -45,8 +46,12 @@ class HR_MyCartVC: BaseViewController, cartDetailsDelegate, popUpAlertDelegate{
                     }
                     
                 }
+                      self.stopLoading()
                 })
            // }
+                DispatchQueue.main.async{
+                    self.stopLoading()
+                }
         }
         self.myCartTableView.reloadData()
     }

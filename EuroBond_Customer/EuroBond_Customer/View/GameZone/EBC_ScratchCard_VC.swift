@@ -28,7 +28,7 @@ class EBC_ScratchCard_VC: UIViewController,SRScratchViewDelegate {
         super.viewDidLoad()
         self.VM.VC = self
         self.scratchedViewShow.isHidden = false
-        self.pointsLabel.text = "\(pointResult) Rewards"
+        self.pointsLabel.text = "\(pointResult) Euros"
         self.scratchImageView.delegate = self
         self.scratchImageView.lineWidth = 40.0
         self.scratchImageView.lineType = .round

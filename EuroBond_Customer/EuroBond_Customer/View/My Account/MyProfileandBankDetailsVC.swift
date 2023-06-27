@@ -42,35 +42,41 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
     var VM = EBC_MyProfileUpdateVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        
-        let imageurl = "\(UserDefaults.standard.string(forKey: "customerImage") ?? "")".dropFirst(1)
-        let imageData = imageurl.split(separator: "~")
-        if imageData.count >= 2 {
-            print(imageData[1],"jdsnjkdn")
-            let totalImgURL = PROMO_IMG1 + (imageData[1])
-            print(totalImgURL, "Total Image URL")
-            self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
         }else{
-            let totalImgURL = PROMO_IMG1 + imageurl
-        print(totalImgURL, "Total Image URL")
-        self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+            self.VM.VC = self
+            
+            let imageurl = "\(UserDefaults.standard.string(forKey: "customerImage") ?? "")".dropFirst(1)
+            let imageData = imageurl.split(separator: "~")
+            if imageData.count >= 2 {
+                print(imageData[1],"jdsnjkdn")
+                let totalImgURL = PROMO_IMG1 + (imageData[1])
+                print(totalImgURL, "Total Image URL")
+                self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
+            }else{
+                let totalImgURL = PROMO_IMG1 + imageurl
+                print(totalImgURL, "Total Image URL")
+                self.myProfileImg.kf.setImage(with: URL(string: totalImgURL),placeholder: UIImage(named: "ic_default_img"))
             }
             picker.delegate = self
-        if self.isComeFrom == "BankTransferRC"{
-            self.personalDetailsLbl.textColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
-            self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
-            self.bankDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
-            self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
-            container.segueIdentifierReceivedFromParent("myProfileBankDetails")
-        }else{
-            self.personalDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
-            self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
-            self.bankDetailsLbl.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-            self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
-            container.segueIdentifierReceivedFromParent("myProfileDetails")
+            if self.isComeFrom == "BankTransferRC"{
+                self.personalDetailsLbl.textColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
+                self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
+                self.bankDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
+                self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
+                container.segueIdentifierReceivedFromParent("myProfileBankDetails")
+            }else{
+                self.personalDetailsLbl.textColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
+                self.personalDetailsLblColor.backgroundColor = #colorLiteral(red: 0.2392156863, green: 0.5098039216, blue: 0.7529411765, alpha: 1)
+                self.bankDetailsLbl.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                self.bankDetailsColor.backgroundColor = #colorLiteral(red: 0.7709710002, green: 0.8818235993, blue: 0.944216311, alpha: 1)
+                container.segueIdentifierReceivedFromParent("myProfileDetails")
+            }
+            langloc()
         }
-        langloc()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

@@ -27,6 +27,8 @@ class LINC_CurrentRafflesDetails_VM{
                         for data in self.currentRafflesArray {
                             if self.VC?.raffelCampaignId == data.raffelCampaignId{
                                 self.VC?.raffelCampaignId = data.raffelCampaignId ?? 0
+                                print(data.noofTicketPurchase)
+                                print(data.ticketPoints)
                                 self.VC?.totalTicketsPurchaseLbl.text = "\(data.noofTicketPurchase ?? 0)"
                                 self.VC?.totalPointsRedeemedLbl.text = "\(data.ticketPoints ?? 0)"
                                 self.VC?.descriptionlabel.text = data.raffelCampaignDescription ?? ""
@@ -55,18 +57,18 @@ class LINC_CurrentRafflesDetails_VM{
                                     self.VC?.buyTicketButton.isEnabled = true
                                 }
                                 
-                                if data.bannerUrl ?? "" != ""{
-                                    let imageURl = data.bannerUrl ?? ""
-                                    let filteredURLArray = imageURl.split(separator: "~")
-                                    let urltoUse = String(profileImageURL + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")
-                                    
-                                    let urlt = URL(string: "\(urltoUse)")
-                                    print(urlt)
-                                    let transformer = SDImageResizingTransformer(size: CGSize(width: (self.VC?.view.frame.width)!, height: 200), scaleMode: .fill)
-                                    self.VC?.raffleImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"), context: [.imageTransformer: transformer])
-                                }else{
-                                    self.VC?.raffleImage.image = UIImage(named: "ic_default_img")
-                                }
+//                                if data.bannerUrl ?? "" != ""{
+//                                    let imageURl = data.bannerUrl ?? ""
+//                                    let filteredURLArray = imageURl.split(separator: "~")
+//                                    let urltoUse = String(rafflesURL + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")
+//
+//                                    let urlt = URL(string: "\(urltoUse)")
+//                                    print(urlt)
+//                                    let transformer = SDImageResizingTransformer(size: CGSize(width: (self.VC?.view.frame.width)!, height: 200), scaleMode: .fill)
+//                                    self.VC?.raffleImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"), context: [.imageTransformer: transformer])
+//                                }else{
+//                                    self.VC?.raffleImage.image = UIImage(named: "ic_default_img")
+//                                }
                             }
                         }
                         
@@ -199,8 +201,10 @@ class LINC_CurrentRafflesDetails_VM{
                         print(self.VC?.raffleListTicketsArray2.count,"- Ticket Count")
                         if self.VC?.raffleListTicketsArray1.count != 0 {
 //                            self.VC?.raffleListTicketsArray2[0].noofTicketPurchase ?? 0)
-                            self.VC?.totalTicketsPurchaseLbl.text = "\(self.VC?.raffleListTicketsArray2[0].noofTicketPurchase ?? 0)"
-                            self.VC?.totalPointsRedeemedLbl.text = "\(self.VC?.raffleListTicketsArray2[0].ticketPoints ?? 0)"
+                            print(self.VC?.raffleListTicketsArray2[0].noofTicketPurchase ?? 0)
+                            print(self.VC?.raffleListTicketsArray2[0].ticketPoints ?? 0)
+//                            self.VC?.totalTicketsPurchaseLbl.text = "\(self.VC?.raffleListTicketsArray2[0].noofTicketPurchase ?? 0)"
+//                            self.VC?.totalPointsRedeemedLbl.text = "\(self.VC?.raffleListTicketsArray2[0].ticketPoints ?? 0)"
                         }else{
                          
                         }

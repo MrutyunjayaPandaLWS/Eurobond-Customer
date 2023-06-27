@@ -169,7 +169,7 @@ class HR_MyCartVM:  popUpAlertDelegate {
                    let dashboardDetails = result?.objCustomerDashboardList ?? []
                     if dashboardDetails.count != 0 {
 
-//                        UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].redeemPoints ?? "", forKey: "RedeemablePointBalance")
+//                        UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].redeemPoints ?? "", forKey: "OverAllPointBalance")
 //                        UserDefaults.standard.synchronize()
                     
                     self.VC?.stopLoading()

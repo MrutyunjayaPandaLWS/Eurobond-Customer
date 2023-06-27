@@ -88,7 +88,7 @@ class EBC_SchemesAndOffersVC: BaseViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 230
+        return 250
 
     }
     

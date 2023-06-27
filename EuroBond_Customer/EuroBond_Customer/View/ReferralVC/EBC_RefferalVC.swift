@@ -17,13 +17,9 @@ class EBC_RefferalVC: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var enterCodeLbl: UILabel!
     @IBOutlet weak var referralinfoLbl: UILabel!
     @IBOutlet weak var referralTitleLbl: UILabel!
-    
     @IBOutlet var referalRegisterHeadingLbl: UILabel!
     
-    
-    
-    
-    
+
     let token = UserDefaults.standard.string(forKey: "TOKEN") ?? ""
     var enteredMobile = ""
     var customerTypeName = ""

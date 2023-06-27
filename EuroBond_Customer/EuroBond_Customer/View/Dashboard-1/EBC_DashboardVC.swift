@@ -14,6 +14,8 @@ import AVFoundation
 import AVKit
 import LanguageManager_iOS
 import Lottie
+import Photos
+import QCropper
 
 class EBC_DashboardVC: BaseViewController {
 
@@ -47,32 +49,43 @@ class EBC_DashboardVC: BaseViewController {
     
     @IBOutlet var scannerImageView: UIImageView!
     
+    @IBOutlet weak var uploadProfileImageOutBtn: UIButton!
     var status = 1
     var sourceArray = [AlamofireSource]()
     var offerimgArray = [ObjImageGalleryList]()
     var VM = EBC_DashBoardVM()
     var dashBoardId = -1
     private var animationView: LottieAnimationView?
+    let picker = UIImagePickerController()
+    var strdata1 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        self.picker.delegate = self
         self.maintenanceView.isHidden = true
         self.dashBoardId = -1
         self.defaultImage.isHidden = true
         self.notificationBadges.isHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(codeStatus), name: Notification.Name.optionView, object: nil)
+        self.uploadProfileImageOutBtn.addTarget(self, action: #selector(uploadImageProfileFeiled), for: .touchUpInside)
         
     }
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.slideMenuController()?.closeLeft()
-        self.tokendata()
-        self.localizSetup()
-        self.maintenanceAPI()
-        self.isUpdateAvailable()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            self.slideMenuController()?.closeLeft()
+            self.tokendata()
+            self.localizSetup()
+            self.maintenanceAPI()
+            self.isUpdateAvailable()
+        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -87,13 +100,30 @@ class EBC_DashboardVC: BaseViewController {
     }
     
     
+    
+    @objc func uploadImageProfileFeiled() {
+        let alert = UIAlertController(title: "Choose any option".localiz(), message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
+            self.openCamera()
+        }))
+        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
+            self.openGallery()
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
+        }))
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+    
     func localizSetup(){
         membershipIdTitleLbl.text = "Membership ID".localiz()
         welcomeLbl.text = "Welcome".localiz()
         memberTypeTitleLbl.text = "Member Type".localiz()
         totalEurosTitleLbl.text = "Total Euros".localiz()
         redeemNowLbl.text = "Redeem Now".localiz()
-        gameZoneLbl.text = "Game Zone".localiz()
+        gameZoneLbl.text = "playAndWin".localiz()
         shemesAndOffersLbl.text = "Schemes".localiz()
         referAndEarnLbl.text = "Refer & Earn".localiz()
         eurobondsLbl.text = "Eurobond".localiz()
@@ -124,41 +154,84 @@ class EBC_DashboardVC: BaseViewController {
     }
     
     @IBAction func selectNotificationBtn(_ sender: UIButton) {
-        
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HistoryNotificationsViewController") as?  HistoryNotificationsViewController
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HistoryNotificationsViewController") as?  HistoryNotificationsViewController
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectRedeemNowBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RedeemNowVC") as?  EBC_RedeemNowVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RedeemNowVC") as?  EBC_RedeemNowVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
         
     }
     
     @IBAction func selectGameZoneBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameCentre_VC") as?  EBC_GameCentre_VC //EBC_GameZoneVC//EBC_ComingSoonVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_IOS_PlayAndWin") as?  EBC_IOS_PlayAndWin //EBC_GameZoneVC//EBC_ComingSoonVC
+            navigationController?.pushViewController(vc!, animated: true)
+            
+            
+        }
     }
     
     @IBAction func selectOffersBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SchemesAndOffersVC") as?  EBC_SchemesAndOffersVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SchemesAndOffersVC") as?  EBC_SchemesAndOffersVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     
     @IBAction func selectReferAndEarnBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferAndEarnVC") as?  EBC_RefferAndEarnVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferAndEarnVC") as?  EBC_RefferAndEarnVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectEurobondsBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_EurobondsVC") as?  EBC_EurobondsVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_EurobondsVC") as?  EBC_EurobondsVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectHelpLineBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_HelpLineVC") as?  EBC_HelpLineVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_HelpLineVC") as?  EBC_HelpLineVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     
@@ -179,18 +252,36 @@ class EBC_DashboardVC: BaseViewController {
     }
     
     @IBAction func selectCodeStatusBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeStatusListVC") as? CodeStatusListVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeStatusListVC") as? CodeStatusListVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectMyredeemptionBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyRedemptionVC") as? EBC_MyRedemptionVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyRedemptionVC") as? EBC_MyRedemptionVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectMyEarningsBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     func ImageSetups(){
@@ -372,5 +463,174 @@ class EBC_DashboardVC: BaseViewController {
         ] as [String: Any]
         print(parameter)
         self.VM.dashboardBannerApi(parameter: parameter)
+    }
+}
+extension EBC_DashboardVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func openGallery() {
+        PHPhotoLibrary.requestAuthorization({
+            (newStatus) in
+            if newStatus ==  PHAuthorizationStatus.authorized {
+                DispatchQueue.main.async {
+                    DispatchQueue.main.async {
+                    self.picker.allowsEditing = false
+                    self.picker.sourceType = .photoLibrary
+                    self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+                    self.present(self.picker, animated: true, completion: nil)
+                    }
+                }
+            }else{
+                
+                let alertVC = UIAlertController(title: "EuroBond Application need to Access the Gallery".localiz(), message: "Allow Gallery Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                    }
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
+                        UIAlertAction in
+                        
+                    }
+                    alertVC.addAction(okAction)
+                    alertVC.addAction(cancelAction)
+                    self.present(alertVC, animated: true, completion: nil)
+                
+            }
+        })
+    }
+    
+    func openCamera(){
+        DispatchQueue.main.async {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+                    if response {
+                        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+                            DispatchQueue.main.async {
+                                self.picker.allowsEditing = false
+                                self.picker.sourceType = UIImagePickerController.SourceType.camera
+                                self.picker.cameraCaptureMode = .photo
+                                self.present(self.picker,animated: true,completion: nil)
+                            }
+                        }
+                        
+                    }else {
+                        
+                        let alertVC = UIAlertController(title: "EuroBond Application need to Access the Camera".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
+                            UIAlertAction in
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                        let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
+                            UIAlertAction in
+                        }
+                        alertVC.addAction(okAction)
+                        alertVC.addAction(cancelAction)
+                        self.present(alertVC, animated: true, completion: nil)
+                    }
+                    
+                    
+                    
+                }
+                
+            } else {
+                self.noCamera()
+            }
+        }
+    }
+    func opencamera() {
+        DispatchQueue.main.async {
+            if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+                DispatchQueue.main.async {
+                self.picker.allowsEditing = false
+                self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.picker.sourceType)!
+                self.picker.sourceType = UIImagePickerController.SourceType.camera
+                self.picker.cameraCaptureMode = .photo
+                self.present(self.picker,animated: true,completion: nil)
+                }
+            }else{
+
+                let alertVC = UIAlertController(title: "No Camera access".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
+                        UIAlertAction in
+                    }
+                    alertVC.addAction(okAction)
+                    alertVC.addAction(cancelAction)
+                    self.present(alertVC, animated: true, completion: nil)
+                }
+                
+                
+            }
+    }
+     func noCamera(){
+         let alertVC = UIAlertController(title: "No Camera".localiz(), message: "Sorry, this device has no camera".localiz(), preferredStyle: .alert)
+         let okAction = UIAlertAction(title: "ok".localiz(), style:.default, handler: nil)
+             alertVC.addAction(okAction)
+             present(alertVC, animated: true, completion: nil)
+
+     }
+    
+    //MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+                
+                if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                    print(image)
+                    
+                    let imageData = image.resized(withPercentage: 0.1)
+                    let imageData1: NSData = imageData!.pngData()! as NSData
+                    self.profileImage.image = image
+                    //self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
+                    let cropper = CropperViewController(originalImage: image)
+                    print(strdata1,"Image")
+                    cropper.delegate = self
+                    
+                    picker.dismiss(animated: true) {
+                    self.present(cropper, animated: true, completion: nil)
+                      
+                    }
+                  
+            }
+                
+                
+            }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension EBC_DashboardVC: CropperViewControllerDelegate {
+
+    func cropperDidConfirm(_ cropper: CropperViewController, state: CropperState?) {
+    cropper.dismiss(animated: true, completion: nil)
+ 
+    if let state = state,
+        let image = cropper.originalImage.cropped(withCropperState: state) {
+        print(image,"imageDD")
+        let imageData = image.resized(withPercentage: 0.1)
+        let imageData1: NSData = imageData!.pngData()! as NSData
+        self.profileImage.image = image
+        self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
+        print(strdata1,"kdjgjhdsj")
+        
+        DispatchQueue.main.async {
+            let parameters = [
+                "ActionType":"159",
+                "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
+                "ObjCustomerJson": [
+                    "DisplayImage": self.strdata1,
+                    "Domain":"EuroBond"
+                ]
+            ]as [String : Any]
+            print(parameters)
+            self.VM.profileImageUpdate(parameter: parameters)
+        }
+        
+    } else {
+        print("Something went wrong")
+    }
+    self.dismiss(animated: true, completion: nil)
     }
 }

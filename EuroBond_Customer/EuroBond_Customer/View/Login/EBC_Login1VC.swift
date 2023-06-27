@@ -335,6 +335,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                     if tcStatus != 1{
                         self.view.makeToast("SelectTermsCondition".localiz(),duration: 2.0,position: .center)
                     }else{
+                        self.receivedOTP = ""
                         let parameterJSON = [
                             "Location": [
                                 "UserName": self.membershipIdTF.text ?? ""
@@ -453,7 +454,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     
     
     @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     

@@ -43,7 +43,7 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
     var voucherCountryID = -1
     
     
-    let redemablePointBalance = UserDefaults.standard.integer(forKey: "RedeemablePointBalance")
+    let redemablePointBalance = UserDefaults.standard.integer(forKey: "OverAllPointBalance")
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? "-1"
     let layaltyID = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var mobilenumber = UserDefaults.standard.string(forKey: "Mobile") ?? ""
@@ -184,7 +184,7 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
                 self.alertmsg(alertmsg: "Enter amount to redeem", buttonalert: "OK")
             }else{
                 print(UserDefaults.standard.string(forKey: "TotalPoints") ?? "")
-                let totalPts = UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""
+                let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
                 print(totalPts)
                 let finalPts = Double(totalPts)
                 print(finalPts)
@@ -242,7 +242,7 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
             if self.selectAmountButton.currentTitle == "Amount"{
                 self.alertmsg(alertmsg: "Select_Amount_to_Redeem", buttonalert: "OK")
             }else{
-                let totalPts = UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""
+                let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
                 print(totalPts)
                 let finalPts = Double(totalPts)
                 print(finalPts)

@@ -1,38 +1,27 @@
 //
-//  HistoryNotificationsViewController.swift
-//  CenturyPly_JSON
+//  ViewController.swift
+//  Fleet_Guard(Samriddhi)
 //
-//  Created by Arokia-M3 on 03/03/22.
+//  Created by Arokia-M3 on 13/03/23.
 //
 
 import UIKit
 
 class HistoryNotificationsViewModel{
     
-    weak var VC:HistoryNotificationsViewController?
+    weak var VC: HistoryNotificationsViewController?
     var requestAPIs = RestAPI_Requests()
     var notificationListArray = [LstPushHistoryJson]()
     
-    func notificationListApi(parameters: JSON){
+    func notificationListApi(parameters: JSON, completion: @escaping (NotificationModels?) -> ()){
         DispatchQueue.main.async {
-            self.VC?.startLoading()
-        }
-        
+              self.VC?.startLoading()
+         }
         self.requestAPIs.notificationList(parameters: parameters) { (result, error) in
             if error == nil{
                 if result != nil {
                     DispatchQueue.main.async {
-                        self.notificationListArray = result?.lstPushHistoryJson ?? []
-                        print(self.notificationListArray.count)
-                        if self.notificationListArray.count != 0 {
-                            self.VC?.NotificationstableView.isHidden = false
-                            self.VC?.noDataFound.isHidden = true
-                            self.VC?.NotificationstableView.reloadData()
-                        }else{
-                            self.VC?.noDataFound.isHidden = false
-                            self.VC?.NotificationstableView.isHidden = true
-                            
-                        }
+                        completion(result)
                         self.VC?.stopLoading()
                     }
                 } else {

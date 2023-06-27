@@ -11,6 +11,7 @@ typealias JSON = [String: Any]
 
 class RestAPI_Requests {
     private let client = WebClient(baseUrl: baseURl)
+    private let client1 = WebClient1(baseUrl: spinnWheelURL)
     
     func myEarningListApi(parameters: JSON, completion: @escaping (MyEarningModel?, Error?) -> ()) -> URLSessionDataTask? {
         return client.load(path: myEarning_URLMethod, method: .post, params: parameters) { data, error in
@@ -1106,7 +1107,19 @@ class RestAPI_Requests {
             }
         }
     }
-    
+    // MARK : - SpinnGamningSubmission
+    func spinnGamingSubmissionAPI(parameters: JSON, completion: @escaping (GamingSubmitModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client1.load(path: spinWheelGaming_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(GamingSubmitModels?.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
     
 }
 

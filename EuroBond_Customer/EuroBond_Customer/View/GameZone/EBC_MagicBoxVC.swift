@@ -24,7 +24,7 @@ class EBC_MagicBoxVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
-        self.pointslabel.text = "\(gamedetail[0].pointResult ?? 0) Points"
+        self.pointslabel.text = "\(gamedetail[0].pointResult ?? 0) Euros"
         animationViewFuction()
         openanimationViewFuction()
     }
@@ -51,17 +51,17 @@ class EBC_MagicBoxVC: BaseViewController {
     }
     
     func animationViewFuction(){
-        self.animationView.animation = LottieAnimation.named("magic_box")
-        self.animationView!.contentMode = .scaleAspectFit
-        self.animationView!.loopMode = .playOnce
-        self.animationView!.animationSpeed = 0.9
+        self.animationView?.animation = LottieAnimation.named("magic_box")
+        self.animationView?.contentMode = .scaleAspectFit
+        self.animationView?.loopMode = .playOnce
+        self.animationView?.animationSpeed = 0.9
     }
 
     func openanimationViewFuction(){
-        self.openAnimationView.animation = LottieAnimation.named("magic_box_shield")
-        self.openAnimationView!.contentMode = .scaleAspectFit
-        self.openAnimationView!.loopMode = .playOnce
-        self.openAnimationView!.animationSpeed = 0.9
+        self.openAnimationView?.animation = LottieAnimation.named("magic_box_shield")
+        self.openAnimationView?.contentMode = .scaleAspectFit
+        self.openAnimationView?.loopMode = .playOnce
+        self.openAnimationView?.animationSpeed = 0.9
     }
 
 }

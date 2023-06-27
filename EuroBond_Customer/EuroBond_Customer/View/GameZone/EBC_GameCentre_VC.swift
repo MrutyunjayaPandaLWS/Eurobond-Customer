@@ -12,13 +12,13 @@ import LanguageManager_iOS
 
 class EBC_GameCentre_VC: BaseViewController, UIWebViewDelegate, playNowDelegate,WKNavigationDelegate {
 
-    @IBOutlet var webviewSpin: UIWebView!
+    //@IBOutlet var webviewSpin: UIWebView!
     @IBOutlet var gameCentreCollectionView: UICollectionView!
     @IBOutlet var segmentedControll: UISegmentedControl!
     @IBOutlet var backButton: UIButton!
     @IBOutlet var gamezoneHeaingLbl: UILabel!
     
-    //@IBOutlet var wkWebViewSpiningView: WKWebView!
+    @IBOutlet var wkWebViewSpiningView: WKWebView!
     
     @IBOutlet var gamezoneNoGameInfo: UILabel!
     @IBOutlet var gamezoneNoGameBottonInfo: UILabel!
@@ -34,7 +34,7 @@ class EBC_GameCentre_VC: BaseViewController, UIWebViewDelegate, playNowDelegate,
     
     override func viewDidLoad() {
         self.VM.VC = self
-        self.webviewSpin.delegate = self
+//        self.webviewSpin.delegate = self
 //        self.webviewSpin.navigationDelegate = self
         gameCentreCollectionView.register(UINib(nibName: "EBC_PlayNow_CVC", bundle: nil), forCellWithReuseIdentifier: "EBC_PlayNow_CVC")
         gameCentreCollectionView.register(UINib(nibName: "EBC_MyAttempts_CVC", bundle: nil), forCellWithReuseIdentifier: "EBC_MyAttempts_CVC")
@@ -141,27 +141,52 @@ class EBC_GameCentre_VC: BaseViewController, UIWebViewDelegate, playNowDelegate,
                     guard let url = URL(string: "\(self.VM.gameListArray[tappedIndexPath.item].pointResult ?? 0)&s2=\(self.VM.gameListArray[tappedIndexPath.item].rangeValues ?? "")&g4=\(self.VM.gameListArray[tappedIndexPath.item].customerGamifyTransactionId ?? -1)&url=https://eurobondrewardsdemo.loyltwo3ks.com/services/") else { return }
                     
                     print(url,"wheelData")
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VariousWheelSimpleVC") as? VariousWheelSimpleVC
+                    vc?.arrayDataPass = self.VM.gameListArray[tappedIndexPath.item].rangeValues ?? ""
+                    vc?.pointResult = "\(self.VM.gameListArray[tappedIndexPath.item].pointResult ?? 0)"
+                    vc?.gameId = self.VM.gameListArray[tappedIndexPath.item].customerGamifyTransactionId ?? -1
+                    self.navigationController?.pushViewController(vc!, animated: true)
                     
-                    if let base64URL = self.convertURLToBase64(urlString: "\(url)") {
-                        print("Base64-encoded URL: \(base64URL)")
-                        self.base64 = "\(base64URL)"
-                        let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
-                        let splitData = splittedURL[1] + "?r1=" + self.base64
-                        //guard let urlData = URL(string: splitData) else { return }
-                        let urlData = URL(string: splitData)
-                        print(urlData ?? "","dlkjdlk")
-                        let splitDataCompain = URLRequest(url: urlData!)
-                        print(splitDataCompain,"jhgjhgjgj")
-                        let urls = URL(string: splitData)
-                        //self.webviewSpin.load(requestObj)
-                        //webviewSpin.loadHTMLString(htmlString, baseURL: nil)
-                        //self.webviewSpin.loadRequest(splitDataCompain)
-                        //self.webviewSpin.isHidden = false
-                        
-                        if UIApplication.shared.canOpenURL(urls!) {
-                            UIApplication.shared.open(urls!)
-                        }
-                    }
+//                    if let base64URL = self.convertURLToBase64(urlString: "\(url)") {
+//                        print("Base64-encoded URL: \(base64URL)")
+//                        self.base64 = "\(base64URL)"
+//                        let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory())
+//                        let splitData = splittedURL[1] + "?r1=" + self.base64
+//                        //guard let urlData = URL(string: splitData) else { return }
+//                        let urlData = URL(string: splitData)
+//                        print(urlData ?? "","dlkjdlk")
+//                        let splitDataCompain = URLRequest(url: urlData!)
+//                        print(splitDataCompain,"jhgjhgjgj")
+//                        let urls = URL(string: splitData)
+//
+////                        self.webviewSpin.load(requestObj)
+////                        webviewSpin.loadHTMLString(htmlString, baseURL: nil)
+////                        self.webviewSpin.loadRequest(splitDataCompain)
+////                        self.webviewSpin.isHidden = false
+//
+//
+//
+//                        // Convert Base64 string to Data
+////                        guard let data = Data(base64Encoded: base64URL) else {
+////                            print("Invalid Base64 string")
+////                            return
+////                        }
+//
+//                        // Convert Data to URL
+////                        if let url = URL(dataRepresentation: data, relativeTo: nil) {
+////                            print("URL: \(url)")
+////                            let request = URLRequest(url: url)
+////                            self.wkWebViewSpiningView.load(request)
+////                            self.wkWebViewSpiningView.isHidden = false
+////                        } else {
+////                            print("Failed to convert Data to URL")
+////                        }
+//
+//
+//                        if UIApplication.shared.canOpenURL(urls!) {
+//                            UIApplication.shared.open(urls!)
+//                        }
+//                    }
                     
                 }else{
                     self.view.makeToast("Invalid URL", duration: 5.0, position: .bottom)

@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 import Toast_Swift
 import LanguageManager_iOS
+import Kingfisher
 
 class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource, popuprafflesDelegate {
     func YesOrderSummaryDidTap(_ vc: LINC_AlertPopUp_Raffles_VC) {
@@ -99,78 +100,87 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
     var points = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
     var pointsValue = ""
     var raffelCampaignId = 0
-    var itsFrom = ""
-
+    var itsFrom = "",quantityCount = 0
+    //UserDefaults.standard.set(result?.lstCustomerFeedBackJsonApi?[0].verifiedStatus ?? "4", forKey: "verificationStatus")
+    var verifiedStatus = UserDefaults.standard.string(forKey: "verificationStatus") ?? ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(userID)
-        self.VM.VC = self
-//        let parameter2JSON = [
-//            "ActionType":"32","ActorId":"\(self.userID)","IsActive":"true"
-//        ] as [String:Any]
-//        print(parameter2JSON)
-//        self.VM.customerDashboard(parameters: parameter2JSON)
-        self.onGoingRafflesApi()
-        self.yourPointsBalance.text = points
-        
-        viewYrTicketsCollectionView.register(UINib(nibName: "CurrentraffleDetailsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CurrentraffleDetailsCollectionViewCell")
-        self.raffelCampaignId = self.raffleDetails[0].raffelCampaignId ?? 0
-        print(self.raffelCampaignId, " - raffelCampaignId ")
-        self.totalTicketsPurchaseLbl.text = "\(self.raffleDetails[0].noofTicketPurchase ?? 0)"
-        self.totalPointsRedeemedLbl.text = "\(self.raffleDetails[0].ticketPoints ?? 0)"
-        self.viewYrTicketsCollectionView.delegate = self
-        self.viewYrTicketsCollectionView.dataSource = self
-        self.countlabel.text = String(count)
-        self.descriptionlabel.text = self.raffleDetails[0].raffelCampaignDescription ?? ""
-        
-        let x = (self.raffleDetails[0].validityTo ?? "").split(separator: " ")
-        self.validUntilLabel.text = "\(x[0])"
-        self.statusLabel.text = self.raffleDetails[0].status ?? ""
-        self.pointsperTicketLabel.text = "Total Points \(self.raffleDetails[0].pointsPerTicket ?? 0)"
-        self.pointsValue = "\(self.raffleDetails[0].pointsPerTicket ?? 0)"
-        self.ticketCountLabel.text = "Ticket Count : 1"
-        print("Points Values is", self.pointsValue )
-        print(self.pointsperTicketLabel.text!, "Total Points")
-        self.rafflenameLabel.text = self.raffleDetails[0].raffelCampaignName ?? ""
-        let quantityValue = self.raffleDetails[0].quantity ?? ""
-        print(quantityValue)
-        if quantityValue == "0"{
-//            self.pointsperTicketLabel.text = UIColor.lightGray.cgColor as? String
-            self.raffleQuantityStackView.isUserInteractionEnabled = false
-            self.ticketCounterView.backgroundColor = UIColor.lightGray
-            self.buyTicketView.backgroundColor = UIColor.lightGray
-            self.buyTicketButton.isEnabled = false
-        } else {
-//            self.pointsperTicketLabel.text = UIColor.lightGray.cgColor as? String
-            self.raffleQuantityStackView.isUserInteractionEnabled = true
-            self.ticketCounterView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            self.buyTicketView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-            self.buyTicketButton.isEnabled = true
-        }
-        
-        if self.raffleDetails[0].bannerUrl ?? "" != ""{
-            let imageURl = self.raffleDetails[0].bannerUrl ?? ""
-            let filteredURLArray = imageURl.split(separator: "~")
-            let urltoUse = String(PROMO_IMG1 + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")
-            
-            let urlt = URL(string: "\(urltoUse)")
-            print(urlt)
-            let transformer = SDImageResizingTransformer(size: CGSize(width: self.view.frame.width, height: 200), scaleMode: .fill)
-            raffleImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"), context: [.imageTransformer: transformer])
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
         }else{
-            self.raffleImage.image = UIImage(named: "ic_default_img")
+            self.VM.VC = self
+            
+            self.onGoingRafflesApi()
+            self.yourPointsBalance.text = points
+            
+            viewYrTicketsCollectionView.register(UINib(nibName: "CurrentraffleDetailsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CurrentraffleDetailsCollectionViewCell")
+            self.raffelCampaignId = self.raffleDetails[0].raffelCampaignId ?? 0
+            print(self.raffelCampaignId, " - raffelCampaignId ")
+//            self.totalTicketsPurchaseLbl.text = "\(self.raffleDetails[0].noofTicketPurchase ?? 0)"
+//            self.totalPointsRedeemedLbl.text = "\(self.raffleDetails[0].ticketPoints ?? 0)"
+            self.viewYrTicketsCollectionView.delegate = self
+            self.viewYrTicketsCollectionView.dataSource = self
+            self.countlabel.text = String(count)
+            self.descriptionlabel.text = self.raffleDetails[0].raffelCampaignDescription ?? ""
+            
+            let x = (self.raffleDetails[0].validityTo ?? "").split(separator: " ")
+            self.validUntilLabel.text = "\(x[0])"
+            self.statusLabel.text = self.raffleDetails[0].status ?? ""
+            self.pointsperTicketLabel.text = "Total Points \(self.raffleDetails[0].pointsPerTicket ?? 0)"
+            self.pointsValue = "\(self.raffleDetails[0].pointsPerTicket ?? 0)"
+            self.ticketCountLabel.text = "Total Ticket : 1"
+            print("Points Values is", self.pointsValue )
+            print(self.pointsperTicketLabel.text!, "Total Points")
+            self.rafflenameLabel.text = self.raffleDetails[0].raffelCampaignName ?? ""
+            let quantityValue = self.raffleDetails[0].quantity ?? ""
+            print(quantityValue)
+            if quantityValue == "0"{
+                //            self.pointsperTicketLabel.text = UIColor.lightGray.cgColor as? String
+                self.raffleQuantityStackView.isUserInteractionEnabled = false
+                self.ticketCounterView.backgroundColor = UIColor.lightGray
+                self.buyTicketView.backgroundColor = UIColor.lightGray
+                self.buyTicketButton.isEnabled = false
+            } else {
+                //            self.pointsperTicketLabel.text = UIColor.lightGray.cgColor as? String
+                self.raffleQuantityStackView.isUserInteractionEnabled = true
+                self.ticketCounterView.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+                self.buyTicketView.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+                self.buyTicketButton.isEnabled = true
+            }
+            
+            if self.raffleDetails[0].bannerUrl ?? "" != ""{
+                let imageURl = self.raffleDetails[0].bannerUrl ?? ""
+                print(imageURl)
+                let filteredURLArray = imageURl.split(separator: "~")
+                //let urltoUse = String(rafflesURL + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")
+                let urltoUse = String(rafflesURL + imageURl)
+                let urlt = URL(string: "\(urltoUse)")
+                print(urlt)
+                // let transformer = SDImageResizingTransformer(size: CGSize(width: self.view.frame.width, height: 200), scaleMode: .fill)
+                //raffleImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"), context: [.imageTransformer: transformer])
+                print(urltoUse)
+                print(urlt)
+                self.raffleImage.kf.setImage(with: URL(string: urltoUse),placeholder: UIImage(named: "ic_default_img"))
+                //raffleImage.sd_setImage(with: URL(string: urltoUse), placeholderImage: UIImage(named: "ic_default_img"))
+                //raffleImage.sd_setImage(with: URL(string: urltoUse), placeholderImage: UIImage(named: "ic_default_img"))
+            }else{
+                self.raffleImage.image = UIImage(named: "ic_default_img")
+            }
+            self.boughtTicketsListApi()
+            self.getTicketsTotalApi()
+            NotificationCenter.default.addObserver(self, selector: #selector(savedRaffelsDetails), name: .savedRaffels, object: nil)
+            let layout1: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+            layout1.scrollDirection = .vertical
+            layout1.itemSize = CGSize(width: (self.viewYrTicketsCollectionView.frame.width - 10)/2, height: 120)
+            layout1.minimumInteritemSpacing = 0
+            layout1.minimumLineSpacing = 0
+            self.viewYrTicketsCollectionView!.collectionViewLayout = layout1
+            self.localization()
         }
-        self.boughtTicketsListApi()
-        self.getTicketsTotalApi()
-        NotificationCenter.default.addObserver(self, selector: #selector(savedRaffelsDetails), name: .savedRaffels, object: nil)
-        let layout1: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout1.scrollDirection = .vertical
-        layout1.itemSize = CGSize(width: (self.viewYrTicketsCollectionView.frame.width - 10)/2, height: 120)
-        layout1.minimumInteritemSpacing = 0
-        layout1.minimumLineSpacing = 0
-        self.viewYrTicketsCollectionView!.collectionViewLayout = layout1
-        self.localization()
     }
 
     
@@ -192,47 +202,71 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
     
    
     @IBAction func plusButton(_ sender: Any) {
-//        print(self.raffleListTicketsArray1[0].quantity ?? "0", "Quantity")
-//        print(count, "Count")
-//        if count < Int(self.raffleListTicketsArray2[0].quantity ?? "0") ?? 0{
-            count += 1
-            self.countlabel.text = String(count)
-            self.ticketCountLabel.text = "Ticket Count : \(self.count)"
-            let values = Int(count) * Int(self.pointsValue)!
-            self.pointsperTicketLabel.text = "Total Points \(values)"
-//        }
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            print(self.raffleListTicketsArray2[0].quantity ?? "0", "Quantity")
+            print(quantityCount,"sdkjhbkj")
+            print(count, "Count")
+            //        if count < Int(self.raffleListTicketsArray2[0].quantity ?? "0") ?? 0{
+            if count < quantityCount{
+                count += 1
+                self.countlabel.text = String(count)
+                self.ticketCountLabel.text = "Ticket Count : \(self.count)"
+                let values = Int(count) * Int(self.pointsValue)!
+                self.pointsperTicketLabel.text = "Total Points \(values)"
+            }
+        }
     }
     
     @IBAction func backbutton(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func buyTicket(_ sender: Any) {
-        print(points)
-        print(Int(count) * Int(self.pointsValue)!, "sadfasdfasdfadsfds")
-        if Int(points) ?? 0 >= Int(count) * Int(self.pointsValue)! {
-            
-            let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LINC_AlertPopUp_Raffles_VC") as? LINC_AlertPopUp_Raffles_VC
-            vc?.isComeFrom = "CurrentRaffleDetails"
-            vc?.delegate = self
-            vc?.raffelConfId = self.raffleDetails[0].raffelCampaignId ?? -1
-            vc?.count = self.count
-            vc?.modalPresentationStyle = .overCurrentContext
-            vc?.modalTransitionStyle = .crossDissolve
-            self.present(vc!, animated: true, completion: nil)
-            self.raffelCampaignId = self.raffleDetails[0].raffelCampaignId ?? -1
-            
-        } else {
-            self.view.makeToast("Insufficient point balance", duration: 3.0, position: .bottom)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            if verifiedStatus == "1" {
+                print(points)
+                print(Int(count) * Int(self.pointsValue)!, "sadfasdfasdfadsfds")
+                if Int(points) ?? 0 >= Int(count) * Int(self.pointsValue)! {
+                    
+                    let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "LINC_AlertPopUp_Raffles_VC") as? LINC_AlertPopUp_Raffles_VC
+                    vc?.isComeFrom = "CurrentRaffleDetails"
+                    vc?.delegate = self
+                    vc?.raffelConfId = self.raffleDetails[0].raffelCampaignId ?? -1
+                    vc?.count = self.count
+                    vc?.modalPresentationStyle = .overCurrentContext
+                    vc?.modalTransitionStyle = .crossDissolve
+                    self.present(vc!, animated: true, completion: nil)
+                    self.raffelCampaignId = self.raffleDetails[0].raffelCampaignId ?? -1
+                    
+                } else {
+                    self.view.makeToast("Insufficient point balance", duration: 3.0, position: .bottom)
+                }
+            }else{
+                self.view.makeToast("Your account is an verification pending cantact the administator".localiz(), duration: 3.0, position: .bottom)
+            }
         }
     }
     @IBAction func minusButton(_ sender: Any) {
-        if count != 1 && count > 1{
-            count -= 1
-            self.countlabel.text = String(count)
-            print(self.pointsValue, "before decrement")
-            let values = Int(count) * Int(self.pointsValue)!
-            self.ticketCountLabel.text = "Ticket Count : \(self.count)"
-            self.pointsperTicketLabel.text = "Total Points \(values)"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            if count != 1 && count > 1{
+                count -= 1
+                self.countlabel.text = String(count)
+                print(self.pointsValue, "before decrement")
+                let values = Int(count) * Int(self.pointsValue)!
+                self.ticketCountLabel.text = "Ticket Count : \(self.count)"
+                self.pointsperTicketLabel.text = "Total Points \(values)"
+            }
         }
     }
     

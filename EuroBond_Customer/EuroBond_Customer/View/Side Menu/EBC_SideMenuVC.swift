@@ -47,7 +47,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         sideMenuModel(sideMenuName: "My Earning".localiz(), sideMenuImage: "bxs-coin-stack 1"),
         sideMenuModel(sideMenuName: "My Redemptions".localiz(), sideMenuImage: "reademailalt 1"),
         sideMenuModel(sideMenuName: "Redemption Catalogue".localiz(), sideMenuImage: "card-giftcard 1"),
-        sideMenuModel(sideMenuName: "Game Zone".localiz(), sideMenuImage: "Group 6479"),
+        sideMenuModel(sideMenuName: "Game Zone".localiz(), sideMenuImage: "dice"),
         sideMenuModel(sideMenuName: "Raffles".localiz(), sideMenuImage: "winner (2)"),
         sideMenuModel(sideMenuName: "Refer & Earn".localiz(), sideMenuImage: "Layer 3"),
         sideMenuModel(sideMenuName: "Add My Assistant".localiz(), sideMenuImage: "Construction_Worker"),
@@ -78,7 +78,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         NotificationCenter.default.addObserver(self, selector: #selector(closingSideMenu), name: Notification.Name.sideMenuClosing, object: nil)
         self.profileNameLbl.text = "\(UserDefaults.standard.string(forKey: "FirstName") ?? "")"
         self.memberShipIDLbl.text = "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
-        self.pointBalLbl.text = "\(UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? "")"
+        self.pointBalLbl.text = "\(UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? "")"
         self.memberSinceLbl.text = "Member Since \(UserDefaults.standard.string(forKey: "MemberSince") ?? "")"
         let imageurl = "\(UserDefaults.standard.string(forKey: "customerImage") ?? "")".dropFirst(1)
         let imageData = imageurl.split(separator: "~")
@@ -300,73 +300,91 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         case "Home".localiz():
                 closeLeft()
         case "Scan QR Code".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
             vc?.fromSideMenu = "SideMenu"
             vc?.itsFrom = "ScanCode"
             navigationController?.pushViewController(vc!, animated: true)
         case "Enter QR Code".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ScanOrUpload_VC") as? ScanOrUpload_VC
             vc?.fromSideMenu = "SideMenu"
 //            vc?.scanner = "Upload"
             navigationController?.pushViewController(vc!, animated: true)
         case "Code Status".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeStatusListVC") as? CodeStatusListVC
 //            vc?.fromSideMenu = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "My Earning".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyEarningsVC") as? EBC_MyEarningsVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "My Redemptions".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyRedemptionVC") as? EBC_MyRedemptionVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Redemption Catalogue".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RedeemNowVC") as? EBC_RedeemNowVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Game Zone".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_GameCentre_VC") as? EBC_GameCentre_VC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Refer & Earn".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_RefferAndEarnVC") as? EBC_RefferAndEarnVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Raffles".localiz():
+            closeLeft()
             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "Raffles_VC") as? Raffles_VC
             vc?.isComeFrom = "OnGoingRaffle"
             self.navigationController?.pushViewController(vc!, animated: true)
         case "Add My Assistant".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MyAssistantVC") as? EBC_MyAssistantVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Wishlist".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_RedemptionPlannerVC") as? HR_RedemptionPlannerVC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Dream Gift".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DreamGiftListingViewController") as? DreamGiftListingViewController
             navigationController?.pushViewController(vc!, animated: true)
         case "Schemes & Offers".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_SchemesAndOffersVC") as? EBC_SchemesAndOffersVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Milestone Bonus".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_MillstonesBonussVC") as? EBC_MillstonesBonussVC
             vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "Helpline".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_HelpLineVC") as? EBC_HelpLineVC
 //            vc?.flags = "SideMenu"
             navigationController?.pushViewController(vc!, animated: true)
         case "About".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_AboutVC") as? EBC_AboutVC
             navigationController?.pushViewController(vc!, animated: true)
         case "FAQ".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_FAQVC") as? EBC_FAQVC
             navigationController?.pushViewController(vc!, animated: true)
         case "Term and Conditions".localiz():
+            closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "EBC_TermsAndConditionsVC") as? EBC_TermsAndConditionsVC
             navigationController?.pushViewController(vc!, animated: true)
         default:

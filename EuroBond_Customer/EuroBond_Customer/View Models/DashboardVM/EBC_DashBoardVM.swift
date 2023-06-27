@@ -69,14 +69,18 @@ class EBC_DashBoardVM{
                         print(result?.objCustomerDashboardList?[0].memberSince ?? "", "Membersince")
                         print(result?.objCustomerDashboardList?[0].notificationCount ?? 0, "NotificationCount")
                         print(result?.objCustomerDashboardList?[0].redeemablePointsBalance ?? "", "RedeemablePointBalance")
+                        
                       
-                        let totalPts = UserDefaults.standard.string(forKey:"RedeemablePointBalance") ?? ""
+                        let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
                         print(totalPts)
                         let finalPts = Double(totalPts)
                         print(finalPts)
                         let totalPointss = Int(finalPts ?? 0.0)
                         self.VC?.totalBalanceLbl.text = "\(totalPointss)"
                         UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].redeemablePointsBalance ?? 0, forKey: "RedeemablePointBalance")
+                        UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].overAllPoints ?? 0, forKey: "OverAllPointBalance")
+                        UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].redeemableEncashBalance ?? 0, forKey: "redeemableEncashBalance")
+                        
                         UserDefaults.standard.synchronize()
                         if result?.objCustomerDashboardList?[0].notificationCount ?? 0 != 0 {
                             self.VC?.notificationBadges.isHidden = false
@@ -104,7 +108,7 @@ class EBC_DashBoardVM{
                         UserDefaults.standard.setValue(result?.lstCustomerFeedBackJsonApi?[0].customerId, forKey: "customerId")
                             UserDefaults.standard.setValue(result?.lstCustomerFeedBackJsonApi?[0].firstName, forKey: "FirstName")
                            
-                            UserDefaults.standard.setValue(result?.lstCustomerFeedBackJsonApi?[0].loyaltyId, forKey: "LoyaltyId")
+                            UserDefaults.standard.set(result?.lstCustomerFeedBackJsonApi?[0].loyaltyId, forKey: "LoyaltyId")
                             UserDefaults.standard.set(result?.lstCustomerFeedBackJsonApi?[0].merchantEmail ?? "", forKey: "MerchantEmail")
                             print(result?.lstCustomerFeedBackJsonApi?[0].verifiedStatus ?? "")
                         UserDefaults.standard.set(result?.lstCustomerFeedBackJsonApi?[0].merchantMobile ?? "", forKey: "MerchantMobile")
@@ -168,4 +172,52 @@ class EBC_DashBoardVM{
         }
     }
     
+    
+    func profileImageUpdate(parameter: JSON){
+        
+        self.requestAPIs.imageSavingAPI(parameters: parameter) { (result, error) in
+            
+            if error == nil{
+                
+                if result != nil{
+                    DispatchQueue.main.async {
+                        print(result?.returnMessage ?? "", "ReturnMessage")
+                        if result?.returnMessage ?? "" == "1"{
+                            DispatchQueue.main.async{
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
+                                vc.descriptionInfo = "Profile image updated successfully".localiz()
+                                vc.itsComeFrom = "ProfileImage"
+                                vc.modalPresentationStyle = .overFullScreen
+                                vc.modalTransitionStyle = .coverVertical
+                                self.VC?.present(vc, animated: true)
+                            }
+                        }else{
+                            DispatchQueue.main.async{
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
+                                vc.descriptionInfo = "Profile image updation failed".localiz()
+                                vc.itsComeFrom = "ProfileImage"
+                                vc.modalPresentationStyle = .overFullScreen
+                                vc.modalTransitionStyle = .coverVertical
+                                self.VC?.present(vc, animated: true)
+                            }
+                        }
+                        self.VC?.stopLoading()
+                    }
+                    
+                    
+                }else{
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                    }
+                    
+                }
+                
+            }else{
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                }
+                
+            }
+        }
+    }
 }

@@ -36,7 +36,7 @@
 
 "Your account is verification pending! Kindly contact your administrator." = "Your account is verification pending! Kindly contact your administrator.";
 
-"Your account is not activated! Kindly activate your account" = "Your account is not activated! Kindly activate your administrator.";
+"Your account is not activated! Kindly activate your account" = "Your account is not activated ! Kindly contact your administrator";
 
 "Your account has been deactivated! Kindly contact your administrator." = "Your account has been deactivated! Kindly contact your administrator.";
 
@@ -174,7 +174,7 @@
 "Category" = "Category:-";
 "catery" = "Category";
 "Already added to planner" = "Already added to planner";
-"YourAccountUnverified" = "Your account is unverified! Kindly contact the administrator to access the redemption Catalogue";
+"YourAccountUnverified" = "Your account is in verification pending. Kindly contact the administator";
 "NeedSufficientPointBalance" = "Need Sufficient Point Balance";
 "Search Products" = "Search Products";
 "Low To High" = "Low To High";
@@ -245,9 +245,9 @@
 "eligible Msg" = "eligible Msg";
 "RecommendedProducts" = "RecommendedProducts";
 "Redemption Planner Summary" = "Redemption Planner Summary";
-"Redeemable Euros As OnToday" = "Redeemable Euros As OnToday";
+"Redeemable Euros As OnToday" = "Redeemable euros as on today";
 "Points" = "Euros";
-"Average Earning" = "Average Earning";
+"Average Earning" = "Average earning required per month";
 "Euros" = "Euros";
 "Your expected redemption of" = "Your expected redemption of ";
 "is in" = " is in ";
@@ -258,12 +258,12 @@
 "Insufficient point balance to redeem" = "Insufficient point balance to redeem!";
 "Congratulations! you are eligible to win this existing Dream Gift" = "Congratulations! you are eligible to win this existing Dream Gift";
 "Congratulations! You are almost near to win this existing Dream Gift" = "Congratulations! You are almost near to win this existing Dream Gift.";
-"Redeemable points as on today" = "Redeemable points as on today";
+"Redeemable points as on today" = "Redeemable euros as on today";
 "Dream Gift Details" = "Dream Gift Details";
 "Created Date" = "Created Date";
 "Desired Date" = "Desired Date";
-"Points Required" = "Points Required";
-"Average points to be earned per month" = "Average points to be earned per month";
+"Points Required" = "Euros Required";
+"Average points to be earned per month" = "Average Euros to be earned per month";
 "Expected Redemption" = "Expected Redemption";
 "TDS points" = "TDS points";
 "Remove" = "Remove";
@@ -440,13 +440,13 @@
 "Sorry, this device has no camera" = "Sorry, this device has no camera";
 "Profile image updation failed" = "Profile image updation failed";
 "Allow Camera Access" = "Allow Camera Access";
-"Raffles" = "Raffles";
 "Enter company name" = "Enter company name";
 
 
 
 ///Newly Added Lines:-
-"Transfer_points_to_Bank_Account" = "Transfer points to your Registered Bank Account";
+"Raffles" = "Raffles";
+"Transfer_points_to_Bank_Account" = "Transfer Eurobond Euros to your Registered Bank Account";
 "Enter_Account_Number" = "Enter Account Number";
 "Account_Holder_Name" = "Account Holder Name";
 "Enter_Bank_Name" = "Enter Bank Name";
@@ -459,7 +459,6 @@
 "Enter amount to Transfer" = "Enter amount to Transfer";
 "Entered amount should be in multiple of 100" = "Entered amount should be in multiple of 100";
 "Insufficient points balance" = "Insufficient points balance";
-"Your_Bank_Account_is_not_verified" = "Your verification of your bank account is pending. Please contact your administrator.";
 "Point_balance_&_current_point_balance_is" = "Point balance should be more than 100, and current point balance is";
 "Unfortunately your redemption is failed.Points reducted will be reassigned to you in few working days" = "Unfortunately your redemption is failed.Points reducted will be reassigned to you in few working days";
 "Points transfer failed. Please try after sometime" = "Points transfer failed. Please try after sometime";
@@ -488,6 +487,23 @@
 "No of ticket purchase" = "No of ticket purchase";
 "Point per ticket" = "Point per ticket";
 "Raffle Description" = "Raffle Description";
-"View Your Tickets" = "View Your Tickets";
+"View Your Tickets" = "View All Tickets";
 "Sorry, you have no games to play at the moment !" = "Sorry, you have no games to play at the moment !";
 "Engage more. play more" = "Engage more. play more";
+"Rupees" = "Rupees";
+"Your account is an verification pending cantact the administator" = "Your account is in verification pending contact the administator";
+"Scanuploadlimitexceeded" = "Scan/upload limit exceeded.Sync pending codes in WI-FI/Mobile data or clear processed codes !";
+"Bank transfer request has been submitted successfully" = "Bank transfer request has been submitted successfully";
+"Your_Bank_Account_is_not_verified" = "Your verification of your bank account is pending. Please contact your administator.";
+"Bank details not submitted. Please submit bank details" = "Bank details not submitted. Please submit bank details";
+"Your verification of your bank account is pending_Please contact your administator" = "Your verification of your bank account is rejected. Please resubmit your account details.";
+"Entered amount has been transferred to your bank account" = "Bank transfer request has been submitted successfully";
+"Bank Transfer limit Exceeded" = "Your bank transfer limit exceeded";
+
+"playAndWin" = "Play and Win";
+"percentageValue" = "Only 90% of your available Euros can be redeemable";
+"Attach Account Proof: Please upload the passbook front page or check leaf." = "Please upload the passbook front page or check leaf.";
+"AttachAccountProof" = "Attach Account Proof: ";
+"Do_U_Want_To_Remove" = "Are you sure you want to remove the Dream Gift?";
+"RaffleDetail" = "Raffles Detials";
+"Bank_Name" = "Bank";

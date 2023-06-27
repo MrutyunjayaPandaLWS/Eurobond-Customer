@@ -63,7 +63,7 @@ class EBC_LoginVM {
                             "UserActionType": "GetPasswordDetails",
                             "Password": "123456",
                             "Browser": "IOS",
-                            "PushID": "\(self.VC?.token)",
+                            "PushID": "\(UserDefaults.standard.string(forKey: "DEVICE_TOKEN") ?? "")",
                             "UserType": "Customer",
                             "UserName": self.VC?.membershipIdTF.text ?? ""
                         ] as [String: Any]
@@ -271,6 +271,7 @@ class EBC_LoginVM {
                                                 "UserName": "",
                                                 "MerchantUserName": "EuroBondMerchantDemo"
                                             ] as [String: Any]
+                                            print(parameter)
                                             self.getOTPApi(parameter: parameter)
                                         }
                                     }

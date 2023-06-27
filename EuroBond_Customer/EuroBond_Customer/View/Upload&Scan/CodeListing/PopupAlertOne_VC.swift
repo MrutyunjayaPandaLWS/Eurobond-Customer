@@ -69,7 +69,7 @@ class PopupAlertOne_VC: BaseViewController {
            
         }else if itsComeFrom == "DreamGiftDetails"{
             self.dismiss(animated: true){
-//                NotificationCenter.default.post(name: .removeDreamGiftDetails, object: nil)
+                NotificationCenter.default.post(name: .removeDreamGiftDetails, object: nil)
 
             }
         }else if itsComeFrom == "DownloadEWarranty"{
@@ -115,6 +115,14 @@ class PopupAlertOne_VC: BaseViewController {
             delegate?.popupAlertDidTap1(self)
             self.dismiss(animated: true){
                 NotificationCenter.default.post(name: .navigateToDashboard, object: nil)
+            }
+        }else if itsComeFrom == "SpinnWheelData"{
+            self.dismiss(animated: true){
+                self.navigationController?.popViewController(animated: true)
+            }
+        }else if itsComeFrom == "SuccessPOpUPSpin"{
+            self.dismiss(animated: true){
+                self.navigationController?.popViewController(animated: true)
             }
         }else{
             delegate?.popupAlertDidTap1(self)

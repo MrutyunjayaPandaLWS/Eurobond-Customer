@@ -17,18 +17,19 @@ class EBC_QuerySubmissionVM{
             self.VC?.startLoading()
         }
         self.requestAPIs.querySubmissionApi(parameters: parameter, completion: { (result, error) in
-            
             if error == nil{
                 if result != nil{
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
-                        if result?.returnMessage ?? "" != "" || result?.returnMessage ?? "" != nil{
+                        if result?.returnMessage ?? "" != "" || result?.returnMessage ?? "" != nil {
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                             vc.descriptionInfo = "QuerySubmittedSuccessfully".localiz()
                             vc.itsComeFrom = "Query"
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
                             self.VC?.present(vc, animated: true)
+                            self.VC?.buttonStatus = 1
+//                            self.VC?.submitQueryBtn.isEnabled = true
                         }else{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                             vc.itsComeFrom = "Query"
@@ -36,6 +37,8 @@ class EBC_QuerySubmissionVM{
                             vc.modalPresentationStyle = .overFullScreen
                             vc.modalTransitionStyle = .coverVertical
                             self.VC?.present(vc, animated: true)
+                            self.VC?.buttonStatus = 0
+//                            self.VC?.submitQueryBtn.isEnabled = true
                         }
                     }
                     

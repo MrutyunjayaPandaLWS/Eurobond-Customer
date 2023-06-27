@@ -13,6 +13,8 @@ import Alamofire
 import AVFoundation
 import AVKit
 import LanguageManager_iOS
+import Photos
+import QCropper
 
 class EBC_Dashboard_2_VC: BaseViewController {
 
@@ -40,16 +42,23 @@ class EBC_Dashboard_2_VC: BaseViewController {
     @IBOutlet weak var underMaintenance: LottieAnimationView!
     
     @IBOutlet var scanningImageView: UIImageView!
+    
+    
+    @IBOutlet weak var uploadImnageProfileImage: UIButton!
+    
     var status = 1
     var sourceArray = [AlamofireSource]()
     var offerimgArray = [ObjImageGalleryList]()
     var VM = EBC_FabricatedDashBoardVM()
     var dashBoardId = -1
     private var animationView: LottieAnimationView?
+    let picker = UIImagePickerController()
+    var strdata1 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        self.picker.delegate = self
         self.defaultImage.isHidden = true
         self.maintenanceView.isHidden = true
         subView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
@@ -57,12 +66,20 @@ class EBC_Dashboard_2_VC: BaseViewController {
         bottomView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
         bottomView.layer.cornerRadius = 20
         localizSetup()
+        self.uploadImnageProfileImage.addTarget(self, action: #selector(uploadImageProfile), for: .touchUpInside)
+        NotificationCenter.default.addObserver(self, selector: #selector(codeStatus), name: Notification.Name.optionView, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        self.slideMenuController()?.closeLeft()
-        self.tokendata()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            //        self.slideMenuController()?.closeLeft()
+            self.tokendata()
+        }
     }
     func localizSetup(){
         self.fabricatorAssistantLbl.text = "Fabricator Assistant".localiz()
@@ -83,38 +100,83 @@ class EBC_Dashboard_2_VC: BaseViewController {
         }
         
     }
+    
+    @objc func uploadImageProfile(){
+        let alert = UIAlertController(title: "Choose any option".localiz(), message: "", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
+            self.openCamera()
+        }))
+        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
+            self.openGallery()
+        }))
+        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
+        }))
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+    }
+    
+    
+    @objc func codeStatus(notification: Notification){
+        let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "CodeSubmissionPopUp") as! CodeSubmissionPopUp
+        vc.modalTransitionStyle = .crossDissolve
+        vc.modalPresentationStyle = .overCurrentContext
+
+        self.present(vc, animated: true, completion: nil)
+        
+    }
+    
+    
     @IBAction func selectLogoutBtn(_ sender: UIButton) {
-        UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
-        if #available(iOS 13.0, *) {
-            DispatchQueue.main.async {
-                let domain = Bundle.main.bundleIdentifier!
-                UserDefaults.standard.removePersistentDomain(forName: domain)
-                UserDefaults.standard.synchronize()
-                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-                sceneDelegate.setInitialLoginVC()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
             }
-        } else {
-            DispatchQueue.main.async {
-                let domain = Bundle.main.bundleIdentifier!
-                UserDefaults.standard.removePersistentDomain(forName: domain)
-                UserDefaults.standard.synchronize()
-                if #available(iOS 13.0, *) {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.setInitialLoginVC()
+        }else{
+            UserDefaults.standard.set(-1, forKey: "IsloggedIn?")
+            if #available(iOS 13.0, *) {
+                DispatchQueue.main.async {
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                    sceneDelegate.setInitialLoginVC()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    if #available(iOS 13.0, *) {
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.setInitialLoginVC()
+                    }
                 }
             }
         }
     }
     
     @IBAction func selectNotificationBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HistoryNotificationsViewController") as?  HistoryNotificationsViewController
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HistoryNotificationsViewController") as?  HistoryNotificationsViewController
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     
     @IBAction func selectCodeStatusBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "CodeStatusListVC") as? CodeStatusListVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "CodeStatusListVC") as? CodeStatusListVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectSyncStatusBtn(_ sender: UIButton) {
@@ -123,8 +185,14 @@ class EBC_Dashboard_2_VC: BaseViewController {
     }
     
     @IBAction func selectCodeSummeryBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "CodeSummary_VC") as? CodeSummary_VC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "CodeSummary_VC") as? CodeSummary_VC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectUploadCodeBtn(_ sender: UIButton) {
@@ -144,13 +212,25 @@ class EBC_Dashboard_2_VC: BaseViewController {
     }
     
     @IBAction func selectHelpLineBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_HelpLineVC") as? EBC_HelpLineVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_HelpLineVC") as? EBC_HelpLineVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     @IBAction func selectTermCondBtn(_ sender: UIButton) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_TermsAndConditionsVC") as? EBC_TermsAndConditionsVC
-        navigationController?.pushViewController(vc!, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "EBC_TermsAndConditionsVC") as? EBC_TermsAndConditionsVC
+            navigationController?.pushViewController(vc!, animated: true)
+        }
     }
     
     func ImageSetups(){
@@ -326,3 +406,180 @@ class EBC_Dashboard_2_VC: BaseViewController {
         self.VM.dashboardBannerApi(parameter: parameter)
     }
 }
+
+
+
+extension EBC_Dashboard_2_VC: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func openGallery() {
+        PHPhotoLibrary.requestAuthorization({
+            (newStatus) in
+            if newStatus ==  PHAuthorizationStatus.authorized {
+                DispatchQueue.main.async {
+                    DispatchQueue.main.async {
+                    self.picker.allowsEditing = false
+                    self.picker.sourceType = .photoLibrary
+                    self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+                    self.present(self.picker, animated: true, completion: nil)
+                    }
+                }
+            }else{
+                
+                let alertVC = UIAlertController(title: "EuroBond Application need to Access the Gallery".localiz(), message: "Allow Gallery Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        UIApplication.shared.open(URL.init(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+                    }
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
+                        UIAlertAction in
+                        
+                    }
+                    alertVC.addAction(okAction)
+                    alertVC.addAction(cancelAction)
+                    self.present(alertVC, animated: true, completion: nil)
+                
+            }
+        })
+    }
+    
+    func openCamera(){
+        DispatchQueue.main.async {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                AVCaptureDevice.requestAccess(for: AVMediaType.video) { response in
+                    if response {
+                        if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+                            DispatchQueue.main.async {
+                                self.picker.allowsEditing = false
+                                self.picker.sourceType = UIImagePickerController.SourceType.camera
+                                self.picker.cameraCaptureMode = .photo
+                                self.present(self.picker,animated: true,completion: nil)
+                            }
+                        }
+                        
+                    }else {
+                        
+                        let alertVC = UIAlertController(title: "EuroBond Application need to Access the Camera".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
+                            UIAlertAction in
+                            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                        }
+                        let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
+                            UIAlertAction in
+                        }
+                        alertVC.addAction(okAction)
+                        alertVC.addAction(cancelAction)
+                        self.present(alertVC, animated: true, completion: nil)
+                    }
+                    
+                    
+                    
+                }
+                
+            } else {
+                self.noCamera()
+            }
+        }
+    }
+    func opencamera() {
+        DispatchQueue.main.async {
+            if AVCaptureDevice.authorizationStatus(for: AVMediaType.video) ==  AVAuthorizationStatus.authorized {
+                DispatchQueue.main.async {
+                self.picker.allowsEditing = false
+                self.picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: self.picker.sourceType)!
+                self.picker.sourceType = UIImagePickerController.SourceType.camera
+                self.picker.cameraCaptureMode = .photo
+                self.present(self.picker,animated: true,completion: nil)
+                }
+            }else{
+
+                let alertVC = UIAlertController(title: "No Camera access".localiz(), message: "Allow Camera Access".localiz(), preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Allow".localiz(), style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                    }
+                let cancelAction = UIAlertAction(title: "DisAllow".localiz(), style: UIAlertAction.Style.cancel) {
+                        UIAlertAction in
+                    }
+                    alertVC.addAction(okAction)
+                    alertVC.addAction(cancelAction)
+                    self.present(alertVC, animated: true, completion: nil)
+                }
+                
+                
+            }
+    }
+     func noCamera(){
+         let alertVC = UIAlertController(title: "No Camera".localiz(), message: "Sorry, this device has no camera".localiz(), preferredStyle: .alert)
+         let okAction = UIAlertAction(title: "ok".localiz(), style:.default, handler: nil)
+             alertVC.addAction(okAction)
+             present(alertVC, animated: true, completion: nil)
+
+     }
+    
+    //MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+                
+                if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                    print(image)
+                    
+                    let imageData = image.resized(withPercentage: 0.1)
+                    let imageData1: NSData = imageData!.pngData()! as NSData
+                    self.profileImage.image = image
+                    //self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
+                    let cropper = CropperViewController(originalImage: image)
+                    print(strdata1,"Image")
+                    cropper.delegate = self
+                    
+                    picker.dismiss(animated: true) {
+                    self.present(cropper, animated: true, completion: nil)
+                      
+                    }
+                  
+            }
+                
+                
+            }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+extension EBC_Dashboard_2_VC: CropperViewControllerDelegate {
+
+    func cropperDidConfirm(_ cropper: CropperViewController, state: CropperState?) {
+    cropper.dismiss(animated: true, completion: nil)
+ 
+    if let state = state,
+        let image = cropper.originalImage.cropped(withCropperState: state) {
+        print(image,"imageDD")
+        let imageData = image.resized(withPercentage: 0.1)
+        let imageData1: NSData = imageData!.pngData()! as NSData
+        self.profileImage.image = image
+        self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
+        print(strdata1,"kdjgjhdsj")
+        
+        //{"ActionType":"159","ObjCustomerJson":{"DisplayImage":"",}}
+        //{"ActorId":"240","ActionType":"159","ObjCustomerJson":{"DisplayImage":"","Domain":"EuroBond"}}
+        //{"ActorId":"240","ActionType":"159","ObjCustomerJson":{"DisplayImage":"","Domain":"EuroBond"}}
+        
+        DispatchQueue.main.async {
+            let parameters = [
+                "ActionType":"159",
+                "ActorId": "\(UserDefaults.standard.string(forKey: "UserID") ?? "")",
+                "ObjCustomerJson": [
+                    "DisplayImage": self.strdata1,
+                    "Domain":"EuroBond"
+                ]
+            ]as [String : Any]
+            print(parameters)
+            self.VM.profileImageUpdate(parameter: parameters)
+        }
+        
+    } else {
+        print("Something went wrong")
+    }
+    self.dismiss(animated: true, completion: nil)
+    }
+}
+

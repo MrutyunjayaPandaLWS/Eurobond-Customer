@@ -18,13 +18,6 @@
 		25390B692A055CE0006C9A7F /* eurobond-faq-hin.html in Resources */ = {isa = PBXBuildFile; fileRef = 25390B682A055CDF006C9A7F /* eurobond-faq-hin.html */; };
 		256F8FEF2A1B2D6A00B6BEE7 /* GamificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FED2A1B2D6900B6BEE7 /* GamificationModels.swift */; };
 		256F8FF02A1B2D6A00B6BEE7 /* LstGamificationTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FEE2A1B2D6A00B6BEE7 /* LstGamificationTransaction.swift */; };
-		256F8FF82A1B323D00B6BEE7 /* DashBordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF12A1B323900B6BEE7 /* DashBordModel.swift */; };
-		256F8FF92A1B323D00B6BEE7 /* LstCustomerFeedBackJsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF22A1B323900B6BEE7 /* LstCustomerFeedBackJsonApi.swift */; };
-		256F8FFA2A1B323D00B6BEE7 /* ObjGamificationTransaction1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF32A1B323A00B6BEE7 /* ObjGamificationTransaction1.swift */; };
-		256F8FFB2A1B323D00B6BEE7 /* ObjCustomerDashboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF42A1B323B00B6BEE7 /* ObjCustomerDashboardList.swift */; };
-		256F8FFC2A1B323D00B6BEE7 /* LstLoyaltyProgramReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF52A1B323B00B6BEE7 /* LstLoyaltyProgramReport.swift */; };
-		256F8FFD2A1B323D00B6BEE7 /* ObjActivityDetailsJsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF62A1B323C00B6BEE7 /* ObjActivityDetailsJsonList.swift */; };
-		256F8FFE2A1B323D00B6BEE7 /* LstPromotionListJsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 256F8FF72A1B323D00B6BEE7 /* LstPromotionListJsonApi.swift */; };
 		2575B0A62A161F4C00BE0EC4 /* ObjCustomerDashboardListCust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575B0A32A161F4C00BE0EC4 /* ObjCustomerDashboardListCust.swift */; };
 		2575B0A72A161F4C00BE0EC4 /* ObjGamificationTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575B0A42A161F4C00BE0EC4 /* ObjGamificationTransaction.swift */; };
 		2575B0A82A161F4C00BE0EC4 /* CustomerDetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2575B0A52A161F4C00BE0EC4 /* CustomerDetailsModels.swift */; };
@@ -237,6 +230,14 @@
 		8428377A29E5689900189C33 /* HR_TermsandCondtionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8428377929E5689900189C33 /* HR_TermsandCondtionVC.swift */; };
 		842B937629E43CFE00FD0770 /* CityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B937429E43CFD00FD0770 /* CityList.swift */; };
 		842B937729E43CFE00FD0770 /* CityListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B937529E43CFE00FD0770 /* CityListModels.swift */; };
+		842EDAFB2A406DDE00962752 /* LstPromotionListJsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF32A406DDD00962752 /* LstPromotionListJsonApi.swift */; };
+		842EDAFC2A406DDF00962752 /* ObjCustomerDashboardList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF42A406DDD00962752 /* ObjCustomerDashboardList.swift */; };
+		842EDAFD2A406DDF00962752 /* ObjCatalogueDetailsForCustomer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF52A406DDE00962752 /* ObjCatalogueDetailsForCustomer.swift */; };
+		842EDAFE2A406DDF00962752 /* DashBordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF62A406DDE00962752 /* DashBordModel.swift */; };
+		842EDAFF2A406DDF00962752 /* ObjActivityDetailsJsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF72A406DDE00962752 /* ObjActivityDetailsJsonList.swift */; };
+		842EDB002A406DDF00962752 /* LstCustomerFeedBackJsonApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF82A406DDE00962752 /* LstCustomerFeedBackJsonApi.swift */; };
+		842EDB012A406DDF00962752 /* LstLoyaltyProgramReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAF92A406DDE00962752 /* LstLoyaltyProgramReport.swift */; };
+		842EDB022A406DDF00962752 /* ObjGamificationTransaction1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842EDAFA2A406DDE00962752 /* ObjGamificationTransaction1.swift */; };
 		843A0E1329F3921800F2A66D /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843A0E1229F3921800F2A66D /* NotificationService.swift */; };
 		843A0E1729F3921800F2A66D /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 843A0E1029F3921800F2A66D /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		843A0E1D29F3932700F2A66D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 843A0E1C29F3932700F2A66D /* GoogleService-Info.plist */; };
@@ -251,6 +252,8 @@
 		84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9929DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift */; };
 		84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */; };
 		84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */; };
+		8452A5992A44784800A6BF99 /* 69030-confetti-full-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 8452A5982A44784800A6BF99 /* 69030-confetti-full-screen.json */; };
+		845397792A40113F00253B06 /* EBC_IOS_SuccessPoP_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845397782A40113F00253B06 /* EBC_IOS_SuccessPoP_VC.swift */; };
 		845606FA29E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845606F929E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift */; };
 		8457ECDF29F0197000CC5EF6 /* ProductCatalogueDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECDD29F0196E00CC5EF6 /* ProductCatalogueDetailsModel.swift */; };
 		8457ECE029F0197000CC5EF6 /* ObjImageGalleryList1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8457ECDE29F0197000CC5EF6 /* ObjImageGalleryList1.swift */; };
@@ -280,15 +283,14 @@
 		847DAFFC29EEB77C0000FDE6 /* HR_RedemptionDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFFB29EEB77C0000FDE6 /* HR_RedemptionDetailsVM.swift */; };
 		847DAFFF29EEB8260000FDE6 /* AddToCartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DAFFE29EEB8260000FDE6 /* AddToCartModels.swift */; };
 		847DB00129EEB8A80000FDE6 /* HR_MyRedemptionStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847DB00029EEB8A80000FDE6 /* HR_MyRedemptionStatusTVC.swift */; };
+		847F63742A42B4AD00050710 /* GamingSubmitModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F63732A42B4AD00050710 /* GamingSubmitModels.swift */; };
+		847F63772A42B55600050710 /* EBC_SpinWheel_VM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847F63762A42B55600050710 /* EBC_SpinWheel_VM.swift */; };
 		847FF49629ED20DE0080FAE1 /* EBC_QuerySubmissionVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847FF49529ED20DE0080FAE1 /* EBC_QuerySubmissionVM.swift */; };
 		84815F5B29E3E8EA001C65F9 /* EBC_Login1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F5A29E3E8EA001C65F9 /* EBC_Login1VC.swift */; };
 		84815F5E29E3EEA2001C65F9 /* TokenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F5D29E3EEA2001C65F9 /* TokenModels.swift */; };
 		84815F6629E41669001C65F9 /* NotificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6429E41668001C65F9 /* NotificationModels.swift */; };
 		84815F6729E41669001C65F9 /* LstPushHistoryJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6529E41669001C65F9 /* LstPushHistoryJson.swift */; };
 		84815F6A29E41699001C65F9 /* HistoryNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6929E41699001C65F9 /* HistoryNotificationsViewModel.swift */; };
-		84815F6E29E416CA001C65F9 /* HistoryNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6B29E416C7001C65F9 /* HistoryNotificationsTableViewCell.swift */; };
-		84815F6F29E416CA001C65F9 /* HistoryNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84815F6C29E416C8001C65F9 /* HistoryNotificationsTableViewCell.xib */; };
-		84815F7029E416CA001C65F9 /* HistoryNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F6D29E416CA001C65F9 /* HistoryNotificationsViewController.swift */; };
 		84815F7329E4175A001C65F9 /* EBC_DropDownTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7129E41759001C65F9 /* EBC_DropDownTVCell.swift */; };
 		84815F7429E4175A001C65F9 /* EBC_DropDownVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7229E4175A001C65F9 /* EBC_DropDownVC.swift */; };
 		84815F7729E41787001C65F9 /* HYT_DropdownVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F7629E41787001C65F9 /* HYT_DropdownVM.swift */; };
@@ -296,6 +298,8 @@
 		84815F8329E42176001C65F9 /* StateListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F8129E42175001C65F9 /* StateListModels.swift */; };
 		84815F8429E42176001C65F9 /* StateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84815F8229E42176001C65F9 /* StateList.swift */; };
 		8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */; };
+		848F7FFF2A41ED280075AA93 /* VariousWheelSimpleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F7FFE2A41ED280075AA93 /* VariousWheelSimpleVC.swift */; };
+		848F80012A41ED580075AA93 /* SFWConfiguration+VariousWheelSimple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F80002A41ED580075AA93 /* SFWConfiguration+VariousWheelSimple.swift */; };
 		849548CC29E7C05D00F372E7 /* EBC_LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849548CB29E7C05D00F372E7 /* EBC_LoginVM.swift */; };
 		849548CF29E7D12600F372E7 /* LoginOTPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849548CE29E7D12600F372E7 /* LoginOTPModel.swift */; };
 		849548DC29E7E43900F372E7 /* EBC_DashBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849548DB29E7E43900F372E7 /* EBC_DashBoardVM.swift */; };
@@ -404,6 +408,10 @@
 		84BD648A29EA8782008D3E34 /* FilterPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD648829EA877F008D3E34 /* FilterPopUpViewController.swift */; };
 		84BD648B29EA8782008D3E34 /* FilterByStatusPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD648929EA8782008D3E34 /* FilterByStatusPopUpVC.swift */; };
 		84BD648D29EA8797008D3E34 /* FilterByStatusTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD648C29EA8797008D3E34 /* FilterByStatusTVC.swift */; };
+		84C051EC2A3ADE3B00E76B1B /* EBC_IOS_PlayAndWin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C051EB2A3ADE3B00E76B1B /* EBC_IOS_PlayAndWin.swift */; };
+		84C051F22A3B2E3900E76B1B /* HistoryNotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C051EF2A3B2E3900E76B1B /* HistoryNotificationsViewController.swift */; };
+		84C051F32A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C051F02A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.xib */; };
+		84C051F42A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C051F12A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.swift */; };
 		84EB50B529F1549000533266 /* MyAssistantModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB50B329F1548E00533266 /* MyAssistantModel.swift */; };
 		84EB50B629F1549000533266 /* LstCustParentChildMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB50B429F1549000533266 /* LstCustParentChildMapping.swift */; };
 		84EB50B929F1552400533266 /* EBC_MyAssistantVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB50B829F1552400533266 /* EBC_MyAssistantVM.swift */; };
@@ -478,13 +486,6 @@
 		25390B682A055CDF006C9A7F /* eurobond-faq-hin.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "eurobond-faq-hin.html"; sourceTree = "<group>"; };
 		256F8FED2A1B2D6900B6BEE7 /* GamificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamificationModels.swift; sourceTree = "<group>"; };
 		256F8FEE2A1B2D6A00B6BEE7 /* LstGamificationTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstGamificationTransaction.swift; sourceTree = "<group>"; };
-		256F8FF12A1B323900B6BEE7 /* DashBordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashBordModel.swift; sourceTree = "<group>"; };
-		256F8FF22A1B323900B6BEE7 /* LstCustomerFeedBackJsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerFeedBackJsonApi.swift; sourceTree = "<group>"; };
-		256F8FF32A1B323A00B6BEE7 /* ObjGamificationTransaction1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjGamificationTransaction1.swift; sourceTree = "<group>"; };
-		256F8FF42A1B323B00B6BEE7 /* ObjCustomerDashboardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCustomerDashboardList.swift; sourceTree = "<group>"; };
-		256F8FF52A1B323B00B6BEE7 /* LstLoyaltyProgramReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstLoyaltyProgramReport.swift; sourceTree = "<group>"; };
-		256F8FF62A1B323C00B6BEE7 /* ObjActivityDetailsJsonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjActivityDetailsJsonList.swift; sourceTree = "<group>"; };
-		256F8FF72A1B323D00B6BEE7 /* LstPromotionListJsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPromotionListJsonApi.swift; sourceTree = "<group>"; };
 		2575B0A32A161F4C00BE0EC4 /* ObjCustomerDashboardListCust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCustomerDashboardListCust.swift; sourceTree = "<group>"; };
 		2575B0A42A161F4C00BE0EC4 /* ObjGamificationTransaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjGamificationTransaction.swift; sourceTree = "<group>"; };
 		2575B0A52A161F4C00BE0EC4 /* CustomerDetailsModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerDetailsModels.swift; sourceTree = "<group>"; };
@@ -704,6 +705,14 @@
 		8428377929E5689900189C33 /* HR_TermsandCondtionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_TermsandCondtionVC.swift; sourceTree = "<group>"; };
 		842B937429E43CFD00FD0770 /* CityList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityList.swift; sourceTree = "<group>"; };
 		842B937529E43CFE00FD0770 /* CityListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityListModels.swift; sourceTree = "<group>"; };
+		842EDAF32A406DDD00962752 /* LstPromotionListJsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LstPromotionListJsonApi.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/LstPromotionListJsonApi.swift"; sourceTree = "<group>"; };
+		842EDAF42A406DDD00962752 /* ObjCustomerDashboardList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjCustomerDashboardList.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/ObjCustomerDashboardList.swift"; sourceTree = "<group>"; };
+		842EDAF52A406DDE00962752 /* ObjCatalogueDetailsForCustomer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjCatalogueDetailsForCustomer.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/ObjCatalogueDetailsForCustomer.swift"; sourceTree = "<group>"; };
+		842EDAF62A406DDE00962752 /* DashBordModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DashBordModel.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/DashBordModel.swift"; sourceTree = "<group>"; };
+		842EDAF72A406DDE00962752 /* ObjActivityDetailsJsonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjActivityDetailsJsonList.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/ObjActivityDetailsJsonList.swift"; sourceTree = "<group>"; };
+		842EDAF82A406DDE00962752 /* LstCustomerFeedBackJsonApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LstCustomerFeedBackJsonApi.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/LstCustomerFeedBackJsonApi.swift"; sourceTree = "<group>"; };
+		842EDAF92A406DDE00962752 /* LstLoyaltyProgramReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LstLoyaltyProgramReport.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/LstLoyaltyProgramReport.swift"; sourceTree = "<group>"; };
+		842EDAFA2A406DDE00962752 /* ObjGamificationTransaction1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ObjGamificationTransaction1.swift; path = "../../../../../../../Downloads/codegen_649034cae2931 2/ObjGamificationTransaction1.swift"; sourceTree = "<group>"; };
 		843A0E1029F3921800F2A66D /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		843A0E1229F3921800F2A66D /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		843A0E1429F3921800F2A66D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -721,6 +730,8 @@
 		84411E9B29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DreamGiftTVC.swift; sourceTree = "<group>"; };
 		84411E9D29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_WishListDetailsVC.swift; sourceTree = "<group>"; };
 		84516AA129F2A5750061DD38 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		8452A5982A44784800A6BF99 /* 69030-confetti-full-screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "69030-confetti-full-screen.json"; path = "../../../../../../../Downloads/69030-confetti-full-screen.json"; sourceTree = "<group>"; };
+		845397782A40113F00253B06 /* EBC_IOS_SuccessPoP_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EBC_IOS_SuccessPoP_VC.swift; path = "../../../../../Arokia_Projects/GVLC-SEAPP/GodrejLocksSE/Controllers/EBC_IOS_SuccessPoP_VC.swift"; sourceTree = "<group>"; };
 		845606F929E3CD0D0067D42B /* EBC_TermsAndCondition1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_TermsAndCondition1VC.swift; sourceTree = "<group>"; };
 		8457ECDD29F0196E00CC5EF6 /* ProductCatalogueDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCatalogueDetailsModel.swift; sourceTree = "<group>"; };
 		8457ECDE29F0197000CC5EF6 /* ObjImageGalleryList1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjImageGalleryList1.swift; sourceTree = "<group>"; };
@@ -750,15 +761,14 @@
 		847DAFFB29EEB77C0000FDE6 /* HR_RedemptionDetailsVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_RedemptionDetailsVM.swift; sourceTree = "<group>"; };
 		847DAFFE29EEB8260000FDE6 /* AddToCartModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToCartModels.swift; sourceTree = "<group>"; };
 		847DB00029EEB8A80000FDE6 /* HR_MyRedemptionStatusTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HR_MyRedemptionStatusTVC.swift; sourceTree = "<group>"; };
+		847F63732A42B4AD00050710 /* GamingSubmitModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamingSubmitModels.swift; sourceTree = "<group>"; };
+		847F63762A42B55600050710 /* EBC_SpinWheel_VM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_SpinWheel_VM.swift; sourceTree = "<group>"; };
 		847FF49529ED20DE0080FAE1 /* EBC_QuerySubmissionVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_QuerySubmissionVM.swift; sourceTree = "<group>"; };
 		84815F5A29E3E8EA001C65F9 /* EBC_Login1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_Login1VC.swift; sourceTree = "<group>"; };
 		84815F5D29E3EEA2001C65F9 /* TokenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModels.swift; sourceTree = "<group>"; };
 		84815F6429E41668001C65F9 /* NotificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModels.swift; sourceTree = "<group>"; };
 		84815F6529E41669001C65F9 /* LstPushHistoryJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPushHistoryJson.swift; sourceTree = "<group>"; };
 		84815F6929E41699001C65F9 /* HistoryNotificationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewModel.swift; sourceTree = "<group>"; };
-		84815F6B29E416C7001C65F9 /* HistoryNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsTableViewCell.swift; sourceTree = "<group>"; };
-		84815F6C29E416C8001C65F9 /* HistoryNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryNotificationsTableViewCell.xib; sourceTree = "<group>"; };
-		84815F6D29E416CA001C65F9 /* HistoryNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewController.swift; sourceTree = "<group>"; };
 		84815F7129E41759001C65F9 /* EBC_DropDownTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_DropDownTVCell.swift; sourceTree = "<group>"; };
 		84815F7229E4175A001C65F9 /* EBC_DropDownVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EBC_DropDownVC.swift; sourceTree = "<group>"; };
 		84815F7629E41787001C65F9 /* HYT_DropdownVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HYT_DropdownVM.swift; sourceTree = "<group>"; };
@@ -766,6 +776,8 @@
 		84815F8129E42175001C65F9 /* StateListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateListModels.swift; sourceTree = "<group>"; };
 		84815F8229E42176001C65F9 /* StateList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateList.swift; sourceTree = "<group>"; };
 		8484BBB229D712DE003FB8B0 /* EBC_PopupMessageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_PopupMessageVC.swift; sourceTree = "<group>"; };
+		848F7FFE2A41ED280075AA93 /* VariousWheelSimpleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariousWheelSimpleVC.swift; sourceTree = "<group>"; };
+		848F80002A41ED580075AA93 /* SFWConfiguration+VariousWheelSimple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SFWConfiguration+VariousWheelSimple.swift"; sourceTree = "<group>"; };
 		849548CB29E7C05D00F372E7 /* EBC_LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_LoginVM.swift; sourceTree = "<group>"; };
 		849548CE29E7D12600F372E7 /* LoginOTPModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginOTPModel.swift; sourceTree = "<group>"; };
 		849548DB29E7E43900F372E7 /* EBC_DashBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_DashBoardVM.swift; sourceTree = "<group>"; };
@@ -874,6 +886,10 @@
 		84BD648829EA877F008D3E34 /* FilterPopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPopUpViewController.swift; sourceTree = "<group>"; };
 		84BD648929EA8782008D3E34 /* FilterByStatusPopUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterByStatusPopUpVC.swift; sourceTree = "<group>"; };
 		84BD648C29EA8797008D3E34 /* FilterByStatusTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterByStatusTVC.swift; sourceTree = "<group>"; };
+		84C051EB2A3ADE3B00E76B1B /* EBC_IOS_PlayAndWin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_IOS_PlayAndWin.swift; sourceTree = "<group>"; };
+		84C051EF2A3B2E3900E76B1B /* HistoryNotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewController.swift; sourceTree = "<group>"; };
+		84C051F02A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryNotificationsTableViewCell.xib; sourceTree = "<group>"; };
+		84C051F12A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		84EB50B329F1548E00533266 /* MyAssistantModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAssistantModel.swift; sourceTree = "<group>"; };
 		84EB50B429F1549000533266 /* LstCustParentChildMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustParentChildMapping.swift; sourceTree = "<group>"; };
 		84EB50B829F1552400533266 /* EBC_MyAssistantVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EBC_MyAssistantVM.swift; sourceTree = "<group>"; };
@@ -1208,6 +1224,7 @@
 		25844B1229DE88D300CACC41 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				847F63722A42B00100050710 /* GamingIDPassModel */,
 				259190842A2874BD0002A2EB /* BankTransferDetailsModels */,
 				259190892A2874CC0002A2EB /* BankTransferModels */,
 				258D0A422A2781AA00D84FA6 /* ProfileUpdate */,
@@ -1314,6 +1331,7 @@
 		25844B2829DEAA1000CACC41 /* GameZone */ = {
 			isa = PBXGroup;
 			children = (
+				847F63752A42B51A00050710 /* SpinnGamingVM */,
 				2577B48529DEC356004C4942 /* ScratchVM */,
 				2577B47729DEBCD0004C4942 /* EBC_GameCenter_VM.swift */,
 				25844B2629DEAA0800CACC41 /* EBC_MagicBox_VM.swift */,
@@ -1834,6 +1852,8 @@
 		80AEAD3A29C440C1005108AC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				845220222A4171DF004740D6 /* VariousWheelSimple */,
+				84C051EA2A3ADE2100E76B1B /* PlayAndWin */,
 				259142822A14CF8600E2FE67 /* Raffel */,
 				842049C529F1375C00F97488 /* DreamGift */,
 				80AEAD7329C44E42005108AC /* LaucnhScreen */,
@@ -1847,7 +1867,7 @@
 				84BD647929EA869B008D3E34 /* CodeSummary */,
 				84BD647429EA8680008D3E34 /* CodeStatus */,
 				8426284D29EA7F6A003C8FE7 /* Upload&Scan */,
-				84815F6229E4162B001C65F9 /* Notification */,
+				84C051EE2A3B2E3900E76B1B /* NotificationVC */,
 				84815F5F29E4138A001C65F9 /* Dropdown */,
 				845606F829E3CCD40067D42B /* TermsAndCondition1 */,
 				2577B49D29DEE9D2004C4942 /* RedemptionOTP */,
@@ -1880,6 +1900,7 @@
 				80AEAD7729C4692D005108AC /* Welcome */,
 				80AEAD7429C44E51005108AC /* Login */,
 				84BBA9F829ECFD7C000036BC /* EBC_ComingSoonVC.swift */,
+				845397782A40113F00253B06 /* EBC_IOS_SuccessPoP_VC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1937,6 +1958,7 @@
 		80AEAD4229C4419B005108AC /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				8452A5982A44784800A6BF99 /* 69030-confetti-full-screen.json */,
 				25DEDD852A2B02F300E27E55 /* magic_box_shield.json */,
 				25DEDD842A2B02F200E27E55 /* magic_box.json */,
 				25B02C1A2A24706F00A22ACA /* 66949-confetti.json */,
@@ -2312,6 +2334,15 @@
 			path = "DreamList Details";
 			sourceTree = "<group>";
 		};
+		845220222A4171DF004740D6 /* VariousWheelSimple */ = {
+			isa = PBXGroup;
+			children = (
+				848F7FFE2A41ED280075AA93 /* VariousWheelSimpleVC.swift */,
+				848F80002A41ED580075AA93 /* SFWConfiguration+VariousWheelSimple.swift */,
+			);
+			name = VariousWheelSimple;
+			sourceTree = "<group>";
+		};
 		845606F829E3CCD40067D42B /* TermsAndCondition1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2436,6 +2467,22 @@
 			path = AddToCartModels;
 			sourceTree = "<group>";
 		};
+		847F63722A42B00100050710 /* GamingIDPassModel */ = {
+			isa = PBXGroup;
+			children = (
+				847F63732A42B4AD00050710 /* GamingSubmitModels.swift */,
+			);
+			path = GamingIDPassModel;
+			sourceTree = "<group>";
+		};
+		847F63752A42B51A00050710 /* SpinnGamingVM */ = {
+			isa = PBXGroup;
+			children = (
+				847F63762A42B55600050710 /* EBC_SpinWheel_VM.swift */,
+			);
+			path = SpinnGamingVM;
+			sourceTree = "<group>";
+		};
 		847FF49429ED20C90080FAE1 /* QuerySubmissionVM */ = {
 			isa = PBXGroup;
 			children = (
@@ -2459,16 +2506,6 @@
 				84815F7129E41759001C65F9 /* EBC_DropDownTVCell.swift */,
 			);
 			path = Dropdown;
-			sourceTree = "<group>";
-		};
-		84815F6229E4162B001C65F9 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				84815F6D29E416CA001C65F9 /* HistoryNotificationsViewController.swift */,
-				84815F6B29E416C7001C65F9 /* HistoryNotificationsTableViewCell.swift */,
-				84815F6C29E416C8001C65F9 /* HistoryNotificationsTableViewCell.xib */,
-			);
-			path = Notification;
 			sourceTree = "<group>";
 		};
 		84815F6329E4163E001C65F9 /* NotificationModels */ = {
@@ -2560,13 +2597,14 @@
 		849548DE29E7E4A100F372E7 /* DashBoardModel */ = {
 			isa = PBXGroup;
 			children = (
-				256F8FF12A1B323900B6BEE7 /* DashBordModel.swift */,
-				256F8FF22A1B323900B6BEE7 /* LstCustomerFeedBackJsonApi.swift */,
-				256F8FF52A1B323B00B6BEE7 /* LstLoyaltyProgramReport.swift */,
-				256F8FF72A1B323D00B6BEE7 /* LstPromotionListJsonApi.swift */,
-				256F8FF62A1B323C00B6BEE7 /* ObjActivityDetailsJsonList.swift */,
-				256F8FF42A1B323B00B6BEE7 /* ObjCustomerDashboardList.swift */,
-				256F8FF32A1B323A00B6BEE7 /* ObjGamificationTransaction1.swift */,
+				842EDAF62A406DDE00962752 /* DashBordModel.swift */,
+				842EDAF82A406DDE00962752 /* LstCustomerFeedBackJsonApi.swift */,
+				842EDAF92A406DDE00962752 /* LstLoyaltyProgramReport.swift */,
+				842EDAF32A406DDD00962752 /* LstPromotionListJsonApi.swift */,
+				842EDAF72A406DDE00962752 /* ObjActivityDetailsJsonList.swift */,
+				842EDAF52A406DDE00962752 /* ObjCatalogueDetailsForCustomer.swift */,
+				842EDAF42A406DDD00962752 /* ObjCustomerDashboardList.swift */,
+				842EDAFA2A406DDE00962752 /* ObjGamificationTransaction1.swift */,
 			);
 			path = DashBoardModel;
 			sourceTree = "<group>";
@@ -2962,6 +3000,24 @@
 			path = CodeStatus;
 			sourceTree = "<group>";
 		};
+		84C051EA2A3ADE2100E76B1B /* PlayAndWin */ = {
+			isa = PBXGroup;
+			children = (
+				84C051EB2A3ADE3B00E76B1B /* EBC_IOS_PlayAndWin.swift */,
+			);
+			path = PlayAndWin;
+			sourceTree = "<group>";
+		};
+		84C051EE2A3B2E3900E76B1B /* NotificationVC */ = {
+			isa = PBXGroup;
+			children = (
+				84C051EF2A3B2E3900E76B1B /* HistoryNotificationsViewController.swift */,
+				84C051F02A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.xib */,
+				84C051F12A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.swift */,
+			);
+			path = NotificationVC;
+			sourceTree = "<group>";
+		};
 		84EB50B229F1545300533266 /* MyAssistantListModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -3239,6 +3295,7 @@
 				80AEAD7629C45DD3005108AC /* EUROBOND LOGO ANIMATION_1.mp4 in Resources */,
 				80AEAD1629C44081005108AC /* LaunchScreen.storyboard in Resources */,
 				809343A129C5EE2700440CB6 /* Roboto-Regular.ttf in Resources */,
+				84C051F32A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.xib in Resources */,
 				8093439D29C5EE0F00440CB6 /* Roboto-Bold.ttf in Resources */,
 				2515812E29FA52E40087267B /* eurobond-t&c-hin.html in Resources */,
 				2515812A29FA52AF0087267B /* eurobond-faq-eng.html in Resources */,
@@ -3263,10 +3320,10 @@
 				80AEAD1329C44081005108AC /* Assets.xcassets in Resources */,
 				25860E8729FBCC2D004E0A92 /* 27592-maintenance.json in Resources */,
 				2577B48029DEBFBF004C4942 /* EBC_PlayNow_CVC.xib in Resources */,
+				8452A5992A44784800A6BF99 /* 69030-confetti-full-screen.json in Resources */,
 				849E45CC29DC308700A4311B /* otherImageTableViewCell.xib in Resources */,
 				849B813029EA9C9B0095286B /* lf30_editor_qd1wdceq.json in Resources */,
 				259142AB2A14F54B00E2FE67 /* LINC_ViewYrTickets_CVC.xib in Resources */,
-				84815F6F29E416CA001C65F9 /* HistoryNotificationsTableViewCell.xib in Resources */,
 				257C035229F95BF4000F48F8 /* Localizable.strings in Resources */,
 				259142AE2A14F6A200E2FE67 /* WinnersListTableViewCell.xib in Resources */,
 				84BBA9FB29ECFF0C000036BC /* lf30_editor_zw5apwgp.json in Resources */,
@@ -3374,7 +3431,6 @@
 			files = (
 				849E45B229DC276900A4311B /* EBC_FAQVC.swift in Sources */,
 				2577B4CA29DEF963004C4942 /* LstCustomerIdentityInfo.swift in Sources */,
-				256F8FF92A1B323D00B6BEE7 /* LstCustomerFeedBackJsonApi.swift in Sources */,
 				84411E9A29DAE9640085B9A7 /* EBC_DreamGiftDetailsVC.swift in Sources */,
 				801C860029C5BA3A008204CB /* EBC_RefferalVC.swift in Sources */,
 				84BBA9F929ECFD7C000036BC /* EBC_ComingSoonVC.swift in Sources */,
@@ -3387,6 +3443,7 @@
 				84B5E25729EFD1E800A3C56D /* HR_EditAddressVC.swift in Sources */,
 				849E45B529DC293100A4311B /* EBC_QueryListingVC.swift in Sources */,
 				800D81DC29C9E0D900D77557 /* EBC_RefferAndEarnVC.swift in Sources */,
+				842EDAFF2A406DDF00962752 /* ObjActivityDetailsJsonList.swift in Sources */,
 				84B7F11E29EFA4F900EB8592 /* HR_EvoucherProductDetailsVC.swift in Sources */,
 				80AEAD6B29C44249005108AC /* LabelExtension.swift in Sources */,
 				847DAFEA29EEB1850000FDE6 /* HR_MyRedemptionDetailsVM.swift in Sources */,
@@ -3412,19 +3469,21 @@
 				80902B5329C81B2F00050701 /* EBC_TabBarVC.swift in Sources */,
 				256F8FEF2A1B2D6A00B6BEE7 /* GamificationModels.swift in Sources */,
 				84B5E26E29F00D9600A3C56D /* HR_MyRedemptionListVM.swift in Sources */,
-				256F8FFE2A1B323D00B6BEE7 /* LstPromotionListJsonApi.swift in Sources */,
 				80AEAD5029C44206005108AC /* URLMethods.swift in Sources */,
 				2577B4D029DEFD9F004C4942 /* IncreaseProductModels.swift in Sources */,
 				84B5E23729EFB70C00A3C56D /* TermsandConditonModel.swift in Sources */,
 				84B5E25429EFD0CC00A3C56D /* EBC_DefaultAddressVC.swift in Sources */,
+				84C051EC2A3ADE3B00E76B1B /* EBC_IOS_PlayAndWin.swift in Sources */,
 				256F8FF02A1B2D6A00B6BEE7 /* LstGamificationTransaction.swift in Sources */,
 				2591908D2A2878410002A2EB /* QS_SuccessTransfer_VC.swift in Sources */,
 				8093439B29C5E9D900440CB6 /* EBC_SuccessMessageVC.swift in Sources */,
 				80AEAD7229C44E3D005108AC /* EBC_LaunchScreenVC.swift in Sources */,
+				845397792A40113F00253B06 /* EBC_IOS_SuccessPoP_VC.swift in Sources */,
 				84BBAA1229ED04DF000036BC /* ChatDetailsModel.swift in Sources */,
 				84B5E26929F0012B00A3C56D /* HR_RedemptionPlannerDetailsVM.swift in Sources */,
 				847DAFE529EEB0EF0000FDE6 /* PlannerAddedOrNotModels.swift in Sources */,
 				84411E9129DADCBE0085B9A7 /* EBC_WishListTVC.swift in Sources */,
+				84C051F42A3B2E3900E76B1B /* HistoryNotificationsTableViewCell.swift in Sources */,
 				84EE0FCE29EEA13100586FFB /* UpdateCartModel.swift in Sources */,
 				84093D6129F25E4F00635CB9 /* UpdateFabricatedPasswordVM.swift in Sources */,
 				2575B0A62A161F4C00BE0EC4 /* ObjCustomerDashboardListCust.swift in Sources */,
@@ -3435,7 +3494,6 @@
 				8484BBB329D712DE003FB8B0 /* EBC_PopupMessageVC.swift in Sources */,
 				847DAFCA29EEACEC0000FDE6 /* HRD_MyRedemptionDetailsVC.swift in Sources */,
 				84EE0FA929EE4CAB00586FFB /* EBC_MyProfileUpdateVM.swift in Sources */,
-				84815F6E29E416CA001C65F9 /* HistoryNotificationsTableViewCell.swift in Sources */,
 				2577B47F29DEBFBF004C4942 /* EBC_PlayNow_CVC.swift in Sources */,
 				84EB50B929F1552400533266 /* EBC_MyAssistantVM.swift in Sources */,
 				84BBAA0029ED0195000036BC /* MyProfileModel.swift in Sources */,
@@ -3462,6 +3520,7 @@
 				80AEAD4629C441ED005108AC /* BaseViewController.swift in Sources */,
 				84B5E23A29EFBA6300A3C56D /* LoginSubmissionModel.swift in Sources */,
 				259142DB2A150FC700E2FE67 /* LINC_ProductSummary_TVC.swift in Sources */,
+				842EDAFC2A406DDF00962752 /* ObjCustomerDashboardList.swift in Sources */,
 				258C459F2A02610800F270EB /* projectCatalogeVM.swift in Sources */,
 				84A857E729DAAE92003BABA1 /* EBC_MillstonesBonussVC.swift in Sources */,
 				259190802A2873A50002A2EB /* QS_BankTransfer_VC.swift in Sources */,
@@ -3512,6 +3571,7 @@
 				84B5E24D29EFC6FB00A3C56D /* SubmitProductModels.swift in Sources */,
 				843EAF9029D6B82500971B96 /* EBC_MyAssistantVC.swift in Sources */,
 				258D8B502A29FEB70090A7CA /* MyRaffleTicketsModels.swift in Sources */,
+				842EDAFE2A406DDF00962752 /* DashBordModel.swift in Sources */,
 				258D8B582A2A046A0090A7CA /* OnGoingRafflesModels.swift in Sources */,
 				258D8B542A2A010C0090A7CA /* RafflesCurrentModels.swift in Sources */,
 				2577B4BB29DEF546004C4942 /* SendSMSModel.swift in Sources */,
@@ -3524,6 +3584,7 @@
 				847DAFCC29EEAD050000FDE6 /* HR_RedemptionCatalogueDetailsVC.swift in Sources */,
 				84BBAA0A29ED042F000036BC /* QueryListModel.swift in Sources */,
 				8426285829EA7F6B003C8FE7 /* CodeSubmissionPopUp.swift in Sources */,
+				848F80012A41ED580075AA93 /* SFWConfiguration+VariousWheelSimple.swift in Sources */,
 				84B7F12C29EFA9D500EB8592 /* HR_MyVouchersTVC.swift in Sources */,
 				84EB50B629F1549000533266 /* LstCustParentChildMapping.swift in Sources */,
 				80AEAD5229C44206005108AC /* ApiUrls.swift in Sources */,
@@ -3532,7 +3593,6 @@
 				847DAFFC29EEB77C0000FDE6 /* HR_RedemptionDetailsVM.swift in Sources */,
 				80621F1A29C5D5B700CDA9BC /* EBC_Signup2VC.swift in Sources */,
 				84BBAA1329ED04DF000036BC /* ObjQueryResponseJsonList.swift in Sources */,
-				256F8FFD2A1B323D00B6BEE7 /* ObjActivityDetailsJsonList.swift in Sources */,
 				259190832A2873D70002A2EB /* QS_BankTransfer_VM.swift in Sources */,
 				25844B1929DE8ACB00CACC41 /* persistanceservice.swift in Sources */,
 				259142B82A14F9A600E2FE67 /* LINC_CurrentRafflesDetails_VM.swift in Sources */,
@@ -3540,6 +3600,7 @@
 				258C45A92A02756200F270EB /* LstProductListDetails2.swift in Sources */,
 				84B5E25B29EFD33E00A3C56D /* HR_SelectionTVC.swift in Sources */,
 				2577B4A129DEE9D2004C4942 /* MSP_RedemptionSuccessPopVC.swift in Sources */,
+				842EDB022A406DDF00962752 /* ObjGamificationTransaction1.swift in Sources */,
 				849E45D929DC4BF700A4311B /* BankDetailsVC.swift in Sources */,
 				843EAF8D29D6AFCE00971B96 /* EBC_CreatenewQueryVC.swift in Sources */,
 				849548CC29E7C05D00F372E7 /* EBC_LoginVM.swift in Sources */,
@@ -3548,7 +3609,6 @@
 				2503D1192A2A0F0800311994 /* OnGoingRafflesTotalModels.swift in Sources */,
 				800D81D929C9DF2E00D77557 /* EBC_SchemesAndOffersTVC.swift in Sources */,
 				84411E9C29DAE9800085B9A7 /* EBC_DreamGiftTVC.swift in Sources */,
-				84815F7029E416CA001C65F9 /* HistoryNotificationsViewController.swift in Sources */,
 				25DE58402A09683000944FF8 /* ObjCatalogueRedemReqList.swift in Sources */,
 				801F931929D1C791006FF310 /* EBC_ProductCatalogueCVC.swift in Sources */,
 				843E6D1829EAA7D3004FBE2D /* ScannedandUploadCodesModels.swift in Sources */,
@@ -3575,10 +3635,13 @@
 				84093D5E29F2570800635CB9 /* UserList1.swift in Sources */,
 				84411E9E29DAE9E20085B9A7 /* EBC_WishListDetailsVC.swift in Sources */,
 				84B5E23B29EFBA6300A3C56D /* UserList.swift in Sources */,
+				847F63772A42B55600050710 /* EBC_SpinWheel_VM.swift in Sources */,
+				848F7FFF2A41ED280075AA93 /* VariousWheelSimpleVC.swift in Sources */,
 				259142952A14D18300E2FE67 /* LstRaffleDetailsRaffledetails.swift in Sources */,
 				2575B0AC2A16201700BE0EC4 /* LstCustomerCartORDER.swift in Sources */,
 				84815F7A29E417BD001C65F9 /* HYT_LanguageVM.swift in Sources */,
 				80AEAD5129C44206005108AC /* RestAPI_Requests.swift in Sources */,
+				84C051F22A3B2E3900E76B1B /* HistoryNotificationsViewController.swift in Sources */,
 				80AEAD6A29C44249005108AC /* TextfieldExtension.swift in Sources */,
 				8426285A29EA7F6B003C8FE7 /* CodesListTVC.swift in Sources */,
 				842B937729E43CFE00FD0770 /* CityListModels.swift in Sources */,
@@ -3600,12 +3663,14 @@
 				849ECC9829E91C9400628D69 /* RegistrationModel.swift in Sources */,
 				84EE0FB129EE4DA600586FFB /* SideMenuModelClass.swift in Sources */,
 				849548F429E80EB200F372E7 /* EBC_FabricatedDashBoardVM.swift in Sources */,
+				842EDAFD2A406DDF00962752 /* ObjCatalogueDetailsForCustomer.swift in Sources */,
 				842049B929F120A100F97488 /* CatalogueListModel.swift in Sources */,
 				84411E9829DAE94B0085B9A7 /* EBC_DreamGiftVC.swift in Sources */,
 				80AEAD6E29C44249005108AC /* GrandientExtension.swift in Sources */,
 				84815F8429E42176001C65F9 /* StateList.swift in Sources */,
 				259142892A14D02D00E2FE67 /* Raffles_VM.swift in Sources */,
 				84B7F12329EFA90300EB8592 /* HR_EvoucherlistCVC.swift in Sources */,
+				842EDB002A406DDF00962752 /* LstCustomerFeedBackJsonApi.swift in Sources */,
 				84B5E25D29EFD38F00A3C56D /* HR_SelectionVM.swift in Sources */,
 				25844B2029DEA91F00CACC41 /* EBC_MagicBoxVC.swift in Sources */,
 				84B5E25129EFCA3400A3C56D /* KC_DefaultAddressVM.swift in Sources */,
@@ -3631,9 +3696,7 @@
 				2577B47829DEBCD0004C4942 /* EBC_GameCenter_VM.swift in Sources */,
 				2577B4AA29DEF144004C4942 /* RedemptionSubmission.swift in Sources */,
 				84BD647829EA8691008D3E34 /* CodeStatusListVC.swift in Sources */,
-				256F8FFA2A1B323D00B6BEE7 /* ObjGamificationTransaction1.swift in Sources */,
 				80437F4A29C8904F0062D151 /* EBC_SideMenuVC.swift in Sources */,
-				256F8FF82A1B323D00B6BEE7 /* DashBordModel.swift in Sources */,
 				2575B0A72A161F4C00BE0EC4 /* ObjGamificationTransaction.swift in Sources */,
 				84B5E26729F0011F00A3C56D /* HR_RedemptionPlannerVM.swift in Sources */,
 				2591908B2A2874CC0002A2EB /* BankTransferModels.swift in Sources */,
@@ -3643,7 +3706,6 @@
 				80AEAD0729C4407C005108AC /* AppDelegate.swift in Sources */,
 				849E45CE29DC308700A4311B /* otherInfoTableViewCell.swift in Sources */,
 				847DAFE029EEB0B00000FDE6 /* AddToPlannerModels.swift in Sources */,
-				256F8FFC2A1B323D00B6BEE7 /* LstLoyaltyProgramReport.swift in Sources */,
 				259142942A14D18300E2FE67 /* MyRafflesDetailsModels.swift in Sources */,
 				802BCDF929CC6F8D00B3209C /* EBC_BankTransferVC.swift in Sources */,
 				849E45B029DC275800A4311B /* EBC_AboutVC.swift in Sources */,
@@ -3686,6 +3748,8 @@
 				84BD648B29EA8782008D3E34 /* FilterByStatusPopUpVC.swift in Sources */,
 				259142BF2A14FA3C00E2FE67 /* SubmitRafflesModels.swift in Sources */,
 				80AEAD5429C44206005108AC /* WebClient.swift in Sources */,
+				842EDAFB2A406DDE00962752 /* LstPromotionListJsonApi.swift in Sources */,
+				847F63742A42B4AD00050710 /* GamingSubmitModels.swift in Sources */,
 				802BCE0129CC70E800B3209C /* ContainerViewController.swift in Sources */,
 				80AEAD6C29C44249005108AC /* String+Extenssion.swift in Sources */,
 				84B5E26129EFFEC900A3C56D /* HR_RedemptionPlannerDetailsVC.swift in Sources */,
@@ -3703,12 +3767,12 @@
 				84B7F11C29EFA4BA00EB8592 /* HR_EvoucherListVC.swift in Sources */,
 				847DAFD029EEADE90000FDE6 /* HR_ProductCategoryCVC.swift in Sources */,
 				8426285729EA7F6B003C8FE7 /* ScannedCode_TVC.swift in Sources */,
+				842EDB012A406DDF00962752 /* LstLoyaltyProgramReport.swift in Sources */,
 				80AEAD4F29C44206005108AC /* URLExtension.swift in Sources */,
 				84BBAA0329ED0352000036BC /* UpdateMyProfileModel.swift in Sources */,
 				2577B4A729DEEAFE004C4942 /* OTPModels.swift in Sources */,
 				8426285629EA7F6B003C8FE7 /* ScannedCodes_VC.swift in Sources */,
 				84A698BD29EACB610051D1D2 /* SyncStatusViewModel.swift in Sources */,
-				256F8FFB2A1B323D00B6BEE7 /* ObjCustomerDashboardList.swift in Sources */,
 				849E45CA29DC308700A4311B /* senderInfoTableViewCell.swift in Sources */,
 				84B5E23629EFB70C00A3C56D /* LstTermsAndCondition.swift in Sources */,
 				84815F6A29E41699001C65F9 /* HistoryNotificationsViewModel.swift in Sources */,

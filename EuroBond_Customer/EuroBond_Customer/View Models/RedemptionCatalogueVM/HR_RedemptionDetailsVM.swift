@@ -13,7 +13,7 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
     
     weak var VC: HR_RedemptionCatalogueDetailsVC?
     var requestAPIs = RestAPI_Requests()
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? ""
     var loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     var myCartListArray = [CatalogueSaveCartDetailListResponse]()

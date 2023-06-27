@@ -56,7 +56,7 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
     var productPointss = 0
     var categoryTitle = ""
     var selectedCatalogueIds = 0
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? ""
     var VM = HR_RedemptionDetailsVM()
     var addedRedemablePointBalance = 0
     var productsLIST:Array = [AddToCART]()
@@ -161,7 +161,8 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
     
     @IBAction func addToCartButton(_ sender: Any) {
         if UserDefaults.standard.string(forKey: "verificationStatus") == "1"{
-
+            print(redeemablePointsBalance,"dslkdm")
+            print(self.VM.sumOfProductsCount,"kjdnd")
         if self.VM.sumOfProductsCount <= Int(redeemablePointsBalance) ?? 0{
             let calcValue = self.VM.sumOfProductsCount + Int(productPointss)
             if calcValue <= Int(redeemablePointsBalance) ?? 0{

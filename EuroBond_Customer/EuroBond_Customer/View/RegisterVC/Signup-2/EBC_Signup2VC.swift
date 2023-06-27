@@ -32,7 +32,9 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
     @IBOutlet var uploadGSTTextLbl: UILabel!
     @IBOutlet var uploadFileTextLbl: UILabel!
     
-    @IBOutlet weak var companyNameTF: UITextField!
+    //@IBOutlet weak var companyNameTF: UITextField!
+    @IBOutlet weak var enterCompanyNameTF: UITextField!
+    @IBOutlet var companyNameTitleLbl: UILabel!
     
     
     var selectedStateID = -1
@@ -160,13 +162,98 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
             self.view.makeToast("Enter valid PAN number".localiz(), duration: 2.0, position: .bottom)
         }else if strBase64PAN == ""{
             self.view.makeToast("Attach PAN Image".localiz(), duration: 2.0, position: .bottom)
+        }else if enterCompanyNameTF.text?.count == 0 {
+            self.view.makeToast("Enter company name", duration: 2.0, position: .bottom)
         }
-        //        else if self.gstTF.text?.count == 0 {
-        //            self.view.makeToast("Enter GST number", duration: 2.0, position: .bottom)
-        //         }else if self.gstTF.text?.count != 15{
-        //                self.view.makeToast("Enter valid GST number", duration: 2.0, position: .bottom)
-        //    }
-        else{
+//        else if self.gstTF.text?.count ?? 0 > 0 {
+//            if self.gstTF.text?.count != 15{
+//                self.view.makeToast("Enter valid GST number", duration: 2.0, position: .bottom)
+//            }else if enterCompanyNameTF.text?.count == 0 {
+//                self.view.makeToast("Enter company name", duration: 2.0, position: .bottom)
+//            }else{
+//                let parameterJSON = [
+//                    "actiontype": "0",
+//                    "lstidentityinfo": [
+//                        [
+//                            "identityid": "5", //hardcoded
+//                            "identityno": self.panNumberTF.text ?? "",
+//                            "identitytype": "6", //hardcoded
+//                            "IdentityDocument": self.strBase64PAN
+//                        ]
+//                    ],
+//                    "objcustomer": [
+//                        "title": self.selectTitle,
+//                        "FirstName": self.firstNames,
+//                        "LastName": self.lastName,
+//                        "address1": self.address,
+//                        "customeremail": self.email,
+//                        "customermobile": self.mobile,
+//                        "customercityid": self.selectedCityId,
+//                        "customerstateid": self.selectedStateID,
+//                        "customerzip": self.pincode,
+//                        "IsActive": "1", //hardcoded
+//                        "MerchantId": "1", //hardcoded
+//                        "ReferrerCode": self.referralCode,
+//                        "RegistrationSource": "2", // for IOS=>2, Android=3
+//                        "customertypeid": "69",//hardcoded
+//                        "DOB": self.selectedDOB,
+//                        "LanguageId": self.languageId,
+//                        "Gender": self.selectedGender
+//                    ],
+//                    "objcustomerofficalinfo": [
+//                        "officialgstnumber": "\(self.gstTF.text ?? "")",
+//                        "gstdocument": self.strBase64GST,
+//                        "CompanyName": "\(self.enterCompanyNameTF.text ?? "")"
+//                    ]
+//                ] as [String: Any]
+//                print(parameterJSON)
+//                self.VM.registrationSubmission(parameter: parameterJSON)
+//            }
+//
+//        }
+        else if strBase64GST != "" {
+            if self.gstTF.text?.count == 0 {
+                self.view.makeToast("Enter GST number", duration: 2.0, position: .bottom)
+            }else{
+                let parameterJSON = [
+                    "actiontype": "0",
+                    "lstidentityinfo": [
+                        [
+                            "identityid": "5", //hardcoded
+                            "identityno": self.panNumberTF.text ?? "",
+                            "identitytype": "6", //hardcoded
+                            "IdentityDocument": self.strBase64PAN
+                        ]
+                    ],
+                    "objcustomer": [
+                        "title": self.selectTitle,
+                        "FirstName": self.firstNames,
+                        "LastName": self.lastName,
+                        "address1": self.address,
+                        "customeremail": self.email,
+                        "customermobile": self.mobile,
+                        "customercityid": self.selectedCityId,
+                        "customerstateid": self.selectedStateID,
+                        "customerzip": self.pincode,
+                        "IsActive": "1", //hardcoded
+                        "MerchantId": "1", //hardcoded
+                        "ReferrerCode": self.referralCode,
+                        "RegistrationSource": "2", // for IOS=>2, Android=3
+                        "customertypeid": "69",//hardcoded
+                        "DOB": self.selectedDOB,
+                        "LanguageId": self.languageId,
+                        "Gender": self.selectedGender
+                    ],
+                    "objcustomerofficalinfo": [
+                        "officialgstnumber": "\(self.gstTF.text ?? "")",
+                        "gstdocument": self.strBase64GST,
+                        "CompanyName": "\(self.enterCompanyNameTF.text ?? "")"
+                    ]
+                ] as [String: Any]
+                print(parameterJSON)
+                self.VM.registrationSubmission(parameter: parameterJSON)
+            }
+        }else{
             
             let parameterJSON = [
                 "actiontype": "0",
@@ -200,7 +287,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
                 "objcustomerofficalinfo": [
                     "officialgstnumber": "\(self.gstTF.text ?? "")",
                     "gstdocument": self.strBase64GST,
-                    "CompanyName": "\(self.companyName)"
+                    "CompanyName": "\(self.enterCompanyNameTF.text ?? "")"
                 ]
             ] as [String: Any]
             print(parameterJSON)
@@ -298,7 +385,7 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
             } else {
                 return false
             }
-        }else  if textField == gstTF{
+        }else if textField == gstTF{
             
             let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
             let compSepByCharInSet = string.components(separatedBy: aSet)
@@ -309,6 +396,20 @@ class EBC_Signup2VC: BaseViewController, UITextFieldDelegate{
                 guard let stringRange = Range(range, in: currentText) else { return false }
                 let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
                 return updatedText.count <= 15
+            } else {
+                return false
+            }
+        }else if textField == enterCompanyNameTF{
+            //"[a-zA-Z0-9]"
+            let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
+            if string == numberFiltered {
+                let currentText = self.enterCompanyNameTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 1000
             } else {
                 return false
             }

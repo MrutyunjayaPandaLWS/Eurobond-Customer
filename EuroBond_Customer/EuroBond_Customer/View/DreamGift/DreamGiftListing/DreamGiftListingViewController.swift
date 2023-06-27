@@ -197,13 +197,20 @@ extension DreamGiftListingViewController : UITableViewDelegate, UITableViewDataS
         let tdsvalue = self.VM.myDreamGiftListArray[indexPath.row].tdsPoints ?? 0
         print(Int(pointRequired + Double(tdsvalue)),"data")
         print(balance,"Balance")
-        if Int(pointRequired) <= Int(balance){
+        let isRedeem = self.VM.myDreamGiftListArray[indexPath.row].is_Redeemable ?? 0
+        
+//        if isRedeem == 1{
+//
+//        }else{
+//
+//        }
+
+        if Int(pointRequired) <= Int(self.redeemablePointBal){
             cell?.redeemButton.isEnabled = true
             cell?.redeemButton.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.4823529412, blue: 0.7450980392, alpha: 1)
         }else{
             cell?.redeemButton.isEnabled = false
             cell?.redeemButton.backgroundColor = #colorLiteral(red: 0.04705882353, green: 0.4823529412, blue: 0.7450980392, alpha: 0.5686187744)
-
         }
         
 //        if self.VM.myDreamGiftListArray[indexPath.row].is_Redeemable ?? -2 != 1{

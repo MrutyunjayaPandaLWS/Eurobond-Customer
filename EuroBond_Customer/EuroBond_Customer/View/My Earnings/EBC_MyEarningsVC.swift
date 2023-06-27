@@ -14,7 +14,7 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
             self.selectedFromDate = vc.selectedDate
             self.fromDate.setTitle("\(vc.selectedDate)", for: .normal)
             self.fromDate.setTitleColor(.darkGray, for: .normal)
-        }else{
+        }else if vc.isComeFrom == "2"{
             self.selectedToDate = vc.selectedDate
             print(vc.selectedDate)
             if self.selectedFromDate > self.selectedToDate{
@@ -126,6 +126,8 @@ class EBC_MyEarningsVC: BaseViewController, DateSelectedDelegate{
                 self.filterButton.setTitle("Reset".localiz(), for: .normal)
                 self.VM.myEarningListArray.removeAll()
                 self.startIndex = 1
+                print(self.selectedFromDate,"dfkfuhd")
+                print(self.selectedToDate,"kdjdlkjif")
                 self.VM.myEarningListApi(startIndex: self.startIndex, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
             }
         }else{
@@ -159,7 +161,9 @@ extension EBC_MyEarningsVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EBC_MyEarningTVC", for: indexPath) as! EBC_MyEarningTVC
         cell.selectionStyle = .none
-        cell.pointsLbl.text = "\(Int(self.VM.myEarningListArray[indexPath.row].rewardPoints ?? 0))"
+        let pointsData = self.VM.myEarningListArray[indexPath.row].rewardPoints ?? 0
+        
+        cell.pointsLbl.text = "\(Int(pointsData))"
         //cell.statusLbl.text = "\(self.VM.myEarningListArray[indexPath.row].status ?? "-")"
         
         let ststusData = self.VM.myEarningListArray[indexPath.row].isNotionalId ?? 0

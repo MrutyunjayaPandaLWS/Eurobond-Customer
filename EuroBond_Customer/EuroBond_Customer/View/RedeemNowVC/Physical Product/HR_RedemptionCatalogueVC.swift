@@ -154,7 +154,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     var selectedCatalogueID = 0
     var plannerProductId = 0
     var selectedId = 0
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? "0"
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? "0"
     var productsLIST:Array = [AddToCART]()
     var returnValue = 0
     var selectedCategoryID = "-1"
@@ -546,7 +546,7 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
             let filterCategory = self.VM.myCartListArray.filter { $0.catalogueId == self.VM.catalgoueListArray[indexPath.item].catalogueId ?? 0 }
             let filterCategory1 = self.VM.plannerListArray.filter { $0.catalogueId == self.VM.catalgoueListArray[indexPath.item].catalogueId ?? 0 }
             let productPoints = self.VM.catalgoueListArray[indexPath.item].pointsRequired ?? 0
-            print(self.redeemablePointsBalance, "RedeemablePointBalance")
+            print(self.redeemablePointsBalance, "OverAllPointBalance")
             
             if productPoints < Int(self.redeemablePointsBalance) ?? 0{
                 cell.addedToCartBTN.isHidden = true

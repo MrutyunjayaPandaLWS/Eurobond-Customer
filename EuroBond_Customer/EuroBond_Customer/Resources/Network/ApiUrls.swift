@@ -21,6 +21,7 @@ let checkUserExistencyURL = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/Chec
 let forgotPassURL = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/forgotPasswordMobileApp"
 let referralVerifyURL = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/CheckEmailMobileExistsMobileApp"
 let rafflesURL = "https://eurobondrewardsdemo.loyltwo3ks.com/UploadFiles/Raffle/"
+let spinnWheelURL = "https://eurobondrewardsdemo.loyltwo3ks.com/services//MobileApp/MobileApi.svc/JSON/"
 
 let username = "EuroBond"
 let password = "mFjf$fgjhksdfl#m"

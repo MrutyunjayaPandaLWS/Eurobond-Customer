@@ -20,9 +20,11 @@ class BaseViewController: UIViewController {
     let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView();
 //    var animationView1: AnimationView?
     var redeemablePointBal = UserDefaults.standard.integer(forKey: "RedeemablePointBalance")
+    var overallPoints = UserDefaults.standard.integer(forKey: "OverAllPointBalance")
     var firstName = UserDefaults.standard.string(forKey: "FirstName")
     var customerEmail = UserDefaults.standard.string(forKey: "CustomerEmail")
     var customerMobileNumber = UserDefaults.standard.string(forKey: "CustomerMobileNumber")
+    var redeemableEncashBalance = UserDefaults.standard.string(forKey: "redeemableEncashBalance") ?? ""
     
     //var loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyID") ?? ""
 

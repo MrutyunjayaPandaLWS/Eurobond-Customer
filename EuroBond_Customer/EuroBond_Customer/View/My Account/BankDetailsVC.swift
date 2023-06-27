@@ -36,41 +36,71 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
     @IBOutlet var verificationStatusLbl: UILabel!
     @IBOutlet weak var uploadOutButton: UIButton!
     
+    @IBOutlet weak var attachAccountProofImnfo: UILabel!
+    
+    
+    @IBOutlet weak var attachAccountTitleLbl: UILabel!
+    
+    
+    
     let picker = UIImagePickerController()
     var strdata1 = ""
     var VM = EBC_MyProfileVM()
     var requestAPIs = RestAPI_Requests()
     
     var beneficiaryTypeTF: String = "", firstNameTF: String = "", lastNameTF: String = "", mobileNumberTF: String = "", emailTF: String = "", addressTF: String = "", stateTF: String = "", cityTF: String = "", pinCodeTF: String = "", doB: String = "", stateId: String = "0", cityId: String = "0", customerId: String = "0", addressId:String = "0", imageChecking = ""
+    var apiImageData = ""
+    var sendingImage = 0
+    var isActiveCheck = 0
+    var locationData = 0
+    var countryId = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.picker.delegate = self
-        
-        self.VM.VC2 = self
-        NotificationCenter.default.addObserver(self, selector: #selector(navigateToPrevious), name: Notification.Name.navigateToQueryList, object: nil)
-        self.localization()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            self.picker.delegate = self
+            
+            print(firstNameTF,"dkjndn")
+            print(lastNameTF,"kjdnkjd")
+            
+            self.VM.VC2 = self
+            self.accountNumberTF.delegate = self
+            self.confirmAccountNumberTF.delegate = self
+            self.ifscCodeTF.delegate = self
+            NotificationCenter.default.addObserver(self, selector: #selector(navigateToPrevious), name: Notification.Name.navigateToQueryList, object: nil)
+            self.localization()
+        }
     }
 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.verificationStatusLbl.isHidden = true
-        self.verificationStatusTitle.isHidden = true
-        NotificationCenter.default.post(name: .getProfileDetails, object: self)
-        if self.strdata1 == "" {
-            self.myProfileApi(UserID: self.userId)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            self.verificationStatusLbl.isHidden = true
+            self.verificationStatusTitle.isHidden = true
+            NotificationCenter.default.post(name: .getProfileDetails, object: self)
+            if self.strdata1 == "" {
+                self.myProfileApi(UserID: self.userId)
+            }
         }
-        
     }
     @objc func navigateToPrevious(){
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     
     
     func localization(){
-        
+        self.attachAccountTitleLbl.text = "AttachAccountProof".localiz()
+        self.attachAccountProofImnfo.text = "Attach Account Proof: Please upload the passbook front page or check leaf.".localiz()
         self.accountHolderTF.placeholder = "Enter Account Holder Name".localiz()
         self.accounntHolderNameTitle.text = "AccountHolderName".localiz()
         
@@ -92,18 +122,24 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
     }
     
     @IBAction func selectUploadDoccumentBtn(_ sender: Any) {
-        let alert = UIAlertController(title: "Choose any option".localiz(), message: "", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
-            self.openCamera()
-        }))
-        alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
-            self.openGallery()
-        }))
-        alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
-        }))
-        self.present(alert, animated: true, completion: {
-            print("completion block")
-        })
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+            }
+        }else{
+            let alert = UIAlertController(title: "Choose any option".localiz(), message: "", preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Camera".localiz(), style: .default , handler:{ (UIAlertAction)in
+                self.openCamera()
+            }))
+            alert.addAction(UIAlertAction(title: "Gallery".localiz(), style: .default, handler:{ (UIAlertAction)in
+                self.openGallery()
+            }))
+            alert.addAction(UIAlertAction(title: "Dismiss".localiz(), style: .cancel, handler:{ (UIAlertAction)in
+            }))
+            self.present(alert, animated: true, completion: {
+                print("completion block")
+            })
+        }
 
     }
     
@@ -174,28 +210,38 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
                     else if self.strdata1 == ""{
                         self.view.makeToast("Attach Passbook Image".localiz(), duration: 2.0, position: .bottom)
                     }else{
+                        if self.strdata1 != "" {
+                            sendingImage = 1
+                            self.apiImageData = strdata1
+                        }else{
+                            sendingImage = 0
+                        }
                         let parameter = [
                             "ActionType": "4",
                             "ActorId": self.userId,
+                            "IsActive": "\(self.isActiveCheck)",
+                            "IsMobileRequest" : sendingImage,
                             "ObjCustomerJson": [
-                                "CustomerId": self.customerId,
+                                "IsMobileRequest": 1,
+                                "CountryId": "15",
+                                "LocationId": "\(self.locationData)",
+                                "email": "\(self.emailTF)",
+                                "customerid": self.customerId,
                                 "MerchantId": "1",
                                 "FirstName": self.firstNameTF,
                                 "LastName": self.lastNameTF,
-                                "Mobile": self.customerMobileNumber,
+                                "Mobile": self.customerMobileNumber ?? "",
                                 "Address1": self.addressTF,
                                 "StateId": self.stateId,
-                                "CityId": self.cityId,
+                                "cityid": self.cityId,
                                 "Zip": self.pinCodeTF,
-                                "JDOB": self.doB,
                                 "AddressId": self.addressId,
                                 "AcountHolderName": self.accountHolderTF.text ?? "",
                                 "AccountNumber": self.accountNumberTF.text ?? "",
                                 "BankName": self.bankNameTF.text ?? "",
                                 "IFSCCode": self.ifscCodeTF.text ?? "",
-                                "BankPassbookImage": self.strdata1,
-                                "IsMobileRequest":1
-                            ]
+                                "bankpassbookimage": self.apiImageData
+                            ] as [String : Any]
                         ] as [String : Any]
                         print(parameter)
                         self.VM.updateProfileDetailsApi(parameter: parameter)
@@ -207,6 +253,59 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
         }
       
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == confirmAccountNumberTF{
+            let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
+            if string == numberFiltered {
+                let currentText = self.confirmAccountNumberTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 25
+            }
+            
+        }else if textField == accountNumberTF {
+            let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            
+            if string == numberFiltered {
+                let currentText = self.accountNumberTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 25
+            }
+        }else if textField == ifscCodeTF{
+            let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            self.ifscCodeTF.text = self.ifscCodeTF.text?.uppercased()
+            if string == numberFiltered {
+                let currentText = self.ifscCodeTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 11
+            }
+            
+        }else if textField == accountHolderTF{
+            let aSet = NSCharacterSet(charactersIn:"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz").inverted
+            let compSepByCharInSet = string.components(separatedBy: aSet)
+            let numberFiltered = compSepByCharInSet.joined(separator: "")
+            if string == numberFiltered {
+                let currentText = self.accountHolderTF.text ?? ""
+                guard let stringRange = Range(range, in: currentText) else { return false }
+                let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+                return updatedText.count <= 11
+            }
+            
+        }
+        return false
+    }
+    
+    
     func myProfileApi(UserID: String){
         let parameter = [
             "CustomerId": UserID,
@@ -336,6 +435,10 @@ class BankDetailsVC: BaseViewController, UIImagePickerControllerDelegate, UINavi
             self.uploadImageHeight.constant = 150
             self.imageChecking = "1"
             strdata1 = strBase64
+            if strdata1 != "" {
+                self.uploadDoccumentBtn.isHidden = true
+                self.uploadDoccumentInfoLbl.isHidden = true
+            }
         }
         picker.dismiss(animated: true, completion: nil)
 //        dismiss(animated: true, completion: nil)
