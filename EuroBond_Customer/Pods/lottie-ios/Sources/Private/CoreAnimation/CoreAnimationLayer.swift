@@ -19,7 +19,6 @@ final class CoreAnimationLayer: BaseAnimationLayer {
     imageProvider: AnimationImageProvider,
     textProvider: AnimationTextProvider,
     fontProvider: AnimationFontProvider,
-    maskAnimationToBounds: Bool,
     compatibilityTrackerMode: CompatibilityTracker.Mode,
     logger: LottieLogger)
     throws
@@ -32,7 +31,7 @@ final class CoreAnimationLayer: BaseAnimationLayer {
     compatibilityTracker = CompatibilityTracker(mode: compatibilityTrackerMode, logger: logger)
     valueProviderStore = ValueProviderStore(logger: logger)
     super.init()
-    masksToBounds = maskAnimationToBounds
+    masksToBounds = true
     setup()
     try setupChildLayers()
   }
@@ -72,10 +71,7 @@ final class CoreAnimationLayer: BaseAnimationLayer {
   }
 
   enum PlaybackState: Equatable {
-    /// The animation is has started playing, and may still be playing.
-    ///  - When animating with a finite duration (e.g. `playOnce`), playback
-    ///    state will still be `playing` when the animation completes.
-    ///    To check if the animation is currently playing, prefer `isAnimationPlaying`.
+    /// The animation is playing in real-time
     case playing
     /// The animation is statically displaying a specific frame
     case paused(frame: AnimationFrameTime)
@@ -85,17 +81,8 @@ final class CoreAnimationLayer: BaseAnimationLayer {
   struct AnimationConfiguration: Equatable {
     var animationContext: AnimationContext
     var timingConfiguration: CAMediaTimingConfiguration
-    var recordHierarchyKeypath: ((String) -> Void)?
-
-    static func ==(_ lhs: AnimationConfiguration, _ rhs: AnimationConfiguration) -> Bool {
-      lhs.animationContext == rhs.animationContext
-        && lhs.timingConfiguration == rhs.timingConfiguration
-        && ((lhs.recordHierarchyKeypath == nil) == (rhs.recordHierarchyKeypath == nil))
-    }
+    var logHierarchyKeypaths = false
   }
-
-  /// The parent `LottieAnimationView` that manages this layer
-  weak var animationView: LottieAnimationView?
 
   /// A closure that is called after this layer sets up its animation.
   /// If the animation setup was unsuccessful and encountered compatibility issues,
@@ -161,9 +148,7 @@ final class CoreAnimationLayer: BaseAnimationLayer {
     //    allocate a very large amount of memory (400mb+).
     //  - Alternatively this layer could subclass `CATransformLayer`,
     //    but this causes Core Animation to emit unnecessary logs.
-    if var pendingAnimationConfiguration = pendingAnimationConfiguration {
-      pendingAnimationConfigurationModification?(&pendingAnimationConfiguration.animationConfiguration)
-      pendingAnimationConfigurationModification = nil
+    if let pendingAnimationConfiguration = pendingAnimationConfiguration {
       self.pendingAnimationConfiguration = nil
 
       do {
@@ -194,9 +179,6 @@ final class CoreAnimationLayer: BaseAnimationLayer {
   private var pendingAnimationConfiguration: (
     animationConfiguration: AnimationConfiguration,
     playbackState: PlaybackState)?
-
-  /// A modification that should be applied to the next animation configuration
-  private var pendingAnimationConfigurationModification: ((inout AnimationConfiguration) -> Void)?
 
   /// Configuration for the animation that is currently setup in this layer
   private var currentAnimationConfiguration: AnimationConfiguration?
@@ -267,7 +249,7 @@ final class CoreAnimationLayer: BaseAnimationLayer {
       logger: logger,
       currentKeypath: AnimationKeypath(keys: []),
       textProvider: textProvider,
-      recordHierarchyKeypath: configuration.recordHierarchyKeypath)
+      logHierarchyKeypaths: configuration.logHierarchyKeypaths)
 
     // Perform a layout pass if necessary so all of the sublayers
     // have the most up-to-date sizing information
@@ -307,20 +289,32 @@ final class CoreAnimationLayer: BaseAnimationLayer {
 
   // Removes the current `CAAnimation`s, and rebuilds new animations
   // using the same configuration as the previous animations.
-  private func rebuildCurrentAnimation() {
+  private func rebuildCurrentAnimation(with newConfiguration: AnimationConfiguration? = nil) {
     guard
+      let currentConfiguration = currentAnimationConfiguration,
+      let playbackState = playbackState,
       // Don't replace any pending animations that are queued to begin
       // on the next run loop cycle, since an existing pending animation
       // will cause the animation to be rebuilt anyway.
       pendingAnimationConfiguration == nil
-    else { return }
+    else {
+      // If we already have a pending animation setup pass, but a new configuration was provided,
+      // replace the pending configuration with the new configuration
+      if let newConfiguration = newConfiguration {
+        pendingAnimationConfiguration?.animationConfiguration = newConfiguration
+      }
 
-    if isAnimationPlaying == true {
-      animationView?.updateInFlightAnimation()
-    } else {
-      let currentFrame = currentFrame
-      removeAnimations()
-      self.currentFrame = currentFrame
+      return
+    }
+
+    removeAnimations()
+
+    switch playbackState {
+    case .paused(let frame):
+      currentFrame = frame
+
+    case .playing:
+      playAnimation(configuration: newConfiguration ?? currentConfiguration)
     }
   }
 
@@ -334,9 +328,6 @@ extension CoreAnimationLayer: RootAnimationLayer {
     .specific(#keyPath(animationProgress))
   }
 
-  /// Whether or not the animation is currently playing.
-  ///  - Handles case where CAAnimations with a finite duration animation (e.g. `playOnce`)
-  ///    have finished playing but still present on this layer.
   var isAnimationPlaying: Bool? {
     switch pendingAnimationConfiguration?.playbackState {
     case .playing:
@@ -353,8 +344,6 @@ extension CoreAnimationLayer: RootAnimationLayer {
     }
   }
 
-  /// The current frame of the animation being displayed,
-  /// accounting for the realtime progress of any active CAAnimations.
   var currentFrame: AnimationFrameTime {
     get {
       switch playbackState {
@@ -453,30 +442,18 @@ extension CoreAnimationLayer: RootAnimationLayer {
   }
 
   func logHierarchyKeypaths() {
-    for keypath in allHierarchyKeypaths() {
-      logger.info(keypath)
-    }
-  }
-
-  func allHierarchyKeypaths() -> [String] {
-    guard pendingAnimationConfiguration?.animationConfiguration ?? currentAnimationConfiguration != nil else {
+    guard var configuration = pendingAnimationConfiguration?.animationConfiguration ?? currentAnimationConfiguration else {
       logger.info("Cannot log hierarchy keypaths until animation has been set up at least once")
-      return []
+      return
     }
 
     logger.info("Lottie: Rebuilding animation with hierarchy keypath logging enabled")
 
-    var allAnimationKeypaths = [String]()
-    pendingAnimationConfigurationModification = { configuration in
-      configuration.recordHierarchyKeypath = { keypath in
-        allAnimationKeypaths.append(keypath)
-      }
-    }
-
-    rebuildCurrentAnimation()
+    // Rebuild the animation with `logHierarchyKeypaths = true` so the `ValueProviderStore` will log any keypath lookups that occur.
+    // This allows the consumer to know what keypaths can be customized in their animation.
+    configuration.logHierarchyKeypaths = true
+    rebuildCurrentAnimation(with: configuration)
     displayIfNeeded()
-
-    return allAnimationKeypaths
   }
 
   func setValueProvider(_ valueProvider: AnyValueProvider, keypath: AnimationKeypath) {

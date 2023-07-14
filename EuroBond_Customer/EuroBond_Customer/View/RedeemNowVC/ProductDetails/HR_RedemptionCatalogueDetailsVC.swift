@@ -56,7 +56,7 @@ class HR_RedemptionCatalogueDetailsVC: BaseViewController, popUpAlertDelegate{
     var productPointss = 0
     var categoryTitle = ""
     var selectedCatalogueIds = 0
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? ""
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? ""
     var VM = HR_RedemptionDetailsVM()
     var addedRedemablePointBalance = 0
     var productsLIST:Array = [AddToCART]()

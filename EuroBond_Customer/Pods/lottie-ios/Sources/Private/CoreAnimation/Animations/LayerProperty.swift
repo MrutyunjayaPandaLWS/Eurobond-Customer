@@ -60,12 +60,8 @@ struct CustomizableProperty<ValueRepresentation> {
 /// The name of a customizable property that can be used in an `AnimationKeypath`
 ///  - These values should be shared between the two rendering engines,
 ///    since they form the public API of the `AnimationKeypath` system.
-enum PropertyName: String, CaseIterable {
+enum PropertyName: String {
   case color = "Color"
-  case opacity = "Opacity"
-  case scale = "Scale"
-  case position = "Position"
-  case rotation = "Rotation"
 }
 
 // MARK: CALayer properties
@@ -75,7 +71,7 @@ extension LayerProperty {
     .init(
       caLayerKeypath: "transform.translation",
       defaultValue: CGPoint(x: 0, y: 0),
-      customizableProperty: .position)
+      customizableProperty: nil /* currently unsupported */ )
   }
 
   static var positionX: LayerProperty<CGFloat> {
@@ -103,14 +99,14 @@ extension LayerProperty {
     .init(
       caLayerKeypath: "transform.scale.x",
       defaultValue: 1,
-      customizableProperty: .scaleX)
+      customizableProperty: nil /* currently unsupported */ )
   }
 
   static var scaleY: LayerProperty<CGFloat> {
     .init(
       caLayerKeypath: "transform.scale.y",
       defaultValue: 1,
-      customizableProperty: .scaleY)
+      customizableProperty: nil /* currently unsupported */ )
   }
 
   static var rotationX: LayerProperty<CGFloat> {
@@ -131,7 +127,7 @@ extension LayerProperty {
     .init(
       caLayerKeypath: "transform.rotation.z",
       defaultValue: 0,
-      customizableProperty: .rotation)
+      customizableProperty: nil /* currently unsupported */ )
   }
 
   static var anchorPoint: LayerProperty<CGPoint> {
@@ -147,7 +143,7 @@ extension LayerProperty {
     .init(
       caLayerKeypath: #keyPath(CALayer.opacity),
       defaultValue: 1,
-      customizableProperty: .opacity)
+      customizableProperty: nil /* currently unsupported */ )
   }
 
   static var transform: LayerProperty<CATransform3D> {
@@ -259,63 +255,5 @@ extension CustomizableProperty {
 
         return .rgba(CGFloat(color.r), CGFloat(color.g), CGFloat(color.b), CGFloat(color.a))
       })
-  }
-
-  static var opacity: CustomizableProperty<CGFloat> {
-    .init(
-      name: [.opacity],
-      conversion: { typeErasedValue in
-        guard let vector = typeErasedValue as? LottieVector1D else { return nil }
-
-        // Lottie animation files express opacity as a numerical percentage value
-        // (e.g. 50%, 100%, 200%) so we divide by 100 to get the decimal values
-        // expected by Core Animation (e.g. 0.5, 1.0, 2.0).
-        return vector.cgFloatValue / 100
-      })
-  }
-
-  static var scaleX: CustomizableProperty<CGFloat> {
-    .init(
-      name: [.scale],
-      conversion: { typeErasedValue in
-        guard let vector = typeErasedValue as? LottieVector3D else { return nil }
-
-        // Lottie animation files express scale as a numerical percentage value
-        // (e.g. 50%, 100%, 200%) so we divide by 100 to get the decimal values
-        // expected by Core Animation (e.g. 0.5, 1.0, 2.0).
-        return vector.pointValue.x / 100
-      })
-  }
-
-  static var scaleY: CustomizableProperty<CGFloat> {
-    .init(
-      name: [.scale],
-      conversion: { typeErasedValue in
-        guard let vector = typeErasedValue as? LottieVector3D else { return nil }
-
-        // Lottie animation files express scale as a numerical percentage value
-        // (e.g. 50%, 100%, 200%) so we divide by 100 to get the decimal values
-        // expected by Core Animation (e.g. 0.5, 1.0, 2.0).
-        return vector.pointValue.y / 100
-      })
-  }
-
-  static var rotation: CustomizableProperty<CGFloat> {
-    .init(
-      name: [.rotation],
-      conversion: { typeErasedValue in
-        guard let vector = typeErasedValue as? LottieVector1D else { return nil }
-
-        // Lottie animation files express rotation in degrees
-        // (e.g. 90º, 180º, 360º) so we covert to radians to get the
-        // values expected by Core Animation (e.g. π/2, π, 2π)
-        return vector.cgFloatValue * .pi / 180
-      })
-  }
-
-  static var position: CustomizableProperty<CGPoint> {
-    .init(
-      name: [.position],
-      conversion: { ($0 as? LottieVector3D)?.pointValue })
   }
 }

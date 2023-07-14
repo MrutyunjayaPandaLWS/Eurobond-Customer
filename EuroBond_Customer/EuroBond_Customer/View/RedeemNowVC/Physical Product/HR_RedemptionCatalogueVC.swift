@@ -154,7 +154,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     var selectedCatalogueID = 0
     var plannerProductId = 0
     var selectedId = 0
-    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "OverAllPointBalance") ?? "0"
+    var redeemablePointsBalance = UserDefaults.standard.string(forKey: "RedeemablePointBalance") ?? "0"
     var productsLIST:Array = [AddToCART]()
     var returnValue = 0
     var selectedCategoryID = "-1"
@@ -172,7 +172,8 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     
     var selectedPtsRange = ""
     var selectedPtsRange1 = ""
-    var filterByRangeArray = ["All Euros".localiz(), "Under 1000".localiz(), "1000 - 4999", "5000 - 24999", "25000 & Above".localiz()]
+//    var filterByRangeArray = ["All Euros".localiz(), "Under 1000".localiz(), "1000 - 4999", "5000 - 24999", "25000 & Above".localiz()]
+    var filterByRangeArray = ["All Euros".localiz(), "5000 - 19000", "20000 - 29000", "30000 & Above"]
     var sortedBy = 0
     var itsFrom = "Search"
     var parameters : JSON?
@@ -197,6 +198,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         collectionViewFLowLayout2.minimumInteritemSpacing = 2.5
          self.productsDetailCollectionView.collectionViewLayout = collectionViewFLowLayout2
         self.localizSetup()
+        alertPopUp()
     }
  
 //    override func viewWillLayoutSubviews() {
@@ -292,14 +294,16 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
                 
                 if self.selectedPtsRange == ""{
                     self.selectedPtsRange1 = "All Euros".localiz()
-                }else if self.selectedPtsRange == "0-999"{
-                    self.selectedPtsRange1 = "Under 1000".localiz()
-                }else if self.selectedPtsRange1 == "1000-4999"{
-                    self.selectedPtsRange1 = "1000 - 4999"
-                }else if self.selectedPtsRange == "5000-24999"{
-                    self.selectedPtsRange1 = "5000 - 24999"
-                }else if self.selectedPtsRange == "25000 - 999999999"{
-                    self.selectedPtsRange1 = "25000 & Above".localiz()
+                }
+//                else if self.selectedPtsRange == "0-999"{
+//                    self.selectedPtsRange1 = "Under 1000".localiz()
+//                }
+                else if self.selectedPtsRange1 == "5000-19000"{
+                    self.selectedPtsRange1 = "5000 - 19000"
+                }else if self.selectedPtsRange == "20000-29000"{
+                    self.selectedPtsRange1 = "20000 - 29000"
+                }else if self.selectedPtsRange == "30000 - 999999999"{
+                    self.selectedPtsRange1 = "30000 & Above"
                 }
                 self.startIndex = 1
                 self.categoriesId = 2
@@ -377,6 +381,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     }
     @IBAction func searchBtn(_ sender: Any) {
         self.VM.catalgoueListArray.removeAll()
+        self.productCategoryCollectionView.reloadData()
 //        if self.loginCustomerTypeId == "1"{
 //            self.searchButton.backgroundColor = #colorLiteral(red: 0.7215686275, green: 0.01568627451, blue: 0.0431372549, alpha: 1)
 //        }else{
@@ -420,6 +425,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     }
     @IBAction func categoryBtn(_ sender: Any) {
         self.VM.catalgoueListArray.removeAll()
+        self.productCategoryCollectionView.reloadData()
         self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
         self.itsFrom = "Category"
         self.selectedPtsRange1 = ""
@@ -449,6 +455,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     @IBAction func pointRangeBtn(_ sender: Any) {
       //  self.VM.productCategoryListArray.removeAll()
         self.VM.catalgoueListArray.removeAll()
+        self.productCategoryCollectionView.reloadData()
         self.searchButton.backgroundColor = .lightGray
         self.categoryButton.backgroundColor = .lightGray
 //        if self.loginCustomerTypeId == "1"{
@@ -645,14 +652,16 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
                         print(self.selectedPtsRange1)
                         if self.selectedPtsRange1 == "All Euros".localiz(){
                             self.selectedPtsRange = ""
-                        }else if self.selectedPtsRange1 == "Under 1000".localiz(){
-                            self.selectedPtsRange = "0-999"
-                        }else if self.selectedPtsRange1 == "1000 - 4999"{
-                            self.selectedPtsRange = "1000-4999"
-                        }else if self.selectedPtsRange1 == "5000 - 24999"{
-                            self.selectedPtsRange = "5000-24999"
-                        }else if self.selectedPtsRange1 == "25000 & Above".localiz(){
-                            self.selectedPtsRange = "25000 - 999999999"
+                        }
+//                        else if self.selectedPtsRange1 == "Under 1000".localiz(){
+//                            self.selectedPtsRange = "0-999"
+//                        }
+                        else if self.selectedPtsRange1 == "5000 - 19000"{
+                            self.selectedPtsRange = "5000-19000"
+                        }else if self.selectedPtsRange1 == "20000 - 29000"{
+                            self.selectedPtsRange = "20000-29000"
+                        }else if self.selectedPtsRange1 == "30000 & Above"{
+                            self.selectedPtsRange = "30000 - 999999999"
                         }
                         self.VM.catalgoueListArray.removeAll()
                         self.startIndex = 1
@@ -711,6 +720,15 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
             }
         }
 
+    }
+    
+    func alertPopUp(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessPopUpMessage2") as? SuccessPopUpMessage2
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .overFullScreen
+//        vc?.message = "Only 90% of your available Euros can be redeemable"
+//        vc?.delegate = self
+        present(vc!, animated: true)
     }
     
     

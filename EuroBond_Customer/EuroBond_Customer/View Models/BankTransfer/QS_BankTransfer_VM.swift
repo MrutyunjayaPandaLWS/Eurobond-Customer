@@ -135,10 +135,12 @@ class QS_BankTransfer_VM{
                                     self.VC?.rejectedLbl.textAlignment = .center
                                     self.VC?.rejectedLbl.text = "Bank Transfer limit Exceeded".localiz()
                                     self.VC?.popUpImage.image = UIImage(named: "Icons")
-                                    self.VC?.heightOfImage.constant = 200
-                                    self.VC?.widthOfImage.constant = 200
+                                    self.VC?.heightOfImage.constant = 100
+                                    self.VC?.widthOfImage.constant = 100
                                     self.VC?.rejectedView.isHidden = false
                                     self.VC?.bankDetialsOUTBtn.isHidden = true
+                                    self.VC?.popUpOkBtn.isHidden = false
+                                    self.VC?.rejectedView.backgroundColor = UIColor(white: 0, alpha: 0.30)
                                     self.VC?.rejectedLbl.font = UIFont.systemFont(ofSize: 20.0)
                                    
                                 }

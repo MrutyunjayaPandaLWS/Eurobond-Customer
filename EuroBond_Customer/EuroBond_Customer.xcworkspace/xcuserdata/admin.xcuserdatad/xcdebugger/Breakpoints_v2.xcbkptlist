@@ -7,49 +7,271 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DD34EB9C-9D73-40DA-BADD-DA6D34458DDE"
+            uuid = "9A5BB788-FF7D-4935-889E-D2797402F5D1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EuroBond_Customer/View/Raffel/Raffles_VC.swift"
+            filePath = "EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
-            landmarkName = "raffleBtn(_:)"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "selectEnglishBtn(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9A5BB788-FF7D-4935-889E-D2797402F5D1 - f40f183d1cd5ad6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.EBC_WelcomeVC.selectEnglishBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "1032">
+               </Location>
+               <Location
+                  uuid = "9A5BB788-FF7D-4935-889E-D2797402F5D1 - f40f183d1cd5ad6a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.EBC_WelcomeVC.selectEnglishBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "934">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6BF93260-40CB-4FA7-BE50-B961D37D3F2C"
+            uuid = "0DFDB487-053F-440D-935D-54017654B58F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EuroBond_Customer/View Models/BankTransfer/QS_BankTransfer_VM.swift"
+            filePath = "EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "bankSubmitAPI(actorID:NoOfPointsDebit:)"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "selectHindiBtn(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0DFDB487-053F-440D-935D-54017654B58F - d70401d7a689b534"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.EBC_WelcomeVC.selectHindiBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "1056">
+               </Location>
+               <Location
+                  uuid = "0DFDB487-053F-440D-935D-54017654B58F - 8de60687f8eabf98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in EuroBond_Customer.EBC_WelcomeVC.selectHindiBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  uuid = "0DFDB487-053F-440D-935D-54017654B58F - d70401d7a689b534"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.EBC_WelcomeVC.selectHindiBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "163"
+                  endingLineNumber = "163"
+                  offsetFromSymbolStart = "954">
+               </Location>
+               <Location
+                  uuid = "0DFDB487-053F-440D-935D-54017654B58F - 8de60687f8eabf98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in EuroBond_Customer.EBC_WelcomeVC.selectHindiBtn(__C.UIButton) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/Welcome/EBC_WelcomeVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "164"
+                  endingLineNumber = "164"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "123FD898-2483-44D2-AB92-9BD2BB2B686D"
+            uuid = "854CDEFF-AF28-453B-B2A3-F8A1707ACE54"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EuroBond_Customer/View Models/BankTransfer/QS_BankTransfer_VM.swift"
+            filePath = "EuroBond_Customer/View Models/MyRedemptionListVM/HR_MyRedemptionListVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "bankSubmitAPI(actorID:NoOfPointsDebit:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "getRedemptionListApi(customerId:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "854CDEFF-AF28-453B-B2A3-F8A1707ACE54 - fbf3d2fc50c92a1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.HR_MyRedemptionListVM.getRedemptionListApi(customerId: Swift.String) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View%20Models/MyRedemptionListVM/HR_MyRedemptionListVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "10820">
+               </Location>
+               <Location
+                  uuid = "854CDEFF-AF28-453B-B2A3-F8A1707ACE54 - fbf3d2fc50c92a1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.HR_MyRedemptionListVM.getRedemptionListApi(customerId: Swift.String) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View%20Models/MyRedemptionListVM/HR_MyRedemptionListVM.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "13129">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "095658EC-0330-4B19-8B32-D3A52B06CB39"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/RedeemNowVC/Bank Transefer/QS_BankTransfer_VC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "095658EC-0330-4B19-8B32-D3A52B06CB39 - ffa9ec21f73b338d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.QS_BankTransfer_VC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/RedeemNowVC/Bank%20Transefer/QS_BankTransfer_VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "544">
+               </Location>
+               <Location
+                  uuid = "095658EC-0330-4B19-8B32-D3A52B06CB39 - ffa9ec21f73b338d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.QS_BankTransfer_VC.viewWillAppear(Swift.Bool) -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/RedeemNowVC/Bank%20Transefer/QS_BankTransfer_VC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "83"
+                  endingLineNumber = "83"
+                  offsetFromSymbolStart = "475">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E8DA5FD-3ADE-4646-8DC2-E81A0F879BFA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EuroBond_Customer/View/My Account/MyProfileVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "localizSetup()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7E8DA5FD-3ADE-4646-8DC2-E81A0F879BFA - c0bde33fdaf086d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.MyProfileVC.localizSetup() -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/My%20Account/MyProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "4700">
+               </Location>
+               <Location
+                  uuid = "7E8DA5FD-3ADE-4646-8DC2-E81A0F879BFA - c0bde33fdaf086d8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "EuroBond_Customer.MyProfileVC.localizSetup() -&gt; ()"
+                  moduleName = "EuroBond_Customer"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/Ios%20project/LWS%20project/Eurobond-Customer/EuroBond_Customer/EuroBond_Customer/View/My%20Account/MyProfileVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "5344">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

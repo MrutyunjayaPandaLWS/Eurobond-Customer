@@ -106,6 +106,14 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     var fromSideMenu = ""
     var scannedCodeArray = [String]()
     private var animationView: LottieAnimationView?
+    
+    
+    var internetPushMessage = ""
+    var uploadedCodes1:Array = [UploadedCodes]()
+    var codeLIST1:Array = [ScanCodeSTORE]()
+    var latitude = ""
+    var longitude = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         withoutInternetHoleView.isHidden = true
@@ -131,6 +139,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         NotificationCenter.default.addObserver(self, selector: #selector(codesSubmission), name: Notification.Name.CodeSubmission, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(codesUploadAgain), name: Notification.Name.uploadAgain, object: nil)
         languagelocalization()
+        
+//        DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+//            if MyCommonFunctionalUtilities.isInternetCallTheApi() != false{
+//                DispatchQueue.main.async{
+//                    if self.codeLIST.count != 0{
+//                        NotificationCenter.default.post(name: .CodeSubmission, object: nil)
+//                        self.scheduleNotification()
+//                    }
+//                }
+//            }
+//        })
+
         
     }
  
@@ -254,38 +274,83 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
            self.scannerImage.layer.zPosition = 2
        }
     func fetchDetails(){
-        //self.codeLIST.removeAll()
-        let fetchRequest:NSFetchRequest<ScanCodeSTORE> = ScanCodeSTORE.fetchRequest()
-        do{
-            self.codeLIST = try persistanceservice.context.fetch(fetchRequest)
-            print(self.codeLIST.count, "Count")
-
-            if self.codeLIST.count != 0{
-                self.BottomView.isHidden = false
-                self.codeCountView.isHidden = false
-                self.countLabel.isHidden = false
-                self.countLabel.text = "\(self.codeLIST.count)"
-            }else{
-                self.BottomView.isHidden = true
-                self.countLabel.isHidden = true
-                self.codeCountView.isHidden = true
+        
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            
+            self.codeLIST.removeAll()
+            self.uploadedCodes1.removeAll()
+            let fetchRequest1:NSFetchRequest<UploadedCodes> = UploadedCodes.fetchRequest()
+            let fetchRequest:NSFetchRequest<ScanCodeSTORE> = ScanCodeSTORE.fetchRequest()
+            do{
+                self.codeLIST = try persistanceservice.context.fetch(fetchRequest)
+                self.uploadedCodes1 = try persistanceservice.context.fetch(fetchRequest1)
+                print(self.codeLIST.count, "Count")
+                
+                if self.codeLIST.count != 0{
+                    self.countLabel.isHidden = false
+                    self.countLabel.text = "\(self.codeLIST.count)"
+                }else{
+                    self.countLabel.isHidden = true
+                }
+                for codes in self.codeLIST {
+                    if (uploadedCodes1.contains{$0.code == codes.code}){
+                        
+                    }else{
+                        let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
+                        qRCodeDBTable.code = codes.code
+                        qRCodeDBTable.latitude = codes.latitude
+                        qRCodeDBTable.langitude = codes.longitude
+                        qRCodeDBTable.codeStatus = String(0)
+                        let date = Date()
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                        let resultdate = formatter.string(from: date)
+                        qRCodeDBTable.date = resultdate
+                        persistanceservice.saveContext()
+                        let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
+                        qRCodeDBTable1.code = codes.code
+                        persistanceservice.saveContext()
+                    }
+                }
+                
+            }catch{
+                print("error while fetching data")
             }
-
-        }catch{
-            print("error while fetching data")
+            
+            
+            print(uploadedCodes.count,"dskjdnsk")
+            
+            
+        }else{
+            self.codeLIST.removeAll()
+            let fetchRequest:NSFetchRequest<ScanCodeSTORE> = ScanCodeSTORE.fetchRequest()
+            do{
+                self.codeLIST = try persistanceservice.context.fetch(fetchRequest)
+                print(self.codeLIST.count, "Count")
+                
+                if self.codeLIST.count != 0{
+                    self.countLabel.isHidden = false
+                    self.countLabel.text = "\(self.codeLIST.count)"
+                }else{
+                    self.countLabel.isHidden = true
+                }
+                
+            }catch{
+                print("error while fetching data")
+            }
         }
     }
     
     @objc func codesSubmission(notification: Notification){
         if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-            DispatchQueue.main.async{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                vc!.delegate = self
-                vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection".localiz()
-                vc!.modalPresentationStyle = .overCurrentContext
-                vc!.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
+            self.dismiss(animated: true){
+                self.internetPushMessage = "Check Internet Connection"
+                self.fetchDetails()
+                self.dismiss(animated: true){
+                    NotificationCenter.default.post(name: .optionView, object: nil)
+                    self.scheduleNotification()
+                }
+                
             }
         }else{
             
@@ -303,8 +368,8 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 "Address": "\(self.addressString)",
                 "City": "\(self.city)",
                 "Country": "\(self.country)",
-                "Latitude": "\(self.currentlocation.coordinate.latitude)",
-                "Longitude": "\(self.currentlocation.coordinate.longitude)",
+                "Latitude": "\(self.latitude)",
+                "Longitude": "\(self.longitude)",
                 "LoyaltyID": "\(loyaltyId)",
                 "PinCode": "\(self.pincode)",
                 "QRCodeSaveRequestList": self.newproductArray as [[String:Any]],
@@ -321,13 +386,13 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 self.scannerView.isHidden = false
                 self.session.stopRunning()
                 self.fetchDetails()
-                self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
+                self.getAddressFromLatLon(pdblLatitude: String(self.latitude), withLongitude: String(self.longitude))
                 return
             }else{
                 self.isFrom = 0
                 self.fetchDetails()
                 self.codeTF.text = ""
-                self.getAddressFromLatLon(pdblLatitude: String(self.currentlocation.coordinate.latitude), withLongitude: String(self.currentlocation.coordinate.longitude))
+                self.getAddressFromLatLon(pdblLatitude: String(self.latitude), withLongitude: String(self.longitude))
                 return
             }
             
@@ -400,6 +465,32 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         }
     }
    
+    
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Eurobond Rewards Service Completed"
+        content.body = "\(internetPushMessage)"
+        content.sound = .default
+        content.userInfo = ["value": "Data with local notification"]
+        
+        let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(3))
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
+        let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
+        center.add(request) {(error) in
+            if error != nil {
+                print("Error \(error?.localizedDescription ?? "Error in local notification")")
+            } else {
+                print("QR Codes Synced Successfully")
+            }
+            
+        }
+        
+
+    }
+    
+    
     func playAnimation(){
         animationView = .init(name: "cloud_sync")
         animationView!.frame = syncStatusWithoutInternet.bounds
@@ -455,12 +546,24 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
     func codesSubmissionsApi(){
         
         print(parameterJSON,"jdskdj")
-        self.VM.submitCodesApi(parameters: self.parameterJSON!)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            self.dismiss(animated: true){
+                self.internetPushMessage = "Check Internet Connection"
+                self.fetchDetails()
+                self.dismiss(animated: true){
+                    NotificationCenter.default.post(name: .optionView, object: nil)
+                    self.scheduleNotification()
+                }
+                
+            }
+            
+        }else{
+            self.VM.submitCodesApi(parameters: self.parameterJSON!)
+        }
     }
     
     
     @IBAction func closeScreen(_ sender: Any) {
-        print(self.codeLIST.count,"dsjknd")
         if MyCommonFunctionalUtilities.isInternetCallTheApi() != false{
             DispatchQueue.main.async{
                 if self.codeLIST.count != 0{
@@ -468,19 +571,18 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                 }
             }
         }
-            //clearTable()
-            self.session.stopRunning()
-            if self.fromSideMenu == "SideMenu"{
-                self.dismiss(animated: true){
-                    NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
-                }
-            }else{
-                
-                self.dismiss(animated: true){
-                    NotificationCenter.default.post(name: .goToParticularVc, object: nil)
-                }
+//        clearTable()
+        self.session.stopRunning()
+        if self.fromSideMenu == "SideMenu"{
+            navigationController?.popToRootViewController(animated: true)
+//            self.dismiss(animated: true){
+//                NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+//            }
+        }else{
+            self.dismiss(animated: true){
+                NotificationCenter.default.post(name: .goToParticularVc, object: nil)
             }
-    }
+        }    }
     
     
     
@@ -677,15 +779,15 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
         self.session.stopRunning()
         if self.fromSideMenu == "SideMenu"{
 //            self.dismiss(animated: true){
-                NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
-            navigationController?.popViewController(animated: true)
+//                NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
 //            }
+            navigationController?.popToRootViewController(animated: true)
         }else{
             self.dismiss(animated: true){
                 NotificationCenter.default.post(name: .goToParticularVc, object: nil)
             }
         }
-        
+
     }
     @IBAction func scannedCodesButton(_ sender: Any) {
         if self.scanQRCodeButton.currentTitle == "Upload QR Code".localiz() || self.scanQRCodeButton.currentTitle == "क्यूआर कोड अपलोड करें" || self.scanQRCodeButton.currentTitle == "QR কোড আপলোড করুন" || self.scanQRCodeButton.currentTitle == "QR కోడ్‌ని అప్‌లోడ్ చేయండి"{
@@ -851,11 +953,51 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
             authorizelocationstates()
         }
     }
+//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        locationManager = manager
+//        // Only called when variable have location data
+//        authorizelocationstates()
+//    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager = manager
-        // Only called when variable have location data
+        let userLocation :CLLocation = locations[0] as CLLocation
         authorizelocationstates()
+//        print("user latitude = \(userLocation.coordinate.latitude)")
+//        print("user longitude = \(userLocation.coordinate.longitude)")
+
+        self.latitude = "\(userLocation.coordinate.latitude)"
+        self.longitude = "\(userLocation.coordinate.longitude)"
+
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if (error != nil){
+                print("error in reverseGeocode")
+            }
+            //let placemark = placemarks! as [CLPlacemark]
+            
+            let placemark = placemarks as [CLPlacemark]?
+            
+            if placemark?.count ?? 0 > 0{
+                let placemark = placemarks![0]
+                print(placemark.locality!)
+                print(placemark.administrativeArea!)
+                print(placemark.country!)
+                print(placemark.location!)
+                print(placemark.postalCode)
+                
+                self.city = placemark.locality ?? ""
+                self.country = placemark.subAdministrativeArea ?? ""
+                self.pincode = placemark.postalCode ?? ""
+                
+                
+                self.addressString = "\(placemark.name!),\(String(describing: placemark.subLocality)),\(placemark.subAdministrativeArea!),\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+                print(self.addressString,"Addresss")
+            }
+        }
+
     }
+    
+    
     func clearTable(){
         
         let context = persistanceservice.persistentContainer.viewContext
@@ -1096,43 +1238,43 @@ class ScanOrUpload_VC: BaseViewController, AVCaptureVideoDataOutputSampleBufferD
                                         {
                                             print("reverse geodcode fail: \(error!.localizedDescription)")
                                         }
-                                        let pm = placemarks! as [CLPlacemark]
-                                        if pm.count > 0 {
-                                            let pm = placemarks![0]
-                                            print(pm.country)
-                                            print(pm.locality)
-                                            print(pm.subLocality)
-                                            print(pm.thoroughfare)
-                                            print(pm.postalCode)
-                                            print(pm.subThoroughfare)
-                                            if pm.thoroughfare != nil {
-                                                self.addressString = self.addressString + pm.thoroughfare! + ", "
-                                                self.address = pm.thoroughfare!
-                                            }
-                                            if pm.subLocality != nil {
-                                                self.addressString = self.addressString + pm.subLocality! + ", "
-                                                self.address = self.address + pm.subLocality!
-                                            }
-                                            if pm.locality != nil {
-                                                self.addressString = self.addressString + pm.locality! + ", "
-                                                self.city = pm.locality!
-                                            }
-                                            if pm.country != nil {
-                                                self.addressString = self.addressString + pm.country! + ", "
-                                                self.country = pm.country!
-                                            }
-                                            if pm.postalCode != nil {
-                                                self.addressString = self.addressString + pm.postalCode! + " "
-                                                self.pincode = pm.postalCode!
-                                            }
-                                            
-                                            
-                                            print(self.addressString)
-                                            
+//                                        let pm = placemarks! as [CLPlacemark]
+//                                        if pm.count > 0 {
+//                                            let pm = placemarks![0]
+//                                            print(pm.country)
+//                                            print(pm.locality)
+//                                            print(pm.subLocality)
+//                                            print(pm.thoroughfare)
+//                                            print(pm.postalCode)
+//                                            print(pm.subThoroughfare)
+//                                            if pm.thoroughfare != nil {
+//                                                self.addressString = self.addressString + pm.thoroughfare! + ", "
+//                                                self.address = pm.thoroughfare!
+//                                            }
+//                                            if pm.subLocality != nil {
+//                                                self.addressString = self.addressString + pm.subLocality! + ", "
+//                                                self.address = self.address + pm.subLocality!
+//                                            }
+//                                            if pm.locality != nil {
+//                                                self.addressString = self.addressString + pm.locality! + ", "
+//                                                self.city = pm.locality!
+//                                            }
+//                                            if pm.country != nil {
+//                                                self.addressString = self.addressString + pm.country! + ", "
+//                                                self.country = pm.country!
+//                                            }
+//                                            if pm.postalCode != nil {
+//                                                self.addressString = self.addressString + pm.postalCode! + " "
+//                                                self.pincode = pm.postalCode!
+//                                            }
+//
+//
+//                                            print(self.addressString)
+//
                                                 self.stopLoading()
                                             self.codesSubmissionsApi()
                                             
-                                        }
+//                                        }
                                     })
         
     }

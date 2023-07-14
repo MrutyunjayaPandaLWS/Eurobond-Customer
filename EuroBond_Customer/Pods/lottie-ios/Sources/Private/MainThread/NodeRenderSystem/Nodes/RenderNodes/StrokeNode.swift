@@ -36,7 +36,7 @@ final class StrokeNodeProperties: NodePropertyMap, KeypathSearchable {
       dashPhase = NodeProperty(provider: SingleValueProvider(LottieVector1D(0)))
     }
     keypathProperties = [
-      PropertyName.opacity.rawValue : opacity,
+      "Opacity" : opacity,
       PropertyName.color.rawValue : color,
       "Stroke Width" : width,
       "Dashes" : dashPattern,

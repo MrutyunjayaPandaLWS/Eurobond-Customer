@@ -35,19 +35,25 @@ class BaseViewController: UIViewController {
     func convertDateFormater1(_ date: String, fromDate: String, toDate: String) -> String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = fromDate
-            let date = dateFormatter.date(from: date)
+            let date1 = dateFormatter.date(from: date)
             dateFormatter.dateFormat = toDate
-        return  dateFormatter.string(from: date!)
-
+        if let data = date1{
+            return  dateFormatter.string(from: date1!)
+        }else{
+            return date
+        }
         }
     func convertDateFormater(_ date: String) -> String
         {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MM/dd/yyyy HH:mm:ss a"
-            let date = dateFormatter.date(from: date)
+            let date1 = dateFormatter.date(from: date)
             dateFormatter.dateFormat = "dd/MM/yyyy"
-        return  dateFormatter.string(from: date!)
- 
+            if let data = date1{
+                return  dateFormatter.string(from: date1!)
+            }else{
+                return date
+            }
         }
     
     func convertDateFromatListing(_ date: String) -> String

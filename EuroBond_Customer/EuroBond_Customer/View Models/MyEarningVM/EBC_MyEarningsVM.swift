@@ -26,7 +26,7 @@ class EBC_MyEarningsVM{
                 "IsActive": "true",
                 "MerchantId":"1",
                 "StartIndex": startIndex,
-                "PageSize": 10,
+                "PageSize": "",
                 "JFromDate":fromDate,
                 "JToDate":toDate
             ] as [String: Any]

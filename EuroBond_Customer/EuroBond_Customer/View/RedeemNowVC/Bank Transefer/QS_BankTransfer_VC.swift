@@ -14,6 +14,7 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
     
     func popupAlertDidTap1(_ vc: PopupAlertOne_VC) {}
     
+    @IBOutlet weak var popUpOkBtn: UIButton!
     @IBOutlet var moneyIcon: UILabel!
     @IBOutlet var accountNumberView: UIView!
     @IBOutlet var ifscCodeView: UIView!
@@ -69,7 +70,6 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
 //        }else{
             self.vm.VC = self
             self.amount.delegate = self
-            self.vm.bankDetailsAPI(actorID: self.userID)
             self.amount.keyboardType = .numberPad
 //        }
 //        self.pointsLabel.text = "\("Points".localiz()) \(redbal)"
@@ -78,7 +78,9 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        popUpOkBtn.isHidden = true
+        rejectedView.isHidden = true
+        self.vm.bankDetailsAPI(actorID: self.userID)
     }
     func localization() {
 //        self.bankTransferHeadingLabel.text = "Bank_Transfer".localiz()
@@ -87,6 +89,8 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
        // self.accountDetailsHeadingLabel.text = "Your_Account_Details".localiz()
         self.accountNumberHeadingLabel.text = "Account_Number".localiz()
         self.accountNameHeadingLabel.text = "Account_Holder_Name".localiz()
+        self.popUpOkBtn.setTitle("ok".localiz(), for: .normal)
+        self.bankDetialsOUTBtn.setTitle("Bank Details".localiz(), for: .normal)
         self.bankNameHeadingLabel.text = "Bank_Name".localiz()
         self.ifscCodeHeadingLabel.text = "IFSC_Code".localiz()
         self.amount.placeholder = "Enter_amount".localiz()
@@ -116,6 +120,12 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
 //    @IBAction func back(_ sender: Any) {
 //        self.navigationController?.popViewController(animated: true)
 //    }
+    
+    @IBAction func didTappedOkBtn(_ sender: UIButton) {
+        rejectedView.isHidden = true
+        popUpOkBtn.isHidden = true
+    }
+    
     @IBAction func transferButton(_ sender: Any) {
     
         if self.verificationStatus == "1" {

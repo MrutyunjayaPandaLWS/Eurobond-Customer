@@ -167,7 +167,7 @@ private class MaskNodeProperties: NodePropertyMap {
     shape = NodeProperty(provider: KeyframeInterpolator(keyframes: mask.shape.keyframes))
     expansion = NodeProperty(provider: KeyframeInterpolator(keyframes: mask.expansion.keyframes))
     propertyMap = [
-      PropertyName.opacity.rawValue : opacity,
+      "Opacity" : opacity,
       "Shape" : shape,
       "Expansion" : expansion,
     ]

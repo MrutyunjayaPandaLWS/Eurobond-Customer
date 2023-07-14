@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Kingfisher
+import LanguageManager_iOS
 class EBC_DashBoardVM{
    
     weak var VC:EBC_DashboardVC?
@@ -52,7 +53,7 @@ class EBC_DashBoardVM{
             }
         }
     }
-    func dashboardApi(parameter: JSON){
+    func dashboardApi(parameter: JSON,completion: @escaping () -> ()){
         
         DispatchQueue.main.async {
             self.VC?.startLoading()
@@ -71,17 +72,19 @@ class EBC_DashBoardVM{
                         print(result?.objCustomerDashboardList?[0].redeemablePointsBalance ?? "", "RedeemablePointBalance")
                         
                       
-                        let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
-                        print(totalPts)
-                        let finalPts = Double(totalPts)
-                        print(finalPts)
-                        let totalPointss = Int(finalPts ?? 0.0)
-                        self.VC?.totalBalanceLbl.text = "\(totalPointss)"
+                        
                         UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].redeemablePointsBalance ?? 0, forKey: "RedeemablePointBalance")
                         UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].overAllPoints ?? 0, forKey: "OverAllPointBalance")
                         UserDefaults.standard.setValue(result?.objCustomerDashboardList?[0].redeemableEncashBalance ?? 0, forKey: "redeemableEncashBalance")
                         
                         UserDefaults.standard.synchronize()
+                        let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
+                        print(totalPts)
+                        let finalPts = Double(totalPts)
+                        print(finalPts)
+                        
+                        let totalPointss = Int(finalPts ?? 0.0)
+                        self.VC?.totalBalanceLbl.text = "\(totalPointss)"
                         if result?.objCustomerDashboardList?[0].notificationCount ?? 0 != 0 {
                             self.VC?.notificationBadges.isHidden = false
                             self.VC?.notificationBadges.text = "\(result?.objCustomerDashboardList?[0].notificationCount ?? 0)"
@@ -144,6 +147,8 @@ class EBC_DashBoardVM{
                     
                         self.VC?.memberTypeLbl.text = result?.lstCustomerFeedBackJsonApi?[0].customerType ?? ""
                          self.VC?.membershipIDLbl.text = result?.lstCustomerFeedBackJsonApi?[0].loyaltyId ?? ""
+                        self.VC?.loyaltyIDData = result?.lstCustomerFeedBackJsonApi?[0].loyaltyId ?? ""
+                        completion()
                        
                     }else{
                         if result?.lstCustomerFeedBackJsonApi?[0].customerStatus ?? 0 != 1{
@@ -182,7 +187,7 @@ class EBC_DashBoardVM{
                 if result != nil{
                     DispatchQueue.main.async {
                         print(result?.returnMessage ?? "", "ReturnMessage")
-                        if result?.returnMessage ?? "" == "1"{
+                        if (result?.returnMessage ?? "") == "1"{
                             DispatchQueue.main.async{
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "PopupAlertOne_VC") as! PopupAlertOne_VC
                                 vc.descriptionInfo = "Profile image updated successfully".localiz()
@@ -220,4 +225,31 @@ class EBC_DashBoardVM{
             }
         }
     }
+    
+    
+    
+    func submitCodesApi(parameters: JSON, completion: @escaping (ScannedandUploadCodesModels?) -> ()){
+        self.VC?.startLoading()
+        self.requestAPIs.submitCodesApi(parameters: parameters) { (result, error) in
+            if error == nil{
+                if result != nil {
+                    DispatchQueue.main.async {
+                        completion(result)
+                    }
+                } else {
+                    print("No Response")
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                    }
+                }
+            }else{
+                print("ERROR_Login \(error)")
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                }
+                
+            }
+        }
+    }
+    
 }

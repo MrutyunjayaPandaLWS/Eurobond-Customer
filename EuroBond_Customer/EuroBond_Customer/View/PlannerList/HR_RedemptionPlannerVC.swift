@@ -106,6 +106,7 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
         
         redemptionPlannerTableView.register(UINib(nibName: "HR_RedemptionPlannerTVC", bundle: nil), forCellReuseIdentifier: "HR_RedemptionPlannerTVC")
         NotificationCenter.default.addObserver(self, selector: #selector(callAPi), name: Notification.Name.plannerList, object: nil)
+        alertPopUp()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -130,6 +131,15 @@ class HR_RedemptionPlannerVC: BaseViewController, RedeemePlannedProductDelegate,
     }
     @objc func callAPi(){
         self.VM.redemptionPlannerList()
+    }
+    
+    func alertPopUp(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessPopUpMessage2") as? SuccessPopUpMessage2
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .overFullScreen
+//        vc?.message = "Only 90% of your available Euros can be redeemable"
+//        vc?.delegate = self
+        present(vc!, animated: true)
     }
     
     @IBAction func backBTN(_ sender: Any) {

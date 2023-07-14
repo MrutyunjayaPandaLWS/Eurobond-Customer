@@ -39,10 +39,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func setHomeAsRootViewController(){
-        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+        if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
             LanguageManager.shared.setLanguage(language: .en)
 
-        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+        }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
             LanguageManager.shared.setLanguage(language: .hi)
 
         }else{
@@ -58,6 +58,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
          func setInitialLoginVC(){
+             if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
+                 LanguageManager.shared.setLanguage(language: .en)
+
+             }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
+                 LanguageManager.shared.setLanguage(language: .hi)
+
+             }else{
+                 LanguageManager.shared.setLanguage(language: .en)
+             }
              IQKeyboardManager.shared.enable = true
              let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
              let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
@@ -70,10 +79,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          }
     
     func setHomeAsRootViewController2(){
-        if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "en"{
+        if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
             LanguageManager.shared.setLanguage(language: .en)
 
-        }else if UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "" == "hi"{
+        }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
             LanguageManager.shared.setLanguage(language: .hi)
 
         }else{

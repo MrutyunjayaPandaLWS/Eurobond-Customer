@@ -26,6 +26,7 @@ class EBC_DreamGiftVC: BaseViewController, UITableViewDelegate, UITableViewDataS
 //        self.VM.VC = self
         dreamListTV.delegate = self
         dreamListTV.dataSource = self
+        alertPopUp()
         
     }
     
@@ -55,6 +56,17 @@ class EBC_DreamGiftVC: BaseViewController, UITableViewDelegate, UITableViewDataS
         }
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    func alertPopUp(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessPopUpMessage2") as? SuccessPopUpMessage2
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .overFullScreen
+//        vc?.message = "Only 90% of your available Euros can be redeemable"
+//        vc?.delegate = self
+        present(vc!, animated: true)
+    }
+    
     
     func dreamGiftListApi(){
        // self.VM.myDreamGiftListArray.removeAll()

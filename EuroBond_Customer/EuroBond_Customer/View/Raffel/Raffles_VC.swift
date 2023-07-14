@@ -28,7 +28,9 @@ class Raffles_VC: BaseViewController, RaffleDelegate {
         self.VM.VC = self
         self.raffleCollectionView.delegate = self
         self.raffleCollectionView.dataSource = self
-        
+        self.segmentedControll.setTitle("Ongoing Raffles".localiz(), forSegmentAt: 0)
+        self.segmentedControll.setTitle("My Raffles".localiz(), forSegmentAt: 1)
+        noDataFoundLabel.text = "No Data Found".localiz()
         noDataFoundLabel.isHidden = true
         self.localization()
     }
@@ -56,7 +58,7 @@ class Raffles_VC: BaseViewController, RaffleDelegate {
     }
     
     func localization(){
-        self.noDataFoundLabel.text = "noDataFound".localiz()
+        self.noDataFoundLabel.text = "No Data Found".localiz()
         self.rafflesHeadingLbl.text = "Raffles".localiz()
         
     }
@@ -137,6 +139,7 @@ extension Raffles_VC : UICollectionViewDelegate, UICollectionViewDataSource{
             let transformer = SDImageResizingTransformer(size: CGSize(width: (self.raffleCollectionView.frame.width / 2) - 10, height: 250), scaleMode: .fill)
             var imageURl = self.VM.currentRafflesArray[indexPath.item].bannerUrl ?? ""
             print(imageURl)
+            cell?.raffleButton.setTitle("View & Buy".localiz(), for: .normal)
             if imageURl != ""{
                 let filteredURLArray = imageURl.split(separator: "~")
                 let urltoUse = String(rafflesURL + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")
@@ -144,8 +147,8 @@ extension Raffles_VC : UICollectionViewDelegate, UICollectionViewDataSource{
                 let urlt = URL(string: "\(urltoUse)")
                 print(urlt)
                 cell?.raffleImage.sd_setImage(with: urlt!, placeholderImage: #imageLiteral(resourceName: "ic_default_img"), context: [.imageTransformer: transformer])
-                cell?.raffleButton.setTitle("View & Buy", for: .normal)
             }else{
+
                 cell?.raffleImage.image = UIImage(named: "ic_default_img")
             }
         }else{
@@ -188,7 +191,7 @@ extension Raffles_VC : UICollectionViewDelegate, UICollectionViewDataSource{
             let transformer = SDImageResizingTransformer(size: CGSize(width: (self.raffleCollectionView.frame.width / 2) - 10, height: 250), scaleMode: .fill)
             var imageURl = self.VM.myRafflesArray[indexPath.item].bannerUrl ?? ""
             print(imageURl)
-            cell?.raffleButton.setTitle("View", for: .normal)
+            cell?.raffleButton.setTitle("View".localiz(), for: .normal)
             if imageURl != ""{
                 let filteredURLArray = imageURl.split(separator: "~")
                 let urltoUse = String(rafflesURL + filteredURLArray[0]).replacingOccurrences(of: " ", with: "%20")

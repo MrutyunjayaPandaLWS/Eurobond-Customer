@@ -83,8 +83,6 @@ extension BezierPath {
       uniquePath.addVertex(elements[i].vertex)
     }
 
-    var pathHasRoundedCorner = false
-
     for elementIndex in 0..<uniquePath.elements.count {
       currentVertex = uniquePath.elements[elementIndex].vertex
 
@@ -97,9 +95,6 @@ extension BezierPath {
         newPath.addVertex(currentVertex)
         continue
       }
-
-      // Track whether or not this path has at least one rounded corner
-      pathHasRoundedCorner = true
 
       // Do not round start and end if not closed
       if !newPath.closed, elementIndex == 0 || elementIndex == uniquePath.elements.count - 1 {
@@ -145,12 +140,6 @@ extension BezierPath {
             CGPoint(x: vX, y: vY),
             CGPoint(x: oX, y: oY)))
       }
-    }
-
-    // If we didn't need to apply the corner radius to any of the corners,
-    // just use the original given path instead of modifying it.
-    if !pathHasRoundedCorner {
-      return self
     }
 
     return newPath

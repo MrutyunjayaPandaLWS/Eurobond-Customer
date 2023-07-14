@@ -45,7 +45,7 @@ class EBC_RedeemNowVC: BaseViewController {
     }
     
     func localizSetup(){
-        self.PercentageInfoLbl.text = "percentageValue".localiz()
+        self.PercentageInfoLbl.text = ""
         self.titleVC.text = "Redemption Catalogue".localiz()
         segmentController.setTitle("Physical Products".localiz(), forSegmentAt: 0)
         segmentController.setTitle("eVoucher".localiz(), forSegmentAt: 1)

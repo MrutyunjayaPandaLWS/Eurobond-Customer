@@ -47,6 +47,7 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
             //        self.present(vc, animated: true, completion: nil)
         }
         
+        alertPopUp()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -55,6 +56,16 @@ class DreamGiftListingViewController: BaseViewController, AddOrRemoveGiftDelegat
         dreamGiftListApi()
         
     }
+    
+    func alertPopUp(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessPopUpMessage2") as? SuccessPopUpMessage2
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .overFullScreen
+//        vc?.message = "Only 90% of your available Euros can be redeemable"
+//        vc?.delegate = self
+        present(vc!, animated: true)
+    }
+    
     
     func languagelocalization(){
         self.header.text = "Dream Gift".localiz()

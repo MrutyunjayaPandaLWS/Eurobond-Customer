@@ -21,9 +21,9 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
 //        self.viewYrTicketsCollectionView.reloadData()
         self.count = 1
         self.countlabel.text = String(self.count)
-        self.ticketCountLabel.text = "Ticket Count : \(self.count)"
+        self.ticketCountLabel.text = "\("Ticket Count".localiz()) : \(self.count)"
         let values = (self.count ?? 0) * Int(self.pointsValue ?? "0")!
-        self.pointsperTicketLabel.text = "Total Points \(values)"
+        self.pointsperTicketLabel.text = "\("Total Euros".localiz()) \(values)"
 //        let parameter2JSON = [
 //            "ActionType":"32","ActorId":"\(self.userID)","IsActive":"true"
 //        ] as [String:Any]
@@ -130,11 +130,11 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
             let x = (self.raffleDetails[0].validityTo ?? "").split(separator: " ")
             self.validUntilLabel.text = "\(x[0])"
             self.statusLabel.text = self.raffleDetails[0].status ?? ""
-            self.pointsperTicketLabel.text = "Total Points \(self.raffleDetails[0].pointsPerTicket ?? 0)"
+            self.pointsperTicketLabel.text = "\("Total Euros".localiz()) \(self.raffleDetails[0].pointsPerTicket ?? 0)"
             self.pointsValue = "\(self.raffleDetails[0].pointsPerTicket ?? 0)"
-            self.ticketCountLabel.text = "Total Ticket : 1"
+            self.ticketCountLabel.text = "\("Ticket Count".localiz()) : 1"
             print("Points Values is", self.pointsValue )
-            print(self.pointsperTicketLabel.text!, "Total Points")
+            print(self.pointsperTicketLabel.text!, "Total Euros")
             self.rafflenameLabel.text = self.raffleDetails[0].raffelCampaignName ?? ""
             let quantityValue = self.raffleDetails[0].quantity ?? ""
             print(quantityValue)
@@ -214,9 +214,9 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
             if count < quantityCount{
                 count += 1
                 self.countlabel.text = String(count)
-                self.ticketCountLabel.text = "Ticket Count : \(self.count)"
+                self.ticketCountLabel.text = "\("Ticket Count".localiz()) : \(self.count)"
                 let values = Int(count) * Int(self.pointsValue)!
-                self.pointsperTicketLabel.text = "Total Points \(values)"
+                self.pointsperTicketLabel.text = "\("Total Euros".localiz()) \(values)"
             }
         }
     }
@@ -246,7 +246,7 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
                     self.raffelCampaignId = self.raffleDetails[0].raffelCampaignId ?? -1
                     
                 } else {
-                    self.view.makeToast("Insufficient point balance", duration: 3.0, position: .bottom)
+                    self.view.makeToast("Insufficient Point Balance".localiz(), duration: 3.0, position: .bottom)
                 }
             }else{
                 self.view.makeToast("Your account is an verification pending cantact the administator".localiz(), duration: 3.0, position: .bottom)
@@ -264,8 +264,8 @@ class LINC_CurrentraffleDetails_VC: BaseViewController, UICollectionViewDelegate
                 self.countlabel.text = String(count)
                 print(self.pointsValue, "before decrement")
                 let values = Int(count) * Int(self.pointsValue)!
-                self.ticketCountLabel.text = "Ticket Count : \(self.count)"
-                self.pointsperTicketLabel.text = "Total Points \(values)"
+                self.ticketCountLabel.text = "\("Ticket Count".localiz()) : \(self.count)"
+                self.pointsperTicketLabel.text = "\("Total Euros".localiz()) \(values)"
             }
         }
     }

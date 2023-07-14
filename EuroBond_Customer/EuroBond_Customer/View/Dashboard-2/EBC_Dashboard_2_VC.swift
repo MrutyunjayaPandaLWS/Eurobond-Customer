@@ -15,8 +15,10 @@ import AVKit
 import LanguageManager_iOS
 import Photos
 import QCropper
+import CoreLocation
+import CoreData
 
-class EBC_Dashboard_2_VC: BaseViewController {
+class EBC_Dashboard_2_VC: BaseViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var defaultImage: UIImageView!
     @IBOutlet weak var termCondLbl: UILabel!
@@ -55,6 +57,27 @@ class EBC_Dashboard_2_VC: BaseViewController {
     let picker = UIImagePickerController()
     var strdata1 = ""
     
+    let reachability = try! ReachabilityAutoSync()
+    var latitude = ""
+    var longitude = ""
+    var internetPushMessage = ""
+    var locationManager = CLLocationManager()
+    var currentlocation:CLLocation!
+    var parameterJSON:JSON?
+    var newproductArray: [[String:Any]] = []
+    var savedCodeListArray = [QrCodeSaveResponseList]()
+    var uploadedCodes:Array = [UploadedCodes]()
+    var sendScannedCodes:Array = [SendUploadedCodes]()
+    var locationManagers:CLLocationManager!
+    var codeLIST:Array = [ScanCodeSTORE]()
+
+    var addressString : String = ""
+    var country = ""
+    var city = ""
+    var address = ""
+    var pincode = ""
+    var loyaltyIDData = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
@@ -68,6 +91,13 @@ class EBC_Dashboard_2_VC: BaseViewController {
         localizSetup()
         self.uploadImnageProfileImage.addTarget(self, action: #selector(uploadImageProfile), for: .touchUpInside)
         NotificationCenter.default.addObserver(self, selector: #selector(codeStatus), name: Notification.Name.optionView, object: nil)
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.startMonitoringSignificantLocationChanges()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,7 +110,21 @@ class EBC_Dashboard_2_VC: BaseViewController {
             //        self.slideMenuController()?.closeLeft()
             self.tokendata()
         }
+        LocationConfigure()
+//        InternetCheck {
+////            self.slideMenuController()?.closeLeft()
+//            self.tokendata()
+//        } InternetOff: {
+//            DispatchQueue.main.async{
+//                self.view.makeToast("NoInternet".localiz(), duration: 2.0,position: .bottom)
+//            }
+//        }
+        
     }
+    
+//    deinit{
+//        reachability.stopNotifier()
+//    }
     func localizSetup(){
         self.fabricatorAssistantLbl.text = "Fabricator Assistant".localiz()
         self.membershipIDLbl.text = "Membership ID".localiz()
@@ -393,7 +437,13 @@ class EBC_Dashboard_2_VC: BaseViewController {
             "ActorId":"\(self.userId)"
         ] as [String: Any]
         print(parameter)
-        self.VM.dashboardApi(parameter: parameter)
+        self.VM.dashboardApi(parameter: parameter){
+            if self.loyaltyIDData != ""{
+                        self.fetchDetails2()
+                        self.fetchDetails()
+                
+                    }
+        }
     }
     
     func dashBoardBannerApi(){
@@ -583,3 +633,330 @@ extension EBC_Dashboard_2_VC: CropperViewControllerDelegate {
     }
 }
 
+extension EBC_Dashboard_2_VC{
+    func InternetCheck(InternetON: @escaping ()->(),InternetOff: @escaping ()->()){
+        DispatchQueue.main.async {
+            self.reachability.whenReachable = { reachability in
+                if reachability.connection == .wifi {
+                    print("Reachable via WiFi")
+                } else {
+                    print("Reachable via Cellular")
+                }
+                InternetON()
+            }
+            self.reachability.whenUnreachable = { _ in
+                print("Not reachable")
+                InternetOff()
+            }
+            do {
+                try self.reachability.startNotifier()
+            } catch {
+                print("Unable to start notifier")
+            }
+        }
+    }
+    
+    func LocationConfigure(){
+        DispatchQueue.main.async {
+            if CLLocationManager.locationServicesEnabled(){
+                self.locationManager.startUpdatingLocation()
+            }
+        }
+    }
+    
+    func codesSubmission(){
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            
+        }else{
+        for item in self.codeLIST {
+            let singleImageDict:[String:Any] = [
+                "QRCode": item.code ?? "",
+                "ScanType": 1,
+                "Latitude": item.latitude ?? "",
+                "Longitude": item.longitude ?? ""
+            ]
+            self.newproductArray.append(singleImageDict)
+        }
+        self.parameterJSON = [
+            
+            "Address": "\(self.addressString)",
+            "City": "\(self.city)",
+            "Country": "\(self.country)",
+            "Latitude": "\(self.latitude)",
+            "Longitude": "\(self.longitude)",
+            "LoyaltyID": "\(loyaltyIDData)",
+            "PinCode": "\(self.pincode)",
+            "QRCodeSaveRequestList": self.newproductArray as [[String:Any]],
+            "SourceType": "1",
+            "State": ""
+        ]
+        print(self.parameterJSON ?? "")
+            self.getAddressFromLatLon(pdblLatitude: String(self.latitude), withLongitude: String(self.longitude))
+            return
+    }
+    }
+    
+    func fetchDetails(){
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+
+        }else{
+            self.codeLIST.removeAll()
+            let fetchRequest:NSFetchRequest<ScanCodeSTORE> = ScanCodeSTORE.fetchRequest()
+            do{
+                self.codeLIST = try persistanceservice.context.fetch(fetchRequest)
+                print(self.codeLIST.count, "Count")
+                
+                if self.codeLIST.count != 0{
+                    DispatchQueue.main.asyncAfter(deadline: .now()+0.3, execute: {
+                        self.codesSubmission()
+                    })
+                }else{
+                    print("Scan Code Data not found")
+                }
+                
+            }catch{
+                print("error while fetching data")
+            }
+        }
+    }
+    
+    func fetchDetails2(){
+        let fetchRequest:NSFetchRequest<UploadedCodes> = UploadedCodes.fetchRequest()
+        do{
+            self.uploadedCodes = try persistanceservice.context.fetch(fetchRequest)
+            print(self.uploadedCodes.count)
+            
+        }catch{
+            print("error while fetching data")
+        }
+    }
+    
+    func getAddressFromLatLon(pdblLatitude: String, withLongitude pdblLongitude: String) {
+        var center : CLLocationCoordinate2D = CLLocationCoordinate2D()
+        let lat: Double = Double("\(pdblLatitude)")!
+        //21.228124
+        let lon: Double = Double("\(pdblLongitude)")!
+        //72.833770
+        let ceo: CLGeocoder = CLGeocoder()
+        center.latitude = lat
+        center.longitude = lon
+        
+        let loc: CLLocation = CLLocation(latitude:center.latitude, longitude: center.longitude)
+        ceo.reverseGeocodeLocation(loc, completionHandler:
+                                    {(placemarks, error) in
+                                        if (error != nil)
+                                        {
+                                            print("reverse geodcode fail: \(error!.localizedDescription)")
+                                        }
+            self.stopLoading()
+        self.codesSubmissionsApi()
+                                    })
+        
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let userLocation :CLLocation = locations[0] as CLLocation
+        self.latitude = "\(userLocation.coordinate.latitude)"
+        self.longitude = "\(userLocation.coordinate.longitude)"
+
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            if (error != nil){
+                print("error in reverseGeocode")
+            }
+            
+            let placemark = placemarks as [CLPlacemark]?
+            
+            if placemark?.count ?? 0 > 0{
+                let placemark = placemarks![0]
+                print(placemark.locality!)
+                print(placemark.administrativeArea!)
+                print(placemark.country!)
+                print(placemark.location!)
+                self.country = placemark.country!
+
+                self.addressString = "\(placemark.name!),\(String(describing: placemark.subLocality)),\(placemark.subAdministrativeArea!),\(placemark.locality!), \(placemark.administrativeArea!), \(placemark.country!)"
+                print(self.addressString,"Addresss")
+            }
+        }
+
+    }
+    
+    
+    
+    
+    func codesSubmissionsApi(){
+        self.sendScannedCodes.removeAll()
+        self.savedCodeListArray.removeAll()
+        self.VM.submitCodesApi(parameters: self.parameterJSON!) { response in
+            DispatchQueue.main.async {
+                self.stopLoading()
+                self.savedCodeListArray = response?.qrCodeSaveResponseList ?? []
+                print(self.savedCodeListArray.count, "Saved Codes Count")
+                print(self.uploadedCodes.count)
+                
+                for codes in self.savedCodeListArray {
+                    print("Codes Status", codes.codeStatus ?? 0)
+                    let type2Array = self.uploadedCodes.filter { $0.code == codes.qrCode}
+                    print(type2Array.count)
+                    if type2Array.count == 0{
+                    let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
+                    qRCodeDBTable.code = codes.qrCode
+                    qRCodeDBTable.latitude = codes.latitude
+                    qRCodeDBTable.langitude = codes.longitude
+                    qRCodeDBTable.codeStatus = String(codes.codeStatus ?? 0)
+                    print(qRCodeDBTable.codeStatus)
+                    let date = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                    let resultdate = formatter.string(from: date)
+                    qRCodeDBTable.date = resultdate
+                    persistanceservice.saveContext()
+                    let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
+                    qRCodeDBTable1.code = codes.qrCode
+                    persistanceservice.saveContext()
+                    }else{
+                        let index =  self.uploadedCodes.firstIndex(of: type2Array[0])
+                        let productObj = self.uploadedCodes[index!]
+                        persistanceservice.context.delete(productObj)
+                        persistanceservice.saveContext()
+                        let qRCodeDBTable = UploadedCodes(context: persistanceservice.context)
+                        qRCodeDBTable.code = codes.qrCode
+                        qRCodeDBTable.latitude = codes.latitude
+                        qRCodeDBTable.langitude = codes.longitude
+                        qRCodeDBTable.codeStatus = String(codes.codeStatus ?? 0)
+                        let date = Date()
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "dd/MM/yyyy hh:mm:ss"
+                        let resultdate = formatter.string(from: date)
+                        qRCodeDBTable.date = resultdate
+                        persistanceservice.saveContext()
+                        let qRCodeDBTable1 = SendUploadedCodes(context: persistanceservice.context)
+                        qRCodeDBTable1.code = codes.qrCode
+                        persistanceservice.saveContext()
+                    }
+                }
+                if self.savedCodeListArray.count != 0{
+                    self.dismiss(animated: true){
+                        self.clearTable()
+                        self.fetchDetails()
+                        self.dismiss(animated: true){
+                            self.internetPushMessage = "QR Codes Synced Successfully"
+                            self.scheduleNotification()
+                            NotificationCenter.default.post(name: .optionView, object: nil)
+                        }
+                    }
+                }else {
+                    self.dismiss(animated: true){
+                        if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
+                            let alertController = UIAlertController(title: "", message: "QR Code Submission Failed", preferredStyle: .alert)
+                            // Create the actions
+                            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                                UIAlertAction in
+                                self.clearTable()
+                                self.codeLIST.removeAll()
+                                self.internetPushMessage = "QR Code Submission Failed"
+                                self.scheduleNotification()
+                            }
+                            // Add the actions
+                            alertController.addAction(okAction)
+                            // Present the controller
+                            self.present(alertController, animated: true, completion: nil)
+                            
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "2"{
+                            let alertController = UIAlertController(title: "", message: "क्यूआर कोड सबमिशन विफल", preferredStyle: .alert)
+                            // Create the actions
+                            let okAction = UIAlertAction(title: "ठीक है", style: UIAlertAction.Style.default) {
+                                UIAlertAction in
+                                self.clearTable()
+                                self.codeLIST.removeAll()
+                                self.internetPushMessage = "क्यूआर कोड सबमिशन विफल"
+                                self.scheduleNotification()
+                                
+                            }
+                            
+                            // Add the actions
+                            alertController.addAction(okAction)
+                            
+                            // Present the controller
+                            self.present(alertController, animated: true, completion: nil)
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "3"{
+                            let alertController = UIAlertController(title: "", message: "QR কোড জমা দেওয়া ব্যর্থ হয়েছে৷", preferredStyle: .alert)
+                            
+                            // Create the actions
+                            let okAction = UIAlertAction(title: "ওকে", style: UIAlertAction.Style.default) {
+                                UIAlertAction in
+                                self.clearTable()
+                                self.codeLIST.removeAll()
+                                self.internetPushMessage = "QR কোড জমা দেওয়া ব্যর্থ হয়েছে৷"
+                                self.scheduleNotification()
+                                
+                            }
+                            
+                            // Add the actions
+                            alertController.addAction(okAction)
+                            
+                            // Present the controller
+                            self.present(alertController, animated: true, completion: nil)
+                        }else if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "4"{
+                            let alertController = UIAlertController(title: "", message: "QR కోడ్ సమర్పణ విఫలమైంది", preferredStyle: .alert)
+                            
+                            // Create the actions
+                            let okAction = UIAlertAction(title: "అలాగే", style: UIAlertAction.Style.default) {
+                                UIAlertAction in
+                                self.clearTable()
+                                self.codeLIST.removeAll()
+                                self.internetPushMessage = "QR కోడ్ సమర్పణ విఫలమైంది"
+                                self.scheduleNotification()
+                                
+                            }
+                            
+                            // Add the actions
+                            alertController.addAction(okAction)
+                            
+                            // Present the controller
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+    
+    
+    
+    func scheduleNotification() {
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Eurobond Rewards Service Completed"
+        content.body = "\(internetPushMessage)"
+        content.sound = .default
+        content.userInfo = ["value": "Data with local notification"]
+        
+        let fireDate = Calendar.current.dateComponents([.day, .month, .year, .hour, .minute, .second], from: Date().addingTimeInterval(3))
+        let trigger = UNCalendarNotificationTrigger(dateMatching: fireDate, repeats: false)
+        let request = UNNotificationRequest(identifier: "reminder", content: content, trigger: trigger)
+        center.add(request) {(error) in
+            if error != nil {
+                print("Error \(error?.localizedDescription ?? "Error in local notification")")
+            } else {
+                print("QR Codes Synced Successfully")
+            }
+        }
+    }
+    
+    func clearTable(){
+        
+        let context = persistanceservice.persistentContainer.viewContext
+        let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "ScanCodeSTORE")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)
+        do {
+            try context.execute(deleteRequest)
+            try context.save()
+        } catch {
+            print ("There was an error")
+        }
+    }
+}

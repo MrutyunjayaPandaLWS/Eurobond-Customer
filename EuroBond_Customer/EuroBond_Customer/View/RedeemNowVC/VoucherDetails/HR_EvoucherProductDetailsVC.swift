@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 
 class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, popUpAlertDelegate, pointsDelegate{
     func popupAlertDidTap(_ vc: HR_PopUpVC) {}
@@ -20,6 +20,9 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
     }
     
     var myredemptionsVouchers = [myredemptionsVouchersModels]()
+    
+    
+    @IBOutlet weak var redeemView: UIView!
     @IBOutlet weak var myVouchersDetailsTableView: UITableView!
     @IBOutlet weak var headerlbl: UILabel!
     var selectedRowIndex = -1
@@ -64,6 +67,10 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
     var VM = QS_VouchersDetails_VM()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.redeemView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
+        self.redeemView.layer.cornerRadius = 15
+        self.amounttextfield.text = "₹ 1000"
+        self.amounttextfield.isEnabled = false
         self.VM.VC = self
         localization()
         myVouchersDetailsTableView.delegate = self
@@ -77,15 +84,14 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
 
         myVouchersDetailsTableView.delegate = self
         myVouchersDetailsTableView.dataSource = self
-        self.headerlbl.text = "evoucherDetails"
+        self.headerlbl.text = "evoucherDetails".localiz()
         if voucherMaxPoints != "-1"{
             selectAmountButton.isHidden = true
             amounttextfield.isHidden = false
             amountRange.text = "\("EnterAmountinRange"): \(voucherMinPoints) - \(voucherMaxPoints)"
             selectAmountButton.setTitle("Amount", for: .normal)
             amounttextfield.placeholder = "Amount"
-            redeemButton.setTitle("REDEEM", for: .normal)
-            
+            redeemButton.setTitle("Redeem".localiz(), for: .normal)
             let points = redemablePointBalance
             let minpoints = Int(voucherMinPoints)
             if points < minpoints! {
@@ -99,11 +105,11 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
             selectAmountButton.setTitle("Amount", for: .normal)
             amountRange.text = "SelectAmount"
             amounttextfield.placeholder = "Amount"
-            redeemButton.setTitle("REDEEM", for: .normal)
+            redeemButton.setTitle("Redeem".localiz(), for: .normal)
         }
         self.vouchername.text = voucherName
         self.voucherNamelabel.text = vouchercategory
-        self.voucherimage.sd_setImage(with: URL(string: voucherImag), placeholderImage: UIImage(named: "15517sdsd"));
+        self.voucherimage.sd_setImage(with: URL(string: voucherImag), placeholderImage: #imageLiteral(resourceName: "dashboardLogo"));
         self.myredemptionsVouchers.append(myredemptionsVouchersModels.init(descriptions: "Descriptions", termsandconditions: voucherDesc))
         self.myredemptionsVouchers.append(myredemptionsVouchersModels.init(descriptions: "Terms_&_Conditions", termsandconditions: voucherTC))
         self.myredemptionsVouchers.append(myredemptionsVouchersModels.init(descriptions: "Redeem_Options", termsandconditions: redeemoptions))
@@ -143,7 +149,7 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HR_MyVouchersTVC", for: indexPath) as? HR_MyVouchersTVC
-        cell?.topic.text = myredemptionsVouchers[indexPath.row].descriptions ?? ""
+        cell?.topic.text = myredemptionsVouchers[indexPath.row].descriptions.localiz() 
         cell?.details.text = myredemptionsVouchers[indexPath.row].termsandconditions ?? ""
         cell?.selectionStyle = .none
         return cell!
@@ -189,7 +195,8 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
                 let finalPts = Double(totalPts)
                 print(finalPts)
                 let totalPointss = Int(finalPts ?? 0.0)
-                if Int(self.amounttextfield.text ?? "0")! <= totalPointss{
+//                if Int(self.amounttextfield.text ?? "0")! <= totalPointss{
+                if 1000 <= totalPointss{
                     if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
                         DispatchQueue.main.async{
                             let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
@@ -213,14 +220,14 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
                             }
                         }else{
                             DispatchQueue.main.async {
-                                let alertVC = UIAlertController(title: "Areyoursure", message: "DoyouWanttoRedeem", preferredStyle: .alert)
-                                let okAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) {
+                                let alertVC = UIAlertController(title: "AreYouSure".localiz(), message: "Do you Want to Redeem".localiz(), preferredStyle: .alert)
+                                let okAction = UIAlertAction(title: "Yes".localiz(), style: UIAlertAction.Style.default) {
                                     UIAlertAction in
                                     DispatchQueue.main.async {
-                                        self.VM.voucherSubmission(ReceiverMobile: self.mobilenumber, ActorId: self.userID, CountryID: self.voucherCountryID, MerchantId: self.merchantID, CatalogueId: self.voucherID, DeliveryType: self.voucherdelivarytype, pointsrequired: self.amounttextfield.text ?? "0", ProductCode: self.voucherCode, ProductImage: self.voucherImag, ProductName: self.voucherName, NoOfQuantity: "1", VendorId: self.vouchervendorID, VendorName: self.vouchervendorname, ReceiverEmail: self.emailid, ReceiverName: self.firstname)
+                                        self.VM.voucherSubmission(ReceiverMobile: self.mobilenumber, ActorId: self.userID, CountryID: self.voucherCountryID, MerchantId: self.merchantID, CatalogueId: self.voucherID, DeliveryType: self.voucherdelivarytype, pointsrequired: "1000", ProductCode: self.voucherCode, ProductImage: self.voucherImag, ProductName: self.voucherName, NoOfQuantity: "1", VendorId: self.vouchervendorID, VendorName: self.vouchervendorname, ReceiverEmail: self.emailid, ReceiverName: self.firstname)
                                     }
                                 }
-                                let cancelAction = UIAlertAction(title: "NO", style: UIAlertAction.Style.cancel) {
+                                let cancelAction = UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.cancel) {
                                     UIAlertAction in
                                     
                                 }
@@ -235,12 +242,12 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
                         }
                     }
                 }else{
-                    self.alertmsg(alertmsg: "Insufficient Points Balance", buttonalert: "OK")
+                    self.alertmsg(alertmsg: "Insufficient points balance".localiz(), buttonalert: "OK")
                 }
             }
         }else{
             if self.selectAmountButton.currentTitle == "Amount"{
-                self.alertmsg(alertmsg: "Select_Amount_to_Redeem", buttonalert: "OK")
+                self.alertmsg(alertmsg: "Select_Amount_to_Redeem".localiz(), buttonalert: "ok".localiz())
             }else{
                 let totalPts = UserDefaults.standard.string(forKey:"OverAllPointBalance") ?? ""
                 print(totalPts)
@@ -288,7 +295,7 @@ class HR_EvoucherProductDetailsVC: BaseViewController, UITableViewDelegate, UITa
     }
     @IBAction func enteramounttf(_ sender: Any) {
         if amounttextfield.text != ""{
-            let amt = Int(amounttextfield.text ?? "0") ?? 0
+            let amt = 1000
             if amt < Int(voucherMinPoints)! || amt > Int(voucherMaxPoints)!{
                 self.redeemButton.backgroundColor = UIColor.lightGray
                 self.redeemButton.isEnabled = false

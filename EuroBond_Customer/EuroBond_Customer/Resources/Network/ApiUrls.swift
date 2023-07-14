@@ -26,9 +26,9 @@ let spinnWheelURL = "https://eurobondrewardsdemo.loyltwo3ks.com/services//Mobile
 let username = "EuroBond"
 let password = "mFjf$fgjhksdfl#m"
 let grant_type = "password"
-//let MerchantUserName = "MSPDemoAdmin"
+let MerchantUserName = "MSPDemoAdmin"
 
-
+//https://loyalty.eurobondacp.com//services/MobileApp/MobileApi.svc/JSON/UpdateGamificationTransaction
 
 ////#<<<----Live---->>>
 //let tokenURL = "https://euroliveserv.loyltwo3ks.com/token"
@@ -42,6 +42,9 @@ let grant_type = "password"
 //let checkUserExistencyURL = "https://euroliveserv.loyltwo3ks.com/Mobile/CheckCustomerExistancyAndVerification"
 //let forgotPassURL = "https://euroliveserv.loyltwo3ks.com/Mobile/forgotPasswordMobileApp"
 //let referralVerifyURL = "https://euroliveserv.loyltwo3ks.com/Mobile/CheckEmailMobileExistsMobileApp"
+//
+//let rafflesURL = "https://loyalty.eurobondacp.com//UploadFiles/Raffle/"
+//let spinnWheelURL = "https://loyalty.eurobondacp.com//services/MobileApp/MobileApi.svc/JSON/"
 //
 //let username = "EuroBondLivE"
 //let password = "qFjf$fgikapyhl#q"

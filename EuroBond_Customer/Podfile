@@ -5,14 +5,9 @@ target 'EuroBond_Customer' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
-  pod 'SDWebImage'
-  pod 'Alamofire', '~> 4.4' 
-  pod 'IQKeyboardManagerSwift'
-  pod 'DPOTPView'
-  pod 'LanguageManager-iOS'
-  pod 'lottie-ios'
+  
+
   pod "ImageSlideshow/Alamofire"
-  pod 'Toast-Swift', '~> 5.0.1'
   pod 'SlideMenuControllerSwift'
   pod 'SRScratchView'
   pod 'QCropper'
@@ -22,9 +17,18 @@ target 'EuroBond_Customer' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'Firebase/Messaging'
-pod 'Firebase/Crashlytics'
-pod 'SwiftFortuneWheel'
+  pod 'Firebase/Crashlytics'
+  pod 'SwiftFortuneWheel'
+  pod 'SRScratchView'
 
+  pod 'lottie-ios'
+  pod 'SDWebImage'
+  pod 'Alamofire', '~> 4.4' 
+  pod 'IQKeyboardManagerSwift'
+  pod 'DPOTPView'
+  pod 'LanguageManager-iOS'
+
+  pod 'Toast-Swift', '~> 5.0.1'
 
 
   

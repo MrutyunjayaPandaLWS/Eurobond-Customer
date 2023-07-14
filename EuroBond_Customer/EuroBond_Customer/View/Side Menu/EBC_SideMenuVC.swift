@@ -103,11 +103,11 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
         UserDefaults.standard.synchronize()
         if #available(iOS 13.0, *) {
             let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
-            sceneDelegate?.setInitialViewAsRootViewController()
+            sceneDelegate?.setInitialLoginVC()
 
         } else {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.setInitialViewAsRootViewController()
+            appDelegate?.setInitialLoginVC()
         }
     }
     

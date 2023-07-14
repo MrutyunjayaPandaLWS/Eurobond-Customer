@@ -411,9 +411,9 @@
 "Scanuploadlimitexceeded" = "स्कैन/अपलोड सीमा पार हो गई है. वाई-फाई/मोबाइल डेटा में पेंडिग कोड सिंक करें या संसाधित कोड साफ़ करें !";
 "Bank transfer request has been submitted successfully" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
 "Entered amount has been transferred to your bank account" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
-"Bank Transfer limit Exceeded" = "बैंक हस्तांतरण सीमा पार हो गई";
+"Bank Transfer limit Exceeded" = "आपने अपनी दैनिक लेनदेन सीमा पार कर ली है !";
 "playAndWin" = "खेलो और जीतो";
-"percentageValue" = "आपके उपलब्ध यूरो का केवल 90% ही प्रतिदेय हो सकता है।";
+"percentageValue" = "आपके उपलब्ध यूरो का केवल 90% ही सरकारी टीडीएस नियम 194आर* को कवर करने के लिए भुनाया जा सकता है। अधिक जानकारी के लिए कृपया कार्यक्रम के नियम एवं शर्तें देखें।";
 
 
 
@@ -448,11 +448,11 @@
 "Please enter the valid feilds" = "कृपया मान्य क्षेत्र दर्ज करें";
 "Raffle name" = "रैफल नाम";
 "Valid till" = "तक मान्य";
-"Your point balance" = "आपका बिंदु संतुलन";
+"Your point balance" = "आपका यूरो शेष";
 "Status" = "दर्जा";
 "Description" = "विवरण";
 "Total Ticket Purchased" = "कुल टिकट खरीदा गया";
-"Total Points Redeemed" = "कुल अंक भुनाए गए";
+"Total Points Redeemed" = "कुल यूरो रिडीम किया";
 "Raffle Qty" = "भाग्य क्रीड़ा मात्रा";
 "Buy Ticket" = "टिकट खरीदें";
 "Ticket points" = "टिकट अंक";
@@ -471,9 +471,21 @@
 "Your verification of your bank account is pending_Please contact your administator" = "आपके बैंक खाते का आपका सत्यापन अस्वीकार कर दिया गया है। कृपया अपना खाता विवरण पुनः सबमिट करें.";
 "Entered amount has been transferred to your bank account" = "बैंक स्थानांतरण अनुरोध सफलतापूर्वक सबमिट कर दिया गया है";
 "Bank Transfer limit Exceeded" = "आपकी बैंक हस्तांतरण सीमा पार हो गई है";
-"Attach Account Proof: Please upload the passbook front page or check leaf." = "कृपया पासबुक का फ्रंट पेज या चेक लीफ अपलोड करें.";
+"Attach Account Proof: Please upload the passbook front page or check leaf." = "कृपया रद्द किए गए चेक का पत्ता अपलोड करें।";
 "AttachAccountProof" = "खाता प्रमाण संलग्न करें:";
 
 "Do_U_Want_To_Remove" = "क्या आप वाकई ड्रीम गिफ्ट को हटाना चाहते हैं?";
 "RaffleDetail" = "रैफल्स विवरण";
 "Bank_Name" = "किनारा";
+"Ticket Count" = "टिकट गिनती";
+"evoucherDetails" = "वाउचर विवरण";
+"Select_Amount_to_Redeem" = "भुनाने के लिए राशि का चयन करें";
+"Terms_&_Conditions" = "नियम एवं शर्तें";
+"Redeem_Options" = "विकल्प भुनाएं";
+"Bank Details" = "बैंक विवरण";
+"Play Now" = "अब खेलते हैं";
+"My attempts" = "मेरे प्रयास";
+
+"My Raffles" = "मेरे रैफल्स";
+"Ongoing Raffles" = "चल रहे रैफल्स";
+"View & Buy" = "देखें और खरीदें";

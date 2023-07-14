@@ -421,7 +421,7 @@ extension CodeStatusListVC: UITableViewDelegate, UITableViewDataSource{
                 cell?.codeStatusMsg.textColor = UIColor(red: 54/255, green: 158/255, blue: 58/255, alpha: 1.0)
             }else if uploadedCodes[indexPath.row].codeStatus ?? "" == "0"{
                 cell?.codeStatusMsg.text = "Pending"
-                cell?.codeStatusImage.image = UIImage(named: "Pending")
+                cell?.codeStatusImage.image = UIImage(named: "pending")
                 cell?.codeStatusMsg.textColor = UIColor(red: 0/255, green: 0/255, blue: 0/255, alpha: 1.0)
             }else if uploadedCodes[indexPath.row].codeStatus ?? "" == "2"{
                 cell?.codeStatusMsg.text = "In-Valid Code"

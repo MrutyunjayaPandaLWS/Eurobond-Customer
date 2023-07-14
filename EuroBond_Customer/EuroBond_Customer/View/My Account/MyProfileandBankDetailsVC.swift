@@ -86,6 +86,7 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
     func langloc(){
         self.myprofile1.text = "My Account".localiz()
         self.personalDetailsLbl.text = "Personal Details".localiz()
+        self.bankDetailsLbl.text = "Bank Details".localiz()
         self.facingIssueLbl.text = "Facing any issues".localiz()
         self.giveMissedCallLbl.text = "Give a Missed Call".localiz()
     }
@@ -152,8 +153,12 @@ class MyProfileandBankDetailsVC: BaseViewController, UIImagePickerControllerDele
         }else{
            //self.ApicallingMethod()
            self.allowToEditProfile = "1"
-           self.navigationController?.popViewController(animated: true)
+                        self.dismiss(animated: true){
+                            NotificationCenter.default.post(name: .sideMenuClosing, object: nil)
+                        }
+           self.navigationController?.popToRootViewController(animated: true)
        }
+        
     }
   
     

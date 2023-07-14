@@ -7,8 +7,6 @@ import QuartzCore
 
 /// A root `CALayer` responsible for playing a Lottie animation
 protocol RootAnimationLayer: CALayer {
-  var animationView: LottieAnimationView? { get set }
-
   var currentFrame: AnimationFrameTime { get set }
   var renderScale: CGFloat { get set }
   var respectAnimationFrameRate: Bool { get set }
@@ -34,7 +32,7 @@ protocol RootAnimationLayer: CALayer {
   func reloadImages()
   func forceDisplayUpdate()
   func logHierarchyKeypaths()
-  func allHierarchyKeypaths() -> [String]
+
   func setValueProvider(_ valueProvider: AnyValueProvider, keypath: AnimationKeypath)
   func getValue(for keypath: AnimationKeypath, atFrame: AnimationFrameTime?) -> Any?
   func getOriginalValue(for keypath: AnimationKeypath, atFrame: AnimationFrameTime?) -> Any?

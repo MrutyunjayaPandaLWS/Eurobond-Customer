@@ -286,12 +286,18 @@ class HR_RedemptionDetailsVM:  popUpAlertDelegate {
                                 self.VC?.addToCart.isHidden = false
                                 self.VC?.addedToCart.isHidden = true
                             }else{
-                                self.VC?.addToPlanner.isHidden = false
-                                self.VC?.addedToPlanner.isHidden = true
-                                self.VC?.addToCart.isHidden = true
-                                self.VC?.addedToCart.isHidden = true
+                                if self.VC?.isPlanner == "true"{
+                                    self.VC?.addToPlanner.isHidden = false
+                                    self.VC?.addedToPlanner.isHidden = true
+                                    self.VC?.addToCart.isHidden = true
+                                    self.VC?.addedToCart.isHidden = true
+                                }else{
+                                    self.VC?.addToPlanner.isHidden = true
+                                    self.VC?.addedToPlanner.isHidden = true
+                                    self.VC?.addToCart.isHidden = true
+                                    self.VC?.addedToCart.isHidden = true
+                                }
                             }
-
                         }else{
                             
                             let filterCategory = self.plannerListArray.filter{$0.catalogueId == self.VC?.selectedCatalogueIds}

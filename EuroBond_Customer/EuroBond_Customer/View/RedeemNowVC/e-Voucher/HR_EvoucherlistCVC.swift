@@ -7,7 +7,7 @@
 
 import UIKit
 import SDWebImage
-//import LanguageManager_iOS
+import LanguageManager_iOS
 protocol EvoucherProductDelegate {
     func redeemButton(_ cell: HR_EvoucherlistCVC)
     func amountField(_ cell: HR_EvoucherlistCVC)
@@ -37,7 +37,7 @@ class HR_EvoucherlistCVC: UICollectionViewCell, UITextFieldDelegate, popUpAlertD
         super.awakeFromNib()
         self.amountTF.delegate = self
         self.amountTF.placeholder = "Enter Amount"
-        self.redeemBTN.setTitle("Redeem", for: .normal)
+        self.redeemBTN.setTitle("Redeem".localiz(), for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification(notification:)), name: Notification.Name("SHOWDATA23"), object: nil)
 
     }

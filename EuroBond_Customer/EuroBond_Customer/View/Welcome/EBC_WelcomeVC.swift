@@ -38,6 +38,8 @@ class EBC_WelcomeVC: BaseViewController {
                    }
                }else{
                    LanguageManager.shared.setLanguage(language: .en)
+                   UserDefaults.standard.setValue("en", forKey: "CURRENTLANGUAGE")
+                   UserDefaults.standard.synchronize()
                    self.clearTable()
                    self.clearTable1()
                    self.clearTable2()
@@ -61,6 +63,8 @@ class EBC_WelcomeVC: BaseViewController {
                 }
             }else{
                 LanguageManager.shared.setLanguage(language: .hi)
+                UserDefaults.standard.setValue("hi", forKey: "CURRENTLANGUAGE")
+                UserDefaults.standard.synchronize()
                 self.clearTable()
                 self.clearTable1()
                 self.clearTable2()
@@ -130,6 +134,8 @@ class EBC_WelcomeVC: BaseViewController {
                 }
             }else{
                 LanguageManager.shared.setLanguage(language: .en)
+                UserDefaults.standard.setValue("en", forKey: "CURRENTLANGUAGE")
+                UserDefaults.standard.synchronize()
                 self.clearTable()
                 self.clearTable1()
                 self.clearTable2()
@@ -149,6 +155,8 @@ class EBC_WelcomeVC: BaseViewController {
             }
         }else{
             LanguageManager.shared.setLanguage(language: .hi)
+            UserDefaults.standard.setValue("hi", forKey: "CURRENTLANGUAGE")
+            UserDefaults.standard.synchronize()
             clearTable()
             clearTable1()
             clearTable2()

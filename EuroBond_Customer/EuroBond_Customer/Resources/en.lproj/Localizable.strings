@@ -476,11 +476,11 @@
 "Please enter the valid feilds" = "Please enter the valid feilds";
 "Raffle name" = "Raffle name";
 "Valid till" = "Valid till";
-"Your point balance" = "Your point balance";
+"Your point balance" = "Your Euros balance";
 "Status" = "Status";
 "Description" = "Description";
 "Total Ticket Purchased" = "Total Ticket Purchased";
-"Total Points Redeemed" = "Total Points Redeemed";
+"Total Points Redeemed" = "Total Euros Redeemed";
 "Raffle Qty" = "Raffle Qty";
 "Buy Ticket" = "Buy Ticket";
 "Ticket points" = "Ticket points";
@@ -498,12 +498,26 @@
 "Bank details not submitted. Please submit bank details" = "Bank details not submitted. Please submit bank details";
 "Your verification of your bank account is pending_Please contact your administator" = "Your verification of your bank account is rejected. Please resubmit your account details.";
 "Entered amount has been transferred to your bank account" = "Bank transfer request has been submitted successfully";
-"Bank Transfer limit Exceeded" = "Your bank transfer limit exceeded";
+"Bank Transfer limit Exceeded" = "You have exceeded your daily  transaction limit !";
 
 "playAndWin" = "Play and Win";
-"percentageValue" = "Only 90% of your available Euros can be redeemable";
-"Attach Account Proof: Please upload the passbook front page or check leaf." = "Please upload the passbook front page or check leaf.";
+"percentageValue" = "Only 90% of your available Euros are redeemable to cover for Government TDS rule 194R*. Please refer to program T&Cs for more info.";
+"Attach Account Proof: Please upload the passbook front page or check leaf." = "Please upload the cancelled cheque leaf.";
 "AttachAccountProof" = "Attach Account Proof: ";
 "Do_U_Want_To_Remove" = "Are you sure you want to remove the Dream Gift?";
 "RaffleDetail" = "Raffles Detials";
 "Bank_Name" = "Bank";
+"Ticket Count" = "Ticket Count";
+"evoucherDetails" = "Voucher Details";
+"Select_Amount_to_Redeem" = "Select Amount to Redeem";
+"Terms_&_Conditions" = "Terms & Conditions";
+"Redeem_Options" = "Redeem Options";
+"Bank Details" = "Bank Details";
+"Play Now" = "Play Now";
+"My attempts" = "My attempts";
+
+"My Raffles" = "My Raffles";
+"Ongoing Raffles" = "Ongoing Raffles";
+"View & Buy" = "View & Buy";
+//Thank you for redeeming the e_voucher will be sent email id/ sms shortly
+//ई-वाउचर रिडीम करने के लिए धन्यवाद, शीघ्र ही ईमेल आईडी/एसएमएस भेजा जाएगा

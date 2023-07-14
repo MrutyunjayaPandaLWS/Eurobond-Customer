@@ -52,7 +52,7 @@ class EBC_FabricatedDashBoardVM{
             }
         }
     }
-    func dashboardApi(parameter: JSON){
+    func dashboardApi(parameter: JSON,completion: @escaping () -> ()){
         
         DispatchQueue.main.async {
             self.VC?.startLoading()
@@ -133,7 +133,8 @@ class EBC_FabricatedDashBoardVM{
                             UserDefaults.standard.synchronize()
                         self.VC?.userNameLbl.text = result?.lstCustomerFeedBackJsonApi?[0].firstName ?? ""
                          self.VC?.membershipIDTitleLbl.text = result?.lstCustomerFeedBackJsonApi?[0].loyaltyId ?? ""
-                       
+                        self.VC?.loyaltyIDData = result?.lstCustomerFeedBackJsonApi?[0].loyaltyId ?? ""
+                        completion()
                     }else{
                         if result?.lstCustomerFeedBackJsonApi?[0].customerStatus ?? 0 != 1{
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "KC_ForgetPwdSuccessVC") as! KC_ForgetPwdSuccessVC
@@ -208,4 +209,31 @@ class EBC_FabricatedDashBoardVM{
         }
     }
 
+    
+    
+    func submitCodesApi(parameters: JSON, completion: @escaping (ScannedandUploadCodesModels?) -> ()){
+        self.VC?.startLoading()
+        self.requestAPIs.submitCodesApi(parameters: parameters) { (result, error) in
+            if error == nil{
+                if result != nil {
+                    DispatchQueue.main.async {
+                        completion(result)
+                    }
+                } else {
+                    print("No Response")
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                    }
+                }
+            }else{
+                print("ERROR_Login \(error)")
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                }
+                
+            }
+        }
+    }
+    
+    
 }

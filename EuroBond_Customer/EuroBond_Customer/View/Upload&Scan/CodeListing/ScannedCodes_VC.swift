@@ -131,17 +131,17 @@ class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate, popUpAlertDelegat
     
     
     @IBAction func submitBTN(_ sender: Any) {
-        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-            DispatchQueue.main.async{
-                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
-                vc!.delegate = self
-                vc!.titleInfo = ""
-                vc!.descriptionInfo = "No Internet Connection".localiz()
-                vc!.modalPresentationStyle = .overCurrentContext
-                vc!.modalTransitionStyle = .crossDissolve
-                self.present(vc!, animated: true, completion: nil)
-            }
-        }else{
+//        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+//            DispatchQueue.main.async{
+//                let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
+//                vc!.delegate = self
+//                vc!.titleInfo = ""
+//                vc!.descriptionInfo = "No Internet Connection".localiz()
+//                vc!.modalPresentationStyle = .overCurrentContext
+//                vc!.modalTransitionStyle = .crossDissolve
+//                self.present(vc!, animated: true, completion: nil)
+//            }
+//        }else{
             if self.codeLIST.count == 0 {
                 if UserDefaults.standard.string(forKey: "LanguageLocalizable") == "1"{
                     let alertController = UIAlertController(title: "Submit without scan Upload QR", message: "Please scan/upload QR code", preferredStyle: .alert)
@@ -230,7 +230,7 @@ class ScannedCodes_VC: BaseViewController, RemoveCodeDelegate, popUpAlertDelegat
                     NotificationCenter.default.post(name: .CodeSubmission, object: nil)
                     
                 })}
-        }
+//        }
        
     }
     @IBAction func closeBTN(_ sender: Any) {

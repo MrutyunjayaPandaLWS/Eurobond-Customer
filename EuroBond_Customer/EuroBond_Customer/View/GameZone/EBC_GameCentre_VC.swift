@@ -38,7 +38,8 @@ class EBC_GameCentre_VC: BaseViewController, UIWebViewDelegate, playNowDelegate,
 //        self.webviewSpin.navigationDelegate = self
         gameCentreCollectionView.register(UINib(nibName: "EBC_PlayNow_CVC", bundle: nil), forCellWithReuseIdentifier: "EBC_PlayNow_CVC")
         gameCentreCollectionView.register(UINib(nibName: "EBC_MyAttempts_CVC", bundle: nil), forCellWithReuseIdentifier: "EBC_MyAttempts_CVC")
-
+        self.segmentedControll.setTitle("Play Now".localiz(), forSegmentAt: 0)
+        self.segmentedControll.setTitle("My attempts".localiz(), forSegmentAt: 1)
         self.gameCentreCollectionView.delegate = self
         self.gameCentreCollectionView.dataSource = self
         self.segmentedControll.layer.backgroundColor = UIColor.white.cgColor

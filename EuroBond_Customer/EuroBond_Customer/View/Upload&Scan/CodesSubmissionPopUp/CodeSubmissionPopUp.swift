@@ -76,13 +76,19 @@ class CodeSubmissionPopUp: BaseViewController{
     
 
     @IBAction func raiseTicketBTN(_ sender: Any) {
-        self.itsFrom = 2
-        let vc = self.storyboard1.instantiateViewController(withIdentifier: "EBC_CreatenewQueryVC") as! EBC_CreatenewQueryVC
-        vc.isFrom = 2
-        vc.modalTransitionStyle = .crossDissolve
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
-
+        
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("Check Internet Connection !!!", duration: 2.0, position: .bottom)
+            }
+        }else{
+            self.itsFrom = 2
+            let vc = self.storyboard1.instantiateViewController(withIdentifier: "EBC_CreatenewQueryVC") as! EBC_CreatenewQueryVC
+            vc.isFrom = 2
+            vc.modalTransitionStyle = .crossDissolve
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     @IBAction func uploadAgainBTN(_ sender: Any) {
         self.itsFrom = 3

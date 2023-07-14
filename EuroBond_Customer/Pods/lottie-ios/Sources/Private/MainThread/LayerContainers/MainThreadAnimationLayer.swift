@@ -23,7 +23,6 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
     imageProvider: AnimationImageProvider,
     textProvider: AnimationTextProvider,
     fontProvider: AnimationFontProvider,
-    maskAnimationToBounds: Bool,
     logger: LottieLogger)
   {
     layerImageProvider = LayerImageProvider(imageProvider: imageProvider, assets: animation.assetLibrary?.imageAssets)
@@ -32,7 +31,7 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
     animationLayers = []
     self.logger = logger
     super.init()
-    masksToBounds = maskAnimationToBounds
+    masksToBounds = true
     bounds = animation.bounds
     let layers = animation.layers.initializeCompositionLayers(
       assetLibrary: animation.assetLibrary,
@@ -147,9 +146,6 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
   /// The animatable Current Frame Property
   @NSManaged var currentFrame: CGFloat
 
-  /// The parent `LottieAnimationView` that manages this layer
-  weak var animationView: LottieAnimationView?
-
   var animationLayers: ContiguousArray<CompositionLayer>
 
   var primaryAnimationKey: AnimationKey {
@@ -204,14 +200,7 @@ final class MainThreadAnimationLayer: CALayer, RootAnimationLayer {
 
   func logHierarchyKeypaths() {
     logger.info("Lottie: Logging Animation Keypaths")
-
-    for keypath in allHierarchyKeypaths() {
-      logger.info(keypath)
-    }
-  }
-
-  func allHierarchyKeypaths() -> [String] {
-    animationLayers.flatMap { $0.allKeypaths() }
+    animationLayers.forEach { $0.logKeypaths(for: nil, logger: self.logger) }
   }
 
   func setValueProvider(_ valueProvider: AnyValueProvider, keypath: AnimationKeypath) {

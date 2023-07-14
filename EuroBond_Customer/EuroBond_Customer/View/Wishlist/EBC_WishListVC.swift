@@ -31,6 +31,7 @@ class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         whislistTV.delegate = self
         whislistTV.dataSource = self
         localizSetup()
+        alertPopUp()
     }
     func localizSetup(){
         titleVC.text = "Whislist".localiz()
@@ -47,6 +48,16 @@ class EBC_WishListVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func selectMycartBtn(_ sender: UIButton) {
     }
+    
+    func alertPopUp(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SuccessPopUpMessage2") as? SuccessPopUpMessage2
+        vc?.modalTransitionStyle = .crossDissolve
+        vc?.modalPresentationStyle = .overFullScreen
+//        vc?.message = "Only 90% of your available Euros can be redeemable"
+//        vc?.delegate = self
+        present(vc!, animated: true)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

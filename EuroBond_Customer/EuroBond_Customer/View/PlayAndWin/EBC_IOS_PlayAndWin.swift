@@ -25,6 +25,7 @@ class EBC_IOS_PlayAndWin: UIViewController {
         raffelOutView.clipsToBounds = true
         raffelOutView.layer.cornerRadius = 15
         raffelOutView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        localize()
 
     }
     

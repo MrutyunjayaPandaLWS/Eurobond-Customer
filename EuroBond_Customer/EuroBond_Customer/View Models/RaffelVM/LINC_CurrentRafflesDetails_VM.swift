@@ -7,6 +7,8 @@
 
 import UIKit
 import SDWebImage
+import LanguageManager_iOS
+
 class LINC_CurrentRafflesDetails_VM{
     weak var VC:LINC_CurrentraffleDetails_VC?
     weak var VC2: LINC_AlertPopUp_Raffles_VC?
@@ -35,11 +37,11 @@ class LINC_CurrentRafflesDetails_VM{
                                 let x = (data.validityTo ?? "").split(separator: " ")
                                 self.VC?.validUntilLabel.text = "\(x[0])"
                                 self.VC?.statusLabel.text = data.status ?? ""
-                                self.VC?.pointsperTicketLabel.text = "Total Points \(data.pointsPerTicket ?? 0)"
+                                self.VC?.pointsperTicketLabel.text = "\("Total Euros".localiz()) \(data.pointsPerTicket ?? 0)"
                                 self.VC?.pointsValue = "\(data.pointsPerTicket ?? 0)"
-                                self.VC?.ticketCountLabel.text = "Ticket Count : 1"
+                                self.VC?.ticketCountLabel.text = "\("Ticket Count".localiz()) : 1"
                                 print("Points Values is", self.VC?.pointsValue )
-                                print(self.VC?.pointsperTicketLabel.text!, "Total Points")
+                                print(self.VC?.pointsperTicketLabel.text!, "Total Euros")
                                 self.VC?.rafflenameLabel.text = data.raffelCampaignName ?? ""
                                 let quantityValue = data.quantity ?? ""
                                 print(quantityValue)

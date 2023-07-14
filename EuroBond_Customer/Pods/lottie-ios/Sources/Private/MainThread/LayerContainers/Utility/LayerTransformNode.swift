@@ -25,12 +25,12 @@ final class LayerTransformProperties: NodePropertyMap, KeypathSearchable {
 
     var propertyMap: [String: AnyNodeProperty] = [
       "Anchor Point" : anchor,
-      PropertyName.scale.rawValue : scale,
-      PropertyName.rotation.rawValue: rotationZ,
+      "Scale" : scale,
+      "Rotation": rotationZ,
       "Rotation X" : rotationX,
       "Rotation Y" : rotationY,
       "Rotation Z" : rotationZ,
-      PropertyName.opacity.rawValue : opacity,
+      "Opacity" : opacity,
     ]
 
     if
@@ -46,7 +46,7 @@ final class LayerTransformProperties: NodePropertyMap, KeypathSearchable {
       position = nil
     } else if let positionKeyframes = transform.position?.keyframes {
       let position: NodeProperty<LottieVector3D> = NodeProperty(provider: KeyframeInterpolator(keyframes: positionKeyframes))
-      propertyMap[PropertyName.position.rawValue] = position
+      propertyMap["Position"] = position
       self.position = position
       positionX = nil
       positionY = nil
