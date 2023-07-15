@@ -122,9 +122,9 @@ class EBC_LoginVM {
                         let parameter = [
                             "OTPType": "Enrollment",
                             "UserId": -1,
-                            "MobileNo": self.VC?.membershipIdTF.text ?? "",
+                            "MobileNo": self.VC?.userMob ?? "",
                             "UserName": "",
-                            "MerchantUserName": "EuroBondMerchantDemo"
+                            "MerchantUserName": "EuroBondDemo"
                         ] as [String: Any]
                         self.getOTPApi(parameter: parameter)
                     }
@@ -240,7 +240,7 @@ class EBC_LoginVM {
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                         if loginResponse.count != 0{
-                            
+                            self.VC?.userMob = loginResponse[0].mobile ?? ""
                             if loginResponse[0].isDelete ?? -1 == 1 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 3 {
                                 self.VC!.view.makeToast("Your account is verification pending! Kindly contact your administrator.".localiz(), duration: 2.0, position: .bottom)
                             }else if loginResponse[0].isUserActive ?? -1 == 1 && loginResponse[0].verifiedStatus ?? -1 == 0 || loginResponse[0].isUserActive ?? -1 == 0 && loginResponse[0].verifiedStatus ?? -1 == 0{
@@ -267,9 +267,9 @@ class EBC_LoginVM {
                                             let parameter = [
                                                 "OTPType": "Enrollment",
                                                 "UserId": -1,
-                                                "MobileNo": self.VC?.membershipIdTF.text ?? "",
+                                                "MobileNo": self.VC?.userMob ?? "",
                                                 "UserName": "",
-                                                "MerchantUserName": "EuroBondMerchantDemo"
+                                                "MerchantUserName": "EuroBondDemo"
                                             ] as [String: Any]
                                             print(parameter)
                                             self.getOTPApi(parameter: parameter)

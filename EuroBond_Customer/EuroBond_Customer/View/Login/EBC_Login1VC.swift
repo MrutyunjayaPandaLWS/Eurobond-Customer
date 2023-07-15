@@ -61,7 +61,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
     var receivedOTP = ""
     var categoryId = -1
     var enteredMobileNumber = ""
-
+    var userMob = ""
     var VM = EBC_LoginVM()
     
     
@@ -278,8 +278,10 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                     "UserId": -1,
                     "MobileNo": self.membershipIdTF.text ?? "",
                     "UserName": "",
-                    "MerchantUserName": "EuroBondMerchantDemo"
+                    "MerchantUserName": "EuroBondDemo"
                 ] as [String: Any]
+
+                print(parameter,"login otp")
                 self.VM.getOTPApi(parameter: parameter)
             }
         }

@@ -7527,17 +7527,17 @@
                                                                                             <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="50"/>
                                                                                             <subviews>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="06R-Ub-kTA">
-                                                                                                    <rect key="frame" x="26" y="0.0" width="71" height="50"/>
+                                                                                                    <rect key="frame" x="26" y="0.0" width="79" height="50"/>
                                                                                                     <subviews>
                                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Asset 1" translatesAutoresizingMaskIntoConstraints="NO" id="QZE-Q7-IPL">
-                                                                                                            <rect key="frame" x="0.0" y="15" width="12" height="20"/>
+                                                                                                            <rect key="frame" x="0.0" y="15" width="20" height="20"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="width" constant="20" id="4yg-35-gDm"/>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="K29-vw-WfU"/>
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;25000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6s-hL-Pd2">
-                                                                                                            <rect key="frame" x="20" y="16.333333333333329" width="51" height="17.666666666666671"/>
+                                                                                                            <rect key="frame" x="28" y="16.333333333333329" width="51" height="17.666666666666671"/>
                                                                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                                                                                             <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                             <nil key="highlightedColor"/>
@@ -28303,9 +28303,6 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="6d3-zV-vJt"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wwJ-zn-vhy"/>
@@ -28318,6 +28315,7 @@
                             <constraint firstAttribute="trailing" secondItem="CqW-l6-ufy" secondAttribute="trailing" constant="8" id="c7L-ti-tZY"/>
                             <constraint firstItem="CqW-l6-ufy" firstAttribute="leading" secondItem="wwJ-zn-vhy" secondAttribute="leading" constant="8" id="ccI-gh-8eZ"/>
                             <constraint firstItem="Kid-8g-d8F" firstAttribute="top" secondItem="wwJ-zn-vhy" secondAttribute="top" id="gV4-ju-o53"/>
+                            <constraint firstItem="CqW-l6-ufy" firstAttribute="height" secondItem="wwJ-zn-vhy" secondAttribute="height" multiplier="0.527009" id="pJG-5h-BWp"/>
                         </constraints>
                     </view>
                     <connections>
