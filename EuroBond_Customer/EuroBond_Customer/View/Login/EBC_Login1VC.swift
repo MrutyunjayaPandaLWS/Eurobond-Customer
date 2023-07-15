@@ -195,6 +195,7 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                 DispatchQueue.main.async {
                     self.membershipIdTF.isEnabled = true
                     self.membershipIdTF.text = ""
+                    self.userMob = ""
                     self.membershipIdTF.placeholder = "MobileNumber".localiz()
                     self.membershipIdLbl.text = "MobileNumber".localiz()
                     self.membershipIdTF.keyboardType = .numberPad
@@ -273,10 +274,16 @@ class EBC_Login1VC: BaseViewController, CheckBoxSelectDelegate, DPOTPViewDelegat
                     self.view.makeToast("EnterMembershipID/Moblienumber".localiz(), duration: 2.0, position: .bottom)
                 }
             }else{
+                var UsermobileNumber = ""
+                if self.userMob == ""{
+                    UsermobileNumber = self.membershipIdTF.text ?? ""
+                }else{
+                    UsermobileNumber = self.userMob ?? ""
+                }
                 let parameter = [
                     "OTPType": "Enrollment",
                     "UserId": -1,
-                    "MobileNo": self.membershipIdTF.text ?? "",
+                    "MobileNo": UsermobileNumber,
                     "UserName": "",
                     "MerchantUserName": "EuroBondDemo"
                 ] as [String: Any]

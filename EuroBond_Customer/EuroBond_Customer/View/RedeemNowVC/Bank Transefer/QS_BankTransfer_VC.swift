@@ -87,7 +87,7 @@ class QS_BankTransfer_VC: BaseViewController, UITextFieldDelegate, popUpAlertDel
         self.transferPointsHeadingLabel.text = "Transfer_points_to_Bank_Account".localiz()
         self.enterAmountLbl.text = "Enter_amount".localiz()
        // self.accountDetailsHeadingLabel.text = "Your_Account_Details".localiz()
-        self.accountNumberHeadingLabel.text = "Account_Number".localiz()
+        self.accountNumberHeadingLabel.text = "AccountNumber".localiz()
         self.accountNameHeadingLabel.text = "Account_Holder_Name".localiz()
         self.popUpOkBtn.setTitle("ok".localiz(), for: .normal)
         self.bankDetialsOUTBtn.setTitle("Bank Details".localiz(), for: .normal)

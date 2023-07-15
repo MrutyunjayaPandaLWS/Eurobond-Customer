@@ -143,7 +143,7 @@ class EBC_SideMenuVC: BaseViewController, UITableViewDelegate, UITableViewDataSo
                     print(self.parameters!)
                     self.deleteAccountAPI(paramters: self.parameters!)
                 }))
-                alert.addAction(UIAlertAction(title: "no".localiz(), style: UIAlertAction.Style.default, handler: nil))
+                alert.addAction(UIAlertAction(title: "No".localiz(), style: UIAlertAction.Style.default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
                 
             }

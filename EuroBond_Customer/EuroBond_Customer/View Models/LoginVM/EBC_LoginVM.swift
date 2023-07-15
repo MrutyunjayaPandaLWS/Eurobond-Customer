@@ -119,10 +119,16 @@ class EBC_LoginVM {
                         self.VC?.submitButtonTopSpace.constant = 190
                         self.VC?.loginSubViewHeight.constant = 429
                         self.VC?.membershipIdTF.isEnabled = false
+                        var UsermobileNumber = ""
+                        if self.VC?.userMob == ""{
+                            UsermobileNumber = self.VC?.membershipIdTF.text ?? ""
+                        }else{
+                            UsermobileNumber = self.VC?.userMob ?? ""
+                        }
                         let parameter = [
                             "OTPType": "Enrollment",
                             "UserId": -1,
-                            "MobileNo": self.VC?.userMob ?? "",
+                            "MobileNo": UsermobileNumber,
                             "UserName": "",
                             "MerchantUserName": "EuroBondDemo"
                         ] as [String: Any]
@@ -264,10 +270,16 @@ class EBC_LoginVM {
                                             self.VC?.submitButtonTopSpace.constant = 190
                                             self.VC?.loginSubViewHeight.constant = 429
                                             self.VC?.membershipIdTF.isEnabled = false
+                                            var UsermobileNumber = ""
+                                            if self.VC?.userMob == ""{
+                                                UsermobileNumber = self.VC?.membershipIdTF.text ?? ""
+                                            }else{
+                                                UsermobileNumber = self.VC?.userMob ?? ""
+                                            }
                                             let parameter = [
                                                 "OTPType": "Enrollment",
                                                 "UserId": -1,
-                                                "MobileNo": self.VC?.userMob ?? "",
+                                                "MobileNo": UsermobileNumber,
                                                 "UserName": "",
                                                 "MerchantUserName": "EuroBondDemo"
                                             ] as [String: Any]
