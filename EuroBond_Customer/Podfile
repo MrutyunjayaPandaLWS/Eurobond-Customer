@@ -11,15 +11,7 @@ target 'EuroBond_Customer' do
   pod 'SlideMenuControllerSwift'
   pod 'SRScratchView'
   pod 'QCropper'
-  pod 'Kingfisher', '~> 7.0'
-  pod 'FirebaseAnalytics'
-  pod 'Firebase/Core'
-  pod 'FirebaseAuth'
-  pod 'FirebaseFirestore'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Crashlytics'
-  pod 'SwiftFortuneWheel'
-  pod 'SRScratchView'
+  
 
   pod 'lottie-ios'
   pod 'SDWebImage'
@@ -29,6 +21,15 @@ target 'EuroBond_Customer' do
   pod 'LanguageManager-iOS'
 
   pod 'Toast-Swift', '~> 5.0.1'
+pod 'Kingfisher', '~> 7.0'
+  pod 'FirebaseAnalytics'
+  pod 'Firebase/Core'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Crashlytics'
+  pod 'SwiftFortuneWheel'
+  pod 'SRScratchView'
 
 
   

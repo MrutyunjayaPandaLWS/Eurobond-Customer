@@ -161,21 +161,21 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     var addedRedemablePointBalance = 0
     var productValues = 0
     var addedPoints = 0
-    var categoryId = -1
+    var categoryId = 89
     
     var noofelements = 0
     var startIndex = 1
     var searchTab = 1
-    var categoriesId = 0
+    var categoriesId = 1
     var noOfRows = 0
     var itsComeFrom = ""
-    
+    var refreshData = true
     var selectedPtsRange = ""
     var selectedPtsRange1 = ""
 //    var filterByRangeArray = ["All Euros".localiz(), "Under 1000".localiz(), "1000 - 4999", "5000 - 24999", "25000 & Above".localiz()]
     var filterByRangeArray = ["All Euros".localiz(), "5000 - 19000", "20000 - 29000", "30000 & Above"]
     var sortedBy = 0
-    var itsFrom = "Search"
+    var itsFrom = "Category"
     var parameters : JSON?
    
 
@@ -208,6 +208,12 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
 //    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        if refreshData {
+            categoryId = 89
+            categoriesId = 1
+            itsFrom = "Category"
+        }
+        refreshData ? (refreshData = true) : (refreshData = true)
         if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
             DispatchQueue.main.async{
                 let vc = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HR_PopUpVC") as? HR_PopUpVC
@@ -308,12 +314,12 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
                 self.startIndex = 1
                 self.categoriesId = 2
                 self.searchTab = 0
-                if self.sortedBy == 1{
-                    self.sortedBy = 1
+                if self.sortedBy == 0{
+                    self.sortedBy = 0
                     self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
                     
                 }else{
-                    self.sortedBy = 0
+                    self.sortedBy = 1
                     self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
                    
                 }
@@ -367,11 +373,11 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     
     @IBAction func highToLowButton(_ sender: Any) {
         
-        if self.sortedBy == 1{
-            self.sortedBy = 0
+        if self.sortedBy == 0{
+            self.sortedBy = 1
             self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
         }else{
-            self.sortedBy = 1
+            self.sortedBy = 0
             self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
         }
         self.VM.catalgoueListArray.removeAll()
@@ -426,7 +432,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
     @IBAction func categoryBtn(_ sender: Any) {
         self.VM.catalgoueListArray.removeAll()
         self.productCategoryCollectionView.reloadData()
-        self.highToLowBtn.setTitle("High To Low".localiz(), for: .normal)
+        self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
         self.itsFrom = "Category"
         self.selectedPtsRange1 = ""
         self.selectedPtsRange = ""
@@ -446,6 +452,7 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         self.searchViewHeight.constant = 0
         self.separatorLbl.isHidden = false
         self.categoriesId = 1
+        self.categoryId = 89
         self.startIndex = 1
         self.searchTab = 0
         self.sortedBy = 0
@@ -477,6 +484,8 @@ class HR_RedemptionCatalogueVC: BaseViewController, popUpAlertDelegate, AddToCar
         self.startIndex = 1
         self.categoriesId = 2
         self.searchTab = 0
+        self.highToLowBtn.setTitle("Low To High".localiz(), for: .normal)
+        self.sortedBy = 0
         self.VM.getMycartList()
     }
     
@@ -695,6 +704,7 @@ extension HR_RedemptionCatalogueVC: UICollectionViewDelegate, UICollectionViewDa
             vc.pointsRangePts = self.selectedPtsRange
             vc.sortedBy = self.sortedBy
             vc.itsFrom = self.itsFrom
+            self.refreshData = false
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
