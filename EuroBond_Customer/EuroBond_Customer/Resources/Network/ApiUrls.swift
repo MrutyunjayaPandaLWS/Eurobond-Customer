@@ -7,8 +7,8 @@
 
 import Foundation
 
-//DEMO 
-
+////DEMO
+//
 //let tokenURL = "https://Eurobonddemoserv.loyltwo3ks.com/token"
 //let baseURl = "https://Eurobonddemoserv.loyltwo3ks.com/Mobile/"
 //let PROMO_IMG = "https://eurobondrewardsdemo.loyltwo3ks.com/UploadFiles/"

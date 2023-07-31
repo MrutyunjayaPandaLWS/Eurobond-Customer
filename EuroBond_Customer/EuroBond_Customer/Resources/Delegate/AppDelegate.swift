@@ -16,6 +16,9 @@ import UserNotificationsUI
 import FirebaseInstanceID
 import FirebaseMessaging
 import LanguageManager_iOS
+import FBSDKCoreKit
+
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, MessagingDelegate{
 
@@ -79,8 +82,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
               UserDefaults.standard.setValue(token, forKey: "UD_DEVICE_TOKEN")
             }
           }
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.initialize()
+        Settings.shared.isAutoLogAppEventsEnabled = true
+        Settings.shared.isAdvertiserIDCollectionEnabled = true
+        Settings.shared.isAdvertiserTrackingEnabled = true
         return true
     }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
     {
         completionHandler([.alert, .badge, .sound])

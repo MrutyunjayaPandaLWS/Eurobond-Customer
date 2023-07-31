@@ -36,7 +36,7 @@ class QS_VouchersDetails_VM: popUpAlertDelegate{
                         "redemptionid": 1,
                         "redemptiontypeid": 4,
                         "noofquantity": 1,
-                        "status": 13,
+                        "status": 0,
                         "vendorid": VendorId,
                         "vendorname": VendorName
                     ]

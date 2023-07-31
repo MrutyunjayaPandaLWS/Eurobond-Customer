@@ -19,6 +19,8 @@ import QCropper
 import CoreLocation
 import CoreData
 
+import FBSDKCoreKit
+
 class EBC_DashboardVC: BaseViewController ,CLLocationManagerDelegate{
 
     @IBOutlet weak var defaultImage: UIImageView!
@@ -151,6 +153,12 @@ class EBC_DashboardVC: BaseViewController ,CLLocationManagerDelegate{
     
     deinit{
         reachability1.stopNotifier()
+    }
+    
+    func logCustomEvent() {
+        let eventName = "custom_event" // Replace this with your desired custom event name
+        //AppEvents.logEvent(AppEvents.Name.init(rawValue: eventName))
+//       FBSDKAppEvents.logEvent(AppEvents.Name.init(rawValue: eventName))
     }
     
     func InternetCheck(InternetON: @escaping ()->(),InternetOff: @escaping ()->()){

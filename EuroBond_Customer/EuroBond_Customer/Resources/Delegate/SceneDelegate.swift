@@ -10,14 +10,19 @@ import SlideMenuControllerSwift
 import IQKeyboardManagerSwift
 import LanguageManager_iOS
 
+import FBSDKCoreKit
+import FBSDKLoginKit
+import FBAudienceNetwork
+import AppTrackingTransparency
+import AdSupport
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     var slider : SlideMenuController!
     var nav : UINavigationController!
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -37,14 +42,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.setInitialViewAsRootViewController()
         }
     }
-
+    
     func setHomeAsRootViewController(){
         if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
             LanguageManager.shared.setLanguage(language: .en)
-
+            
         }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
             LanguageManager.shared.setLanguage(language: .hi)
-
+            
         }else{
             LanguageManager.shared.setLanguage(language: .en)
         }
@@ -57,34 +62,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
-         func setInitialLoginVC(){
-             if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
-                 LanguageManager.shared.setLanguage(language: .en)
-
-             }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
-                 LanguageManager.shared.setLanguage(language: .hi)
-
-             }else{
-                 LanguageManager.shared.setLanguage(language: .en)
-             }
-             IQKeyboardManager.shared.enable = true
-             let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
-             let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
-             nav = UINavigationController(rootViewController: initialVC)
-             nav.modalPresentationStyle = .overCurrentContext
-             nav.modalTransitionStyle = .partialCurl
-             nav.isNavigationBarHidden = true
-             window?.rootViewController = nav
-             window?.makeKeyAndVisible()
-         }
+    func setInitialLoginVC(){
+        if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
+            LanguageManager.shared.setLanguage(language: .en)
+            
+        }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
+            LanguageManager.shared.setLanguage(language: .hi)
+            
+        }else{
+            LanguageManager.shared.setLanguage(language: .en)
+        }
+        IQKeyboardManager.shared.enable = true
+        let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
+        let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "EBC_WelcomeVC") as! EBC_WelcomeVC
+        nav = UINavigationController(rootViewController: initialVC)
+        nav.modalPresentationStyle = .overCurrentContext
+        nav.modalTransitionStyle = .partialCurl
+        nav.isNavigationBarHidden = true
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+    }
     
     func setHomeAsRootViewController2(){
         if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "en"{
             LanguageManager.shared.setLanguage(language: .en)
-
+            
         }else if (UserDefaults.standard.string(forKey: "CURRENTLANGUAGE") ?? "") == "hi"{
             LanguageManager.shared.setLanguage(language: .hi)
-
+            
         }else{
             LanguageManager.shared.setLanguage(language: .en)
         }
@@ -108,25 +113,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func tokendata(){
-            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
-            }else{
-                let parameters : Data = "username=\(username)&password=\(password)&grant_type=password".data(using: .utf8)!
-
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+        }else{
+            let parameters : Data = "username=\(username)&password=\(password)&grant_type=password".data(using: .utf8)!
+            
             let url = URL(string: tokenURL)!
             let session = URLSession.shared
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
-
+            
             do {
-                 request.httpBody = parameters
+                request.httpBody = parameters
             } catch let error {
                 print(error.localizedDescription)
             }
             request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             request.addValue("application/json", forHTTPHeaderField: "Accept")
-           
+            
             let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-
+                
                 guard error == nil else {
                     return
                 }
@@ -135,15 +140,59 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 }
                 do{
                     let parseddata = try JSONDecoder().decode(TokenModels.self, from: data)
-                        print(parseddata.access_token ?? "")
-                        UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
-                     }catch let parsingError {
+                    print(parseddata.access_token ?? "")
+                    UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
+                }catch let parsingError {
                     print("Error", parsingError)
                 }
             })
             task.resume()
         }
+    }
+    
+//    func requestTracking (){
+//        if #available (iOS 14, *) {
+//            ATTrackingManager.requestTrackingAuthorization(completionHandler:{(status)in
+//                switch status{
+//                case authorized:
+//                    print ("Authorized")
+//                    FBSDKCoreKit.Settings.isAutoLogAppEventsEnabled = true
+//                    FBSDKCoreKit.Settings.setAdvertiserTrackingEnabled(true)
+//                    FBSDKCoreKit.Settings.isAdvertiserIDCollectionEnabled = true
+//                    break
+//                case denied:
+//                    print ("Denied" )
+//                    break
+//                default:
+//                    break
+//                }
+//            })
+//        }
+//
+//    }
+    
+    
+    func requestTrackingAuthorization() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    print("Authorized")
+                    self.configureFacebookSettingsForTracking()
+                case .denied:
+                    print("Denied")
+                default:
+                    break
+                }
+            }
         }
+    }
+
+    private func configureFacebookSettingsForTracking() {
+        Settings.shared.isAutoLogAppEventsEnabled = true
+//        Settings.shared.isAutoLogAppEventsEnabled(true)
+        Settings.shared.isAdvertiserIDCollectionEnabled = true
+    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -153,8 +202,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+            self?.requestTrackingAuthorization()
+        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

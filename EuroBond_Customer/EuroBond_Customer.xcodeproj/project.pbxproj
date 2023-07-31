@@ -3190,6 +3190,8 @@
 				843A0E1629F3921800F2A66D /* PBXTargetDependency */,
 			);
 			name = EuroBond_Customer;
+			packageProductDependencies = (
+			);
 			productName = EuroBond_Customer;
 			productReference = 80AEAD0329C4407C005108AC /* EuroBond_Customer.app */;
 			productType = "com.apple.product-type.application";
@@ -3283,6 +3285,8 @@
 				hi,
 			);
 			mainGroup = 80AEACFA29C4407C005108AC;
+			packageReferences = (
+			);
 			productRefGroup = 80AEAD0429C4407C005108AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

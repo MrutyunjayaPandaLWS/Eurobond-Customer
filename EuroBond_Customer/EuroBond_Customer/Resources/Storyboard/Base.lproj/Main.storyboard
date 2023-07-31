@@ -14,11 +14,11 @@
         <array key="Arimo-Bold.ttf">
             <string>Arimo-Bold</string>
         </array>
-        <array key="Arimo-Regular.ttf">
-            <string>Arimo-Regular</string>
-        </array>
         <array key="Arimo-SemiBold.ttf">
             <string>Arimo-SemiBold</string>
+        </array>
+        <array key="Arimo-VariableFont_wght.ttf">
+            <string>Arimo-Regular</string>
         </array>
         <array key="Futura Book font.ttf">
             <string>FuturaBT-Book</string>
@@ -4401,7 +4401,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attach GST Document ( Optional )" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FCC-Me-9IQ">
-                                                <rect key="frame" x="46.666666666666657" y="476" width="182.00000000000003" height="14.333333333333314"/>
+                                                <rect key="frame" x="46.666666666666657" y="476" width="182" height="14.333333333333314"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="14.33" id="8Dx-u3-JU8"/>
                                                 </constraints>
@@ -7527,17 +7527,17 @@
                                                                                             <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="50"/>
                                                                                             <subviews>
                                                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="06R-Ub-kTA">
-                                                                                                    <rect key="frame" x="26" y="0.0" width="79" height="50"/>
+                                                                                                    <rect key="frame" x="26" y="0.0" width="71" height="50"/>
                                                                                                     <subviews>
                                                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Asset 1" translatesAutoresizingMaskIntoConstraints="NO" id="QZE-Q7-IPL">
-                                                                                                            <rect key="frame" x="0.0" y="15" width="20" height="20"/>
+                                                                                                            <rect key="frame" x="0.0" y="15" width="12" height="20"/>
                                                                                                             <constraints>
                                                                                                                 <constraint firstAttribute="width" constant="20" id="4yg-35-gDm"/>
                                                                                                                 <constraint firstAttribute="height" constant="20" id="K29-vw-WfU"/>
                                                                                                             </constraints>
                                                                                                         </imageView>
                                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;25000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6s-hL-Pd2">
-                                                                                                            <rect key="frame" x="28" y="16.333333333333329" width="51" height="17.666666666666671"/>
+                                                                                                            <rect key="frame" x="20" y="16.333333333333329" width="51" height="17.666666666666671"/>
                                                                                                             <fontDescription key="fontDescription" name="Roboto-Bold" family="Roboto" pointSize="15"/>
                                                                                                             <color key="textColor" red="0.26666666666666666" green="0.26666666666666666" blue="0.26666666666666666" alpha="1" colorSpace="calibratedRGB"/>
                                                                                                             <nil key="highlightedColor"/>
@@ -31324,7 +31324,6 @@
         <designable name="1Hc-mI-7Wd">
             <size key="intrinsicContentSize" width="55" height="34"/>
         </designable>
-        <designable name="1Xs-Ex-RTC"/>
         <designable name="1mU-zK-J7P">
             <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
@@ -31334,8 +31333,6 @@
         <designable name="656-oJ-6E4">
             <size key="intrinsicContentSize" width="33" height="30"/>
         </designable>
-        <designable name="6lv-UJ-3eL"/>
-        <designable name="7bB-NZ-MrI"/>
         <designable name="7dH-iX-Eo3">
             <size key="intrinsicContentSize" width="12.333333333333334" height="27.333333333333332"/>
         </designable>
@@ -31357,7 +31354,6 @@
         <designable name="BpG-A8-LJO">
             <size key="intrinsicContentSize" width="30" height="26"/>
         </designable>
-        <designable name="ESK-at-MuH"/>
         <designable name="Ebj-0m-IFz">
             <size key="intrinsicContentSize" width="65" height="34"/>
         </designable>
@@ -31370,7 +31366,6 @@
         <designable name="Gmt-mQ-x9W">
             <size key="intrinsicContentSize" width="77" height="33"/>
         </designable>
-        <designable name="Hq5-IG-b1W"/>
         <designable name="KYi-dN-FJj">
             <size key="intrinsicContentSize" width="83" height="33"/>
         </designable>
@@ -31395,12 +31390,9 @@
         <designable name="WhM-h4-Rbz">
             <size key="intrinsicContentSize" width="30" height="34"/>
         </designable>
-        <designable name="YAh-VS-2jc"/>
         <designable name="a09-ft-AAv">
             <size key="intrinsicContentSize" width="52" height="34"/>
         </designable>
-        <designable name="aAw-a1-fNl"/>
-        <designable name="aKa-PH-umd"/>
         <designable name="bJA-Dm-wTS">
             <size key="intrinsicContentSize" width="90" height="29"/>
         </designable>
@@ -31413,7 +31405,6 @@
         <designable name="clm-bO-u5d">
             <size key="intrinsicContentSize" width="56" height="34"/>
         </designable>
-        <designable name="dvl-OR-Nh0"/>
         <designable name="g9J-00-Hk1">
             <size key="intrinsicContentSize" width="72" height="33"/>
         </designable>
@@ -31432,11 +31423,9 @@
         <designable name="hxP-py-z2r">
             <size key="intrinsicContentSize" width="52" height="34"/>
         </designable>
-        <designable name="irX-Vk-ZbR"/>
         <designable name="jMs-9O-YzO">
             <size key="intrinsicContentSize" width="65" height="26"/>
         </designable>
-        <designable name="jgY-cO-wJT"/>
         <designable name="jvJ-qy-S8Q">
             <size key="intrinsicContentSize" width="57" height="34"/>
         </designable>
@@ -31452,7 +31441,6 @@
         <designable name="q45-gM-NVS">
             <size key="intrinsicContentSize" width="90" height="32"/>
         </designable>
-        <designable name="qa1-Av-VGi"/>
         <designable name="tqW-DV-vaJ">
             <size key="intrinsicContentSize" width="55" height="34"/>
         </designable>
