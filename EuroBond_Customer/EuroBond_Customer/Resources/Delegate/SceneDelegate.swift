@@ -10,11 +10,11 @@ import SlideMenuControllerSwift
 import IQKeyboardManagerSwift
 import LanguageManager_iOS
 
-import FBSDKCoreKit
-import FBSDKLoginKit
-import FBAudienceNetwork
-import AppTrackingTransparency
-import AdSupport
+//import FBSDKCoreKit
+//import FBSDKLoginKit
+//import FBAudienceNetwork
+//import AppTrackingTransparency
+//import AdSupport
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -172,27 +172,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //    }
     
     
-    func requestTrackingAuthorization() {
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization { status in
-                switch status {
-                case .authorized:
-                    print("Authorized")
-                    self.configureFacebookSettingsForTracking()
-                case .denied:
-                    print("Denied")
-                default:
-                    break
-                }
-            }
-        }
-    }
+//    func requestTrackingAuthorization() {
+//        if #available(iOS 14, *) {
+//            ATTrackingManager.requestTrackingAuthorization { status in
+//                switch status {
+//                case .authorized:
+//                    print("Authorized")
+//                    self.configureFacebookSettingsForTracking()
+//                case .denied:
+//                    print("Denied")
+//                default:
+//                    break
+//                }
+//            }
+//        }
+//    }
 
-    private func configureFacebookSettingsForTracking() {
-        Settings.shared.isAutoLogAppEventsEnabled = true
-//        Settings.shared.isAutoLogAppEventsEnabled(true)
-        Settings.shared.isAdvertiserIDCollectionEnabled = true
-    }
+//    private func configureFacebookSettingsForTracking() {
+//        Settings.shared.isAutoLogAppEventsEnabled = true
+////        Settings.shared.isAutoLogAppEventsEnabled(true)
+//        Settings.shared.isAdvertiserIDCollectionEnabled = true
+//    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -202,9 +202,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
-            self?.requestTrackingAuthorization()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {[weak self] in
+//            self?.requestTrackingAuthorization()
+//        }
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

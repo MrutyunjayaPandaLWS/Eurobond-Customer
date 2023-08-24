@@ -23,7 +23,7 @@ target 'EuroBond_Customer' do
   pod 'Toast-Swift', '~> 5.0.1'
   pod 'Kingfisher', '~> 7.0'
   pod 'FirebaseAnalytics'
-  pod 'Firebase/Core'
+  pod 'Firebase/CoreOnly'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'Firebase/Messaging'

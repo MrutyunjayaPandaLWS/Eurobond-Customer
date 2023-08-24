@@ -37,7 +37,7 @@ class EBC_DefaultAddressVC: BaseViewController, SendUpdatedAddressDelegate, popU
         self.selectedname = vc.selectedname
         self.emailID = vc.selectedemail
         self.customerMobileNumber = vc.selectedmobile
-        self.cityName = vc.selectedState
+        self.stateName = vc.selectedState
         self.stateID = vc.selectedStateID
         self.cityName = vc.selectedCity
         self.cityID = vc.selectedCityID

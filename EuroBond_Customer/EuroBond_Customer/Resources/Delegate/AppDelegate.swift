@@ -16,7 +16,7 @@ import UserNotificationsUI
 import FirebaseInstanceID
 import FirebaseMessaging
 import LanguageManager_iOS
-import FBSDKCoreKit
+//import FBSDKCoreKit
 
 
 @main
@@ -82,11 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
               UserDefaults.standard.setValue(token, forKey: "UD_DEVICE_TOKEN")
             }
           }
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
-        ApplicationDelegate.initialize()
-        Settings.shared.isAutoLogAppEventsEnabled = true
-        Settings.shared.isAdvertiserIDCollectionEnabled = true
-        Settings.shared.isAdvertiserTrackingEnabled = true
+//        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+//        ApplicationDelegate.initialize()
+//        Settings.shared.isAutoLogAppEventsEnabled = true
+//        Settings.shared.isAdvertiserIDCollectionEnabled = true
+//        Settings.shared.isAdvertiserTrackingEnabled = true
         return true
     }
     

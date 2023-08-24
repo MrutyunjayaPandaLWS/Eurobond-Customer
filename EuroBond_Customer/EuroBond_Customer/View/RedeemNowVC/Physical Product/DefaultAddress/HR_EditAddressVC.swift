@@ -20,6 +20,7 @@ class HR_EditAddressVC: BaseViewController, popUpAlertDelegate, SelectedItemDele
         }else if vc.isComeFrom == 2{
             self.selectStateLbl.text = vc.selectedTitle
             self.selectedStateID = Int(vc.selectedId) ?? 0
+            self.selectedState = vc.selectedTitle
             self.selectCityLbl.text! = "Select City".localiz()
         }else if vc.isComeFrom == 3{
             self.selectCityLbl.text = vc.selectedTitle

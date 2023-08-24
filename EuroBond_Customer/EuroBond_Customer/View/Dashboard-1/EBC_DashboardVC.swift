@@ -19,7 +19,7 @@ import QCropper
 import CoreLocation
 import CoreData
 
-import FBSDKCoreKit
+//import FBSDKCoreKit
 
 class EBC_DashboardVC: BaseViewController ,CLLocationManagerDelegate{
 

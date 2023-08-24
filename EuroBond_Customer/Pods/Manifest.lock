@@ -222,9 +222,6 @@ PODS:
     - BoringSSL-GRPC/Interface (= 0.0.7)
   - BoringSSL-GRPC/Interface (0.0.7)
   - DPOTPView (1.5.12)
-  - Firebase/Core (6.34.0):
-    - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.9.0)
   - Firebase/CoreOnly (6.34.0):
     - FirebaseCore (= 6.10.4)
   - Firebase/Crashlytics (6.34.0):
@@ -359,7 +356,7 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.12)
-  - Protobuf (3.22.4)
+  - Protobuf (3.22.1)
   - QCropper (0.1.7)
   - SDWebImage (5.15.5):
     - SDWebImage/Core (= 5.15.5)
@@ -372,7 +369,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - DPOTPView
-  - Firebase/Core
+  - Firebase/CoreOnly
   - Firebase/Crashlytics
   - Firebase/Messaging
   - FirebaseAnalytics
@@ -459,7 +456,7 @@ SPEC CHECKSUMS:
   lottie-ios: d0954d3150061f662ed0adf96ef98d7421864c47
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  Protobuf: e61924c2c174ec1bee11cc3f151aa9e650ba09d7
+  Protobuf: d7f7c8329edf5eb8af65547a8ba3e9c1cee927d5
   QCropper: aef6bad1e683e62b501fb8258359ccd10c68b4f2
   SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
   SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
@@ -467,6 +464,6 @@ SPEC CHECKSUMS:
   SwiftFortuneWheel: c6ab36d61fc123cb40930a8bde140cbdcede65b2
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: a00deef40818a160567004e351449ee8d2190e88
+PODFILE CHECKSUM: 957a6651b10b966c809f494a1a8c295a85c32ad3
 
 COCOAPODS: 1.12.0
